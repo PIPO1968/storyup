@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi perfil - StoryUp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+
+<body>
+    <div class="contenido">
+        <h1>Mi perfil</h1>
+        <p id="user-info"></p>
+        <h2>Mis historias</h2>
+        <div id="my-stories"></div>
+        <div id="edit-form-container" style="display:none;">
+            <h3>Editar historia</h3>
+            <form id="edit-form">
+                <input type="text" id="edit-title" placeholder="Título" required>
+                <textarea id="edit-text" placeholder="Texto" required></textarea>
+                <select id="edit-language">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+                <select id="edit-type">
+                    <option value="real">Real</option>
+                    <option value="ficcion">Ficción</option>
+                    <option value="diario">Diario</option>
+                    <option value="confesion">Confesión</option>
+                </select>
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </div>
+        <button id="logout-btn">Cerrar sesión</button>
+    </div>
+    <script src="profile.js"></script>
+</body>
+
+</html>

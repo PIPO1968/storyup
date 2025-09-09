@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "storyup-red-social",
+    "? What alias do you want to use for this project? web": "storyup-red-social",
+    "storyup": "storyup-red-social"
+  },
+  "targets": {},
+  "etags": {}
+}

@@ -1,0 +1,298 @@
+body {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #3B82F6, #9333EA);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #F472B6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 60px;
+    font-size: 0.9em;
+}
+
+/* Splash screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1E1E1E;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+body.loaded #splash-screen {
+    display: none;
+}
+
+button {
+    margin-right: 10px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#my-stories p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #F472B6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #EC4899;
+}
+
+/* Contenedor principal de bienvenida */
+.contenido {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+body {
+    background-image: url('img/storyup-logo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    padding: 32px 28px 24px 28px;
+}
+
+body {
+    background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%, #81c784 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+.container {
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+
+form label {
+    display: block;
+    margin-top: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #b2dfdb;
+    border-radius: 8px;
+    font-size: 1em;
+    background: #f7fafc;
+    transition: border 0.2s;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form select:focus {
+    border: 1.5px solid #43c6ac;
+    outline: none;
+}
+
+form button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+form button:hover {
+    background: linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%);
+    color: #222;
+}
+
+#message {
+    margin-top: 12px;
+    text-align: center;
+    font-weight: 500;
+    color: #388e3c;
+}
+
+hr {
+    margin: 32px 0 18px 0;
+    border: none;
+    border-top: 2px solid #b2dfdb;
+}
+
+h2 {
+    color: #388e3c;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.historia {
+    background: #e0f7fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(67, 198, 172, 0.08);
+    margin-bottom: 18px;
+    padding: 18px 16px 12px 16px;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+
+.historia:hover {
+    box-shadow: 0 4px 16px rgba(67, 198, 172, 0.18);
+}
+
+.historia h3 {
+    margin: 0 0 8px 0;
+    color: #00796b;
+    font-size: 1.2em;
+}
+
+.historia p {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.historia small {
+    color: #666;
+    font-size: 0.92em;
+}
+
+.like-btn {
+    background: #43c6ac;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 1em;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.like-btn:hover {
+    background: #388e3c;
+}
+
+body {
+    background-image: url('img/storyup-logo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+.form-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 100px auto;
+    color: white;
+    text-align: left;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #3B82F6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.story {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+}

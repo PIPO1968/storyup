@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - StoryUp</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            background: rgba(255, 255, 255, 0.97);
+            max-width: 400px;
+            margin: 60px auto 0 auto;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            padding: 32px 28px 24px 28px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #43c6ac;
+            margin-bottom: 18px;
+            font-size: 2em;
+        }
+
+        .login-container label {
+            display: block;
+            margin-top: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #b2dfdb;
+            border-radius: 8px;
+            font-size: 1em;
+            background: #f7fafc;
+            transition: border 0.2s;
+        }
+
+        .login-container input:focus {
+            border: 1.5px solid #43c6ac;
+            outline: none;
+        }
+
+        .login-container button {
+            margin-top: 18px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
+            color: #222;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .login-container button:hover {
+            background: linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%);
+        }
+
+        .login-message {
+            margin-top: 12px;
+            text-align: center;
+            font-weight: 500;
+            color: #d32f2f;
+        }
+
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #388e3c;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Iniciar sesión en StoryUp</h2>
+        <form id="loginForm">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="login-message" id="loginMessage"></div>
+        <a href="signup.html" class="login-link">¿No tienes cuenta? Regístrate aquí</a>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script>
+        // Configuración de Firebase (igual que en signup)
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2Qpd2Ao7VQNlJXBdopakFa_anxqEd9w0",
+            authDomain: "storyup-red-social.firebaseapp.com",
+            projectId: "storyup-red-social",
+            storageBucket: "storyup-red-social.appspot.com",
+            messagingSenderId: "345378018677",
+            appId: "1:345378018677:web:317a927a329822bb0daf3c"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('loginMessage');
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    messageDiv.style.color = '#388e3c';
+                    messageDiv.textContent = '¡Bienvenido! Redirigiendo...';
+                    setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+                })
+                .catch((error) => {
+                    messageDiv.style.color = '#d32f2f';
+                    messageDiv.textContent = 'Error: ' + error.message;
+                });
+        });
+    </script>
+</body>
+
+</html>
