@@ -1,14 +1,11 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+
+import { Client } from 'pg';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = 'storyup_secret_key';
 
-async function openDb() {
-    return open({
-        filename: './storyup.db',
-        driver: sqlite3.Database
-    });
+function getClient() {
+    return new Client({ connectionString: process.env.DATABASE_URL });
 }
 
 function getTokenFromHeader(req) {
@@ -31,8 +28,11 @@ export default async function handler(req, res) {
     }
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
-        const db = await openDb();
-        const user = await db.get('SELECT id, name, email FROM users WHERE id = ?', [decoded.id]);
+        const client = getClient();
+        await client.connect();
+        const { rows } = await client.query('SELECT id, name, email FROM users WHERE id = $1', [decoded.id]);
+        const user = rows[0];
+        await client.end();
         if (!user) {
             res.status(404).json({ error: 'Usuario no encontrado' });
             return;
