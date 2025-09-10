@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryUp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#">Explorar</a></li>
+            <li><a href="#">Mi perfil</a></li>
+            <li><a href="#">Acerca de</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="splash">
+            <h1>Bienvenido a StoryUp</h1>
+            <p>Comparte y descubre historias inspiradoras.</p>
+        </section>
+        <section class="story-form">
+            <h2>Comparte tu historia</h2>
+            <form id="formulario">
+                <input type="text" id="titulo" placeholder="Título de la historia" required>
+                <textarea id="contenido" placeholder="Escribe tu historia aquí..." required></textarea>
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+        <section class="stories">
+            <h2>Historias recientes</h2>
+            <div id="historias">
+                <!-- Las historias aparecerán aquí -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 StoryUp. Todos los derechos reservados.</p>
+    </footer>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+
+</html>

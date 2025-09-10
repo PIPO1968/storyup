@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -11,13 +12,6 @@
 
 <body>
     <nav>
-        <a href="index.html">Inicio</a> |
-        <a href="landing.html">Presentación</a> |
-        <a href="explore.html">Explorar</a> |
-        <a href="login.html">Login</a> |
-        <a href="signup.html">Registro</a> |
-        <a href="profile.html">Perfil</a> |
-        <a href="stats.html">Estadísticas</a> |
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="landing.html">Presentación</a></li>
@@ -64,26 +58,15 @@
                 .then(() => console.log('Service Worker registrado'))
                 .catch((error) => console.error('Error al registrar SW:', error));
         }
+        // Mostrar el enlace de Moderación solo si el usuario es moderador
+        const userRole = localStorage.getItem('role');
+        if (userRole === 'moderador') {
+            document.getElementById('moderation-link').style.display = 'block';
+        }
     </script>
-    // Mostrar el enlace de Moderación solo si el usuario es moderador
-    const userRole = localStorage.getItem('role');
-    if (userRole === 'moderador') {
-    document.getElementById('moderation-link').style.display = 'block';
-    }
 </body>
 
 </html>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>StoryUp - Inicio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-</head>
 
 <body>
     <div class="contenido">
