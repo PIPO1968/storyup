@@ -1,14 +1,11 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+
+import { Client } from 'pg';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = 'storyup_secret_key';
 
-async function openDb() {
-    return open({
-        filename: './storyup.db',
-        driver: sqlite3.Database
-    });
+function getClient() {
+    return new Client({ connectionString: process.env.DATABASE_URL });
 }
 
 function getTokenFromHeader(req) {
@@ -36,8 +33,10 @@ export default async function handler(req, res) {
             res.status(400).json({ error: 'Falta el id de la historia' });
             return;
         }
-        const db = await openDb();
-        await db.run('UPDATE stories SET likes = likes + 1 WHERE id = ?', [id]);
+        const client = getClient();
+        await client.connect();
+        await client.query('UPDATE stories SET likes = likes + 1 WHERE id = $1', [id]);
+        await client.end();
         res.status(200).json({ success: true });
     } catch (e) {
         res.status(401).json({ error: 'Token inválido' });
