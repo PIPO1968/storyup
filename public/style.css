@@ -19,7 +19,7 @@ nav {
 nav ul {
     display: flex;
     gap: 1em;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin: 0;
     padding: 0;
