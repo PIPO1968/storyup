@@ -69,19 +69,27 @@ document.addEventListener('DOMContentLoaded', function () {
             storiesDiv.innerHTML = '<p>No has publicado ninguna historia aún.</p>';
             return;
         }
-        storiesDiv.innerHTML = myStories.map((story, idx) => `
-            <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
-                <h3 style="color:#a5b4fc;">${story.title}</h3>
-                <p>${story.text}</p>
-                <div style="font-size:0.95em;color:#aaa;">Idioma: ${story.language} · Tipo: ${story.type}</div>
-                <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
-                <div style="margin-top:8px;">
-                    <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">
-                        👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
-                    </button>
+        storiesDiv.innerHTML = myStories.map((story, idx) => {
+            const langMap = {
+                es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
+            };
+            const typeMap = { real: 'Real', ficcion: 'Ficción', diario: 'Diario', confesion: 'Confesión' };
+            const idioma = langMap[story.language] || story.language;
+            const tipo = typeMap[story.type] || story.type;
+            return `
+                <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
+                    <h3 style="color:#a5b4fc;">${story.title}</h3>
+                    <p>${story.text}</p>
+                    <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
+                    <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
+                    <div style="margin-top:8px;">
+                        <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">
+                            👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
+                        </button>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
         // Añadir listeners a los botones de like
         document.querySelectorAll('.like-btn').forEach(btn => {
             btn.addEventListener('click', function () {
@@ -167,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
             friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
         } else {
             friendActions.innerHTML = '<button id="add-friend-btn" style="background:#43c6ac;color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;">Solicitar amistad</button>';
-            document.getElementById('add-friend-btn').onclick = function() {
+            document.getElementById('add-friend-btn').onclick = function () {
                 let reqs = getRequests(profileEmail);
                 if (!reqs.includes(user.email)) {
                     reqs.push(user.email);
@@ -190,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).join('');
             // Listeners aceptar/rechazar
             document.querySelectorAll('.accept-friend').forEach(btn => {
-                btn.onclick = function() {
+                btn.onclick = function () {
                     const email = this.getAttribute('data-email');
                     // Añadir a amigos mutuos
                     let myFriends = getFriends(user.email);
@@ -206,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
             });
             document.querySelectorAll('.reject-friend').forEach(btn => {
-                btn.onclick = function() {
+                btn.onclick = function () {
                     const email = this.getAttribute('data-email');
                     let reqs = getRequests(user.email).filter(e => e !== email);
                     setRequests(user.email, reqs);
