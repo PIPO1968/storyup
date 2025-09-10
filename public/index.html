@@ -20,20 +20,15 @@
         <a href="moderation.html">Moderación</a>
     </nav>
     <header>
-        <div style="display:flex;align-items:center;justify-content:center;margin:10px auto 8px auto;gap:18px;">
-            <span style="font-size:64px;line-height:1;">🌍👦🏽👧🏻👨🏿👩🏼✒️</span>
-            <h1 style="margin:0;font-size:2.6em;line-height:1.1;">StoryUp</h1>
-        </div>
-        <div style="text-align:center;margin-bottom:10px;">
+        <div style="font-size:64px;line-height:1;text-align:center;margin:0 auto 12px auto;">🌍👦🏽👧🏻👨🏿👩🏼✒️</div>
+        <div style="text-align:center;margin-bottom:18px;">
             <img src="img/storyup-logo.png" alt="Imagen decorativa StoryUp"
-                style="max-width:220px;width:100%;border-radius:14px;box-shadow:0 2px 12px #0002;margin-top:0;">
+                style="max-width:220px;width:100%;border-radius:14px;box-shadow:0 2px 12px #0002;">
         </div>
-        <p style="margin-top:0;margin-bottom:10px;text-align:center;">La red social juvenil donde cada historia importa
-        </p>
-        <a href="signup.html" class="btn" style="margin-bottom:12px;">Únete ahora</a>
-    </header>
+        <h1>StoryUp</h1>
+        <p>La red social juvenil donde cada historia importa</p>
+        <a href="signup.html" class="btn">Únete ahora</a>
 
-    <main style="margin-top:10px;">
         <section id="features">
             <h2>¿Qué puedes hacer en StoryUp?</h2>
             <ul>
@@ -58,27 +53,28 @@
                 <li>+15 idiomas representados</li>
             </ul>
         </section>
+    </header>
 
-        <footer>
-            <p style="margin-top:18px;">Creado por Pipo · StoryUp © 2025</p>
-            <a href="login.html">Acceso para moderadores</a>
-        </footer>
-        <script src="app.js"></script>
-        <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('sw.js');
-                });
-            }
-            // Mostrar el enlace de Moderación solo si el usuario es moderador
-            const userRole = localStorage.getItem('role');
-            if (userRole === 'moderador') {
-                document.getElementById('moderation-link')?.style.display = 'block';
-            }
-            window.addEventListener('load', () => {
-                document.body.classList.add('loaded');
+    <footer>
+        <p>Creado por Pipo · StoryUp © 2025</p>
+        <a href="login.html">Acceso para moderadores</a>
+    </footer>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js');
             });
-        </script>
+        }
+        // Mostrar el enlace de Moderación solo si el usuario es moderador
+        const userRole = localStorage.getItem('role');
+        if (userRole === 'moderador') {
+            document.getElementById('moderation-link')?.style.display = 'block';
+        }
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </body>
 
 </html>
