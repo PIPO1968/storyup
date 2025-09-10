@@ -129,7 +129,35 @@
             const message = document.getElementById('signupMessage');
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                // Aquí iría la lógica real de registro (API, Firebase, etc.)
+                // Validación básica
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const language = document.getElementById('language').value;
+                // Validación de email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (name.length < 2) {
+                    message.textContent = 'El nombre debe tener al menos 2 caracteres.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                if (!emailRegex.test(email)) {
+                    message.textContent = 'Introduce un correo electrónico válido.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                if (password.length < 6) {
+                    message.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                if (!language) {
+                    message.textContent = 'Selecciona un idioma.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                // Simulación de registro exitoso
+                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
                 form.reset();
                 message.innerHTML = '¡Registro exitoso! Revisa tu correo electrónico para confirmar tu cuenta.<br><a href="index.html" style="display:inline-block;margin-top:10px;color:#388e3c;font-weight:bold;">Ir a la página principal</a>';
                 message.style.color = '#388e3c';

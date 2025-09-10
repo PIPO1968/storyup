@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StoryUp</title>
+    <title>StoryUp - Tu historia cuenta</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -12,51 +12,51 @@
 
 <body>
     <nav>
-        <ul class="nav-menu">
-            <li><a href="index.html" class="active">Inicio</a></li>
-            <li><a href="explore.html" class="active">Explorar</a></li>
-            <li><a href="profile.html" class="active">Mi perfil</a></li>
-            <li><a href="stats.html" class="active">Estadísticas</a></li>
-            <li><a href="landing.html" class="active">Presentación</a></li>
-            <li><a href="login.html" class="active">Login</a></li>
-            <li><a href="signup.html" class="active">Registro</a></li>
-            <li id="moderation-link" style="display:none;"><a href="moderation.html" class="active">Moderación</a></li>
-        </ul>
+        <a href="index.html">Inicio</a> |
+        <a href="landing.html">Presentación</a> |
+        <a href="explore.html">Explorar</a> |
+        <a href="login.html">Login</a> |
+        <a href="signup.html">Registro</a> |
+        <a href="profile.html">Perfil</a> |
+        <a href="stats.html">Estadísticas</a> |
+        <a href="moderation.html">Moderación</a>
     </nav>
-    <main>
-        <section class="splash">
-            <h1>Bienvenido a StoryUp</h1>
-            <p>Comparte y descubre historias inspiradoras.</p>
-        </section>
-        <section class="story-form">
-            <h2>Comparte tu historia</h2>
-            <form id="story-form">
-                <input type="text" id="title" placeholder="Título de tu historia" required>
-                <textarea id="text" placeholder="Escribe tu historia aquí..." required></textarea>
-                <select id="language">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                </select>
-                <select id="type">
-                    <option value="real">Real</option>
-                    <option value="ficcion">Ficción</option>
-                    <option value="diario">Diario</option>
-                    <option value="confesion">Confesión</option>
-                </select>
-                <button type="submit">Publicar historia</button>
-            </form>
-        </section>
-        <section class="stories">
-            <h2>Historias recientes</h2>
-            <div id="feed"></div>
-            <h2>Historias destacadas</h2>
-            <div id="featured-stories"></div>
-        </section>
-    </main>
+    <header>
+        <img src="img/storyup-icon-192.png" alt="StoryUp"
+            style="max-width:100px;display:block;margin:0 auto 12px auto;">
+        <h1>StoryUp</h1>
+        <p>La red social juvenil donde cada historia importa</p>
+        <a href="signup.html" class="btn">Únete ahora</a>
+    </header>
+
+    <section id="features">
+        <h2>¿Qué puedes hacer en StoryUp?</h2>
+        <ul>
+            <li>✍️ Publica historias reales, ficticias o confesiones</li>
+            <li>🌍 Explora relatos de jóvenes de todo el mundo</li>
+            <li>🗣️ Elige tu idioma y traduce historias automáticamente</li>
+            <li>📱 Disponible como app móvil y web</li>
+            <li>🛡️ Moderación educativa para entornos escolares</li>
+        </ul>
+    </section>
+
+    <section id="demo">
+        <h2>Explora sin registrarte</h2>
+        <p>Lee historias destacadas en nuestra <a href="explore.html">vista pública</a></p>
+    </section>
+
+    <section id="stats">
+        <h2>Impacto global</h2>
+        <ul>
+            <li>+1200 historias publicadas</li>
+            <li>+300 usuarios activos</li>
+            <li>+15 idiomas representados</li>
+        </ul>
+    </section>
+
     <footer>
-        <p>&copy; 2025 StoryUp. Todos los derechos reservados.</p>
+        <p>Creado por Pipo · StoryUp © 2025</p>
+        <a href="login.html">Acceso para moderadores</a>
     </footer>
     <script src="app.js"></script>
     <script>
@@ -68,8 +68,11 @@
         // Mostrar el enlace de Moderación solo si el usuario es moderador
         const userRole = localStorage.getItem('role');
         if (userRole === 'moderador') {
-            document.getElementById('moderation-link').style.display = 'block';
+            document.getElementById('moderation-link')?.style.display = 'block';
         }
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
     </script>
 </body>
 

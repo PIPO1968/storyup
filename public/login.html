@@ -107,7 +107,32 @@
         <a href="signup.html" class="login-link">¿No tienes cuenta? Regístrate aquí</a>
     </div>
     <script>
-        // Eliminado: configuración y uso de Firebase. Aquí puedes agregar tu lógica de login personalizada si lo deseas.
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('loginForm');
+            const message = document.getElementById('loginMessage');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                // Validación básica
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    message.textContent = 'Introduce un correo electrónico válido.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                if (password.length < 6) {
+                    message.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                // Simulación de login exitoso
+                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
+                message.style.color = '#388e3c';
+                message.textContent = '¡Bienvenido! Redirigiendo...';
+                setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+            });
+        });
     </script>
 </body>
 
