@@ -20,8 +20,7 @@
             <li><a href="stats.html">Estadísticas</a></li>
             <li><a href="moderation.html">Moderación</a></li>
         </ul>
-        <select id="lang-switch"
-            style="position:absolute;top:18px;right:32px;padding:4px 10px;border-radius:8px;">
+        <select id="lang-switch" class="lang-switch">
             <option value="es">Español</option>
             <option value="en">English</option>
             <option value="zh">中文 (Chino)</option>
@@ -115,7 +114,7 @@
                     if (frame) {
                         var innerDoc = frame.contentDocument || frame.contentWindow.document;
                         var langLinks = innerDoc.querySelectorAll('a.goog-te-menu2-item');
-                        langLinks.forEach(function(link) {
+                        langLinks.forEach(function (link) {
                             if (link.getAttribute('value') === lang) link.click();
                         });
                     }
