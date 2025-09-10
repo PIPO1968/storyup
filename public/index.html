@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<meta charset="UTF-8">
-<title>StoryUp - Inicio</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="img/icon-192.png">
-<meta name="theme-color" content="#3B82F6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryUp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <nav>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="landing.html">Presentación</a></li>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active">Inicio</a></li>
             <li><a href="explore.html">Explorar</a></li>
+            <li><a href="profile.html">Mi perfil</a></li>
+            <li><a href="stats.html">Estadísticas</a></li>
+            <li><a href="landing.html">Presentación</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="signup.html">Registro</a></li>
-            <li><a href="profile.html">Perfil</a></li>
-            <li><a href="stats.html">Estadísticas</a></li>
             <li id="moderation-link" style="display:none;"><a href="moderation.html">Moderación</a></li>
         </ul>
     </nav>
-    <div id="splash-screen">
-        <!DOCTYPE html>
-    </div>
-    <!DOCTYPE html>
-        <h1>Bienvenido a StoryUp</h1>
-        <form id="story-form">
-            <input type="text" id="title" placeholder="Título de tu historia" required>
-            <textarea id="text" placeholder="Escribe tu historia aquí..." required></textarea>
-            <select id="language">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-            </select>
-            <select id="type">
-                <option value="real">Real</option>
-                <option value="ficcion">Ficción</option>
-                <option value="diario">Diario</option>
-                <option value="confesion">Confesión</option>
-            </select>
-            <button type="submit">Publicar historia</button>
-        </form>
-        <h2>Historias recientes</h2>
-        <div id="feed"></div>
-        <h2>Historias destacadas</h2>
-        <div id="featured-stories"></div>
-    </div>
+    <main>
+        <section class="splash">
+            <h1>Bienvenido a StoryUp</h1>
+            <p>Comparte y descubre historias inspiradoras.</p>
+        </section>
+        <section class="story-form">
+            <h2>Comparte tu historia</h2>
+            <form id="story-form">
+                <input type="text" id="title" placeholder="Título de tu historia" required>
+                <textarea id="text" placeholder="Escribe tu historia aquí..." required></textarea>
+                <select id="language">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+                <select id="type">
+                    <option value="real">Real</option>
+                    <option value="ficcion">Ficción</option>
+                    <option value="diario">Diario</option>
+                    <option value="confesion">Confesión</option>
+                </select>
+                <button type="submit">Publicar historia</button>
+            </form>
+        </section>
+        <section class="stories">
+            <h2>Historias recientes</h2>
+            <div id="feed"></div>
+            <h2>Historias destacadas</h2>
+            <div id="featured-stories"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 StoryUp. Todos los derechos reservados.</p>
+    </footer>
     <script src="app.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('Service Worker registrado'))
-                .catch((error) => console.error('Error al registrar SW:', error));
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js');
+            });
         }
         // Mostrar el enlace de Moderación solo si el usuario es moderador
         const userRole = localStorage.getItem('role');
@@ -62,75 +71,6 @@
             document.getElementById('moderation-link').style.display = 'block';
         }
     </script>
-</body>
-
-</html>
-
-<body>
-    <div class="contenido">
-        <h1>Bienvenido a StoryUp</h1>
-        <form id="story-form">
-            <input type="text" id="title" placeholder="Título de tu historia" required>
-            <textarea id="text" placeholder="Escribe tu historia aquí..." required></textarea>
-            <select id="language">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-            </select>
-            <select id="type">
-                <option value="real">Real</option>
-                <option value="ficcion">Ficción</option>
-                <option value="diario">Diario</option>
-                <option value="confesion">Confesión</option>
-            </select>
-            <button type="submit">Publicar historia</button>
-        </form>
-        <h2>Historias recientes</h2>
-        <div id="feed"></div>
-    </div>
-    <script src="app.js"></script>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>StoryUp - Inicio</title>
-    <!DOCTYPE html>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-</head>
-
-<body>
-    <div class="contenido">
-        <h1>Bienvenido a StoryUp</h1>
-        <form id="story-form">
-            <input type="text" id="title" placeholder="Título de tu historia" required>
-            <textarea id="text" placeholder="Escribe tu historia aquí..." required></textarea>
-            <select id="language">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-            </select>
-            <select id="type">
-                <option value="real">Real</option>
-                <option value="ficcion">Ficción</option>
-                <!DOCTYPE html>
-                <option value="diario">Diario</option>
-                <option value="confesion">Confesión</option>
-            </select>
-            <button type="submit">Publicar historia</button>
-        </form>
-        <h2>Historias recientes</h2>
-        <div id="feed"></div>
-    </div>
-    <script src="app.js"></script>
 </body>
 
 </html>
