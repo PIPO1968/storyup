@@ -1,3 +1,38 @@
+/* Google Translate widget pequeño y a la derecha en el navbar */
+.google-translate-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 120px;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: 2.5em;
+    height: 32px;
+}
+.goog-te-gadget {
+    font-size: 0.95em !important;
+    color: #6366f1 !important;
+    padding: 0 !important;
+}
+.goog-te-combo {
+    border-radius: 8px !important;
+    border: 2px solid #6366f1 !important;
+    background: #fff !important;
+    color: #6366f1 !important;
+    font-weight: 700 !important;
+    font-size: 1em !important;
+    padding: 0 0.7em !important;
+    height: 32px !important;
+    min-width: 100px !important;
+    max-width: 160px !important;
+    margin: 0 !important;
+    box-shadow: 0 1px 4px 0 rgba(44, 62, 80, 0.13) !important;
+    cursor: pointer !important;
+}
+.goog-te-banner-frame.skiptranslate, .goog-te-balloon-frame.skiptranslate {
+    display: none !important;
+}
+body { top: 0px !important; }
 @import url("extra.css");
 
 body {
@@ -381,4 +416,3 @@ button,
         nav ul {
             flex-wrap: wrap;
             gap: 0.5em;
-        }
