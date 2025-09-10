@@ -79,8 +79,8 @@ textarea,
 select {
     width: 100%;
     box-sizing: border-box;
-    background: #232526;
-    color: #f3f4f6;
+    background: #fff;
+    color: #111 !important;
     border: 1.5px solid #393e46;
     border-radius: 6px;
     padding: 0.7em;
@@ -88,6 +88,8 @@ select {
     font-size: 1em;
     font-family: inherit;
     transition: border 0.2s, background 0.2s;
+    caret-color: #43c6ac;
+    font-weight: 500;
 }
 
 input:focus,
@@ -95,7 +97,8 @@ textarea:focus,
 select:focus {
     border-color: #6366f1;
     outline: none;
-    background: #23263a;
+    background: #f7fafc;
+    color: #111 !important;
 }
 
 textarea {
