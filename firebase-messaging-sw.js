@@ -1,15 +1,2 @@
-importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js');
 
-
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler(function (payload) {
-    const notificationTitle = 'Nueva historia en StoryUp';
-    const notificationOptions = {
-        body: payload.data.body,
-        icon: 'img/storyup-icon-192.png'
-    };
-
-    return self.registration.showNotification(notificationTitle, notificationOptions);
-});
+// Eliminado: Firebase Messaging. Aquí puedes agregar lógica de notificaciones personalizada si lo deseas.

@@ -123,6 +123,19 @@
         </form>
         <div class="signup-message" id="signupMessage"></div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('signupForm');
+            const message = document.getElementById('signupMessage');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Aquí iría la lógica real de registro (API, Firebase, etc.)
+                form.reset();
+                message.innerHTML = '¡Registro exitoso! Revisa tu correo electrónico para confirmar tu cuenta.<br><a href="index.html" style="display:inline-block;margin-top:10px;color:#388e3c;font-weight:bold;">Ir a la página principal</a>';
+                message.style.color = '#388e3c';
+            });
+        });
+    </script>
 </body>
 
 </html>

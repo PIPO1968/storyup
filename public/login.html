@@ -9,15 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .login-container {
-            background: rgba(255, 255, 255, 0.97);
-            max-width: 400px;
-            margin: 60px auto 0 auto;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            padding: 32px 28px 24px 28px;
-        }
-
-        .login-container h2 {
+            // Eliminado: configuración y scripts de Firebase
             text-align: center;
             color: #43c6ac;
             margin-bottom: 18px;
@@ -115,31 +107,7 @@
         <a href="signup.html" class="login-link">¿No tienes cuenta? Regístrate aquí</a>
     </div>
     <script>
-        // Configuración de Firebase (igual que en signup)
-        const firebaseConfig = {
-            apiKey: "AIzaSyD2Qpd2Ao7VQNlJXBdopakFa_anxqEd9w0",
-            authDomain: "storyup-red-social.firebaseapp.com",
-            projectId: "storyup-red-social",
-            storageBucket: "storyup-red-social.appspot.com",
-            messagingSenderId: "345378018677",
-            appId: "1:345378018677:web:317a927a329822bb0daf3c"
-        };
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const messageDiv = document.getElementById('loginMessage');
-            auth.signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    messageDiv.style.color = '#388e3c';
-                    messageDiv.textContent = '¡Bienvenido! Redirigiendo...';
-                    setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-                })
-                .catch((error) => {
-                    messageDiv.style.color = '#d32f2f';
-                    messageDiv.textContent = 'Error: ' + error.message;
-                });
-        });
+        // Eliminado: configuración y uso de Firebase. Aquí puedes agregar tu lógica de login personalizada si lo deseas.
     </script>
 </body>
 
