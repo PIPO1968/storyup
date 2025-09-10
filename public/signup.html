@@ -141,10 +141,9 @@
                 e.preventDefault();
                 // Validación básica
                 const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
+                const email = document.getElementById('email').value.trim().toLowerCase();
                 const password = document.getElementById('password').value;
                 const language = document.getElementById('language').value;
-                // Validación de email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (name.length < 2) {
                     message.textContent = 'El nombre debe tener al menos 2 caracteres.';
@@ -166,8 +165,16 @@
                     message.style.color = '#d32f2f';
                     return;
                 }
-                // Simulación de registro exitoso
-                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
+                // Comprobar si el email ya está registrado
+                let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+                if (users.some(u => u.email === email)) {
+                    message.textContent = 'Este correo ya está registrado. Intenta iniciar sesión o usa otro.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                // Guardar usuario en localStorage
+                users.push({ name, email, password, language });
+                localStorage.setItem('storyup_users', JSON.stringify(users));
                 form.reset();
                 message.innerHTML = '¡Registro exitoso! Revisa tu correo electrónico para confirmar tu cuenta.<br><a href="index.html" style="display:inline-block;margin-top:10px;color:#388e3c;font-weight:bold;">Ir a la página principal</a>';
                 message.style.color = '#388e3c';
