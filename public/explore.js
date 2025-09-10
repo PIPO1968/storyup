@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         feed.innerHTML = stories.map(story => {
             const author = getUserByEmail(story.author);
-            const authorName = author ? author.name : 'Anónimo';
+            const authorName = story.anonymous ? 'Anónimo' : (author ? author.name : 'Anónimo');
             return `
                 <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
                     <h3 style="color:#a5b4fc;">${story.title}</h3>

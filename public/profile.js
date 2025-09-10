@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3 style="color:#a5b4fc;">${story.title}</h3>
                 <p>${story.text}</p>
                 <div style="font-size:0.95em;color:#aaa;">Idioma: ${story.language} · Tipo: ${story.type}</div>
+                <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
                 <div style="margin-top:8px;">
                     <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">
                         👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
@@ -108,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const text = document.getElementById('story-text').value.trim();
             const language = document.getElementById('story-language').value;
             const type = document.getElementById('story-type').value;
+            const anonymous = document.getElementById('story-anonymous').checked;
             if (!title || !text) return;
             // Crear historia
             const stories = getAllStories();
@@ -119,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 text,
                 language,
                 type,
-                likes: 0
+                likes: 0,
+                anonymous
             });
             saveAllStories(stories);
             storyForm.reset();
