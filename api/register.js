@@ -1,6 +1,11 @@
+
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+
+const JWT_SECRET = 'storyup_secret_key';
 
 async function openDb() {
     return open({
@@ -22,8 +27,12 @@ export default async function handler(req, res) {
     const db = await openDb();
     try {
         const hash = await bcrypt.hash(password, 10);
-        await db.run('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hash]);
-        res.status(200).json({ success: true });
+        const result = await db.run('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hash]);
+        // Obtener el id del usuario insertado
+        const user = await db.get('SELECT id, name, email FROM users WHERE email = ?', [email]);
+        // Generar token JWT
+        const token = jwt.sign({ id: user.id, name: user.name, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+        res.status(200).json({ token });
     } catch (e) {
         res.status(400).json({ error: 'El correo ya está registrado' });
     }
