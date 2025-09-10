@@ -110,14 +110,26 @@
             if (langSwitch) {
                 langSwitch.addEventListener('change', function () {
                     var lang = this.value;
-                    var frame = document.querySelector('iframe.goog-te-menu-frame');
-                    if (frame) {
-                        var innerDoc = frame.contentDocument || frame.contentWindow.document;
-                        var langLinks = innerDoc.querySelectorAll('a.goog-te-menu2-item');
-                        langLinks.forEach(function (link) {
-                            if (link.getAttribute('value') === lang) link.click();
-                        });
+                    function trySetLanguage(attempts) {
+                        var frame = document.querySelector('iframe.goog-te-menu-frame');
+                        if (frame) {
+                            var innerDoc = frame.contentDocument || frame.contentWindow.document;
+                            var langLinks = innerDoc.querySelectorAll('a.goog-te-menu2-item');
+                            var found = false;
+                            langLinks.forEach(function (link) {
+                                if (link.getAttribute('value') === lang) {
+                                    link.click();
+                                    found = true;
+                                }
+                            });
+                            if (!found && attempts < 10) {
+                                setTimeout(function () { trySetLanguage(attempts + 1); }, 300);
+                            }
+                        } else if (attempts < 10) {
+                            setTimeout(function () { trySetLanguage(attempts + 1); }, 300);
+                        }
                     }
+                    trySetLanguage(0);
                 });
             }
         });
