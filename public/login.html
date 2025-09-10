@@ -79,10 +79,8 @@
     <nav>
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="landing.html">Presentación</a></li>
             <li><a href="explore.html">Explorar</a></li>
             <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Registro</a></li>
             <li><a href="profile.html">Perfil</a></li>
             <li><a href="stats.html">Estadísticas</a></li>
             <li id="moderation-link" style="display:none;"><a href="moderation.html">Moderación</a></li>
@@ -112,7 +110,7 @@
             const message = document.getElementById('loginMessage');
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                const email = document.getElementById('email').value.trim();
+                const email = document.getElementById('email').value.trim().toLowerCase();
                 const password = document.getElementById('password').value;
                 // Validación básica
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -126,8 +124,16 @@
                     message.style.color = '#d32f2f';
                     return;
                 }
-                // Simulación de login exitoso
-                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
+                // Comprobar usuario en localStorage
+                let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+                const user = users.find(u => u.email === email && u.password === password);
+                if (!user) {
+                    message.textContent = 'Email o contraseña incorrectos.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                // Guardar sesión simulada
+                localStorage.setItem('storyup_logged', JSON.stringify(user));
                 message.style.color = '#388e3c';
                 message.textContent = '¡Bienvenido! Redirigiendo...';
                 setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
