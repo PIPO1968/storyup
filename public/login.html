@@ -110,7 +110,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('loginForm');
             const message = document.getElementById('loginMessage');
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value;
@@ -126,11 +126,26 @@
                     message.style.color = '#d32f2f';
                     return;
                 }
-                // Simulación de login exitoso
-                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
-                message.style.color = '#388e3c';
-                message.textContent = '¡Bienvenido! Redirigiendo...';
-                setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
+                try {
+                    const response = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        localStorage.setItem('token', data.token);
+                        message.style.color = '#388e3c';
+                        message.textContent = '¡Bienvenido! Redirigiendo...';
+                        setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
+                    } else {
+                        message.textContent = data.error || 'Error al iniciar sesión';
+                        message.style.color = '#d32f2f';
+                    }
+                } catch (error) {
+                    message.textContent = 'Error de conexión con el servidor';
+                    message.style.color = '#d32f2f';
+                }
             });
         });
     </script>
