@@ -1,0 +1,35 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "explore": "Explorar",
+        "login": "Login",
+        "profile": "Perfil",
+        "stats": "Estadísticas",
+        "moderation": "Moderación"
+    },
+    "header": {
+        "title": "StoryUp",
+        "subtitle": "La red social juvenil donde cada historia importa",
+        "join": "Únete ahora"
+    },
+    "features": {
+        "title": "¿Qué puedes hacer en StoryUp?",
+        "real": "✍️ Publica historias reales, ficticias o confesiones",
+        "explore": "🌍 Explora relatos de jóvenes de todo el mundo",
+        "choose": "🗣️ Elige tu idioma y traduce historias automáticamente",
+        "mobile": "📱 Disponible como app móvil y web",
+        "moderation": "🛡️ Moderación educativa para entornos escolares"
+    },
+    "public": {
+        "explore": "Explora sin registrarte",
+        "read": "Lee historias destacadas en nuestra <a href=\"explore.html\">vista pública</a>",
+        "impact": "Impacto global",
+        "stories": "+1200 historias publicadas",
+        "users": "+300 usuarios activos",
+        "langs": "+15 idiomas representados"
+    },
+    "footer": {
+        "created": "Creado por Pipo · StoryUp © 2025",
+        "modaccess": "Acceso para moderadores"
+    }
+}

@@ -20,32 +20,36 @@
             <li><a href="stats.html">Estadísticas</a></li>
             <li><a href="moderation.html">Moderación</a></li>
         </ul>
-        <select id="lang-switch" class="lang-switch">
+        <select id="lang-i18n" class="lang-switch" style="min-width:90px;max-width:140px;">
             <option value="es">Español</option>
             <option value="en">English</option>
-            <option value="zh">中文 (Chino)</option>
-            <option value="hi">हिन्दी (Hindi)</option>
-            <option value="ar">العربية (Árabe)</option>
-            <option value="pt">Português</option>
-            <option value="ru">Русский (Ruso)</option>
-            <option value="ja">日本語 (Japonés)</option>
-            <option value="de">Deutsch (Alemán)</option>
-            <option value="fr">Français</option>
-            <option value="it">Italiano</option>
-            <option value="tr">Türkçe (Turco)</option>
-            <option value="ko">한국어 (Coreano)</option>
-            <option value="vi">Tiếng Việt (Vietnamita)</option>
-            <option value="pl">Polski (Polaco)</option>
-            <option value="nl">Nederlands (Neerlandés)</option>
-            <option value="fa">فارسی (Persa)</option>
-            <option value="th">ไทย (Tailandés)</option>
-            <option value="uk">Українська (Ucraniano)</option>
-            <option value="ro">Română (Rumano)</option>
-            <option value="el">Ελληνικά (Griego)</option>
-            <option value="hu">Magyar (Húngaro)</option>
-            <option value="sv">Svenska (Sueco)</option>
-            <option value="cs">Čeština (Checo)</option>
-            <option value="he">עברית (Hebreo)</option>
+            <option value="de">Deutsch</option>
+        </select>
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="zh">中文 (Chino)</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+        <option value="ar">العربية (Árabe)</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский (Ruso)</option>
+        <option value="ja">日本語 (Japonés)</option>
+        <option value="de">Deutsch (Alemán)</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="tr">Türkçe (Turco)</option>
+        <option value="ko">한국어 (Coreano)</option>
+        <option value="vi">Tiếng Việt (Vietnamita)</option>
+        <option value="pl">Polski (Polaco)</option>
+        <option value="nl">Nederlands (Neerlandés)</option>
+        <option value="fa">فارسی (Persa)</option>
+        <option value="th">ไทย (Tailandés)</option>
+        <option value="uk">Українська (Ucraniano)</option>
+        <option value="ro">Română (Rumano)</option>
+        <option value="el">Ελληνικά (Griego)</option>
+        <option value="hu">Magyar (Húngaro)</option>
+        <option value="sv">Svenska (Sueco)</option>
+        <option value="cs">Čeština (Checo)</option>
+        <option value="he">עברית (Hebreo)</option>
         </select>
     </nav>
     <header>
@@ -57,6 +61,9 @@
         <h1>StoryUp</h1>
         <p>La red social juvenil donde cada historia importa</p>
         <a href="signup.html" class="btn">Únete ahora</a>
+        <h1 id="header-title">StoryUp</h1>
+        <p id="header-subtitle">La red social juvenil donde cada historia importa</p>
+        <a href="signup.html" class="btn" id="header-join">Únete ahora</a>
 
         <div style="display:flex;align-items:center;gap:32px;justify-content:center;margin:32px 0 0 0;flex-wrap:wrap;">
             <div
@@ -69,6 +76,14 @@
                         <li>🗣️ Elige tu idioma y traduce historias automáticamente</li>
                         <li>📱 Disponible como app móvil y web</li>
                         <li>🛡️ Moderación educativa para entornos escolares</li>
+                    </ul>
+                    <h2 id="features-title" style="text-align:left;">¿Qué puedes hacer en StoryUp?</h2>
+                    <ul style="text-align:left;">
+                        <li id="features-real">✍️ Publica historias reales, ficticias o confesiones</li>
+                        <li id="features-explore">🌍 Explora relatos de jóvenes de todo el mundo</li>
+                        <li id="features-choose">🗣️ Elige tu idioma y traduce historias automáticamente</li>
+                        <li id="features-mobile">📱 Disponible como app móvil y web</li>
+                        <li id="features-moderation">🛡️ Moderación educativa para entornos escolares</li>
                     </ul>
                 </section>
             </div>
@@ -87,14 +102,74 @@
                 <li>+300 usuarios activos</li>
                 <li>+15 idiomas representados</li>
             </ul>
+            <h2 id="public-explore">Explora sin registrarte</h2>
+            <p id="public-read">Lee historias destacadas en nuestra <a href="explore.html">vista pública</a></p>
+            <h2 id="public-impact">Impacto global</h2>
+            <ul>
+                <li id="public-stories">+1200 historias publicadas</li>
+                <li id="public-users">+300 usuarios activos</li>
+                <li id="public-langs">+15 idiomas representados</li>
+            </ul>
         </section>
     </header>
 
     <footer>
         <p>Creado por Pipo · StoryUp © 2025</p>
         <a href="login.html">Acceso para moderadores</a>
+        <p id="footer-created">Creado por Pipo · StoryUp © 2025</p>
+        <a href="login.html" id="footer-modaccess">Acceso para moderadores</a>
     </footer>
     <script src="app.js"></script>
+    <script>
+        // --- I18N SIMPLE ---
+        const i18nFiles = {
+            es: 'i18n_es.json',
+            en: 'i18n_en.json',
+            de: 'i18n_de.json'
+        };
+        function setI18n(lang, data) {
+            // Navbar
+            document.getElementById('nav-home').textContent = data.nav.home;
+            document.getElementById('nav-explore').textContent = data.nav.explore;
+            document.getElementById('nav-login').textContent = data.nav.login;
+            document.getElementById('nav-profile').textContent = data.nav.profile;
+            document.getElementById('nav-stats').textContent = data.nav.stats;
+            document.getElementById('nav-moderation').textContent = data.nav.moderation;
+            // Header
+            document.getElementById('header-title').textContent = data.header.title;
+            document.getElementById('header-subtitle').textContent = data.header.subtitle;
+            document.getElementById('header-join').textContent = data.header.join;
+            // Features
+            document.getElementById('features-title').textContent = data.features.title;
+            document.getElementById('features-real').textContent = data.features.real;
+            document.getElementById('features-explore').textContent = data.features.explore;
+            document.getElementById('features-choose').textContent = data.features.choose;
+            document.getElementById('features-mobile').textContent = data.features.mobile;
+            document.getElementById('features-moderation').textContent = data.features.moderation;
+            // Public
+            document.getElementById('public-explore').textContent = data.public.explore;
+            document.getElementById('public-read').innerHTML = data.public.read;
+            document.getElementById('public-impact').textContent = data.public.impact;
+            document.getElementById('public-stories').textContent = data.public.stories;
+            document.getElementById('public-users').textContent = data.public.users;
+            document.getElementById('public-langs').textContent = data.public.langs;
+            // Footer
+            document.getElementById('footer-created').textContent = data.footer.created;
+            document.getElementById('footer-modaccess').textContent = data.footer.modaccess;
+        }
+        function loadI18n(lang) {
+            fetch(i18nFiles[lang] || i18nFiles['es'])
+                .then(r => r.json())
+                .then(data => setI18n(lang, data));
+        }
+        const langSel = document.getElementById('lang-i18n');
+        langSel.value = localStorage.getItem('storyup_lang') || 'es';
+        loadI18n(langSel.value);
+        langSel.addEventListener('change', function () {
+            localStorage.setItem('storyup_lang', this.value);
+            loadI18n(this.value);
+        });
+    </script>
     <script>
         // Google Translate Widget
         function googleTranslateElementInit() {
