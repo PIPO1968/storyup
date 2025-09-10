@@ -20,9 +20,38 @@
             <li><a href="stats.html">Estadísticas</a></li>
             <li><a href="moderation.html">Moderación</a></li>
         </ul>
+        <select id="lang-switch"
+            style="position:absolute;top:18px;right:32px;padding:4px 10px;border-radius:8px;">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chino)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="ar">العربية (Árabe)</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский (Ruso)</option>
+            <option value="ja">日本語 (Japonés)</option>
+            <option value="de">Deutsch (Alemán)</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="tr">Türkçe (Turco)</option>
+            <option value="ko">한국어 (Coreano)</option>
+            <option value="vi">Tiếng Việt (Vietnamita)</option>
+            <option value="pl">Polski (Polaco)</option>
+            <option value="nl">Nederlands (Neerlandés)</option>
+            <option value="fa">فارسی (Persa)</option>
+            <option value="th">ไทย (Tailandés)</option>
+            <option value="uk">Українська (Ucraniano)</option>
+            <option value="ro">Română (Rumano)</option>
+            <option value="el">Ελληνικά (Griego)</option>
+            <option value="hu">Magyar (Húngaro)</option>
+            <option value="sv">Svenska (Sueco)</option>
+            <option value="cs">Čeština (Checo)</option>
+            <option value="he">עברית (Hebreo)</option>
+        </select>
     </nav>
     <header>
-        <div style="font-size:64px;line-height:1;text-align:center;margin:0 auto 12px auto;">🌍👦🏽👧🏻👨🏿👩🏼✒️</div>
+        <div style="font-size:64px;line-height:1;text-align:center;margin:0 auto 12px auto;">🌍👦🏽👧🏻👨🏿👩🏼✒️
+        </div>
         <div style="text-align:center;margin-bottom:18px;">
             <!-- Imagen central movida más abajo -->
         </div>
@@ -67,6 +96,35 @@
         <a href="login.html">Acceso para moderadores</a>
     </footer>
     <script src="app.js"></script>
+    <script>
+        // Google Translate Widget
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'es,en,zh,hi,ar,pt,ru,ja,de,fr,it,tr,ko,vi,pl,nl,fa,th,uk,ro,el,hu,sv,cs,he',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+        // Cambiar idioma al seleccionar en el desplegable
+        document.addEventListener('DOMContentLoaded', function () {
+            var langSwitch = document.getElementById('lang-switch');
+            if (langSwitch) {
+                langSwitch.addEventListener('change', function () {
+                    var lang = this.value;
+                    var frame = document.querySelector('iframe.goog-te-menu-frame');
+                    if (frame) {
+                        var innerDoc = frame.contentDocument || frame.contentWindow.document;
+                        var langLinks = innerDoc.querySelectorAll('a.goog-te-menu2-item');
+                        langLinks.forEach(function(link) {
+                            if (link.getAttribute('value') === lang) link.click();
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+    <div id="google_translate_element" style="display:none;"></div>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
