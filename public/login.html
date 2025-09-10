@@ -79,7 +79,7 @@
     <nav>
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
             <li><a href="index.html">Inicio</a></li>
-
+            <li><a href="landing.html">Presentación</a></li>
             <li><a href="explore.html">Explorar</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="signup.html">Registro</a></li>
@@ -103,10 +103,37 @@
             <input type="password" id="password" name="password" required>
             <button type="submit">Entrar</button>
         </form>
-        <div class="login-message" id="login-message"></div>
+        <div class="login-message" id="loginMessage"></div>
         <a href="signup.html" class="login-link">¿No tienes cuenta? Regístrate aquí</a>
     </div>
-    <script src="login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('loginForm');
+            const message = document.getElementById('loginMessage');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                // Validación básica
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    message.textContent = 'Introduce un correo electrónico válido.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                if (password.length < 6) {
+                    message.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                    message.style.color = '#d32f2f';
+                    return;
+                }
+                // Simulación de login exitoso
+                // Aquí puedes conectar con tu backend usando fetch/AJAX si lo deseas
+                message.style.color = '#388e3c';
+                message.textContent = '¡Bienvenido! Redirigiendo...';
+                setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
+            });
+        });
+    </script>
 </body>
 
 </html>

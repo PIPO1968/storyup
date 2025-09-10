@@ -1,129 +1,136 @@
+// Inicializar Firebase Messaging y solicitar token
+const messaging = firebase.messaging();
 
-// Utilidades para JWT
-function getToken() {
-    return localStorage.getItem('token');
-}
-
-function setToken(token) {
-    localStorage.setItem('token', token);
-}
-
-function removeToken() {
-    localStorage.removeItem('token');
-}
-
+messaging.requestPermission()
+    .then(() => messaging.getToken())
+    .then((token) => {
+        console.log('Token de notificación:', token);
+        // Aquí puedes guardar el token en tu base de datos si quieres enviarle notificaciones personalizadas
+    })
+    .catch((err) => {
+        console.error('No se pudo obtener permiso para notificaciones:', err);
+    });
+// Solicitar permiso de notificaciones
+Notification.requestPermission().then((permission) => {
+    if (permission === 'granted') {
+        console.log('Permiso de notificaciones concedido');
+    } else {
+        console.log('Permiso denegado');
+    }
+});
 // Ocultar splash screen al cargar la página
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    loadFeaturedStories();
-    loadStories('all');
 });
-
-// Cargar historias destacadas
-async function loadFeaturedStories() {
-    const container = document.getElementById('featured-stories');
-    if (!container) return;
-    container.innerHTML = '';
-    const res = await fetch('/api/stories');
-    const stories = await res.json();
-    // Ordenar por likes descendente y tomar las 3 más populares
-    const top = (stories || []).sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 3);
-    top.forEach(story => {
-        const div = document.createElement('div');
-        div.classList.add('story');
-        div.innerHTML = `
-            <h3>⭐ ${story.title}</h3>
-            <p>${story.content}</p>
-            <small><strong>${story.nickname || 'Anónimo'}</strong> — ${story.language || ''} / ${story.type || ''}</small>
-            <hr>
-        `;
-        container.appendChild(div);
+function loadFeaturedStories() {
+    db.ref('stories').orderByChild('likes').limitToLast(3).once('value', (snapshot) => {
+        const container = document.getElementById('featured-stories');
+        container.innerHTML = '';
+        snapshot.forEach((childSnapshot) => {
+            const story = childSnapshot.val();
+            const div = document.createElement('div');
+            div.classList.add('story');
+            div.innerHTML = `
+				<h3>⭐ ${story.title}</h3>
+				<p>${story.text}</p>
+				<small><strong>${story.nickname}</strong> — ${story.language} / ${story.type}</small>
+				<hr>
+			`;
+            container.prepend(div);
+        });
     });
 }
 
-// Cargar historias al feed principal
-async function loadStories(language = 'all') {
-    const feed = document.getElementById('feed');
-    if (!feed) return;
-    feed.innerHTML = '';
-    const res = await fetch('/api/stories');
-    let stories = await res.json();
-    if (language !== 'all') {
-        stories = stories.filter(story => story.language === language);
-    }
-    stories.reverse().forEach(story => {
-        const div = document.createElement('div');
-        div.classList.add('story');
-        div.innerHTML = `
-            <h3>${story.title}</h3>
-            <p>${story.content}</p>
-            <small><strong>${story.nickname || 'Anónimo'}</strong> — ${story.language || ''} / ${story.type || ''}</small>
-            <button onclick="likeStory(${story.id})">❤️ Like</button>
-            <span id="likes-${story.id}">${story.likes || 0} likes</span>
-            <hr>
-        `;
-        feed.appendChild(div);
-    });
-}
+loadFeaturedStories();
 
-// Like a story
-async function likeStory(storyId) {
-    const token = getToken();
-    const res = await fetch(`/api/stories/${storyId}/like`, {
-        method: 'POST',
-        headers: {
-            'Authorization': token ? `Bearer ${token}` : ''
-        }
-    });
-    if (res.ok) {
-        // Actualizar likes en el DOM
-        const storyRes = await fetch(`/api/stories/${storyId}`);
-        const story = await storyRes.json();
-        const likeElem = document.getElementById('likes-' + storyId);
-        if (likeElem) likeElem.innerText = (story.likes || 0) + ' likes';
-    } else {
-        alert('Debes iniciar sesión para dar like.');
-    }
-}
-
-// Enviar nueva historia
+const db = firebase.database();
 const form = document.getElementById('storyForm');
 const messageDiv = document.getElementById('message');
-form?.addEventListener('submit', async (e) => {
+const feed = document.getElementById('feed');
+const filterLanguage = document.getElementById('filter-language');
+
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('title').value;
-    const content = document.getElementById('content').value;
+    const text = document.getElementById('content').value;
     const language = document.getElementById('language').value;
     const type = document.getElementById('authorType').value;
-    const token = getToken();
-    const res = await fetch('/api/stories', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token ? `Bearer ${token}` : ''
-        },
-        body: JSON.stringify({ title, content, language, type })
-    });
-    if (res.ok) {
-        messageDiv.textContent = '¡Historia enviada!';
-        form.reset();
-        loadStories('all');
-        loadFeaturedStories();
-    } else {
-        messageDiv.textContent = 'Error al enviar la historia. ¿Estás logueado?';
-    }
+    const user = firebase.auth().currentUser;
+    let nickname = 'Anónimo';
+    nickname = user.displayName;
+}
+    const newStoryRef = db.ref('pendingStories').push();
+newStoryRef.set({
+    title,
+	< small > <strong>${story.nickname}</strong> — ${ story.language } / ${ story.type }</small >
+// Ocultar splash screen al cargar la página
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
 });
 
-// Filtro de idioma
-const filterLanguage = document.getElementById('filter-language');
-filterLanguage?.addEventListener('change', () => {
-    const selected = filterLanguage.value;
-    loadStories(selected);
+// Simulación de historias destacadas (sin Firebase)
+function loadFeaturedStories() {
+    // Aquí puedes agregar historias de ejemplo si lo deseas
+}
+loadFeaturedStories();
+
+const form = document.getElementById('storyForm');
+const messageDiv = document.getElementById('message');
+
+form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Simulación de guardado de historia
+    messageDiv.textContent = '¡Historia enviada! (Simulación, sin backend)';
+    form.reset();
 });
 
-// Cierre de sesión
-const logoutBtn = document.getElementById('logout-btn');
-logoutBtn?.addEventListener('click', () => {
-    removeToken();
+// Cierre de sesión simulado
+document.getElementById('logout-btn')?.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
+<br>
+    <button onclick="likeStory('${childSnapshot.key}')">❤️ Like</button>
+    <span id="likes-${childSnapshot.key}">${story.likes || 0} likes</span>
+    <hr>
+        `;
+        feed.appendChild(div);
+                // Escuchar cambios en los likes en tiempo real
+                db.ref('stories/' + childSnapshot.key + '/likes').on('value', (likeSnap) => {
+                    const likeCount = likeSnap.val() || 0;
+        const likeElem = document.getElementById('likes-' + childSnapshot.key);
+        if (likeElem) likeElem.innerText = likeCount + ' likes';
+                });
+            }
+        });
+    });
+
+        function likeStory(storyId) {
+        const storyRef = db.ref('stories/' + storyId + '/likes');
+        storyRef.transaction((currentLikes) => {
+            return (currentLikes || 0) + 1;
+        });
+    }
+
+        if (filterLanguage) {
+            filterLanguage.addEventListener('change', () => {
+                const selected = filterLanguage.value;
+                loadStories(selected);
+            });
+        // Cargar todas al inicio
+        loadStories('all');
+    }
+
+        // ...código de Realtime Database y filtro de idioma ya presente arriba...
+
+        const logoutBtn = document.getElementById('logout-btn');
+
+    logoutBtn.addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                alert('Sesión cerrada');
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                alert(error.message);
+            });
+    });
+
+}

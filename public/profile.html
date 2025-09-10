@@ -12,7 +12,7 @@
     <nav>
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
             <li><a href="index.html">Inicio</a></li>
-
+            <li><a href="landing.html">Presentación</a></li>
             <li><a href="explore.html">Explorar</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="signup.html">Registro</a></li>
@@ -30,6 +30,16 @@
     <div class="contenido">
         <h1>Mi perfil</h1>
         <p id="user-info"></p>
+        <div style="margin: 2em 0; text-align: center;">
+            <h2>Mi imagen central</h2>
+            <div id="profile-image-container">
+                <img id="profile-image" src="" alt="Imagen de usuario"
+                    style="max-width:220px;max-height:220px;display:none;border-radius:12px;box-shadow:0 2px 12px #0002;">
+            </div>
+            <form id="profile-image-form" style="margin-top:1em;">
+                <input type="file" id="profile-image-input" accept="image/*">
+            </form>
+        </div>
         <h2>Mis historias</h2>
         <div id="my-stories"></div>
         <div id="edit-form-container" style="display:none;">
