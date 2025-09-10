@@ -237,5 +237,45 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // --- Panel de admin para gestión de moderadores ---
+    const adminEmails = ["pipocanarias@hotmail.com", "piporgz68@gmail.com"];
+    const adminPanel = document.getElementById('admin-panel');
+    if (adminPanel && adminEmails.includes(user.email)) {
+        adminPanel.innerHTML = `
+            <h2>Gestión de moderadores</h2>
+            <input type="text" id="search-user" placeholder="Buscar usuario por email o nombre" style="width:60%;margin-bottom:8px;">
+            <div id="user-results"></div>
+        `;
+        const searchInput = document.getElementById('search-user');
+        const userResults = document.getElementById('user-results');
+        function renderUserResults(query) {
+            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+            const results = users.filter(u => u.email.includes(query) || (u.name && u.name.toLowerCase().includes(query.toLowerCase())));
+            userResults.innerHTML = results.length === 0 ? '<p>No hay resultados.</p>' : results.map(u => {
+                const isMod = u.role === 'moderador';
+                return `<div style="margin-bottom:6px;">${u.name} (${u.email})
+                    <button class="mod-btn" data-email="${u.email}" data-action="${isMod ? 'remove' : 'add'}" style="margin-left:12px;">${isMod ? 'Quitar moderador' : 'Hacer moderador'}</button>
+                </div>`;
+            }).join('');
+            document.querySelectorAll('.mod-btn').forEach(btn => {
+                btn.onclick = function() {
+                    const email = this.getAttribute('data-email');
+                    const action = this.getAttribute('data-action');
+                    let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+                    const idx = users.findIndex(u => u.email === email);
+                    if (idx !== -1) {
+                        if (action === 'add') users[idx].role = 'moderador';
+                        else delete users[idx].role;
+                        localStorage.setItem('storyup_users', JSON.stringify(users));
+                        renderUserResults(searchInput.value);
+                    }
+                };
+            });
+        }
+        searchInput.addEventListener('input', function() {
+            renderUserResults(this.value.trim());
+        });
+    }
+
     renderStories();
 });
