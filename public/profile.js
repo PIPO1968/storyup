@@ -376,12 +376,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Panel de admin para gestión de moderadores ---
     const adminEmails = ["pipocanarias@hotmail.com", "piporgz68@gmail.com"];
     const adminPanel = document.getElementById('admin-panel');
+    const modWordsPanel = document.getElementById('mod-words-panel');
     if (adminPanel && adminEmails.includes(user.email)) {
         adminPanel.innerHTML = `
             <h2>Gestión de moderadores</h2>
             <input type="text" id="search-user" placeholder="Buscar usuario por email o nombre" style="width:60%;margin-bottom:8px;">
             <div id="user-results"></div>
         `;
+        // Palabras prohibidas globales para moderador
+        modWordsPanel.innerHTML = `
+            <h3>Palabras prohibidas para amigos moderados</h3>
+            <textarea id="mod-banned-words" placeholder="Escribe aquí las palabras prohibidas, separadas por comas o una por línea" style="width:100%;min-height:60px;margin-bottom:8px;"></textarea>
+            <button id="save-banned-words" style="margin-bottom:16px;">Guardar palabras prohibidas</button>
+            <div id="banned-words-msg" style="color:#22c55e;font-weight:bold;"></div>
+        `;
+        // Cargar y guardar palabras prohibidas
+        const bannedWordsInput = document.getElementById('mod-banned-words');
+        const saveBannedBtn = document.getElementById('save-banned-words');
+        const bannedMsg = document.getElementById('banned-words-msg');
+        // Cargar si existen
+        const bannedKey = 'mod_banned_words_' + user.email;
+        bannedWordsInput.value = (localStorage.getItem(bannedKey) || '').replace(/,/g, '\n');
+        saveBannedBtn.onclick = function() {
+            const words = bannedWordsInput.value.split(/,|\n/).map(w => w.trim().toLowerCase()).filter(Boolean);
+            localStorage.setItem(bannedKey, words.join(','));
+            bannedMsg.textContent = 'Palabras prohibidas guardadas';
+            setTimeout(()=>bannedMsg.textContent='', 2000);
+        };
+        // ...gestión de moderadores (igual que antes)...
         const searchInput = document.getElementById('search-user');
         const userResults = document.getElementById('user-results');
         function renderUserResults(query) {
@@ -411,6 +433,48 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.addEventListener('input', function () {
             renderUserResults(this.value.trim());
         });
+    }
+
+    // --- Bloqueo de palabras prohibidas en historias de amigos moderados ---
+    function getModeratorFor(email) {
+        // Devuelve el email del moderador si el usuario es amigo de un moderador
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        for (const u of users) {
+            if (u.role === 'moderador') {
+                const friends = JSON.parse(localStorage.getItem('friends_' + u.email) || '[]');
+                if (friends.includes(email)) return u.email;
+            }
+        }
+        return null;
+    }
+
+    function cleanBannedWords(text, bannedList) {
+        let changed = false;
+        let cleanText = text;
+        bannedList.forEach(word => {
+            const regex = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+            if (regex.test(cleanText)) changed = true;
+            cleanText = cleanText.replace(regex, '');
+        });
+        return {cleanText, changed};
+    }
+
+    // Interceptar envío de historia
+    if (storyForm) {
+        storyForm.addEventListener('submit', function(e) {
+            const author = user.email;
+            const modEmail = getModeratorFor(author);
+            if (modEmail) {
+                const banned = (localStorage.getItem('mod_banned_words_' + modEmail) || '').split(',').map(w=>w.trim().toLowerCase()).filter(Boolean);
+                const textArea = document.getElementById('story-text');
+                const {cleanText, changed} = cleanBannedWords(textArea.value, banned);
+                if (changed) {
+                    e.preventDefault();
+                    textArea.value = cleanText;
+                    alert('Has usado palabras prohibidas por tu moderador. Han sido eliminadas automáticamente.');
+                }
+            }
+        }, true);
     }
 
     renderStories();
