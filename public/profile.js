@@ -1,206 +1,18 @@
-
 // profile.js
-// Inicializar usuario logueado
-const user = JSON.parse(localStorage.getItem('user'));
-if (!user) {
-    alert('No hay usuario logueado. Por favor, inicia sesión.');
-    window.location.href = 'index.html';
-}
 // Mostrar datos del usuario logueado y permitir cerrar sesión
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Mostrar chat en cualquier perfil (propio o ajeno), solo escribir si es amigo
-    chatContainer.style.display = 'block';
-    const otherUser = getUserByEmail(profileEmail);
-    chatNick.textContent = otherUser ? otherUser.name || profileEmail : profileEmail;
-    const areFriends = getFriends(user.email).includes(profileEmail);
-    // Clave única para el chat entre ambos usuarios (ordenada)
-    function getChatKey(a, b) {
-        return 'storyup_chat_' + [a, b].sort().join('_');
+    // Inicializar usuario logueado
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        alert('No hay usuario logueado. Por favor, inicia sesión.');
+        window.location.href = 'index.html';
+        return;
     }
-    const chatKey = getChatKey(user.email, profileEmail);
-    function renderChat() {
-        const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-        chatMessages.innerHTML = msgs.map(m => {
-            if (m.type === 'img') {
-                return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><img src=\"${m.data}\" style=\"max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 2px 8px #0003;display:inline-block;\"> <span style=\"font-size:0.8em;color:#aaa;\">${m.time}</span></div>`;
-            } else if (m.type === 'video') {
-                return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><iframe width=\"180\" height=\"110\" src=\"https://www.youtube.com/embed/${m.data}\" frameborder=\"0\" allowfullscreen style=\"border-radius:8px;\"></iframe> <span style=\"font-size:0.8em;color:#aaa;\">${m.time}</span></div>`;
-            } else {
-                return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><span style=\"display:inline-block;background:${m.from === user.email ? '#6366f1' : '#232526'};color:${m.from === user.email ? '#fff' : '#a5b4fc'};padding:5px 12px;border-radius:8px;max-width:70%;word-break:break-word;\">${m.text}</span> <span style=\"font-size:0.8em;color:#aaa;margin-left:6px;\">${m.time}</span></div>`;
-            }
-        }).join('');
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    // Permitir responder en tu propio perfil si eres amigo del usuario mostrado (en este caso, tú mismo)
-    if (!areFriends) {
-        chatForm.querySelectorAll('input,button').forEach(el => { el.disabled = true; });
-        chatInput.placeholder = 'Debes ser amigo para chatear';
-        // Si es tu propio perfil, muestra los mensajes recibidos de amigos
-        if (isOwnProfile) {
-            renderChat();
-        } else {
-            chatMessages.innerHTML = '<div style=\"color:#aaa;text-align:center;margin-top:2em;\">Solo los amigos pueden enviarse mensajes.</div>';
-        }
-    } else {
-        // Si es tu propio perfil, permitir responder a amigos (a cada uno)
-        if (isOwnProfile) {
-            // Mostrar un selector de amigo para chatear
-            let friends = getFriends(user.email).filter(f => f !== user.email);
-            if (friends.length === 0) {
-                chatForm.querySelectorAll('input,button').forEach(el => { el.disabled = true; });
-                chatInput.placeholder = 'No tienes amigos para chatear';
-                chatMessages.innerHTML = '<div style=\"color:#aaa;text-align:center;margin-top:2em;\">Agrega amigos para chatear aquí.</div>';
-                return;
-            }
-            // Crear o actualizar el selector de amigos
-            let friendSelector = document.getElementById('chat-friend-selector');
-            if (friendSelector) {
-                friendSelector.style.display = 'inline-block';
-                friendSelector.innerHTML = friends.map(f => {
-                    const u = getUserByEmail(f);
-                    return `<option value="${f}">${u && u.name ? u.name : f}</option>`;
-                }).join('');
-                let selectedFriend = friendSelector.value;
-                friendSelector.onchange = function () {
-                    selectedFriend = this.value;
-                    updateChatForFriend(selectedFriend);
-                };
-                updateChatForFriend(selectedFriend);
-            }
-            function updateChatForFriend(friendEmail) {
-                chatNick.textContent = getUserByEmail(friendEmail)?.name || friendEmail;
-                const chatKey = getChatKey(user.email, friendEmail);
-                // Redefinir renderChat para este amigo
-                function renderChatFriend() {
-                    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-                    chatMessages.innerHTML = msgs.map(m => {
-                        if (m.type === 'img') {
-                            return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><img src=\"${m.data}\" style=\"max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 2px 8px #0003;display:inline-block;\"> <span style=\"font-size:0.8em;color:#aaa;\">${m.time}</span></div>`;
-                        } else if (m.type === 'video') {
-                            return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><iframe width=\"180\" height=\"110\" src=\"https://www.youtube.com/embed/${m.data}\" frameborder=\"0\" allowfullscreen style=\"border-radius:8px;\"></iframe> <span style=\"font-size:0.8em;color:#aaa;\">${m.time}</span></div>`;
-                        } else {
-                            return `<div style=\"margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};\"><span style=\"display:inline-block;background:${m.from === user.email ? '#6366f1' : '#232526'};color:${m.from === user.email ? '#fff' : '#a5b4fc'};padding:5px 12px;border-radius:8px;max-width:70%;word-break:break-word;\">${m.text}</span> <span style=\"font-size:0.8em;color:#aaa;margin-left:6px;\">${m.time}</span></div>`;
-                        }
-                    }).join('');
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-                // Enviar mensaje texto
-                chatForm.onsubmit = function (e) {
-                    e.preventDefault();
-                    const text = chatInput.value.trim();
-                    if (!text) return;
-                    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-                    const now = new Date();
-                    msgs.push({ from: user.email, text, type: 'text', time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-                    localStorage.setItem(chatKey, JSON.stringify(msgs));
-                    chatInput.value = '';
-                    renderChatFriend();
-                };
-                // Emoji panel, imagen y video igual que antes (puedes reutilizar el código original)
-                // ...
-                // Recarga automática
-                if (window.chatInterval) clearInterval(window.chatInterval);
-                window.chatInterval = setInterval(renderChatFriend, 2000);
-                renderChatFriend();
-            }
-            updateChatForFriend(selectedFriend);
-            // Limpiar intervalo al salir
-            window.addEventListener('beforeunload', () => clearInterval(window.chatInterval));
-            return;
-        }
-        // Enviar mensaje texto
-        chatForm.onsubmit = function (e) {
-            e.preventDefault();
-            const text = chatInput.value.trim();
-            if (!text) return;
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            const now = new Date();
-            msgs.push({ from: user.email, text, type: 'text', time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-            localStorage.setItem(chatKey, JSON.stringify(msgs));
-            chatInput.value = '';
-            renderChat();
-        };
-        // Emoji panel
-        const emojiBtn = document.getElementById('chat-emoji-btn');
-        const emojiPanel = document.getElementById('chat-emoji-panel');
-        const emojis = ['😀', '😁', '😂', '🤣', '😅', '😊', '😍', '😘', '😎', '😜', '🤩', '😢', '😭', '😡', '👍', '🙏', '👏', '💪', '🎉', '🔥', '💯', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🤎', '🖤', '⭐', '🌟', '✨', '⚡', '☀️', '🌈', '🍀', '🍕', '🍔', '🍟', '🍦', '🍩', '🍫', '🍿', '🎂', '🍰', '🥤', '☕', '🍺', '🏆', '⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🎮', '🎲', '🎸', '🎤', '🎧', '🎬', '🎨', '🎵', '🎶', '🕹️', '🚗', '✈️', '🚀', '🏠', '📱', '💻', '🖥️', '📝', '📚', '📖', '🔒', '🔑', '💡', '🔔', '🎁', '📦', '💎', '🔮', '🧸', '👑', '🦄', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐔', '🐧', '🐦', '🐤', '🐣', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄'];
-        emojiBtn.onclick = function (e) {
-            e.preventDefault();
-            emojiPanel.innerHTML = emojis.map(em => `<span style='font-size:1.3em;cursor:pointer;padding:2px 4px;'>${em}</span>`).join('');
-            emojiPanel.style.display = emojiPanel.style.display === 'block' ? 'none' : 'block';
-            const rect = emojiBtn.getBoundingClientRect();
-            emojiPanel.style.left = rect.left + 'px';
-            emojiPanel.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-        };
-        emojiPanel.onclick = function (e) {
-            if (e.target.tagName === 'SPAN') {
-                chatInput.value += e.target.textContent;
-                chatInput.focus();
-            }
-        };
-        document.addEventListener('click', function (e) {
-            if (!emojiPanel.contains(e.target) && e.target !== emojiBtn) {
-                emojiPanel.style.display = 'none';
-            }
-        });
-        // Imagen
-        const imageBtn = document.getElementById('chat-image-btn');
-        const imageInput = document.getElementById('chat-image-input');
-        imageBtn.onclick = function (e) {
-            e.preventDefault();
-            imageInput.click();
-        };
-        imageInput.onchange = function (e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-                const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-                const now = new Date();
-                msgs.push({ from: user.email, type: 'img', data: evt.target.result, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-                localStorage.setItem(chatKey, JSON.stringify(msgs));
-                renderChat();
-            };
-            reader.readAsDataURL(file);
-            imageInput.value = '';
-        };
-        // Video YouTube
-        const videoBtn = document.getElementById('chat-video-btn');
-        videoBtn.onclick = function (e) {
-            e.preventDefault();
-            const url = prompt('Pega la URL del video de YouTube:');
-            if (!url) return;
-            const match = url.match(/[?&]v=([\w-]{11})|youtu\.be\/([\w-]{11})/);
-            const id = match ? (match[1] || match[2]) : null;
-            if (id) {
-                const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-                const now = new Date();
-                msgs.push({ from: user.email, type: 'video', data: id, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-                localStorage.setItem(chatKey, JSON.stringify(msgs));
-                renderChat();
-            } else {
-                alert('URL de YouTube no válida');
-            }
-        };
-    }
-    // Recarga automática cada 2 segundos (simula tiempo real)
-    let chatInterval = setInterval(renderChat, 2000);
-    renderChat();
-    // Limpiar intervalo al salir
-    window.addEventListener('beforeunload', () => clearInterval(chatInterval));
-    function renderStories() {
-        const stories = getAllStories();
-        // Mostrar solo las historias del usuario
-        const myStories = stories.filter(s => s.author === user.email);
-        if (myStories.length === 0) {
-            storiesDiv.innerHTML = '<p>No has publicado ninguna historia aún.</p>';
-            return;
-        }
-        // Mostrar historias como links numerados, expandibles
-        storiesDiv.innerHTML = `<ul id="my-story-list" style="padding-left:0;list-style:none;">${myStories.map((story, idx) => {
-            const num = idx + 1;
-            return `<li style="margin-bottom:10px;display:flex;align-items:center;"><span style="min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;">${num}.</span> <a href='#' class='my-story-link' data-idx='${idx}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${story.title}</a><div class='my-story-detail' style='display:none;'></div></li>`;
+    // Obtener email del perfil a mostrar
+    const urlParams = new URLSearchParams(window.location.search);
+    const profileEmail = urlParams.get('user') || user.email;
+    const isOwnProfile = profileEmail === user.email;
+    // ...existing code...
         }).join('')}</ul>`;
 
         // Listeners para expandir/cerrar historia
@@ -609,5 +421,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
     renderStories();
+
+// Aquí terminan todas las funciones y lógica dentro de DOMContentLoaded
 });
