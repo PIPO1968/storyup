@@ -133,14 +133,53 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div>${story.text}</div>
                     <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
                     <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
-                    <div style="margin-top:8px;">
+                    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
                         <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">
                             👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
                         </button>
+                        <button class="edit-story-btn" data-id="${story.id}" style="background:#fbbf24;color:#232526;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">✏️ Editar</button>
+                        <button class="delete-story-btn" data-id="${story.id}" style="background:#ef4444;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">🗑️ Borrar</button>
                     </div>
                 </div>
             `;
         }).join('');
+        // Listeners editar y borrar
+        document.querySelectorAll('.edit-story-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = this.getAttribute('data-id');
+                const stories = getAllStories();
+                const story = stories.find(s => s.id === id);
+                if (!story) return;
+                // Mostrar formulario de edición
+                const editFormContainer = document.getElementById('edit-form-container');
+                const editForm = document.getElementById('edit-form');
+                editFormContainer.style.display = 'block';
+                document.getElementById('edit-title').value = story.title;
+                document.getElementById('edit-text').value = story.text;
+                document.getElementById('edit-language').value = story.language;
+                document.getElementById('edit-type').value = story.type;
+                editForm.onsubmit = function (e) {
+                    e.preventDefault();
+                    story.title = document.getElementById('edit-title').value.trim();
+                    story.text = document.getElementById('edit-text').value.trim();
+                    story.language = document.getElementById('edit-language').value;
+                    story.type = document.getElementById('edit-type').value;
+                    saveAllStories(stories);
+                    editFormContainer.style.display = 'none';
+                    renderStories();
+                };
+            });
+        });
+        document.querySelectorAll('.delete-story-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (!confirm('¿Seguro que quieres borrar esta historia?')) return;
+                const id = this.getAttribute('data-id');
+                let stories = getAllStories();
+                stories = stories.filter(s => s.id !== id);
+                saveAllStories(stories);
+                renderStories();
+            });
+        });
         // Añadir listeners a los botones de like
         document.querySelectorAll('.like-btn').forEach(btn => {
             btn.addEventListener('click', function () {
@@ -311,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`;
             }).join('');
             document.querySelectorAll('.mod-btn').forEach(btn => {
-                btn.onclick = function() {
+                btn.onclick = function () {
                     const email = this.getAttribute('data-email');
                     const action = this.getAttribute('data-action');
                     let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
@@ -325,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
             });
         }
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             renderUserResults(this.value.trim());
         });
     }
