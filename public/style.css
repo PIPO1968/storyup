@@ -10,6 +10,7 @@
     margin-top: 10px;
     display: inline-block;
 }
+
 /* Forzar color del enlace 'vista pública' en la portada */
 a[href="explore.html"]#public-link,
 #public-read a {
