@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const profileEmail = urlParams.get('user') || user.email;
     const isOwnProfile = profileEmail === user.email;
     // ...existing code...
-        }).join('')}</ul>`;
+}).join('')}</ul > `;
 
         // Listeners para expandir/cerrar historia
         document.querySelectorAll('.my-story-link').forEach(link => {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Cerrar otros detalles abiertos
                     document.querySelectorAll('.my-story-detail').forEach(div => { div.style.display = 'none'; div.innerHTML = ''; });
                     detailDiv.innerHTML = `
-                        <div class='story-block' style='border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;'>
+    < div class='story-block' style = 'border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;' >
                             <h3 style='color:#a5b4fc;'>${story.title}</h3>
                             <div>${story.text}</div>
                             <div style='font-size:0.95em;color:#aaa;'>Idioma: ${idioma} · Tipo: ${tipo}</div>
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <button class='edit-story-btn' data-id='${story.id}' style='background:#fbbf24;color:#232526;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;'>✏️ Editar</button>
                                 <button class='delete-story-btn' data-id='${story.id}' style='background:#ef4444;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;'>🗑️ Borrar</button>
                             </div>
-                        </div>
-                    `;
+                        </div >
+    `;
                     detailDiv.style.display = 'block';
                     // Listeners editar y borrar dentro del detalle
                     detailDiv.querySelector('.edit-story-btn').onclick = function () {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
             friendRequestsDiv.innerHTML = '<h3>Solicitudes de amistad</h3>' + reqs.map(email => {
                 const u = getUserByEmail(email);
                 const name = u ? u.name : email;
-                return `<div style="margin-bottom:8px;">${name} <button class="accept-friend" data-email="${email}" style="margin-left:8px;">Aceptar</button> <button class="reject-friend" data-email="${email}">Rechazar</button></div>`;
+                return `< div style = "margin-bottom:8px;" > ${ name } <button class="accept-friend" data-email="${email}" style="margin-left:8px;">Aceptar</button> <button class="reject-friend" data-email="${email}">Rechazar</button></div > `;
             }).join('');
             // Listeners aceptar/rechazar
             document.querySelectorAll('.accept-friend').forEach(btn => {
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
             friendListDiv.innerHTML = '<h3>Mis amigos</h3>' + friends.map(email => {
                 const u = getUserByEmail(email);
                 const name = u ? u.name : email;
-                return `<div style="margin-bottom:6px;"><a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div>`;
+                return `< div style = "margin-bottom:6px;" > <a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div > `;
             }).join('');
         } else {
             friendListDiv.innerHTML = '<h3>Mis amigos</h3><p>No tienes amigos aún.</p>';
@@ -286,11 +286,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
             chatMessages.innerHTML = msgs.map(m => {
                 if (m.type === 'img') {
-                    return `<div style="margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};"><img src="${m.data}" style="max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 2px 8px #0003;display:inline-block;"> <span style="font-size:0.8em;color:#aaa;">${m.time}</span></div>`;
+                    return `< div style = "margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};" > <img src="${m.data}" style="max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 2px 8px #0003;display:inline-block;"> <span style="font-size:0.8em;color:#aaa;">${m.time}</span></div>`;
                 } else if (m.type === 'video') {
-                    return `<div style="margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};"><iframe width="180" height="110" src="https://www.youtube.com/embed/${m.data}" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe> <span style="font-size:0.8em;color:#aaa;">${m.time}</span></div>`;
+                    return `< div style = "margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};" ><iframe width="180" height="110" src="https://www.youtube.com/embed/${m.data}" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe> <span style="font-size:0.8em;color:#aaa;">${m.time}</span></div > `;
                 } else {
-                    return `<div style="margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};"><span style="display:inline-block;background:${m.from === user.email ? '#6366f1' : '#232526'};color:${m.from === user.email ? '#fff' : '#a5b4fc'};padding:5px 12px;border-radius:8px;max-width:70%;word-break:break-word;">${m.text}</span> <span style="font-size:0.8em;color:#aaa;margin-left:6px;">${m.time}</span></div>`;
+                    return `< div style = "margin-bottom:6px;text-align:${m.from === user.email ? 'right' : 'left'};" ><span style="display:inline-block;background:${m.from === user.email ? '#6366f1' : '#232526'};color:${m.from === user.email ? '#fff' : '#a5b4fc'};padding:5px 12px;border-radius:8px;max-width:70%;word-break:break-word;">${m.text}</span> <span style="font-size:0.8em;color:#aaa;margin-left:6px;">${m.time}</span></div > `;
                 }
             }).join('');
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const emojis = ['😀', '😁', '😂', '🤣', '😅', '😊', '😍', '😘', '😎', '😜', '🤩', '😢', '😭', '😡', '👍', '🙏', '👏', '💪', '🎉', '🔥', '💯', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🤎', '🖤', '⭐', '🌟', '✨', '⚡', '☀️', '🌈', '🍀', '🍕', '🍔', '🍟', '🍦', '🍩', '🍫', '🍿', '🎂', '🍰', '🥤', '☕', '🍺', '🏆', '⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🎮', '🎲', '🎸', '🎤', '🎧', '🎬', '🎨', '🎵', '🎶', '🕹️', '🚗', '✈️', '🚀', '🏠', '📱', '💻', '🖥️', '📝', '📚', '📖', '🔒', '🔑', '💡', '🔔', '🎁', '📦', '💎', '🔮', '🧸', '👑', '🦄', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐔', '🐧', '🐦', '🐤', '🐣', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄'];
             emojiBtn.onclick = function (e) {
                 e.preventDefault();
-                emojiPanel.innerHTML = emojis.map(em => `<span style='font-size:1.3em;cursor:pointer;padding:2px 4px;'>${em}</span>`).join('');
+                emojiPanel.innerHTML = emojis.map(em => `< span style = 'font-size:1.3em;cursor:pointer;padding:2px 4px;' > ${ em }</span > `).join('');
                 emojiPanel.style.display = emojiPanel.style.display === 'block' ? 'none' : 'block';
                 const rect = emojiBtn.getBoundingClientRect();
                 emojiPanel.style.left = rect.left + 'px';
@@ -386,20 +386,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const adminPanel = document.getElementById('admin-panel');
     if (adminPanel && adminEmails.includes(user.email)) {
         adminPanel.innerHTML = `
-            <h2>Gestión de moderadores</h2>
-            <input type="text" id="search-user" placeholder="Buscar usuario por email o nombre" style="width:60%;margin-bottom:8px;">
+    < h2 > Gestión de moderadores</h2 >
+        <input type="text" id="search-user" placeholder="Buscar usuario por email o nombre" style="width:60%;margin-bottom:8px;">
             <div id="user-results"></div>
-        `;
-        const searchInput = document.getElementById('search-user');
-        const userResults = document.getElementById('user-results');
-        function renderUserResults(query) {
+            `;
+            const searchInput = document.getElementById('search-user');
+            const userResults = document.getElementById('user-results');
+            function renderUserResults(query) {
             const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
             const results = users.filter(u => u.email.includes(query) || (u.name && u.name.toLowerCase().includes(query.toLowerCase())));
             userResults.innerHTML = results.length === 0 ? '<p>No hay resultados.</p>' : results.map(u => {
                 const isMod = u.role === 'moderador';
-                return `<div style="margin-bottom:6px;">${u.name} (${u.email})
-                    <button class="mod-btn" data-email="${u.email}" data-action="${isMod ? 'remove' : 'add'}" style="margin-left:12px;">${isMod ? 'Quitar moderador' : 'Hacer moderador'}</button>
-                </div>`;
+            return `<div style="margin-bottom:6px;">${u.name} (${u.email})
+                <button class="mod-btn" data-email="${u.email}" data-action="${isMod ? 'remove' : 'add'}" style="margin-left:12px;">${isMod ? 'Quitar moderador' : 'Hacer moderador'}</button>
+            </div>`;
             }).join('');
             document.querySelectorAll('.mod-btn').forEach(btn => {
                 btn.onclick = function () {
@@ -416,13 +416,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
             });
         }
-        searchInput.addEventListener('input', function () {
-            renderUserResults(this.value.trim());
+            searchInput.addEventListener('input', function () {
+                renderUserResults(this.value.trim());
         });
     }
 
 
-    renderStories();
+            renderStories();
 
 // Aquí terminan todas las funciones y lógica dentro de DOMContentLoaded
 });
