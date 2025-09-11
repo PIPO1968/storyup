@@ -1,4 +1,11 @@
+
 // profile.js
+// Inicializar usuario logueado
+const user = JSON.parse(localStorage.getItem('user'));
+if (!user) {
+    alert('No hay usuario logueado. Por favor, inicia sesión.');
+    window.location.href = 'index.html';
+}
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
 document.addEventListener('DOMContentLoaded', function () {
