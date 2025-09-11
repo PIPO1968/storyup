@@ -121,6 +121,28 @@
         <div id="friend-actions"></div>
         <div id="friend-requests"></div>
         <div id="friend-list"></div>
+        <div id="chat-container" style="margin:2em 0;display:none;">
+            <h3>Chat privado con <span id="chat-nick"></span></h3>
+            <div id="chat-messages"
+                style="background:#18181b;border:1px solid #6366f1;border-radius:8px;min-height:120px;max-height:220px;overflow-y:auto;padding:10px 8px 10px 8px;margin-bottom:8px;">
+            </div>
+            <form id="chat-form" style="display:flex;gap:8px;align-items:center;">
+                <button type="button" id="chat-emoji-btn" title="Emojis"
+                    style="font-size:1.3em;background:none;border:none;cursor:pointer;">😊</button>
+                <input type="file" id="chat-image-input" accept="image/*" style="display:none;">
+                <button type="button" id="chat-image-btn" title="Enviar imagen"
+                    style="font-size:1.3em;background:none;border:none;cursor:pointer;">🖼️</button>
+                <button type="button" id="chat-video-btn" title="Enviar video de YouTube"
+                    style="font-size:1.3em;background:none;border:none;cursor:pointer;">▶️</button>
+                <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"
+                    style="flex:1;padding:6px 10px;border-radius:6px;border:1px solid #6366f1;">
+                <button type="submit"
+                    style="background:#6366f1;color:#fff;border:none;padding:6px 18px;border-radius:6px;">Enviar</button>
+            </form>
+            <div id="chat-emoji-panel"
+                style="display:none;position:absolute;z-index:10;background:#232526;border:1px solid #6366f1;border-radius:8px;padding:8px;max-width:260px;max-height:120px;overflow-y:auto;">
+            </div>
+        </div>
         <div id="admin-panel"></div>
         <button id="logout-btn">Cerrar sesión</button>
     </div>
