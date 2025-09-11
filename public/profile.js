@@ -2,6 +2,57 @@
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Barra de formato para historias ---
+    const toolbar = document.getElementById('story-toolbar');
+    const textarea = document.getElementById('story-text');
+    const preview = document.getElementById('story-preview');
+    if (toolbar && textarea) {
+        function insertAtCursor(before, after = before) {
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const value = textarea.value;
+            textarea.value = value.slice(0, start) + before + value.slice(start, end) + after + value.slice(end);
+            textarea.focus();
+            textarea.selectionStart = textarea.selectionEnd = end + before.length + after.length;
+            updatePreview();
+        }
+        document.getElementById('btn-bold').onclick = () => insertAtCursor('<b>', '</b>');
+        document.getElementById('btn-italic').onclick = () => insertAtCursor('<i>', '</i>');
+        document.getElementById('btn-color').oninput = (e) => insertAtCursor(`<span style=\"color:${e.target.value}\">`, '</span>');
+        document.getElementById('btn-image').onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                insertAtCursor(`<img src=\"${evt.target.result}\" style=\"max-width:100%;border-radius:8px;margin:8px 0;\">`, '');
+            };
+            reader.readAsDataURL(file);
+            e.target.value = '';
+        };
+        document.getElementById('btn-youtube').onclick = () => {
+            const url = prompt('Pega la URL del video de YouTube:');
+            if (!url) return;
+            // Extraer ID de YouTube
+            const match = url.match(/[?&]v=([\w-]{11})|youtu\.be\/([\w-]{11})/);
+            const id = match ? (match[1] || match[2]) : null;
+            if (id) {
+                insertAtCursor(`<iframe width=\"100%\" height=\"220\" src=\"https://www.youtube.com/embed/${id}\" frameborder=\"0\" allowfullscreen style=\"margin:8px 0;\"></iframe>`, '');
+            } else {
+                alert('URL de YouTube no válida');
+            }
+        };
+        textarea.addEventListener('input', updatePreview);
+        function updatePreview() {
+            if (textarea.value.trim()) {
+                preview.style.display = 'block';
+                preview.innerHTML = textarea.value
+                    .replace(/\n/g, '<br>');
+            } else {
+                preview.style.display = 'none';
+                preview.innerHTML = '';
+            }
+        }
+    }
     // Obtener usuario logueado
     const user = JSON.parse(localStorage.getItem('storyup_logged'));
     const userInfo = document.getElementById('user-info');
@@ -79,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return `
                 <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
                     <h3 style="color:#a5b4fc;">${story.title}</h3>
-                    <p>${story.text}</p>
+                    <div>${story.text}</div>
                     <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
                     <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
                     <div style="margin-top:8px;">
@@ -114,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         storyForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const title = document.getElementById('story-title').value.trim();
+            // Permitir HTML enriquecido
             const text = document.getElementById('story-text').value.trim();
             const language = document.getElementById('story-language').value;
             const type = document.getElementById('story-type').value;
@@ -134,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             saveAllStories(stories);
             storyForm.reset();
+            if (preview) { preview.style.display = 'none'; preview.innerHTML = ''; }
             renderStories();
         });
     }
