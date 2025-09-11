@@ -88,12 +88,48 @@
             <li><a href="stats.html">Estadísticas</a></li>
             <li id="moderation-link" style="display:none;"><a href="moderation.html">Moderación</a></li>
         </ul>
+        <select id="lang-i18n" class="lang-switch" style="min-width:90px;max-width:140px;">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="ar">العربية</option>
+        </select>
     </nav>
     <script>
         const userRole = localStorage.getItem('role');
         if (userRole === 'moderador') {
             document.getElementById('moderation-link').style.display = 'block';
         }
+        // --- I18N SIMPLE ---
+        const i18nFiles = {
+            es: 'i18n_es.json',
+            en: 'i18n_en.json',
+            de: 'i18n_de.json',
+            fr: 'i18n_fr.json',
+            it: 'i18n_it.json',
+            ar: 'i18n_ar.json'
+        };
+        function setI18nLogin(lang, data) {
+            // Aquí puedes traducir los textos del login si lo deseas
+            // document.querySelector('h2').textContent = data.login.title;
+            // document.querySelector('label[for="email"]').textContent = data.login.email;
+            // document.querySelector('label[for="password"]').textContent = data.login.password;
+            // document.querySelector('button[type="submit"]').textContent = data.login.button;
+            // document.querySelector('.login-link').textContent = data.login.signup;
+        }
+        const langSel = document.getElementById('lang-i18n');
+        langSel.value = localStorage.getItem('storyup_lang') || 'es';
+        fetch(i18nFiles[langSel.value] || i18nFiles['es'])
+            .then(r => r.json())
+            .then(data => setI18nLogin(langSel.value, data));
+        langSel.addEventListener('change', function () {
+            localStorage.setItem('storyup_lang', this.value);
+            fetch(i18nFiles[this.value] || i18nFiles['es'])
+                .then(r => r.json())
+                .then(data => setI18nLogin(this.value, data));
+        });
     </script>
     <div class="login-container">
         <h2>Iniciar sesión en StoryUp</h2>
