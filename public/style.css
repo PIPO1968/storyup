@@ -1,3 +1,13 @@
+/* Forzar color del enlace 'vista pública' en la portada */
+a[href="explore.html"]#public-link,
+#public-read a {
+    color: #38bdf8 !important;
+    font-weight: bold;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 /* Google Translate widget pequeño y a la derecha en el navbar */
 .google-translate-navbar {
     display: flex;
