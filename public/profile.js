@@ -120,29 +120,77 @@ document.addEventListener('DOMContentLoaded', function () {
             storiesDiv.innerHTML = '<p>No has publicado ninguna historia aún.</p>';
             return;
         }
-        storiesDiv.innerHTML = myStories.map((story, idx) => {
-            const langMap = {
-                es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
-            };
-            const typeMap = { real: 'Real', ficcion: 'Ficción', diario: 'Diario', confesion: 'Confesión' };
-            const idioma = langMap[story.language] || story.language;
-            const tipo = typeMap[story.type] || story.type;
-            return `
-                <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
-                    <h3 style="color:#a5b4fc;">${story.title}</h3>
-                    <div>${story.text}</div>
-                    <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
-                    <div style="font-size:0.95em;color:#aaa;">${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
-                    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
-                        <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">
-                            👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
-                        </button>
-                        <button class="edit-story-btn" data-id="${story.id}" style="background:#fbbf24;color:#232526;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">✏️ Editar</button>
-                        <button class="delete-story-btn" data-id="${story.id}" style="background:#ef4444;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;">🗑️ Borrar</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
+        // Mostrar historias como links numerados, expandibles
+        storiesDiv.innerHTML = `<ul id="my-story-list" style="padding-left:0;list-style:none;">${myStories.map((story, idx) => {
+            const num = idx + 1;
+            return `<li style="margin-bottom:10px;display:flex;align-items:center;"><span style="min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;">${num}.</span> <a href='#' class='my-story-link' data-idx='${idx}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${story.title}</a><div class='my-story-detail' style='display:none;'></div></li>`;
+        }).join('')}</ul>`;
+
+        // Listeners para expandir/cerrar historia
+        document.querySelectorAll('.my-story-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const idx = parseInt(this.getAttribute('data-idx'));
+                const story = myStories[idx];
+                const langMap = {
+                    es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
+                };
+                const typeMap = { real: 'Real', ficcion: 'Ficción', diario: 'Diario', confesion: 'Confesión' };
+                const idioma = langMap[story.language] || story.language;
+                const tipo = typeMap[story.type] || story.type;
+                const detailDiv = this.nextElementSibling;
+                if (detailDiv.style.display === 'block') {
+                    detailDiv.style.display = 'none';
+                    detailDiv.innerHTML = '';
+                } else {
+                    // Cerrar otros detalles abiertos
+                    document.querySelectorAll('.my-story-detail').forEach(div => { div.style.display = 'none'; div.innerHTML = ''; });
+                    detailDiv.innerHTML = `
+                        <div class='story-block' style='border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;'>
+                            <h3 style='color:#a5b4fc;'>${story.title}</h3>
+                            <div>${story.text}</div>
+                            <div style='font-size:0.95em;color:#aaa;'>Idioma: ${idioma} · Tipo: ${tipo}</div>
+                            <div style='font-size:0.95em;color:#aaa;'>${story.anonymous ? 'Autor: Anónimo' : 'Autor: ' + user.name}</div>
+                            <div style='margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;'>
+                                <button class='edit-story-btn' data-id='${story.id}' style='background:#fbbf24;color:#232526;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;'>✏️ Editar</button>
+                                <button class='delete-story-btn' data-id='${story.id}' style='background:#ef4444;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;'>🗑️ Borrar</button>
+                            </div>
+                        </div>
+                    `;
+                    detailDiv.style.display = 'block';
+                    // Listeners editar y borrar dentro del detalle
+                    detailDiv.querySelector('.edit-story-btn').onclick = function () {
+                        const stories = getAllStories();
+                        const s = stories.find(st => st.id === story.id);
+                        if (!s) return;
+                        const editFormContainer = document.getElementById('edit-form-container');
+                        const editForm = document.getElementById('edit-form');
+                        editFormContainer.style.display = 'block';
+                        document.getElementById('edit-title').value = s.title;
+                        document.getElementById('edit-text').value = s.text;
+                        document.getElementById('edit-language').value = s.language;
+                        document.getElementById('edit-type').value = s.type;
+                        editForm.onsubmit = function (e) {
+                            e.preventDefault();
+                            s.title = document.getElementById('edit-title').value.trim();
+                            s.text = document.getElementById('edit-text').value.trim();
+                            s.language = document.getElementById('edit-language').value;
+                            s.type = document.getElementById('edit-type').value;
+                            saveAllStories(stories);
+                            editFormContainer.style.display = 'none';
+                            renderStories();
+                        };
+                    };
+                    detailDiv.querySelector('.delete-story-btn').onclick = function () {
+                        if (!confirm('¿Seguro que quieres borrar esta historia?')) return;
+                        let stories = getAllStories();
+                        stories = stories.filter(s => s.id !== story.id);
+                        saveAllStories(stories);
+                        renderStories();
+                    };
+                }
+            });
+        });
         // Listeners editar y borrar
         document.querySelectorAll('.edit-story-btn').forEach(btn => {
             btn.addEventListener('click', function () {
