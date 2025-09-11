@@ -1,17 +1,48 @@
+/* Chat compacto y responsive en perfil */
+#chat-container {
+    max-width: 340px;
+    min-width: 220px;
+    width: 100%;
+}
+#chat-messages {
+    font-size: 0.98em;
+    min-height: 90px;
+    max-height: 180px;
+    padding: 8px 6px 8px 6px;
+}
+#chat-form input[type="text"] {
+    font-size: 1em;
+    padding: 5px 7px;
+}
+#chat-form button {
+    font-size: 1em;
+    padding: 0 4px;
+}
+#chat-form button[type="submit"] {
+    padding: 5px 12px;
+}
+#chat-emoji-panel {
+    max-width: 180px;
+    max-height: 90px;
+    padding: 6px;
+}
 @media (max-width: 800px) {
     .contenido {
         flex-direction: column !important;
         gap: 0 !important;
     }
-    .contenido > div {
+
+    .contenido>div {
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
     }
+
     #chat-container {
         margin: 2em 0 0 0 !important;
     }
 }
+
 /* Google Translate widget pequeño y a la derecha en el navbar */
 .google-translate-navbar {
     display: flex;
@@ -23,11 +54,13 @@
     margin-right: 2.5em;
     height: 32px;
 }
+
 .goog-te-gadget {
     font-size: 0.95em !important;
     color: #6366f1 !important;
     padding: 0 !important;
 }
+
 .goog-te-combo {
     border-radius: 8px !important;
     border: 2px solid #6366f1 !important;
@@ -43,10 +76,16 @@
     box-shadow: 0 1px 4px 0 rgba(44, 62, 80, 0.13) !important;
     cursor: pointer !important;
 }
-.goog-te-banner-frame.skiptranslate, .goog-te-balloon-frame.skiptranslate {
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-balloon-frame.skiptranslate {
     display: none !important;
 }
-body { top: 0px !important; }
+
+body {
+    top: 0px !important;
+}
+
 @import url("extra.css");
 
 body {
