@@ -48,22 +48,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             // Crear o actualizar el selector de amigos
             let friendSelector = document.getElementById('chat-friend-selector');
-            if (!friendSelector) {
-                friendSelector = document.createElement('select');
-                friendSelector.id = 'chat-friend-selector';
-                friendSelector.style.marginBottom = '8px';
-                chatContainer.insertBefore(friendSelector, chatContainer.firstChild);
-            }
-            friendSelector.innerHTML = friends.map(f => {
-                const u = getUserByEmail(f);
-                return `<option value="${f}">${u && u.name ? u.name : f}</option>`;
-            }).join('');
-            let selectedFriend = friendSelector.value;
-            // Actualizar chat al cambiar de amigo
-            friendSelector.onchange = function () {
-                selectedFriend = this.value;
+            if (friendSelector) {
+                friendSelector.style.display = 'inline-block';
+                friendSelector.innerHTML = friends.map(f => {
+                    const u = getUserByEmail(f);
+                    return `<option value="${f}">${u && u.name ? u.name : f}</option>`;
+                }).join('');
+                let selectedFriend = friendSelector.value;
+                friendSelector.onchange = function () {
+                    selectedFriend = this.value;
+                    updateChatForFriend(selectedFriend);
+                };
                 updateChatForFriend(selectedFriend);
-            };
+            }
             function updateChatForFriend(friendEmail) {
                 chatNick.textContent = getUserByEmail(friendEmail)?.name || friendEmail;
                 const chatKey = getChatKey(user.email, friendEmail);
