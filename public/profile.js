@@ -377,24 +377,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // --- Chat entre amigos ---
-    // Solo mostrar si es perfil ajeno y son amigos
+    // --- Chat entre usuarios: visible siempre en perfil ajeno, solo activo si son amigos ---
     const chatContainer = document.getElementById('chat-container');
     const chatMessages = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
     const chatNick = document.getElementById('chat-nick');
-    if (!isOwnProfile && getFriends(user.email).includes(profileEmail)) {
+    if (!isOwnProfile) {
         chatContainer.style.display = 'block';
         const otherUser = getUserByEmail(profileEmail);
         chatNick.textContent = otherUser ? otherUser.name || profileEmail : profileEmail;
-
+        const areFriends = getFriends(user.email).includes(profileEmail);
         // Clave única para el chat entre ambos usuarios (ordenada)
         function getChatKey(a, b) {
             return 'storyup_chat_' + [a, b].sort().join('_');
         }
         const chatKey = getChatKey(user.email, profileEmail);
-
         function renderChat() {
             const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
             chatMessages.innerHTML = msgs.map(m => {
@@ -408,89 +406,90 @@ document.addEventListener('DOMContentLoaded', function () {
             }).join('');
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
-        // Enviar mensaje texto
-        chatForm.onsubmit = function (e) {
-            e.preventDefault();
-            const text = chatInput.value.trim();
-            if (!text) return;
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            const now = new Date();
-            msgs.push({ from: user.email, text, type: 'text', time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-            localStorage.setItem(chatKey, JSON.stringify(msgs));
-            chatInput.value = '';
-            renderChat();
-        };
-
-        // Emoji panel
-        const emojiBtn = document.getElementById('chat-emoji-btn');
-        const emojiPanel = document.getElementById('chat-emoji-panel');
-        const emojis = ['😀', '😁', '😂', '🤣', '😅', '😊', '😍', '😘', '😎', '😜', '🤩', '😢', '😭', '😡', '👍', '🙏', '👏', '💪', '🎉', '🔥', '💯', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🤎', '🖤', '⭐', '🌟', '✨', '⚡', '☀️', '🌈', '🍀', '🍕', '🍔', '🍟', '🍦', '🍩', '🍫', '🍿', '🎂', '🍰', '🥤', '☕', '🍺', '🏆', '⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🎮', '🎲', '🎸', '🎤', '🎧', '🎬', '🎨', '🎵', '🎶', '🕹️', '🚗', '✈️', '🚀', '🏠', '📱', '💻', '🖥️', '📝', '📚', '📖', '🔒', '🔑', '💡', '🔔', '🎁', '📦', '💎', '🔮', '🧸', '👑', '🦄', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐔', '🐧', '🐦', '🐤', '🐣', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄'];
-        emojiBtn.onclick = function (e) {
-            e.preventDefault();
-            emojiPanel.innerHTML = emojis.map(em => `<span style='font-size:1.3em;cursor:pointer;padding:2px 4px;'>${em}</span>`).join('');
-            emojiPanel.style.display = emojiPanel.style.display === 'block' ? 'none' : 'block';
-            const rect = emojiBtn.getBoundingClientRect();
-            emojiPanel.style.left = rect.left + 'px';
-            emojiPanel.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-        };
-        emojiPanel.onclick = function (e) {
-            if (e.target.tagName === 'SPAN') {
-                chatInput.value += e.target.textContent;
-                chatInput.focus();
-            }
-        };
-        document.addEventListener('click', function (e) {
-            if (!emojiPanel.contains(e.target) && e.target !== emojiBtn) {
-                emojiPanel.style.display = 'none';
-            }
-        });
-
-        // Imagen
-        const imageBtn = document.getElementById('chat-image-btn');
-        const imageInput = document.getElementById('chat-image-input');
-        imageBtn.onclick = function (e) {
-            e.preventDefault();
-            imageInput.click();
-        };
-        imageInput.onchange = function (e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function (evt) {
+        // Si no son amigos, deshabilitar input y mostrar aviso
+        if (!areFriends) {
+            chatForm.querySelectorAll('input,button').forEach(el => { el.disabled = true; });
+            chatInput.placeholder = 'Debes ser amigo para chatear';
+            chatMessages.innerHTML = '<div style="color:#aaa;text-align:center;margin-top:2em;">Solo los amigos pueden enviarse mensajes.</div>';
+        } else {
+            // Enviar mensaje texto
+            chatForm.onsubmit = function (e) {
+                e.preventDefault();
+                const text = chatInput.value.trim();
+                if (!text) return;
                 const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
                 const now = new Date();
-                msgs.push({ from: user.email, type: 'img', data: evt.target.result, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+                msgs.push({ from: user.email, text, type: 'text', time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
                 localStorage.setItem(chatKey, JSON.stringify(msgs));
+                chatInput.value = '';
                 renderChat();
             };
-            reader.readAsDataURL(file);
-            imageInput.value = '';
-        };
-
-        // Video YouTube
-        const videoBtn = document.getElementById('chat-video-btn');
-        videoBtn.onclick = function (e) {
-            e.preventDefault();
-            const url = prompt('Pega la URL del video de YouTube:');
-            if (!url) return;
-            const match = url.match(/[?&]v=([\w-]{11})|youtu\.be\/([\w-]{11})/);
-            const id = match ? (match[1] || match[2]) : null;
-            if (id) {
-                const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-                const now = new Date();
-                msgs.push({ from: user.email, type: 'video', data: id, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-                localStorage.setItem(chatKey, JSON.stringify(msgs));
-                renderChat();
-            } else {
-                alert('URL de YouTube no válida');
-            }
-        };
-
+            // Emoji panel
+            const emojiBtn = document.getElementById('chat-emoji-btn');
+            const emojiPanel = document.getElementById('chat-emoji-panel');
+            const emojis = ['😀', '😁', '😂', '🤣', '😅', '😊', '😍', '😘', '😎', '😜', '🤩', '😢', '😭', '😡', '👍', '🙏', '👏', '💪', '🎉', '🔥', '💯', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🤎', '🖤', '⭐', '🌟', '✨', '⚡', '☀️', '🌈', '🍀', '🍕', '🍔', '🍟', '🍦', '🍩', '🍫', '🍿', '🎂', '🍰', '🥤', '☕', '🍺', '🏆', '⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🎮', '🎲', '🎸', '🎤', '🎧', '🎬', '🎨', '🎵', '🎶', '🕹️', '🚗', '✈️', '🚀', '🏠', '📱', '💻', '🖥️', '📝', '📚', '📖', '🔒', '🔑', '💡', '🔔', '🎁', '📦', '💎', '🔮', '🧸', '👑', '🦄', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐔', '🐧', '🐦', '🐤', '🐣', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄'];
+            emojiBtn.onclick = function (e) {
+                e.preventDefault();
+                emojiPanel.innerHTML = emojis.map(em => `<span style='font-size:1.3em;cursor:pointer;padding:2px 4px;'>${em}</span>`).join('');
+                emojiPanel.style.display = emojiPanel.style.display === 'block' ? 'none' : 'block';
+                const rect = emojiBtn.getBoundingClientRect();
+                emojiPanel.style.left = rect.left + 'px';
+                emojiPanel.style.top = (rect.bottom + window.scrollY + 6) + 'px';
+            };
+            emojiPanel.onclick = function (e) {
+                if (e.target.tagName === 'SPAN') {
+                    chatInput.value += e.target.textContent;
+                    chatInput.focus();
+                }
+            };
+            document.addEventListener('click', function (e) {
+                if (!emojiPanel.contains(e.target) && e.target !== emojiBtn) {
+                    emojiPanel.style.display = 'none';
+                }
+            });
+            // Imagen
+            const imageBtn = document.getElementById('chat-image-btn');
+            const imageInput = document.getElementById('chat-image-input');
+            imageBtn.onclick = function (e) {
+                e.preventDefault();
+                imageInput.click();
+            };
+            imageInput.onchange = function (e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function (evt) {
+                    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+                    const now = new Date();
+                    msgs.push({ from: user.email, type: 'img', data: evt.target.result, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+                    localStorage.setItem(chatKey, JSON.stringify(msgs));
+                    renderChat();
+                };
+                reader.readAsDataURL(file);
+                imageInput.value = '';
+            };
+            // Video YouTube
+            const videoBtn = document.getElementById('chat-video-btn');
+            videoBtn.onclick = function (e) {
+                e.preventDefault();
+                const url = prompt('Pega la URL del video de YouTube:');
+                if (!url) return;
+                const match = url.match(/[?&]v=([\w-]{11})|youtu\.be\/([\w-]{11})/);
+                const id = match ? (match[1] || match[2]) : null;
+                if (id) {
+                    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+                    const now = new Date();
+                    msgs.push({ from: user.email, type: 'video', data: id, time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+                    localStorage.setItem(chatKey, JSON.stringify(msgs));
+                    renderChat();
+                } else {
+                    alert('URL de YouTube no válida');
+                }
+            };
+        }
         // Recarga automática cada 2 segundos (simula tiempo real)
         let chatInterval = setInterval(renderChat, 2000);
         renderChat();
-
         // Limpiar intervalo al salir
         window.addEventListener('beforeunload', () => clearInterval(chatInterval));
     }
