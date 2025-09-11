@@ -31,5 +31,9 @@
     "footer": {
         "created": "Creado por Pipo · StoryUp © 2025",
         "modaccess": "Acceso para moderadores"
+    },
+    "modaccess": {
+        "desc": "Si eres Director/Docente, accede como moderador:",
+        "link": "Acceso para moderadores"
     }
 }

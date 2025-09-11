@@ -31,5 +31,9 @@
     "footer": {
         "created": "Erstellt von Pipo · StoryUp © 2025",
         "modaccess": "Moderatorenzugang"
+    },
+    "modaccess": {
+        "desc": "Wenn Sie Schulleiter/Lehrer sind, melden Sie sich als Moderator an:",
+        "link": "Moderatorenzugang"
     }
 }
