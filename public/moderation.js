@@ -21,14 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('storyup_stories', JSON.stringify(stories));
     }
 
+    function getFriends(email) {
+        return JSON.parse(localStorage.getItem('storyup_friends_' + email) || '[]');
+    }
+
     function renderStories() {
         const stories = getAllStories();
-        if (stories.length === 0) {
-            storiesDiv.innerHTML = '<p>No hay historias para moderar.</p>';
+        const friends = getFriends(user.email);
+        // Solo historias de amigos
+        const friendStories = stories.filter(story => friends.includes(story.author));
+        if (friendStories.length === 0) {
+            storiesDiv.innerHTML = '<p>No hay historias de tus amigos para moderar.</p>';
             return;
         }
-        storiesDiv.innerHTML = `<ul style='padding-left:0;list-style:none;'>${stories.map((story, idx) => {
-            return `<li style='margin-bottom:10px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${idx+1}.</span> <a href='#' class='mod-story-link' data-idx='${idx}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${story.title}</a><div class='mod-story-detail' style='display:none;'></div></li>`;
+        storiesDiv.innerHTML = `<ul style='padding-left:0;list-style:none;'>${friendStories.map((story, idx) => {
+            return `<li style='margin-bottom:10px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${idx + 1}.</span> <a href='#' class='mod-story-link' data-idx='${idx}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${story.title}</a><div class='mod-story-detail' style='display:none;'></div></li>`;
         }).join('')}</ul>`;
 
         document.querySelectorAll('.mod-story-link').forEach(link => {
@@ -36,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 const idx = parseInt(this.getAttribute('data-idx'));
                 const stories = getAllStories();
-                const story = stories[idx];
+                const friends = getFriends(user.email);
+                const friendStories = stories.filter(story => friends.includes(story.author));
+                const story = friendStories[idx];
                 const detailDiv = this.nextElementSibling;
                 if (detailDiv.style.display === 'block') {
                     detailDiv.style.display = 'none';
