@@ -1,3 +1,15 @@
+/* Forzar color y estilo del enlace 'Acceso para moderadores' en portada */
+#header-modaccess {
+    color: #f43f5e !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 10px;
+    display: inline-block;
+}
 /* Forzar color del enlace 'vista pública' en la portada */
 a[href="explore.html"]#public-link,
 #public-read a {
