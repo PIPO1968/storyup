@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         return users.find(u => u.email === email);
     }
-    function saveAllStories(stories) {
-        localStorage.setItem('storyup_stories', JSON.stringify(stories));
-    }
 
     function renderFeed() {
         const stories = getAllStories();
@@ -22,53 +19,50 @@ document.addEventListener('DOMContentLoaded', function () {
             feed.innerHTML = '<p>No hay historias públicas aún.</p>';
             return;
         }
-        feed.innerHTML = stories.map(story => {
-            const author = getUserByEmail(story.author);
-            let authorName = story.anonymous ? 'Anónimo' : (author ? author.name : 'Anónimo');
-            let authorHtml = authorName;
-            if (!story.anonymous && author) {
-                authorHtml = `<a href="profile.html?user=${encodeURIComponent(author.email)}" style="color:#a5b4fc;text-decoration:underline;">${authorName}</a>`;
-            }
-            // Mostrar idioma y tipo legibles
-            const langMap = {
-                es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
-            };
-            const typeMap = { real: 'Real', ficcion: 'Ficción', diario: 'Diario', confesion: 'Confesión' };
-            const idioma = langMap[story.language] || story.language;
-            const tipo = typeMap[story.type] || story.type;
-            return `
-                <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-bottom:1em;border-radius:10px;background:#232526;">
-                    <h3 style="color:#a5b4fc;">${story.title}</h3>
-                    <p>${story.text}</p>
-                    <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
-                    <div style="font-size:0.95em;color:#aaa;">Autor: ${authorHtml}</div>
-                    <div style="margin-top:8px;">
-                        <button class="like-btn" data-id="${story.id}" style="background:#6366f1;color:#fff;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;" ${user ? '' : 'disabled'}>
-                            👍 Me gusta (<span class="like-count">${story.likes || 0}</span>)
-                        </button>
-                    </div>
-                </div>
-            `;
-        }).join('');
-        // Añadir listeners a los botones de like
-        if (user) {
-            document.querySelectorAll('.like-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const id = this.getAttribute('data-id');
-                    let stories = getAllStories();
-                    const idx = stories.findIndex(s => s.id === id);
-                    if (idx !== -1) {
-                        let liked = JSON.parse(localStorage.getItem('storyup_likes_' + user.email) || '[]');
-                        if (liked.includes(id)) return; // Ya dio like
-                        stories[idx].likes = (stories[idx].likes || 0) + 1;
-                        saveAllStories(stories);
-                        liked.push(id);
-                        localStorage.setItem('storyup_likes_' + user.email, JSON.stringify(liked));
-                        renderFeed();
-                    }
-                });
+        // Mostrar solo las 10 más recientes
+        const lastStories = stories.slice(0, 10);
+        feed.innerHTML = `<ul id="story-list" style="padding-left:0;list-style:none;">${lastStories.map((story, idx) => {
+            return `<li style="margin-bottom:10px;"><a href="#" class="story-link" data-idx="${idx}" style="color:#6366f1;text-decoration:underline;font-weight:bold;">${story.title}</a><div class="story-detail" style="display:none;"></div></li>`;
+        }).join('')}</ul>`;
+
+        // Añadir listeners a los enlaces
+        document.querySelectorAll('.story-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const idx = parseInt(this.getAttribute('data-idx'));
+                const story = lastStories[idx];
+                const author = getUserByEmail(story.author);
+                let authorName = story.anonymous ? 'Anónimo' : (author ? author.name : 'Anónimo');
+                let authorHtml = authorName;
+                if (!story.anonymous && author) {
+                    authorHtml = `<a href="profile.html?user=${encodeURIComponent(author.email)}" style="color:#a5b4fc;text-decoration:underline;">${authorName}</a>`;
+                }
+                const langMap = {
+                    es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
+                };
+                const typeMap = { real: 'Real', ficcion: 'Ficción', diario: 'Diario', confesion: 'Confesión' };
+                const idioma = langMap[story.language] || story.language;
+                const tipo = typeMap[story.type] || story.type;
+                // Mostrar detalle debajo del link
+                const detailDiv = this.nextElementSibling;
+                if (detailDiv.style.display === 'block') {
+                    detailDiv.style.display = 'none';
+                    detailDiv.innerHTML = '';
+                } else {
+                    // Cerrar otros detalles abiertos
+                    document.querySelectorAll('.story-detail').forEach(div => { div.style.display = 'none'; div.innerHTML = ''; });
+                    detailDiv.innerHTML = `
+                        <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;">
+                            <h3 style="color:#a5b4fc;">${story.title}</h3>
+                            <p>${story.text}</p>
+                            <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
+                            <div style="font-size:0.95em;color:#aaa;">Autor: ${authorHtml}</div>
+                        </div>
+                    `;
+                    detailDiv.style.display = 'block';
+                }
             });
-        }
+        });
     }
 
     renderFeed();
