@@ -1,3 +1,9 @@
+/* Forzar color blanco y negrita en los labels de correo y contraseña en login y moderación */
+label[for="email"], label[for="password"] {
+    color: #fff !important;
+    font-weight: bold !important;
+    text-shadow: 0 1px 4px #23252699;
+}
 /* Forzar color y estilo del enlace 'Acceso para moderadores' en portada */
 #header-modaccess {
     color: #f43f5e !important;
