@@ -397,11 +397,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Cargar si existen
         const bannedKey = 'mod_banned_words_' + user.email;
         bannedWordsInput.value = (localStorage.getItem(bannedKey) || '').replace(/,/g, '\n');
-        saveBannedBtn.onclick = function() {
+        saveBannedBtn.onclick = function () {
             const words = bannedWordsInput.value.split(/,|\n/).map(w => w.trim().toLowerCase()).filter(Boolean);
             localStorage.setItem(bannedKey, words.join(','));
             bannedMsg.textContent = 'Palabras prohibidas guardadas';
-            setTimeout(()=>bannedMsg.textContent='', 2000);
+            setTimeout(() => bannedMsg.textContent = '', 2000);
         };
         // ...gestión de moderadores (igual que antes)...
         const searchInput = document.getElementById('search-user');
@@ -456,18 +456,18 @@ document.addEventListener('DOMContentLoaded', function () {
             if (regex.test(cleanText)) changed = true;
             cleanText = cleanText.replace(regex, '');
         });
-        return {cleanText, changed};
+        return { cleanText, changed };
     }
 
     // Interceptar envío de historia
     if (storyForm) {
-        storyForm.addEventListener('submit', function(e) {
+        storyForm.addEventListener('submit', function (e) {
             const author = user.email;
             const modEmail = getModeratorFor(author);
             if (modEmail) {
-                const banned = (localStorage.getItem('mod_banned_words_' + modEmail) || '').split(',').map(w=>w.trim().toLowerCase()).filter(Boolean);
+                const banned = (localStorage.getItem('mod_banned_words_' + modEmail) || '').split(',').map(w => w.trim().toLowerCase()).filter(Boolean);
                 const textArea = document.getElementById('story-text');
-                const {cleanText, changed} = cleanBannedWords(textArea.value, banned);
+                const { cleanText, changed } = cleanBannedWords(textArea.value, banned);
                 if (changed) {
                     e.preventDefault();
                     textArea.value = cleanText;
