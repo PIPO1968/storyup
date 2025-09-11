@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         // Mostrar solo las 10 más recientes
-            const lastStories = stories.slice(0, 10);
-            feed.innerHTML = `<ul id="story-list" style="padding-left:0;list-style:none;">${lastStories.map((story, idx) => {
-                const num = lastStories.length - idx;
-                return `<li style="margin-bottom:10px;display:flex;align-items:center;"><span style="min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;">${num}.</span> <a href="#" class="story-link" data-idx="${idx}" style="color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;">${story.title}</a><div class="story-detail" style="display:none;"></div></li>`;
-            }).join('')}</ul>`;
+        const lastStories = stories.slice(0, 10);
+        feed.innerHTML = `<ul id="story-list" style="padding-left:0;list-style:none;">${lastStories.map((story, idx) => {
+            const num = idx + 1;
+            return `<li style="margin-bottom:10px;display:flex;align-items:center;"><span style="min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;">${num}.</span> <a href="#" class="story-link" data-idx="${idx}" style="color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;">${story.title}</a><div class="story-detail" style="display:none;"></div></li>`;
+        }).join('')}</ul>`;
 
         // Añadir listeners a los enlaces
         document.querySelectorAll('.story-link').forEach(link => {
