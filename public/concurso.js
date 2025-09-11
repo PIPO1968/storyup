@@ -78,13 +78,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 let storiesHtml = '';
                 if (stories.length > 0 && !c.ganador) {
                     storiesHtml = '<ul style="padding-left:0;list-style:none;">' + stories.map((s, i) => {
-                        return `<li style='margin-bottom:8px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${i+1}.</span> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${i}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${s.titulo}</a><button class='btn-ganador' data-cid='${c.id}' data-idx='${i}' style='margin-left:1em;background:#fbbf24;color:#232526;border:none;padding:4px 12px;border-radius:6px;cursor:pointer;'>🏆 Elegir ganador</button></li>`;
+                        return `<li style='margin-bottom:8px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${i + 1}.</span> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${i}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${s.titulo}</a><button class='btn-ganador' data-cid='${c.id}' data-idx='${i}' style='margin-left:1em;background:#fbbf24;color:#232526;border:none;padding:4px 12px;border-radius:6px;cursor:pointer;'>🏆 Elegir ganador</button></li>`;
                     }).join('') + '</ul>';
                 } else if (c.ganador) {
                     const s = stories.find(st => st.id === c.ganador);
-                    storiesHtml = s ? `<div style='margin:1em 0;'><b>Ganador:</b> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${stories.findIndex(st=>st.id===c.ganador)}' style='color:#fbbf24;text-decoration:underline;font-weight:bold;'>${s.titulo}</a></div>` : '<div style="color:#aaa;">Sin historias ganadoras</div>';
+                    storiesHtml = s ? `<div style='margin:1em 0;'><b>Ganador:</b> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${stories.findIndex(st => st.id === c.ganador)}' style='color:#fbbf24;text-decoration:underline;font-weight:bold;'>${s.titulo}</a></div>` : '<div style="color:#aaa;">Sin historias ganadoras</div>';
                 }
-                return `<li style='margin-bottom:18px;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${num}.</span> <b>${c.titulo}</b> <div style='font-size:0.95em;color:#aaa;'>${c.explicacion}</div><div style='font-size:0.95em;color:#aaa;'>Hasta: ${c.fechaTope.replace('T',' ')} | Fin: ${c.fechaFin.replace('T',' ')}</div>${storiesHtml}</li>`;
+                return `<li style='margin-bottom:18px;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${num}.</span> <b>${c.titulo}</b> <div style='font-size:0.95em;color:#aaa;'>${c.explicacion}</div><div style='font-size:0.95em;color:#aaa;'>Hasta: ${c.fechaTope.replace('T', ' ')} | Fin: ${c.fechaFin.replace('T', ' ')}</div>${storiesHtml}</li>`;
             }).join('') + '</ul>';
         }
         document.getElementById('concursos-list').innerHTML = html;
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
         document.querySelectorAll('.concurso-story-link').forEach(link => {
-            link.onclick = function(e) {
+            link.onclick = function (e) {
                 e.preventDefault();
                 const cid = this.getAttribute('data-cid');
                 const idx = parseInt(this.getAttribute('data-idx'));
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let storiesHtml = '';
                 if (stories.length > 0) {
                     storiesHtml = '<ul style="padding-left:0;list-style:none;">' + stories.map((s, i) => {
-                        return `<li style='margin-bottom:8px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${i+1}.</span> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${i}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${s.titulo}</a></li>`;
+                        return `<li style='margin-bottom:8px;display:flex;align-items:center;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${i + 1}.</span> <a href='#' class='concurso-story-link' data-cid='${c.id}' data-idx='${i}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${s.titulo}</a></li>`;
                     }).join('') + '</ul>';
                 }
                 // Caja para crear historia solo si no ha pasado la fecha tope
@@ -144,13 +144,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         </form>
                     `;
                 }
-                return `<li style='margin-bottom:18px;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${num}.</span> <b>${c.titulo}</b> <div style='font-size:0.95em;color:#aaa;'>${c.explicacion}</div><div style='font-size:0.95em;color:#aaa;'>Hasta: ${c.fechaTope.replace('T',' ')} | Fin: ${c.fechaFin.replace('T',' ')}</div>${storiesHtml}${crearHtml}</li>`;
+                return `<li style='margin-bottom:18px;'><span style='min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;'>${num}.</span> <b>${c.titulo}</b> <div style='font-size:0.95em;color:#aaa;'>${c.explicacion}</div><div style='font-size:0.95em;color:#aaa;'>Hasta: ${c.fechaTope.replace('T', ' ')} | Fin: ${c.fechaFin.replace('T', ' ')}</div>${storiesHtml}${crearHtml}</li>`;
             }).join('') + '</ul>';
         }
         concursoUser.innerHTML = html;
         // Listener para crear historia
         document.querySelectorAll('.form-concurso-historia').forEach(form => {
-            form.onsubmit = function(e) {
+            form.onsubmit = function (e) {
                 e.preventDefault();
                 const cid = this.getAttribute('data-cid');
                 const titulo = this.querySelector('.concurso-historia-titulo').value.trim();
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
         document.querySelectorAll('.concurso-story-link').forEach(link => {
-            link.onclick = function(e) {
+            link.onclick = function (e) {
                 e.preventDefault();
                 const cid = this.getAttribute('data-cid');
                 const idx = parseInt(this.getAttribute('data-idx'));
