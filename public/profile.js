@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).join('');
             let selectedFriend = friendSelector.value;
             // Actualizar chat al cambiar de amigo
-            friendSelector.onchange = function() {
+            friendSelector.onchange = function () {
                 selectedFriend = this.value;
                 updateChatForFriend(selectedFriend);
             };

@@ -1,3 +1,17 @@
+@media (max-width: 800px) {
+    .contenido {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+    .contenido > div {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+    #chat-container {
+        margin: 2em 0 0 0 !important;
+    }
+}
 /* Google Translate widget pequeño y a la derecha en el navbar */
 .google-translate-navbar {
     display: flex;
