@@ -1,4 +1,4 @@
-messaging.requestPermission()
+// messaging.requestPermission() eliminado: ya no se usa Firebase
 // Ocultar splash screen al cargar la página
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
