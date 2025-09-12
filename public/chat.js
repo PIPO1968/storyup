@@ -50,9 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatMessages = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
-    const chatUserInput = document.getElementById('chat-user-input');
     const chatUserSelected = document.getElementById('chat-user-selected');
-    const chatUserError = document.getElementById('chat-user-error');
+    // Bandeja y buscador
+    const chatListUl = document.getElementById('chat-list-ul');
+    const chatSearchInput = document.getElementById('chat-search-input');
+    const chatSearchBtn = document.getElementById('chat-search-btn');
+    const chatSearchError = document.getElementById('chat-search-error');
     // Usuario logueado
     const logged = JSON.parse(localStorage.getItem('storyup_logged'));
     if (!logged) {
@@ -62,19 +65,24 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
     let userDest = '';
-    function getChatKey() {
-        if (!userDest) return null;
-        // Chat entre dos usuarios: ordena emails para que ambos vean la misma conversación
-        const emails = [logged.email, userDest].sort();
+    let userDestName = '';
+    function getChatKey(emailA, emailB) {
+        // Si no se pasan emails, usar el chat activo
+        const a = emailA || logged.email;
+        const b = emailB || userDest;
+        if (!a || !b) return null;
+        const emails = [a, b].sort();
         return 'chat_' + emails.join('_');
     }
     function renderChat() {
         if (!userDest) {
+            chatUserSelected.textContent = 'Selecciona un chat';
             chatMessages.innerHTML = '';
             return;
         }
         const chatKey = getChatKey();
         const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+        chatUserSelected.textContent = userDestName || userDest;
         chatMessages.innerHTML = msgs.map(m =>
             `<div class="${m.own === logged.email ? 'chat-msg-own' : 'chat-msg-other'}">${m.text}</div>`
         ).join('');
@@ -87,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Marcar como leído para el usuario logueado (receptor)
         if (msgs.length > 0) {
             const lastMsg = msgs[msgs.length - 1];
-            // Si el último mensaje NO es del usuario logueado, lo marca como leído
             if (lastMsg.own !== logged.email) {
                 const lastReadKey = 'perfil_last_read_' + logged.email + '_' + userDest;
                 localStorage.setItem(lastReadKey, String(lastMsg.date));
@@ -95,8 +102,94 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Refrescar el chat automáticamente cada 2 segundos si hay usuario destino
+    // Bandeja de chats: mostrar todos los usuarios con los que hay mensajes
+    function renderChatList() {
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const chats = [];
+        for (const u of users) {
+            if (u.email === logged.email) continue;
+            const chatKey = getChatKey(logged.email, u.email);
+            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+            if (msgs.length > 0) {
+                const lastMsg = msgs[msgs.length - 1];
+                chats.push({
+                    email: u.email,
+                    name: u.name || u.email,
+                    lastMsg: lastMsg.text,
+                    lastDate: lastMsg.date,
+                    unread: msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))))
+                });
+            }
+        }
+        // Ordenar por último mensaje descendente
+        chats.sort((a, b) => (b.lastDate || 0) - (a.lastDate || 0));
+        chatListUl.innerHTML = '';
+        for (const c of chats) {
+            const li = document.createElement('li');
+            li.style.cursor = 'pointer';
+            li.style.padding = '0.5em 0.7em';
+            li.style.borderBottom = '1px solid #e5e7eb';
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.innerHTML = `<span style="flex:1;font-weight:bold;color:#2563eb;">${c.name}</span>` +
+                (c.unread ? '<span style="width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;"></span>' : '') +
+                `<br><span style="font-size:0.97em;color:#555;font-weight:normal;">${c.lastMsg.slice(0, 32)}</span>`;
+            li.onclick = function () {
+                userDest = c.email;
+                userDestName = c.name;
+                renderChat();
+            };
+            chatListUl.appendChild(li);
+        }
+    }
+
+    // Buscar usuario y abrir chat
+    function buscarYSeleccionarUsuario() {
+        if (chatSearchError) chatSearchError.style.display = 'none';
+        const nick = chatSearchInput.value.trim();
+        if (!nick) return;
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const user = users.find(u => (u.name || u.email) === nick);
+        if (!user) {
+            if (chatSearchError) {
+                chatSearchError.textContent = 'Usuario no encontrado';
+                chatSearchError.style.display = 'block';
+            }
+            return;
+        }
+        if (user.email === logged.email) {
+            if (chatSearchError) {
+                chatSearchError.textContent = 'No puedes chatear contigo mismo';
+                chatSearchError.style.display = 'block';
+            }
+            return;
+        }
+        userDest = user.email;
+        userDestName = user.name || user.email;
+        chatSearchInput.value = '';
+        renderChat();
+        renderChatList();
+        setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
+    }
+    if (chatSearchBtn) {
+        chatSearchBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            buscarYSeleccionarUsuario();
+        });
+    }
+    if (chatSearchInput) {
+        chatSearchInput.addEventListener('keydown', function (e) {
+            if (chatSearchError) chatSearchError.style.display = 'none';
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                buscarYSeleccionarUsuario();
+            }
+        });
+    }
+
+    // Refrescar el chat y la lista automáticamente cada 2 segundos
     setInterval(() => {
+        renderChatList();
         if (userDest) renderChat();
     }, 2000);
     function seleccionarNick() {
@@ -170,5 +263,6 @@ document.addEventListener('DOMContentLoaded', function () {
         chatInput.value = '';
         renderChat();
     });
+    renderChatList();
     renderChat();
 });
