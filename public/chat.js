@@ -1,3 +1,12 @@
+// Clave de chat entre dos usuarios (ordenada)
+function getChatKey(emailA, emailB) {
+    if (!emailA || !emailB) {
+        emailA = logged.email;
+        emailB = userDest;
+    }
+    const emails = [emailA, emailB].sort();
+    return 'chat_' + emails.join('_');
+}
 // Obtener usuario logueado
 const logged = JSON.parse(localStorage.getItem('storyup_logged'));
 // --- Favoritos/contactos rápidos ---
