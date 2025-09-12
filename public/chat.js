@@ -1,5 +1,5 @@
 // Herramientas de formato para el chat
-window.insertTag = function(tag) {
+window.insertTag = function (tag) {
     const input = document.getElementById('chat-input');
     const start = input.selectionStart;
     const end = input.selectionEnd;
@@ -10,7 +10,7 @@ window.insertTag = function(tag) {
     input.focus();
     input.setSelectionRange(start + tag.length + 2, end + tag.length + 2);
 }
-window.insertColor = function(color) {
+window.insertColor = function (color) {
     const input = document.getElementById('chat-input');
     const start = input.selectionStart;
     const end = input.selectionEnd;
@@ -21,17 +21,17 @@ window.insertColor = function(color) {
     input.focus();
     input.setSelectionRange(start + 22 + color.length, end + 22 + color.length);
 }
-window.insertImage = function(e) {
+window.insertImage = function (e) {
     const input = document.getElementById('chat-input');
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = function(ev) {
+    reader.onload = function (ev) {
         input.value += ` <img src='${ev.target.result}' style='max-width:120px;max-height:120px;border-radius:8px;'>`;
     };
     reader.readAsDataURL(file);
 }
-window.insertYoutube = function() {
+window.insertYoutube = function () {
     const input = document.getElementById('chat-input');
     const url = prompt('Pega la URL de YouTube:');
     if (!url) return;
