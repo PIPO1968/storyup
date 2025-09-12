@@ -1,4 +1,9 @@
 // --- Favoritos/contactos rápidos ---
+const favsKey = () => 'storyup_favs_' + (getLoggedUser()?.email || '');
+const favsListDiv = document.getElementById('favs-list');
+const favInput = document.getElementById('fav-nick-input');
+const favAddBtn = document.getElementById('fav-add-btn');
+const favError = document.getElementById('fav-error');
 
 function renderFavs() {
     if (!favsListDiv) return;
@@ -23,7 +28,7 @@ function renderFavs() {
         span.style.color = '#2563eb';
         span.style.fontWeight = 'bold';
         span.onclick = function () {
-            selectChat(user || { email, name });
+            if (user) selectChat(user);
         };
         const del = document.createElement('button');
         del.textContent = '✖';
@@ -194,22 +199,7 @@ function buscarYSeleccionarUsuario() {
 window.addEventListener('DOMContentLoaded', () => {
     renderChatList();
 });
-const logged = JSON.parse(localStorage.getItem('storyup_logged'));
-// --- Favoritos/contactos rápidos ---
-const chatSearchBtn = document.getElementById('chat-search-btn');
-const chatSearchInput = document.getElementById('chat-search-input');
-const chatSearchError = document.getElementById('chat-search-error');
-const chatForm = document.getElementById('chat-form');
-const chatListUl = document.getElementById('chat-list-ul');
-const chatUserSelected = document.getElementById('chat-user-selected');
-// Elemento del área de mensajes del chat
-const chatMessages = document.getElementById('chat-messages');
-const chatInput = document.getElementById('chat-input');
-const favsKey = () => 'storyup_favs_' + (logged?.email || '');
-const favsListDiv = document.getElementById('favs-list');
-const favInput = document.getElementById('fav-nick-input');
-const favAddBtn = document.getElementById('fav-add-btn');
-const favError = document.getElementById('fav-error');
+
 
 function renderFavs() {
     if (!favsListDiv) return;
