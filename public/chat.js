@@ -113,7 +113,7 @@ function renderChatList() {
     const users = getUsers();
     const logged = getLoggedUser();
     chatList.innerHTML = '';
-        users.forEach(u => {
+    users.forEach(u => {
         const li = document.createElement('li');
         li.className = 'chat-list-item';
         li.textContent = u.name || u.email;
@@ -436,7 +436,7 @@ async function renderChatList() {
 }
 async function renderChat() {
     if (!userDest) {
-        chatUserSelected.textContent = 'Selecciona un chat';
+        chatUserSelected.textContent = '';
         chatMessages.innerHTML = '';
         return;
     }
