@@ -2,6 +2,78 @@
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Chat privado tipo WhatsApp ---
+    const chatBloque = document.getElementById('chat-bloque');
+    let contactoSeleccionado = null;
+    function renderChatUI(nick) {
+        chatBloque.innerHTML = `
+            <h2 style="color:#2563eb;font-size:1.2em;margin-bottom:1em;">Chat con <span id="chat-nick">${nick}</span></h2>
+            <div id="chat-mensajes" style="flex:1;width:100%;max-height:340px;overflow-y:auto;background:#fff;border-radius:8px;padding:10px 8px 10px 8px;margin-bottom:12px;border:1px solid #e5e7eb;"></div>
+            <form id="chat-form" style="display:flex;gap:8px;width:100%;align-items:center;">
+                <input id="chat-input" type="text" placeholder="Escribe un mensaje..." autocomplete="off" style="flex:1;height:32px;border-radius:7px;border:1px solid #b2dfdb;padding:2px 10px;font-size:1em;" required>
+                <button type="submit" style="height:32px;background:#2563eb;color:white;border:none;border-radius:7px;font-size:1em;font-weight:600;cursor:pointer;">Enviar</button>
+            </form>
+        `;
+    }
+    async function cargarMensajes(nick) {
+        const mensajesDiv = document.getElementById('chat-mensajes');
+        mensajesDiv.innerHTML = '<div style="color:#888;text-align:center;">Cargando mensajes...</div>';
+        try {
+            const res = await fetch(`/api/messages?from=${encodeURIComponent(user.name)}&to=${encodeURIComponent(nick)}`);
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+                mensajesDiv.innerHTML = data.map(m => `
+                    <div style="margin-bottom:8px;display:flex;justify-content:${m.sender === user.name ? 'flex-end' : 'flex-start'};">
+                        <div style="background:${m.sender === user.name ? '#2563eb' : '#e0e7ff'};color:${m.sender === user.name ? 'white' : '#232526'};padding:7px 13px;border-radius:14px;max-width:70%;word-break:break-word;">
+                            ${m.content}
+                        </div>
+                    </div>
+                `).join('');
+                mensajesDiv.scrollTop = mensajesDiv.scrollHeight;
+            } else {
+                mensajesDiv.innerHTML = '<div style="color:#888;text-align:center;">No hay mensajes aún.</div>';
+            }
+        } catch (e) {
+            mensajesDiv.innerHTML = '<div style="color:#e11d48;text-align:center;">Error al cargar mensajes</div>';
+        }
+    }
+    async function enviarMensaje(nick, texto) {
+        try {
+            const res = await fetch('/api/messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ from: user.name, to: nick, content: texto })
+            });
+            if (res.ok) {
+                await cargarMensajes(nick);
+            } else {
+                alert('No se pudo enviar el mensaje.');
+            }
+        } catch (e) {
+            alert('Error de red al enviar mensaje.');
+        }
+    }
+    contactosList.addEventListener('click', function (e) {
+        const li = e.target.closest('.contacto-item');
+        if (!li) return;
+        contactoSeleccionado = li.dataset.nick;
+        renderChatUI(contactoSeleccionado);
+        cargarMensajes(contactoSeleccionado);
+        // Listener para enviar mensaje
+        setTimeout(() => {
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            if (chatForm && chatInput) {
+                chatForm.onsubmit = function (ev) {
+                    ev.preventDefault();
+                    const texto = chatInput.value.trim();
+                    if (!texto) return;
+                    enviarMensaje(contactoSeleccionado, texto);
+                    chatInput.value = '';
+                };
+            }
+        }, 100);
+    });
     // --- Contactos por nick usando API backend ---
     const contactosList = document.getElementById('lista-contactos');
     const formAgregarContacto = document.getElementById('form-agregar-contacto');
