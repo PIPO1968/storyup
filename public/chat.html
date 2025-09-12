@@ -118,44 +118,40 @@
         </ul>
     </nav>
     <div class="chat-container">
-        <h1>Chat privado</h1>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1em;">
+        <h1 style="margin-bottom:0.7em;">Chat privado</h1>
+        <div class="chat-topbar" style="display:flex;align-items:center;gap:10px;margin-bottom:1em;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
             <div id="chat-user-selected"
                 style="flex:1;background:#f3f4f6;border-radius:8px;padding:0.7em 1em;font-weight:bold;min-height:38px;max-width:70%;overflow-x:auto;">
                 Selecciona un usuario</div>
             <input type="text" id="chat-user-input" placeholder="Nick destino"
                 style="width:110px;padding:0.5em;border-radius:6px;border:1px solid #bbb;" maxlength="32"
                 autocomplete="off" />
-            <button type="button" id="select-user-btn"
-                style="margin-left:4px;padding:2px 10px;font-size:0.95em;border-radius:6px;background:#38bdf8;color:#fff;border:none;cursor:pointer;">Seleccionar</button>
         </div>
-        <div id="chat-user-error"
-            style="color:#e11d48;font-size:0.98em;margin:-8px 0 8px 0;min-height:18px;text-align:right;"></div>
-    </div>
-    <div class="chat-messages" id="chat-messages"></div>
-    <form id="chat-form" autocomplete="off" style="display:flex;align-items:center;gap:8px;">
-        <div id="chat-toolbar" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <button type="button" class="chat-tool-btn" title="Negrita"
-                style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
-                onclick="insertTag('b')"><b>B</b></button>
-            <button type="button" class="chat-tool-btn" title="Subrayado"
-                style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
-                onclick="insertTag('u')"><u>U</u></button>
-            <input type="color" id="color-picker" title="Color de texto"
-                style="width:16px;height:16px;padding:0;border:none;background:none;"
-                onchange="insertColor(this.value)">
-            <label for="img-upload" title="Insertar imagen" style="margin:0;cursor:pointer;">
-                <span style="font-size:0.9em;">🖼️</span>
-                <input type="file" id="img-upload" accept="image/*" style="display:none;" onchange="insertImage(event)">
-            </label>
-            <button type="button" class="chat-tool-btn" title="Insertar video de YouTube"
-                style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
-                onclick="insertYoutube()">▶️</button>
-        </div>
-        <input type="text" id="chat-input" class="chat-input" placeholder="Escribe un mensaje..." required
-            style="width:96%;font-size:1.13em;padding:0.7em 1em;" />
-        <button type="submit" class="chat-send">Enviar</button>
-    </form>
+        <div class="chat-messages" id="chat-messages" style="max-width:520px;width:100%;margin-left:auto;margin-right:auto;"></div>
+        <form id="chat-form" autocomplete="off" style="display:flex;align-items:center;gap:8px;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
+            <div id="chat-toolbar" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <button type="button" class="chat-tool-btn" title="Negrita"
+                    style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                    onclick="insertTag('b')"><b>B</b></button>
+                <button type="button" class="chat-tool-btn" title="Subrayado"
+                    style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                    onclick="insertTag('u')"><u>U</u></button>
+                <input type="color" id="color-picker" title="Color de texto"
+                    style="width:16px;height:16px;padding:0;border:none;background:none;"
+                    onchange="insertColor(this.value)">
+                <label for="img-upload" title="Insertar imagen" style="margin:0;cursor:pointer;">
+                    <span style="font-size:0.9em;">🖼️</span>
+                    <input type="file" id="img-upload" accept="image/*" style="display:none;"
+                        onchange="insertImage(event)">
+                </label>
+                <button type="button" class="chat-tool-btn" title="Insertar video de YouTube"
+                    style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                    onclick="insertYoutube()">▶️</button>
+            </div>
+            <input type="text" id="chat-input" class="chat-input" placeholder="Escribe un mensaje..." required
+                style="width:100%;font-size:1.13em;padding:0.7em 1em;" />
+            <button type="submit" class="chat-send">Enviar</button>
+        </form>
     </div>
     <script src="chat.js"></script>
 </body>
