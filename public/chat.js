@@ -84,40 +84,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    const selectBtn = document.getElementById('select-user-btn');
-    selectBtn.addEventListener('click', function () {
+    document.getElementById('select-user-btn').addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-        selectBtn.className = 'chat-select-btn';
-        selectBtn.textContent = 'Seleccionar';
+        const errorDiv = document.getElementById('chat-user-error');
         if (!nick) {
-            selectBtn.textContent = 'Debes escribir un nick';
-            selectBtn.className = 'chat-select-btn select-user-btn-error';
-            userDest = '';
-            renderChat();
+            errorDiv.textContent = '';
             return;
         }
-        // Buscar email por nick (coincidencia exacta)
+        // Buscar email por nick
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
-            selectBtn.textContent = 'Nick no válido';
-            selectBtn.className = 'chat-select-btn select-user-btn-error';
+            chatUserSelected.textContent = 'Selecciona un usuario';
             userDest = '';
             renderChat();
+            errorDiv.textContent = 'Usuario no encontrado';
             return;
         }
         userDest = user.email;
-        selectBtn.textContent = 'Seleccionar';
-        selectBtn.className = 'chat-select-btn';
         chatUserSelected.textContent = user.name || user.email;
-        chatUserSelected.classList.remove('chat-user-error');
         renderChat();
+        errorDiv.textContent = '';
     });
 
-    // Restaurar botón al escribir de nuevo (solo un listener)
     chatUserInput.addEventListener('input', function () {
-        selectBtn.textContent = 'Seleccionar';
-        selectBtn.className = 'chat-select-btn';
+        document.getElementById('chat-user-error').textContent = '';
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();
