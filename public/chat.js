@@ -85,31 +85,43 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+    function seleccionarNick() {
+        if (chatUserError) chatUserError.style.display = 'none';
+        const nick = chatUserInput.value.trim();
+        if (!nick) return;
+        // Buscar email por nick
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const user = users.find(u => (u.name || u.email) === nick);
+        if (!user) {
+            chatUserSelected.textContent = 'Usuario no encontrado';
+            userDest = '';
+            renderChat();
+            if (chatUserError) {
+                chatUserError.textContent = 'El usuario no existe';
+                chatUserError.style.display = 'block';
+            }
+            return;
+        }
+        userDest = user.email;
+        chatUserSelected.textContent = user.name || user.email;
+        renderChat();
+        if (chatUserError) chatUserError.style.display = 'none';
+    }
     chatUserInput.addEventListener('keydown', function (e) {
         if (chatUserError) chatUserError.style.display = 'none';
         if (e.key === 'Enter') {
             e.preventDefault();
-            const nick = chatUserInput.value.trim();
-            if (!nick) return;
-            // Buscar email por nick
-            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-            const user = users.find(u => (u.name || u.email) === nick);
-            if (!user) {
-                chatUserSelected.textContent = 'Usuario no encontrado';
-                userDest = '';
-                renderChat();
-                if (chatUserError) {
-                    chatUserError.textContent = 'El usuario no existe';
-                    chatUserError.style.display = 'block';
-                }
-                return;
-            }
-            userDest = user.email;
-            chatUserSelected.textContent = user.name || user.email;
-            renderChat();
-            if (chatUserError) chatUserError.style.display = 'none';
+            seleccionarNick();
         }
     });
+    // Link seleccionar
+    const chatUserSelectLink = document.getElementById('chat-user-select-link');
+    if (chatUserSelectLink) {
+        chatUserSelectLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            seleccionarNick();
+        });
+    }
     // Ocultar error al escribir
     chatUserInput.addEventListener('input', function () {
         if (chatUserError) chatUserError.style.display = 'none';
