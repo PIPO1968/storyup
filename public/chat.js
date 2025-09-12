@@ -17,6 +17,7 @@ const logged = JSON.parse(localStorage.getItem('storyup_logged'));
 const chatSearchBtn = document.getElementById('chat-search-btn');
 const chatSearchInput = document.getElementById('chat-search-input');
 const chatSearchError = document.getElementById('chat-search-error');
+const chatForm = document.getElementById('chat-form');
 const favsKey = () => 'storyup_favs_' + (logged?.email || '');
 const favsListDiv = document.getElementById('favs-list');
 const favInput = document.getElementById('fav-nick-input');
@@ -118,138 +119,138 @@ window.insertTag = function (tag) {
     const selected = input.value.substring(start, end);
     const after = input.value.substring(end);
     input.value = before + `<${tag}>` + selected + `</${tag}>` + after;
-    function renderChatList() {
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-        // Leer lista de ocultos
-        const ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
-        // (eliminado: declaración duplicada de chats)
-        // Recoger todos los chats posibles (incluyendo anónimos)
-        const allChats = {};
-        // Mostrar todos los usuarios excepto el propio, aunque no haya mensajes previos
-        for (const u of users) {
-            if (u.email === logged.email) continue;
-            const chatKey = getChatKey(logged.email, u.email);
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            let lastMsg = msgs.length > 0 ? msgs[msgs.length - 1] : null;
-            let unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
-            if (ocultos.includes(u.email) && !unread) continue;
-            allChats[u.email] = {
-                email: u.email,
-                name: u.name || u.email,
-                lastMsg: lastMsg ? lastMsg.text : '',
-                lastDate: lastMsg ? lastMsg.date : 0,
-                unread,
-                anon: false
-            };
-        }
-        // Buscar chats con emails desconocidos (anónimos)
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key && key.startsWith('chat_')) {
-                const parts = key.split('_');
-                if (parts.length === 3) {
-                    const emailA = parts[1];
-                    const emailB = parts[2];
-                    let other = null;
-                    if (emailA === logged.email) other = emailB;
-                    else if (emailB === logged.email) other = emailA;
-                    if (other && !allChats[other]) {
-                        const msgs = JSON.parse(localStorage.getItem(key) || '[]');
-                        if (msgs.length > 0) {
-                            const lastMsg = msgs[msgs.length - 1];
-                            const unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + other) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + other))));
-                            if (ocultos.includes(other) && !unread) continue;
-                            allChats[other] = {
-                                email: other,
-                                name: 'Anónimo',
-                                lastMsg: lastMsg.text,
-                                lastDate: lastMsg.date,
-                                unread,
-                                anon: true
-                            };
-                        }
+};
+
+function renderChatList() {
+    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+    // Leer lista de ocultos
+    const ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
+    // (eliminado: declaración duplicada de chats)
+    // Recoger todos los chats posibles (incluyendo anónimos)
+    const allChats = {};
+    // Mostrar todos los usuarios excepto el propio, aunque no haya mensajes previos
+    for (const u of users) {
+        if (u.email === logged.email) continue;
+        const chatKey = getChatKey(logged.email, u.email);
+        const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+        let lastMsg = msgs.length > 0 ? msgs[msgs.length - 1] : null;
+        let unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
+        if (ocultos.includes(u.email) && !unread) continue;
+        allChats[u.email] = {
+            email: u.email,
+            name: u.name || u.email,
+            lastMsg: lastMsg ? lastMsg.text : '',
+            lastDate: lastMsg ? lastMsg.date : 0,
+            unread,
+            anon: false
+        };
+    }
+    // Buscar chats con emails desconocidos (anónimos)
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('chat_')) {
+            const parts = key.split('_');
+            if (parts.length === 3) {
+                const emailA = parts[1];
+                const emailB = parts[2];
+                let other = null;
+                if (emailA === logged.email) other = emailB;
+                else if (emailB === logged.email) other = emailA;
+                if (other && !allChats[other]) {
+                    const msgs = JSON.parse(localStorage.getItem(key) || '[]');
+                    if (msgs.length > 0) {
+                        const lastMsg = msgs[msgs.length - 1];
+                        const unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + other) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + other))));
+                        if (ocultos.includes(other) && !unread) continue;
+                        allChats[other] = {
+                            email: other,
+                            name: 'Anónimo',
+                            lastMsg: lastMsg.text,
+                            lastDate: lastMsg.date,
+                            unread,
+                            anon: true
+                        };
                     }
                 }
             }
         }
-        const chats = Object.values(allChats);
-        // Ordenar por último mensaje descendente
-        chats.sort((a, b) => (b.lastDate || 0) - (a.lastDate || 0));
-        chatListUl.innerHTML = '';
-        for (const c of chats) {
-            const li = document.createElement('li');
-            li.style.cursor = 'pointer';
-            li.style.padding = '0.5em 0.7em';
-            li.style.borderBottom = '1px solid #e5e7eb';
-            li.style.display = 'flex';
-            li.style.alignItems = 'center';
-            // Botón ocultar
-            const delBtn = document.createElement('button');
-            delBtn.textContent = '🗑️';
-            delBtn.title = 'Ocultar chat de la lista';
-            delBtn.style.marginLeft = '8px';
-            delBtn.style.background = 'none';
-            delBtn.style.border = 'none';
-            delBtn.style.cursor = 'pointer';
-            delBtn.style.fontSize = '1.1em';
-            delBtn.onclick = function (e) {
-                e.stopPropagation();
-                // Guardar en ocultos
-                let ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
-                if (!ocultos.includes(c.email)) ocultos.push(c.email);
-                localStorage.setItem('storyup_chats_ocultos_' + logged.email, JSON.stringify(ocultos));
-                // Si el chat activo es este, limpiar
-                if (userDest === c.email) {
-                    userDest = '';
-                    userDestName = '';
-                    renderChat();
-                }
-                renderChatList();
-            };
-            li.innerHTML = `<span style=\"flex:1;font-weight:bold;color:#2563eb;\">${c.name}</span>` +
-                (c.anon ? '<span style=\"font-size:0.9em;color:#888;margin-left:6px;\">(anónimo)</span>' : '') +
-                (c.unread ? '<span style=\"width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;\"></span>' : '') +
-                `<br><span style=\"font-size:0.97em;color:#555;font-weight:normal;\">${c.lastMsg.slice(0, 32)}</span>`;
-            li.appendChild(delBtn);
-            li.onclick = function () {
-                userDest = c.email;
-                userDestName = c.name;
-                renderChat();
-                // Si es anónimo, mostrar botón para guardar contacto
-                if (c.anon) mostrarBotonGuardarContacto(c.email);
-            };
-            // Mostrar botón para guardar contacto si es anónimo
-            function mostrarBotonGuardarContacto(emailAnon) {
-                let btn = document.getElementById('guardar-contacto-btn');
-                if (btn) btn.remove();
-                const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-                const user = users.find(u => u.email === emailAnon);
-                if (!user) return;
-                const area = document.getElementById('chat-user-selected');
-                btn = document.createElement('button');
-                btn.id = 'guardar-contacto-btn';
-                btn.textContent = 'Guardar contacto (' + (user.name || user.email) + ')';
-                btn.style.marginLeft = '12px';
-                btn.style.background = '#2563eb';
-                btn.style.color = '#fff';
-                btn.style.border = 'none';
-                btn.style.borderRadius = '7px';
-                btn.style.padding = '0.3em 0.9em';
-                btn.style.fontWeight = 'bold';
-                btn.style.cursor = 'pointer';
-                btn.onclick = function () {
-                    // Al guardar, se asocia el nick real
-                    userDestName = user.name || user.email;
-                    renderChatList();
-                    renderChat();
-                    btn.remove();
-                };
-                area.appendChild(btn);
-            }
-            chatListUl.appendChild(li);
-        }
     }
-    return 'chat_' + emails.join('_');
+    const chats = Object.values(allChats);
+    // Ordenar por último mensaje descendente
+    chats.sort((a, b) => (b.lastDate || 0) - (a.lastDate || 0));
+    chatListUl.innerHTML = '';
+    for (const c of chats) {
+        const li = document.createElement('li');
+        li.style.cursor = 'pointer';
+        li.style.padding = '0.5em 0.7em';
+        li.style.borderBottom = '1px solid #e5e7eb';
+        li.style.display = 'flex';
+        li.style.alignItems = 'center';
+        // Botón ocultar
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '🗑️';
+        delBtn.title = 'Ocultar chat de la lista';
+        delBtn.style.marginLeft = '8px';
+        delBtn.style.background = 'none';
+        delBtn.style.border = 'none';
+        delBtn.style.cursor = 'pointer';
+        delBtn.style.fontSize = '1.1em';
+        delBtn.onclick = function (e) {
+            e.stopPropagation();
+            // Guardar en ocultos
+            let ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
+            if (!ocultos.includes(c.email)) ocultos.push(c.email);
+            localStorage.setItem('storyup_chats_ocultos_' + logged.email, JSON.stringify(ocultos));
+            // Si el chat activo es este, limpiar
+            if (userDest === c.email) {
+                userDest = '';
+                userDestName = '';
+                renderChat();
+            }
+            renderChatList();
+        };
+        li.innerHTML = `<span style=\"flex:1;font-weight:bold;color:#2563eb;\">${c.name}</span>` +
+            (c.anon ? '<span style=\"font-size:0.9em;color:#888;margin-left:6px;\">(anónimo)</span>' : '') +
+            (c.unread ? '<span style=\"width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;\"></span>' : '') +
+            `<br><span style=\"font-size:0.97em;color:#555;font-weight:normal;\">${c.lastMsg.slice(0, 32)}</span>`;
+        li.appendChild(delBtn);
+        li.onclick = function () {
+            userDest = c.email;
+            userDestName = c.name;
+            renderChat();
+            // Si es anónimo, mostrar botón para guardar contacto
+            if (c.anon) mostrarBotonGuardarContacto(c.email);
+        };
+        // Mostrar botón para guardar contacto si es anónimo
+        function mostrarBotonGuardarContacto(emailAnon) {
+            let btn = document.getElementById('guardar-contacto-btn');
+            if (btn) btn.remove();
+            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+            const user = users.find(u => u.email === emailAnon);
+            if (!user) return;
+            const area = document.getElementById('chat-user-selected');
+            btn = document.createElement('button');
+            btn.id = 'guardar-contacto-btn';
+            btn.textContent = 'Guardar contacto (' + (user.name || user.email) + ')';
+            btn.style.marginLeft = '12px';
+            btn.style.background = '#2563eb';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+            btn.style.borderRadius = '7px';
+            btn.style.padding = '0.3em 0.9em';
+            btn.style.fontWeight = 'bold';
+            btn.style.cursor = 'pointer';
+            btn.onclick = function () {
+                // Al guardar, se asocia el nick real
+                userDestName = user.name || user.email;
+                renderChatList();
+                renderChat();
+                btn.remove();
+            };
+            area.appendChild(btn);
+        }
+        chatListUl.appendChild(li);
+    }
 }
 function renderChat() {
     if (!userDest) {
