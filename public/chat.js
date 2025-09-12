@@ -84,6 +84,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 .replace(/&lt;(b|u|span|img|iframe)[^&]*&gt;/g, match => match.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
         });
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        // Marcar como leído para el usuario logueado (receptor)
+        if (msgs.length > 0) {
+            const lastMsg = msgs[msgs.length - 1];
+            // Si el último mensaje NO es del usuario logueado, lo marca como leído
+            if (lastMsg.own !== logged.email) {
+                const lastReadKey = 'perfil_last_read_' + logged.email + '_' + userDest;
+                localStorage.setItem(lastReadKey, String(lastMsg.date));
+            }
+        }
     }
     function seleccionarNick() {
         if (chatUserError) chatUserError.style.display = 'none';
