@@ -37,8 +37,8 @@ body.loaded {
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom right, #3B82F6, #9333EA);
-    color: white;
+    background: #f7f7fa;
+    color: #222;
     text-align: center;
     padding: 20px;
 }
@@ -128,16 +128,7 @@ button:hover {
     text-align: center;
 }
 
-body {
-    background-image: url('img/storyup-logo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-}
+/* Fondo general gris claro ya definido arriba */
 
 
 .container {
