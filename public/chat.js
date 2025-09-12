@@ -106,23 +106,49 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderChatList() {
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         const chats = [];
-        for (const u of users) {
-            if (u.email === logged.email) continue;
-            const chatKey = getChatKey(logged.email, u.email);
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            if (msgs.length > 0) {
-                const lastMsg = msgs[msgs.length - 1];
-                chats.push({
-                    email: u.email,
-                    name: u.name || u.email,
-                    lastMsg: lastMsg.text,
-                    lastDate: lastMsg.date,
-                    unread: msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))))
-                });
-            }
+        for (const c of chats) {
+            const li = document.createElement('li');
+            li.style.cursor = 'pointer';
+            li.style.padding = '0.5em 0.7em';
+            li.style.borderBottom = '1px solid #e5e7eb';
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            // Botón borrar
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '🗑️';
+            delBtn.title = 'Borrar chat';
+            delBtn.style.marginLeft = '8px';
+            delBtn.style.background = 'none';
+            delBtn.style.border = 'none';
+            delBtn.style.cursor = 'pointer';
+            delBtn.style.fontSize = '1.1em';
+            delBtn.onclick = function(e) {
+                e.stopPropagation();
+                if (confirm('¿Seguro que quieres borrar este chat?')) {
+                    const chatKey = getChatKey(logged.email, c.email);
+                    localStorage.removeItem(chatKey);
+                    // Eliminar también la marca de leído
+                    localStorage.removeItem('perfil_last_read_' + logged.email + '_' + c.email);
+                    // Si el chat activo es este, limpiar
+                    if (userDest === c.email) {
+                        userDest = '';
+                        userDestName = '';
+                        renderChat();
+                    }
+                    renderChatList();
+                }
+            };
+            li.innerHTML = `<span style=\"flex:1;font-weight:bold;color:#2563eb;\">${c.name}</span>` +
+                (c.unread ? '<span style=\"width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;\"></span>' : '') +
+                `<br><span style=\"font-size:0.97em;color:#555;font-weight:normal;\">${c.lastMsg.slice(0, 32)}</span>`;
+            li.appendChild(delBtn);
+            li.onclick = function () {
+                userDest = c.email;
+                userDestName = c.name;
+                renderChat();
+            };
+            chatListUl.appendChild(li);
         }
-        // Ordenar por último mensaje descendente
-        chats.sort((a, b) => (b.lastDate || 0) - (a.lastDate || 0));
         chatListUl.innerHTML = '';
         for (const c of chats) {
             const li = document.createElement('li');
