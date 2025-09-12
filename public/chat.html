@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat privado - StoryUp</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chat-container {
+            max-width: 420px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #0002;
+            padding: 1.5em;
+        }
+
+        .chat-messages {
+            min-height: 220px;
+            max-height: 320px;
+            overflow-y: auto;
+            margin-bottom: 1em;
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 1em;
+        }
+
+        .chat-input {
+            width: 80%;
+            padding: 0.5em;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+        }
+
+        .chat-send {
+            padding: 0.5em 1.2em;
+            border-radius: 6px;
+            background: #38bdf8;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            margin-left: 0.5em;
+            cursor: pointer;
+        }
+
+        .chat-msg-own {
+            text-align: right;
+            color: #2563eb;
+        }
+
+        .chat-msg-other {
+            text-align: left;
+            color: #e11d48;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="explore.html">Explorar</a></li>
+            <li><a href="concurso.html" style="color:#fbbf24;font-weight:bold;">Concursos</a></li>
+            <li><a href="profile.html">Perfil</a></li>
+            <li><a href="stats.html">Estadísticas</a></li>
+        </ul>
+    </nav>
+    <div class="chat-container">
+        <h1>Chat privado</h1>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1em;">
+            <div id="chat-user-selected"
+                style="flex:1;background:#f3f4f6;border-radius:8px;padding:0.7em 1em;font-weight:bold;min-height:38px;max-width:70%;overflow-x:auto;">
+                Selecciona un usuario</div>
+            <input type="text" id="chat-user-input" placeholder="Nick destino"
+                style="width:110px;padding:0.5em;border-radius:6px;border:1px solid #bbb;" maxlength="32"
+                autocomplete="off" />
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <form id="chat-form" autocomplete="off" style="display:flex;align-items:center;gap:8px;">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Escribe un mensaje..." required />
+            <button type="submit" class="chat-send">Enviar</button>
+        </form>
+    </div>
+    <script src="chat.js"></script>
+</body>
+
+</html>

@@ -44,7 +44,11 @@
             <li><a href="explore.html">Explorar</a></li>
             <li><a href="concurso.html" style="color:#fbbf24;font-weight:bold;">Concursos</a></li>
             <li><a href="login.html">Login</a></li>
-            <li><a href="profile.html">Perfil</a></li>
+            <li style="position:relative;">
+                <a href="profile.html" id="nav-perfil">Perfil</a>
+                <span id="perfil-dot"
+                    style="display:none;position:absolute;top:7px;right:-10px;width:13px;height:13px;background:#2563eb;border-radius:50%;box-shadow:0 0 4px #000a;z-index:2;border:2px solid #fff;"></span>
+            </li>
             <li><a href="stats.html">Estadísticas</a></li>
             <li><a href="moderation.html" style="color:#22c55e;font-weight:bold;">Moderación</a></li>
             <li style="position:relative;">
@@ -187,6 +191,42 @@
         seguidoresBtn.addEventListener('click', function () {
             localStorage.setItem(key, users.length.toString());
             seguidoresDot.style.display = 'none';
+        });
+    });
+</script>
+
+<script>
+    // Punto azul en Perfil si hay mensajes nuevos no leídos
+    document.addEventListener('DOMContentLoaded', function () {
+        const perfilDot = document.getElementById('perfil-dot');
+        const perfilBtn = document.getElementById('nav-perfil');
+        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
+        if (!perfilDot || !perfilBtn || !logged) return;
+        // Buscar chats donde logged es receptor y hay mensajes no leídos
+        let unread = false;
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        users.forEach(u => {
+            if (u.email === logged.email) return;
+            const emails = [logged.email, u.email].sort();
+            const chatKey = 'chat_' + emails.join('_');
+            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+            // Última vez que el usuario vio su perfil
+            const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
+            const lastRead = parseInt(localStorage.getItem(lastReadKey) || '0', 10);
+            // Buscar si hay mensajes de u.email posteriores a lastRead
+            if (msgs.some(m => m.own === u.email && m.date > lastRead)) {
+                unread = true;
+            }
+        });
+        perfilDot.style.display = unread ? 'block' : 'none';
+        perfilBtn.addEventListener('click', function () {
+            // Al entrar al perfil, marcar todos los mensajes como leídos
+            users.forEach(u => {
+                if (u.email === logged.email) return;
+                const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
+                localStorage.setItem(lastReadKey, Date.now().toString());
+            });
+            perfilDot.style.display = 'none';
         });
     });
 </script>
