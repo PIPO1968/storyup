@@ -11,7 +11,7 @@ window.insertTag = function (tag) {
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         // Leer lista de ocultos
         const ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
-    // (eliminado: declaración duplicada de chats)
+        // (eliminado: declaración duplicada de chats)
         // Recoger todos los chats posibles (incluyendo anónimos)
         const allChats = {};
         // Chats con usuarios conocidos
@@ -63,7 +63,7 @@ window.insertTag = function (tag) {
                 }
             }
         }
-    const chats = Object.values(allChats);
+        const chats = Object.values(allChats);
         // Ordenar por último mensaje descendente
         chats.sort((a, b) => (b.lastDate || 0) - (a.lastDate || 0));
         chatListUl.innerHTML = '';
@@ -109,34 +109,34 @@ window.insertTag = function (tag) {
                 // Si es anónimo, mostrar botón para guardar contacto
                 if (c.anon) mostrarBotonGuardarContacto(c.email);
             };
-    // Mostrar botón para guardar contacto si es anónimo
-    function mostrarBotonGuardarContacto(emailAnon) {
-        let btn = document.getElementById('guardar-contacto-btn');
-        if (btn) btn.remove();
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-        const user = users.find(u => u.email === emailAnon);
-        if (!user) return;
-        const area = document.getElementById('chat-user-selected');
-        btn = document.createElement('button');
-        btn.id = 'guardar-contacto-btn';
-        btn.textContent = 'Guardar contacto (' + (user.name || user.email) + ')';
-        btn.style.marginLeft = '12px';
-        btn.style.background = '#2563eb';
-        btn.style.color = '#fff';
-        btn.style.border = 'none';
-        btn.style.borderRadius = '7px';
-        btn.style.padding = '0.3em 0.9em';
-        btn.style.fontWeight = 'bold';
-        btn.style.cursor = 'pointer';
-        btn.onclick = function() {
-            // Al guardar, se asocia el nick real
-            userDestName = user.name || user.email;
-            renderChatList();
-            renderChat();
-            btn.remove();
-        };
-        area.appendChild(btn);
-    }
+            // Mostrar botón para guardar contacto si es anónimo
+            function mostrarBotonGuardarContacto(emailAnon) {
+                let btn = document.getElementById('guardar-contacto-btn');
+                if (btn) btn.remove();
+                const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+                const user = users.find(u => u.email === emailAnon);
+                if (!user) return;
+                const area = document.getElementById('chat-user-selected');
+                btn = document.createElement('button');
+                btn.id = 'guardar-contacto-btn';
+                btn.textContent = 'Guardar contacto (' + (user.name || user.email) + ')';
+                btn.style.marginLeft = '12px';
+                btn.style.background = '#2563eb';
+                btn.style.color = '#fff';
+                btn.style.border = 'none';
+                btn.style.borderRadius = '7px';
+                btn.style.padding = '0.3em 0.9em';
+                btn.style.fontWeight = 'bold';
+                btn.style.cursor = 'pointer';
+                btn.onclick = function () {
+                    // Al guardar, se asocia el nick real
+                    userDestName = user.name || user.email;
+                    renderChatList();
+                    renderChat();
+                    btn.remove();
+                };
+                area.appendChild(btn);
+            }
             chatListUl.appendChild(li);
         }
     }
@@ -286,59 +286,6 @@ setInterval(() => {
     renderChatList();
     if (userDest) renderChat();
 }, 2000);
-function seleccionarNick() {
-    if (chatUserError) chatUserError.style.display = 'none';
-    const nick = chatUserInput.value.trim();
-    if (!nick) return;
-    // Buscar email por nick
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-    const user = users.find(u => (u.name || u.email) === nick);
-    if (!user) {
-        chatUserSelected.textContent = 'Usuario no encontrado';
-        userDest = '';
-        renderChat();
-        if (chatUserError) {
-            chatUserError.textContent = 'El usuario no existe';
-            chatUserError.style.display = 'block';
-        }
-        return;
-    }
-    if (user.email === logged.email) {
-        chatUserSelected.textContent = 'No puedes chatear contigo mismo';
-        userDest = '';
-        renderChat();
-        if (chatUserError) {
-            chatUserError.textContent = 'No puedes chatear contigo mismo';
-            chatUserError.style.display = 'block';
-        }
-        return;
-    }
-    userDest = user.email; // SIEMPRE usar el email real para el chatKey
-    chatUserSelected.textContent = user.name || user.email;
-    chatUserInput.value = '';
-    renderChat();
-    if (chatUserError) chatUserError.style.display = 'none';
-    setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
-}
-chatUserInput.addEventListener('keydown', function (e) {
-    if (chatUserError) chatUserError.style.display = 'none';
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        seleccionarNick();
-    }
-});
-// Link seleccionar
-const chatUserSelectLink = document.getElementById('chat-user-select-link');
-if (chatUserSelectLink) {
-    chatUserSelectLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        seleccionarNick();
-    });
-}
-// Ocultar error al escribir
-chatUserInput.addEventListener('input', function () {
-    if (chatUserError) chatUserError.style.display = 'none';
-});
 chatForm.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!userDest) return;
