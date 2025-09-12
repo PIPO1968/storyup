@@ -1,3 +1,88 @@
+// --- Favoritos/contactos rápidos ---
+
+function renderFavs() {
+    if (!favsListDiv) return;
+    const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+    const users = getUsers();
+    favsListDiv.innerHTML = '';
+    if (favs.length === 0) {
+        favsListDiv.innerHTML = '<span style="color:#888;font-size:0.97em;">Sin favoritos</span>';
+        return;
+    }
+    favs.forEach(email => {
+        const user = users.find(u => u.email === email);
+        const name = user ? (user.name || user.email) : email;
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.alignItems = 'center';
+        div.style.justifyContent = 'space-between';
+        div.style.marginBottom = '4px';
+        const span = document.createElement('span');
+        span.textContent = name;
+        span.style.cursor = 'pointer';
+        span.style.color = '#2563eb';
+        span.style.fontWeight = 'bold';
+        span.onclick = function () {
+            selectChat(user || { email, name });
+        };
+        const del = document.createElement('button');
+        del.textContent = '✖';
+        del.title = 'Quitar de favoritos';
+        del.style.background = 'none';
+        del.style.border = 'none';
+        del.style.color = '#e11d48';
+        del.style.cursor = 'pointer';
+        del.style.fontSize = '1em';
+        del.onclick = function () {
+            const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+            localStorage.setItem(favsKey(), JSON.stringify(favs.filter(f => f !== email)));
+            renderFavs();
+        };
+        div.appendChild(span);
+        div.appendChild(del);
+        favsListDiv.appendChild(div);
+    });
+}
+
+if (favAddBtn && favInput) {
+    favAddBtn.onclick = function () {
+        if (favError) favError.style.display = 'none';
+        const nick = favInput.value.trim();
+        if (!nick) return;
+        const users = getUsers();
+        const user = users.find(u => (u.name || u.email) === nick);
+        if (!user) {
+            if (favError) {
+                favError.textContent = 'Usuario no encontrado';
+                favError.style.display = 'block';
+            }
+            return;
+        }
+        if (user.email === getLoggedUser().email) {
+            if (favError) {
+                favError.textContent = 'No puedes añadirte a ti mismo';
+                favError.style.display = 'block';
+            }
+            return;
+        }
+        let favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+        if (!favs.includes(user.email)) {
+            favs.push(user.email);
+            localStorage.setItem(favsKey(), JSON.stringify(favs));
+        }
+        favInput.value = '';
+        renderFavs();
+    };
+    favInput.addEventListener('keydown', function (e) {
+        if (favError) favError.style.display = 'none';
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            favAddBtn.click();
+        }
+    });
+}
+
+renderFavs();
 // Chat tipo WhatsApp - SOLO versión moderna y funcional
 // Requiere que el usuario esté autenticado y que existan storyup_users y storyup_logged en localStorage
 

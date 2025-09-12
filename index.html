@@ -45,7 +45,16 @@
             style="display:flex;height:80vh;border:1px solid #ccc;border-radius:10px;overflow:hidden;margin:2em auto;max-width:900px;min-width:320px;background:#fff;box-shadow:0 2px 12px #0001;">
             <aside id="chat-sidebar"
                 style="width:260px;background:#f7f7fa;border-right:1px solid #eee;display:flex;flex-direction:column;">
-                <div style="display:flex;gap:6px;margin:12px 10px 8px 10px;">
+                <div id="favs-list" style="margin:10px 10px 0 10px;"></div>
+                <div style="display:flex;gap:6px;margin:8px 10px 8px 10px;">
+                    <input id="fav-nick-input" type="text" placeholder="Añadir favorito..."
+                        style="flex:1;padding:7px 10px;border-radius:6px;border:1px solid #ddd;outline:none;">
+                    <button id="fav-add-btn"
+                        style="padding:7px 12px;border-radius:6px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-weight:bold;cursor:pointer;">+</button>
+                </div>
+                <div id="fav-error"
+                    style="color:#e11d48;font-size:0.97em;display:none;margin:0 10px 4px 10px;"></div>
+                <div style="display:flex;gap:6px;margin:8px 10px 8px 10px;">
                     <input id="chat-search" type="text" placeholder="Buscar usuario..."
                         style="flex:1;padding:7px 10px;border-radius:6px;border:1px solid #ddd;outline:none;">
                     <button id="chat-search-btn"
