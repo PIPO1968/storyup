@@ -42,25 +42,25 @@ function selectChat(user) {
 async function renderMessages() {
     if (!currentChat) return;
     const logged = getLoggedUser();
-        chatMessagesBox.innerHTML = '<div class="loading">Cargando...</div>';
+    chatMessagesBox.innerHTML = '<div class="loading">Cargando...</div>';
     try {
         const resp = await fetch(`/api/messages?from=${logged.email}&to=${currentChat.email}`);
         if (!resp.ok) throw new Error('Error al cargar mensajes');
         const msgs = await resp.json();
-            chatMessagesBox.innerHTML = '';
-            msgs.forEach(m => {
-                const div = document.createElement('div');
-                div.className = m.sender === logged.email ? 'msg-own' : 'msg-other';
-                div.textContent = m.content;
-                chatMessagesBox.appendChild(div);
-            });
-            chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
+        chatMessagesBox.innerHTML = '';
+        msgs.forEach(m => {
+            const div = document.createElement('div');
+            div.className = m.sender === logged.email ? 'msg-own' : 'msg-other';
+            div.textContent = m.content;
+            chatMessagesBox.appendChild(div);
+        });
+        chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
     } catch (e) {
         chatMessagesBox.innerHTML = '<div class="error">No se pudieron cargar los mensajes</div>';
     }
 }
 
-chatForm.onsubmit = async function(e) {
+chatForm.onsubmit = async function (e) {
     e.preventDefault();
     if (!currentChat) return;
     const logged = getLoggedUser();
@@ -75,12 +75,40 @@ chatForm.onsubmit = async function(e) {
     renderMessages();
 };
 
-chatSearch.oninput = function() {
+
+chatSearch.oninput = function () {
     const val = chatSearch.value.toLowerCase();
     Array.from(chatList.children).forEach(li => {
         li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
     });
 };
+
+// Permitir buscar y seleccionar usuario con Enter
+chatSearch.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        buscarYSeleccionarUsuario();
+    }
+});
+
+if (chatSearchBtn) {
+    chatSearchBtn.onclick = buscarYSeleccionarUsuario;
+}
+
+function buscarYSeleccionarUsuario() {
+    const val = chatSearch.value.trim().toLowerCase();
+    if (!val) return;
+    const users = getUsers();
+    const user = users.find(u => (u.name || u.email).toLowerCase() === val);
+    if (user) {
+        selectChat(user);
+        // Limpiar búsqueda y enfocar input de mensaje
+        chatSearch.value = '';
+        chatInputBox.focus();
+    } else {
+        chatHeader.textContent = 'Usuario no encontrado';
+    }
+}
 
 // Inicialización
 window.addEventListener('DOMContentLoaded', () => {
