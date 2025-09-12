@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectBtn = document.getElementById('select-user-btn');
     selectBtn.addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-    selectBtn.className = 'chat-select-btn';
-    selectBtn.textContent = 'Seleccionar';
+        selectBtn.className = 'chat-select-btn';
+        selectBtn.textContent = 'Seleccionar';
         if (!nick) {
             selectBtn.textContent = 'Debes escribir un nick';
             selectBtn.className = 'chat-select-btn select-user-btn-error';
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         userDest = user.email;
         selectBtn.textContent = 'Seleccionar';
-    selectBtn.className = 'chat-select-btn';
+        selectBtn.className = 'chat-select-btn';
         chatUserSelected.textContent = user.name || user.email;
         chatUserSelected.classList.remove('chat-user-error');
         renderChat();

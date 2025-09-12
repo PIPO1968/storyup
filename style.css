@@ -13,9 +13,9 @@
 }
 
 .select-user-btn-error {
-    background: #ef4444 !important;
-    color: #fff !important;
-    border: 1.5px solid #b91c1c !important;
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    border: 1.5px solid #ef4444 !important;
     font-weight: bold !important;
     transition: background 0.2s, color 0.2s;
 }
