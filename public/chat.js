@@ -113,7 +113,7 @@ function renderChatList() {
     const users = getUsers();
     const logged = getLoggedUser();
     chatList.innerHTML = '';
-    users.filter(u => u.email !== logged.email).forEach(u => {
+        users.forEach(u => {
         const li = document.createElement('li');
         li.className = 'chat-list-item';
         li.textContent = u.name || u.email;
@@ -124,7 +124,9 @@ function renderChatList() {
 
 function selectChat(user) {
     currentChat = user;
+    currentChat = user;
     chatHeader.textContent = user.name || user.email;
+    renderMessages();
     renderMessages();
 }
 
@@ -187,13 +189,9 @@ function buscarYSeleccionarUsuario() {
     if (!val) return;
     const users = getUsers();
     const user = users.find(u => (u.name || u.email).toLowerCase() === val);
-    if (user) {
-        selectChat(user);
-        chatSearch.value = '';
-        chatInputBox.focus();
-    } else {
-        chatHeader.textContent = 'Usuario no encontrado';
-    }
+    if (user) selectChat(user);
+    chatSearch.value = '';
+    chatInputBox.focus();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
