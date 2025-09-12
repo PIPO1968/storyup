@@ -86,12 +86,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     document.getElementById('select-user-btn').addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-        if (!nick) return;
-        // Buscar email por nick
+        if (!nick) {
+            chatUserSelected.textContent = 'Debes escribir un nick.';
+            userDest = '';
+            renderChat();
+            return;
+        }
+        // Buscar email por nick (coincidencia exacta)
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
-            chatUserSelected.textContent = 'Usuario no encontrado';
+            chatUserSelected.textContent = 'Ese usuario no existe o no lo escribiste correctamente';
             userDest = '';
             renderChat();
             return;
