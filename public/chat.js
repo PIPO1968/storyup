@@ -1,3 +1,49 @@
+// Herramientas de formato para el chat
+window.insertTag = function(tag) {
+    const input = document.getElementById('chat-input');
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const before = input.value.substring(0, start);
+    const selected = input.value.substring(start, end);
+    const after = input.value.substring(end);
+    input.value = before + `<${tag}>` + selected + `</${tag}>` + after;
+    input.focus();
+    input.setSelectionRange(start + tag.length + 2, end + tag.length + 2);
+}
+window.insertColor = function(color) {
+    const input = document.getElementById('chat-input');
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const before = input.value.substring(0, start);
+    const selected = input.value.substring(start, end);
+    const after = input.value.substring(end);
+    input.value = before + `<span style='color:${color}'>` + selected + `</span>` + after;
+    input.focus();
+    input.setSelectionRange(start + 22 + color.length, end + 22 + color.length);
+}
+window.insertImage = function(e) {
+    const input = document.getElementById('chat-input');
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        input.value += ` <img src='${ev.target.result}' style='max-width:120px;max-height:120px;border-radius:8px;'>`;
+    };
+    reader.readAsDataURL(file);
+}
+window.insertYoutube = function() {
+    const input = document.getElementById('chat-input');
+    const url = prompt('Pega la URL de YouTube:');
+    if (!url) return;
+    // Extraer ID de YouTube
+    const match = url.match(/[?&]v=([^&#]+)/) || url.match(/youtu\.be\/([^?&#]+)/);
+    const id = match ? match[1] : null;
+    if (id) {
+        input.value += ` <iframe width='200' height='120' src='https://www.youtube.com/embed/${id}' frameborder='0' allowfullscreen style='vertical-align:middle;border-radius:8px;'></iframe>`;
+    } else {
+        alert('URL de YouTube no válida');
+    }
+}
 // chat.js
 // Chat privado simulado por usuario (localStorage)
 document.addEventListener('DOMContentLoaded', function () {
@@ -31,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.innerHTML = msgs.map(m =>
             `<div class="${m.own === logged.email ? 'chat-msg-own' : 'chat-msg-other'}">${m.text}</div>`
         ).join('');
+        // Permitir HTML seguro en los mensajes (solo etiquetas permitidas)
+        Array.from(chatMessages.children).forEach(div => {
+            div.innerHTML = div.innerHTML
+                .replace(/&lt;(b|u|span|img|iframe)[^&]*&gt;/g, match => match.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+        });
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     chatUserInput.addEventListener('keydown', function (e) {
