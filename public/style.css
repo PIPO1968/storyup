@@ -1,4 +1,5 @@
 @import url("extra.css");
+
 /* Forzar color blanco y negrita en los labels de correo y contraseña en login y moderación */
 label[for="email"],
 label[for="password"] {
