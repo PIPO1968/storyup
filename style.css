@@ -4,41 +4,19 @@
     font-size: 0.85em;
     line-height: 1.1;
     border-radius: 5px;
-    background: #38bdf8 !important;
-    color: #fff !important;
-    border: none !important;
-    cursor: pointer;
-    min-width: 48px;
-    transition: background 0.2s, color 0.2s;
-}
-
-.select-user-btn-error {
-    background: #ef4444 !important;
-    color: #fff !important;
-    border: 1.5px solid #b91c1c !important;
-    font-weight: bold !important;
-    transition: background 0.2s, color 0.2s;
-}
-
-.select-user-btn-error {
-    background: #ef4444 !important;
-    color: #fff !important;
-    border: 1.5px solid #b91c1c !important;
-    font-weight: bold !important;
-    transition: background 0.2s, color 0.2s;
-}
-
-.chat-select-btn {
-    margin-left: 4px;
-    padding: 1px 6px;
-    font-size: 0.85em;
-    line-height: 1.1;
-    border-radius: 5px;
     background: #38bdf8;
     color: #fff;
     border: none;
     cursor: pointer;
     min-width: 48px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.select-user-btn-error {
+    background: #ef4444 !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: bold !important;
     transition: background 0.2s, color 0.2s;
 }
 
@@ -128,7 +106,15 @@ button:active {
     margin-bottom: 10px;
 }
 
-
+button {
+    background-color: #F472B6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
 button:hover {
     background-color: #EC4899;
@@ -327,7 +313,12 @@ button {
     border-radius: 5px;
 }
 
-
+button {
+    background-color: #3B82F6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .story {
     background-color: rgba(255, 255, 255, 0.1);
