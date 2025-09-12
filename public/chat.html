@@ -119,20 +119,28 @@
     </nav>
     <div class="chat-container" style="display:flex;flex-direction:row;gap:0;max-width:900px;">
         <!-- Bandeja de chats -->
-        <div id="chat-list" style="width:220px;min-width:180px;max-width:260px;background:#f3f4f6;border-radius:14px 0 0 14px;padding:0.5em 0.2em;overflow-y:auto;box-shadow:2px 0 8px #0001;">
+        <div id="chat-list"
+            style="width:220px;min-width:180px;max-width:260px;background:#f3f4f6;border-radius:14px 0 0 14px;padding:0.5em 0.2em;overflow-y:auto;box-shadow:2px 0 8px #0001;">
             <h2 style="font-size:1.1em;text-align:center;margin:0.5em 0 0.7em 0;color:#2563eb;">Chats</h2>
             <div style="padding:0 0.5em 0.7em 0.5em;">
-                <input id="chat-search-input" type="text" placeholder="Buscar usuario..." style="width:100%;padding:0.4em 0.7em;border-radius:7px;border:1px solid #bbb;font-size:1em;" maxlength="32" autocomplete="off" />
-                <button id="chat-search-btn" style="margin-top:0.4em;width:100%;padding:0.3em 0;border-radius:6px;background:#2563eb;color:#fff;border:none;font-weight:bold;cursor:pointer;font-size:0.98em;">Iniciar chat</button>
+                <input id="chat-search-input" type="text" placeholder="Buscar usuario..."
+                    style="width:100%;padding:0.4em 0.7em;border-radius:7px;border:1px solid #bbb;font-size:1em;"
+                    maxlength="32" autocomplete="off" />
+                <button id="chat-search-btn"
+                    style="margin-top:0.4em;width:100%;padding:0.3em 0;border-radius:6px;background:#2563eb;color:#fff;border:none;font-weight:bold;cursor:pointer;font-size:0.98em;">Iniciar
+                    chat</button>
                 <span id="chat-search-error" style="display:none;color:#e11d48;font-size:0.97em;margin-top:2px;"></span>
             </div>
             <ul id="chat-list-ul" style="list-style:none;padding:0;margin:0;"></ul>
         </div>
         <!-- Área de conversación -->
         <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
-            <div id="chat-user-selected" style="background:#f3f4f6;border-radius:0 14px 0 0;padding:0.7em 1em;font-weight:bold;min-height:38px;color:#2563eb;max-width:100%;overflow-x:auto;margin-bottom:0.5em;">Selecciona un chat</div>
+            <div id="chat-user-selected"
+                style="background:#f3f4f6;border-radius:0 14px 0 0;padding:0.7em 1em;font-weight:bold;min-height:38px;color:#2563eb;max-width:100%;overflow-x:auto;margin-bottom:0.5em;">
+                Selecciona un chat</div>
             <div class="chat-messages" id="chat-messages" style="width:100%;margin:0;"></div>
-            <form id="chat-form" autocomplete="off" style="display:flex;align-items:center;gap:8px;width:100%;margin:0;">
+            <form id="chat-form" autocomplete="off"
+                style="display:flex;align-items:center;gap:8px;width:100%;margin:0;">
                 <div id="chat-toolbar" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
                     <button type="button" class="chat-tool-btn" title="Negrita"
                         style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
