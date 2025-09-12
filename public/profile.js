@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     const isOwn = m.sender === user.name;
                     const hora = m.created_at ? new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
                     return `
-                        <div style="margin-bottom:8px;display:flex;justify-content:${isOwn ? 'flex-end' : 'flex-start'};">
+                        <div style="margin-bottom:8px;display:flex;flex-direction:column;align-items:${isOwn ? 'flex-end' : 'flex-start'};">
+                            <span style="font-size:0.85em;color:${isOwn ? '#a5b4fc' : '#64748b'};margin-bottom:2px;font-weight:600;">${m.sender}</span>
                             <div style="background:${isOwn ? '#2563eb' : '#e0e7ff'};color:${isOwn ? 'white' : '#232526'};padding:8px 14px 6px 14px;border-radius:16px;max-width:70%;word-break:break-word;box-shadow:0 1px 4px #0001;position:relative;">
                                 <span style="display:block;white-space:pre-line;">${m.content}</span>
                                 <span style="font-size:0.75em;color:${isOwn ? '#c7d2fe' : '#64748b'};position:absolute;right:12px;bottom:4px;">${hora}</span>
@@ -88,25 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     async function cargarMensajes(nick, scroll = true) {
                         const mensajesDiv = document.getElementById('chat-mensajes');
                         if (!mensajesDiv) return;
-                        mensajesDiv.innerHTML = '<div style="color:#888;text-align:center;">Cargando mensajes...</div>';
-                        try {
-                            const res = await fetch(`/api/messages?from=${encodeURIComponent(user.name)}&to=${encodeURIComponent(nick)}`);
-                            const data = await res.json();
-                            if (Array.isArray(data) && data.length > 0) {
-                                mensajesDiv.innerHTML = data.map(m => `
-                                    <div style="margin-bottom:8px;display:flex;justify-content:${m.sender === user.name ? 'flex-end' : 'flex-start'};">
-                                        <div style="background:${m.sender === user.name ? '#2563eb' : '#e0e7ff'};color:${m.sender === user.name ? 'white' : '#232526'};padding:7px 13px;border-radius:14px;max-width:70%;word-break:break-word;">
-                                            ${m.content}
-                                        </div>
-                                    </div>
-                                `).join('');
-                                if (scroll) mensajesDiv.scrollTop = mensajesDiv.scrollHeight;
-                            } else {
-                                mensajesDiv.innerHTML = '<div style="color:#888;text-align:center;">No hay mensajes aún.</div>';
-                            }
-                        } catch (e) {
-                            mensajesDiv.innerHTML = '<div style="color:#e11d48;text-align:center;">Error al cargar mensajes</div>';
-                        }
+                        // ...existing code...
                     }
                     async function enviarMensaje(nick, texto) {
                         try {
