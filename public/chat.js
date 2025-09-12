@@ -21,6 +21,7 @@ const chatListUl = document.getElementById('chat-list-ul');
 const chatUserSelected = document.getElementById('chat-user-selected');
 // Elemento del área de mensajes del chat
 const chatMessages = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
 const favsKey = () => 'storyup_favs_' + (logged?.email || '');
 const favsListDiv = document.getElementById('favs-list');
 const favInput = document.getElementById('fav-nick-input');
@@ -306,8 +307,11 @@ function buscarYSeleccionarUsuario() {
         }
         return;
     }
+    // Refuerza la asignación de userDest y userDestName
     userDest = user.email;
     userDestName = user.name || user.email;
+    // Refresca el input y el chat
+    if (chatInput) chatInput.value = '';
     chatSearchInput.value = '';
     renderChat();
     renderChatList();
