@@ -1,9 +1,10 @@
 /* Botón de error para selección de usuario en chat */
+
 .select-user-btn-error {
     background: #ef4444 !important;
     color: #fff !important;
     border: 1.5px solid #b91c1c !important;
-    font-weight: bold;
+    font-weight: bold !important;
     animation: shake 0.15s 2;
 }
 

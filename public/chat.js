@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    document.getElementById('select-user-btn').addEventListener('click', function () {
+    const selectBtn = document.getElementById('select-user-btn');
+    selectBtn.addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-        const selectBtn = document.getElementById('select-user-btn');
         selectBtn.classList.remove('select-user-btn-error');
         selectBtn.textContent = 'Seleccionar';
         if (!nick) {
@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', function () {
         chatUserSelected.textContent = user.name || user.email;
         chatUserSelected.classList.remove('chat-user-error');
         renderChat();
-        // Restaurar botón al escribir de nuevo
-        chatUserInput.addEventListener('input', function () {
-            const selectBtn = document.getElementById('select-user-btn');
-            selectBtn.textContent = 'Seleccionar';
-            selectBtn.classList.remove('select-user-btn-error');
-        });
+    });
+
+    // Restaurar botón al escribir de nuevo (solo un listener)
+    chatUserInput.addEventListener('input', function () {
+        selectBtn.textContent = 'Seleccionar';
+        selectBtn.classList.remove('select-user-btn-error');
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();
