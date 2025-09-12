@@ -86,11 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     document.getElementById('select-user-btn').addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-        const errorDiv = document.getElementById('chat-user-error');
-        errorDiv.textContent = '';
+        const selectBtn = document.getElementById('select-user-btn');
+        selectBtn.classList.remove('select-user-btn-error');
+        selectBtn.textContent = 'Seleccionar';
         if (!nick) {
-            chatUserSelected.textContent = 'Selecciona un usuario';
-            errorDiv.textContent = 'Debes escribir un nick.';
+            selectBtn.textContent = 'Debes escribir un nick';
+            selectBtn.classList.add('select-user-btn-error');
             userDest = '';
             renderChat();
             return;
@@ -99,16 +100,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
-            chatUserSelected.textContent = 'Selecciona un usuario';
-            errorDiv.textContent = 'Ese usuario no existe o no lo escribiste correctamente';
+            selectBtn.textContent = 'Nick no válido';
+            selectBtn.classList.add('select-user-btn-error');
             userDest = '';
             renderChat();
             return;
         }
         userDest = user.email;
+        selectBtn.textContent = 'Seleccionar';
+        selectBtn.classList.remove('select-user-btn-error');
         chatUserSelected.textContent = user.name || user.email;
-        errorDiv.textContent = '';
+        chatUserSelected.classList.remove('chat-user-error');
         renderChat();
+        // Restaurar botón al escribir de nuevo
+        chatUserInput.addEventListener('input', function () {
+            const selectBtn = document.getElementById('select-user-btn');
+            selectBtn.textContent = 'Seleccionar';
+            selectBtn.classList.remove('select-user-btn-error');
+        });
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();

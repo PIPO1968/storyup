@@ -1,3 +1,43 @@
+/* Botón de error para selección de usuario en chat */
+.select-user-btn-error {
+    background: #ef4444 !important;
+    color: #fff !important;
+    border: 1.5px solid #b91c1c !important;
+    font-weight: bold;
+    animation: shake 0.15s 2;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-3px);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Error destacado para selección de usuario en chat */
+.chat-user-error {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    border: 1.5px solid #ef4444 !important;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
 body {
     opacity: 0;
     transition: opacity 1s ease-in;
