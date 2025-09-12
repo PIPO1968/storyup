@@ -84,24 +84,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    chatUserInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const nick = chatUserInput.value.trim();
-            if (!nick) return;
-            // Buscar email por nick
-            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-            const user = users.find(u => (u.name || u.email) === nick);
-            if (!user) {
-                chatUserSelected.textContent = 'Usuario no encontrado';
-                userDest = '';
-                renderChat();
-                return;
-            }
-            userDest = user.email;
-            chatUserSelected.textContent = user.name || user.email;
+    document.getElementById('select-user-btn').addEventListener('click', function () {
+        const nick = chatUserInput.value.trim();
+        if (!nick) return;
+        // Buscar email por nick
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const user = users.find(u => (u.name || u.email) === nick);
+        if (!user) {
+            chatUserSelected.textContent = 'Usuario no encontrado';
+            userDest = '';
             renderChat();
+            return;
         }
+        userDest = user.email;
+        chatUserSelected.textContent = user.name || user.email;
+        renderChat();
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();
