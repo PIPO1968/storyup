@@ -94,6 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
+    // Refrescar el chat automáticamente cada 2 segundos si hay usuario destino
+    setInterval(() => {
+        if (userDest) renderChat();
+    }, 2000);
     function seleccionarNick() {
         if (chatUserError) chatUserError.style.display = 'none';
         const nick = chatUserInput.value.trim();
