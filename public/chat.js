@@ -277,13 +277,19 @@ async function renderChat() {
         if (resp.ok) msgs = await resp.json();
     } catch (e) { msgs = []; }
     chatUserSelected.textContent = userDestName || userDest;
-    chatMessages.innerHTML = msgs.map(m =>
-        `<div class="${m.sender === logged.email ? 'chat-msg-own' : 'chat-msg-other'}">${m.content}</div>`
-    ).join('');
-    // Permitir HTML seguro en los mensajes (solo etiquetas permitidas)
-    Array.from(chatMessages.children).forEach(div => {
-        div.innerHTML = div.innerHTML
-            .replace(/&lt;(b|u|span|img|iframe)[^&]*&gt;/g, match => match.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    chatMessages.innerHTML = '';
+    // Permitir solo etiquetas seguras: b, u, span, img, iframe (sin eval ni new Function)
+    const allowedTags = ['b', 'u', 'span', 'img', 'iframe'];
+    msgs.forEach(m => {
+        const div = document.createElement('div');
+        div.className = m.sender === logged.email ? 'chat-msg-own' : 'chat-msg-other';
+        // Sanitizar el contenido permitiendo solo etiquetas seguras
+        let safe = m.content.replace(/<([^>]+)>/g, (match, tag) => {
+            const tagName = tag.split(' ')[0].toLowerCase();
+            return allowedTags.includes(tagName) ? match : '';
+        });
+        div.innerHTML = safe;
+        chatMessages.appendChild(div);
     });
     chatMessages.scrollTop = chatMessages.scrollHeight;
     // Marcar como leído para el usuario logueado (receptor)
