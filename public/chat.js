@@ -1,3 +1,5 @@
+// Obtener usuario logueado
+const logged = JSON.parse(localStorage.getItem('storyup_logged'));
 // --- Favoritos/contactos rápidos ---
 const favsKey = () => 'storyup_favs_' + (logged?.email || '');
 const favsListDiv = document.getElementById('favs-list');
@@ -27,7 +29,7 @@ function renderFavs() {
         span.style.cursor = 'pointer';
         span.style.color = '#2563eb';
         span.style.fontWeight = 'bold';
-        span.onclick = function() {
+        span.onclick = function () {
             userDest = email;
             userDestName = name;
             renderChat();
@@ -41,7 +43,7 @@ function renderFavs() {
         del.style.color = '#e11d48';
         del.style.cursor = 'pointer';
         del.style.fontSize = '1em';
-        del.onclick = function() {
+        del.onclick = function () {
             const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
             localStorage.setItem(favsKey(), JSON.stringify(favs.filter(f => f !== email)));
             renderFavs();
@@ -53,7 +55,7 @@ function renderFavs() {
 }
 
 if (favAddBtn && favInput) {
-    favAddBtn.onclick = function() {
+    favAddBtn.onclick = function () {
         if (favError) favError.style.display = 'none';
         const nick = favInput.value.trim();
         if (!nick) return;
@@ -81,7 +83,7 @@ if (favAddBtn && favInput) {
         favInput.value = '';
         renderFavs();
     };
-    favInput.addEventListener('keydown', function(e) {
+    favInput.addEventListener('keydown', function (e) {
         if (favError) favError.style.display = 'none';
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -261,72 +263,6 @@ function renderChat() {
     }
 }
 
-// Bandeja de chats: mostrar todos los usuarios con los que hay mensajes
-function renderChatList() {
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-    const chats = [];
-    for (const c of chats) {
-        const li = document.createElement('li');
-        li.style.cursor = 'pointer';
-        li.style.padding = '0.5em 0.7em';
-        li.style.borderBottom = '1px solid #e5e7eb';
-        li.style.display = 'flex';
-        li.style.alignItems = 'center';
-        // Botón borrar
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '🗑️';
-        delBtn.title = 'Borrar chat';
-        delBtn.style.marginLeft = '8px';
-        delBtn.style.background = 'none';
-        delBtn.style.border = 'none';
-        delBtn.style.cursor = 'pointer';
-        delBtn.style.fontSize = '1.1em';
-        delBtn.onclick = function (e) {
-            e.stopPropagation();
-            if (confirm('¿Seguro que quieres borrar este chat?')) {
-                const chatKey = getChatKey(logged.email, c.email);
-                localStorage.removeItem(chatKey);
-                // Eliminar también la marca de leído
-                localStorage.removeItem('perfil_last_read_' + logged.email + '_' + c.email);
-                // Si el chat activo es este, limpiar
-                if (userDest === c.email) {
-                    userDest = '';
-                    userDestName = '';
-                    renderChat();
-                }
-                renderChatList();
-            }
-        };
-        li.innerHTML = `<span style=\"flex:1;font-weight:bold;color:#2563eb;\">${c.name}</span>` +
-            (c.unread ? '<span style=\"width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;\"></span>' : '') +
-            `<br><span style=\"font-size:0.97em;color:#555;font-weight:normal;\">${c.lastMsg.slice(0, 32)}</span>`;
-        li.appendChild(delBtn);
-        li.onclick = function () {
-            userDest = c.email;
-            userDestName = c.name;
-            renderChat();
-        };
-        chatListUl.appendChild(li);
-    }
-    chatListUl.innerHTML = '';
-    for (const c of chats) {
-        const li = document.createElement('li');
-        li.style.cursor = 'pointer';
-        li.style.padding = '0.5em 0.7em';
-        li.style.borderBottom = '1px solid #e5e7eb';
-        li.style.display = 'flex';
-        li.style.alignItems = 'center';
-        li.innerHTML = `<span style="flex:1;font-weight:bold;color:#2563eb;">${c.name}</span>` +
-            (c.unread ? '<span style="width:10px;height:10px;background:#e11d48;border-radius:50%;display:inline-block;margin-left:8px;"></span>' : '') +
-            `<br><span style="font-size:0.97em;color:#555;font-weight:normal;">${c.lastMsg.slice(0, 32)}</span>`;
-        li.onclick = function () {
-            userDest = c.email;
-            userDestName = c.name;
-            renderChat();
-        };
-        chatListUl.appendChild(li);
-    }
-}
 
 // Buscar usuario y abrir chat
 function buscarYSeleccionarUsuario() {
