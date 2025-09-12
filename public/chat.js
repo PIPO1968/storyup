@@ -1,4 +1,4 @@
-// Chat tipo WhatsApp - frontend moderno y seguro
+// Chat tipo WhatsApp - SOLO versión moderna y funcional
 // Requiere que el usuario esté autenticado y que existan storyup_users y storyup_logged en localStorage
 
 const chatSidebar = document.getElementById('chat-sidebar');
@@ -9,7 +9,6 @@ const chatForm = document.getElementById('chat-form');
 const chatInputBox = document.getElementById('chat-input');
 const chatSearch = document.getElementById('chat-search');
 
-let currentUser = null;
 let currentChat = null;
 
 function getLoggedUser() {
@@ -75,7 +74,6 @@ chatForm.onsubmit = async function (e) {
     renderMessages();
 };
 
-
 chatSearch.oninput = function () {
     const val = chatSearch.value.toLowerCase();
     Array.from(chatList.children).forEach(li => {
@@ -83,7 +81,6 @@ chatSearch.oninput = function () {
     });
 };
 
-// Permitir buscar y seleccionar usuario con Enter
 chatSearch.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
@@ -102,7 +99,6 @@ function buscarYSeleccionarUsuario() {
     const user = users.find(u => (u.name || u.email).toLowerCase() === val);
     if (user) {
         selectChat(user);
-        // Limpiar búsqueda y enfocar input de mensaje
         chatSearch.value = '';
         chatInputBox.focus();
     } else {
@@ -110,23 +106,9 @@ function buscarYSeleccionarUsuario() {
     }
 }
 
-// Inicialización
 window.addEventListener('DOMContentLoaded', () => {
     renderChatList();
 });
-// Variables globales para el usuario destino del chat
-let userDest = '';
-let userDestName = '';
-// Clave de chat entre dos usuarios (ordenada)
-function getChatKey(emailA, emailB) {
-    if (!emailA || !emailB) {
-        emailA = logged.email;
-        emailB = userDest;
-    }
-    const emails = [emailA, emailB].sort();
-    return 'chat_' + emails.join('_');
-}
-// Obtener usuario logueado
 const logged = JSON.parse(localStorage.getItem('storyup_logged'));
 // --- Favoritos/contactos rápidos ---
 const chatSearchBtn = document.getElementById('chat-search-btn');
