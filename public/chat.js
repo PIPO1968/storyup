@@ -1,3 +1,6 @@
+// Variables globales para el usuario destino del chat
+let userDest = '';
+let userDestName = '';
 // Clave de chat entre dos usuarios (ordenada)
 function getChatKey(emailA, emailB) {
     if (!emailA || !emailB) {
