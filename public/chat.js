@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatInput = document.getElementById('chat-input');
     const chatUserInput = document.getElementById('chat-user-input');
     const chatUserSelected = document.getElementById('chat-user-selected');
+    const chatUserError = document.getElementById('chat-user-error');
     // Usuario logueado
     const logged = JSON.parse(localStorage.getItem('storyup_logged'));
     if (!logged) {
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     chatUserInput.addEventListener('keydown', function (e) {
+        if (chatUserError) chatUserError.style.display = 'none';
         if (e.key === 'Enter') {
             e.preventDefault();
             const nick = chatUserInput.value.trim();
@@ -96,12 +98,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 chatUserSelected.textContent = 'Usuario no encontrado';
                 userDest = '';
                 renderChat();
+                if (chatUserError) {
+                    chatUserError.textContent = 'El usuario no existe';
+                    chatUserError.style.display = 'block';
+                }
                 return;
             }
             userDest = user.email;
             chatUserSelected.textContent = user.name || user.email;
             renderChat();
+            if (chatUserError) chatUserError.style.display = 'none';
         }
+    });
+    // Ocultar error al escribir
+    chatUserInput.addEventListener('input', function () {
+        if (chatUserError) chatUserError.style.display = 'none';
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();

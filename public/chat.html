@@ -119,16 +119,22 @@
     </nav>
     <div class="chat-container">
         <h1 style="margin-bottom:0.7em;">Chat privado</h1>
-        <div class="chat-topbar" style="display:flex;align-items:center;gap:10px;margin-bottom:1em;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
+        <div class="chat-topbar"
+            style="display:flex;align-items:center;gap:10px;margin-bottom:1em;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
             <div id="chat-user-selected"
                 style="flex:1;background:#f3f4f6;border-radius:8px;padding:0.7em 1em;font-weight:bold;min-height:38px;max-width:70%;overflow-x:auto;">
                 Selecciona un usuario</div>
-            <input type="text" id="chat-user-input" placeholder="Nick destino"
-                style="width:110px;padding:0.5em;border-radius:6px;border:1px solid #bbb;" maxlength="32"
-                autocomplete="off" />
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;">
+                <input type="text" id="chat-user-input" placeholder="Nick destino"
+                    style="width:110px;padding:0.5em;border-radius:6px;border:1px solid #bbb;" maxlength="32"
+                    autocomplete="off" />
+                <span id="chat-user-error" style="display:none;color:#e11d48;font-size:0.97em;margin-top:2px;"></span>
+            </div>
         </div>
-        <div class="chat-messages" id="chat-messages" style="max-width:520px;width:100%;margin-left:auto;margin-right:auto;"></div>
-        <form id="chat-form" autocomplete="off" style="display:flex;align-items:center;gap:8px;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
+        <div class="chat-messages" id="chat-messages"
+            style="max-width:520px;width:100%;margin-left:auto;margin-right:auto;"></div>
+        <form id="chat-form" autocomplete="off"
+            style="display:flex;align-items:center;gap:8px;max-width:520px;width:100%;margin-left:auto;margin-right:auto;">
             <div id="chat-toolbar" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
                 <button type="button" class="chat-tool-btn" title="Negrita"
                     style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
