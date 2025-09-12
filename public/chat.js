@@ -325,6 +325,7 @@ setInterval(() => {
     renderChatList();
     if (userDest) renderChat();
 }, 2000);
+
 chatForm.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!userDest) return;
@@ -335,6 +336,17 @@ chatForm.addEventListener('submit', function (e) {
     const now = Date.now();
     msgs.push({ text, own: logged.email, date: now });
     localStorage.setItem(chatKey, JSON.stringify(msgs));
+    // --- NUEVO: Forzar que el chat aparezca en la bandeja del receptor ---
+    // Si el receptor nunca ha abierto el chat, crear una entrada vacía para que le aparezca
+    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+    const receptor = users.find(u => u.email === userDest);
+    if (receptor) {
+        const chatKeyReceptor = getChatKey(logged.email, receptor.email);
+        // Si el receptor no tiene mensajes previos, crear el chat con un array vacío (si no existe)
+        if (!localStorage.getItem(chatKeyReceptor)) {
+            localStorage.setItem(chatKeyReceptor, JSON.stringify([]));
+        }
+    }
     // Marcar como no leído para el receptor (punto azul en Perfil)
     const lastReadKey = 'perfil_last_read_' + userDest + '_' + logged.email;
     // Solo actualizar si el receptor no está en su perfil ahora mismo
