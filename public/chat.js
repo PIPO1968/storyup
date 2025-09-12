@@ -111,13 +111,21 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return;
         }
-        userDest = user.email;
-        // Mostrar siempre el texto exacto del input en el recuadro
-        chatUserSelected.textContent = nick;
+        if (user.email === logged.email) {
+            chatUserSelected.textContent = 'No puedes chatear contigo mismo';
+            userDest = '';
+            renderChat();
+            if (chatUserError) {
+                chatUserError.textContent = 'No puedes chatear contigo mismo';
+                chatUserError.style.display = 'block';
+            }
+            return;
+        }
+        userDest = user.email; // SIEMPRE usar el email real para el chatKey
+        chatUserSelected.textContent = user.name || user.email;
         chatUserInput.value = '';
         renderChat();
         if (chatUserError) chatUserError.style.display = 'none';
-        // Enfocar el input de mensaje automáticamente tras renderizar
         setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
     }
     chatUserInput.addEventListener('keydown', function (e) {
