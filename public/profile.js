@@ -2,6 +2,47 @@
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Contactos por nick usando API backend ---
+    const contactosList = document.getElementById('lista-contactos');
+    const formAgregarContacto = document.getElementById('form-agregar-contacto');
+    const inputNickContacto = document.getElementById('input-nick-contacto');
+    async function cargarContactos() {
+        contactosList.innerHTML = '<li style="color:#888;text-align:center;">Cargando...</li>';
+        try {
+            const res = await fetch(`/api/contacts?user_nick=${encodeURIComponent(user.name)}`);
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+                contactosList.innerHTML = data.map(nick => `<li style='padding:4px 0;border-bottom:1px solid #eee;cursor:pointer;' class='contacto-item' data-nick='${nick}'>${nick}</li>`).join('');
+            } else {
+                contactosList.innerHTML = '<li style="color:#888;text-align:center;">Sin contactos</li>';
+            }
+        } catch (e) {
+            contactosList.innerHTML = '<li style="color:#e11d48;text-align:center;">Error al cargar contactos</li>';
+        }
+    }
+    if (formAgregarContacto) {
+        formAgregarContacto.onsubmit = async function (e) {
+            e.preventDefault();
+            const nick = inputNickContacto.value.trim();
+            if (!nick || nick === user.name) return;
+            try {
+                const res = await fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_nick: user.name, contact_nick: nick })
+                });
+                if (res.ok) {
+                    inputNickContacto.value = '';
+                    await cargarContactos();
+                } else {
+                    alert('No se pudo agregar el contacto.');
+                }
+            } catch (e) {
+                alert('Error de red al agregar contacto.');
+            }
+        };
+    }
+    cargarContactos();
     // --- Barra de formato para historias ---
     const toolbar = document.getElementById('story-toolbar');
     const textarea = document.getElementById('story-text');
