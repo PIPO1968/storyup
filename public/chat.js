@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Link seleccionar
     const chatUserSelectLink = document.getElementById('chat-user-select-link');
     if (chatUserSelectLink) {
-        chatUserSelectLink.addEventListener('click', function(e) {
+        chatUserSelectLink.addEventListener('click', function (e) {
             e.preventDefault();
             seleccionarNick();
         });
