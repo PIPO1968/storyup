@@ -56,7 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtener usuario logueado
     const user = JSON.parse(localStorage.getItem('storyup_logged'));
     const userInfo = document.getElementById('user-info');
-    // const logoutBtn = document.getElementById('logout-btn');
+    // Cierre de sesión automático si se excedió el tiempo de inactividad
+    const lastActivity = parseInt(localStorage.getItem('storyup_last_activity') || '0', 10);
+    if (lastActivity && Date.now() - lastActivity > 60 * 60 * 1000) {
+        localStorage.removeItem('storyup_logged');
+        window.location.href = 'login.html';
+        return;
+    }
 
     if (!user) {
         // Si no hay usuario logueado, redirigir a login
