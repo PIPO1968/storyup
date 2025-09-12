@@ -86,8 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     document.getElementById('select-user-btn').addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
+        const errorDiv = document.getElementById('chat-user-error');
+        errorDiv.textContent = '';
         if (!nick) {
-            chatUserSelected.textContent = 'Debes escribir un nick.';
+            chatUserSelected.textContent = 'Selecciona un usuario';
+            errorDiv.textContent = 'Debes escribir un nick.';
             userDest = '';
             renderChat();
             return;
@@ -96,13 +99,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
-            chatUserSelected.textContent = 'Ese usuario no existe o no lo escribiste correctamente';
+            chatUserSelected.textContent = 'Selecciona un usuario';
+            errorDiv.textContent = 'Ese usuario no existe o no lo escribiste correctamente';
             userDest = '';
             renderChat();
             return;
         }
         userDest = user.email;
         chatUserSelected.textContent = user.name || user.email;
+        errorDiv.textContent = '';
         renderChat();
     });
     chatForm.addEventListener('submit', function (e) {
