@@ -103,11 +103,18 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         userDest = user.email;
-        chatUserSelected.textContent = user.name || user.email;
-    renderChat();
-    if (chatUserError) chatUserError.style.display = 'none';
-    // Enfocar el input de mensaje automáticamente tras renderizar
-    setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
+        // Mostrar el nick exacto escrito si coincide con el campo name, o el email si coincide con el email
+        if (user.name === nick) {
+            chatUserSelected.textContent = user.name;
+        } else if (user.email === nick) {
+            chatUserSelected.textContent = user.email;
+        } else {
+            chatUserSelected.textContent = user.name || user.email;
+        }
+        renderChat();
+        if (chatUserError) chatUserError.style.display = 'none';
+        // Enfocar el input de mensaje automáticamente tras renderizar
+        setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
     }
     chatUserInput.addEventListener('keydown', function (e) {
         if (chatUserError) chatUserError.style.display = 'none';
