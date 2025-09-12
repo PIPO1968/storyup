@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return;
         }
-    userDest = user.email;
-    chatUserSelected.textContent = user.name || user.email;
+        userDest = user.email;
+        chatUserSelected.textContent = user.name || user.email;
     renderChat();
     if (chatUserError) chatUserError.style.display = 'none';
-    // Enfocar el input de mensaje automáticamente
-    if (chatInput) chatInput.focus();
+    // Enfocar el input de mensaje automáticamente tras renderizar
+    setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
     }
     chatUserInput.addEventListener('keydown', function (e) {
         if (chatUserError) chatUserError.style.display = 'none';
