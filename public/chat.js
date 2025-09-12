@@ -125,7 +125,7 @@ window.insertTag = function (tag) {
     input.value = before + `<${tag}>` + selected + `</${tag}>` + after;
 };
 
-function renderChatList() {
+async function renderChatList() {
     if (!chatListUl) return;
     const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
     // Leer lista de ocultos
@@ -137,15 +137,21 @@ function renderChatList() {
     for (const u of users) {
         if (u.email === logged.email) continue;
         const chatKey = getChatKey(logged.email, u.email);
-        const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+        // LECTURA BACKEND: Obtener mensajes entre logged.email y u.email
+        // Sincronización síncrona para mantener la UI (puedes optimizar a futuro)
+        let msgs = [];
+        try {
+            const resp = await fetch(`/api/messages?from=${logged.email}&to=${u.email}`);
+            if (resp.ok) msgs = await resp.json();
+        } catch (e) { msgs = []; }
         let lastMsg = msgs.length > 0 ? msgs[msgs.length - 1] : null;
-        let unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
+        let unread = msgs.some(m => m.sender !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || new Date(m.created_at).getTime() > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
         if (ocultos.includes(u.email) && !unread) continue;
         allChats[u.email] = {
             email: u.email,
             name: u.name || u.email,
-            lastMsg: lastMsg ? lastMsg.text : '',
-            lastDate: lastMsg ? lastMsg.date : 0,
+            lastMsg: lastMsg ? lastMsg.content : '',
+            lastDate: lastMsg ? new Date(lastMsg.created_at).getTime() : 0,
             unread,
             anon: false
         };
@@ -257,17 +263,22 @@ function renderChatList() {
         chatListUl.appendChild(li);
     }
 }
-function renderChat() {
+async function renderChat() {
     if (!userDest) {
         chatUserSelected.textContent = 'Selecciona un chat';
         chatMessages.innerHTML = '';
         return;
     }
     const chatKey = getChatKey();
-    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+    // LECTURA BACKEND: Obtener mensajes entre logged.email y userDest
+    let msgs = [];
+    try {
+        const resp = await fetch(`/api/messages?from=${logged.email}&to=${userDest}`);
+        if (resp.ok) msgs = await resp.json();
+    } catch (e) { msgs = []; }
     chatUserSelected.textContent = userDestName || userDest;
     chatMessages.innerHTML = msgs.map(m =>
-        `<div class="${m.own === logged.email ? 'chat-msg-own' : 'chat-msg-other'}">${m.text}</div>`
+        `<div class="${m.sender === logged.email ? 'chat-msg-own' : 'chat-msg-other'}">${m.content}</div>`
     ).join('');
     // Permitir HTML seguro en los mensajes (solo etiquetas permitidas)
     Array.from(chatMessages.children).forEach(div => {
@@ -278,9 +289,9 @@ function renderChat() {
     // Marcar como leído para el usuario logueado (receptor)
     if (msgs.length > 0) {
         const lastMsg = msgs[msgs.length - 1];
-        if (lastMsg.own !== logged.email) {
+        if (lastMsg.sender !== logged.email) {
             const lastReadKey = 'perfil_last_read_' + logged.email + '_' + userDest;
-            localStorage.setItem(lastReadKey, String(lastMsg.date));
+            localStorage.setItem(lastReadKey, String(new Date(lastMsg.created_at).getTime()));
         }
     }
 }
@@ -334,9 +345,9 @@ if (chatSearchInput) {
 }
 
 // Refrescar el chat y la lista automáticamente cada 2 segundos
-setInterval(() => {
-    renderChatList();
-    if (userDest) renderChat();
+setInterval(async () => {
+    await renderChatList();
+    if (userDest) await renderChat();
 }, 2000);
 
 chatForm.addEventListener('submit', function (e) {
@@ -344,30 +355,19 @@ chatForm.addEventListener('submit', function (e) {
     if (!userDest) return;
     const text = chatInput.value.trim();
     if (!text) return;
-    const chatKey = getChatKey();
-    const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-    const now = Date.now();
-    msgs.push({ text, own: logged.email, date: now });
-    localStorage.setItem(chatKey, JSON.stringify(msgs));
-    // --- NUEVO: Forzar que el chat aparezca en la bandeja del receptor ---
-    // Si el receptor nunca ha abierto el chat, crear una entrada vacía para que le aparezca
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-    const receptor = users.find(u => u.email === userDest);
-    if (receptor) {
-        const chatKeyReceptor = getChatKey(logged.email, receptor.email);
-        // Si el receptor no tiene mensajes previos, crear el chat con un array vacío (si no existe)
-        if (!localStorage.getItem(chatKeyReceptor)) {
-            localStorage.setItem(chatKeyReceptor, JSON.stringify([]));
-        }
-    }
-    // Marcar como no leído para el receptor (punto azul en Perfil)
-    const lastReadKey = 'perfil_last_read_' + userDest + '_' + logged.email;
-    // Solo actualizar si el receptor no está en su perfil ahora mismo
-    // (si está, el punto azul se apaga al instante por el script de index.html)
-    // Simplemente no actualizamos el lastRead, así el punto azul se enciende
-    chatInput.value = '';
-    renderChat();
+    // ENVÍO BACKEND: Guardar mensaje en la base de datos
+    fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from: logged.email, to: userDest, content: text })
+    }).then(() => {
+        chatInput.value = '';
+        renderChat();
+    });
 });
 
-renderChatList();
-renderChat();
+// Llamadas iniciales asíncronas
+(async () => {
+    await renderChatList();
+    await renderChat();
+})();
