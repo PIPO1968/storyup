@@ -87,11 +87,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectBtn = document.getElementById('select-user-btn');
     selectBtn.addEventListener('click', function () {
         const nick = chatUserInput.value.trim();
-        selectBtn.classList.remove('select-user-btn-error');
-        selectBtn.textContent = 'Seleccionar';
+    selectBtn.className = 'chat-select-btn';
+    selectBtn.textContent = 'Seleccionar';
         if (!nick) {
             selectBtn.textContent = 'Debes escribir un nick';
-            selectBtn.classList.add('select-user-btn-error');
+            selectBtn.className = 'chat-select-btn select-user-btn-error';
             userDest = '';
             renderChat();
             return;
@@ -101,14 +101,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
             selectBtn.textContent = 'Nick no válido';
-            selectBtn.classList.add('select-user-btn-error');
+            selectBtn.className = 'chat-select-btn select-user-btn-error';
             userDest = '';
             renderChat();
             return;
         }
         userDest = user.email;
         selectBtn.textContent = 'Seleccionar';
-        selectBtn.classList.remove('select-user-btn-error');
+    selectBtn.className = 'chat-select-btn';
         chatUserSelected.textContent = user.name || user.email;
         chatUserSelected.classList.remove('chat-user-error');
         renderChat();
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Restaurar botón al escribir de nuevo (solo un listener)
     chatUserInput.addEventListener('input', function () {
         selectBtn.textContent = 'Seleccionar';
-        selectBtn.classList.remove('select-user-btn-error');
+        selectBtn.className = 'chat-select-btn';
     });
     chatForm.addEventListener('submit', function (e) {
         e.preventDefault();
