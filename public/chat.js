@@ -18,8 +18,9 @@ const chatSearchInput = document.getElementById('chat-search-input');
 const chatSearchError = document.getElementById('chat-search-error');
 const chatForm = document.getElementById('chat-form');
 const chatListUl = document.getElementById('chat-list-ul');
-// Elemento del usuario seleccionado en el chat
 const chatUserSelected = document.getElementById('chat-user-selected');
+// Elemento del área de mensajes del chat
+const chatMessages = document.getElementById('chat-messages');
 const favsKey = () => 'storyup_favs_' + (logged?.email || '');
 const favsListDiv = document.getElementById('favs-list');
 const favInput = document.getElementById('fav-nick-input');
