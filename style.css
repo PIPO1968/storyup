@@ -1,3 +1,29 @@
+/* Bloque lateral izquierdo en el perfil */
+#left-block {
+    background: #e0e7ef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0001;
+    border: 1px solid #e5e7eb;
+    min-width: 90px;
+    max-width: 120px;
+    width: 100px;
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 600px;
+    margin-right: 18px;
+}
+
+@media (max-width: 900px) {
+    #left-block {
+        display: none;
+    }
+    #chat-bloque {
+        margin-left: 8px !important;
+    }
+}
 body {
     opacity: 0;
     transition: opacity 1s ease-in;
