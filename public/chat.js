@@ -103,14 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         userDest = user.email;
-        // Mostrar el nick exacto escrito si coincide con el campo name, o el email si coincide con el email
-        if (user.name === nick) {
-            chatUserSelected.textContent = user.name;
-        } else if (user.email === nick) {
-            chatUserSelected.textContent = user.email;
-        } else {
-            chatUserSelected.textContent = user.name || user.email;
-        }
+        // Mostrar siempre el texto exacto del input en el recuadro
+        chatUserSelected.textContent = nick;
         renderChat();
         if (chatUserError) chatUserError.style.display = 'none';
         // Enfocar el input de mensaje automáticamente tras renderizar
