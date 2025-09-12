@@ -1,3 +1,91 @@
+// Chat tipo WhatsApp - frontend moderno y seguro
+// Requiere que el usuario esté autenticado y que existan storyup_users y storyup_logged en localStorage
+
+const chatSidebar = document.getElementById('chat-sidebar');
+const chatList = document.getElementById('chat-list');
+const chatHeader = document.getElementById('chat-header');
+const chatMessagesBox = document.getElementById('chat-messages');
+const chatForm = document.getElementById('chat-form');
+const chatInputBox = document.getElementById('chat-input');
+const chatSearch = document.getElementById('chat-search');
+
+let currentUser = null;
+let currentChat = null;
+
+function getLoggedUser() {
+    return JSON.parse(localStorage.getItem('storyup_logged'));
+}
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('storyup_users') || '[]');
+}
+
+function renderChatList() {
+    const users = getUsers();
+    const logged = getLoggedUser();
+    chatList.innerHTML = '';
+    users.filter(u => u.email !== logged.email).forEach(u => {
+        const li = document.createElement('li');
+        li.className = 'chat-list-item';
+        li.textContent = u.name || u.email;
+        li.onclick = () => selectChat(u);
+        chatList.appendChild(li);
+    });
+}
+
+function selectChat(user) {
+    currentChat = user;
+    chatHeader.textContent = user.name || user.email;
+    renderMessages();
+}
+
+async function renderMessages() {
+    if (!currentChat) return;
+    const logged = getLoggedUser();
+        chatMessagesBox.innerHTML = '<div class="loading">Cargando...</div>';
+    try {
+        const resp = await fetch(`/api/messages?from=${logged.email}&to=${currentChat.email}`);
+        if (!resp.ok) throw new Error('Error al cargar mensajes');
+        const msgs = await resp.json();
+            chatMessagesBox.innerHTML = '';
+            msgs.forEach(m => {
+                const div = document.createElement('div');
+                div.className = m.sender === logged.email ? 'msg-own' : 'msg-other';
+                div.textContent = m.content;
+                chatMessagesBox.appendChild(div);
+            });
+            chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
+    } catch (e) {
+        chatMessagesBox.innerHTML = '<div class="error">No se pudieron cargar los mensajes</div>';
+    }
+}
+
+chatForm.onsubmit = async function(e) {
+    e.preventDefault();
+    if (!currentChat) return;
+    const logged = getLoggedUser();
+    const text = chatInputBox.value.trim();
+    if (!text) return;
+    chatInputBox.value = '';
+    await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from: logged.email, to: currentChat.email, content: text })
+    });
+    renderMessages();
+};
+
+chatSearch.oninput = function() {
+    const val = chatSearch.value.toLowerCase();
+    Array.from(chatList.children).forEach(li => {
+        li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
+    });
+};
+
+// Inicialización
+window.addEventListener('DOMContentLoaded', () => {
+    renderChatList();
+});
 // Variables globales para el usuario destino del chat
 let userDest = '';
 let userDestName = '';
