@@ -605,5 +605,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, true);
             }
 
+
             renderStories();
+        }
+    );
+}
 
