@@ -26,7 +26,8 @@
             document.getElementById('moderation-link').style.display = 'block';
         }
     </script>
-    <div class="contenido">
+        <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;min-height:70vh;">
+            <div class="contenido" style="max-width:540px;width:100%;margin-right:auto;margin-left:0;">
         <h1>Mi perfil</h1>
         <p id="user-info"></p>
         <div style="margin:1.5em 0;text-align:center;position:relative;display:inline-block;">
@@ -127,7 +128,10 @@
         <div id="admin-panel"></div>
         <div id="mod-words-panel"></div>
         <!-- Botón de cerrar sesión eliminado -->
-    </div>
+            </div>
+            <!-- Espacio derecho reservado para chat u otros módulos -->
+            <div style="flex:1;"></div>
+        </div>
     <script src="profile.js"></script>
 </body>
 
