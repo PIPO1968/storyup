@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <link rel="icon" type="image/png" href="img/icon-192.png">
+    <link rel="icon" type="image/png" href="img/storyup-logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión - StoryUp</title>
@@ -100,6 +100,27 @@
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Entrar</button>
+            <div style="margin-top:10px;">
+                <a href="#" id="forgot-link" style="color:#2563eb;font-size:0.98em;text-decoration:underline;">¿Olvidaste tu contraseña?</a>
+                &nbsp;|&nbsp;
+                <a href="#" id="change-link" style="color:#2563eb;font-size:0.98em;text-decoration:underline;">Cambiar contraseña</a>
+            </div>
+        </form>
+        <form id="forgot-form" style="display:none;margin-top:18px;">
+            <label for="forgot-email">Introduce tu email para recuperar la contraseña:</label>
+            <input type="email" id="forgot-email" required style="margin-bottom:8px;">
+            <button type="submit">Enviar enlace</button>
+            <button type="button" id="cancel-forgot" style="margin-left:8px;">Cancelar</button>
+        </form>
+        <form id="change-form" style="display:none;margin-top:18px;">
+            <label for="change-email">Email:</label>
+            <input type="email" id="change-email" required>
+            <label for="change-old">Contraseña actual:</label>
+            <input type="password" id="change-old" required>
+            <label for="change-new">Nueva contraseña:</label>
+            <input type="password" id="change-new" required>
+            <button type="submit">Cambiar contraseña</button>
+            <button type="button" id="cancel-change" style="margin-left:8px;">Cancelar</button>
         </form>
         <div class="login-message" id="loginMessage"></div>
         <a href="signup.html" class="login-link">¿No tienes cuenta? Regístrate aquí</a>
@@ -108,6 +129,108 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('loginForm');
             const message = document.getElementById('loginMessage');
+            const forgotLink = document.getElementById('forgot-link');
+            const changeLink = document.getElementById('change-link');
+            const forgotForm = document.getElementById('forgot-form');
+            const changeForm = document.getElementById('change-form');
+            const cancelForgot = document.getElementById('cancel-forgot');
+            const cancelChange = document.getElementById('cancel-change');
+
+            forgotLink.onclick = function(e) {
+                e.preventDefault();
+                forgotForm.style.display = 'block';
+                changeForm.style.display = 'none';
+                form.style.display = 'none';
+                message.textContent = '';
+            };
+            changeLink.onclick = function(e) {
+                e.preventDefault();
+                changeForm.style.display = 'block';
+                forgotForm.style.display = 'none';
+                form.style.display = 'none';
+                message.textContent = '';
+            };
+            cancelForgot.onclick = function() {
+                forgotForm.style.display = 'none';
+                form.style.display = 'block';
+            };
+            cancelChange.onclick = function() {
+                changeForm.style.display = 'none';
+                form.style.display = 'block';
+            };
+
+            // Recuperar contraseña
+            forgotForm.onsubmit = async function(e) {
+                e.preventDefault();
+                const email = document.getElementById('forgot-email').value.trim().toLowerCase();
+                if (!email) return;
+                message.textContent = 'Enviando correo...';
+                try {
+                    const res = await fetch('/api/password', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'request', email })
+                    });
+                    if (res.ok) {
+                        message.style.color = '#388e3c';
+                        message.textContent = 'Revisa tu correo para restablecer la contraseña.';
+                        forgotForm.style.display = 'none';
+                    } else {
+                        const data = await res.json();
+                        message.style.color = '#d32f2f';
+                        message.textContent = data.error || 'Error al enviar el correo.';
+                    }
+                } catch (err) {
+                    message.style.color = '#d32f2f';
+                    message.textContent = 'Error de red.';
+                }
+            };
+
+            // Cambiar contraseña (requiere la actual)
+            changeForm.onsubmit = async function(e) {
+                e.preventDefault();
+                const email = document.getElementById('change-email').value.trim().toLowerCase();
+                const oldPass = document.getElementById('change-old').value;
+                const newPass = document.getElementById('change-new').value;
+                if (!email || !oldPass || !newPass) return;
+                if (newPass.length < 6) {
+                    message.style.color = '#d32f2f';
+                    message.textContent = 'La nueva contraseña debe tener al menos 6 caracteres.';
+                    return;
+                }
+                message.textContent = 'Cambiando contraseña...';
+                try {
+                    // Verificar usuario y contraseña actual
+                    const resLogin = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password: oldPass })
+                    });
+                    if (!resLogin.ok) {
+                        message.style.color = '#d32f2f';
+                        message.textContent = 'Email o contraseña actual incorrectos.';
+                        return;
+                    }
+                    // Cambiar contraseña en backend
+                    const res = await fetch('/api/profile', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'change-password', email, password: newPass })
+                    });
+                    if (res.ok) {
+                        message.style.color = '#388e3c';
+                        message.textContent = 'Contraseña cambiada correctamente.';
+                        changeForm.style.display = 'none';
+                    } else {
+                        const data = await res.json();
+                        message.style.color = '#d32f2f';
+                        message.textContent = data.error || 'Error al cambiar la contraseña.';
+                    }
+                } catch (err) {
+                    message.style.color = '#d32f2f';
+                    message.textContent = 'Error de red.';
+                }
+            };
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const email = document.getElementById('email').value.trim().toLowerCase();
