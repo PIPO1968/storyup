@@ -1,133 +1,121 @@
-<!DOCTYPE html><!DOCTYPE html>
-
-<html lang="es"><html lang="es">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <title>Chat privado - StoryUp</title>
+    <link rel="icon" type="image/png" href="img/storyup-logo.png">
+    <link rel="stylesheet" href="style.css">
 
-    <meta charset="UTF-8"><head>
-
-    <title>Chat privado - StoryUp</title>    <meta charset="UTF-8">
-
-    <link rel="stylesheet" href="style.css">    <title>Chat privado - StoryUp</title>
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon">    <link rel="stylesheet" href="style.css">
-
-</head>    <style>
-
-<body>        .chat-container {
-
-    <nav>            max-width: 1100px;
-
-        <ul class="nav-menu">            width: 96vw;
-
-            <li><a href="index.html">Inicio</a></li>            margin: 2.5em auto;
-
-            <li><a href="explore.html">Explorar</a></li>            background: #fff;
-
-            <li><a href="profile.html">Perfil</a></li>            border-radius: 16px;
-
-            <li><a href="stats.html">Estadísticas</a></li>            box-shadow: 0 4px 24px #0002;
-
-        </ul>            padding: 2.5em 2em;
-
-    </nav>        }
-
-    <main>
-
-        <div id="chat-app"        @media (max-width: 800px) {
-
-            style="display:flex;height:80vh;border:1px solid #ccc;border-radius:10px;overflow:hidden;margin:2em auto;max-width:900px;min-width:320px;background:#fff;box-shadow:0 2px 12px #0001;">            .chat-container {
-
-            <aside id="chat-sidebar"                max-width: 99vw;
-
-                style="width:260px;background:#f7f7fa;border-right:1px solid #eee;display:flex;flex-direction:column;">                padding: 1em 0.2em;
-
-                <div id="favs-list" style="margin:10px 10px 0 10px;"></div>            }
-
-                <div style="display:flex;gap:6px;margin:8px 10px 8px 10px;">
-
-                    <input id="fav-nick-input" type="text" placeholder="Añadir favorito..."            .chat-messages {
-
-                        style="flex:1;padding:7px 10px;border-radius:6px;border:1px solid #ddd;outline:none;">                font-size: 1em;
-
-                    <button id="fav-add-btn"                padding: 0.7em 0.2em;
-
-                        style="padding:7px 12px;border-radius:6px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-weight:bold;cursor:pointer;">+</button>            }
-
-                </div>        }
-
-                <div id="fav-error" style="color:#e11d48;font-size:0.97em;display:none;margin:0 10px 4px 10px;"></div>
-
-                <div style="display:flex;gap:6px;margin:8px 10px 8px 10px;">        .chat-messages {
-
-                    <input id="chat-search" type="text" placeholder="Buscar usuario..."            min-height: 340px;
-
-                        style="flex:1;padding:7px 10px;border-radius:6px;border:1px solid #ddd;outline:none;">            max-height: 480px;
-
-                </div>            overflow-y: auto;
-
-                <ul id="chat-list" style="flex:1;overflow-y:auto;list-style:none;padding:0 0 10px 0;margin:0;"></ul>            margin-bottom: 1.5em;
-
-            </aside>            background: #f3f4f6;
-
-            <main style="flex:1;display:flex;flex-direction:column;">            border-radius: 10px;
-
-                <header id="chat-header"            padding: 1.2em;
-
-                    style="height:54px;display:flex;align-items:center;padding:0 18px;font-weight:bold;font-size:1.1em;background:#f1f5fa;border-bottom:1px solid #eee;"></header>            font-size: 1.13em;
-
-                <section id="chat-messages" style="flex:1;overflow-y:auto;padding:18px;background:#f9f9fb;"></section>        }
-
-                <form id="chat-form"
-
-                    style="display:flex;align-items:center;padding:12px 18px;background:#f1f5fa;border-top:1px solid #eee;">        .chat-input {
-
-                    <input id="chat-input" type="text" placeholder="Escribe un mensaje..." autocomplete="off"            width: 80%;
-
-                        style="flex:1;padding:9px 12px;border-radius:6px;border:1px solid #ccc;outline:none;font-size:1em;">            padding: 0.5em;
-
-                    <button type="submit"            border-radius: 6px;
-
-                        style="margin-left:10px;padding:9px 18px;background:#25d366;color:#fff;border:none;border-radius:6px;font-weight:bold;cursor:pointer;">Enviar</button>            border: 1px solid #bbb;
-
-                </form>        }
-
-            </main>
-
-        </div>        .chat-send {
-
-        <div id="chat-auth-error" style="display:none;color:#e11d48;text-align:center;font-size:1.1em;margin-top:2em;">Debes iniciar sesión para acceder al chat.</div>            padding: 0.5em 1.2em;
-
-    </main>            border-radius: 6px;
-
-    <footer>            background: #38bdf8;
-
-        <p>&copy; 2025 StoryUp. Todos los derechos reservados.</p>            color: #fff;
-
-    </footer>            border: none;
-
-    <script>            font-weight: bold;
-
-        // Comprobación de autenticación            margin-left: 0.5em;
-
-        const logged = JSON.parse(localStorage.getItem('storyup_logged'));            cursor: pointer;
-
-        if (!logged) {        }
-
-            document.getElementById('chat-app').style.display = 'none';
-
-            document.getElementById('chat-auth-error').style.display = 'block';        html,
-
-            setTimeout(() => { window.location.href = 'login.html'; }, 2000);        body {
-
-        }            height: 100%;
-
-    </script>            margin: 0;
-
-    <script src="chat.js"></script>            padding: 0;
-
-</body>        }
-
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            max-width: 1100px;
+            margin: 2.5em auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #0002;
+            padding: 2.5em 2em;
+        }
+        .chat-messages {
+            flex: 1;
+            min-height: 180px;
+            max-height: none;
+            overflow-y: auto;
+            margin-bottom: 1em;
+            background: #f3f4f6;
+            border-radius: 10px;
+            padding: 1em;
+            font-size: 1.08em;
+        }
+        .chat-msg-own {
+            text-align: right;
+            color: #2563eb;
+        }
+        .chat-msg-other {
+            text-align: left;
+            color: #e11d48;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="explore.html">Explorar</a></li>
+            <li><a href="concurso.html" style="color:#fbbf24;font-weight:bold;">Concursos</a></li>
+            <li><a href="profile.html">Perfil</a></li>
+            <li><a href="stats.html">Estadísticas</a></li>
+        </ul>
+    </nav>
+    <div class="chat-container">
+        <!-- Bloque de favoritos/contactos rápidos -->
+        <div id="chat-favs"
+            style="width:170px;min-width:120px;max-width:200px;background:#f3f4f6;border-radius:14px 0 0 14px;padding:0.5em 0.2em;overflow-y:auto;box-shadow:2px 0 8px #0001;margin-right:6px;display:flex;flex-direction:column;align-items:center;">
+            <h2 style="font-size:1em;text-align:center;margin:0.5em 0 0.7em 0;color:#2563eb;">Favoritos</h2>
+            <div id="favs-list" style="width:100%;min-height:40px;margin-bottom:0.7em;"></div>
+            <input id="fav-nick-input" type="text" placeholder="Añadir nick..." maxlength="32"
+                style="width:90%;padding:0.3em 0.5em;border-radius:7px;border:1px solid #bbb;font-size:0.97em;margin-bottom:0.3em;" />
+            <button id="fav-add-btn"
+                style="width:90%;padding:0.3em 0.5em;border-radius:6px;background:#2563eb;color:#fff;border:none;font-weight:bold;cursor:pointer;font-size:0.97em;">Añadir</button>
+            <span id="fav-error" style="display:none;color:#e11d48;font-size:0.95em;margin-top:2px;"></span>
+        </div>
+        <!-- Bandeja de chats -->
+        <div id="chat-list"
+            style="width:220px;min-width:180px;max-width:260px;background:#f3f4f6;border-radius:0;padding:0.5em 0.2em;overflow-y:auto;box-shadow:2px 0 8px #0001;">
+            <h2 style="font-size:1.1em;text-align:center;margin:0.5em 0 0.7em 0;color:#2563eb;">Chats</h2>
+            <div style="padding:0 0.5em 0.7em 0.5em;">
+                <input id="chat-search-input" type="text" placeholder="Buscar usuario..."
+                    style="width:100%;padding:0.4em 0.7em;border-radius:7px;border:1px solid #bbb;font-size:1em;"
+                    maxlength="32" autocomplete="off" />
+                <button id="chat-search-btn"
+                    style="margin-top:0.4em;width:100%;padding:0.3em 0;border-radius:6px;background:#2563eb;color:#fff;border:none;font-weight:bold;cursor:pointer;font-size:0.98em;">Iniciar
+                    chat</button>
+                <span id="chat-search-error" style="display:none;color:#e11d48;font-size:0.97em;margin-top:2px;"></span>
+            </div>
+            <ul id="chat-list-ul" style="list-style:none;padding:0;margin:0;"></ul>
+        </div>
+        <!-- Área de conversación -->
+        <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+            <div id="chat-user-selected"
+                style="background:#f3f4f6;border-radius:0 14px 0 0;padding:0.7em 1em;font-weight:bold;min-height:38px;color:#2563eb;max-width:100%;overflow-x:auto;margin-bottom:0.5em;">
+                Selecciona un chat</div>
+            <div class="chat-messages" id="chat-messages" style="width:100%;margin:0;"></div>
+            <form id="chat-form" autocomplete="off"
+                style="display:flex;align-items:center;gap:8px;width:100%;margin:0;">
+                <div id="chat-toolbar" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                    <button type="button" class="chat-tool-btn" title="Negrita"
+                        style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                        onclick="insertTag('b')"><b>B</b></button>
+                    <button type="button" class="chat-tool-btn" title="Subrayado"
+                        style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                        onclick="insertTag('u')"><u>U</u></button>
+                    <input type="color" id="color-picker" title="Color de texto"
+                        style="width:16px;height:16px;padding:0;border:none;background:none;"
+                        onchange="insertColor(this.value)">
+                    <label for="img-upload" title="Insertar imagen" style="margin:0;cursor:pointer;">
+                        <span style="font-size:0.9em;">🖼️</span>
+                        <input type="file" id="img-upload" accept="image/*" style="display:none;"
+                            onchange="insertImage(event)">
+                    </label>
+                    <button type="button" class="chat-tool-btn" title="Insertar video de YouTube"
+                        style="font-size:0.9em;padding:1px 5px;min-width:20px;min-height:20px;"
+                        onclick="insertYoutube()">▶️</button>
+                </div>
+                <input type="text" id="chat-input" class="chat-input" placeholder="Escribe un mensaje..." required
+                    style="width:100%;font-size:1.13em;padding:0.7em 1em;" />
+                <button type="submit" class="chat-send">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script src="chat.js"></script>
+</body>
 </html>
 
         body {
