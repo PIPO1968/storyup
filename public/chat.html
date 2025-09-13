@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Chat privado - StoryUp</title>
@@ -12,6 +13,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .chat-container {
             flex: 1;
             display: flex;
@@ -23,6 +25,7 @@
             box-shadow: 0 4px 24px #0002;
             padding: 2.5em 2em;
         }
+
         .chat-messages {
             flex: 1;
             min-height: 180px;
@@ -34,16 +37,19 @@
             padding: 1em;
             font-size: 1.08em;
         }
+
         .chat-msg-own {
             text-align: right;
             color: #2563eb;
         }
+
         .chat-msg-other {
             text-align: left;
             color: #e11d48;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
@@ -116,49 +122,50 @@
     </div>
     <script src="chat.js"></script>
 </body>
+
 </html>
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
 
-        .chat-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            max-width: 700px;
-            min-height: 0;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px #0002;
-            padding: 1.2em 1em 1.2em 1em;
-        }
+.chat-container {
+flex: 1;
+display: flex;
+flex-direction: column;
+max-width: 700px;
+min-height: 0;
+margin: 0 auto;
+background: #fff;
+border-radius: 16px;
+box-shadow: 0 4px 24px #0002;
+padding: 1.2em 1em 1.2em 1em;
+}
 
-        .chat-messages {
-            flex: 1;
-            min-height: 180px;
-            max-height: none;
-            overflow-y: auto;
-            margin-bottom: 1em;
-            background: #f3f4f6;
-            border-radius: 10px;
-            padding: 1em;
-            font-size: 1.08em;
-        }
+.chat-messages {
+flex: 1;
+min-height: 180px;
+max-height: none;
+overflow-y: auto;
+margin-bottom: 1em;
+background: #f3f4f6;
+border-radius: 10px;
+padding: 1em;
+font-size: 1.08em;
+}
 
-        .chat-msg-own {
-            text-align: right;
-            color: #2563eb;
-        }
+.chat-msg-own {
+text-align: right;
+color: #2563eb;
+}
 
-        .chat-msg-other {
-            text-align: left;
-            color: #e11d48;
-        }
-    </style>
+.chat-msg-other {
+text-align: left;
+color: #e11d48;
+}
+</style>
 </head>
 
 <body>

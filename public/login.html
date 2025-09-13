@@ -101,9 +101,11 @@
             <input type="password" id="password" name="password" required>
             <button type="submit">Entrar</button>
             <div style="margin-top:10px;">
-                <a href="#" id="forgot-link" style="color:#2563eb;font-size:0.98em;text-decoration:underline;">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="forgot-link"
+                    style="color:#2563eb;font-size:0.98em;text-decoration:underline;">¿Olvidaste tu contraseña?</a>
                 &nbsp;|&nbsp;
-                <a href="#" id="change-link" style="color:#2563eb;font-size:0.98em;text-decoration:underline;">Cambiar contraseña</a>
+                <a href="#" id="change-link" style="color:#2563eb;font-size:0.98em;text-decoration:underline;">Cambiar
+                    contraseña</a>
             </div>
         </form>
         <form id="forgot-form" style="display:none;margin-top:18px;">
@@ -136,31 +138,31 @@
             const cancelForgot = document.getElementById('cancel-forgot');
             const cancelChange = document.getElementById('cancel-change');
 
-            forgotLink.onclick = function(e) {
+            forgotLink.onclick = function (e) {
                 e.preventDefault();
                 forgotForm.style.display = 'block';
                 changeForm.style.display = 'none';
                 form.style.display = 'none';
                 message.textContent = '';
             };
-            changeLink.onclick = function(e) {
+            changeLink.onclick = function (e) {
                 e.preventDefault();
                 changeForm.style.display = 'block';
                 forgotForm.style.display = 'none';
                 form.style.display = 'none';
                 message.textContent = '';
             };
-            cancelForgot.onclick = function() {
+            cancelForgot.onclick = function () {
                 forgotForm.style.display = 'none';
                 form.style.display = 'block';
             };
-            cancelChange.onclick = function() {
+            cancelChange.onclick = function () {
                 changeForm.style.display = 'none';
                 form.style.display = 'block';
             };
 
             // Recuperar contraseña
-            forgotForm.onsubmit = async function(e) {
+            forgotForm.onsubmit = async function (e) {
                 e.preventDefault();
                 const email = document.getElementById('forgot-email').value.trim().toLowerCase();
                 if (!email) return;
@@ -187,7 +189,7 @@
             };
 
             // Cambiar contraseña (requiere la actual)
-            changeForm.onsubmit = async function(e) {
+            changeForm.onsubmit = async function (e) {
                 e.preventDefault();
                 const email = document.getElementById('change-email').value.trim().toLowerCase();
                 const oldPass = document.getElementById('change-old').value;
