@@ -607,7 +607,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             renderStories();
-});
-        );
-
-    }
+        });

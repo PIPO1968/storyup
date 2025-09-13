@@ -1,0 +1,1 @@
+storyup es una nueva red social juvenil,para usuarios privados y para centros educativos,una buena herramienta para fomentar la creatividad,escritura,lectura y relaciones,ideal en centros educativos por su control y administracion anti/bullyng
