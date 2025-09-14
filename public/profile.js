@@ -506,71 +506,71 @@ document.addEventListener('DOMContentLoaded', function () {
                 const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
                 for (const u of users) {
                     // ...existing code: solo renderFriendSection() centralizada...
-            function renderFriendSection() {
-                // Botón de amistad
-                if (!isOwnProfile && friendActions) {
-                    const alreadyFriends = getFriends(user.email).includes(profileEmail);
-                    const alreadyRequested = getRequests(profileEmail).includes(user.email);
-                    if (alreadyFriends) {
-                        friendActions.innerHTML = '<span style="color:#43c6ac;">Ya sois amigos</span>';
-                    } else if (alreadyRequested) {
-                        friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
-                    } else {
-                        friendActions.innerHTML = '<button id="add-friend-btn" style="background:#43c6ac;color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;">Solicitar amistad</button>';
-                        document.getElementById('add-friend-btn').onclick = function () {
-                            const reqs = getRequests(profileEmail);
-                            if (!reqs.includes(user.email)) {
-                                reqs.push(user.email);
-                                setRequests(profileEmail, reqs);
+                    function renderFriendSection() {
+                        // Botón de amistad
+                        if (!isOwnProfile && friendActions) {
+                            const alreadyFriends = getFriends(user.email).includes(profileEmail);
+                            const alreadyRequested = getRequests(profileEmail).includes(user.email);
+                            if (alreadyFriends) {
+                                friendActions.innerHTML = '<span style="color:#43c6ac;">Ya sois amigos</span>';
+                            } else if (alreadyRequested) {
                                 friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
+                            } else {
+                                friendActions.innerHTML = '<button id="add-friend-btn" style="background:#43c6ac;color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;">Solicitar amistad</button>';
+                                document.getElementById('add-friend-btn').onclick = function () {
+                                    const reqs = getRequests(profileEmail);
+                                    if (!reqs.includes(user.email)) {
+                                        reqs.push(user.email);
+                                        setRequests(profileEmail, reqs);
+                                        friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
+                                    }
+                                };
                             }
-                        };
+                        }
+                        // Solicitudes recibidas
+                        if (isOwnProfile && friendRequestsDiv) {
+                            const requests = getRequests(user.email);
+                            if (requests.length > 0) {
+                                friendRequestsDiv.innerHTML = '<h3>Solicitudes de amistad</h3>' + requests.map(email => {
+                                    const u = getUserByEmail(email);
+                                    const name = u ? u.name : email;
+                                    return `<div style="margin-bottom:6px;">${name} <button class="accept-friend-btn" data-email="${email}" style="background:#43c6ac;color:#fff;border:none;padding:4px 12px;border-radius:6px;cursor:pointer;">Aceptar</button></div>`;
+                                }).join('');
+                                document.querySelectorAll('.accept-friend-btn').forEach(btn => {
+                                    btn.onclick = function () {
+                                        const email = this.getAttribute('data-email');
+                                        let friends = getFriends(user.email);
+                                        if (!friends.includes(email)) friends.push(email);
+                                        setFriends(user.email, friends);
+                                        // Quitar solicitud
+                                        let reqs = getRequests(user.email);
+                                        reqs = reqs.filter(e => e !== email);
+                                        setRequests(user.email, reqs);
+                                        // Añadir también al otro usuario
+                                        let otherFriends = getFriends(email);
+                                        if (!otherFriends.includes(user.email)) otherFriends.push(user.email);
+                                        setFriends(email, otherFriends);
+                                        renderFriendSection();
+                                    };
+                                });
+                            } else {
+                                friendRequestsDiv.innerHTML = '';
+                            }
+                        }
+                        // Lista de amigos
+                        if (isOwnProfile && friendListDiv) {
+                            const friends = getFriends(user.email);
+                            if (friends.length > 0) {
+                                friendListDiv.innerHTML = '<h3>Mis amigos</h3>' + friends.map(email => {
+                                    const u = getUserByEmail(email);
+                                    const name = u ? u.name : email;
+                                    return `<div style="margin-bottom:6px;"><a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div>`;
+                                }).join('');
+                            } else {
+                                friendListDiv.innerHTML = '<h3>Mis amigos</h3><p>No tienes amigos aún.</p>';
+                            }
+                        }
                     }
-                }
-                // Solicitudes recibidas
-                if (isOwnProfile && friendRequestsDiv) {
-                    const requests = getRequests(user.email);
-                    if (requests.length > 0) {
-                        friendRequestsDiv.innerHTML = '<h3>Solicitudes de amistad</h3>' + requests.map(email => {
-                            const u = getUserByEmail(email);
-                            const name = u ? u.name : email;
-                            return `<div style="margin-bottom:6px;">${name} <button class="accept-friend-btn" data-email="${email}" style="background:#43c6ac;color:#fff;border:none;padding:4px 12px;border-radius:6px;cursor:pointer;">Aceptar</button></div>`;
-                        }).join('');
-                        document.querySelectorAll('.accept-friend-btn').forEach(btn => {
-                            btn.onclick = function () {
-                                const email = this.getAttribute('data-email');
-                                let friends = getFriends(user.email);
-                                if (!friends.includes(email)) friends.push(email);
-                                setFriends(user.email, friends);
-                                // Quitar solicitud
-                                let reqs = getRequests(user.email);
-                                reqs = reqs.filter(e => e !== email);
-                                setRequests(user.email, reqs);
-                                // Añadir también al otro usuario
-                                let otherFriends = getFriends(email);
-                                if (!otherFriends.includes(user.email)) otherFriends.push(user.email);
-                                setFriends(email, otherFriends);
-                                renderFriendSection();
-                            };
-                        });
-                    } else {
-                        friendRequestsDiv.innerHTML = '';
-                    }
-                }
-                // Lista de amigos
-                if (isOwnProfile && friendListDiv) {
-                    const friends = getFriends(user.email);
-                    if (friends.length > 0) {
-                        friendListDiv.innerHTML = '<h3>Mis amigos</h3>' + friends.map(email => {
-                            const u = getUserByEmail(email);
-                            const name = u ? u.name : email;
-                            return `<div style="margin-bottom:6px;"><a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div>`;
-                        }).join('');
-                    } else {
-                        friendListDiv.innerHTML = '<h3>Mis amigos</h3><p>No tienes amigos aún.</p>';
-                    }
-                }
-            }
 
-            // Renderizar sección de amistad/perfil al cargar
-            renderFriendSection();
+                    // Renderizar sección de amistad/perfil al cargar
+                    renderFriendSection();

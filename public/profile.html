@@ -27,13 +27,15 @@
             if (user && user.role === 'moderador') {
                 document.getElementById('moderation-link').style.display = 'block';
             }
-        } catch (e) {}
+        } catch (e) { }
     </script>
     <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;min-height:70vh;">
         <!-- Bloque lateral izquierdo -->
-        <div id="left-block" style="width:calc(0.25 * 400px);min-width:90px;max-width:120px;margin-right:18px;background:#e0e7ef;border-radius:12px;padding:18px 10px;box-shadow:0 2px 8px #0001;border:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:600px;">
+        <div id="left-block"
+            style="width:calc(0.25 * 400px);min-width:90px;max-width:120px;margin-right:18px;background:#e0e7ef;border-radius:12px;padding:18px 10px;box-shadow:0 2px 8px #0001;border:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:600px;">
             <h3 style="color:#2563eb;font-size:1em;margin-bottom:0.7em;">Lateral</h3>
-            <div style="color:#888;text-align:center;font-size:0.95em;">Aquí puedes poner<br>accesos rápidos,<br>contactos, etc.</div>
+            <div style="color:#888;text-align:center;font-size:0.95em;">Aquí puedes poner<br>accesos
+                rápidos,<br>contactos, etc.</div>
         </div>
         <div class="contenido" style="max-width:540px;width:100%;margin-right:auto;margin-left:0;">
             <h1>Mi perfil</h1>
