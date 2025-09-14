@@ -2,90 +2,89 @@
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
 document.addEventListener('DOMContentLoaded', async function () {
-        // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-        const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
-        if (!user) {
-            window.location.href = 'login.html';
-            return;
-        }
+    // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
+    const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
+    if (!user) {
+        window.location.href = 'login.html';
+        return;
+    }
 
-        // Elementos del DOM
-        const userInfo = document.getElementById('user-info');
-        const img = document.getElementById('profile-image');
-        const imgInput = document.getElementById('profile-image-input');
-        const nameInput = document.getElementById('profile-name-input');
-        const languageInput = document.getElementById('profile-language-input');
-        const saveBtn = document.getElementById('save-profile-btn');
+    // Elementos del DOM
+    const userInfo = document.getElementById('user-info');
+    const img = document.getElementById('profile-image');
+    const imgInput = document.getElementById('profile-image-input');
+    const nameInput = document.getElementById('profile-name-input');
+    const languageInput = document.getElementById('profile-language-input');
+    const saveBtn = document.getElementById('save-profile-btn');
 
-        // Cargar datos de perfil desde backend
-        async function loadProfile() {
-            const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
-            if (!res.ok) return;
-            const data = await res.json();
-            if (userInfo) {
-                userInfo.innerHTML = `
+    // Cargar datos de perfil desde backend
+    async function loadProfile() {
+        const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
+        if (!res.ok) return;
+        const data = await res.json();
+        if (userInfo) {
+            userInfo.innerHTML = `
                 <strong>Nombre:</strong> <span id="profile-name">${data.name || ''}</span><br>
                 <strong>Email:</strong> ${data.email}<br>
                 <strong>Idioma preferido:</strong> <span id="profile-language">${data.language || ''}</span>
             `;
-            }
-            if (img && data.profile_image) {
-                img.src = data.profile_image;
-                img.style.display = 'block';
-            }
-            if (nameInput) nameInput.value = data.name || '';
-            if (languageInput) languageInput.value = data.language || '';
         }
+        if (img && data.profile_image) {
+            img.src = data.profile_image;
+            img.style.display = 'block';
+        }
+        if (nameInput) nameInput.value = data.name || '';
+        if (languageInput) languageInput.value = data.language || '';
+    }
 
-        // Guardar cambios de datos personales
-        if (saveBtn) {
-            saveBtn.onclick = async function () {
-                const name = nameInput ? nameInput.value.trim() : '';
-                const language = languageInput ? languageInput.value.trim() : '';
+    // Guardar cambios de datos personales
+    if (saveBtn) {
+        saveBtn.onclick = async function () {
+            const name = nameInput ? nameInput.value.trim() : '';
+            const language = languageInput ? languageInput.value.trim() : '';
+            await fetch('/api/profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: user.email, name, language })
+            });
+            loadProfile();
+        };
+    }
+
+    // Guardar imagen de perfil en backend
+    if (imgInput) {
+        imgInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function (evt) {
+                const base64 = evt.target.result;
                 await fetch('/api/profile', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: user.email, name, language })
+                    body: JSON.stringify({ email: user.email, profile_image: base64 })
                 });
-                loadProfile();
+                if (img) {
+                    img.src = base64;
+                    img.style.display = 'block';
+                }
             };
-        }
+            reader.readAsDataURL(file);
+        });
+    }
 
-        // Guardar imagen de perfil en backend
-        if (imgInput) {
-            imgInput.addEventListener('change', function (e) {
-                const file = e.target.files[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = async function (evt) {
-                    const base64 = evt.target.result;
-                    await fetch('/api/profile', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: user.email, profile_image: base64 })
-                    });
-                    if (img) {
-                        img.src = base64;
-                        img.style.display = 'block';
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
-        }
+    // Botón de cerrar sesión
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.onclick = function () {
+            sessionStorage.removeItem('storyup_logged');
+            sessionStorage.removeItem('storyup_last_activity');
+            window.location.href = 'login.html';
+        };
+    }
 
-        // Botón de cerrar sesión
-        const logoutBtn = document.getElementById('logout-btn');
-        if (logoutBtn) {
-            logoutBtn.onclick = function () {
-                sessionStorage.removeItem('storyup_logged');
-                sessionStorage.removeItem('storyup_last_activity');
-                window.location.href = 'login.html';
-            };
-        }
-
-        // Cargar perfil al iniciar
-        loadProfile();
-    });
+    // Cargar perfil al iniciar
+    loadProfile();
 
     // --- Amistad ---
     const urlParams = new URLSearchParams(window.location.search);
@@ -234,3 +233,4 @@ document.addEventListener('DOMContentLoaded', async function () {
     // --- Bloqueo de palabras prohibidas en historias de amigos moderados ---
     // ...existing code limpio y bien estructurado...
     // (Este bloque debe contener solo funciones y lógica bien cerrada, sin fragmentos sueltos)
+});
