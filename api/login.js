@@ -15,7 +15,12 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Faltan datos' });
     }
     const client = getClient();
-    await client.connect();
+    try {
+        await client.connect();
+    } catch (e) {
+        console.error('Error de conexión a la base de datos:', e);
+        return res.status(500).json({ error: 'Error de conexión a la base de datos', detail: e.message });
+    }
     try {
         // Buscar usuario por email y contraseña (sin hash, solo para demo; en producción usa hash)
         const userRes = await client.query('SELECT id, email, role, name FROM users WHERE email = $1 AND password = $2', [email, password]);
@@ -26,7 +31,8 @@ export default async function handler(req, res) {
         const user = userRes.rows[0];
         res.status(200).json(user);
     } catch (e) {
-        res.status(500).json({ error: e.message });
+        console.error('Error en la consulta de login:', e);
+        res.status(500).json({ error: 'Error en la consulta de login', detail: e.message });
     } finally {
         await client.end();
     }

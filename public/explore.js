@@ -5,17 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const feed = document.getElementById('public-feed');
     const user = JSON.parse(localStorage.getItem('storyup_logged'));
 
-    function getAllStories() {
-        return JSON.parse(localStorage.getItem('storyup_stories') || '[]');
-    }
-    function getUserByEmail(email) {
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-        return users.find(u => u.email === email);
-    }
-
-    function renderFeed() {
-        const stories = getAllStories();
-        if (stories.length === 0) {
+    async function renderFeed() {
+        feed.innerHTML = '<p>Cargando historias...</p>';
+        const res = await fetch('/api/stories');
+        const stories = res.ok ? await res.json() : [];
+        if (!stories.length) {
             feed.innerHTML = '<p>No hay historias públicas aún.</p>';
             return;
         }
@@ -32,11 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 const idx = parseInt(this.getAttribute('data-idx'));
                 const story = lastStories[idx];
-                const author = getUserByEmail(story.author);
-                let authorName = story.anonymous ? 'Anónimo' : (author ? author.name : 'Anónimo');
+                // No hay datos de usuario, solo email
+                let authorName = story.anonymous ? 'Anónimo' : (story.author || 'Anónimo');
                 let authorHtml = authorName;
-                if (!story.anonymous && author) {
-                    authorHtml = `<a href="profile.html?user=${encodeURIComponent(author.email)}" style="color:#a5b4fc;text-decoration:underline;">${authorName}</a>`;
+                if (!story.anonymous && story.author) {
+                    authorHtml = `<a href="profile.html?user=${encodeURIComponent(story.author)}" style="color:#a5b4fc;text-decoration:underline;">${authorName}</a>`;
                 }
                 const langMap = {
                     es: 'Español', en: 'English', zh: 'Chino', hi: 'Hindi', ar: 'Árabe', pt: 'Portugués', ru: 'Ruso', ja: 'Japonés', de: 'Alemán', fr: 'Francés', it: 'Italiano', tr: 'Turco', ko: 'Coreano', vi: 'Vietnamita', pl: 'Polaco', nl: 'Neerlandés', fa: 'Persa', th: 'Tailandés', uk: 'Ucraniano', ro: 'Rumano', el: 'Griego', hu: 'Húngaro', sv: 'Sueco', cs: 'Checo', he: 'Hebreo'
@@ -55,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     detailDiv.innerHTML = `
                         <div class="story-block" style="border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;">
                             <h3 style="color:#a5b4fc;">${story.title}</h3>
-                            <p>${story.text}</p>
+                            <p>${story.content}</p>
                             <div style="font-size:0.95em;color:#aaa;">Idioma: ${idioma} · Tipo: ${tipo}</div>
                             <div style="font-size:0.95em;color:#aaa;">Autor: ${authorHtml}</div>
                         </div>

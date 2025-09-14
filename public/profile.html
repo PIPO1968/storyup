@@ -40,9 +40,19 @@
         <div class="contenido" style="max-width:540px;width:100%;margin-right:auto;margin-left:0;">
             <h1>Mi perfil</h1>
             <p id="user-info"></p>
-            <div style="margin:1.5em 0;text-align:center;position:relative;display:inline-block;">
-
-            </div>
+            <form id="profile-data-form" style="margin-bottom:1.5em;text-align:center;">
+                <label for="profile-name-input"><strong>Nombre:</strong></label>
+                <input type="text" id="profile-name-input"
+                    style="margin-bottom:8px;max-width:220px;display:block;margin:auto;">
+                <label for="profile-language-input"><strong>Idioma preferido:</strong></label>
+                <input type="text" id="profile-language-input"
+                    style="margin-bottom:8px;max-width:220px;display:block;margin:auto;">
+                <button type="button" id="save-profile-btn" style="margin-top:8px;">Guardar</button>
+            </form>
+            <button id="logout-btn"
+                style="background:#e11d48;color:white;border:none;padding:10px 18px;border-radius:8px;font-size:1em;cursor:pointer;margin-bottom:1.5em;">Cerrar
+                sesión</button>
+            <div style="margin:1.5em 0;text-align:center;position:relative;display:inline-block;"></div>
             <div style="margin: 2em 0; text-align: center;">
                 <h2>Mi imagen central</h2>
                 <div id="profile-image-container">
