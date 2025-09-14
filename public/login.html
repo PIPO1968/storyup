@@ -86,9 +86,14 @@
         </ul>
     </nav>
     <script>
-        const userRole = localStorage.getItem('role');
-        if (userRole === 'moderador') {
-            document.getElementById('moderation-link').style.display = 'block';
+        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
+        try {
+            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            if (user && user.role === 'moderador') {
+                document.getElementById('moderation-link').style.display = 'block';
+            }
+        } catch (e) {
+            // No logueado o formato incorrecto
         }
     </script>
     <div class="login-container">
@@ -232,7 +237,7 @@
                     message.textContent = 'Error de red.';
                 }
             };
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 const email = document.getElementById('email').value.trim().toLowerCase();
                 const password = document.getElementById('password').value;
@@ -248,19 +253,29 @@
                     message.style.color = '#d32f2f';
                     return;
                 }
-                // Comprobar usuario en localStorage
-                let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-                const user = users.find(u => u.email === email && u.password === password);
-                if (!user) {
-                    message.textContent = 'Email o contraseña incorrectos.';
+                message.textContent = 'Iniciando sesión...';
+                try {
+                    const res = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+                    if (res.ok) {
+                        const user = await res.json();
+                        // Guardar usuario en sessionStorage (puedes cambiar a cookies o JWT según tu backend)
+                        sessionStorage.setItem('storyup_logged', JSON.stringify(user));
+                        message.style.color = '#388e3c';
+                        message.textContent = '¡Bienvenido! Redirigiendo...';
+                        setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
+                    } else {
+                        const data = await res.json();
+                        message.style.color = '#d32f2f';
+                        message.textContent = data.error || 'Email o contraseña incorrectos.';
+                    }
+                } catch (err) {
                     message.style.color = '#d32f2f';
-                    return;
+                    message.textContent = 'Error de red.';
                 }
-                // Guardar sesión simulada
-                localStorage.setItem('storyup_logged', JSON.stringify(user));
-                message.style.color = '#388e3c';
-                message.textContent = '¡Bienvenido! Redirigiendo...';
-                setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
             });
         });
     </script>

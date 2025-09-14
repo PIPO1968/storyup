@@ -176,12 +176,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             // Obtener usuario logueado
-            const user = JSON.parse(localStorage.getItem('storyup_logged'));
+            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
             const userInfo = document.getElementById('user-info');
             // Cierre de sesión automático si se excedió el tiempo de inactividad
-            const lastActivity = parseInt(localStorage.getItem('storyup_last_activity') || '0', 10);
+
+            const lastActivity = parseInt(sessionStorage.getItem('storyup_last_activity') || '0', 10);
             if (lastActivity && Date.now() - lastActivity > 60 * 60 * 1000) {
-                localStorage.removeItem('storyup_logged');
+                sessionStorage.removeItem('storyup_logged');
                 window.location.href = 'login.html';
                 return;
             }
@@ -199,7 +200,18 @@ document.addEventListener('DOMContentLoaded', function () {
         <strong>Idioma preferido:</strong> ${user.language}
     `;
 
-            // Botón de cerrar sesión eliminado
+
+            // Botón de cerrar sesión
+            const logoutBtn = document.createElement('button');
+            logoutBtn.textContent = 'Cerrar sesión';
+            logoutBtn.style = 'margin-top:18px;padding:10px 18px;background:#e11d48;color:white;border:none;border-radius:8px;font-size:1em;cursor:pointer;';
+            logoutBtn.onclick = function () {
+                sessionStorage.removeItem('storyup_logged');
+                sessionStorage.removeItem('storyup_last_activity');
+                window.location.href = 'login.html';
+            };
+            userInfo.appendChild(document.createElement('br'));
+            userInfo.appendChild(logoutBtn);
 
             // (Opcional) Mostrar imagen de perfil si existe
             const img = document.getElementById('profile-image');
@@ -226,6 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             // --- Historias ---
+
+            // NUEVA VERSIÓN LIMPIA DE HISTORIAS
             const storiesDiv = document.getElementById('my-stories');
             const storyForm = document.getElementById('story-form');
 
@@ -238,19 +252,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             function renderStories() {
                 const stories = getAllStories();
-                // Mostrar solo las historias del usuario
                 const myStories = stories.filter(s => s.author === user.email);
                 if (myStories.length === 0) {
                     storiesDiv.innerHTML = '<p>No has publicado ninguna historia aún.</p>';
                     return;
                 }
-                // Mostrar historias como links numerados, expandibles
                 storiesDiv.innerHTML = `<ul id="my-story-list" style="padding-left:0;list-style:none;">${myStories.map((story, idx) => {
                     const num = idx + 1;
                     return `<li style="margin-bottom:10px;display:flex;align-items:center;"><span style="min-width:2em;text-align:right;color:#a5b4fc;font-weight:bold;display:inline-block;">${num}.</span> <a href='#' class='my-story-link' data-idx='${idx}' style='color:#6366f1;text-decoration:underline;font-weight:bold;margin-left:0.5em;'>${story.title}</a><div class='my-story-detail' style='display:none;'></div></li>`;
                 }).join('')}</ul>`;
 
-                // Listeners para expandir/cerrar historia
                 document.querySelectorAll('.my-story-link').forEach(link => {
                     link.addEventListener('click', function (e) {
                         e.preventDefault();
@@ -267,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             detailDiv.style.display = 'none';
                             detailDiv.innerHTML = '';
                         } else {
-                            // Cerrar otros detalles abiertos
                             document.querySelectorAll('.my-story-detail').forEach(div => { div.style.display = 'none'; div.innerHTML = ''; });
                             detailDiv.innerHTML = `
                         <div class='story-block' style='border:1.5px solid #6366f1;padding:1em;margin-top:8px;border-radius:10px;background:#232526;'>
@@ -282,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     `;
                             detailDiv.style.display = 'block';
-                            // Listeners editar y borrar dentro del detalle
+                            // Listener editar
                             detailDiv.querySelector('.edit-story-btn').onclick = function () {
                                 const stories = getAllStories();
                                 const s = stories.find(st => st.id === story.id);
@@ -305,6 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     renderStories();
                                 };
                             };
+                            // Listener borrar
                             detailDiv.querySelector('.delete-story-btn').onclick = function () {
                                 if (!confirm('¿Seguro que quieres borrar esta historia?')) return;
                                 let stories = getAllStories();
@@ -315,74 +326,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     });
                 });
-                // Listeners editar y borrar
-                document.querySelectorAll('.edit-story-btn').forEach(btn => {
-                    btn.addEventListener('click', function () {
-                        const id = this.getAttribute('data-id');
-                        const stories = getAllStories();
-                        const story = stories.find(s => s.id === id);
-                        if (!story) return;
-                        // Mostrar formulario de edición
-                        const editFormContainer = document.getElementById('edit-form-container');
-                        const editForm = document.getElementById('edit-form');
-                        editFormContainer.style.display = 'block';
-                        document.getElementById('edit-title').value = story.title;
-                        document.getElementById('edit-text').value = story.text;
-                        document.getElementById('edit-language').value = story.language;
-                        document.getElementById('edit-type').value = story.type;
-                        editForm.onsubmit = function (e) {
-                            e.preventDefault();
-                            story.title = document.getElementById('edit-title').value.trim();
-                            story.text = document.getElementById('edit-text').value.trim();
-                            story.language = document.getElementById('edit-language').value;
-                            story.type = document.getElementById('edit-type').value;
-                            saveAllStories(stories);
-                            editFormContainer.style.display = 'none';
-                            renderStories();
-                        };
-                    });
-                });
-                document.querySelectorAll('.delete-story-btn').forEach(btn => {
-                    btn.addEventListener('click', function () {
-                        if (!confirm('¿Seguro que quieres borrar esta historia?')) return;
-                        const id = this.getAttribute('data-id');
-                        let stories = getAllStories();
-                        stories = stories.filter(s => s.id !== id);
-                        saveAllStories(stories);
-                        renderStories();
-                    });
-                });
-                // Añadir listeners a los botones de like
-                document.querySelectorAll('.like-btn').forEach(btn => {
-                    btn.addEventListener('click', function () {
-                        const id = this.getAttribute('data-id');
-                        let stories = getAllStories();
-                        const idx = stories.findIndex(s => s.id === id);
-                        if (idx !== -1) {
-                            // Likes públicos: cada usuario puede dar like una vez por historia
-                            let liked = JSON.parse(localStorage.getItem('storyup_likes_' + user.email) || '[]');
-                            if (liked.includes(id)) return; // Ya dio like
-                            stories[idx].likes = (stories[idx].likes || 0) + 1;
-                            saveAllStories(stories);
-                            liked.push(id);
-                            localStorage.setItem('storyup_likes_' + user.email, JSON.stringify(liked));
-                            renderStories();
-                        }
-                    });
-                });
             }
 
             if (storyForm) {
                 storyForm.addEventListener('submit', function (e) {
                     e.preventDefault();
                     const title = document.getElementById('story-title').value.trim();
-                    // Permitir HTML enriquecido
                     const text = document.getElementById('story-text').value.trim();
                     const language = document.getElementById('story-language').value;
                     const type = document.getElementById('story-type').value;
                     const anonymous = document.getElementById('story-anonymous').checked;
                     if (!title || !text) return;
-                    // Crear historia
                     const stories = getAllStories();
                     const id = 's' + Date.now() + Math.floor(Math.random() * 1000);
                     stories.unshift({
@@ -410,24 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const friendRequestsDiv = document.getElementById('friend-requests');
             const friendListDiv = document.getElementById('friend-list');
 
-            function getAllUsers() {
-                return JSON.parse(localStorage.getItem('storyup_users') || '[]');
-            }
-            function getUserByEmail(email) {
-                return getAllUsers().find(u => u.email === email);
-            }
-            function getFriends(email) {
-                return JSON.parse(localStorage.getItem('storyup_friends_' + email) || '[]');
-            }
-            function setFriends(email, friends) {
-                localStorage.setItem('storyup_friends_' + email, JSON.stringify(friends));
-            }
-            function getRequests(email) {
-                return JSON.parse(localStorage.getItem('storyup_requests_' + email) || '[]');
-            }
-            function setRequests(email, reqs) {
-                localStorage.setItem('storyup_requests_' + email, JSON.stringify(reqs));
-            }
+            // ...existing code: solo una definición de cada función utilitaria de amistad/perfil...
 
             // Mostrar botón de amistad si es perfil ajeno
             if (!isOwnProfile) {
@@ -568,43 +505,72 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Devuelve el email del moderador si el usuario es amigo de un moderador
                 const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
                 for (const u of users) {
-                    if (u.role === 'moderador') {
-                        const friends = JSON.parse(localStorage.getItem('friends_' + u.email) || '[]');
-                        if (friends.includes(email)) return u.email;
+                    // ...existing code: solo renderFriendSection() centralizada...
+            function renderFriendSection() {
+                // Botón de amistad
+                if (!isOwnProfile && friendActions) {
+                    const alreadyFriends = getFriends(user.email).includes(profileEmail);
+                    const alreadyRequested = getRequests(profileEmail).includes(user.email);
+                    if (alreadyFriends) {
+                        friendActions.innerHTML = '<span style="color:#43c6ac;">Ya sois amigos</span>';
+                    } else if (alreadyRequested) {
+                        friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
+                    } else {
+                        friendActions.innerHTML = '<button id="add-friend-btn" style="background:#43c6ac;color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;">Solicitar amistad</button>';
+                        document.getElementById('add-friend-btn').onclick = function () {
+                            const reqs = getRequests(profileEmail);
+                            if (!reqs.includes(user.email)) {
+                                reqs.push(user.email);
+                                setRequests(profileEmail, reqs);
+                                friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
+                            }
+                        };
                     }
                 }
-                return null;
-            }
-
-            function cleanBannedWords(text, bannedList) {
-                let changed = false;
-                let cleanText = text;
-                bannedList.forEach(word => {
-                    const regex = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
-                    if (regex.test(cleanText)) changed = true;
-                    cleanText = cleanText.replace(regex, '');
-                });
-                return { cleanText, changed };
-            }
-
-            // Interceptar envío de historia
-            if (storyForm) {
-                storyForm.addEventListener('submit', function (e) {
-                    const author = user.email;
-                    const modEmail = getModeratorFor(author);
-                    if (modEmail) {
-                        const banned = (localStorage.getItem('mod_banned_words_' + modEmail) || '').split(',').map(w => w.trim().toLowerCase()).filter(Boolean);
-                        const textArea = document.getElementById('story-text');
-                        const { cleanText, changed } = cleanBannedWords(textArea.value, banned);
-                        if (changed) {
-                            e.preventDefault();
-                            textArea.value = cleanText;
-                            alert('Has usado palabras prohibidas por tu moderador. Han sido eliminadas automáticamente.');
-                        }
+                // Solicitudes recibidas
+                if (isOwnProfile && friendRequestsDiv) {
+                    const requests = getRequests(user.email);
+                    if (requests.length > 0) {
+                        friendRequestsDiv.innerHTML = '<h3>Solicitudes de amistad</h3>' + requests.map(email => {
+                            const u = getUserByEmail(email);
+                            const name = u ? u.name : email;
+                            return `<div style="margin-bottom:6px;">${name} <button class="accept-friend-btn" data-email="${email}" style="background:#43c6ac;color:#fff;border:none;padding:4px 12px;border-radius:6px;cursor:pointer;">Aceptar</button></div>`;
+                        }).join('');
+                        document.querySelectorAll('.accept-friend-btn').forEach(btn => {
+                            btn.onclick = function () {
+                                const email = this.getAttribute('data-email');
+                                let friends = getFriends(user.email);
+                                if (!friends.includes(email)) friends.push(email);
+                                setFriends(user.email, friends);
+                                // Quitar solicitud
+                                let reqs = getRequests(user.email);
+                                reqs = reqs.filter(e => e !== email);
+                                setRequests(user.email, reqs);
+                                // Añadir también al otro usuario
+                                let otherFriends = getFriends(email);
+                                if (!otherFriends.includes(user.email)) otherFriends.push(user.email);
+                                setFriends(email, otherFriends);
+                                renderFriendSection();
+                            };
+                        });
+                    } else {
+                        friendRequestsDiv.innerHTML = '';
                     }
-                }, true);
+                }
+                // Lista de amigos
+                if (isOwnProfile && friendListDiv) {
+                    const friends = getFriends(user.email);
+                    if (friends.length > 0) {
+                        friendListDiv.innerHTML = '<h3>Mis amigos</h3>' + friends.map(email => {
+                            const u = getUserByEmail(email);
+                            const name = u ? u.name : email;
+                            return `<div style="margin-bottom:6px;"><a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div>`;
+                        }).join('');
+                    } else {
+                        friendListDiv.innerHTML = '<h3>Mis amigos</h3><p>No tienes amigos aún.</p>';
+                    }
+                }
             }
 
-
-            renderStories();
-        });
+            // Renderizar sección de amistad/perfil al cargar
+            renderFriendSection();

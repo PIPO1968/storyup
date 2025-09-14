@@ -21,10 +21,13 @@
         </ul>
     </nav>
     <script>
-        const userRole = localStorage.getItem('role');
-        if (userRole === 'moderador') {
-            document.getElementById('moderation-link').style.display = 'block';
-        }
+        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
+        try {
+            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            if (user && user.role === 'moderador') {
+                document.getElementById('moderation-link').style.display = 'block';
+            }
+        } catch (e) {}
     </script>
     <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;min-height:70vh;">
         <!-- Bloque lateral izquierdo -->
