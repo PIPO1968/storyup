@@ -1,10 +1,10 @@
-// messaging.requestPermission() eliminado: ya no se usa Firebase
+// Notificaciones eliminadas: ya no se usa Firebase
 // Ocultar splash screen al cargar la página
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Simulación de historias destacadas (sin Firebase)
+// Simulación de historias destacadas (sin backend)
 function loadFeaturedStories() {
     // Aquí puedes agregar historias de ejemplo si lo deseas
 }

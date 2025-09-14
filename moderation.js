@@ -1,5 +1,5 @@
 
-// Simulación de moderación sin Firebase
+// Moderación simulada (sin backend)
 const container = document.getElementById('pending-stories');
 const logoutBtn = document.getElementById('logout-btn');
 
@@ -9,8 +9,4 @@ logoutBtn.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
 
-logoutBtn.addEventListener('click', () => {
-    firebase.auth().signOut().then(() => {
-        window.location.href = 'login.html';
-    });
-});
+// Logout sin Firebase
