@@ -1,14 +1,7 @@
 // profile.js
 // Mostrar datos del usuario logueado y permitir cerrar sesión
 
-document.addEventListener('DOMContentLoaded', function () {
-    // --- Aquí va todo el código funcional, utilidades y listeners ---
-    // ...existing code limpio y bien estructurado...
-    // (Este bloque debe contener solo funciones y lógica bien cerrada, sin fragmentos sueltos)
-    // profile.js
-    // Mostrar datos del usuario logueado y permitir cerrar sesión
-
-    document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function () {
         // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
         const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
         if (!user) {
@@ -241,4 +234,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Bloqueo de palabras prohibidas en historias de amigos moderados ---
     // ...existing code limpio y bien estructurado...
     // (Este bloque debe contener solo funciones y lógica bien cerrada, sin fragmentos sueltos)
-});
