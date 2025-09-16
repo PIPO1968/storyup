@@ -5,10 +5,10 @@ const favInput = document.getElementById('fav-nick-input');
 const favAddBtn = document.getElementById('fav-add-btn');
 const favError = document.getElementById('fav-error');
 
-function renderFavs() {
+async function renderFavs() {
     if (!favsListDiv) return;
     const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
-    const users = getUsers();
+    const users = await getUsers();
     favsListDiv.innerHTML = '';
     if (favs.length === 0) {
         favsListDiv.innerHTML = '<span style="color:#888;font-size:0.97em;">Sin favoritos</span>';
@@ -50,11 +50,11 @@ function renderFavs() {
 }
 
 if (favAddBtn && favInput) {
-    favAddBtn.onclick = function () {
+    favAddBtn.onclick = async function () {
         if (favError) favError.style.display = 'none';
         const nick = favInput.value.trim();
         if (!nick) return;
-        const users = getUsers();
+        const users = await getUsers();
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
             if (favError) {
@@ -102,15 +102,26 @@ const chatSearch = document.getElementById('chat-search');
 let currentChat = null;
 
 function getLoggedUser() {
-    return JSON.parse(localStorage.getItem('storyup_logged'));
+    // Usar sessionStorage como en el resto del frontend
+    return JSON.parse(sessionStorage.getItem('storyup_logged'));
 }
 
-function getUsers() {
-    return JSON.parse(localStorage.getItem('storyup_users') || '[]');
+let usersCache = [];
+async function getUsers() {
+    if (usersCache.length > 0) return usersCache;
+    try {
+        const res = await fetch('/api/users');
+        if (!res.ok) return [];
+        const data = await res.json();
+        usersCache = data;
+        return data;
+    } catch {
+        return [];
+    }
 }
 
 function renderChatList() {
-    const users = getUsers();
+    getUsers().then(users => {
     const logged = getLoggedUser();
     chatList.innerHTML = '';
     users.forEach(u => {
@@ -119,6 +130,7 @@ function renderChatList() {
         li.textContent = u.name || u.email;
         li.onclick = () => selectChat(u);
         chatList.appendChild(li);
+    });
     });
 }
 
@@ -181,13 +193,13 @@ chatSearch.addEventListener('keydown', function (e) {
 });
 
 if (chatSearchBtn) {
-    chatSearchBtn.onclick = buscarYSeleccionarUsuario;
+    chatSearchBtn.onclick = () => buscarYSeleccionarUsuario();
 }
 
-function buscarYSeleccionarUsuario() {
+async function buscarYSeleccionarUsuario() {
     const val = chatSearch.value.trim().toLowerCase();
     if (!val) return;
-    const users = getUsers();
+    const users = await getUsers();
     const user = users.find(u => (u.name || u.email).toLowerCase() === val);
     if (user) selectChat(user);
     chatSearch.value = '';
@@ -400,37 +412,7 @@ async function renderChatList() {
             userDest = c.email;
             userDestName = c.name;
             renderChat();
-            // Si es anónimo, mostrar botón para guardar contacto
-            if (c.anon) mostrarBotonGuardarContacto(c.email);
         };
-        // Mostrar botón para guardar contacto si es anónimo
-        function mostrarBotonGuardarContacto(emailAnon) {
-            let btn = document.getElementById('guardar-contacto-btn');
-            if (btn) btn.remove();
-            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-            const user = users.find(u => u.email === emailAnon);
-            if (!user) return;
-            const area = document.getElementById('chat-user-selected');
-            btn = document.createElement('button');
-            btn.id = 'guardar-contacto-btn';
-            btn.textContent = 'Guardar contacto (' + (user.name || user.email) + ')';
-            btn.style.marginLeft = '12px';
-            btn.style.background = '#2563eb';
-            btn.style.color = '#fff';
-            btn.style.border = 'none';
-            btn.style.borderRadius = '7px';
-            btn.style.padding = '0.3em 0.9em';
-            btn.style.fontWeight = 'bold';
-            btn.style.cursor = 'pointer';
-            btn.onclick = function () {
-                // Al guardar, se asocia el nick real
-                userDestName = user.name || user.email;
-                renderChatList();
-                renderChat();
-                btn.remove();
-            };
-            area.appendChild(btn);
-        }
         chatListUl.appendChild(li);
     }
 }
@@ -475,51 +457,7 @@ async function renderChat() {
 
 
 // Buscar usuario y abrir chat
-function buscarYSeleccionarUsuario() {
-    if (chatSearchError) chatSearchError.style.display = 'none';
-    const nick = chatSearchInput.value.trim();
-    if (!nick) return;
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-    const user = users.find(u => (u.name || u.email) === nick);
-    if (!user) {
-        if (chatSearchError) {
-            chatSearchError.textContent = 'Usuario no encontrado';
-            chatSearchError.style.display = 'block';
-        }
-        return;
-    }
-    if (user.email === logged.email) {
-        if (chatSearchError) {
-            chatSearchError.textContent = 'No puedes chatear contigo mismo';
-            chatSearchError.style.display = 'block';
-        }
-        return;
-    }
-    // Refuerza la asignación de userDest y userDestName
-    userDest = user.email;
-    userDestName = user.name || user.email;
-    // Refresca el input y el chat
-    if (chatInput) chatInput.value = '';
-    chatSearchInput.value = '';
-    renderChat();
-    renderChatList();
-    setTimeout(() => { if (chatInput) chatInput.focus(); }, 10);
-}
-if (chatSearchBtn) {
-    chatSearchBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        buscarYSeleccionarUsuario();
-    });
-}
-if (chatSearchInput) {
-    chatSearchInput.addEventListener('keydown', function (e) {
-        if (chatSearchError) chatSearchError.style.display = 'none';
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            buscarYSeleccionarUsuario();
-        }
-    });
-}
+// (Eliminada la función buscarYSeleccionarUsuario y sus listeners duplicados)
 
 // Refrescar el chat y la lista automáticamente cada 2 segundos
 setInterval(async () => {
