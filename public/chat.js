@@ -122,15 +122,15 @@ async function getUsers() {
 
 function renderChatList() {
     getUsers().then(users => {
-    const logged = getLoggedUser();
-    chatList.innerHTML = '';
-    users.forEach(u => {
-        const li = document.createElement('li');
-        li.className = 'chat-list-item';
-        li.textContent = u.name || u.email;
-        li.onclick = () => selectChat(u);
-        chatList.appendChild(li);
-    });
+        const logged = getLoggedUser();
+        chatList.innerHTML = '';
+        users.forEach(u => {
+            const li = document.createElement('li');
+            li.className = 'chat-list-item';
+            li.textContent = u.name || u.email;
+            li.onclick = () => selectChat(u);
+            chatList.appendChild(li);
+        });
     });
 }
 
