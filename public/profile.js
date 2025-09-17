@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-    const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
+    const user = JSON.parse(localStorage.getItem('storyup_logged') || 'null');
     if (!user) {
         window.location.href = 'login.html';
         return;
@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.onclick = function () {
-            sessionStorage.removeItem('storyup_logged');
-            sessionStorage.removeItem('storyup_last_activity');
+            localStorage.removeItem('storyup_logged');
+            localStorage.removeItem('storyup_last_activity');
             window.location.href = 'login.html';
         };
     }
