@@ -1,58 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <link rel="icon" type="image/png" href="img/icon-192.png">
     <meta charset="UTF-8">
     <title>Mi perfil - StoryUp</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px;">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="explore.html">Explorar</a></li>
-            <li><a href="concurso.html" style="color:#fbbf24;font-weight:bold;">Concursos</a></li>
-            <li><a href="profile.html">Perfil</a></li>
-            <li><a href="stats.html">Estadísticas</a></li>
-            <li id="moderation-link" style="display:none;"><a href="moderation.html"
-                    style="color:#22c55e;font-weight:bold;">Moderación</a></li>
-        </ul>
-    </nav>
-    <script>
-        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
-        try {
-            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
-            if (user && user.role === 'moderador') {
-                document.getElementById('moderation-link').style.display = 'block';
-            }
-        } catch (e) { }
-    </script>
-    <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;min-height:70vh;">
-        <!-- Bloque lateral izquierdo -->
-        <div id="left-block"
-            style="width:calc(0.25 * 400px);min-width:90px;max-width:120px;margin-right:18px;background:#e0e7ef;border-radius:12px;padding:18px 10px;box-shadow:0 2px 8px #0001;border:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:600px;">
-            <h3 style="color:#2563eb;font-size:1em;margin-bottom:0.7em;">Lateral</h3>
-            <div style="color:#888;text-align:center;font-size:0.95em;">Aquí puedes poner<br>accesos
-                rápidos,<br>contactos, etc.</div>
-        </div>
+    <div id="profile-root"></div>
+    <script src="profile.js"></script>
+</body>
+</html>
         <div class="contenido" style="max-width:540px;width:100%;margin-right:auto;margin-left:0;">
             <h1>Mi perfil</h1>
-            <p id="user-info"></p>
-            <form id="profile-data-form" style="margin-bottom:1.5em;text-align:center;">
-                <label for="profile-name-input"><strong>Nombre:</strong></label>
-                <input type="text" id="profile-name-input"
-                    style="margin-bottom:8px;max-width:220px;display:block;margin:auto;">
-                <label for="profile-language-input"><strong>Idioma preferido:</strong></label>
-                <input type="text" id="profile-language-input"
-                    style="margin-bottom:8px;max-width:220px;display:block;margin:auto;">
-                <button type="button" id="save-profile-btn" style="margin-top:8px;display:none;">Guardar</button>
-            </form>
-            <button id="logout-btn"
-                style="background:#e11d48;color:white;border:none;padding:10px 18px;border-radius:8px;font-size:1em;cursor:pointer;margin-bottom:1.5em;">Cerrar
-                sesión</button>
-            <div style="margin:1.5em 0;text-align:center;position:relative;display:inline-block;"></div>
+            <div id="user-info" style="margin-bottom:2em;text-align:center;"></div>
             <div style="margin: 2em 0; text-align: center;">
                 <h2>Mi imagen central</h2>
                 <div id="profile-image-container">
@@ -63,91 +26,6 @@
                     <input type="file" id="profile-image-input" accept="image/*">
                 </form>
             </div>
-            <h2>Mis historias</h2>
-            <div id="my-stories"></div>
-            <div id="edit-form-container" style="display:none;">
-                <h3>Editar historia</h3>
-                <form id="edit-form">
-                    <input type="text" id="edit-title" placeholder="Título" required>
-                    <textarea id="edit-text" placeholder="Texto" required></textarea>
-                    <select id="edit-language">
-                        <option value="es">Español</option>
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                    </select>
-                    <select id="edit-type">
-                        <option value="real">Real</option>
-                        <option value="ficcion">Ficción</option>
-                        <option value="diario">Diario</option>
-                        <option value="confesion">Confesión</option>
-                    </select>
-                    <button type="submit">Guardar cambios</button>
-                </form>
-            </div>
-            <form id="story-form" style="margin-bottom:2em;">
-                <input type="text" id="story-title" placeholder="Título de la historia" required
-                    style="width:100%;margin-bottom:8px;">
-                <div id="story-toolbar" style="margin-bottom:6px;display:flex;gap:6px;flex-wrap:wrap;">
-                    <button type="button" id="btn-bold" title="Negrita"><b>B</b></button>
-                    <button type="button" id="btn-italic" title="Cursiva"><i>I</i></button>
-                    <input type="color" id="btn-color" title="Color de texto"
-                        style="width:32px;height:32px;padding:0;border:none;vertical-align:middle;">
-                    <label style="margin:0;cursor:pointer;">
-                        <span title="Insertar imagen" style="font-size:1.2em;vertical-align:middle;">🖼️</span>
-                        <input type="file" id="btn-image" accept="image/*" style="display:none;">
-                    </label>
-                    <button type="button" id="btn-youtube" title="Insertar video de YouTube">▶️</button>
-                </div>
-                <textarea id="story-text" placeholder="Escribe tu historia aquí..." required
-                    style="width:100%;margin-bottom:8px;"></textarea>
-                <div id="story-preview"
-                    style="background:#232526;border:1px solid #6366f1;border-radius:8px;padding:8px;min-height:40px;display:none;margin-bottom:8px;">
-                </div>
-                <select id="story-language" required style="margin-bottom:8px;">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="zh">中文 (Chino)</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                    <option value="ar">العربية (Árabe)</option>
-                    <option value="pt">Português</option>
-                    <option value="ru">Русский (Ruso)</option>
-                    <option value="ja">日本語 (Japonés)</option>
-                    <option value="de">Deutsch (Alemán)</option>
-                    <option value="fr">Français</option>
-                    <option value="it">Italiano</option>
-                    <option value="tr">Türkçe (Turco)</option>
-                    <option value="ko">한국어 (Coreano)</option>
-                    <option value="vi">Tiếng Việt (Vietnamita)</option>
-                    <option value="pl">Polski (Polaco)</option>
-                    <option value="nl">Nederlands (Neerlandés)</option>
-                    <option value="fa">فارسی (Persa)</option>
-                    <option value="th">ไทย (Tailandés)</option>
-                    <option value="uk">Українська (Ucraniano)</option>
-                    <option value="ro">Română (Rumano)</option>
-                    <option value="el">Ελληνικά (Griego)</option>
-                    <option value="hu">Magyar (Húngaro)</option>
-                    <option value="sv">Svenska (Sueco)</option>
-                    <option value="cs">Čeština (Checo)</option>
-                    <option value="he">עברית (Hebreo)</option>
-                </select>
-                <select id="story-type" required style="margin-bottom:8px;">
-                    <option value="real">Real</option>
-                    <option value="ficcion">Ficción</option>
-                    <option value="diario">Diario</option>
-                    <option value="confesion">Confesión</option>
-                </select>
-                <label style="display:block;margin-bottom:8px;">
-                    <input type="checkbox" id="story-anonymous"> Publicar como anónimo
-                </label>
-                <button type="submit">Publicar historia</button>
-            </form>
-            <div id="friend-actions"></div>
-            <div id="friend-requests"></div>
-            <div id="friend-list"></div>
-            <div id="admin-panel"></div>
-            <div id="mod-words-panel"></div>
-            <!-- Botón de cerrar sesión eliminado -->
         </div>
         <!-- Bloque de chat a la derecha -->
         <div id="chat-bloque"
