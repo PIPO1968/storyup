@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-    const user = JSON.parse(localStorage.getItem('storyup_logged') || 'null');
+    const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
     if (!user) {
         window.location.href = 'login.html';
         return;
@@ -162,91 +162,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             sessionStorage.removeItem('storyup_last_activity');
             window.location.href = 'login.html';
         };
-    }
-
-    // Cargar perfil al iniciar
-    loadProfile();
-
-    // --- Amistad ---
-    const urlParams = new URLSearchParams(window.location.search);
-    const profileEmail = urlParams.get('user') || user.email;
-    const isOwnProfile = profileEmail === user.email;
-    const friendActions = document.getElementById('friend-actions');
-    const friendRequestsDiv = document.getElementById('friend-requests');
-    const friendListDiv = document.getElementById('friend-list');
-
-    // ...existing code: solo una definición de cada función utilitaria de amistad/perfil...
-
-    // Mostrar botón de amistad si es perfil ajeno
-    if (!isOwnProfile) {
-        const alreadyFriends = getFriends(user.email).includes(profileEmail);
-        const alreadyRequested = getRequests(profileEmail).includes(user.email);
-        if (alreadyFriends) {
-            friendActions.innerHTML = '<span style="color:#43c6ac;">Ya sois amigos</span>';
-        } else if (alreadyRequested) {
-            friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
-        } else {
-            friendActions.innerHTML = '<button id="add-friend-btn" style="background:#43c6ac;color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;">Solicitar amistad</button>';
-            document.getElementById('add-friend-btn').onclick = function () {
-                let reqs = getRequests(profileEmail);
-                if (!reqs.includes(user.email)) {
-                    reqs.push(user.email);
-                    setRequests(profileEmail, reqs);
-                    friendActions.innerHTML = '<span style="color:#aaa;">Solicitud enviada</span>';
-                }
-            };
-        }
-    }
-
-    // Mostrar solicitudes recibidas y lista de amigos solo en perfil propio
-    if (isOwnProfile) {
-        // Solicitudes recibidas
-        const reqs = getRequests(user.email);
-        if (reqs.length > 0) {
-            friendRequestsDiv.innerHTML = '<h3>Solicitudes de amistad</h3>' + reqs.map(email => {
-                const u = getUserByEmail(email);
-                const name = u ? u.name : email;
-                return `<div style="margin-bottom:8px;">${name} <button class="accept-friend" data-email="${email}" style="margin-left:8px;">Aceptar</button> <button class="reject-friend" data-email="${email}">Rechazar</button></div>`;
-            }).join('');
-            // Listeners aceptar/rechazar
-            document.querySelectorAll('.accept-friend').forEach(btn => {
-                btn.onclick = function () {
-                    const email = this.getAttribute('data-email');
-                    // Añadir a amigos mutuos
-                    let myFriends = getFriends(user.email);
-                    let theirFriends = getFriends(email);
-                    if (!myFriends.includes(email)) myFriends.push(email);
-                    if (!theirFriends.includes(user.email)) theirFriends.push(user.email);
-                    setFriends(user.email, myFriends);
-                    setFriends(email, theirFriends);
-                    // Quitar solicitud
-                    let reqs = getRequests(user.email).filter(e => e !== email);
-                    setRequests(user.email, reqs);
-                    location.reload();
-                };
-            });
-            document.querySelectorAll('.reject-friend').forEach(btn => {
-                btn.onclick = function () {
-                    const email = this.getAttribute('data-email');
-                    let reqs = getRequests(user.email).filter(e => e !== email);
-                    setRequests(user.email, reqs);
-                    location.reload();
-                };
-            });
-        } else {
-            friendRequestsDiv.innerHTML = '';
-        }
-        // Lista de amigos
-        const friends = getFriends(user.email);
-        if (friends.length > 0) {
-            friendListDiv.innerHTML = '<h3>Mis amigos</h3>' + friends.map(email => {
-                const u = getUserByEmail(email);
-                const name = u ? u.name : email;
-                return `<div style="margin-bottom:6px;"><a href="profile.html?user=${encodeURIComponent(email)}" style="color:#a5b4fc;text-decoration:underline;">${name}</a></div>`;
-            }).join('');
-        } else {
-            friendListDiv.innerHTML = '<h3>Mis amigos</h3><p>No tienes amigos aún.</p>';
-        }
     }
 
     // --- Panel de admin para gestión de moderadores ---
