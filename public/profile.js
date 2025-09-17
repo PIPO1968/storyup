@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     const languageInput = document.getElementById('profile-language-input');
     const saveBtn = document.getElementById('save-profile-btn');
 
-    // Cargar datos de perfil desde backend
+    // Cargar datos de perfil desde backend y rellenar formulario automáticamente
+    let originalName = '';
+    let originalLanguage = '';
     async function loadProfile() {
         const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
         if (!res.ok) return;
@@ -33,9 +35,26 @@ document.addEventListener('DOMContentLoaded', async function () {
             img.src = data.profile_image;
             img.style.display = 'block';
         }
-        if (nameInput) nameInput.value = data.name || '';
-        if (languageInput) languageInput.value = data.language || '';
+        if (nameInput) {
+            nameInput.value = data.name || '';
+            originalName = data.name || '';
+        }
+        if (languageInput) {
+            languageInput.value = data.language || '';
+            originalLanguage = data.language || '';
+        }
+        if (saveBtn) saveBtn.style.display = 'none';
     }
+
+    // Mostrar botón guardar solo si hay cambios
+    function checkProfileChanges() {
+        if (!saveBtn) return;
+        const nameChanged = nameInput && nameInput.value.trim() !== originalName;
+        const langChanged = languageInput && languageInput.value.trim() !== originalLanguage;
+        saveBtn.style.display = (nameChanged || langChanged) ? 'inline-block' : 'none';
+    }
+    if (nameInput) nameInput.addEventListener('input', checkProfileChanges);
+    if (languageInput) languageInput.addEventListener('input', checkProfileChanges);
 
     // Guardar cambios de datos personales
     if (saveBtn) {
@@ -47,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: user.email, name, language })
             });
-            loadProfile();
+            await loadProfile();
         };
     }
 
