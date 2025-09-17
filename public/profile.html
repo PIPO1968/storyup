@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Mi perfil - StoryUp</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body style="margin:0;padding:0;box-sizing:border-box;">
+    <nav style="width:100vw;background:#f7f7fa;padding:0 0 0 16px;box-shadow:0 2px 8px #0001;">
+        <ul style="list-style:none;display:flex;gap:18px;margin:0;padding:12px 0 12px 0;font-size:1.1em;align-items:center;">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="explore.html">Explorar</a></li>
+            <li><a href="concurso.html">Concursos</a></li>
+            <li><a href="profile.html" style="font-weight:bold;color:#2563eb;">Perfil</a></li>
+            <li><a href="stats.html">Estadísticas</a></li>
+        </ul>
+    </nav>
     <div style="display:flex;flex-direction:row;min-height:100vh;width:100vw;">
         <!-- Bloque izquierdo: perfil, imagen, historias, crear historia -->
         <div id="profile-main" style="flex:3;max-width:60vw;padding:32px 24px 32px 32px;box-sizing:border-box;">
@@ -14,7 +25,8 @@
             <div id="profile-image-block" style="margin-bottom:2em;">
                 <h2>Imagen de perfil</h2>
                 <div id="profile-image-container">
-                    <img id="profile-image" src="" alt="Imagen de usuario" style="max-width:220px;max-height:220px;display:none;border-radius:12px;box-shadow:0 2px 12px #0002;">
+                    <img id="profile-image" src="" alt="Imagen de usuario"
+                        style="max-width:220px;max-height:220px;display:none;border-radius:12px;box-shadow:0 2px 12px #0002;">
                 </div>
                 <form id="profile-image-form" style="margin-top:1em;">
                     <input type="file" id="profile-image-input" accept="image/*">
@@ -27,18 +39,24 @@
             <div id="create-story-block" style="margin-bottom:2em;">
                 <h2>Crear historia</h2>
                 <form id="create-story-form">
-                    <input type="text" id="story-title" placeholder="Título de la historia" required style="width:100%;margin-bottom:8px;">
-                    <textarea id="story-text" placeholder="Escribe tu historia aquí..." required style="width:100%;margin-bottom:8px;"></textarea>
-                    <button type="submit" style="background:#2563eb;color:white;border:none;padding:10px 18px;border-radius:8px;font-size:1em;cursor:pointer;">Publicar historia</button>
+                    <input type="text" id="story-title" placeholder="Título de la historia" required
+                        style="width:100%;margin-bottom:8px;">
+                    <textarea id="story-text" placeholder="Escribe tu historia aquí..." required
+                        style="width:100%;margin-bottom:8px;"></textarea>
+                    <button type="submit"
+                        style="background:#2563eb;color:white;border:none;padding:10px 18px;border-radius:8px;font-size:1em;cursor:pointer;">Publicar
+                        historia</button>
                 </form>
             </div>
         </div>
         <!-- Bloque derecho: chat tipo WhatsApp -->
-        <div id="chat-block" style="flex:2;max-width:40vw;min-width:340px;background:#f7f7fa;border-radius:0 0 0 32px;padding:32px 24px;box-shadow:0 2px 12px #0001;border-left:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;">
+        <div id="chat-block"
+            style="flex:2;max-width:40vw;min-width:340px;background:#f7f7fa;border-radius:0 0 0 32px;padding:32px 24px;box-shadow:0 2px 12px #0001;border-left:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;">
             <h2 style="color:#2563eb;font-size:1.2em;margin-bottom:1em;">Chat privado</h2>
             <div id="chat-container" style="width:100%;flex:1;display:flex;flex-direction:column;"></div>
         </div>
     </div>
     <script src="profile.js"></script>
 </body>
+
 </html>

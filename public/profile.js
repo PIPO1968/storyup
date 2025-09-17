@@ -16,20 +16,24 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Cargar datos de perfil desde backend y mostrar nick/correo
     async function loadProfile() {
-        const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
-        if (!res.ok) return;
-        const data = await res.json();
-        if (userInfo) {
-            userInfo.innerHTML = `
-                <div style="font-size:1.3em;font-weight:bold;">${data.name || ''}</div>
-                <div style="color:#555;">${data.email}</div>
-            `;
-        }
-        if (img && data.profile_image) {
-            img.src = data.profile_image;
-            img.style.display = 'block';
-        } else if (img) {
-            img.style.display = 'none';
+        try {
+            const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
+            if (!res.ok) throw new Error('No se pudo cargar el perfil');
+            const data = await res.json();
+            if (userInfo) {
+                userInfo.innerHTML = `
+                    <div style="font-size:1.3em;font-weight:bold;">${data.name || ''}</div>
+                    <div style="color:#555;">${data.email}</div>
+                `;
+            }
+            if (img && data.profile_image) {
+                img.src = data.profile_image;
+                img.style.display = 'block';
+            } else if (img) {
+                img.style.display = 'none';
+            }
+        } catch (e) {
+            if (userInfo) userInfo.innerHTML = '<span style="color:#e11d48;">Error al cargar datos personales</span>';
         }
     }
 
@@ -43,18 +47,19 @@ document.addEventListener('DOMContentLoaded', async function () {
             const res = await fetch('/api/stories?author=' + encodeURIComponent(user.email));
             if (!res.ok) throw new Error('No se pudieron cargar las historias');
             const stories = await res.json();
-            if (!stories.length) {
+            if (!stories || !Array.isArray(stories) || stories.length === 0) {
                 storiesList.innerHTML = '<li style="color:#888;">No tienes historias aún.</li>';
                 return;
             }
             storiesList.innerHTML = stories.map(story =>
-                `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${story.content.split('\n')[0].slice(0,60)}...</a></li>`
+                `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${(story.content||'').split('\n')[0].slice(0,60)}...</a></li>`
             ).join('');
         } catch (e) {
             storiesList.innerHTML = '<li style="color:#e11d48;">Error al cargar historias</li>';
         }
     }
 
+    await loadProfile();
     await loadMyStories();
 
     // Botón de cerrar sesión
