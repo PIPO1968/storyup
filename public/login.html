@@ -238,7 +238,7 @@
                     message.textContent = 'Error de red.';
                 }
             };
-            form.addEventListener('submit', async function (e) {
+            if (form) form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 const email = document.getElementById('login-email').value.trim().toLowerCase();
                 const password = document.getElementById('login-password').value;
