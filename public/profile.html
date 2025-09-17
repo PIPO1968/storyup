@@ -1,73 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Mi perfil - StoryUp</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="profile-root"></div>
-    <script src="profile.js"></script>
-</body>
-</html>
-        <div class="contenido" style="max-width:540px;width:100%;margin-right:auto;margin-left:0;">
-            <h1>Mi perfil</h1>
-            <div id="user-info" style="margin-bottom:2em;text-align:center;"></div>
-            <div style="margin: 2em 0; text-align: center;">
-                <h2>Mi imagen central</h2>
+<body style="margin:0;padding:0;box-sizing:border-box;">
+    <div style="display:flex;flex-direction:row;min-height:100vh;width:100vw;">
+        <!-- Bloque izquierdo: perfil, imagen, historias, crear historia -->
+        <div id="profile-main" style="flex:3;max-width:60vw;padding:32px 24px 32px 32px;box-sizing:border-box;">
+            <h1 style="margin-top:0;">Mi perfil</h1>
+            <div id="user-info" style="margin-bottom:2em;"></div>
+            <div id="profile-image-block" style="margin-bottom:2em;">
+                <h2>Imagen de perfil</h2>
                 <div id="profile-image-container">
-                    <img id="profile-image" src="" alt="Imagen de usuario"
-                        style="max-width:220px;max-height:220px;display:none;border-radius:12px;box-shadow:0 2px 12px #0002;">
+                    <img id="profile-image" src="" alt="Imagen de usuario" style="max-width:220px;max-height:220px;display:none;border-radius:12px;box-shadow:0 2px 12px #0002;">
                 </div>
                 <form id="profile-image-form" style="margin-top:1em;">
                     <input type="file" id="profile-image-input" accept="image/*">
                 </form>
             </div>
+            <div id="my-stories-block" style="margin-bottom:2em;">
+                <h2>Mis historias</h2>
+                <ul id="my-stories" style="list-style:none;padding:0;margin:0;"></ul>
+            </div>
+            <div id="create-story-block" style="margin-bottom:2em;">
+                <h2>Crear historia</h2>
+                <form id="create-story-form">
+                    <input type="text" id="story-title" placeholder="Título de la historia" required style="width:100%;margin-bottom:8px;">
+                    <textarea id="story-text" placeholder="Escribe tu historia aquí..." required style="width:100%;margin-bottom:8px;"></textarea>
+                    <button type="submit" style="background:#2563eb;color:white;border:none;padding:10px 18px;border-radius:8px;font-size:1em;cursor:pointer;">Publicar historia</button>
+                </form>
+            </div>
         </div>
-        <!-- Bloque de chat a la derecha -->
-        <div id="chat-bloque"
-            style="flex:1;min-width:340px;max-width:480px;margin-left:32px;background:#f7f7fa;border-radius:12px;padding:24px 18px;box-shadow:0 2px 12px #0001;border:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:600px;">
-            <h2 style="color:#2563eb;font-size:1.2em;margin-bottom:1em;">Chat privado (en desarrollo)</h2>
-            <div style="color:#888;text-align:center;">Aquí irá el nuevo chat tipo WhatsApp.<br>Puedes definir la
-                estructura y UI que desees.</div>
+        <!-- Bloque derecho: chat tipo WhatsApp -->
+        <div id="chat-block" style="flex:2;max-width:40vw;min-width:340px;background:#f7f7fa;border-radius:0 0 0 32px;padding:32px 24px;box-shadow:0 2px 12px #0001;border-left:1px solid #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;">
+            <h2 style="color:#2563eb;font-size:1.2em;margin-bottom:1em;">Chat privado</h2>
+            <div id="chat-container" style="width:100%;flex:1;display:flex;flex-direction:column;"></div>
         </div>
     </div>
     <script src="profile.js"></script>
 </body>
-
-</body>
-<script>
-    // Punto azul en botón CHAT si hay mensajes nuevos no leídos
-    document.addEventListener('DOMContentLoaded', function () {
-        const chatDot = document.getElementById('chat-dot');
-        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
-        if (!chatDot || !logged) return;
-        let unread = false;
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-        users.forEach(u => {
-            if (u.email === logged.email) return;
-            const emails = [logged.email, u.email].sort();
-            const chatKey = 'chat_' + emails.join('_');
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
-            const lastRead = parseInt(localStorage.getItem(lastReadKey) || '0', 10);
-            if (msgs.some(m => m.own === u.email && m.date > lastRead)) {
-                unread = true;
-            }
-        });
-        chatDot.style.display = unread ? 'block' : 'none';
-        document.getElementById('chat-btn').addEventListener('click', function () {
-            users.forEach(u => {
-                if (u.email === logged.email) return;
-                const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
-                localStorage.setItem(lastReadKey, Date.now().toString());
-            });
-            chatDot.style.display = 'none';
-        });
-    });
-</script>
-
 </html>
