@@ -86,9 +86,9 @@
         </ul>
     </nav>
     <script>
-        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
+        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando localStorage)
         try {
-            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            const user = JSON.parse(localStorage.getItem('storyup_logged'));
             if (user && user.role === 'moderador') {
                 document.getElementById('moderation-link').style.display = 'block';
             }
@@ -264,7 +264,7 @@
                     if (res.ok) {
                         const user = await res.json();
                         // Guardar usuario en sessionStorage (puedes cambiar a cookies o JWT según tu backend)
-                        sessionStorage.setItem('storyup_logged', JSON.stringify(user));
+                        localStorage.setItem('storyup_logged', JSON.stringify(user));
                         message.style.color = '#388e3c';
                         message.textContent = '¡Bienvenido! Redirigiendo...';
                         setTimeout(() => { window.location.href = 'profile.html'; }, 1200);

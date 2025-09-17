@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-    const user = JSON.parse(sessionStorage.getItem('storyup_logged') || 'null');
+    const user = JSON.parse(localStorage.getItem('storyup_logged') || 'null');
     if (!user) {
         window.location.href = 'login.html';
         return;
