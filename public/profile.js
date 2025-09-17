@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function loadProfile() {
         try {
             const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
-            if (!res.ok) throw new Error('No se pudo cargar el perfil');
+            if (!res.ok) {
+                const err = await res.text();
+                console.error('Error perfil:', res.status, err);
+                throw new Error('No se pudo cargar el perfil: ' + err);
+            }
             const data = await res.json();
             if (userInfo) {
                 userInfo.innerHTML = `
@@ -33,7 +37,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 img.style.display = 'none';
             }
         } catch (e) {
-            if (userInfo) userInfo.innerHTML = '<span style="color:#e11d48;">Error al cargar datos personales</span>';
+            console.error('Error al cargar datos personales:', e);
+            if (userInfo) userInfo.innerHTML = '<span style="color:#e11d48;">Error al cargar datos personales: ' + (e.message || e) + '</span>';
         }
     }
 
@@ -44,8 +49,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (!storiesList) return;
         storiesList.innerHTML = '<li style="color:#888;">Cargando...</li>';
         try {
-            const res = await fetch('/api/stories?author=' + encodeURIComponent(user.email));
-            if (!res.ok) throw new Error('No se pudieron cargar las historias');
+            const authorEmail = (user && user.email) ? user.email.trim().toLowerCase() : '';
+            const res = await fetch('/api/stories?author=' + encodeURIComponent(authorEmail));
+            if (!res.ok) {
+                const err = await res.text();
+                console.error('Error historias:', res.status, err);
+                throw new Error('No se pudieron cargar las historias: ' + err);
+            }
             const stories = await res.json();
             if (!stories || !Array.isArray(stories) || stories.length === 0) {
                 storiesList.innerHTML = '<li style="color:#888;">No tienes historias aún.</li>';
@@ -55,7 +65,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${(story.content || '').split('\n')[0].slice(0, 60)}...</a></li>`
             ).join('');
         } catch (e) {
-            storiesList.innerHTML = '<li style="color:#e11d48;">Error al cargar historias</li>';
+            console.error('Error al cargar historias:', e);
+            storiesList.innerHTML = '<li style="color:#e11d48;">Error al cargar historias: ' + (e.message || e) + '</li>';
         }
     }
 
@@ -78,19 +89,19 @@ document.addEventListener('DOMContentLoaded', async function () {
             storyText.selectionStart = storyText.selectionEnd = end + open.length + close.length;
             updatePreview();
         }
-        document.getElementById('btn-bold').onclick = function(e) { e.preventDefault(); insertTag('<b>','</b>'); };
-        document.getElementById('btn-underline').onclick = function(e) { e.preventDefault(); insertTag('<u>','</u>'); };
-        document.getElementById('btn-image').onchange = function(e) {
+        document.getElementById('btn-bold').onclick = function (e) { e.preventDefault(); insertTag('<b>', '</b>'); };
+        document.getElementById('btn-underline').onclick = function (e) { e.preventDefault(); insertTag('<u>', '</u>'); };
+        document.getElementById('btn-image').onchange = function (e) {
             const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(evt) {
-                insertTag('<img src="'+evt.target.result+'" style="max-width:100%;">','');
+            reader.onload = function (evt) {
+                insertTag('<img src="' + evt.target.result + '" style="max-width:100%;">', '');
             };
             reader.readAsDataURL(file);
             e.target.value = '';
         };
-        document.getElementById('btn-youtube').onclick = function(e) {
+        document.getElementById('btn-youtube').onclick = function (e) {
             e.preventDefault();
             const url = prompt('Pega la URL del video de YouTube:');
             if (!url) return;
@@ -98,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const match = url.match(/[?&]v=([^&#]+)|youtu\.be\/([^&#]+)/);
             const id = match ? (match[1] || match[2]) : null;
             if (id) {
-                insertTag('<iframe width="100%" height="220" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allowfullscreen></iframe>','');
+                insertTag('<iframe width="100%" height="220" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>', '');
             } else {
                 alert('URL de YouTube no válida');
             }
@@ -124,10 +135,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             btn.disabled = true;
             btn.textContent = 'Publicando...';
             try {
+                const authorEmail = (user && user.email) ? user.email.trim().toLowerCase() : '';
                 const res = await fetch('/api/stories', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ author: user.email, content: title + '\n' + text })
+                    body: JSON.stringify({ author: authorEmail, content: title + '\n' + text })
                 });
                 if (!res.ok) throw new Error('Error al publicar historia');
                 createForm.reset();
