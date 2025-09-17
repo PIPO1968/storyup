@@ -3,8 +3,11 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-    const user = JSON.parse(localStorage.getItem('storyup_logged') || 'null');
+    const rawUser = localStorage.getItem('storyup_logged');
+    console.log('[PROFILE] Valor en localStorage:', rawUser);
+    const user = JSON.parse(rawUser || 'null');
     if (!user) {
+        console.warn('[PROFILE] No hay usuario en localStorage, redirigiendo a login');
         window.location.href = 'login.html';
         return;
     }
