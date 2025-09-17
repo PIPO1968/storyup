@@ -52,15 +52,45 @@ document.addEventListener('DOMContentLoaded', async function () {
                 return;
             }
             storiesList.innerHTML = stories.map(story =>
-                `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${(story.content||'').split('\n')[0].slice(0,60)}...</a></li>`
+                `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${(story.content || '').split('\n')[0].slice(0, 60)}...</a></li>`
             ).join('');
         } catch (e) {
             storiesList.innerHTML = '<li style="color:#e11d48;">Error al cargar historias</li>';
         }
     }
 
+
     await loadProfile();
     await loadMyStories();
+
+    // Formulario para crear historia
+    const createForm = document.getElementById('create-story-form');
+    if (createForm) {
+        createForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const title = document.getElementById('story-title').value.trim();
+            const text = document.getElementById('story-text').value.trim();
+            if (!title || !text) return;
+            const btn = createForm.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Publicando...';
+            try {
+                const res = await fetch('/api/stories', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ author: user.email, content: title + '\n' + text })
+                });
+                if (!res.ok) throw new Error('Error al publicar historia');
+                createForm.reset();
+                await loadMyStories();
+            } catch (err) {
+                alert('No se pudo publicar la historia.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Publicar historia';
+            }
+        });
+    }
 
     // Botón de cerrar sesión
     const logoutBtn = document.getElementById('logout-btn');
