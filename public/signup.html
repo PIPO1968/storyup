@@ -137,7 +137,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('signupForm');
             const message = document.getElementById('signupMessage');
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 // Validación básica
                 const name = document.getElementById('name').value.trim();
@@ -165,19 +165,29 @@
                     message.style.color = '#d32f2f';
                     return;
                 }
-                // Comprobar si el email ya está registrado
-                let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-                if (users.some(u => u.email === email)) {
-                    message.textContent = 'Este correo ya está registrado. Intenta iniciar sesión o usa otro.';
+                message.textContent = 'Registrando usuario...';
+                message.style.color = '#2563eb';
+                try {
+                    const res = await fetch('/api/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, password, language })
+                    });
+                    if (res.ok) {
+                        const user = await res.json();
+                        localStorage.setItem('storyup_logged', JSON.stringify(user));
+                        message.style.color = '#388e3c';
+                        message.textContent = '¡Bienvenido! Redirigiendo a tu perfil...';
+                        setTimeout(() => { window.location.href = 'profile.html'; }, 1200);
+                    } else {
+                        const data = await res.json();
+                        message.textContent = data.error || 'Error al registrar usuario.';
+                        message.style.color = '#d32f2f';
+                    }
+                } catch (err) {
+                    message.textContent = 'Error de red o del servidor.';
                     message.style.color = '#d32f2f';
-                    return;
                 }
-                // Guardar usuario en localStorage
-                users.push({ name, email, password, language });
-                localStorage.setItem('storyup_users', JSON.stringify(users));
-                form.reset();
-                message.innerHTML = '¡Bienvenido a StoryUp! Tu cuenta ha sido creada correctamente.<br><a href="index.html" style="display:inline-block;margin-top:10px;color:#388e3c;font-weight:bold;">Ir a la página principal</a>';
-                message.style.color = '#388e3c';
             });
         });
     </script>
