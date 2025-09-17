@@ -13,84 +13,49 @@ document.addEventListener('DOMContentLoaded', async function () {
     const userInfo = document.getElementById('user-info');
     const img = document.getElementById('profile-image');
     const imgInput = document.getElementById('profile-image-input');
-    const nameInput = document.getElementById('profile-name-input');
-    const languageInput = document.getElementById('profile-language-input');
-    const saveBtn = document.getElementById('save-profile-btn');
 
-    // Cargar datos de perfil desde backend y rellenar formulario automáticamente
-    let originalName = '';
-    let originalLanguage = '';
+    // Cargar datos de perfil desde backend y mostrar nick/correo
     async function loadProfile() {
         const res = await fetch('/api/profile?email=' + encodeURIComponent(user.email));
         if (!res.ok) return;
         const data = await res.json();
         if (userInfo) {
             userInfo.innerHTML = `
-                <strong>Nombre:</strong> <span id="profile-name">${data.name || ''}</span><br>
-                <strong>Email:</strong> ${data.email}<br>
-                <strong>Idioma preferido:</strong> <span id="profile-language">${data.language || ''}</span>
+                <div style="font-size:1.3em;font-weight:bold;">${data.name || ''}</div>
+                <div style="color:#555;">${data.email}</div>
             `;
         }
         if (img && data.profile_image) {
             img.src = data.profile_image;
             img.style.display = 'block';
+        } else if (img) {
+            img.style.display = 'none';
         }
-        if (nameInput) {
-            nameInput.value = data.name || '';
-            originalName = data.name || '';
-        }
-        if (languageInput) {
-            languageInput.value = data.language || '';
-            originalLanguage = data.language || '';
-        }
-        if (saveBtn) saveBtn.style.display = 'none';
     }
 
-    // Mostrar botón guardar solo si hay cambios
-    function checkProfileChanges() {
-        if (!saveBtn) return;
-        const nameChanged = nameInput && nameInput.value.trim() !== originalName;
-        const langChanged = languageInput && languageInput.value.trim() !== originalLanguage;
-        saveBtn.style.display = (nameChanged || langChanged) ? 'inline-block' : 'none';
-    }
-    if (nameInput) nameInput.addEventListener('input', checkProfileChanges);
-    if (languageInput) languageInput.addEventListener('input', checkProfileChanges);
 
-    // Guardar cambios de datos personales
-    if (saveBtn) {
-        saveBtn.onclick = async function () {
-            const name = nameInput ? nameInput.value.trim() : '';
-            const language = languageInput ? languageInput.value.trim() : '';
-            await fetch('/api/profile', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: user.email, name, language })
-            });
-            await loadProfile();
-        };
+    // Listar historias propias como links
+    async function loadMyStories() {
+        const storiesList = document.getElementById('my-stories');
+        if (!storiesList) return;
+        storiesList.innerHTML = '<li style="color:#888;">Cargando...</li>';
+        try {
+            const res = await fetch('/api/stories?author=' + encodeURIComponent(user.email));
+            if (!res.ok) throw new Error('No se pudieron cargar las historias');
+            const stories = await res.json();
+            if (!stories.length) {
+                storiesList.innerHTML = '<li style="color:#888;">No tienes historias aún.</li>';
+                return;
+            }
+            storiesList.innerHTML = stories.map(story =>
+                `<li><a href="story.html?id=${story.id}" style="color:#2563eb;text-decoration:underline;">${story.content.split('\n')[0].slice(0,60)}...</a></li>`
+            ).join('');
+        } catch (e) {
+            storiesList.innerHTML = '<li style="color:#e11d48;">Error al cargar historias</li>';
+        }
     }
 
-    // Guardar imagen de perfil en backend
-    if (imgInput) {
-        imgInput.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = async function (evt) {
-                const base64 = evt.target.result;
-                await fetch('/api/profile', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: user.email, profile_image: base64 })
-                });
-                if (img) {
-                    img.src = base64;
-                    img.style.display = 'block';
-                }
-            };
-            reader.readAsDataURL(file);
-        });
-    }
+    await loadMyStories();
 
     // Botón de cerrar sesión
     const logoutBtn = document.getElementById('logout-btn');
