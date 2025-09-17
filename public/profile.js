@@ -63,13 +63,62 @@ document.addEventListener('DOMContentLoaded', async function () {
     await loadProfile();
     await loadMyStories();
 
-    // Formulario para crear historia
+    // Formulario para crear historia con barra de herramientas
     const createForm = document.getElementById('create-story-form');
-    if (createForm) {
+    const storyText = document.getElementById('story-text');
+    const storyPreview = document.getElementById('story-preview');
+    if (createForm && storyText && storyPreview) {
+        // --- Barra de herramientas ---
+        function insertTag(open, close) {
+            const start = storyText.selectionStart;
+            const end = storyText.selectionEnd;
+            const value = storyText.value;
+            storyText.value = value.slice(0, start) + open + value.slice(start, end) + close + value.slice(end);
+            storyText.focus();
+            storyText.selectionStart = storyText.selectionEnd = end + open.length + close.length;
+            updatePreview();
+        }
+        document.getElementById('btn-bold').onclick = function(e) { e.preventDefault(); insertTag('<b>','</b>'); };
+        document.getElementById('btn-underline').onclick = function(e) { e.preventDefault(); insertTag('<u>','</u>'); };
+        document.getElementById('btn-image').onchange = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                insertTag('<img src="'+evt.target.result+'" style="max-width:100%;">','');
+            };
+            reader.readAsDataURL(file);
+            e.target.value = '';
+        };
+        document.getElementById('btn-youtube').onclick = function(e) {
+            e.preventDefault();
+            const url = prompt('Pega la URL del video de YouTube:');
+            if (!url) return;
+            // Extraer ID de YouTube
+            const match = url.match(/[?&]v=([^&#]+)|youtu\.be\/([^&#]+)/);
+            const id = match ? (match[1] || match[2]) : null;
+            if (id) {
+                insertTag('<iframe width="100%" height="220" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allowfullscreen></iframe>','');
+            } else {
+                alert('URL de YouTube no válida');
+            }
+        };
+
+        // --- Previsualización en vivo ---
+        function updatePreview() {
+            const html = storyText.value
+                .replace(/\n/g, '<br>');
+            storyPreview.innerHTML = html;
+            storyPreview.style.display = storyText.value.trim() ? 'block' : 'none';
+        }
+        storyText.addEventListener('input', updatePreview);
+        updatePreview();
+
+        // --- Envío de historia ---
         createForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             const title = document.getElementById('story-title').value.trim();
-            const text = document.getElementById('story-text').value.trim();
+            const text = storyText.value.trim();
             if (!title || !text) return;
             const btn = createForm.querySelector('button[type="submit"]');
             btn.disabled = true;
@@ -82,6 +131,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 });
                 if (!res.ok) throw new Error('Error al publicar historia');
                 createForm.reset();
+                updatePreview();
                 await loadMyStories();
             } catch (err) {
                 alert('No se pudo publicar la historia.');
