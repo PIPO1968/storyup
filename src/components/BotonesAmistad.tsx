@@ -93,7 +93,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                 <a
                     href="#"
                     className="text-green-700 underline text-xs ml-2"
-                    onClick={e => {
+                    onClick={async e => {
                         e.preventDefault();
                         // Aceptar amistad
                         // Añadir a amigos
@@ -116,7 +116,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                 <a
                     href="#"
                     className="text-red-700 underline text-xs ml-2"
-                    onClick={e => {
+                    onClick={async e => {
                         e.preventDefault();
                         // Rechazar solicitud
                         await fetch('/api/solicitudes', {

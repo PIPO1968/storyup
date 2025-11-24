@@ -40,7 +40,6 @@ export const UserLink: React.FC<UserLinkProps> = ({ nick, className }) => {
         window.addEventListener('premiumUpdate', handlePremiumUpdate as EventListener);
 
         return () => {
-            window.removeEventListener('storage', handleStorageChange);
             window.removeEventListener('premiumUpdate', handlePremiumUpdate as EventListener);
         };
     }, [nick]);
