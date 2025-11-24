@@ -425,11 +425,16 @@ export default function AprendeConPipo() {
         if (torneoActivo && usuarioActual) {
 
             // Actualizar estadísticas del usuario en torneos premium
-            const userStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0, "participaciones": 0, "puntuacionTotal": 0}');
-            userStats.participaciones += 1;
-            userStats.puntuacionTotal += puntuacionTotal;
-
-            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(userStats));
+            fetch('/api/estadisticas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nick: usuarioActual.nick, tipo: 'competiciones_premium_participaciones', puntos: 1 }),
+            }).catch(console.error);
+            fetch('/api/estadisticas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nick: usuarioActual.nick, tipo: 'competiciones_premium_puntuacion', puntos: puntuacionTotal }),
+            }).catch(console.error);
 
             // Actualizar resultado del torneo
             const torneosStr = localStorage.getItem('torneos_premium');

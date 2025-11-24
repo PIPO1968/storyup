@@ -44,7 +44,16 @@ const PerfilUsuario: React.FC = () => {
                 : u
         );
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find((u: any) => u.nick === selectedUser);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUser),
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local por ahora
         const userTrofeos = updatedUsers.find((u: any) => u.nick === selectedUser)?.trofeosDesbloqueados || [];
         const userBloqueados = updatedUsers.find((u: any) => u.nick === selectedUser)?.trofeosBloqueados || [];
         localStorage.setItem(`trofeos_${selectedUser}`, JSON.stringify(userTrofeos));
@@ -431,7 +440,16 @@ const PerfilUsuario: React.FC = () => {
                 : u
         );
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find(u => u.nick === nick);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUser),
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local
         // Si el usuario actual es el modificado, actualiza también el estado user
         if (user && user.nick === nick) {
             setUser({ ...user, likes: (user.likes || 0) + cantidad });
@@ -459,7 +477,16 @@ const PerfilUsuario: React.FC = () => {
                 : u
         );
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find(u => u.nick === selectedUser);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUser),
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local
         // Guardar los trofeos desbloqueados en localStorage para estadísticas
         const userTrofeos = updatedUsers.find(u => u.nick === selectedUser)?.trofeosDesbloqueados || [];
         const userBloqueados = updatedUsers.find(u => u.nick === selectedUser)?.trofeosBloqueados || [];
@@ -734,8 +761,8 @@ const PerfilUsuario: React.FC = () => {
                 <div className="flex flex-row w-full">
                     {/* Datos personales */}
                     <div className={`max-w-md w-full bg-white shadow rounded p-6 ml-8 transition-all duration-500 ${isPremium
-                            ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
-                            : ''
+                        ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
+                        : ''
                         }`}>
                         {/* Efecto de partículas para premium */}
                         {isPremium && (
@@ -886,8 +913,8 @@ const PerfilUsuario: React.FC = () => {
                             </div>
                             {/* Trofeos Premium */}
                             <div className={`max-w-md w-full bg-white shadow rounded p-6 transition-all duration-500 ${isPremium
-                                    ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
-                                    : ''
+                                ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
+                                : ''
                                 }`}>
                                 {/* Efectos premium para trofeos */}
                                 {isPremium && (
