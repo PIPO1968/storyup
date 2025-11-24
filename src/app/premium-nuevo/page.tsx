@@ -24,14 +24,11 @@ const PremiumPage: React.FC = () => {
                 const user = JSON.parse(userData);
                 setUsuario(user);
 
-                // Verificar si tiene premium activo
-                const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
-                        setIsPremium(true);
-                    }
-                }
+                // Verificar si tiene premium activo desde API
+                fetch(`/api/premium?nick=${user.nick}`)
+                    .then(res => res.json())
+                    .then(data => setIsPremium(data.isActive))
+                    .catch(console.error);
             }
             setLoading(false);
         }
@@ -128,10 +125,19 @@ const PremiumPage: React.FC = () => {
                 beneficios: beneficiosPremium
             };
 
-            localStorage.setItem(`premium_${usuario.nick}`, JSON.stringify(premiumData));
-            setIsPremium(true);
+            // Enviar a API
+            const response = await fetch('/api/premium', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nick: usuario.nick, expiracion: fechaExpiracion.toISOString() }),
+            });
 
-            alert(`🎉 ¡Bienvenido a StoryUp Premium, ${usuario.nick}!\n\nTu experiencia de aprendizaje acaba de mejorar significativamente. ¡Disfruta de todos los beneficios Premium por un año completo!`);
+            if (response.ok) {
+                setIsPremium(true);
+                alert(`🎉 ¡Bienvenido a StoryUp Premium, ${usuario.nick}!\n\nTu experiencia de aprendizaje acaba de mejorar significativamente. ¡Disfruta de todos los beneficios Premium por un año completo!`);
+            } else {
+                alert('Error al activar Premium');
+            }
 
         } catch (error) {
             console.error('Error al activar Premium:', error);

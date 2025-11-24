@@ -9,19 +9,19 @@ export const UserLink: React.FC<UserLinkProps> = ({ nick, className }) => {
     const [isPremium, setIsPremium] = useState(false);
 
     useEffect(() => {
-        const checkPremium = () => {
-            // Verificar si el usuario es Premium
-            if (typeof window !== "undefined" && nick) {
-                const premiumInfo = localStorage.getItem(`premium_${nick}`);
-                if (premiumInfo) {
-                    try {
-                        const premium = JSON.parse(premiumInfo);
-                        const isActive = new Date(premium.expiracion) > new Date();
-                        setIsPremium(isActive);
-                    } catch (error) {
+        const checkPremium = async () => {
+            // Verificar si el usuario es Premium desde API
+            if (nick) {
+                try {
+                    const response = await fetch(`/api/premium?nick=${nick}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setIsPremium(data.isActive);
+                    } else {
                         setIsPremium(false);
                     }
-                } else {
+                } catch (error) {
+                    console.error('Error checking premium:', error);
                     setIsPremium(false);
                 }
             }
@@ -30,13 +30,6 @@ export const UserLink: React.FC<UserLinkProps> = ({ nick, className }) => {
         // Verificar inicialmente
         checkPremium();
 
-        // Escuchar cambios en localStorage
-        const handleStorageChange = (e: StorageEvent) => {
-            if (e.key?.startsWith('premium_') || e.key === null) {
-                checkPremium();
-            }
-        };
-
         // Escuchar eventos personalizados de premium
         const handlePremiumUpdate = (e: CustomEvent) => {
             if (e.detail.nick === nick) {
@@ -44,7 +37,6 @@ export const UserLink: React.FC<UserLinkProps> = ({ nick, className }) => {
             }
         };
 
-        window.addEventListener('storage', handleStorageChange);
         window.addEventListener('premiumUpdate', handlePremiumUpdate as EventListener);
 
         return () => {
