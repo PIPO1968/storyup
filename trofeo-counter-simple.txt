@@ -1,0 +1,23 @@
+                                    <div className="bg-amber-100 border border-amber-400 text-amber-700 rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold shadow mb-2">{(() => {
+                                        if (typeof window !== 'undefined' && perfil?.nick) {
+                                            let count = 0;
+                                            
+                                            const amigosData = localStorage.getItem(`amigos_${perfil.nick}`);
+                                            const amigos = amigosData ? JSON.parse(amigosData).length : 0;
+                                            const extraLikes = parseFloat(localStorage.getItem('likes_' + perfil.nick) || '0');
+                                            const totalLikes = (perfil.likes ?? 0) + extraLikes;
+                                            const extraAcertadas = parseFloat(localStorage.getItem('acertadas_' + perfil.nick) || '0');
+                                            const totalAcertadas = (perfil.respuestasAcertadas ?? 0) + extraAcertadas;
+                                            
+                                            if (totalLikes >= 10) count++;
+                                            if (amigos >= 1) count++;  
+                                            if (totalAcertadas >= 20) count++;
+                                            
+                                            if (perfil.nick === 'PIPO68') {
+                                                count = 4; // Forzar a 4 para PIPO68
+                                            }
+                                            
+                                            return count;
+                                        }
+                                        return 0;
+                                    })()}</div>

@@ -1,0 +1,227 @@
+[
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde ocurren los eventos de una historia?",
+    "respuesta": "Escenario",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "Moraleja",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el personaje principal de una historia?",
+    "respuesta": "Protagonista",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un poema?",
+    "respuesta": "Verso",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de una obra literaria?",
+    "respuesta": "Escritor",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "Narración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el libro que contiene mapas?",
+    "respuesta": "Atlas",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "Historia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de libros que forman una serie?",
+    "respuesta": "Saga",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una biografía?",
+    "respuesta": "La historia de una vida",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el libro que narra hechos reales?",
+    "respuesta": "Crónica",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un verso?",
+    "respuesta": "Una línea de un poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de versos?",
+    "respuesta": "Estrofa",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una metáfora?",
+    "respuesta": "Una comparación implícita",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'La Odisea'?",
+    "respuesta": "Homero",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un mito?",
+    "respuesta": "Un relato sobre dioses",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el libro que contiene palabras y sus significados?",
+    "respuesta": "Diccionario",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una leyenda?",
+    "respuesta": "Un relato tradicional",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el género literario que incluye obras de teatro?",
+    "respuesta": "Dramático",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una rima?",
+    "respuesta": "La repetición de sonidos",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Cien años de soledad'?",
+    "respuesta": "Gabriel García Márquez",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Moby Dick'?",
+    "respuesta": "Herman Melville",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un libro de cuentos?",
+    "respuesta": "Colección",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un personaje principal?",
+    "respuesta": "Protagonista",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Romeo y Julieta'?",
+    "respuesta": "Shakespeare",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una epopeya?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el libro que narra aventuras fantásticas?",
+    "respuesta": "Novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un haiku?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'La Ilíada'?",
+    "respuesta": "Homero",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una antología?",
+    "respuesta": "Colección",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el género literario que narra historias de amor?",
+    "respuesta": "Romántico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un prólogo?",
+    "respuesta": "Introducción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una sátira?",
+    "respuesta": "Crítica",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el libro que contiene mapas antiguos?",
+    "respuesta": "Atlas",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un epílogo?",
+    "respuesta": "Conclusión",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "Narración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'La Metamorfosis'?",
+    "respuesta": "Kafka",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un ensayo?",
+    "respuesta": "Texto",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Crimen y castigo'?",
+    "respuesta": "Dostoievski",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una obra de teatro?",
+    "respuesta": "Drama",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'La casa de Bernarda Alba'?",
+    "respuesta": "Lorca",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una autobiografía?",
+    "respuesta": "Vida",
+    "categoria": "Literatura"
+  }
+]

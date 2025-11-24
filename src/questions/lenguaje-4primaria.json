@@ -1,0 +1,257 @@
+[
+  {
+    "pregunta": "Describe en una palabra qué es un sustantivo.",
+    "respuesta": "Nombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un verbo.",
+    "respuesta": "Acción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un adjetivo.",
+    "respuesta": "Cualidad",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un signo de interrogación.",
+    "respuesta": "Interrogación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un signo de exclamación.",
+    "respuesta": "Exclamación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sinónimo.",
+    "respuesta": "Similar",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un antónimo.",
+    "respuesta": "Opuesto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es una oración.",
+    "respuesta": "Idea",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es una palabra parecida.",
+    "respuesta": "Sinónimo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es una palabra que significa lo contrario.",
+    "respuesta": "Antónimo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sujeto.",
+    "respuesta": "Sujeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es una conjunción.",
+    "respuesta": "Conjunción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un adverbio.",
+    "respuesta": "Adverbio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un hiato.",
+    "respuesta": "Hiato",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es una tilde.",
+    "respuesta": "Tilde",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un instructivo.",
+    "respuesta": "Instructivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto histórico.",
+    "respuesta": "Histórico",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto mixto.",
+    "respuesta": "Mixto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sustantivo propio.",
+    "respuesta": "Nombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sustantivo común.",
+    "respuesta": "General",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto narrativo.",
+    "respuesta": "Historia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto descriptivo.",
+    "respuesta": "Detalles",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto expositivo.",
+    "respuesta": "Explicación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto argumentativo.",
+    "respuesta": "Opinión",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto literario.",
+    "respuesta": "Arte",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto científico.",
+    "respuesta": "Estudio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto periodístico.",
+    "respuesta": "Noticia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto publicitario.",
+    "respuesta": "Anuncio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto informativo.",
+    "respuesta": "Datos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto poético.",
+    "respuesta": "Verso",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto dramático.",
+    "respuesta": "Teatro",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto epistolar.",
+    "respuesta": "Carta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto autobiográfico.",
+    "respuesta": "Vida",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto técnico.",
+    "respuesta": "Manual",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto jurídico.",
+    "respuesta": "Ley",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto académico.",
+    "respuesta": "Estudio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto digital.",
+    "respuesta": "Online",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto oral.",
+    "respuesta": "Hablado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto escrito.",
+    "respuesta": "Leído",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto visual.",
+    "respuesta": "Imagen",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un texto mixto.",
+    "respuesta": "Combinado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un pronombre.",
+    "respuesta": "Sustituto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un prefijo.",
+    "respuesta": "Inicio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sufijo.",
+    "respuesta": "Final",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un diptongo.",
+    "respuesta": "Unión",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un triptongo.",
+    "respuesta": "Tres",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un verbo irregular.",
+    "respuesta": "Cambio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un verbo regular.",
+    "respuesta": "Constante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un artículo definido.",
+    "respuesta": "Específico",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un artículo indefinido.",
+    "respuesta": "General",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Describe en una palabra qué es un sustantivo colectivo.",
+    "respuesta": "Grupo",
+    "categoria": "Lenguaje"
+  }
+]

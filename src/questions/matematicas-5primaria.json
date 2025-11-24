@@ -1,0 +1,327 @@
+[
+  {
+    "pregunta": "¿Cuánto es 7 x 8?",
+    "respuesta": "56",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 144 dividido entre 12?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el valor de pi con dos decimales?",
+    "respuesta": "3.14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de cinco lados?",
+    "respuesta": "Pentágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 al cuadrado?",
+    "respuesta": "81",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una multiplicación?",
+    "respuesta": "Producto",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 menos 37?",
+    "respuesta": "63",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo menor de 90 grados?",
+    "respuesta": "Agudo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3 elevado a la potencia de 3?",
+    "respuesta": "27",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene todos sus lados iguales?",
+    "respuesta": "Equilátero",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 6?",
+    "respuesta": "90",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 225 dividido entre 15?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de seis lados?",
+    "respuesta": "Hexágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 al cuadrado?",
+    "respuesta": "144",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una suma?",
+    "respuesta": "Suma",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo mayor de 90 grados pero menor de 180 grados?",
+    "respuesta": "Obtuso",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene dos lados iguales?",
+    "respuesta": "Isósceles",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 x 5?",
+    "respuesta": "90",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 324 dividido entre 18?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de ocho lados?",
+    "respuesta": "Octágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 al cuadrado?",
+    "respuesta": "121",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una resta?",
+    "respuesta": "Diferencia",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo de 90 grados?",
+    "respuesta": "Recto",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5 elevado a la potencia de 3?",
+    "respuesta": "125",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene todos sus lados diferentes?",
+    "respuesta": "Escaleno",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 4?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 400 dividido entre 20?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de diez lados?",
+    "respuesta": "Decágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 al cuadrado?",
+    "respuesta": "169",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una división?",
+    "respuesta": "Cociente",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo mayor de 180 grados?",
+    "respuesta": "Cóncavo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 6 elevado a la potencia de 2?",
+    "respuesta": "36",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene un ángulo recto?",
+    "respuesta": "Rectángulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 30 x 3?",
+    "respuesta": "90",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 625 dividido entre 25?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de doce lados?",
+    "respuesta": "Dodecágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14 al cuadrado?",
+    "respuesta": "196",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una operación matemática?",
+    "respuesta": "Resultado",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo igual a 180 grados?",
+    "respuesta": "Llano",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 elevado a la potencia de 2?",
+    "respuesta": "49",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene un ángulo obtuso?",
+    "respuesta": "Obtusángulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 50 x 2?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 900 dividido entre 30?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de veinte lados?",
+    "respuesta": "Icoságono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 al cuadrado?",
+    "respuesta": "225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una operación de potencia?",
+    "respuesta": "Potencia",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo igual a 360 grados?",
+    "respuesta": "Completo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 elevado a la potencia de 2?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene un ángulo agudo?",
+    "respuesta": "Acutángulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 40 x 4?",
+    "respuesta": "160",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 1024 dividido entre 32?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de treinta lados?",
+    "respuesta": "Triacontágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16 al cuadrado?",
+    "respuesta": "256",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una operación de raíz cuadrada?",
+    "respuesta": "Raíz",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo menor de 360 grados pero mayor de 180 grados?",
+    "respuesta": "Reflejo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 elevado a la potencia de 3?",
+    "respuesta": "729",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene un ángulo llano?",
+    "respuesta": "Llanángulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 60 x 5?",
+    "respuesta": "300",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 2025 dividido entre 45?",
+    "respuesta": "45",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un polígono de cuarenta lados?",
+    "respuesta": "Tetracontágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 17 al cuadrado?",
+    "respuesta": "289",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama el resultado de una operación de raíz cúbica?",
+    "respuesta": "Raíz",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un ángulo igual a 0 grados?",
+    "respuesta": "Nulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 10 elevado a la potencia de 3?",
+    "respuesta": "1000",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cómo se llama un triángulo que tiene un ángulo recto y dos lados iguales?",
+    "respuesta": "Isósceles",
+    "categoria": "Matemáticas"
+  }
+]

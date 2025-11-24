@@ -1,0 +1,587 @@
+[00:00:00.966] Server  LOG      ✓ Ready in 632ms
+[00:00:03.332] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.444] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.239] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="concursos/" loading={null}>
+          <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/concursos" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                  <SegmentViewNode type="page" pagePath="concursos/...">
+                    <SegmentTrieNode>
+                    <ClientPageRoot Component={function Concursos} serverProvidedParams={{...}}>
+                      <Concursos params={Promise} searchParams={Promise}>
+                        <div className="min-h-scre...">
+                          <h1>
+                          <div>
+                          <div className="max-w-3xl ...">
+                            <h2>
+                            <ul className="divide-y">
+                              <li
++                               className="py-2"
+-                               className="py-2 text-gray-500"
+                              >
++                               <span className="font-bold">
+-                               Aún no hay ganadores registrados.
+                                ...
+                  ...
+                ...
+      ...
+
+[00:04:52.224] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:42.557] Server  LOG      ✓ Compiled in 62ms
+[00:08:56.194] Server  LOG      ✓ Compiled in 54ms
+[00:08:56.295] Browser ERROR   uncaughtError: ReferenceError: modoCompeticion is not defined
+[00:09:00.975] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:00.983] Server  LOG      ✓ Compiled in 46ms
+[00:09:01.361] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:04.497] Server  LOG      ✓ Compiled in 46ms
+[00:09:09.436] Server  LOG      ✓ Compiled in 47ms
+[00:09:15.976] Server  LOG      ✓ Compiled in 49ms
+[00:09:21.503] Server  LOG      ✓ Compiled in 91ms
+[00:09:46.704] Server  LOG      ✓ Compiled in 57ms
+[00:09:46.810] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:642:2
+Parsing ecmascript source code failed
+  640 |         }
+  641 |     }
+> 642 | }
+      |  ^
+  643 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:09:47.242] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:642:2
+Parsing ecmascript source code failed
+  640 |         }
+  641 |     }
+> 642 | }
+      |  ^
+  643 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:09:57.012] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:09:57.241] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:28.860] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:29.247] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:34.088] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:34.245] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:39.101] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:39.242] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:42.167] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:42.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:45.577] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:10:46.250] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:2
+Parsing ecmascript source code failed
+  644 |         }
+  645 |     }
+> 646 | }
+      |  ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:02.871] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:03.237] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:05.017] Server  ERROR    ⨯ ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+
+[00:11:05.136] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:05.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:05.793] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:05.793] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:05.968] Browser ERROR   uncaughtError: Error: ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+
+[00:11:06.164] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:06.164] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:06.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:06.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:06.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:06.240] Browser ERROR   ./src/app/aprende-con-pipo/page.tsx:646:6
+Parsing ecmascript source code failed
+  644 |             }
+  645 |         }
+> 646 |     }
+      |      ^
+  647 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component Browser]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/aprende-con-pipo/page.tsx [Client Component SSR]
+    ./src/app/aprende-con-pipo/page.tsx [Server Component]
+[00:11:42.095] Server  LOG      ✓ Compiled in 53ms
+[00:13:00.402] Server  LOG      ✓ Compiled in 51ms
+[00:13:04.041] Server  LOG      ✓ Compiled in 62ms
+[00:13:21.113] Server  LOG      ✓ Compiled in 55ms
+[00:13:24.756] Server  LOG      ✓ Compiled in 48ms
+[00:13:48.244] Server  LOG      ✓ Compiled in 68ms
+[00:13:54.263] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:59.289] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:10.389] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:04.675] Server  LOG      ✓ Compiled in 43ms
+[00:17:21.315] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:10.044] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:26.057] Server  LOG      ✓ Compiled in 49ms
+[00:22:35.462] Server  LOG      ✓ Compiled in 46ms
+[00:23:51.524] Server  LOG      ✓ Compiled in 83ms
+[00:24:01.921] Server  LOG      ✓ Compiled in 40ms
+[00:25:01.634] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:10.480] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:14.499] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:10.507] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:21.938] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:27.654] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:15.680] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

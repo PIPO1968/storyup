@@ -1,0 +1,472 @@
+[
+  {
+    "pregunta": "¿Cuál es el resultado de 12 x 4?",
+    "respuesta": "48",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the capital of France?",
+    "respuesta": "Paris",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el autor de 'Platero y yo'?",
+    "respuesta": "Juan Ramón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un hexágono?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'estrella' in English?",
+    "respuesta": "star",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué continente está Egipto?",
+    "respuesta": "África",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué invento permitió la comunicación a distancia por voz?",
+    "respuesta": "Teléfono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en la frase 'El coche rápido ganó'?",
+    "respuesta": "rápido",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the past of 'see'?",
+    "respuesta": "saw",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién pintó 'Las Meninas'?",
+    "respuesta": "Velázquez",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 dividido entre 5?",
+    "respuesta": "9",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'montaña' in English?",
+    "respuesta": "mountain",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es mamífero y pone huevos?",
+    "respuesta": "Ornitorrinco",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de Europa?",
+    "respuesta": "Volga",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el primer hombre en pisar la Luna?",
+    "respuesta": "Armstrong",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the plural of 'mouse'?",
+    "respuesta": "mice",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene una hora?",
+    "respuesta": "60",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Viena?",
+    "respuesta": "Austria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta produce semillas?",
+    "respuesta": "Flor",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'hermana' in English?",
+    "respuesta": "sister",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Caperucita Roja'?",
+    "respuesta": "Perrault",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 menos 27?",
+    "respuesta": "73",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the opposite of 'short'?",
+    "respuesta": "tall",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué año llegó Colón a América?",
+    "respuesta": "1492",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas y vive en África?",
+    "respuesta": "Cebra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'ventana' in English?",
+    "respuesta": "window",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene el mes de febrero en un año normal?",
+    "respuesta": "28",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 8 x 7?",
+    "respuesta": "56",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the capital of Italy?",
+    "respuesta": "Rome",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos planetas hay en el sistema solar?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Praga?",
+    "respuesta": "Chequia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'flor' in English?",
+    "respuesta": "flower",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es el más grande del mundo?",
+    "respuesta": "Ballena",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 36 dividido entre 6?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el faraón niño de Egipto?",
+    "respuesta": "Tutankamón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the past of 'write'?",
+    "respuesta": "wrote",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos continentes hay en la Tierra?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Lima?",
+    "respuesta": "Perú",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para pensar?",
+    "respuesta": "Cerebro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'zapato' in English?",
+    "respuesta": "shoe",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Don Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 + 27?",
+    "respuesta": "42",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the plural of 'foot'?",
+    "respuesta": "feet",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Oslo?",
+    "respuesta": "Noruega",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué invento permitió volar?",
+    "respuesta": "Avión",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en la frase 'La casa blanca es bonita'?",
+    "respuesta": "blanca",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'madre' in English?",
+    "respuesta": "mother",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién pintó 'La Gioconda'?",
+    "respuesta": "Leonardo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 9?",
+    "respuesta": "81",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el mar que baña las costas de España?",
+    "respuesta": "Mediterráneo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the opposite of 'cold'?",
+    "respuesta": "hot",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué año nació Miguel de Cervantes?",
+    "respuesta": "1547",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa y vive en África?",
+    "respuesta": "Elefante",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'amigo' in English?",
+    "respuesta": "friend",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el primer emperador romano?",
+    "respuesta": "Augusto",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos segundos tiene un minuto?",
+    "respuesta": "60",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 50 menos 23?",
+    "respuesta": "27",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Berlín?",
+    "respuesta": "Alemania",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta absorbe agua?",
+    "respuesta": "Raíz",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'perro' in English?",
+    "respuesta": "dog",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La Cenicienta'?",
+    "respuesta": "Perrault",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 6 x 8?",
+    "respuesta": "48",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el océano que baña Australia?",
+    "respuesta": "Pacífico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the capital of Spain?",
+    "respuesta": "Madrid",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Lisboa?",
+    "respuesta": "Portugal",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su melena?",
+    "respuesta": "León",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'mesa' in English?",
+    "respuesta": "table",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el primer hombre en viajar al espacio?",
+    "respuesta": "Gagarin",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año bisiesto?",
+    "respuesta": "366",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 14 + 29?",
+    "respuesta": "43",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de París?",
+    "respuesta": "Francia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para correr?",
+    "respuesta": "Piernas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'niña' in English?",
+    "respuesta": "girl",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 5?",
+    "respuesta": "40",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el mar que baña las costas de Italia?",
+    "respuesta": "Mediterráneo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the past of 'make'?",
+    "respuesta": "made",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Moscú?",
+    "respuesta": "Rusia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su caparazón?",
+    "respuesta": "Tortuga",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'coche' in English?",
+    "respuesta": "car",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue el primer rey de España?",
+    "respuesta": "Carlos I",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos meses tiene un año?",
+    "respuesta": "12",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 21 dividido entre 3?",
+    "respuesta": "7",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Nueva York?",
+    "respuesta": "Estados Unidos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta capta la luz?",
+    "respuesta": "Hoja",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "How do you say 'agua' in English?",
+    "respuesta": "water",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Barco de Vapor'?",
+    "respuesta": "Sierra i Fabra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 x 3?",
+    "respuesta": "33",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el océano que baña América del Sur?",
+    "respuesta": "Atlántico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color resulta de mezclar rojo y blanco?",
+    "respuesta": "Rosa",
+    "categoria": "campeonato"
+  }
+]

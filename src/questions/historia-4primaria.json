@@ -1,0 +1,377 @@
+[
+  {
+    "pregunta": "¿Quién fue Cristóbal Colón?",
+    "respuesta": "Explorador",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año llegó Colón a América?",
+    "respuesta": "1492",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides de Egipto?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el primer emperador romano?",
+    "respuesta": "Augusto",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra terminó en 1945?",
+    "respuesta": "Mundial",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización creó el alfabeto?",
+    "respuesta": "Fenicios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio construyó el Coliseo?",
+    "respuesta": "Romano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura adoraba a dioses como Zeus y Atenea?",
+    "respuesta": "Griega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país lideró la Revolución Industrial?",
+    "respuesta": "Inglaterra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué documento firmó la independencia de Estados Unidos?",
+    "respuesta": "Declaración",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué navegante portugués rodeó África para llegar a la India?",
+    "respuesta": "Gama",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura desarrolló el sistema de escritura cuneiforme?",
+    "respuesta": "Sumerios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder militar cruzó los Alpes con elefantes?",
+    "respuesta": "Aníbal",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue gobernado por los zares?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué revolución comenzó en Francia en 1789?",
+    "respuesta": "Francesa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó templos en honor a dioses como Quetzalcóatl?",
+    "respuesta": "Aztecas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+    "respuesta": "Versalles",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué faraón egipcio es famoso por su tumba intacta?",
+    "respuesta": "Tutankamón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio cayó en 476 d.C.?",
+    "respuesta": "Romano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Napoleón Bonaparte?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el calendario solar de 365 días?",
+    "respuesta": "Mayas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra civil ocurrió en Estados Unidos entre 1861 y 1865?",
+    "respuesta": "Secesión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué invento revolucionó la imprenta en el siglo XV?",
+    "respuesta": "Tipos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder sudafricano luchó contra el apartheid?",
+    "respuesta": "Mandela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue el primero en enviar un hombre al espacio?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué evento marcó el inicio de la Segunda Guerra Mundial?",
+    "respuesta": "Invasión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura adoraba a dioses como Thor y Odin?",
+    "respuesta": "Vikingos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Adolf Hitler?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio fue gobernado por Alejandro Magno?",
+    "respuesta": "Macedonio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué documento abolió la esclavitud en Estados Unidos?",
+    "respuesta": "Proclamación",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó los Juegos Olímpicos?",
+    "respuesta": "Griegos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue colonizado por los británicos y liderado por Gandhi?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó la ciudad de Tenochtitlán?",
+    "respuesta": "Aztecas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a Esparta y Atenas?",
+    "respuesta": "Peloponeso",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Winston Churchill durante la Segunda Guerra Mundial?",
+    "respuesta": "Inglaterra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de numeración basado en el cero?",
+    "respuesta": "Mayas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue invadido por Alemania en 1939?",
+    "respuesta": "Polonia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder romano fue asesinado en los idus de marzo?",
+    "respuesta": "César",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Benito Mussolini?",
+    "respuesta": "Italia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el alfabeto cirílico?",
+    "respuesta": "Eslavos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Fidel Castro?",
+    "respuesta": "Cuba",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura construyó la ciudad de Petra?",
+    "respuesta": "Nabateos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el código de Hammurabi?",
+    "respuesta": "Babilonios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Margaret Thatcher?",
+    "respuesta": "Inglaterra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó las líneas de Nazca?",
+    "respuesta": "Nazcas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Abraham Lincoln?",
+    "respuesta": "Estados",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura jeroglífica?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Isabel la Católica?",
+    "respuesta": "España",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de castas?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Nelson Mandela?",
+    "respuesta": "Sudáfrica",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura alfabético?",
+    "respuesta": "Fenicios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mao Zedong?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura silábico?",
+    "respuesta": "Micénicos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Hirohito durante la Segunda Guerra Mundial?",
+    "respuesta": "Japón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura pictográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Charles de Gaulle?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura fonético?",
+    "respuesta": "Fenicios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mustafa Kemal Atatürk?",
+    "respuesta": "Turquía",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura ideográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Otto von Bismarck?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura logográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura cuneiforme?",
+    "respuesta": "Sumerios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Isabel la Católica?",
+    "respuesta": "España",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura jeroglífica?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Nelson Mandela?",
+    "respuesta": "Sudáfrica",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura pictográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Hirohito durante la Segunda Guerra Mundial?",
+    "respuesta": "Japón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura fonético?",
+    "respuesta": "Fenicios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mustafa Kemal Atatürk?",
+    "respuesta": "Turquía",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura ideográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Otto von Bismarck?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué cultura creó el sistema de escritura logográfico?",
+    "respuesta": "Chinos",
+    "categoria": "Historia"
+  }
+]

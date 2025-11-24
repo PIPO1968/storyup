@@ -1,0 +1,492 @@
+[
+  {
+    "pregunta": "¿En qué año comenzó la Primera Guerra Mundial?",
+    "respuesta": "1914",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides de Egipto?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
+    "respuesta": "1492",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio fue liderado por Alejandro Magno?",
+    "respuesta": "Macedonio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Aliados y las Potencias del Eje?",
+    "respuesta": "Segunda Guerra Mundial",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue conocido como el Libertador de América del Sur?",
+    "respuesta": "Bolívar",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización desarrolló la escritura cuneiforme?",
+    "respuesta": "Sumerios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué revolución comenzó en Francia en 1789?",
+    "respuesta": "Francesa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+    "respuesta": "Versalles",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó Machu Picchu?",
+    "respuesta": "Incas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el último emperador romano?",
+    "respuesta": "Rómulo Augústulo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra civil ocurrió en Estados Unidos entre 1861 y 1865?",
+    "respuesta": "Secesión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder nazi gobernó Alemania durante la Segunda Guerra Mundial?",
+    "respuesta": "Hitler",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización inventó la pólvora?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado dividió el mundo entre España y Portugal en 1494?",
+    "respuesta": "Tordesillas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué faraón egipcio es famoso por su tumba intacta?",
+    "respuesta": "Tutankamón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Napoleón Bonaparte?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua es conocida por su mitología y dioses como Zeus y Atenea?",
+    "respuesta": "Griega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué evento marcó el inicio de la Edad Media?",
+    "respuesta": "Caída de Roma",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue el primero en enviar un hombre al espacio?",
+    "respuesta": "URSS",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder sudafricano luchó contra el apartheid?",
+    "respuesta": "Mandela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué revolución industrializó Europa en el siglo XVIII?",
+    "respuesta": "Industrial",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio construyó el Coliseo?",
+    "respuesta": "Romano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a Estados Unidos y la URSS sin combates directos?",
+    "respuesta": "Fría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó templos como el Partenón?",
+    "respuesta": "Griega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué navegante portugués fue el primero en llegar a la India?",
+    "respuesta": "Vasco da Gama",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Isabel I durante la derrota de la Armada Invencible?",
+    "respuesta": "Inglaterra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura jeroglífica?",
+    "respuesta": "Egipcia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra terminó con la caída del Muro de Berlín?",
+    "respuesta": "Fría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue invadido por Alemania en 1939, iniciando la Segunda Guerra Mundial?",
+    "respuesta": "Polonia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder indio promovió la independencia mediante la no violencia?",
+    "respuesta": "Gandhi",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Guerra de Independencia de Estados Unidos?",
+    "respuesta": "París",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mussolini durante la Segunda Guerra Mundial?",
+    "respuesta": "Italia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua es conocida por sus acueductos y carreteras?",
+    "respuesta": "Romana",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué evento histórico ocurrió el 11 de septiembre de 2001?",
+    "respuesta": "Atentados",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue colonizado por los británicos y liderado por Mahatma Gandhi?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Confederados y la Unión?",
+    "respuesta": "Secesión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el concepto de democracia?",
+    "respuesta": "Griega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Hirohito durante la Segunda Guerra Mundial?",
+    "respuesta": "Japón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué revolución comenzó con la toma de la Bastilla?",
+    "respuesta": "Francesa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio fue liderado por Carlomagno?",
+    "respuesta": "Carolingio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue dividido en dos durante la Guerra Fría?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua es conocida por sus pirámides escalonadas?",
+    "respuesta": "Maya",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder soviético implementó la Perestroika?",
+    "respuesta": "Gorbachov",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Francisco Franco?",
+    "respuesta": "España",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y Vietnam?",
+    "respuesta": "Vietnam",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el calendario solar?",
+    "respuesta": "Maya",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Lenin tras la Revolución de Octubre?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a Inglaterra y Francia durante más de 100 años?",
+    "respuesta": "Cien Años",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Fidel Castro?",
+    "respuesta": "Cuba",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua es conocida por sus zigurats?",
+    "respuesta": "Sumeria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Guerra de los Treinta Años?",
+    "respuesta": "Westfalia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Margaret Thatcher?",
+    "respuesta": "Reino Unido",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Aliados y las Potencias Centrales?",
+    "respuesta": "Primera Guerra Mundial",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Augusto Pinochet?",
+    "respuesta": "Chile",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de numeración decimal?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder alemán unificó el país en el siglo XIX?",
+    "respuesta": "Bismarck",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a España y Estados Unidos en 1898?",
+    "respuesta": "Hispano-estadounidense",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el concepto de cero?",
+    "respuesta": "Maya",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Benito Juárez?",
+    "respuesta": "México",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a Inglaterra y Escocia en el siglo XIV?",
+    "respuesta": "Independencia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder estadounidense abolió la esclavitud?",
+    "respuesta": "Lincoln",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mustafa Kemal Atatürk?",
+    "respuesta": "Turquía",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura alfabética?",
+    "respuesta": "Fenicia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a Inglaterra y Argentina en 1982?",
+    "respuesta": "Malvinas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Pedro el Grande?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de irrigación?",
+    "respuesta": "Mesopotamia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Guerra de los Siete Años?",
+    "respuesta": "París",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Winston Churchill durante la Segunda Guerra Mundial?",
+    "respuesta": "Reino Unido",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y España en 1898?",
+    "respuesta": "Hispano-estadounidense",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura cuneiforme?",
+    "respuesta": "Sumeria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder soviético lideró la URSS durante la Segunda Guerra Mundial?",
+    "respuesta": "Stalin",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Adolf Hitler?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y Japón en el Pacífico?",
+    "respuesta": "Pacífico",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de numeración romana?",
+    "respuesta": "Romana",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mao Zedong?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y Corea del Norte?",
+    "respuesta": "Corea",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura jeroglífica?",
+    "respuesta": "Egipcia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder soviético lideró la URSS durante la Guerra Fría?",
+    "respuesta": "Khrushchev",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Franklin D. Roosevelt durante la Segunda Guerra Mundial?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y México en el siglo XIX?",
+    "respuesta": "Mexicano-estadounidense",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de numeración decimal?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Napoleón Bonaparte?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y la URSS sin combates directos?",
+    "respuesta": "Fría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura cuneiforme?",
+    "respuesta": "Sumeria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder soviético lideró la URSS durante la Segunda Guerra Mundial?",
+    "respuesta": "Stalin",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Adolf Hitler?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y Japón en el Pacífico?",
+    "respuesta": "Pacífico",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de numeración romana?",
+    "respuesta": "Romana",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mao Zedong?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y Corea del Norte?",
+    "respuesta": "Corea",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua desarrolló el sistema de escritura jeroglífica?",
+    "respuesta": "Egipcia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué líder soviético lideró la URSS durante la Guerra Fría?",
+    "respuesta": "Khrushchev",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Franklin D. Roosevelt durante la Segunda Guerra Mundial?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra enfrentó a los Estados Unidos y México en el siglo XIX?",
+    "respuesta": "Mexicano-estadounidense",
+    "categoria": "Historia"
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "pregunta": "¿Cuánto es 10-4?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 5x2?",
+    "respuesta": "10",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 9-7?",
+    "respuesta": "2",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 6+1?",
+    "respuesta": "7",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Sinónimo de 'feliz'?",
+    "respuesta": "contento",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Antónimo de 'alto'?",
+    "respuesta": "bajo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'Caperucita Roja'?",
+    "respuesta": "Caperucita",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué signo se usa para preguntar?",
+    "respuesta": "?",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'rojo' en inglés?",
+    "respuesta": "Red",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'escuela' en inglés?",
+    "respuesta": "School",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'comer' en inglés?",
+    "respuesta": "Eat",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'madre' en inglés?",
+    "respuesta": "Mother",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planta da manzanas?",
+    "respuesta": "Manzano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro da luz durante el día?",
+    "respuesta": "Sol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal vive en el agua?",
+    "respuesta": "Pez",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta está bajo tierra?",
+    "respuesta": "Raíz",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue faraón de Egipto?",
+    "respuesta": "Tutankamón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue reina de Egipto?",
+    "respuesta": "Cleopatra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue libertador de América?",
+    "respuesta": "Bolívar",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién fue emperador francés?",
+    "respuesta": "Napoleón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué continente está Brasil?",
+    "respuesta": "América",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Sevilla?",
+    "respuesta": "Guadalquivir",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué país está París?",
+    "respuesta": "Francia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué océano baña las costas de Galicia?",
+    "respuesta": "Atlántico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién pierde un zapato en el baile?",
+    "respuesta": "Cenicienta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el amigo de Pinocho?",
+    "respuesta": "Grillo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el villano de Peter Pan?",
+    "respuesta": "Garfio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién duerme cien años?",
+    "respuesta": "Aurora",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué sigue: enero, febrero, ...?",
+    "respuesta": "marzo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué sigue: 2, 4, 6, ...?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué sigue: A, B, ...?",
+    "respuesta": "C",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué sigue: primavera, verano, ...?",
+    "respuesta": "otoño",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué deporte se juega en Wimbledon?",
+    "respuesta": "Tenis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es símbolo de Australia?",
+    "respuesta": "Canguro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué fruta es típica de Canarias?",
+    "respuesta": "Plátano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma se habla en Brasil?",
+    "respuesta": "Portugués",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene una semana?",
+    "respuesta": "7",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos meses tiene un año?",
+    "respuesta": "12",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día es el primero de la semana?",
+    "respuesta": "lunes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué mes viene después de mayo?",
+    "respuesta": "junio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día viene antes de viernes?",
+    "respuesta": "jueves",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿De qué color es una manzana?",
+    "respuesta": "rojo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué forma tiene una pelota?",
+    "respuesta": "redonda",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué forma tiene una caja?",
+    "respuesta": "cuadrada",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿De qué color es el sol?",
+    "respuesta": "amarillo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el hijo de tus padres?",
+    "respuesta": "hermano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es la hija de tus abuelos?",
+    "respuesta": "madre",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el padre de tu madre?",
+    "respuesta": "abuelo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es la hermana de tu madre?",
+    "respuesta": "tía",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal hace 'guau'?",
+    "respuesta": "perro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa?",
+    "respuesta": "elefante",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas?",
+    "respuesta": "cebra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene alas y canta?",
+    "respuesta": "pájaro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué usas para leer?",
+    "respuesta": "libro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué usas para cortar papel?",
+    "respuesta": "tijeras",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué usas para borrar?",
+    "respuesta": "goma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué usas para pintar?",
+    "respuesta": "pincel",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué fruta es roja y pequeña?",
+    "respuesta": "fresa",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué fruta es verde y redonda?",
+    "respuesta": "manzana",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué alimento se hace con leche?",
+    "respuesta": "queso",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué estación sigue al verano?",
+    "respuesta": "otoño",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué estación hace más frío?",
+    "respuesta": "invierno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué estación hace más calor?",
+    "respuesta": "verano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué estación caen las hojas?",
+    "respuesta": "otoño",
+    "categoria": "campeonato"
+  }
+]

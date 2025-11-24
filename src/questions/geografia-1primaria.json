@@ -1,0 +1,507 @@
+[
+  {
+    "pregunta": "¿Cuántos continentes hay en el mundo?",
+    "respuesta": "6",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más grande?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más pequeño?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano es el más grande?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano baña la costa de Galicia?",
+    "respuesta": "Atlántico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar baña la costa este de España?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de España?",
+    "respuesta": "Ebro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta de España?",
+    "respuesta": "Teide",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país está al norte de España?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país está al sur de España?",
+    "respuesta": "Marruecos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país está al este de España?",
+    "respuesta": "Italia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país está al oeste de España?",
+    "respuesta": "Portugal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Francia?",
+    "respuesta": "París",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Portugal?",
+    "respuesta": "Lisboa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Italia?",
+    "respuesta": "Roma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Alemania?",
+    "respuesta": "Berlín",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Reino Unido?",
+    "respuesta": "Londres",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el desierto más grande del mundo?",
+    "respuesta": "Sahara",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mapa?",
+    "respuesta": "Dibujo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué instrumento señala el norte?",
+    "respuesta": "Brújula",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuáles son los puntos cardinales?",
+    "respuesta": "Norte",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué zona es más fría, el polo norte o el ecuador?",
+    "respuesta": "Polo norte",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué zona es más cálida, el polo sur o el ecuador?",
+    "respuesta": "Ecuador",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una isla?",
+    "respuesta": "Tierra rodeada de agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una península?",
+    "respuesta": "Tierra rodeada de agua menos por un lado",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un archipiélago?",
+    "respuesta": "Grupo de islas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una montaña?",
+    "respuesta": "Elevación de tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una llanura?",
+    "respuesta": "Terreno plano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un valle?",
+    "respuesta": "Terreno entre montañas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un río?",
+    "respuesta": "Corriente de agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un lago?",
+    "respuesta": "Agua rodeada de tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un desierto?",
+    "respuesta": "Zona seca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una selva?",
+    "respuesta": "Bosque húmedo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una ciudad?",
+    "respuesta": "Zona urbana",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un pueblo?",
+    "respuesta": "Zona rural",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una playa?",
+    "respuesta": "Orilla de mar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un bosque?",
+    "respuesta": "Zona con árboles",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una montaña rusa?",
+    "respuesta": "Atracción",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un glaciar?",
+    "respuesta": "Hielo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una cueva?",
+    "respuesta": "Hueco en la tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una colina?",
+    "respuesta": "Montaña pequeña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una meseta?",
+    "respuesta": "Terreno elevado y plano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un cañón?",
+    "respuesta": "Valle profundo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un golfo?",
+    "respuesta": "Entrada de mar en la tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una bahía?",
+    "respuesta": "Entrada pequeña de mar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un cabo?",
+    "respuesta": "Punta de tierra en el mar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un istmo?",
+    "respuesta": "Tierra entre dos aguas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un delta?",
+    "respuesta": "Desembocadura de río",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una cordillera?",
+    "respuesta": "Conjunto de montañas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una frontera?",
+    "respuesta": "Límite entre países",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un país?",
+    "respuesta": "Territorio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una provincia?",
+    "respuesta": "División de país",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una comunidad autónoma?",
+    "respuesta": "Región",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital?",
+    "respuesta": "Ciudad principal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un continente?",
+    "respuesta": "Gran extensión de tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un océano?",
+    "respuesta": "Gran extensión de agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mar?",
+    "respuesta": "Agua salada",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima?",
+    "respuesta": "Condiciones del tiempo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una estación del año?",
+    "respuesta": "Periodo climático",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuántas estaciones hay?",
+    "respuesta": "4",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la estación más calurosa?",
+    "respuesta": "Verano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la estación más fría?",
+    "respuesta": "Invierno",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la estación de las flores?",
+    "respuesta": "Primavera",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la estación de las hojas caídas?",
+    "respuesta": "Otoño",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una brújula?",
+    "respuesta": "Instrumento",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un termómetro?",
+    "respuesta": "Instrumento",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una rosa de los vientos?",
+    "respuesta": "Dibujo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mapa político?",
+    "respuesta": "Mapa de países",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mapa físico?",
+    "respuesta": "Mapa de relieve",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mapa?",
+    "respuesta": "Representación",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una zona urbana?",
+    "respuesta": "Ciudad",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una zona rural?",
+    "respuesta": "Campo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un recurso natural?",
+    "respuesta": "Material de la naturaleza",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es el petróleo?",
+    "respuesta": "Recurso",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es el carbón?",
+    "respuesta": "Recurso",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es el agua?",
+    "respuesta": "Recurso",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es el aire?",
+    "respuesta": "Recurso",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es el sol?",
+    "respuesta": "Estrella",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es la luna?",
+    "respuesta": "Satélite",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una estrella?",
+    "respuesta": "Astro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un satélite?",
+    "respuesta": "Astro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un volcán?",
+    "respuesta": "Montaña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una erupción?",
+    "respuesta": "Salida de lava",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una zona costera?",
+    "respuesta": "Cerca del mar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una zona interior?",
+    "respuesta": "Lejos del mar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una región?",
+    "respuesta": "Zona",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una comarca?",
+    "respuesta": "Zona pequeña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una isla española?",
+    "respuesta": "Mallorca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una montaña española?",
+    "respuesta": "Teide",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un río español?",
+    "respuesta": "Ebro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una ciudad española?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una provincia española?",
+    "respuesta": "Sevilla",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una comunidad autónoma española?",
+    "respuesta": "Andalucía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital europea?",
+    "respuesta": "París",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital africana?",
+    "respuesta": "El Cairo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital asiática?",
+    "respuesta": "Tokio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital americana?",
+    "respuesta": "Buenos Aires",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una capital oceánica?",
+    "respuesta": "Canberra",
+    "categoria": "Geografía"
+  }
+]

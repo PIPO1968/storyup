@@ -1,0 +1,307 @@
+[
+  {
+    "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "respuesta": "George Washington",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
+    "respuesta": "1492",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el barco principal de Cristóbal Colón?",
+    "respuesta": "Santa María",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides de Egipto?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el líder de los cartagineses que cruzó los Alpes con elefantes?",
+    "respuesta": "Aníbal",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué imperio construyó el Coliseo en Roma?",
+    "respuesta": "Imperio Romano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién pintó la Mona Lisa?",
+    "respuesta": "Leonardo da Vinci",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país inventó los Juegos Olímpicos?",
+    "respuesta": "Grecia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el rey más famoso de los francos?",
+    "respuesta": "Carlomagno",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó Machu Picchu?",
+    "respuesta": "Incas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra terminó con la caída del Muro de Berlín?",
+    "respuesta": "Guerra Fría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el explorador que dio la primera vuelta al mundo?",
+    "respuesta": "Magallanes",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua inventó la escritura cuneiforme?",
+    "respuesta": "Sumerios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué reina británica tuvo el reinado más largo antes de Isabel II?",
+    "respuesta": "Victoria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Napoleón Bonaparte?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó templos en honor a Zeus?",
+    "respuesta": "Griegos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso muro dividió Alemania durante la Guerra Fría?",
+    "respuesta": "Muro de Berlín",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue el primero en enviar un hombre al espacio?",
+    "respuesta": "Unión Soviética",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llamaba el primer hombre en caminar sobre la Luna?",
+    "respuesta": "Neil Armstrong",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Adolf Hitler?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra se libró entre el Norte y el Sur de los Estados Unidos?",
+    "respuesta": "Guerra Civil",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso líder dijo 'Tengo un sueño'?",
+    "respuesta": "Martin Luther King",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua adoraba a dioses como Quetzalcóatl?",
+    "respuesta": "Aztecas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Winston Churchill durante la Segunda Guerra Mundial?",
+    "respuesta": "Reino Unido",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso barco se hundió en 1912?",
+    "respuesta": "Titanic",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue el primero en usar papel moneda?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó el Partenón?",
+    "respuesta": "Griegos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso científico propuso la teoría de la relatividad?",
+    "respuesta": "Einstein",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Benito Mussolini?",
+    "respuesta": "Italia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó las Líneas de Nazca?",
+    "respuesta": "Nazcas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso líder fue asesinado el 15 de marzo del 44 a.C.?",
+    "respuesta": "Julio César",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Fidel Castro?",
+    "respuesta": "Cuba",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso explorador descubrió el río Amazonas?",
+    "respuesta": "Francisco de Orellana",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó el Templo del Sol?",
+    "respuesta": "Incas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso líder dijo 'Veni, vidi, vici'?",
+    "respuesta": "Julio César",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Margaret Thatcher?",
+    "respuesta": "Reino Unido",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso científico descubrió la gravedad?",
+    "respuesta": "Newton",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar?",
+    "respuesta": "Venezuela",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó el Zigurat de Ur?",
+    "respuesta": "Sumerios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso líder dijo 'La historia me absolverá'?",
+    "respuesta": "Fidel Castro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Abraham Lincoln?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso explorador descubrió el Cabo de Buena Esperanza?",
+    "respuesta": "Bartolomé",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó el Faro de Alejandría?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Pedro el Grande?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó el Palacio de Knossos?",
+    "respuesta": "Minoicos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué famoso líder dijo 'La libertad o la muerte'?",
+    "respuesta": "Bolívar",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país tiene la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué océano es el más grande?",
+    "respuesta": "Pacífico",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el barco de Cristóbal Colón?",
+    "respuesta": "SantaMaría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó Machu Picchu?",
+    "respuesta": "Incas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién pintó la Capilla Sixtina?",
+    "respuesta": "MiguelÁngel",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país inventó los Juegos Olímpicos?",
+    "respuesta": "Grecia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el rey más famoso de los francos?",
+    "respuesta": "Carlomagno",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides de Egipto?",
+    "respuesta": "Egipcios",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué país tiene la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué océano es el más grande?",
+    "respuesta": "Pacífico",
+    "categoria": "Historia"
+  }
+]

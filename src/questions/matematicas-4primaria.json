@@ -1,0 +1,277 @@
+[
+  {
+    "pregunta": "¿Cuánto es 25 + 37?",
+    "respuesta": "62",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 144 ÷ 12?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el valor de 3²?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 - 45?",
+    "respuesta": "55",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 ÷ 9?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 50 + 25?",
+    "respuesta": "75",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 ÷ 10?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 64 ÷ 8?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 + 55?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 121 ÷ 11?",
+    "respuesta": "11",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 36 ÷ 6?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 4?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 ÷ 3?",
+    "respuesta": "27",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 72 ÷ 9?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 49 ÷ 7?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 63 ÷ 9?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 ÷ 5?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 48 ÷ 8?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 2?",
+    "respuesta": "50",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 ÷ 9?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 56 ÷ 7?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 36 ÷ 4?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 64 ÷ 4?",
+    "respuesta": "16",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 10?",
+    "respuesta": "10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 ÷ 5?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 72 ÷ 8?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 49 ÷ 7?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 63 ÷ 7?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 ÷ 6?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 48 ÷ 6?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 5?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 ÷ 3?",
+    "respuesta": "27",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 56 ÷ 8?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 36 ÷ 3?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 64 ÷ 2?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 20?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 ÷ 9?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 72 ÷ 6?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 49 ÷ 7?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 63 ÷ 9?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 ÷ 3?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 48 ÷ 4?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 25?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 ÷ 27?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 56 ÷ 4?",
+    "respuesta": "14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 36 ÷ 2?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 64 ÷ 8?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 50?",
+    "respuesta": "2",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 ÷ 15?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 72 ÷ 12?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 49 ÷ 14?",
+    "respuesta": "3.5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 63 ÷ 21?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 ÷ 30?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 48 ÷ 12?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 ÷ 4?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  }
+]

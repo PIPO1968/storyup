@@ -1,0 +1,122 @@
+[
+    {
+        "categoria": "Poderes",
+        "emojis": [
+            {
+                "emoji": "⚡",
+                "nombre": "Rayo Dorado",
+                "descripcion": "Poder especial"
+            },
+            {
+                "emoji": "🔥",
+                "nombre": "Fuego Mágico",
+                "descripcion": "Energía ardiente"
+            },
+            {
+                "emoji": "✨",
+                "nombre": "Brillos",
+                "descripcion": "Efectos mágicos"
+            },
+            {
+                "emoji": "💫",
+                "nombre": "Estrella Fugaz",
+                "descripcion": "Deseo cumplido"
+            },
+            {
+                "emoji": "🌟",
+                "nombre": "Estrella Premium",
+                "descripcion": "Brillo especial"
+            }
+        ]
+    },
+    {
+        "categoria": "Reinos",
+        "emojis": [
+            {
+                "emoji": "👑",
+                "nombre": "Corona Real",
+                "descripcion": "Poder supremo"
+            },
+            {
+                "emoji": "💎",
+                "nombre": "Diamante",
+                "descripcion": "Valor infinito"
+            },
+            {
+                "emoji": "🏆",
+                "nombre": "Trofeo Dorado",
+                "descripcion": "Victoria premium"
+            },
+            {
+                "emoji": "🎭",
+                "nombre": "Máscara Mágica",
+                "descripcion": "Transformación"
+            },
+            {
+                "emoji": "🦄",
+                "nombre": "Unicornio",
+                "descripcion": "Criatura legendaria"
+            }
+        ]
+    },
+    {
+        "categoria": "Expresiones",
+        "emojis": [
+            {
+                "emoji": "😎",
+                "nombre": "Cool Premium",
+                "descripcion": "Actitud VIP"
+            },
+            {
+                "emoji": "🤩",
+                "nombre": "Estrellado",
+                "descripcion": "Fascinación total"
+            },
+            {
+                "emoji": "💖",
+                "nombre": "Corazón Premium",
+                "descripcion": "Amor especial"
+            },
+            {
+                "emoji": "🥳",
+                "nombre": "Fiesta VIP",
+                "descripcion": "Celebración exclusiva"
+            },
+            {
+                "emoji": "😇",
+                "nombre": "Ángel Dorado",
+                "descripcion": "Pureza premium"
+            }
+        ]
+    },
+    {
+        "categoria": "Efectos",
+        "emojis": [
+            {
+                "emoji": "🎨",
+                "nombre": "Paleta Mágica",
+                "descripcion": "Creatividad infinita"
+            },
+            {
+                "emoji": "🎪",
+                "nombre": "Circo Premium",
+                "descripcion": "Espectáculo exclusivo"
+            },
+            {
+                "emoji": "🎯",
+                "nombre": "Diana Perfecta",
+                "descripcion": "Precisión premium"
+            },
+            {
+                "emoji": "🎲",
+                "nombre": "Dado Dorado",
+                "descripcion": "Suerte premium"
+            },
+            {
+                "emoji": "🎊",
+                "nombre": "Confeti VIP",
+                "descripcion": "Celebración especial"
+            }
+        ]
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "nombre": "Corona Dorada",
+        "emoji": "👑",
+        "descripcion": "Una corona dorada brillante",
+        "costo": 10,
+        "rareza": "legendario",
+        "efectos": "Badge dorado visual por 7 días (solo decorativo)"
+    },
+    {
+        "id": 2,
+        "nombre": "Estrella Diamante",
+        "emoji": "💎",
+        "descripcion": "Una estrella de diamante resplandeciente",
+        "costo": 15,
+        "rareza": "legendario",
+        "efectos": "Brillo especial en comentarios por 3 días (solo visual)"
+    },
+    {
+        "id": 3,
+        "nombre": "Corazón Premium",
+        "emoji": "💖",
+        "descripcion": "Un corazón premium con efectos",
+        "costo": 5,
+        "rareza": "raro",
+        "efectos": "Animación especial en perfil por 1 día (solo decorativo)"
+    },
+    {
+        "id": 4,
+        "nombre": "Rayo Dorado",
+        "emoji": "⚡",
+        "descripcion": "Un rayo de poder dorado",
+        "costo": 8,
+        "rareza": "épico",
+        "efectos": "Efecto brillante en nickname por 2 días (solo visual)"
+    },
+    {
+        "id": 5,
+        "nombre": "Trofeo Cristal",
+        "emoji": "🏆",
+        "descripcion": "Un trofeo de cristal exclusivo",
+        "costo": 12,
+        "rareza": "legendario",
+        "efectos": "Badge especial en perfil por 5 días (solo decorativo)"
+    },
+    {
+        "id": 6,
+        "nombre": "Fuego Mágico",
+        "emoji": "🔥",
+        "descripcion": "Fuego mágico decorativo",
+        "costo": 6,
+        "rareza": "épico",
+        "efectos": "Animación de fuego en avatar por 1 día (solo diversión)"
+    }
+]

@@ -1,0 +1,517 @@
+[
+  {
+    "pregunta": "¿Qué parte de la planta absorbe agua?",
+    "respuesta": "raíz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de fabricar alimento en plantas?",
+    "respuesta": "fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para respirar?",
+    "respuesta": "pulmones",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal pone huevos y vuela?",
+    "respuesta": "pájaro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta es el tercero desde el Sol?",
+    "respuesta": "Tierra",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué líquido es esencial para la vida?",
+    "respuesta": "agua",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano permite oír?",
+    "respuesta": "oído",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal vive en agua y tiene escamas?",
+    "respuesta": "pez",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de árboles y sirve para escribir?",
+    "respuesta": "papel",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural produce lluvia?",
+    "respuesta": "nubes",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es amarilla y rica en potasio?",
+    "respuesta": "plátano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta capta luz solar?",
+    "respuesta": "hoja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y camina lento?",
+    "respuesta": "tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano bombea sangre?",
+    "respuesta": "corazón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se usa para fabricar botellas y se recicla?",
+    "respuesta": "plástico",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué estación sigue al verano?",
+    "respuesta": "otoño",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal produce leche?",
+    "respuesta": "vaca",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para caminar?",
+    "respuesta": "pies",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué insecto fabrica miel?",
+    "respuesta": "abeja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas respiramos?",
+    "respuesta": "oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa?",
+    "respuesta": "elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se convierte en fruto?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural causa temblores?",
+    "respuesta": "terremoto",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene plumas y nada?",
+    "respuesta": "pato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para ver?",
+    "respuesta": "ojos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se usa para construir casas?",
+    "respuesta": "ladrillo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas y vive en selva?",
+    "respuesta": "tigre",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para abrazar?",
+    "respuesta": "brazos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es roja y tiene semillas fuera?",
+    "respuesta": "fresa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural produce relámpagos?",
+    "respuesta": "tormenta",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene ocho patas y teje telas?",
+    "respuesta": "araña",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta sostiene hojas y flores?",
+    "respuesta": "tallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal vive en desierto y almacena agua?",
+    "respuesta": "camello",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para saborear?",
+    "respuesta": "lengua",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de arena y sirve en ventanas?",
+    "respuesta": "vidrio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene pico y puede hablar?",
+    "respuesta": "loro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para correr?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es verde por fuera y roja por dentro?",
+    "respuesta": "sandía",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural mueve hojas de árboles?",
+    "respuesta": "viento",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene manchas negras y vive en África?",
+    "respuesta": "jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para pensar?",
+    "respuesta": "cerebro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de ovejas y sirve en ropa?",
+    "respuesta": "lana",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene cola larga y vive en árboles?",
+    "respuesta": "mono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para escribir?",
+    "respuesta": "mano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es pequeña, morada y crece en racimos?",
+    "respuesta": "uva",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua se congela?",
+    "respuesta": "nieve",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y vive en mar?",
+    "respuesta": "tortuga marina",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta atrae insectos?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para escuchar música?",
+    "respuesta": "oído",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene alas y sale de noche?",
+    "respuesta": "murciélago",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para saltar?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es naranja y tiene vitamina C?",
+    "respuesta": "naranja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua sube del mar?",
+    "respuesta": "marea",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene cuernos y vive en montaña?",
+    "respuesta": "cabra",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se convierte en semilla?",
+    "respuesta": "fruto",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para oler?",
+    "respuesta": "nariz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de minas y es pesado?",
+    "respuesta": "hierro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene bigotes y caza ratones?",
+    "respuesta": "gato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para mirar televisión?",
+    "respuesta": "ojos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es amarilla y ácida?",
+    "respuesta": "limón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua se evapora?",
+    "respuesta": "vapor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene patas largas y vive en agua?",
+    "respuesta": "garza",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta almacena alimento?",
+    "respuesta": "raíz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para digerir comida?",
+    "respuesta": "estómago",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene pico largo y busca peces?",
+    "respuesta": "pelícano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para aplaudir?",
+    "respuesta": "manos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es pequeña y azul?",
+    "respuesta": "arándano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando sol calienta mucho?",
+    "respuesta": "calor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene orejas largas y salta?",
+    "respuesta": "conejo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se usa para infusiones?",
+    "respuesta": "hojas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para movernos?",
+    "respuesta": "músculos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de árboles y sirve en muebles?",
+    "respuesta": "madera",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene escamas y vive en ríos?",
+    "respuesta": "trucha",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para sonreír?",
+    "respuesta": "boca",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es tropical y tiene corona?",
+    "respuesta": "piña",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua cae del cielo?",
+    "respuesta": "lluvia",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene patas cortas y hocico largo?",
+    "respuesta": "cerdo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se usa para hacer aceite?",
+    "respuesta": "fruto",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para proteger cuerpo?",
+    "respuesta": "piel",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene garras y vive en montaña?",
+    "respuesta": "águila",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para escuchar?",
+    "respuesta": "oído",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es roja y se usa en ensaladas?",
+    "respuesta": "tomate",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando sol se esconde?",
+    "respuesta": "noche",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene melena y es rey de selva?",
+    "respuesta": "león",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se usa para perfumes?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para aprender?",
+    "respuesta": "cerebro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de leche y se come en bocadillos?",
+    "respuesta": "queso",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y vive en tierra?",
+    "respuesta": "tortuga terrestre",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para correr rápido?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es pequeña y roja y crece en arbustos?",
+    "respuesta": "cereza",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua se congela en aire?",
+    "respuesta": "granizo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene plumas y canta por la mañana?",
+    "respuesta": "gallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se usa para té?",
+    "respuesta": "hojas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para sentir frío y calor?",
+    "respuesta": "piel",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de caña de azúcar y es dulce?",
+    "respuesta": "azúcar",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene patas palmeadas y nada en lagos?",
+    "respuesta": "cisne",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo sirve para lanzar pelota?",
+    "respuesta": "brazo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fruta es amarilla y se pela para comer?",
+    "respuesta": "plátano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando agua se transforma en vapor?",
+    "respuesta": "evaporación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene antenas y vive en colonias?",
+    "respuesta": "hormiga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta se usa para medicinas?",
+    "respuesta": "raíces",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano sirve para digerir alimentos?",
+    "respuesta": "estómago",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué material se obtiene de roca y se usa en construcción?",
+    "respuesta": "cemento",
+    "categoria": "Naturaleza"
+  }
+]

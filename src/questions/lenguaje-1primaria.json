@@ -1,0 +1,472 @@
+[
+  {
+    "pregunta": "¿Cuál es la vocal que falta en _sa?",
+    "respuesta": "a",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la vocal que falta en c_s?",
+    "respuesta": "a",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la vocal que falta en p_rro?",
+    "respuesta": "e",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la vocal que falta en s_l?",
+    "respuesta": "o",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la vocal que falta en c_sa?",
+    "respuesta": "a",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la consonante que falta en _asa?",
+    "respuesta": "c",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un animal? (gato, mesa, sol)",
+    "respuesta": "gato",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una fruta? (manzana, zapato, nube)",
+    "respuesta": "manzana",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un objeto? (lápiz, perro, árbol)",
+    "respuesta": "lápiz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba inicial de 'sol'?",
+    "respuesta": "so",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba final de 'mesa'?",
+    "respuesta": "sa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'casa'? (mesa, taza, sol)",
+    "respuesta": "taza",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'sol'? (col, pan, pez)",
+    "respuesta": "col",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra inicial de 'ratón'?",
+    "respuesta": "r",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra final de 'pez'?",
+    "respuesta": "z",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un color? (rojo, mesa, gato)",
+    "respuesta": "rojo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un lugar? (escuela, perro, lápiz)",
+    "respuesta": "escuela",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte del cuerpo? (mano, sol, casa)",
+    "respuesta": "mano",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la vocal que falta en m_s?",
+    "respuesta": "e",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la consonante que falta en _ol?",
+    "respuesta": "s",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un medio de transporte? (tren, sol, gato)",
+    "respuesta": "tren",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una prenda de vestir? (camisa, árbol, pez)",
+    "respuesta": "camisa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un instrumento musical? (guitarra, mesa, nube)",
+    "respuesta": "guitarra",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba inicial de 'mesa'?",
+    "respuesta": "me",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba final de 'lápiz'?",
+    "respuesta": "z",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'pan'? (sol, tren, flan)",
+    "respuesta": "flan",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'pez'? (luz, vez, sol)",
+    "respuesta": "vez",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra inicial de 'gato'?",
+    "respuesta": "g",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra final de 'sol'?",
+    "respuesta": "l",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una bebida? (agua, mesa, tren)",
+    "respuesta": "agua",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una estación del año? (verano, gato, sol)",
+    "respuesta": "verano",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un día de la semana? (lunes, pez, tren)",
+    "respuesta": "lunes",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un mes del año? (enero, sol, gato)",
+    "respuesta": "enero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una emoción? (alegría, mesa, tren)",
+    "respuesta": "alegría",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una acción? (correr, sol, gato)",
+    "respuesta": "correr",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un animal doméstico? (perro, nube, tren)",
+    "respuesta": "perro",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un animal salvaje? (león, mesa, sol)",
+    "respuesta": "león",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una fruta tropical? (plátano, tren, nube)",
+    "respuesta": "plátano",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un objeto escolar? (cuaderno, sol, gato)",
+    "respuesta": "cuaderno",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una herramienta? (martillo, nube, tren)",
+    "respuesta": "martillo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la casa? (puerta, sol, gato)",
+    "respuesta": "puerta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la escuela? (aula, nube, tren)",
+    "respuesta": "aula",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la ciudad? (calle, sol, gato)",
+    "respuesta": "calle",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte del campo? (árbol, nube, tren)",
+    "respuesta": "árbol",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte del cuerpo humano? (ojo, sol, gato)",
+    "respuesta": "ojo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una planta? (hoja, nube, tren)",
+    "respuesta": "hoja",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un animal? (cola, sol, gato)",
+    "respuesta": "cola",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una fruta? (semilla, nube, tren)",
+    "respuesta": "semilla",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una flor? (pétalo, sol, gato)",
+    "respuesta": "pétalo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una prenda de vestir? (manga, nube, tren)",
+    "respuesta": "manga",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un instrumento musical? (cuerda, sol, gato)",
+    "respuesta": "cuerda",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un vehículo? (rueda, nube, tren)",
+    "respuesta": "rueda",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una casa? (ventana, sol, gato)",
+    "respuesta": "ventana",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una escuela? (pizarra, nube, tren)",
+    "respuesta": "pizarra",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una ciudad? (plaza, sol, gato)",
+    "respuesta": "plaza",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un campo? (pradera, nube, tren)",
+    "respuesta": "pradera",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un cuerpo humano? (boca, sol, gato)",
+    "respuesta": "boca",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una planta? (raíz, nube, tren)",
+    "respuesta": "raíz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un animal? (pata, sol, gato)",
+    "respuesta": "pata",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una fruta? (piel, nube, tren)",
+    "respuesta": "piel",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una flor? (tallo, sol, gato)",
+    "respuesta": "tallo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una prenda de vestir? (botón, nube, tren)",
+    "respuesta": "botón",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un instrumento musical? (tecla, sol, gato)",
+    "respuesta": "tecla",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un vehículo? (motor, nube, tren)",
+    "respuesta": "motor",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba inicial de 'gato'?",
+    "respuesta": "ga",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la sílaba final de 'tren'?",
+    "respuesta": "en",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'luz'? (cruz, sol, pez)",
+    "respuesta": "cruz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra rima con 'pez'? (vez, sol, pan)",
+    "respuesta": "vez",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra inicial de 'mesa'?",
+    "respuesta": "m",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la letra final de 'tren'?",
+    "respuesta": "n",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una comida? (arroz, nube, tren)",
+    "respuesta": "arroz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una bebida? (leche, sol, gato)",
+    "respuesta": "leche",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una estación del año? (invierno, gato, sol)",
+    "respuesta": "invierno",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un día de la semana? (martes, pez, tren)",
+    "respuesta": "martes",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un mes del año? (febrero, sol, gato)",
+    "respuesta": "febrero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una emoción? (tristeza, mesa, tren)",
+    "respuesta": "tristeza",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una acción? (saltar, sol, gato)",
+    "respuesta": "saltar",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un animal doméstico? (gato, nube, tren)",
+    "respuesta": "gato",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un animal salvaje? (tigre, mesa, sol)",
+    "respuesta": "tigre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una fruta tropical? (mango, tren, nube)",
+    "respuesta": "mango",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un objeto escolar? (borrador, sol, gato)",
+    "respuesta": "borrador",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una herramienta? (destornillador, nube, tren)",
+    "respuesta": "destornillador",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la casa? (techo, sol, gato)",
+    "respuesta": "techo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la escuela? (puerta, nube, tren)",
+    "respuesta": "puerta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de la ciudad? (avenida, sol, gato)",
+    "respuesta": "avenida",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte del campo? (bosque, nube, tren)",
+    "respuesta": "bosque",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte del cuerpo humano? (cabeza, sol, gato)",
+    "respuesta": "cabeza",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una planta? (flor, nube, tren)",
+    "respuesta": "flor",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un animal? (hocico, sol, gato)",
+    "respuesta": "hocico",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una fruta? (pulpa, nube, tren)",
+    "respuesta": "pulpa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una flor? (hoja, sol, gato)",
+    "respuesta": "hoja",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de una prenda de vestir? (cremallera, nube, tren)",
+    "respuesta": "cremallera",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un instrumento musical? (paleta, sol, gato)",
+    "respuesta": "paleta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es una parte de un vehículo? (puerta, nube, tren)",
+    "respuesta": "puerta",
+    "categoria": "Lenguaje"
+  }
+]

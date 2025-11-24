@@ -1,0 +1,412 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo de España?",
+    "respuesta": "Ebro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the past tense of 'run'?",
+    "respuesta": "Ran",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides de Egipto?",
+    "respuesta": "Egipcios",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta de España?",
+    "respuesta": "Teide",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué año Cristóbal Colón llegó a América?",
+    "respuesta": "1492",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the plural of 'child'?",
+    "respuesta": "Children",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué océano baña las costas del norte de España?",
+    "respuesta": "Atlántico",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué batalla marcó el inicio de la Reconquista?",
+    "respuesta": "Covadonga",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Glad",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué tratado dividió América entre España y Portugal?",
+    "respuesta": "Tordesillas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué mar baña las costas del este de España?",
+    "respuesta": "Mediterráneo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país limita al norte con España?",
+    "respuesta": "Francia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país limita al oeste con España?",
+    "respuesta": "Portugal",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'eat'?",
+    "respuesta": "Eating",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español se encuentra en el océano Atlántico?",
+    "respuesta": "Canarias",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español se encuentra en el mar Mediterráneo?",
+    "respuesta": "Baleares",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua inventó la escritura cuneiforme?",
+    "respuesta": "Sumerios",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué líder sudafricano luchó contra el apartheid?",
+    "respuesta": "Mandela",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the past tense of 'go'?",
+    "respuesta": "Went",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué rey español ordenó la construcción del Monasterio de El Escorial?",
+    "respuesta": "Felipe",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Sevilla?",
+    "respuesta": "Guadalquivir",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué navegante completó la primera vuelta al mundo?",
+    "respuesta": "Elcano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the plural of 'mouse'?",
+    "respuesta": "Mice",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué cordillera separa España de Francia?",
+    "respuesta": "Pirineos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago balear es conocida por su fiesta?",
+    "respuesta": "Ibiza",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the opposite of 'big'?",
+    "respuesta": "Small",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+    "respuesta": "Versalles",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su volcán?",
+    "respuesta": "Lanzarote",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Zaragoza?",
+    "respuesta": "Ebro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mahatma Gandhi en su independencia?",
+    "respuesta": "India",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the synonym of 'fast'?",
+    "respuesta": "Quick",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida como la isla bonita?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Nelson Mandela en su lucha contra el apartheid?",
+    "respuesta": "Sudáfrica",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó Machu Picchu?",
+    "respuesta": "Incas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'write'?",
+    "respuesta": "Writing",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Miguel Hidalgo en su independencia?",
+    "respuesta": "México",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Toussaint Louverture en su independencia?",
+    "respuesta": "Haití",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su vino?",
+    "respuesta": "El Hierro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Francisco Franco en su dictadura?",
+    "respuesta": "España",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por sus dunas?",
+    "respuesta": "Gran Canaria",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Simón Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago balear es conocida por su tranquilidad?",
+    "respuesta": "Menorca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por José de San Martín en su independencia?",
+    "respuesta": "Argentina",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su tranquilidad?",
+    "respuesta": "La Gomera",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Fidel Castro en su revolución?",
+    "respuesta": "Cuba",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Vladimir Lenin en su revolución?",
+    "respuesta": "Rusia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mao Zedong en su revolución?",
+    "respuesta": "China",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Augusto Pinochet en su dictadura?",
+    "respuesta": "Chile",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Hugo Chávez en su presidencia?",
+    "respuesta": "Venezuela",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Rafael Correa en su presidencia?",
+    "respuesta": "Ecuador",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Salvador Allende en su presidencia?",
+    "respuesta": "Chile",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Juan Domingo Perón en su presidencia?",
+    "respuesta": "Argentina",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Getúlio Vargas en su presidencia?",
+    "respuesta": "Brasil",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Lázaro Cárdenas en su presidencia?",
+    "respuesta": "México",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Franklin D. Roosevelt en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por John F. Kennedy en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Barack Obama en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Angela Merkel en su cancillería?",
+    "respuesta": "Alemania",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Margaret Thatcher en su primer ministerio?",
+    "respuesta": "Reino Unido",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Justin Trudeau en su primer ministerio?",
+    "respuesta": "Canadá",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Emmanuel Macron en su presidencia?",
+    "respuesta": "Francia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Pedro Sánchez en su presidencia?",
+    "respuesta": "España",
+    "categoria": "General"
+  }
+]

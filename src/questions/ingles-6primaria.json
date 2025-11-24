@@ -1,0 +1,357 @@
+[
+  {
+    "pregunta": "How do you say 'perro' in English?",
+    "respuesta": "Dog",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Which word is the opposite of 'big'?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Translate 'gato' into English.",
+    "respuesta": "Cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Name the past tense of 'go'.",
+    "respuesta": "Went",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Provide the plural form of 'child'.",
+    "respuesta": "Children",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "How do you spell the word for 'ventana' in English?",
+    "respuesta": "Window",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Identify the synonym of 'happy'.",
+    "respuesta": "Joyful",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Give the superlative form of 'bad'.",
+    "respuesta": "Worst",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English translation for 'manzana'?",
+    "respuesta": "Apple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "State the past participle of 'eat'.",
+    "respuesta": "Eaten",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'cold'?",
+    "respuesta": "Hot",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'write'?",
+    "respuesta": "Wrote",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'mouse'?",
+    "respuesta": "Mice",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'fast'?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'angry'?",
+    "respuesta": "Mad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'fly'?",
+    "respuesta": "Flies",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'bad'?",
+    "respuesta": "Worse",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'good'?",
+    "respuesta": "Best",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'gato'?",
+    "respuesta": "Cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'see'?",
+    "respuesta": "Seen",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'hot'?",
+    "respuesta": "Cold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'read'?",
+    "respuesta": "Read",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'foot'?",
+    "respuesta": "Feet",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'happy'?",
+    "respuesta": "Sad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'beautiful'?",
+    "respuesta": "Pretty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'do'?",
+    "respuesta": "Does",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'far'?",
+    "respuesta": "Farther",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'little'?",
+    "respuesta": "Least",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'manzana'?",
+    "respuesta": "Apple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'drink'?",
+    "respuesta": "Drunk",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'light'?",
+    "respuesta": "Dark",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'sing'?",
+    "respuesta": "Sang",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'tooth'?",
+    "respuesta": "Teeth",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'early'?",
+    "respuesta": "Late",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'intelligent'?",
+    "respuesta": "Smart",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'have'?",
+    "respuesta": "Has",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'easy'?",
+    "respuesta": "Easier",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'difficult'?",
+    "respuesta": "Most difficult",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'libro'?",
+    "respuesta": "Book",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'begin'?",
+    "respuesta": "Begun",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'strong'?",
+    "respuesta": "Weak",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'swim'?",
+    "respuesta": "Swam",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'fish'?",
+    "respuesta": "Fish",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'hard'?",
+    "respuesta": "Soft",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'quick'?",
+    "respuesta": "Fast",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'be'?",
+    "respuesta": "Is",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'high'?",
+    "respuesta": "Higher",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'low'?",
+    "respuesta": "Lowest",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'mesa'?",
+    "respuesta": "Table",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'write'?",
+    "respuesta": "Written",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'near'?",
+    "respuesta": "Far",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'buy'?",
+    "respuesta": "Bought",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'sheep'?",
+    "respuesta": "Sheep",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'clean'?",
+    "respuesta": "Dirty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Glad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'play'?",
+    "respuesta": "Plays",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'bright'?",
+    "respuesta": "Brighter",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'dark'?",
+    "respuesta": "Darkest",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'puerta'?",
+    "respuesta": "Door",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'give'?",
+    "respuesta": "Given",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'full'?",
+    "respuesta": "Empty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'teach'?",
+    "respuesta": "Taught",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'deer'?",
+    "respuesta": "Deer",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'rich'?",
+    "respuesta": "Poor",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'tired'?",
+    "respuesta": "Exhausted",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'study'?",
+    "respuesta": "Studies",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the comparative form of 'short'?",
+    "respuesta": "Shorter",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the superlative form of 'long'?",
+    "respuesta": "Longest",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the English word for 'ventana'?",
+    "respuesta": "Window",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past participle of 'take'?",
+    "respuesta": "Taken",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'open'?",
+    "respuesta": "Closed",
+    "categoria": "Inglés"
+  }
+]

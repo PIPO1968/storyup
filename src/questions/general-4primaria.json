@@ -1,0 +1,522 @@
+[
+  {
+    "pregunta": "¿Cuál es el planeta más cercano al Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido como el rey de la selva?",
+    "respuesta": "León",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la temperatura?",
+    "respuesta": "Termómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas respiramos para vivir?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente es conocido como el más frío?",
+    "respuesta": "Antártida",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano bombea sangre?",
+    "respuesta": "Corazón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene después del lunes?",
+    "respuesta": "Martes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar azul y amarillo?",
+    "respuesta": "Verde",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal pone huevos y tiene plumas?",
+    "respuesta": "Ave",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es el centro del sistema solar?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 99?",
+    "respuesta": "100",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene tres lados?",
+    "respuesta": "Triángulo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para escuchar?",
+    "respuesta": "Oído",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es el más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir el tiempo?",
+    "respuesta": "Reloj",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para que haya fuego?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la selva amazónica?",
+    "respuesta": "América",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano filtra la sangre?",
+    "respuesta": "Riñón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene antes del viernes?",
+    "respuesta": "Jueves",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar rojo y azul?",
+    "respuesta": "Morado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal vive en el agua y tiene branquias?",
+    "respuesta": "Pez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro ilumina la noche?",
+    "respuesta": "Luna",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 1?",
+    "respuesta": "0",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río es el más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene cuatro lados iguales?",
+    "respuesta": "Cuadrado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para ver?",
+    "respuesta": "Ojo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es el más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la presión?",
+    "respuesta": "Barómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es el más abundante en el aire?",
+    "respuesta": "Nitrógeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el desierto del Sahara?",
+    "respuesta": "África",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce insulina?",
+    "respuesta": "Páncreas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene después del viernes?",
+    "respuesta": "Sábado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y camina lento?",
+    "respuesta": "Tortuga",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es una estrella?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 10?",
+    "respuesta": "11",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene el Big Ben?",
+    "respuesta": "Inglaterra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Londres?",
+    "respuesta": "Támesis",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene cinco lados?",
+    "respuesta": "Pentágono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para oler?",
+    "respuesta": "Nariz",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene anillos?",
+    "respuesta": "Saturno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su cuello largo?",
+    "respuesta": "Jirafa",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la velocidad del viento?",
+    "respuesta": "Anemómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la fotosíntesis?",
+    "respuesta": "Dióxido",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el monte Everest?",
+    "respuesta": "Asia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano controla el sistema nervioso?",
+    "respuesta": "Cerebro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene antes del lunes?",
+    "respuesta": "Domingo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar blanco y negro?",
+    "respuesta": "Gris",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para volar?",
+    "respuesta": "Pájaro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es visible durante el día?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 100?",
+    "respuesta": "99",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene las pirámides de Giza?",
+    "respuesta": "Egipto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por París?",
+    "respuesta": "Sena",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene seis lados?",
+    "respuesta": "Hexágono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para hablar?",
+    "respuesta": "Boca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es el más alejado del Sol?",
+    "respuesta": "Neptuno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para nadar?",
+    "respuesta": "Delfín",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la humedad?",
+    "respuesta": "Higrómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para respirar?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el río Amazonas?",
+    "respuesta": "América",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano almacena la bilis?",
+    "respuesta": "Vesícula",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene después del sábado?",
+    "respuesta": "Domingo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar blanco y rojo?",
+    "respuesta": "Rosa",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para trepar árboles?",
+    "respuesta": "Mono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es visible durante la noche?",
+    "respuesta": "Luna",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 50?",
+    "respuesta": "51",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene el Coliseo?",
+    "respuesta": "Italia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Roma?",
+    "respuesta": "Tíber",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene ocho lados?",
+    "respuesta": "Octágono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para digerir alimentos?",
+    "respuesta": "Estómago",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido por su color azul?",
+    "respuesta": "Urano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para construir presas?",
+    "respuesta": "Castor",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la intensidad de la luz?",
+    "respuesta": "Fotómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la combustión?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el río Nilo?",
+    "respuesta": "África",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce bilis?",
+    "respuesta": "Hígado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene antes del miércoles?",
+    "respuesta": "Martes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar azul y blanco?",
+    "respuesta": "Celeste",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para cazar de noche?",
+    "respuesta": "Búho",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es visible durante el amanecer?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 20?",
+    "respuesta": "19",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene el Taj Mahal?",
+    "respuesta": "India",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Nueva York?",
+    "respuesta": "Hudson",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene siete lados?",
+    "respuesta": "Heptágono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para sentir?",
+    "respuesta": "Piel",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido por su color amarillo?",
+    "respuesta": "Saturno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para cambiar de color?",
+    "respuesta": "Camaleón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se utiliza para medir la distancia?",
+    "respuesta": "Cinta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la vida?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el río Yangtsé?",
+    "respuesta": "Asia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano regula el azúcar en la sangre?",
+    "respuesta": "Páncreas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana viene después del martes?",
+    "respuesta": "Miércoles",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué color se forma al mezclar amarillo y negro?",
+    "respuesta": "Verde",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para correr rápido?",
+    "respuesta": "Guepardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué astro es visible durante el atardecer?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 30?",
+    "respuesta": "31",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene el Machu Picchu?",
+    "respuesta": "Perú",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Berlín?",
+    "respuesta": "Spree",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene nueve lados?",
+    "respuesta": "Eneágono",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para masticar?",
+    "respuesta": "Dientes",
+    "categoria": "General"
+  }
+]

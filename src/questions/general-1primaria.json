@@ -1,0 +1,82 @@
+[
+  {
+    "pregunta": "¿Cuánto es 2 + 3?",
+    "respuesta": "5",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'gato' en inglés?",
+    "respuesta": "cat",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es el tercero desde el Sol?",
+    "respuesta": "Tierra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene una semana?",
+    "respuesta": "Siete",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal dice miau?",
+    "respuesta": "Gato",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos meses tiene un año?",
+    "respuesta": "Doce",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es el tercero desde el Sol?",
+    "respuesta": "Tierra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'gato' en inglés?",
+    "respuesta": "Cat",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué letra viene después de la A?",
+    "respuesta": "B",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 2 + 3?",
+    "respuesta": "Cinco",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal dice miau?",
+    "respuesta": "Gato",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene el arcoíris?",
+    "respuesta": "Siete",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas respiramos para vivir?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente donde vivimos?",
+    "respuesta": "Europa",
+    "categoria": "General"
+  }
+]

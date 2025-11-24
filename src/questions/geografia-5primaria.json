@@ -1,0 +1,277 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo de España?",
+    "respuesta": "Ebro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta de España?",
+    "respuesta": "Teide",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra España?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano baña las costas del norte de España?",
+    "respuesta": "Atlántico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar baña las costas del este de España?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país limita al norte con España?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país limita al oeste con España?",
+    "respuesta": "Portugal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español se encuentra en el océano Atlántico?",
+    "respuesta": "Canarias",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español se encuentra en el mar Mediterráneo?",
+    "respuesta": "Baleares",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más caudaloso de España?",
+    "respuesta": "Duero",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera separa España de Francia?",
+    "respuesta": "Pirineos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Sevilla?",
+    "respuesta": "Andalucía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Barcelona?",
+    "respuesta": "Cataluña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Santiago de Compostela?",
+    "respuesta": "Galicia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Valencia?",
+    "respuesta": "Valencia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Mérida?",
+    "respuesta": "Extremadura",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Oviedo?",
+    "respuesta": "Asturias",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Zaragoza?",
+    "respuesta": "Aragón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Toledo?",
+    "respuesta": "Castilla-La Mancha",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Valladolid?",
+    "respuesta": "Castilla y León",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Palma?",
+    "respuesta": "Baleares",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Santa Cruz de Tenerife?",
+    "respuesta": "Canarias",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Logroño?",
+    "respuesta": "La Rioja",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Pamplona?",
+    "respuesta": "Navarra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Vitoria?",
+    "respuesta": "País Vasco",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Santander?",
+    "respuesta": "Cantabria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Murcia?",
+    "respuesta": "Murcia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué comunidad autónoma tiene como capital a Madrid?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país limita al noreste con España?",
+    "respuesta": "Andorra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar separa España de África?",
+    "respuesta": "Alborán",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Zaragoza?",
+    "respuesta": "Ebro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Sevilla?",
+    "respuesta": "Guadalquivir",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Valladolid?",
+    "respuesta": "Pisuerga",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Toledo?",
+    "respuesta": "Tajo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Valencia?",
+    "respuesta": "Turia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Badajoz?",
+    "respuesta": "Guadiana",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Lugo?",
+    "respuesta": "Miño",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Burgos?",
+    "respuesta": "Arlanzón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Bilbao?",
+    "respuesta": "Nervión",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Cáceres?",
+    "respuesta": "Almonte",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera se encuentra en el sur de España?",
+    "respuesta": "Bética",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera se encuentra en el centro de España?",
+    "respuesta": "Central",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera se encuentra en el este de España?",
+    "respuesta": "Ibérica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera se encuentra en el noroeste de España?",
+    "respuesta": "Galicia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla es la más grande del archipiélago balear?",
+    "respuesta": "Mallorca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla es la más grande del archipiélago canario?",
+    "respuesta": "Tenerife",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago balear es conocida por su fiesta?",
+    "respuesta": "Ibiza",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por sus dunas?",
+    "respuesta": "Gran Canaria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su volcán?",
+    "respuesta": "Lanzarote",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago balear es conocida por su tranquilidad?",
+    "respuesta": "Menorca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida como la isla bonita?",
+    "respuesta": "La Palma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su vino?",
+    "respuesta": "El Hierro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla del archipiélago canario es conocida por su tranquilidad?",
+    "respuesta": "La Gomera",
+    "categoria": "Geografía"
+  }
+]

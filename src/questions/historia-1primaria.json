@@ -1,0 +1,387 @@
+[
+  {
+    "pregunta": "¿Dónde está la Torre Eiffel?",
+    "respuesta": "París",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué monumento tiene cúpulas de colores en Moscú?",
+    "respuesta": "Basilio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué pirámides famosas hay en Egipto?",
+    "respuesta": "Giza",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué estatua gigante está en Río de Janeiro?",
+    "respuesta": "Cristo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué muralla famosa está en China?",
+    "respuesta": "Muralla",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 6 de enero?",
+    "respuesta": "Reyes",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta tiene disfraces y desfiles?",
+    "respuesta": "Carnaval",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra en Pamplona con toros?",
+    "respuesta": "SanFermín",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra con hogueras en junio?",
+    "respuesta": "SanJuan",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra en Sevilla en primavera?",
+    "respuesta": "Feria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición mexicana honra a los difuntos?",
+    "respuesta": "Muertos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición española reparte uvas en Nochevieja?",
+    "respuesta": "Uvas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición se celebra con libros y rosas en Cataluña?",
+    "respuesta": "Jordi",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición se celebra con procesiones en Semana Santa?",
+    "respuesta": "Procesión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó la bombilla?",
+    "respuesta": "Edison",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el teléfono?",
+    "respuesta": "Bell",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el avión?",
+    "respuesta": "Wright",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó la radio?",
+    "respuesta": "Marconi",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó la imprenta?",
+    "respuesta": "Gutenberg",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién descubrió América?",
+    "respuesta": "Colón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue faraón de Egipto?",
+    "respuesta": "Tutankamón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue reina de Egipto?",
+    "respuesta": "Cleopatra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue libertador de América?",
+    "respuesta": "Bolívar",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue emperador francés?",
+    "respuesta": "Napoleón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año llegó Colón a América?",
+    "respuesta": "1492",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año terminó la Segunda Guerra Mundial?",
+    "respuesta": "1945",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año cayó el Muro de Berlín?",
+    "respuesta": "1989",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año se firmó la Constitución española?",
+    "respuesta": "1978",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año se independizó México?",
+    "respuesta": "1810",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué costumbre española es dormir después de comer?",
+    "respuesta": "Siesta",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué costumbre japonesa es quitarse los zapatos en casa?",
+    "respuesta": "Descalzo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué costumbre inglesa es tomar té por la tarde?",
+    "respuesta": "Té",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué costumbre india es comer con las manos?",
+    "respuesta": "Manos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué costumbre italiana es comer pizza?",
+    "respuesta": "Pizza",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué pintura famosa hizo Da Vinci?",
+    "respuesta": "MonaLisa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué obra escribió Cervantes?",
+    "respuesta": "Quijote",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué música compuso Mozart?",
+    "respuesta": "Sinfonía",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué escultura hizo Miguel Ángel?",
+    "respuesta": "David",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué libro escribió Andersen?",
+    "respuesta": "Cuentos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Dónde está Machu Picchu?",
+    "respuesta": "Perú",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Dónde está el Coliseo?",
+    "respuesta": "Roma",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Dónde está la Alhambra?",
+    "respuesta": "Granada",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Dónde está el Taj Mahal?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Dónde está la Estatua de la Libertad?",
+    "respuesta": "NuevaYork",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué color tiene la bandera de Japón?",
+    "respuesta": "Rojo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué animal aparece en la bandera de México?",
+    "respuesta": "Águila",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué símbolo tiene la bandera de Canadá?",
+    "respuesta": "Hoja",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué color tiene la bandera de Brasil?",
+    "respuesta": "Verde",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué estrella aparece en la bandera de Estados Unidos?",
+    "respuesta": "Estrella",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue rey de España en 1492?",
+    "respuesta": "Fernando",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue reina de Inglaterra en el siglo XIX?",
+    "respuesta": "Victoria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue rey de Francia antes de la revolución?",
+    "respuesta": "Luis",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue reina de Castilla?",
+    "respuesta": "Isabel",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue rey de Portugal en el siglo XV?",
+    "respuesta": "Manuel",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién exploró el Polo Sur?",
+    "respuesta": "Amundsen",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién exploró África y encontró las fuentes del Nilo?",
+    "respuesta": "Livingstone",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién cruzó el Atlántico en avión?",
+    "respuesta": "Lindbergh",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién exploró el Everest?",
+    "respuesta": "Hillary",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el lápiz?",
+    "respuesta": "Conte",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el papel?",
+    "respuesta": "CaiLun",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó la bicicleta?",
+    "respuesta": "Drais",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el reloj?",
+    "respuesta": "Huygens",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién inventó el paraguas?",
+    "respuesta": "Han",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 25 de diciembre?",
+    "respuesta": "Navidad",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 31 de octubre?",
+    "respuesta": "Halloween",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 14 de febrero?",
+    "respuesta": "SanValentín",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 1 de enero?",
+    "respuesta": "AñoNuevo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fiesta se celebra el 17 de marzo en Irlanda?",
+    "respuesta": "SanPatricio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición china celebra el año lunar?",
+    "respuesta": "AñoNuevo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición india celebra las luces?",
+    "respuesta": "Diwali",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición brasileña celebra el carnaval?",
+    "respuesta": "Carnaval",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tradición alemana celebra la cerveza?",
+    "respuesta": "Oktoberfest",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué instrumento tocaba Mozart?",
+    "respuesta": "Piano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué deporte se juega en Wimbledon?",
+    "respuesta": "Tenis",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué animal es símbolo de Australia?",
+    "respuesta": "Canguro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué fruta es típica de Canarias?",
+    "respuesta": "Plátano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué idioma se habla en Brasil?",
+    "respuesta": "Portugués",
+    "categoria": "Historia"
+  }
+]

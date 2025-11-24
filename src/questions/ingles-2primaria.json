@@ -1,0 +1,452 @@
+[
+  {
+    "pregunta": "¿Cómo se dice 'comer' en inglés?",
+    "respuesta": "eat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'child'?",
+    "respuesta": "children",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'hot'.",
+    "respuesta": "cold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'feliz' en inglés?",
+    "respuesta": "happy",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'play'?",
+    "respuesta": "plays",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'ella'?",
+    "respuesta": "she",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a color in English.",
+    "respuesta": "blue",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'escuela' en inglés?",
+    "respuesta": "school",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'see'?",
+    "respuesta": "saw",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The big dog runs.'?",
+    "respuesta": "big",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'run'.",
+    "respuesta": "running",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'libro' en inglés?",
+    "respuesta": "book",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'foot'?",
+    "respuesta": "feet",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'nosotros'?",
+    "respuesta": "we",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a day of the week in English.",
+    "respuesta": "Monday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'ratón' en inglés?",
+    "respuesta": "mouse",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'eat'?",
+    "respuesta": "ate",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el verbo en 'She sings.'?",
+    "respuesta": "sings",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'short'.",
+    "respuesta": "tall",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'agua' en inglés?",
+    "respuesta": "water",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'read'?",
+    "respuesta": "reads",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'ellos'?",
+    "respuesta": "they",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a month in English.",
+    "respuesta": "April",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'perro' en inglés?",
+    "respuesta": "dog",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'make'?",
+    "respuesta": "made",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The red apple.'?",
+    "respuesta": "red",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'swim'.",
+    "respuesta": "swimming",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'mesa' en inglés?",
+    "respuesta": "table",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'tooth'?",
+    "respuesta": "teeth",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'yo'?",
+    "respuesta": "I",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a number in English.",
+    "respuesta": "seven",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'gato' en inglés?",
+    "respuesta": "cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'write'?",
+    "respuesta": "wrote",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el verbo en 'He jumps.'?",
+    "respuesta": "jumps",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'old'.",
+    "respuesta": "young",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'madre' en inglés?",
+    "respuesta": "mother",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'tú'?",
+    "respuesta": "you",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a fruit in English.",
+    "respuesta": "banana",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'hermano' en inglés?",
+    "respuesta": "brother",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'take'?",
+    "respuesta": "took",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The small house.'?",
+    "respuesta": "small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'read'.",
+    "respuesta": "reading",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'flor' en inglés?",
+    "respuesta": "flower",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'mouse'?",
+    "respuesta": "mice",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'ella'?",
+    "respuesta": "she",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a vegetable in English.",
+    "respuesta": "carrot",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'padre' en inglés?",
+    "respuesta": "father",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'come'?",
+    "respuesta": "came",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el verbo en 'They dance.'?",
+    "respuesta": "dance",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'fast'.",
+    "respuesta": "slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'niña' en inglés?",
+    "respuesta": "girl",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'go'?",
+    "respuesta": "goes",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'vosotros'?",
+    "respuesta": "you",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a school object in English.",
+    "respuesta": "pencil",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'amigo' en inglés?",
+    "respuesta": "friend",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'give'?",
+    "respuesta": "gave",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The happy child.'?",
+    "respuesta": "happy",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'write'.",
+    "respuesta": "writing",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pelota' en inglés?",
+    "respuesta": "ball",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'man'?",
+    "respuesta": "men",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'él'?",
+    "respuesta": "he",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a family member in English.",
+    "respuesta": "sister",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'abuelo' en inglés?",
+    "respuesta": "grandfather",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'find'?",
+    "respuesta": "found",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el verbo en 'We run.'?",
+    "respuesta": "run",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'light'.",
+    "respuesta": "dark",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'ventana' en inglés?",
+    "respuesta": "window",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'eat'?",
+    "respuesta": "eats",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'usted'?",
+    "respuesta": "you",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a pet in English.",
+    "respuesta": "rabbit",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'coche' en inglés?",
+    "respuesta": "car",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'run'?",
+    "respuesta": "ran",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The green tree.'?",
+    "respuesta": "green",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'jump'.",
+    "respuesta": "jumping",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'camisa' en inglés?",
+    "respuesta": "shirt",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'woman'?",
+    "respuesta": "women",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'nosotras'?",
+    "respuesta": "we",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a toy in English.",
+    "respuesta": "doll",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'zapato' en inglés?",
+    "respuesta": "shoe",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'buy'?",
+    "respuesta": "bought",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el verbo en 'You swim.'?",
+    "respuesta": "swim",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the opposite of 'clean'.",
+    "respuesta": "dirty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'sol' en inglés?",
+    "respuesta": "sun",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the third person singular of 'have'?",
+    "respuesta": "has",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pronombre para 'ellas'?",
+    "respuesta": "they",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write a place in English.",
+    "respuesta": "park",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'estrella' en inglés?",
+    "respuesta": "star",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past of 'sing'?",
+    "respuesta": "sang",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el adjetivo en 'The old man.'?",
+    "respuesta": "old",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "Write the present continuous of 'play'.",
+    "respuesta": "playing",
+    "categoria": "Inglés"
+  }
+]

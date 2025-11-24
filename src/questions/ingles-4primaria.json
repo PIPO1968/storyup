@@ -1,0 +1,447 @@
+[
+  {
+    "pregunta": "What is the opposite of 'big'?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'run'?",
+    "respuesta": "Ran",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'child'?",
+    "respuesta": "Children",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Glad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'fast'?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'angry'?",
+    "respuesta": "Mad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'eat'?",
+    "respuesta": "Ate",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'grande' en inglés?",
+    "respuesta": "Big",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pequeño' en inglés?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'feliz' en inglés?",
+    "respuesta": "Happy",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'triste' en inglés?",
+    "respuesta": "Sad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'rápido' en inglés?",
+    "respuesta": "Fast",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'lento' en inglés?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'caliente' en inglés?",
+    "respuesta": "Hot",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'frío' en inglés?",
+    "respuesta": "Cold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'amigo' en inglés?",
+    "respuesta": "Friend",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'familia' en inglés?",
+    "respuesta": "Family",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'escuela' en inglés?",
+    "respuesta": "School",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'maestro' en inglés?",
+    "respuesta": "Teacher",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'niño' en inglés?",
+    "respuesta": "Child",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'niña' en inglés?",
+    "respuesta": "Girl",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'perro' en inglés?",
+    "respuesta": "Dog",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'gato' en inglés?",
+    "respuesta": "Cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'casa' en inglés?",
+    "respuesta": "House",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'coche' en inglés?",
+    "respuesta": "Car",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'libro' en inglés?",
+    "respuesta": "Book",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'lápiz' en inglés?",
+    "respuesta": "Pencil",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'manzana' en inglés?",
+    "respuesta": "Apple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'plátano' en inglés?",
+    "respuesta": "Banana",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'agua' en inglés?",
+    "respuesta": "Water",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'leche' en inglés?",
+    "respuesta": "Milk",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pan' en inglés?",
+    "respuesta": "Bread",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'queso' en inglés?",
+    "respuesta": "Cheese",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'mesa' en inglés?",
+    "respuesta": "Table",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'silla' en inglés?",
+    "respuesta": "Chair",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'ventana' en inglés?",
+    "respuesta": "Window",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'puerta' en inglés?",
+    "respuesta": "Door",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'luna' en inglés?",
+    "respuesta": "Moon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'estrella' en inglés?",
+    "respuesta": "Star",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'cielo' en inglés?",
+    "respuesta": "Sky",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'mar' en inglés?",
+    "respuesta": "Sea",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'montaña' en inglés?",
+    "respuesta": "Mountain",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'río' en inglés?",
+    "respuesta": "River",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'bosque' en inglés?",
+    "respuesta": "Forest",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'flor' en inglés?",
+    "respuesta": "Flower",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'árbol' en inglés?",
+    "respuesta": "Tree",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pájaro' en inglés?",
+    "respuesta": "Bird",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pez' en inglés?",
+    "respuesta": "Fish",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'caballo' en inglés?",
+    "respuesta": "Horse",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'vaca' en inglés?",
+    "respuesta": "Cow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'cerdo' en inglés?",
+    "respuesta": "Pig",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'oveja' en inglés?",
+    "respuesta": "Sheep",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pollo' en inglés?",
+    "respuesta": "Chicken",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'huevo' en inglés?",
+    "respuesta": "Egg",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'azúcar' en inglés?",
+    "respuesta": "Sugar",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'sal' en inglés?",
+    "respuesta": "Salt",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pimienta' en inglés?",
+    "respuesta": "Pepper",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'aceite' en inglés?",
+    "respuesta": "Oil",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'arroz' en inglés?",
+    "respuesta": "Rice",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pasta' en inglés?",
+    "respuesta": "Pasta",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'sopa' en inglés?",
+    "respuesta": "Soup",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'ensalada' en inglés?",
+    "respuesta": "Salad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'fruta' en inglés?",
+    "respuesta": "Fruit",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'verdura' en inglés?",
+    "respuesta": "Vegetable",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'zanahoria' en inglés?",
+    "respuesta": "Carrot",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'patata' en inglés?",
+    "respuesta": "Potato",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'cebolla' en inglés?",
+    "respuesta": "Onion",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'ajo' en inglés?",
+    "respuesta": "Garlic",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'limón' en inglés?",
+    "respuesta": "Lemon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'naranja' en inglés?",
+    "respuesta": "Orange",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'uva' en inglés?",
+    "respuesta": "Grape",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'piña' en inglés?",
+    "respuesta": "Pineapple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'fresa' en inglés?",
+    "respuesta": "Strawberry",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'mango' en inglés?",
+    "respuesta": "Mango",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'sandía' en inglés?",
+    "respuesta": "Watermelon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'melón' en inglés?",
+    "respuesta": "Melon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'cereza' en inglés?",
+    "respuesta": "Cherry",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'durazno' en inglés?",
+    "respuesta": "Peach",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'pera' en inglés?",
+    "respuesta": "Pear",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa la palabra 'dog' en español?",
+    "respuesta": "Perro",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'casa' al inglés?",
+    "respuesta": "House",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'big' en inglés?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué palabra en inglés usamos para 'feliz'?",
+    "respuesta": "Happy",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se escribe 'gato' en inglés?",
+    "respuesta": "Cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'school' en español?",
+    "respuesta": "Escuela",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué palabra en inglés describe algo 'rápido'?",
+    "respuesta": "Fast",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'niño' en inglés?",
+    "respuesta": "Child",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'teacher' en español?",
+    "respuesta": "Maestro",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué palabra en inglés usamos para 'libro'?",
+    "respuesta": "Book",
+    "categoria": "Inglés"
+  }
+]

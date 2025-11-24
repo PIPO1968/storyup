@@ -1,0 +1,424 @@
+[
+  {
+    "pregunta": "Identifica la palabra que indica una acción en la frase: 'María corre rápido.'",
+    "respuesta": "corre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la palabra que designa objetos?",
+    "respuesta": "sustantivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Elige el adjetivo en la oración: 'El perro pequeño duerme.'",
+    "respuesta": "pequeño",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué signo se coloca al final de una pregunta?",
+    "respuesta": "interrogación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe el signo que se usa para mostrar sorpresa.",
+    "respuesta": "exclamación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el grupo de palabras que expresa una idea completa?",
+    "respuesta": "frase",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Selecciona el adverbio en: 'Juan llegó temprano.'",
+    "respuesta": "temprano",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra une dos partes de una oración?",
+    "respuesta": "conjunción",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Quién realiza la acción en la frase: 'Pedro lee.'?",
+    "respuesta": "Pedro",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué parte de la oración dice lo que hace el sujeto?",
+    "respuesta": "predicado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe un antónimo de 'feliz'.",
+    "respuesta": "triste",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'rápido'?",
+    "respuesta": "veloz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras con la misma raíz?",
+    "respuesta": "familia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para saludar?",
+    "respuesta": "hola",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe una palabra para despedirse.",
+    "respuesta": "adiós",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se utiliza para pedir algo educadamente?",
+    "respuesta": "por favor",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se dice al cometer un error?",
+    "respuesta": "perdón",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo niegas algo?",
+    "respuesta": "no",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra usas para afirmar?",
+    "respuesta": "sí",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la palabra para preguntar por una cosa?",
+    "respuesta": "qué",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe una interjección para mostrar alegría.",
+    "respuesta": "¡bien!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra expresa sorpresa?",
+    "respuesta": "¡vaya!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se expresa tristeza con una interjección?",
+    "respuesta": "¡oh!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para llamar la atención?",
+    "respuesta": "¡eh!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe una interjección para animar.",
+    "respuesta": "¡vamos!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para felicitar?",
+    "respuesta": "¡bravo!",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para dar una orden?",
+    "respuesta": "haz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es la palabra que indica prohibición?",
+    "respuesta": "prohibido",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Quién es el sujeto en la frase: 'El gato duerme.'?",
+    "respuesta": "gato",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Identifica el verbo en: 'Los niños saltan.'",
+    "respuesta": "saltan",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra describe al sustantivo en: 'La casa grande.'?",
+    "respuesta": "grande",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que sustituye al nombre?",
+    "respuesta": "pronombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra indica lugar en: 'Vivo aquí.'?",
+    "respuesta": "aquí",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "Escribe un ejemplo de adverbio de tiempo.",
+    "respuesta": "ayer",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el plural de 'flor'?",
+    "respuesta": "flores",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una persona?",
+    "respuesta": "quién",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por el tiempo?",
+    "respuesta": "cuándo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por la cantidad?",
+    "respuesta": "cuánto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una opción?",
+    "respuesta": "cuál",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que une ideas?",
+    "respuesta": "conjunción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar deseo?",
+    "respuesta": "quiero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el diminutivo de 'perro'?",
+    "respuesta": "perrito",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica cantidad?",
+    "respuesta": "numeral",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por la frecuencia?",
+    "respuesta": "cuántas veces",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por la edad?",
+    "respuesta": "cuántos años",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica posesión?",
+    "respuesta": "posesivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por la razón?",
+    "respuesta": "por qué",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por la finalidad?",
+    "respuesta": "para qué",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica comparación?",
+    "respuesta": "como",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar preferencia?",
+    "respuesta": "prefiero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el superlativo de 'bueno'?",
+    "respuesta": "buenísimo"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar posibilidad?",
+    "respuesta": "puede",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica obligación?",
+    "respuesta": "deber",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar necesidad?",
+    "respuesta": "necesito",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'alto'?",
+    "respuesta": "bajo"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una elección?",
+    "respuesta": "eliges",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica intención?",
+    "respuesta": "intención",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar opinión?",
+    "respuesta": "creo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el plural de 'lápiz'?",
+    "respuesta": "lápices",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una habilidad?",
+    "respuesta": "sabes",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica condición?",
+    "respuesta": "si",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una comparación?",
+    "respuesta": "como",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'frío'?",
+    "respuesta": "calor",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para preguntar por una preferencia?",
+    "respuesta": "prefieres",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica elección?",
+    "respuesta": "elección",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar posibilidad?",
+    "respuesta": "puedes",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'bonito'?",
+    "respuesta": "hermoso",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar habilidad?",
+    "respuesta": "sé",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica necesidad?",
+    "respuesta": "necesidad",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar obligación?",
+    "respuesta": "debo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar intención?",
+    "respuesta": "quiero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica preferencia?",
+    "respuesta": "preferencia",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar elección?",
+    "respuesta": "elijo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el plural de 'pez'?",
+    "respuesta": "peces",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar opinión?",
+    "respuesta": "opino",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica posibilidad?",
+    "respuesta": "posibilidad",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar habilidad?",
+    "respuesta": "habilidad",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'grande'?",
+    "respuesta": "pequeño",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar necesidad?",
+    "respuesta": "necesito",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica obligación?",
+    "respuesta": "obligación",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar intención?",
+    "respuesta": "intención",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el diminutivo de 'ratón'?",
+    "respuesta": "ratoncito"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar preferencia?",
+    "respuesta": "prefiero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica elección?",
+    "respuesta": "elección",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra se usa para expresar posibilidad?",
+    "respuesta": "puedo",
+    "categoria": "Lenguaje"
+  }
+]

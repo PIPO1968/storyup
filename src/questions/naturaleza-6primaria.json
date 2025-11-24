@@ -1,0 +1,477 @@
+[
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de bombear la sangre?",
+    "respuesta": "Corazón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar es conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es esencial para la fotosíntesis?",
+    "respuesta": "Dióxido de carbono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de animal es un delfín?",
+    "respuesta": "Mamífero",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué mineral es necesario para tener huesos fuertes?",
+    "respuesta": "Calcio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué capa de la atmósfera protege la Tierra de los rayos UV?",
+    "respuesta": "Ozono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas producen su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal puede regenerar sus extremidades?",
+    "respuesta": "Estrella de mar",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano filtra la sangre?",
+    "respuesta": "Riñón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de roca se forma a partir de lava enfriada?",
+    "respuesta": "Ígnea",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce insulina?",
+    "respuesta": "Páncreas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía utiliza un panel solar?",
+    "respuesta": "Solar",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido como el rey de la selva?",
+    "respuesta": "León",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene anillos visibles desde la Tierra?",
+    "respuesta": "Saturno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta absorbe agua y nutrientes del suelo?",
+    "respuesta": "Raíz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué metal es líquido a temperatura ambiente?",
+    "respuesta": "Mercurio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal pone huevos pero es mamífero?",
+    "respuesta": "Ornitorrinco",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno meteorológico se mide con un barómetro?",
+    "respuesta": "Presión",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la digestión de las grasas?",
+    "respuesta": "Hígado",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula transporta oxígeno en la sangre?",
+    "respuesta": "Glóbulo rojo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta es el más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el cambio de estado de sólido a líquido?",
+    "respuesta": "Fusión",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene el corazón más grande en proporción a su cuerpo?",
+    "respuesta": "Ballena azul",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es el más abundante en la atmósfera terrestre?",
+    "respuesta": "Nitrógeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del ojo humano detecta la luz?",
+    "respuesta": "Retina",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de roca se forma por la acumulación de sedimentos?",
+    "respuesta": "Sedimentaria",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal puede cambiar de color para camuflarse?",
+    "respuesta": "Camaleón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano controla el equilibrio?",
+    "respuesta": "Cerebelo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual el agua pasa de líquido a gas?",
+    "respuesta": "Evaporación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene el cerebro más grande en proporción a su cuerpo?",
+    "respuesta": "Delfín",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía se genera en una central hidroeléctrica?",
+    "respuesta": "Hidráulica",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta es el más cercano al sol?",
+    "respuesta": "Mercurio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué mineral es el más duro conocido?",
+    "respuesta": "Diamante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de construir presas?",
+    "respuesta": "Castor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce bilis?",
+    "respuesta": "Hígado",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el estudio de los fósiles?",
+    "respuesta": "Paleontología",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene ocho patas y produce seda?",
+    "respuesta": "Araña",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula es responsable de la defensa del cuerpo humano?",
+    "respuesta": "Glóbulo blanco",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el día más largo del sistema solar?",
+    "respuesta": "Venus",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su cuello largo?",
+    "respuesta": "Jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la respiración humana?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas liberan oxígeno?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de volar hacia atrás?",
+    "respuesta": "Colibrí",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la visión?",
+    "respuesta": "Ojo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía utiliza un molino de viento?",
+    "respuesta": "Eólica",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su caparazón duro?",
+    "respuesta": "Tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el cambio de estado de líquido a sólido?",
+    "respuesta": "Solidificación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la audición?",
+    "respuesta": "Oído",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula es responsable de la transmisión de impulsos nerviosos?",
+    "respuesta": "Neurona",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para tejer telarañas?",
+    "respuesta": "Araña",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el año más largo del sistema solar?",
+    "respuesta": "Neptuno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para nadar rápido?",
+    "respuesta": "Tiburón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la combustión?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual el agua pasa de gas a líquido?",
+    "respuesta": "Condensación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para saltar alto?",
+    "respuesta": "Canguro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la circulación de la sangre?",
+    "respuesta": "Corazón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía utiliza una central nuclear?",
+    "respuesta": "Nuclear",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para cambiar de color?",
+    "respuesta": "Camaleón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el mayor número de lunas?",
+    "respuesta": "Saturno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para volar largas distancias?",
+    "respuesta": "Águila",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es el principal componente del aire?",
+    "respuesta": "Nitrógeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas absorben agua?",
+    "respuesta": "Absorción",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para construir colmenas?",
+    "respuesta": "Abeja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la producción de hormonas?",
+    "respuesta": "Glándula",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula es responsable de la coagulación de la sangre?",
+    "respuesta": "Plaqueta",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el menor número de lunas?",
+    "respuesta": "Mercurio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para vivir en el desierto?",
+    "respuesta": "Camello",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la fotosíntesis?",
+    "respuesta": "Dióxido de carbono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual el agua pasa de sólido a gas?",
+    "respuesta": "Sublimación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para cazar de noche?",
+    "respuesta": "Búho",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la producción de glóbulos rojos?",
+    "respuesta": "Médula",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía utiliza una central térmica?",
+    "respuesta": "Térmica",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para trepar árboles?",
+    "respuesta": "Mono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el día más corto del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para nadar bajo el hielo?",
+    "respuesta": "Pingüino",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la respiración celular?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual el agua pasa de gas a sólido?",
+    "respuesta": "Deposición",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para almacenar agua?",
+    "respuesta": "Camello",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la producción de bilis?",
+    "respuesta": "Hígado",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula es responsable de la defensa contra infecciones?",
+    "respuesta": "Glóbulo blanco",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene el mayor número de anillos?",
+    "respuesta": "Saturno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para volar en bandadas?",
+    "respuesta": "Golondrina",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la combustión?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas producen oxígeno?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su habilidad para construir madrigueras?",
+    "respuesta": "Topo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es responsable de la producción de insulina?",
+    "respuesta": "Páncreas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de célula es responsable de la transmisión de impulsos eléctricos?",
+    "respuesta": "Neurona",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano regula el equilibrio del agua y las sales?",
+    "respuesta": "Riñón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas convierten la luz solar en energía química?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal marino tiene la capacidad de cambiar de color y textura para camuflarse?",
+    "respuesta": "Pulpo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué glándula del cuerpo humano produce la hormona del crecimiento?",
+    "respuesta": "Hipófisis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el proceso por el cual el agua subterránea llega a la superficie?",
+    "respuesta": "Manantial",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal marino tiene la capacidad de emitir luz?",
+    "respuesta": "Medusa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué glándula del cuerpo humano regula el metabolismo?",
+    "respuesta": "Tiroides",
+    "categoria": "Naturaleza"
+  }
+]

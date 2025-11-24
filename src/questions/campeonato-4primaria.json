@@ -1,0 +1,432 @@
+[
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el día más largo?",
+    "respuesta": "Venus",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal puede vivir tanto en el agua como en la tierra?",
+    "respuesta": "Anfibio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué instrumento mide la intensidad de los terremotos?",
+    "respuesta": "Sismógrafo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es el principal componente del aire?",
+    "respuesta": "Nitrógeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el mayor número de países?",
+    "respuesta": "África",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano es el más grande?",
+    "respuesta": "Piel",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día de la semana se considera el primero en muchos calendarios?",
+    "respuesta": "Domingo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene la sangre cuando está dentro del cuerpo?",
+    "respuesta": "Rojo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por construir diques?",
+    "respuesta": "Castor",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más cercano a la Tierra?",
+    "respuesta": "Luna",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal es líquido a temperatura ambiente?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de volcanes activos?",
+    "respuesta": "Indonesia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados y ángulos iguales?",
+    "respuesta": "Círculo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce glóbulos rojos?",
+    "respuesta": "Médula",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene el mayor desierto del mundo?",
+    "respuesta": "Antártida",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Internacional de la Tierra?",
+    "respuesta": "22",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el cielo durante un eclipse total de sol?",
+    "respuesta": "Negro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de regenerar extremidades?",
+    "respuesta": "Estrella",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más brillante en el cielo nocturno?",
+    "respuesta": "Venus",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza principalmente en la fabricación de cables eléctricos?",
+    "respuesta": "Cobre",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor extensión de selva tropical?",
+    "respuesta": "Brasil",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene un solo lado?",
+    "respuesta": "Círculo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano controla el equilibrio?",
+    "respuesta": "Cerebelo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de glaciares?",
+    "respuesta": "Antártida",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial del Agua?",
+    "respuesta": "22",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el agua en grandes cantidades?",
+    "respuesta": "Azul",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de volar hacia atrás?",
+    "respuesta": "Colibrí",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más grande del sistema solar?",
+    "respuesta": "Sol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de baterías recargables?",
+    "respuesta": "Litio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas?",
+    "respuesta": "Suecia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene más de cuatro lados?",
+    "respuesta": "Pentágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano regula la temperatura?",
+    "respuesta": "Piel",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de especies animales?",
+    "respuesta": "África",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial del Medio Ambiente?",
+    "respuesta": "5",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el oro puro?",
+    "respuesta": "Amarillo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de camuflaje?",
+    "respuesta": "Camaleón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más cercano al sol?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de joyas?",
+    "respuesta": "Oro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas de petróleo?",
+    "respuesta": "Venezuela",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus ángulos rectos?",
+    "respuesta": "Rectángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano filtra las toxinas?",
+    "respuesta": "Hígado",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de montañas?",
+    "respuesta": "Asia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial de la Salud?",
+    "respuesta": "7",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el cobre oxidado?",
+    "respuesta": "Verde",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de construir telarañas?",
+    "respuesta": "Araña",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más visible durante el día?",
+    "respuesta": "Sol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de utensilios de cocina?",
+    "respuesta": "Acero",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos?",
+    "respuesta": "Canadá",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados iguales?",
+    "respuesta": "Cuadrado",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce lágrimas?",
+    "respuesta": "Ojo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de ríos?",
+    "respuesta": "América",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial de los Océanos?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el cielo durante el amanecer?",
+    "respuesta": "Naranja",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de nadar largas distancias?",
+    "respuesta": "Ballena",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más visible durante la noche?",
+    "respuesta": "Luna",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de monedas?",
+    "respuesta": "Níquel",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas de agua dulce?",
+    "respuesta": "Brasil",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados diferentes?",
+    "respuesta": "Triángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce saliva?",
+    "respuesta": "Glándula",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de desiertos?",
+    "respuesta": "África",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial de la Alimentación?",
+    "respuesta": "16",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el hierro oxidado?",
+    "respuesta": "Rojo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de volar largas distancias?",
+    "respuesta": "Águila",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más visible durante el atardecer?",
+    "respuesta": "Sol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de aviones?",
+    "respuesta": "Aluminio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas de gas natural?",
+    "respuesta": "Rusia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus ángulos iguales?",
+    "respuesta": "Hexágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce hormonas?",
+    "respuesta": "Tiroides",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de volcanes?",
+    "respuesta": "Asia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial del Clima?",
+    "respuesta": "23",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el cielo durante una tormenta?",
+    "respuesta": "Gris",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de correr largas distancias?",
+    "respuesta": "Caballo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más visible durante el crepúsculo?",
+    "respuesta": "Venus",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de herramientas?",
+    "respuesta": "Acero",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas de carbón?",
+    "respuesta": "China",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados paralelos?",
+    "respuesta": "Paralelogramo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce glóbulos blancos?",
+    "respuesta": "Médula",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué continente tiene la mayor cantidad de especies vegetales?",
+    "respuesta": "América",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué día se celebra el Día Mundial de la Educación?",
+    "respuesta": "24",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué color tiene el cielo durante el mediodía?",
+    "respuesta": "Azul",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido por su capacidad de saltar largas distancias?",
+    "respuesta": "Canguro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué astro es el más visible durante el solsticio de verano?",
+    "respuesta": "Sol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué metal se utiliza en la fabricación de cables de alta tensión?",
+    "respuesta": "Aluminio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas de litio?",
+    "respuesta": "Bolivia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados curvos?",
+    "respuesta": "Círculo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce enzimas digestivas?",
+    "respuesta": "Páncreas",
+    "categoria": "campeonato"
+  }
+]

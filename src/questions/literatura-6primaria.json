@@ -1,0 +1,252 @@
+[
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una metáfora?",
+    "respuesta": "Comparación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto es un poema?",
+    "respuesta": "Lírico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor es conocido como el 'Príncipe de los Ingenios'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria consiste en la repetición de sonidos?",
+    "respuesta": "Aliteración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "Cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La casa de Bernarda Alba'?",
+    "respuesta": "Lorca",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un verso?",
+    "respuesta": "Línea",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra hechos imaginarios o reales?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una hipérbole?",
+    "respuesta": "Exageración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Cien años de soledad'?",
+    "respuesta": "García Márquez",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una antítesis?",
+    "respuesta": "Contraste",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto es una novela?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Romeo y Julieta'?",
+    "respuesta": "Shakespeare",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria compara dos elementos usando 'como'?",
+    "respuesta": "Símil",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un haiku?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Odisea'?",
+    "respuesta": "Homero",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una onomatopeya?",
+    "respuesta": "Sonido",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye obras de teatro?",
+    "respuesta": "Dramático",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una elipsis?",
+    "respuesta": "Omisión",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un caligrama?",
+    "respuesta": "Dibujo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Celestina'?",
+    "respuesta": "Rojas",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria atribuye cualidades humanas a objetos?",
+    "respuesta": "Personificación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un epíteto?",
+    "respuesta": "Adjetivo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un oxímoron?",
+    "respuesta": "Contradicción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto es una leyenda?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Platero y yo'?",
+    "respuesta": "Jiménez",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un soneto?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Divina Comedia'?",
+    "respuesta": "Dante",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria exagera la realidad?",
+    "respuesta": "Hipérbole",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una paradoja?",
+    "respuesta": "Contradicción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Ilíada'?",
+    "respuesta": "Homero",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una alegoría?",
+    "respuesta": "Metáfora",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Crimen y castigo'?",
+    "respuesta": "Dostoyevski",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria utiliza preguntas retóricas?",
+    "respuesta": "Interrogación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El retrato de Dorian Gray'?",
+    "respuesta": "Wilde",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un acróstico?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió '1984'?",
+    "respuesta": "Orwell",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria utiliza exageraciones?",
+    "respuesta": "Hipérbole",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Matar a un ruiseñor'?",
+    "respuesta": "Lee",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un aforismo?",
+    "respuesta": "Frase",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El viejo y el mar'?",
+    "respuesta": "Hemingway",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria utiliza comparaciones?",
+    "respuesta": "Símil",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La metamorfosis'?",
+    "respuesta": "Kafka",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un epigrama?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El nombre de la rosa'?",
+    "respuesta": "Eco",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria utiliza repeticiones?",
+    "respuesta": "Anáfora",
+    "categoria": "Literatura"
+  }
+]
