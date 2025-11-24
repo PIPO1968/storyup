@@ -155,6 +155,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/liga-premium/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/liga-premium">> = Specific
+  const handler = {} as typeof import("../../src/app/liga-premium/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/noticias/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/noticias">> = Specific
@@ -213,6 +222,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/premium-nuevo">> = Specific
   const handler = {} as typeof import("../../src/app/premium-nuevo/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/torneos-premium/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/torneos-premium">> = Specific
+  const handler = {} as typeof import("../../src/app/torneos-premium/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

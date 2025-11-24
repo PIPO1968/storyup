@@ -421,8 +421,67 @@ export default function AprendeConPipo() {
         }
     }
 
+    const handleTournamentComplete = (aciertos: number, puntuacionTotal: number) => {
+        if (torneoActivo && usuarioActual) {
+
+            // Actualizar estadísticas del usuario en torneos premium
+            const userStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0, "participaciones": 0, "puntuacionTotal": 0}');
+            userStats.participaciones += 1;
+            userStats.puntuacionTotal += puntuacionTotal;
+
+            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(userStats));
+
+            // Actualizar resultado del torneo
+            const torneosStr = localStorage.getItem('torneos_premium');
+            if (torneosStr) {
+                const torneos = JSON.parse(torneosStr);
+                const torneoActualizado = torneos.map((t: any) => {
+                    if (t.id === torneoActivo.torneoId) {
+                        // Agregar resultado del usuario
+                        const resultados = t.resultados || [];
+                        resultados.push({
+                            nick: usuarioActual.nick,
+                            aciertos: aciertos,
+                            puntuacion: puntuacionTotal
+                        });
+
+                        // Ordenar por puntuación descendente
+                        resultados.sort((a: any, b: any) => b.puntuacion - a.puntuacion);
+
+                        // Si es torneo mensual y el usuario queda primero, contar como victoria
+                        if (t.id.includes('torneo-mensual') && resultados[0].nick === usuarioActual.nick) {
+                            const updatedStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0}');
+                            updatedStats.victorias += 1;
+                            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(updatedStats));
+                        }
+
+                        return {
+                            ...t,
+                            resultados: resultados,
+                            // Si es el último día del mes, finalizar torneo
+                            estado: new Date() >= new Date(t.fechaFin) ? 'finalizado' : t.estado,
+                            ganador: resultados.length > 0 ? resultados[0].nick : undefined
+                        };
+                    }
+                    return t;
+                });
+
+                localStorage.setItem('torneos_premium', JSON.stringify(torneoActualizado));
+            }
+
+            // Limpiar torneo activo
+            localStorage.removeItem('torneo_activo_premium');
+
+            // Mostrar resultado y redirigir
+            alert(`¡Torneo completado!\n\nAciertos: ${aciertos}/25\nPuntuación total: ${puntuacionTotal} puntos\n\nLos resultados se han guardado. ¡Buen trabajo!`);
+
+            // Redirigir de vuelta a torneos premium
+            window.location.href = '/torneos-premium';
+        }
+    };
+
     if (modoTorneoManual) {
-        return <TournamentQuiz userGrade={cursoUsuario} onTournamentComplete={handleTournamentComplete} />;
+        return <TournamentQuiz userGrade={parseInt(cursoUsuario) || 1} onTournamentComplete={handleTournamentComplete} />;
     }
 
     return (
@@ -555,63 +614,7 @@ export default function AprendeConPipo() {
     );
 
     // Función para manejar la finalización del torneo premium
-    const handleTournamentComplete = (aciertos: number, puntuacionTotal: number) => {
-        if (torneoActivo && usuarioActual) {
 
-            // Actualizar estadísticas del usuario en torneos premium
-            const userStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0, "participaciones": 0, "puntuacionTotal": 0}');
-            userStats.participaciones += 1;
-            userStats.puntuacionTotal += puntuacionTotal;
-
-            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(userStats));
-
-            // Actualizar resultado del torneo
-            const torneosStr = localStorage.getItem('torneos_premium');
-            if (torneosStr) {
-                const torneos = JSON.parse(torneosStr);
-                const torneoActualizado = torneos.map((t: any) => {
-                    if (t.id === torneoActivo.torneoId) {
-                        // Agregar resultado del usuario
-                        const resultados = t.resultados || [];
-                        resultados.push({
-                            nick: usuarioActual.nick,
-                            aciertos: aciertos,
-                            puntuacion: puntuacionTotal
-                        });
-
-                        // Ordenar por puntuación descendente
-                        resultados.sort((a: any, b: any) => b.puntuacion - a.puntuacion);
-
-                        // Si es torneo mensual y el usuario queda primero, contar como victoria
-                        if (t.id.includes('torneo-mensual') && resultados[0].nick === usuarioActual.nick) {
-                            const updatedStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0}');
-                            updatedStats.victorias += 1;
-                            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(updatedStats));
-                        }
-
-                        return {
-                            ...t,
-                            resultados: resultados,
-                            // Si es el último día del mes, finalizar torneo
-                            estado: new Date() >= new Date(t.fechaFin) ? 'finalizado' : t.estado,
-                            ganador: resultados.length > 0 ? resultados[0].nick : undefined
-                        };
-                    }
-                    return t;
-                });
-
-                localStorage.setItem('torneos_premium', JSON.stringify(torneoActualizado));
-            }
-
-            // Limpiar torneo activo
-            localStorage.removeItem('torneo_activo_premium');
-
-            // Mostrar resultado y redirigir
-            alert(`¡Torneo completado!\n\nAciertos: ${aciertos}/25\nPuntuación total: ${puntuacionTotal} puntos\n\nLos resultados se han guardado. ¡Buen trabajo!`);
-
-            // Redirigir de vuelta a torneos premium
-            window.location.href = '/torneos-premium';
-        };
 
         // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
         if (modoTorneo && torneoActivo) {
@@ -640,5 +643,11 @@ export default function AprendeConPipo() {
                 );
             }
         }
-    }
+
+    return (
+        <div>
+            <h1>Aprende con Pipo</h1>
+            <p>Página en construcción</p>
+        </div>
+    );
 };
