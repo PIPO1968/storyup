@@ -1,0 +1,245 @@
+@import url("extra.css");
+
+/* Forzar color blanco y negrita en los labels de correo y contraseña en login y moderación */
+label[for="email"],
+label[for="password"] {
+    color: #fff !important;
+    font-weight: bold !important;
+    text-shadow: 0 1px 4px #23252699;
+}
+
+/* Forzar color y estilo del enlace 'Acceso para moderadores' en portada */
+#header-modaccess {
+    color: #f43f5e !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Forzar color del enlace 'vista pública' en la portada */
+a[href="explore.html"]#public-link,
+#public-read a {
+    color: #38bdf8 !important;
+    font-weight: bold;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Google Translate widget pequeño y a la derecha en el navbar */
+.google-translate-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 120px;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: 2.5em;
+    height: 32px;
+}
+
+.goog-te-gadget {
+    font-size: 0.95em !important;
+    color: #6366f1 !important;
+    padding: 0 !important;
+}
+
+.goog-te-combo {
+    border-radius: 8px !important;
+    border: 2px solid #6366f1 !important;
+    background: #fff !important;
+    color: #6366f1 !important;
+    font-weight: 700 !important;
+    font-size: 1em !important;
+    padding: 0 0.7em !important;
+    height: 32px !important;
+    min-width: 100px !important;
+    max-width: 160px !important;
+    margin: 0 !important;
+    box-shadow: 0 1px 4px 0 rgba(44, 62, 80, 0.13) !important;
+    cursor: pointer !important;
+}
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-balloon-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f3f4f6;
+    min-height: 100vh;
+}
+
+nav {
+    background: linear-gradient(90deg, #232526 0%, #6366f1 100%);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    padding: 0.7em 0;
+    margin-bottom: 1.5em;
+}
+
+nav ul {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.5em 1.1em;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgba(44, 62, 80, 0.13);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+    border: 2px solid #6366f1;
+    opacity: 1;
+}
+
+nav a:hover,
+nav a.active {
+    background: #6366f1;
+    color: #fff;
+    box-shadow: 0 2px 8px 0 rgba(44, 62, 80, 0.18);
+    border-color: #6366f1;
+}
+
+.contenido,
+main {
+    max-width: 700px;
+    margin: 2em auto;
+    background: rgba(36, 39, 46, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.25);
+    padding: 2.2em 2em 1.7em 2em;
+    border: 1.5px solid #232526;
+}
+
+h1,
+h2 {
+    color: #a5b4fc;
+    margin-bottom: 0.5em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: #111 !important;
+    border: 1.5px solid #393e46;
+    border-radius: 6px;
+    padding: 0.7em;
+    margin: 0.5em 0;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border 0.2s, background 0.2s;
+    caret-color: #43c6ac;
+    font-weight: 500;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #6366f1;
+    outline: none;
+    background: #f7fafc;
+    color: #111 !important;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+button,
+.btn {
+    background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+    color: #fff;
+    border: 2px solid #6366f1;
+    border-radius: 8px;
+    padding: 0.8em 2em;
+    font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 4px 16px 0 rgba(80, 120, 255, 0.18);
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.1s;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    outline: none;
+    margin-top: 0.5em;
+    margin-bottom: 1.2em;
+}
+
+button:active,
+.btn:active {
+    transform: scale(0.97);
+}
+
+button:hover,
+.btn:hover {
+    background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+    color: #fff;
+    box-shadow: 0 6px 24px 0 rgba(80, 120, 255, 0.25);
+    border-color: #a5b4fc;
+}
+
+.story {
+    background: linear-gradient(120deg, #232526 0%, #414345 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.18);
+    padding: 1.3em 1.1em;
+    margin-bottom: 1.3em;
+    border: 1.5px solid #393e46;
+}
+
+.story h3 {
+    margin-top: 0;
+    color: #a5b4fc;
+}
+
+.story small {
+    color: #bfc9d1;
+}
+
+@media (max-width: 600px) {
+
+    .contenido,
+    main {
+        padding: 1em 0.5em;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
+}
