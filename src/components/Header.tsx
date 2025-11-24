@@ -29,16 +29,17 @@ const Header: React.FC = () => {
     const [onlineUsers, setOnlineUsers] = useState<number | null>(null);
     const [isPremium, setIsPremium] = useState(false);
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const usersStr = localStorage.getItem("users");
-            const userStr = localStorage.getItem("user");
-            let usersArr = [];
-            if (usersStr) {
-                try {
-                    usersArr = JSON.parse(usersStr);
-                } catch { }
+        const loadData = async () => {
+            try {
+                const response = await fetch('/api/users');
+                if (response.ok) {
+                    const usersArr = await response.json();
+                    setRegisteredUsers(usersArr.length);
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
             }
-            setRegisteredUsers(usersArr.length);
+            const userStr = localStorage.getItem("user");
             if (userStr) {
                 const currentUser = JSON.parse(userStr);
                 setUser(currentUser);
@@ -57,10 +58,9 @@ const Header: React.FC = () => {
                 }
 
                 setOnlineUsers(1);
-            } else {
-                setOnlineUsers(0);
             }
-        }
+        };
+        loadData();
     }, []);
     return (
         <header className="w-full flex items-center justify-between bg-blue-900 shadow px-6 py-3 text-white">

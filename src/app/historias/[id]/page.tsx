@@ -40,35 +40,39 @@ export default function HistoriaDetalle() {
     const [liked, setLiked] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== "undefined" && id) {
-            const historias = localStorage.getItem("historias");
-            const arr = historias ? JSON.parse(historias) : [];
-            const encontrada = arr.find((h: any) => h.id == id);
-            if (encontrada) {
-                setHistoria(encontrada);
-                setLikes(encontrada.likes || 0);
-                setComentarios(encontrada.comentarios || []);
+        const fetchHistoria = async () => {
+            if (id) {
+                try {
+                    const response = await fetch(`/api/historias/${id}`);
+                    if (response.ok) {
+                        const encontrada = await response.json();
+                        setHistoria(encontrada);
+                        setLikes(encontrada.likes || 0);
+                        setComentarios(encontrada.comentarios || []);
 
-                // Comprobar si el usuario ya ha dado like
-                const user = localStorage.getItem("user");
-                let usuario = "";
-                if (user) {
-                    try {
-                        const obj = JSON.parse(user);
-                        usuario = obj.nick || obj.nombre || obj.usuario || user;
-                    } catch {
-                        console.error("Error al parsear el usuario desde localStorage:", user);
-                        usuario = "";
+                        // Comprobar si el usuario ya ha dado like
+                        const user = localStorage.getItem("user");
+                        let usuario = "";
+                        if (user) {
+                            try {
+                                const obj = JSON.parse(user);
+                                usuario = obj.nick || obj.nombre || obj.usuario || user;
+                            } catch {
+                                console.error("Error al parsear el usuario desde localStorage:", user);
+                                usuario = "";
+                            }
+                        }
+                        const likedBy = encontrada.liked_by || [];
+                        setLiked(likedBy.includes(usuario));
+                    } else {
+                        console.warn("No se encontró la historia");
                     }
+                } catch (error) {
+                    console.error("Error fetching historia:", error);
                 }
-                const likedBy = encontrada.likedBy || [];
-                console.log("Usuario actual:", usuario);
-                console.log("Usuarios que dieron like:", likedBy);
-                setLiked(likedBy.includes(usuario));
-            } else {
-                console.warn("No se encontró la historia con el ID especificado en localStorage.");
             }
-        }
+        };
+        fetchHistoria();
     }, [id]);
 
     const updateAuthorProfile = (author: string, field: "likes" | "comentariosRecibidos") => {
@@ -93,8 +97,8 @@ export default function HistoriaDetalle() {
         }
     };
 
-    const handleLike = () => {
-        if (typeof window !== "undefined" && historia) {
+    const handleLike = async () => {
+        if (historia) {
             const user = localStorage.getItem("user");
             let usuario = "";
             if (user) {
@@ -107,66 +111,53 @@ export default function HistoriaDetalle() {
                 }
             }
 
-            const historias = localStorage.getItem("historias");
-            const arr: Historia[] = historias ? JSON.parse(historias) : [];
-            const idx = arr.findIndex((h: Historia) => h.id == historia.id);
-            if (idx !== -1) {
-                let likedBy = arr[idx].likedBy || [];
-                const yaDioLike = likedBy.includes(usuario);
-                let likeDelta = 0;
-                if (!yaDioLike) {
-                    // Dar like
-                    likedBy.push(usuario);
-                    arr[idx].likedBy = likedBy;
-                    arr[idx].likes = (arr[idx].likes || 0) + 1;
-                    setLikes(arr[idx].likes);
-                    setLiked(true);
-                    likeDelta = 1;
-                } else {
-                    // Quitar like
-                    likedBy = likedBy.filter((u) => u !== usuario);
-                    arr[idx].likedBy = likedBy;
-                    arr[idx].likes = Math.max((arr[idx].likes || 1) - 1, 0);
-                    setLikes(arr[idx].likes);
-                    setLiked(false);
-                    likeDelta = -1;
-                }
-
-                // Actualizar localStorage
-                localStorage.setItem("historias", JSON.stringify(arr));
-
-                // Actualizar likes del autor en localStorage y en el array de usuarios
-                const autor = arr[idx].autor;
-                const usersStr = localStorage.getItem("users");
-                if (usersStr && autor) {
-                    let usersArr = JSON.parse(usersStr);
-                    const userIdx = usersArr.findIndex((u: any) => u.nick === autor);
-                    if (userIdx !== -1) {
-                        const nuevoLikes = (usersArr[userIdx].likes || 0) + likeDelta;
-                        usersArr[userIdx].likes = nuevoLikes;
-                        localStorage.setItem("users", JSON.stringify(usersArr));
-                        // Actualizar también el objeto user si el autor está logueado
-                        const userStr = localStorage.getItem("user");
-                        if (userStr) {
-                            let userObj = JSON.parse(userStr);
-                            if (userObj.nick === autor) {
-                                userObj.likes = nuevoLikes;
-                                localStorage.setItem("user", JSON.stringify(userObj));
-                                // Emitir evento para refrescar el perfil
-                                window.dispatchEvent(new CustomEvent("profileUpdate", {
-                                    detail: { nick: autor, field: "likes", value: nuevoLikes }
-                                }));
+            try {
+                const response = await fetch('/api/historias', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: historia.id, action: 'like', usuario }),
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setLikes(data.likes);
+                    setLiked(data.liked);
+                    // Actualizar likes del autor en localStorage
+                    const autor = historia.autor;
+                    const usersStr = localStorage.getItem("users");
+                    if (usersStr && autor) {
+                        let usersArr = JSON.parse(usersStr);
+                        const userIdx = usersArr.findIndex((u: any) => u.nick === autor);
+                        if (userIdx !== -1) {
+                            const nuevoLikes = (usersArr[userIdx].likes || 0) + (data.liked ? 1 : -1);
+                            usersArr[userIdx].likes = nuevoLikes;
+                            localStorage.setItem("users", JSON.stringify(usersArr));
+                            // Actualizar también el objeto user si el autor está logueado
+                            const userStr = localStorage.getItem("user");
+                            if (userStr) {
+                                let userObj = JSON.parse(userStr);
+                                if (userObj.nick === autor) {
+                                    userObj.likes = nuevoLikes;
+                                    localStorage.setItem("user", JSON.stringify(userObj));
+                                    // Emitir evento para refrescar el perfil
+                                    window.dispatchEvent(new CustomEvent("profileUpdate", {
+                                        detail: { nick: autor, field: "likes", value: nuevoLikes }
+                                    }));
+                                }
                             }
                         }
                     }
+                } else {
+                    console.error("Error updating like");
                 }
-            } else {
-                console.warn("No se encontró la historia con el ID especificado para actualizar en localStorage.");
+            } catch (error) {
+                console.error("Error:", error);
             }
         }
     };
 
-    const handleComentar = () => {
+    const handleComentar = async () => {
         if (!comentario.trim()) return;
         const usuarioActual = localStorage.getItem("usuarioActual");
         let usuario = "";
@@ -178,36 +169,26 @@ export default function HistoriaDetalle() {
                 usuario = usuarioActual;
             }
         }
-        const historias = localStorage.getItem("historias");
-        const arr: Historia[] = historias ? JSON.parse(historias) : [];
-        const idx = arr.findIndex((h: Historia) => h.id == historia.id);
-        if (idx !== -1) {
-            const comentarios = arr[idx].comentarios || [];
-            const yaComento = comentarios.some((c: Comentario) => c.usuario === usuario);
-            if (!yaComento) {
-                const nuevoComentario: Comentario = {
-                    usuario,
-                    texto: comentario,
-                    fecha: new Date().toLocaleString(),
-                };
-                comentarios.push(nuevoComentario);
-                arr[idx].comentarios = comentarios;
-                setComentarios(comentarios);
-                setComentario("");
 
+        try {
+            const response = await fetch('/api/historias', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: historia.id, action: 'comment', usuario, comentario }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setComentarios(data.comentarios);
+                setComentario("");
                 // Actualizar perfil del autor
                 updateAuthorProfile(historia.autor, "comentariosRecibidos");
-
-                // Guardar cambios en localStorage
-                localStorage.setItem("historias", JSON.stringify(arr));
-
-                // Actualizar el estado de la historia
-                setHistoria(arr[idx]);
-
-                console.log("Estado de comentarios después de agregar uno nuevo:", comentarios);
             } else {
-                console.log("El usuario ya comentó en esta historia.");
+                console.error("Error adding comment");
             }
+        } catch (error) {
+            console.error("Error:", error);
         }
     };
 

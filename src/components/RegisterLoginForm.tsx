@@ -24,7 +24,7 @@ const RegisterLoginForm: React.FC = () => {
                 <button onClick={() => setIsRegister(false)} className={!isRegister ? 'font-bold' : ''}>Login</button>
             </div>
             {isRegister ? (
-                <form onSubmit={e => {
+                <form onSubmit={async e => {
                     e.preventDefault();
                     const formData = new FormData(e.target as HTMLFormElement);
                     const userData = {
@@ -43,20 +43,21 @@ const RegisterLoginForm: React.FC = () => {
                         historias: [],
                         comentarios: []
                     };
-                    let usersArr = [];
-                    const usersStr = localStorage.getItem("users");
-                    if (usersStr) {
-                        try {
-                            usersArr = JSON.parse(usersStr);
-                        } catch { }
-                    }
-                    if (!usersArr.some((u: any) => u.email === userData.email)) {
-                        usersArr.push(userData);
-                        localStorage.setItem("users", JSON.stringify(usersArr));
-                        localStorage.setItem("user", JSON.stringify(userData));
-                        window.location.href = '/perfil';
-                    } else {
-                        alert("Este email ya está registrado. Por favor, inicia sesión.");
+                    try {
+                        const response = await fetch('/api/users', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(userData)
+                        });
+                        if (response.ok) {
+                            localStorage.setItem("user", JSON.stringify(userData));
+                            window.location.href = '/perfil';
+                        } else {
+                            const error = await response.json();
+                            alert(error.error || 'Error en registro');
+                        }
+                    } catch (error) {
+                        alert('Error de conexión');
                     }
                 }}>
                     <input type="text" name="nombre" placeholder="Nombre real" className="w-full mb-2 p-2 border rounded" required />
@@ -84,34 +85,26 @@ const RegisterLoginForm: React.FC = () => {
                     <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Registrarse</button>
                 </form>
             ) : (
-                <form onSubmit={e => {
+                <form onSubmit={async e => {
                     e.preventDefault();
                     const formData = new FormData(e.target as HTMLFormElement);
                     const email = formData.get('email') as string;
                     const password = formData.get('password') as string;
-                    let usersArr = [];
-                    const usersStr = localStorage.getItem("users");
-                    if (usersStr) {
-                        try {
-                            usersArr = JSON.parse(usersStr);
-                        } catch { }
-                    }
-                    const user = usersArr.find((u: any) => u.email === email);
-
-                    if (user) {
-                        if (!user.password) {
-                            alert("Este usuario no tiene contraseña guardada. Por favor, regístrate de nuevo.");
-                            return;
-                        }
-
-                        if (user.password === password) {
-                            localStorage.setItem("user", JSON.stringify(user));
-                            window.location.href = '/perfil';
+                    try {
+                        const response = await fetch(`/api/users?email=${encodeURIComponent(email)}`);
+                        if (response.ok) {
+                            const user = await response.json();
+                            if (user.password === password) {
+                                localStorage.setItem("user", JSON.stringify(user));
+                                window.location.href = '/perfil';
+                            } else {
+                                alert("Contraseña incorrecta");
+                            }
                         } else {
-                            alert("Contraseña incorrecta");
+                            alert("Email no encontrado. Por favor, regístrate.");
                         }
-                    } else {
-                        alert("Email no encontrado. Por favor, regístrate.");
+                    } catch (error) {
+                        alert('Error de conexión');
                     }
                 }}>
                     <input type="email" name="email" placeholder="Email" className="w-full mb-2 p-2 border rounded" required />

@@ -8,6 +8,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
     const [user, setUser] = useState<any>(null);
     const [esAmigo, setEsAmigo] = useState(false);
     const [pendiente, setPendiente] = useState(false);
+    const [solicitudId, setSolicitudId] = useState<number | null>(null);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -16,66 +17,64 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
             const userObj = JSON.parse(userStr);
             setUser(userObj);
             if (!perfilNick || perfilNick === userObj.nick) return;
-            // Amistad
-            const amigosStr = localStorage.getItem(`amigos_${userObj.nick}`);
-            let amigos = [];
-            if (amigosStr) {
-                try { amigos = JSON.parse(amigosStr); } catch { }
-            }
-            setEsAmigo(amigos.some((a: any) => a.nick === perfilNick));
-            // Solicitud pendiente
-            const solicitudesEnviadas = localStorage.getItem(`solicitudes_${perfilNick}`);
-            let pendienteTmp = false;
-            if (solicitudesEnviadas) {
-                try {
-                    const arr = JSON.parse(solicitudesEnviadas);
-                    pendienteTmp = arr.some((s: any) => s.origen === userObj.nick && s.estado === "pendiente");
-                } catch { }
-            }
-            setPendiente(pendienteTmp);
+            // Cargar amigos desde API
+            fetch(`/api/amigos?nick=${userObj.nick}`)
+                .then(res => res.json())
+                .then(amigos => setEsAmigo(amigos.includes(perfilNick)))
+                .catch(console.error);
+            // Cargar solicitudes desde API
+            fetch(`/api/solicitudes?nick=${perfilNick}`)
+                .then(res => res.json())
+                .then(solicitudes => {
+                    const solicitud = solicitudes.find((s: any) => s.origen === userObj.nick);
+                    if (solicitud) {
+                        setPendiente(true);
+                        setSolicitudId(solicitud.id);
+                    }
+                })
+                .catch(console.error);
         }
     }, [perfilNick]);
 
-    const handleSolicitar = () => {
+    const handleSolicitar = async () => {
         if (!user) return;
         if (!perfilNick || perfilNick === user.nick) return;
-        const nuevaSolicitud = {
-            origen: user.nick,
-            destino: perfilNick,
-            estado: "pendiente",
-        };
-        const solicitudesGuardadas = localStorage.getItem(`solicitudes_${perfilNick}`);
-        const solicitudesActualizadas = solicitudesGuardadas ? JSON.parse(solicitudesGuardadas) : [];
-        solicitudesActualizadas.push(nuevaSolicitud);
-        localStorage.setItem(`solicitudes_${perfilNick}`, JSON.stringify(solicitudesActualizadas));
-        setPendiente(true);
-        alert(`Solicitud de amistad enviada a ${perfilNick}`);
+        try {
+            const response = await fetch('/api/solicitudes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ origen: user.nick, destino: perfilNick }),
+            });
+            if (response.ok) {
+                setPendiente(true);
+                alert(`Solicitud de amistad enviada a ${perfilNick}`);
+            } else {
+                alert('Error al enviar solicitud');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Error al enviar solicitud');
+        }
     };
 
-    const handleFinalizar = () => {
+    const handleFinalizar = async () => {
         if (!user) return;
-        // Eliminar amistad de ambos lados
-        const amigosStr = localStorage.getItem(`amigos_${user.nick}`);
-        let amigos = amigosStr ? JSON.parse(amigosStr) : [];
-        amigos = amigos.filter((a: any) => a.nick !== perfilNick);
-        localStorage.setItem(`amigos_${user.nick}`, JSON.stringify(amigos));
-        const amigosDelOtroStr = localStorage.getItem(`amigos_${perfilNick}`);
-        let amigosDelOtro = amigosDelOtroStr ? JSON.parse(amigosDelOtroStr) : [];
-        amigosDelOtro = amigosDelOtro.filter((a: any) => a.nick !== user.nick);
-        localStorage.setItem(`amigos_${perfilNick}`, JSON.stringify(amigosDelOtro));
-        // Actualizar el objeto user y el array de usuarios en localStorage
-        const userObj = { ...user, amigos };
-        localStorage.setItem("user", JSON.stringify(userObj));
-        const usersStr = localStorage.getItem("users");
-        if (usersStr) {
-            let usersArr = JSON.parse(usersStr);
-            usersArr = usersArr.map((u: any) =>
-                u.nick === user.nick ? { ...u, amigos } : u
-            );
-            localStorage.setItem("users", JSON.stringify(usersArr));
+        try {
+            const response = await fetch('/api/amigos', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nick1: user.nick, nick2: perfilNick }),
+            });
+            if (response.ok) {
+                setEsAmigo(false);
+                alert(`Has eliminado la amistad con ${perfilNick}`);
+            } else {
+                alert('Error al eliminar amistad');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Error al eliminar amistad');
         }
-        setEsAmigo(false);
-        alert(`Has eliminado la amistad con ${perfilNick}`);
     };
 
     if (!user || perfilNick === user.nick) return null;
@@ -97,29 +96,18 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                     onClick={e => {
                         e.preventDefault();
                         // Aceptar amistad
-                        // Añadir a amigos de ambos lados
-                        const amigosUser = JSON.parse(localStorage.getItem(`amigos_${user.nick}`) || "[]");
-                        amigosUser.push({ nick: perfilNick });
-                        localStorage.setItem(`amigos_${user.nick}`, JSON.stringify(amigosUser));
-                        const amigosPerfil = JSON.parse(localStorage.getItem(`amigos_${perfilNick}`) || "[]");
-                        amigosPerfil.push({ nick: user.nick });
-                        localStorage.setItem(`amigos_${perfilNick}`, JSON.stringify(amigosPerfil));
-                        // Actualizar el objeto user y el array de usuarios en localStorage
-                        const userObj = { ...user, amigos: amigosUser };
-                        localStorage.setItem("user", JSON.stringify(userObj));
-                        const usersStr = localStorage.getItem("users");
-                        if (usersStr) {
-                            let usersArr = JSON.parse(usersStr);
-                            usersArr = usersArr.map((u: any) =>
-                                u.nick === user.nick ? { ...u, amigos: amigosUser } : u
-                            );
-                            localStorage.setItem("users", JSON.stringify(usersArr));
-                        }
-                        // Eliminar solicitud pendiente
-                        const solicitudesGuardadas = localStorage.getItem(`solicitudes_${perfilNick}`);
-                        let solicitudes = solicitudesGuardadas ? JSON.parse(solicitudesGuardadas) : [];
-                        solicitudes = solicitudes.filter((s: any) => !(s.origen === user.nick && s.estado === "pendiente"));
-                        localStorage.setItem(`solicitudes_${perfilNick}`, JSON.stringify(solicitudes));
+                        // Añadir a amigos
+                        await fetch('/api/amigos', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ nick1: user.nick, nick2: perfilNick }),
+                        });
+                        // Actualizar solicitud a aceptada
+                        await fetch('/api/solicitudes', {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ id: solicitudId, estado: 'aceptada' }),
+                        });
                         setPendiente(false);
                         setEsAmigo(true);
                         alert("¡Amistad aceptada!");
@@ -130,11 +118,12 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                     className="text-red-700 underline text-xs ml-2"
                     onClick={e => {
                         e.preventDefault();
-                        // Rechazar amistad
-                        const solicitudesGuardadas = localStorage.getItem(`solicitudes_${perfilNick}`);
-                        let solicitudes = solicitudesGuardadas ? JSON.parse(solicitudesGuardadas) : [];
-                        solicitudes = solicitudes.filter((s: any) => !(s.origen === user.nick && s.estado === "pendiente"));
-                        localStorage.setItem(`solicitudes_${perfilNick}`, JSON.stringify(solicitudes));
+                        // Rechazar solicitud
+                        await fetch('/api/solicitudes', {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ id: solicitudId, estado: 'rechazada' }),
+                        });
                         setPendiente(false);
                         alert("Solicitud de amistad rechazada");
                     }}

@@ -254,10 +254,37 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/api/historias/[id]/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/historias/[id]">> = Specific
+  const handler = {} as typeof import("../../src/app/api/historias/[id]/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/historias/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/historias">> = Specific
+  const handler = {} as typeof import("../../src/app/api/historias/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/api/noticias/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/noticias">> = Specific
   const handler = {} as typeof import("../../src/app/api/noticias/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/users/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/users">> = Specific
+  const handler = {} as typeof import("../../src/app/api/users/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

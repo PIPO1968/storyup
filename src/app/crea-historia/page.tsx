@@ -41,7 +41,7 @@ export default function CreaHistoria() {
     };
 
     // Guardar historia (solo ejemplo, falta mostrar y persistir)
-    const handleEnviar = () => {
+    const handleEnviar = async () => {
         // Obtener usuario actual
         let usuario = "";
         let userObj = null;
@@ -98,43 +98,49 @@ export default function CreaHistoria() {
         }
         // Crear historia
         const nuevaHistoria = {
-            id: Date.now(),
             titulo,
             contenido,
             autor: anonimo ? "Anónimo" : usuario,
-            fecha: new Date().toLocaleString(),
             imagen,
-            likes: 0,
-            comentarios: [],
             concurso: esConcurso ? numConcurso : ""
         };
-        // Guardar en localStorage
-        let historias = [];
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("historias");
-            historias = guardadas ? JSON.parse(guardadas) : [];
-            historias.unshift(nuevaHistoria); // Añadir al principio
-            localStorage.setItem("historias", JSON.stringify(historias));
-            // Añadir la historia al array user.historias y actualizar en localStorage
-            if (userObj && usuario) {
-                const userHistorias = Array.isArray(userObj.historias) ? userObj.historias : [];
-                userObj.historias = [nuevaHistoria.id, ...userHistorias];
-                localStorage.setItem("user", JSON.stringify(userObj));
-                // Actualizar también en el array de usuarios
-                const usersStr = localStorage.getItem("users");
-                if (usersStr) {
-                    let usersArr: any[] = JSON.parse(usersStr);
-                    usersArr = usersArr.map((u: any) =>
-                        u.nick === usuario ? { ...u, historias: [nuevaHistoria.id, ...(Array.isArray(u.historias) ? u.historias : [])] } : u
-                    );
-                    localStorage.setItem("users", JSON.stringify(usersArr));
+        // Enviar a API
+        try {
+            const response = await fetch('/api/historias', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(nuevaHistoria),
+            });
+            if (response.ok) {
+                const historiaCreada = await response.json();
+                // Añadir la historia al array user.historias y actualizar en localStorage
+                if (userObj && usuario) {
+                    const userHistorias = Array.isArray(userObj.historias) ? userObj.historias : [];
+                    userObj.historias = [historiaCreada.id, ...userHistorias];
+                    localStorage.setItem("user", JSON.stringify(userObj));
+                    // Actualizar también en el array de usuarios
+                    const usersStr = localStorage.getItem("users");
+                    if (usersStr) {
+                        let usersArr: any[] = JSON.parse(usersStr);
+                        usersArr = usersArr.map((u: any) =>
+                            u.nick === usuario ? { ...u, historias: [historiaCreada.id, ...(Array.isArray(u.historias) ? u.historias : [])] } : u
+                        );
+                        localStorage.setItem("users", JSON.stringify(usersArr));
+                    }
                 }
+                alert("Historia enviada!");
+                setTitulo("");
+                setContenido("");
+                setImagen(null);
+            } else {
+                alert("Error al enviar la historia");
             }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error al enviar la historia");
         }
-        alert("Historia enviada!");
-        setTitulo("");
-        setContenido("");
-        setImagen(null);
     };
 
     return (
