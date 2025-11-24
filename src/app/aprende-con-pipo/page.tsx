@@ -616,33 +616,33 @@ export default function AprendeConPipo() {
     // Función para manejar la finalización del torneo premium
 
 
-        // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
-        if (modoTorneo && torneoActivo) {
-            if (!torneoIniciado) {
-                return (
-                    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
-                        <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
-                            <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
-                            <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
-                            <button
-                                onClick={() => setTorneoIniciado(true)}
-                                className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
-                            >
-                                Comenzar Torneo
-                            </button>
-                        </div>
+    // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
+    if (modoTorneo && torneoActivo) {
+        if (!torneoIniciado) {
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
+                    <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
+                        <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
+                        <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
+                        <button
+                            onClick={() => setTorneoIniciado(true)}
+                            className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
+                        >
+                            Comenzar Torneo
+                        </button>
                     </div>
-                );
-            } else {
-                const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
-                return (
-                    <TournamentQuiz
-                        userGrade={cursoNum}
-                        onTournamentComplete={handleTournamentComplete}
-                    />
-                );
-            }
+                </div>
+            );
+        } else {
+            const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
+            return (
+                <TournamentQuiz
+                    userGrade={cursoNum}
+                    onTournamentComplete={handleTournamentComplete}
+                />
+            );
         }
+    }
 
     return (
         <div>

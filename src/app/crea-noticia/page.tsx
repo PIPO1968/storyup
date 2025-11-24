@@ -6,7 +6,7 @@ export default function CreaNoticia() {
     const [contenido, setContenido] = useState("");
     const [enviando, setEnviando] = useState(false);
 
-    const handleEnviar = () => {
+    const handleEnviar = async () => {
         setEnviando(true);
         let autor = "";
         if (typeof window !== "undefined") {
@@ -37,22 +37,32 @@ export default function CreaNoticia() {
             setEnviando(false);
             return;
         }
-        const nuevaNoticia = {
-            titulo,
-            contenido,
-            autor,
-            fecha: new Date().toLocaleString(),
-        };
-        let noticias = [];
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("noticias");
-            noticias = guardadas ? JSON.parse(guardadas) : [];
-            noticias.unshift(nuevaNoticia);
-            localStorage.setItem("noticias", JSON.stringify(noticias));
+
+        try {
+            const response = await fetch('/api/noticias', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    titulo,
+                    contenido,
+                    autor,
+                }),
+            });
+
+            if (response.ok) {
+                alert("Noticia publicada exitosamente!");
+                setTitulo("");
+                setContenido("");
+            } else {
+                alert("Error al publicar la noticia.");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert("Error al publicar la noticia.");
         }
-        alert("Noticia enviada!");
-        setTitulo("");
-        setContenido("");
+
         setEnviando(false);
     };
 

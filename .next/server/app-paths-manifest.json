@@ -3,6 +3,7 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/admin-premium/page": "app/admin-premium/page.js",
   "/api/add-question/route": "app/api/add-question/route.js",
+  "/api/noticias/route": "app/api/noticias/route.js",
   "/aprende-con-pipo/page": "app/aprende-con-pipo/page.js",
   "/centros-competencia/page": "app/centros-competencia/page.js",
   "/competiciones/page": "app/competiciones/page.js",

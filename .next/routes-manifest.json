@@ -77,6 +77,12 @@
       "namedRegex": "^/api/add\\-question(?:/)?$"
     },
     {
+      "page": "/api/noticias",
+      "regex": "^/api/noticias(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/noticias(?:/)?$"
+    },
+    {
       "page": "/aprende-con-pipo",
       "regex": "^/aprende\\-con\\-pipo(?:/)?$",
       "routeKeys": {},

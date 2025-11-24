@@ -4,42 +4,43 @@ import { renderNick } from "@/utils/renderNick";
 
 export default function Noticias() {
     type Noticia = {
+        id: number;
         titulo: string;
         autor: string;
         fecha: string;
         contenido: string;
+        imagen?: string;
     };
 
     const [noticias, setNoticias] = React.useState<Noticia[]>([]);
     React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("noticias");
-            if (guardadas) {
-                try {
-                    const arr = JSON.parse(guardadas);
-                    console.log("Noticias cargadas desde localStorage:", arr);
-                    // Mostrar las 25 más recientes arriba
-                    setNoticias(arr.slice(0, 25));
-                } catch (error) {
-                    console.error("Error al cargar noticias desde localStorage:", error);
+        const fetchNoticias = async () => {
+            try {
+                const response = await fetch('/api/noticias');
+                if (response.ok) {
+                    const data = await response.json();
+                    setNoticias(data.slice(0, 25));
+                } else {
+                    console.error('Error fetching news');
                 }
-            } else {
-                console.log("No se encontraron noticias en localStorage.");
+            } catch (error) {
+                console.error('Error:', error);
             }
-        }
+        };
+        fetchNoticias();
     }, []);
     const mostrarNoticias = noticias.length > 0
-        ? noticias.map((noticia, idx) => {
-            console.log(`Procesando noticia ${idx + 1}:`, noticia);
+        ? noticias.map((noticia) => {
+            console.log(`Procesando noticia ${noticia.id}:`, noticia);
             return (
-                <div key={idx} className="bg-white rounded-lg shadow-md p-6">
+                <div key={noticia.id} className="bg-white rounded-lg shadow-md p-6">
                     <div className="flex items-center justify-between mb-2">
                         <span className="font-bold text-lg text-blue-700">{noticia.titulo || 'Título no disponible'}</span>
                         {noticia.autor && (
                             <span className="ml-4">{renderNick(noticia.autor)}</span>
                         )}
                         {noticia.fecha && (
-                            <span className="ml-4 text-gray-500 text-sm">{noticia.fecha}</span>
+                            <span className="ml-4 text-gray-500 text-sm">{new Date(noticia.fecha).toLocaleString()}</span>
                         )}
                     </div>
                     <p className="text-gray-800">{noticia.contenido || 'Contenido no disponible'}</p>
