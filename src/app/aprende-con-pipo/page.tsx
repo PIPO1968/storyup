@@ -455,10 +455,24 @@ export default function AprendeConPipo() {
 
                         // Si es torneo mensual y el usuario queda primero, contar como victoria
                         if (t.id.includes('torneo-mensual') && resultados[0].nick === usuarioActual.nick) {
-                            const updatedStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0}');
-                            updatedStats.victorias += 1;
-                            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(updatedStats));
+                            fetch('/api/estadisticas', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ nick: usuarioActual.nick, tipo: 'competiciones_premium_victorias', puntos: 1 }),
+                            }).catch(console.error);
                         }
+
+                        // Actualizar torneo en DB
+                        fetch('/api/torneos', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                id: t.id,
+                                resultados: resultados,
+                                estado: new Date() >= new Date(t.fechaFin) ? 'finalizado' : t.estado,
+                                ganador: resultados.length > 0 ? resultados[0].nick : undefined
+                            }),
+                        }).catch(console.error);
 
                         return {
                             ...t,
@@ -471,7 +485,7 @@ export default function AprendeConPipo() {
                     return t;
                 });
 
-                localStorage.setItem('torneos_premium', JSON.stringify(torneoActualizado));
+                localStorage.setItem('torneos_premium', JSON.stringify(torneoActualizado)); // Mantener local por ahora
             }
 
             // Limpiar torneo activo
