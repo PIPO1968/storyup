@@ -1,1 +1,8 @@
-{}
+{
+  "/api/noticias/route": "app/api/noticias/route.js",
+  "/api/premium/route": "app/api/premium/route.js",
+  "/api/users/route": "app/api/users/route.js",
+  "/noticias/page": "app/noticias/page.js",
+  "/page": "app/page.js",
+  "/perfil/page": "app/perfil/page.js"
+}

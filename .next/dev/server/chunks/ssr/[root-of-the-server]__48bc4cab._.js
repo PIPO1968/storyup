@@ -40,7 +40,6 @@ const UserLink = ({ nick, className })=>{
         };
         window.addEventListener('premiumUpdate', handlePremiumUpdate);
         return ()=>{
-            window.removeEventListener('storage', handleStorageChange);
             window.removeEventListener('premiumUpdate', handlePremiumUpdate);
         };
     }, [
@@ -53,7 +52,7 @@ const UserLink = ({ nick, className })=>{
             children: nick || "(sin nick)"
         }, void 0, false, {
             fileName: "[project]/src/components/UserLink.tsx",
-            lineNumber: 50,
+            lineNumber: 49,
             columnNumber: 16
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -71,18 +70,18 @@ const UserLink = ({ nick, className })=>{
                     children: "👑"
                 }, void 0, false, {
                     fileName: "[project]/src/components/UserLink.tsx",
-                    lineNumber: 62,
+                    lineNumber: 61,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/UserLink.tsx",
-                lineNumber: 61,
+                lineNumber: 60,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/UserLink.tsx",
-        lineNumber: 54,
+        lineNumber: 53,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

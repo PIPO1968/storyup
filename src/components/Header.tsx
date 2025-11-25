@@ -31,22 +31,15 @@ const Header: React.FC = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                console.log('Fetching /api/users...');
                 const response = await fetch('/api/users');
-                console.log('Response status:', response.status);
                 if (response.ok) {
                     const usersArr = await response.json();
-                    console.log('Users loaded:', usersArr);
                     setRegisteredUsers(usersArr.length);
-                    console.log('Set registeredUsers to:', usersArr.length);
                     setOnlineUsers(usersArr.length);
-                    console.log('Set onlineUsers to:', usersArr.length);
                 } else {
-                    console.log('Response not ok:', response.statusText);
                     setOnlineUsers(0);
                 }
             } catch (error) {
-                console.error('Error loading users:', error);
                 setOnlineUsers(0);
             }
             const userStr = localStorage.getItem("user");
@@ -76,7 +69,6 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-4">
                 <img src="/favicon.ico" alt="Trofeo principal" className="h-10 w-10" />
                 {(() => {
-                    console.log('Render: registeredUsers =', registeredUsers, 'onlineUsers =', onlineUsers);
                     return registeredUsers !== null && onlineUsers !== null ? (
                         <span>{t("usuarios")}: <span id="registered-users">{registeredUsers}</span> | {t("online")}: <span id="online-users">{onlineUsers}</span></span>
                     ) : (

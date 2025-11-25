@@ -98,6 +98,33 @@ async function GET(request) {
     const nick = searchParams.get('nick');
     const email = searchParams.get('email');
     try {
+        // Crear tabla si no existe
+        await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].query(`
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                nick VARCHAR(255) UNIQUE NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                nombre VARCHAR(255),
+                centro VARCHAR(255),
+                curso VARCHAR(255),
+                tipo VARCHAR(255),
+                linkPerfil VARCHAR(255),
+                fechaInscripcion TIMESTAMP NOT NULL,
+                textoFechaInscripcion TEXT,
+                likes INTEGER DEFAULT 0,
+                trofeos INTEGER DEFAULT 0,
+                historias JSONB DEFAULT '[]'::jsonb,
+                amigos JSONB DEFAULT '[]'::jsonb,
+                trofeosDesbloqueados JSONB DEFAULT '[]'::jsonb,
+                trofeosBloqueados JSONB DEFAULT '[]'::jsonb,
+                preguntasFalladas INTEGER DEFAULT 0,
+                competicionesSuperadas INTEGER DEFAULT 0,
+                estaEnRanking BOOLEAN DEFAULT FALSE,
+                autoTrofeos JSONB DEFAULT '[]'::jsonb,
+                comentarios JSONB DEFAULT '[]'::jsonb
+            )
+        `);
         if (nick) {
             const result = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].query('SELECT * FROM users WHERE nick = $1', [
                 nick

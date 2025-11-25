@@ -17,19 +17,19 @@ const UserLink = ({ nick, className })=>{
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "UserLink.useEffect": ()=>{
             const checkPremium = {
-                "UserLink.useEffect.checkPremium": ()=>{
-                    // Verificar si el usuario es Premium
-                    if (("TURBOPACK compile-time value", "object") !== "undefined" && nick) {
-                        const premiumInfo = localStorage.getItem(`premium_${nick}`);
-                        if (premiumInfo) {
-                            try {
-                                const premium = JSON.parse(premiumInfo);
-                                const isActive = new Date(premium.expiracion) > new Date();
-                                setIsPremium(isActive);
-                            } catch (error) {
+                "UserLink.useEffect.checkPremium": async ()=>{
+                    // Verificar si el usuario es Premium desde API
+                    if (nick) {
+                        try {
+                            const response = await fetch(`/api/premium?nick=${nick}`);
+                            if (response.ok) {
+                                const data = await response.json();
+                                setIsPremium(data.isActive);
+                            } else {
                                 setIsPremium(false);
                             }
-                        } else {
+                        } catch (error) {
+                            console.error('Error checking premium:', error);
                             setIsPremium(false);
                         }
                     }
@@ -37,14 +37,6 @@ const UserLink = ({ nick, className })=>{
             }["UserLink.useEffect.checkPremium"];
             // Verificar inicialmente
             checkPremium();
-            // Escuchar cambios en localStorage
-            const handleStorageChange = {
-                "UserLink.useEffect.handleStorageChange": (e)=>{
-                    if (e.key?.startsWith('premium_') || e.key === null) {
-                        checkPremium();
-                    }
-                }
-            }["UserLink.useEffect.handleStorageChange"];
             // Escuchar eventos personalizados de premium
             const handlePremiumUpdate = {
                 "UserLink.useEffect.handlePremiumUpdate": (e)=>{
@@ -53,11 +45,9 @@ const UserLink = ({ nick, className })=>{
                     }
                 }
             }["UserLink.useEffect.handlePremiumUpdate"];
-            window.addEventListener('storage', handleStorageChange);
             window.addEventListener('premiumUpdate', handlePremiumUpdate);
             return ({
                 "UserLink.useEffect": ()=>{
-                    window.removeEventListener('storage', handleStorageChange);
                     window.removeEventListener('premiumUpdate', handlePremiumUpdate);
                 }
             })["UserLink.useEffect"];
@@ -72,7 +62,7 @@ const UserLink = ({ nick, className })=>{
             children: nick || "(sin nick)"
         }, void 0, false, {
             fileName: "[project]/src/components/UserLink.tsx",
-            lineNumber: 58,
+            lineNumber: 49,
             columnNumber: 16
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -90,18 +80,18 @@ const UserLink = ({ nick, className })=>{
                     children: "👑"
                 }, void 0, false, {
                     fileName: "[project]/src/components/UserLink.tsx",
-                    lineNumber: 70,
+                    lineNumber: 61,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/UserLink.tsx",
-                lineNumber: 69,
+                lineNumber: 60,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/UserLink.tsx",
-        lineNumber: 62,
+        lineNumber: 53,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -158,25 +148,26 @@ function Noticias() {
     const [noticias, setNoticias] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState([]);
     __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useEffect({
         "Noticias.useEffect": ()=>{
-            if ("TURBOPACK compile-time truthy", 1) {
-                const guardadas = localStorage.getItem("noticias");
-                if (guardadas) {
+            const fetchNoticias = {
+                "Noticias.useEffect.fetchNoticias": async ()=>{
                     try {
-                        const arr = JSON.parse(guardadas);
-                        console.log("Noticias cargadas desde localStorage:", arr);
-                        // Mostrar las 25 más recientes arriba
-                        setNoticias(arr.slice(0, 25));
+                        const response = await fetch('/api/noticias');
+                        if (response.ok) {
+                            const data = await response.json();
+                            setNoticias(data.slice(0, 25));
+                        } else {
+                            console.error('Error fetching news');
+                        }
                     } catch (error) {
-                        console.error("Error al cargar noticias desde localStorage:", error);
+                        console.error('Error:', error);
                     }
-                } else {
-                    console.log("No se encontraron noticias en localStorage.");
                 }
-            }
+            }["Noticias.useEffect.fetchNoticias"];
+            fetchNoticias();
         }
     }["Noticias.useEffect"], []);
-    const mostrarNoticias = noticias.length > 0 ? noticias.map((noticia, idx)=>{
-        console.log(`Procesando noticia ${idx + 1}:`, noticia);
+    const mostrarNoticias = noticias.length > 0 ? noticias.map((noticia)=>{
+        console.log(`Procesando noticia ${noticia.id}:`, noticia);
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "bg-white rounded-lg shadow-md p-6",
             children: [
@@ -188,7 +179,7 @@ function Noticias() {
                             children: noticia.titulo || 'Título no disponible'
                         }, void 0, false, {
                             fileName: "[project]/src/app/noticias/page.tsx",
-                            lineNumber: 37,
+                            lineNumber: 38,
                             columnNumber: 25
                         }, this),
                         noticia.autor && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -196,21 +187,21 @@ function Noticias() {
                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$renderNick$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["renderNick"])(noticia.autor)
                         }, void 0, false, {
                             fileName: "[project]/src/app/noticias/page.tsx",
-                            lineNumber: 39,
+                            lineNumber: 40,
                             columnNumber: 29
                         }, this),
                         noticia.fecha && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "ml-4 text-gray-500 text-sm",
-                            children: noticia.fecha
+                            children: new Date(noticia.fecha).toLocaleString()
                         }, void 0, false, {
                             fileName: "[project]/src/app/noticias/page.tsx",
-                            lineNumber: 42,
+                            lineNumber: 43,
                             columnNumber: 29
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/noticias/page.tsx",
-                    lineNumber: 36,
+                    lineNumber: 37,
                     columnNumber: 21
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -218,13 +209,13 @@ function Noticias() {
                     children: noticia.contenido || 'Contenido no disponible'
                 }, void 0, false, {
                     fileName: "[project]/src/app/noticias/page.tsx",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 21
                 }, this)
             ]
-        }, idx, true, {
+        }, noticia.id, true, {
             fileName: "[project]/src/app/noticias/page.tsx",
-            lineNumber: 35,
+            lineNumber: 36,
             columnNumber: 17
         }, this);
     }) : null; // No renderizar nada si no hay noticias
@@ -238,12 +229,12 @@ function Noticias() {
                     children: "Últimas Noticias"
                 }, void 0, false, {
                     fileName: "[project]/src/app/noticias/page.tsx",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/noticias/page.tsx",
-                lineNumber: 53,
+                lineNumber: 54,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -254,23 +245,23 @@ function Noticias() {
                         children: mostrarNoticias
                     }, void 0, false, {
                         fileName: "[project]/src/app/noticias/page.tsx",
-                        lineNumber: 58,
+                        lineNumber: 59,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/noticias/page.tsx",
-                    lineNumber: 57,
+                    lineNumber: 58,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/noticias/page.tsx",
-                lineNumber: 56,
+                lineNumber: 57,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/noticias/page.tsx",
-        lineNumber: 52,
+        lineNumber: 53,
         columnNumber: 9
     }, this);
 }
