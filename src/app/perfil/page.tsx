@@ -374,12 +374,38 @@ const PerfilUsuario: React.FC = () => {
             alert("Concurso no encontrado");
         }
     };
-    const handleNoticiaSubmit = (e: React.FormEvent) => {
+    const handleNoticiaSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setNoticiaTitulo("");
-        setNoticiaTexto("");
-        setNoticiaImagen("");
-        alert("Noticia publicada (simulado)");
+        if (!user) {
+            alert("No se ha detectado usuario. Inicia sesión.");
+            return;
+        }
+        try {
+            const response = await fetch('/api/noticias', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    titulo: noticiaTitulo,
+                    contenido: noticiaTexto,
+                    autor: user.nick,
+                    imagen: noticiaImagen,
+                }),
+            });
+
+            if (response.ok) {
+                alert("Noticia publicada exitosamente!");
+                setNoticiaTitulo("");
+                setNoticiaTexto("");
+                setNoticiaImagen("");
+            } else {
+                alert("Error al publicar la noticia.");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert("Error al publicar la noticia.");
+        }
     };
 
     // Función para enviar pregunta
