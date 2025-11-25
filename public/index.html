@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryUp - Red social juvenil para compartir historias</title>
+    <meta name="description"
+        content="Comparte y explora historias reales y ficticias en un entorno seguro para jóvenes y escuelas. Únete a StoryUp, la red social educativa para estudiantes, docentes y familias.">
+    <meta name="keywords"
+        content="red social, historias, jóvenes, escuela, docentes, estudiantes, relatos, educación, compartir, StoryUp">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="StoryUp - Red social juvenil para compartir historias">
+    <meta property="og:description"
+        content="Comparte y explora historias reales y ficticias en un entorno seguro para jóvenes y escuelas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storyup.com/">
+    <meta property="og:image" content="https://storyup.com/img/storyup-logo.png">
+    <!-- Datos estructurados JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "StoryUp",
+            "url": "https://storyup.com/",
+            "logo": "https://storyup.com/img/storyup-logo.png",
+            "description": "Red social juvenil para compartir y explorar historias en un entorno seguro para escuelas.",
+            "sameAs": [
+                "https://twitter.com/storyup",
+                "https://facebook.com/storyup"
+            ]
+        }
+        </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="img/storyup-logo.png">
+</head>
+
+<body>
+    <script>
+        // Cierre de sesión automático tras 1 hora de inactividad (sessionStorage)
+        let storyup_last_activity = Date.now();
+        function updateActivity() {
+            storyup_last_activity = Date.now();
+            sessionStorage.setItem('storyup_last_activity', storyup_last_activity);
+        }
+        document.addEventListener('mousemove', updateActivity);
+        document.addEventListener('keydown', updateActivity);
+        document.addEventListener('click', updateActivity);
+        setInterval(function () {
+            const last = parseInt(sessionStorage.getItem('storyup_last_activity') || '0', 10);
+            if (last && Date.now() - last > 60 * 60 * 1000) {
+                sessionStorage.removeItem('storyup_logged');
+                window.location.href = 'login.html';
+            }
+        }, 60000);
+        updateActivity();
+        // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
+        try {
+            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            if (user && user.role === 'moderador') {
+                document.getElementById('moderation-link').style.display = 'block';
+            }
+        } catch (e) { }
+    </script>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="explore.html">Explorar</a></li>
+            <li><a href="concurso.html" style="color:#fbbf24;font-weight:bold;">Concursos</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li style="position:relative;">
+                <a href="profile.html" id="nav-perfil">Perfil</a>
+                <span id="perfil-dot"
+                    style="display:none;position:absolute;top:7px;right:-10px;width:13px;height:13px;background:#2563eb;border-radius:50%;box-shadow:0 0 4px #000a;z-index:2;border:2px solid #fff;"></span>
+            </li>
+            <li><a href="stats.html">Estadísticas</a></li>
+            <li><a href="moderation.html" style="color:#22c55e;font-weight:bold;">Moderación</a></li>
+            <li style="position:relative;">
+                <a href="seguidores.html" id="nav-seguidores"
+                    style="color:#38bdf8;font-weight:bold;">StoryUp/Seguidores</a>
+                <span id="seguidores-dot"
+                    style="display:none;position:absolute;top:7px;right:-10px;width:13px;height:13px;background:#e11d48;border-radius:50%;box-shadow:0 0 4px #000a;z-index:2;border:2px solid #fff;"></span>
+            </li>
+        </ul>
+        <select id="lang-i18n" class="lang-switch" style="min-width:90px;max-width:140px;">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+        </select>
+    </nav>
+    <header>
+        <div style="font-size:64px;line-height:1;text-align:center;margin:0 auto 12px auto;">🌍👦🏽👧🏻👨🏿👩🏼✒️
+        </div>
+        <div style="text-align:center;margin-bottom:18px;">
+            <!-- Imagen central movida más abajo -->
+        </div>
+        <h1 id="header-title" style="margin-bottom:0.2em;margin-top:0.2em;">StoryUp</h1>
+        <p id="header-subtitle" style="margin-top:-0.7em;margin-bottom:1.5em;">La red social juvenil donde cada historia
+            importa</p>
+        <a href="signup.html" class="btn" id="header-join" style="margin-bottom:0.7em;margin-top:1.2em;">Únete ahora</a>
+        <br>
+        <span id="modaccess-desc"
+            style="display:block;margin:8px 0 4px 0;padding:8px 18px;font-size:1.08em;color:#fff !important;font-weight:600;text-align:left;text-shadow:0 1px 4px #23252699;background:rgba(30,32,40,0.82);border-radius:12px;box-shadow:0 2px 12px #0003;max-width:340px;">Si
+            eres Director/Docente, accede como moderador:</span>
+        <a href="login.html" id="header-modaccess"
+            style="display:inline-block;margin-top:2px;color:#39ff14 !important;font-weight:bold;font-size:1.1em;text-decoration:underline;">Acceso
+            para moderadores</a>
+        <br>
+
+        <div style="display:flex;align-items:center;gap:32px;justify-content:center;margin:32px 0 0 0;flex-wrap:wrap;">
+            <div
+                style="flex:1.2;min-width:260px;max-width:420px;text-align:left;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;padding-left:0;">
+                <section id="features">
+                    <h2 id="features-title" style="text-align:left;">¿Qué puedes hacer en StoryUp?</h2>
+                    <ul style="text-align:left;">
+                        <li id="features-real">✍️ Publica historias reales, ficticias o confesiones</li>
+                        <li id="features-explore">🌍 Explora relatos de jóvenes de todo el mundo</li>
+                        <li id="features-choose">🗣️ Elige tu idioma y traduce historias automáticamente</li>
+                        <li id="features-mobile">📱 Disponible como app móvil y web</li>
+                        <li id="features-moderation">🛡️ Moderación educativa para entornos escolares</li>
+                    </ul>
+                </section>
+            </div>
+            <div style="flex:1;min-width:220px;max-width:340px;display:flex;align-items:center;justify-content:center;">
+                <img src="img/storyup-logo.png" alt="Imagen decorativa StoryUp"
+                    style="max-width:220px;width:100%;border-radius:14px;box-shadow:0 2px 12px #0002;display:block;margin:auto;">
+            </div>
+        </div>
+
+        <section id="info-combinada" style="margin-top:32px;">
+            <h2 id="public-explore">Explora sin registrarte</h2>
+            <p id="public-read">Lee historias destacadas en nuestra <a href="explore.html"
+                    style="color:#38bdf8;font-weight:bold;">vista pública</a></p>
+            <h2 id="public-impact">Impacto global</h2>
+            <ul>
+                <li id="public-stories">+1200 historias publicadas</li>
+                <li id="public-users">+300 usuarios activos</li>
+                <li id="public-langs">+15 idiomas representados</li>
+            </ul>
+        </section>
+    </header>
+
+    <footer>
+        <p id="footer-created">Creado por Pipo · StoryUp © 2025</p>
+    </footer>
+    <script src="app.js"></script>
+    <script>
+        // --- I18N SIMPLE ---
+        const i18nFiles = {
+            es: 'i18n_es.json',
+            en: 'i18n_en.json',
+            de: 'i18n_de.json'
+        };
+        function setI18n(lang, data) {
+            // Navbar (si quieres traducir el menú, añade ids y aquí)
+            // Header
+            document.getElementById('header-title').textContent = data.header.title;
+            document.getElementById('header-subtitle').textContent = data.header.subtitle;
+            document.getElementById('header-join').textContent = data.header.join;
+            // Acceso moderador (desc y link)
+            document.getElementById('modaccess-desc').textContent = data.modaccess.desc;
+            document.getElementById('header-modaccess').textContent = data.modaccess.link;
+            // Features
+            document.getElementById('features-title').textContent = data.features.title;
+            document.getElementById('features-real').textContent = data.features.real;
+            document.getElementById('features-explore').textContent = data.features.explore;
+            document.getElementById('features-choose').textContent = data.features.choose;
+            document.getElementById('features-mobile').textContent = data.features.mobile;
+            document.getElementById('features-moderation').textContent = data.features.moderation;
+            // Public
+            document.getElementById('public-explore').textContent = data.public.explore;
+            document.getElementById('public-read').innerHTML = data.public.read;
+            document.getElementById('public-impact').textContent = data.public.impact;
+            document.getElementById('public-stories').textContent = data.public.stories;
+            document.getElementById('public-users').textContent = data.public.users;
+            document.getElementById('public-langs').textContent = data.public.langs;
+            // Footer
+            document.getElementById('footer-created').textContent = data.footer.created;
+            // Eliminado: document.getElementById('footer-modaccess').textContent = data.footer.modaccess;
+        }
+        function loadI18n(lang) {
+            fetch(i18nFiles[lang] || i18nFiles['es'])
+                .then(r => r.json())
+                .then(data => setI18n(lang, data));
+        }
+        const langSel = document.getElementById('lang-i18n');
+        langSel.value = localStorage.getItem('storyup_lang') || 'es';
+        loadI18n(langSel.value);
+        langSel.addEventListener('change', function () {
+            localStorage.setItem('storyup_lang', this.value);
+            loadI18n(this.value);
+        });
+    </script>
+</body>
+
+<script>
+    // Punto rojo en Seguidores si hay nuevos usuarios
+    document.addEventListener('DOMContentLoaded', function () {
+        const seguidoresDot = document.getElementById('seguidores-dot');
+        const seguidoresBtn = document.getElementById('nav-seguidores');
+        // Usuario logueado (puede ser null)
+        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
+        // Lista de usuarios inscritos
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        if (!seguidoresDot || !seguidoresBtn) return;
+        // Clave personalizada por usuario logueado
+        let key = 'seguidores_last_seen_count';
+        if (logged && logged.email) key += '_' + logged.email;
+        const lastSeen = parseInt(localStorage.getItem(key) || '0', 10);
+        if (users.length > lastSeen) {
+            seguidoresDot.style.display = 'block';
+        } else {
+            seguidoresDot.style.display = 'none';
+        }
+        seguidoresBtn.addEventListener('click', function () {
+            localStorage.setItem(key, users.length.toString());
+            seguidoresDot.style.display = 'none';
+        });
+    });
+</script>
+
+<script>
+    // Punto azul en Perfil si hay mensajes nuevos no leídos
+    document.addEventListener('DOMContentLoaded', function () {
+        const perfilDot = document.getElementById('perfil-dot');
+        const perfilBtn = document.getElementById('nav-perfil');
+        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
+        if (!perfilDot || !perfilBtn || !logged) return;
+        // Buscar chats donde logged es receptor y hay mensajes no leídos
+        let unread = false;
+        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        users.forEach(u => {
+            if (u.email === logged.email) return;
+            const emails = [logged.email, u.email].sort();
+            const chatKey = 'chat_' + emails.join('_');
+            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+            // Última vez que el usuario vio su perfil
+            const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
+            const lastRead = parseInt(localStorage.getItem(lastReadKey) || '0', 10);
+            // Buscar si hay mensajes de u.email posteriores a lastRead
+            if (msgs.some(m => m.own === u.email && m.date > lastRead)) {
+                unread = true;
+            }
+        });
+        perfilDot.style.display = unread ? 'block' : 'none';
+        perfilBtn.addEventListener('click', function () {
+            // Al entrar al perfil, marcar todos los mensajes como leídos
+            users.forEach(u => {
+                if (u.email === logged.email) return;
+                const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
+                localStorage.setItem(lastReadKey, Date.now().toString());
+            });
+            perfilDot.style.display = 'none';
+        });
+    });
+</script>
+
+</html>

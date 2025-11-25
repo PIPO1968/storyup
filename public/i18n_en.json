@@ -1,0 +1,39 @@
+{
+    "nav": {
+        "home": "Home",
+        "explore": "Explore",
+        "login": "Login",
+        "profile": "Profile",
+        "stats": "Statistics",
+        "moderation": "Moderation"
+    },
+    "header": {
+        "title": "StoryUp",
+        "subtitle": "The youth social network where every story matters",
+        "join": "Join now"
+    },
+    "features": {
+        "title": "What can you do on StoryUp?",
+        "real": "✍️ Post real, fictional or confession stories",
+        "explore": "🌍 Explore stories from young people around the world",
+        "choose": "🗣️ Choose your language and translate stories automatically",
+        "mobile": "📱 Available as mobile and web app",
+        "moderation": "🛡️ Educational moderation for school environments"
+    },
+    "public": {
+        "explore": "Explore without registering",
+        "read": "Read featured stories in our <a href=\"explore.html\">public view</a>",
+        "impact": "Global impact",
+        "stories": "+1200 stories published",
+        "users": "+300 active users",
+        "langs": "+15 languages represented"
+    },
+    "footer": {
+        "created": "Created by Pipo · StoryUp © 2025",
+        "modaccess": "Moderator access"
+    },
+    "modaccess": {
+        "desc": "If you are a Principal/Teacher, access as moderator:",
+        "link": "Moderator access"
+    }
+}

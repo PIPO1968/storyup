@@ -1,0 +1,39 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "explore": "Entdecken",
+        "login": "Login",
+        "profile": "Profil",
+        "stats": "Statistiken",
+        "moderation": "Moderation"
+    },
+    "header": {
+        "title": "StoryUp",
+        "subtitle": "Das soziale Jugendnetzwerk, in dem jede Geschichte zählt",
+        "join": "Jetzt mitmachen"
+    },
+    "features": {
+        "title": "Was kannst du bei StoryUp tun?",
+        "real": "✍️ Veröffentliche echte, fiktive oder Bekenntnis-Geschichten",
+        "explore": "🌍 Entdecke Geschichten von Jugendlichen aus aller Welt",
+        "choose": "🗣️ Wähle deine Sprache und übersetze Geschichten automatisch",
+        "mobile": "📱 Verfügbar als mobile und Web-App",
+        "moderation": "🛡️ Pädagogische Moderation für Schulen"
+    },
+    "public": {
+        "explore": "Entdecke ohne Registrierung",
+        "read": "Lies ausgewählte Geschichten in unserer <a href=\"explore.html\">öffentlichen Ansicht</a>",
+        "impact": "Globaler Einfluss",
+        "stories": "+1200 veröffentlichte Geschichten",
+        "users": "+300 aktive Nutzer",
+        "langs": "+15 vertretene Sprachen"
+    },
+    "footer": {
+        "created": "Erstellt von Pipo · StoryUp © 2025",
+        "modaccess": "Moderatorenzugang"
+    },
+    "modaccess": {
+        "desc": "Wenn Sie Schulleiter/Lehrer sind, melden Sie sich als Moderator an:",
+        "link": "Moderatorenzugang"
+    }
+}

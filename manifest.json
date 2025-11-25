@@ -1,0 +1,21 @@
+{
+    "name": "StoryUp",
+    "short_name": "StoryUp",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#1E1E1E",
+    "theme_color": "#3B82F6",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "img/storyup-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/storyup-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
