@@ -10,22 +10,22 @@ export default function CreaNoticia() {
         setEnviando(true);
         let autor = "";
         if (typeof window !== "undefined") {
-            // Buscar nick en usuarioActual y si no, en user
-            const actual = localStorage.getItem("usuarioActual");
-            if (actual) {
+            // Buscar nick en user primero
+            const userStr = localStorage.getItem("user");
+            if (userStr) {
                 try {
-                    const obj = JSON.parse(actual);
-                    autor = obj.nick || "";
+                    const userObj = JSON.parse(userStr);
+                    autor = userObj.nick || "";
                 } catch {
                     autor = "";
                 }
             }
             if (!autor) {
-                const userStr = localStorage.getItem("user");
-                if (userStr) {
+                const actual = localStorage.getItem("usuarioActual");
+                if (actual) {
                     try {
-                        const userObj = JSON.parse(userStr);
-                        autor = userObj.nick || "";
+                        const obj = JSON.parse(actual);
+                        autor = obj.nick || "";
                     } catch {
                         autor = "";
                     }

@@ -33,8 +33,10 @@ export async function POST(request: NextRequest) {
     try {
         await ensureTableExists();
         const { titulo, contenido, autor, imagen } = await request.json();
+        console.log('Creating news:', { titulo, contenido, autor, imagen });
 
         if (!titulo || !contenido || !autor) {
+            console.log('Missing fields');
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
@@ -42,10 +44,12 @@ export async function POST(request: NextRequest) {
             'INSERT INTO noticias (titulo, contenido, autor, imagen, fecha) VALUES ($1, $2, $3, $4, NOW()) RETURNING *',
             [titulo, contenido, autor, imagen || '']
         );
+        console.log('News created:', result.rows[0]);
 
         return NextResponse.json(result.rows[0]);
     } catch (error) {
         console.error('Error creating news:', error);
         return NextResponse.json({ error: 'Error creating news' }, { status: 500 });
     }
+}
 }
