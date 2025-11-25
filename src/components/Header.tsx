@@ -31,10 +31,15 @@ const Header: React.FC = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
+                console.log('Fetching /api/users...');
                 const response = await fetch('/api/users');
+                console.log('Response status:', response.status);
                 if (response.ok) {
                     const usersArr = await response.json();
+                    console.log('Users loaded:', usersArr);
                     setRegisteredUsers(usersArr.length);
+                } else {
+                    console.log('Response not ok:', response.statusText);
                 }
             } catch (error) {
                 console.error('Error loading users:', error);
