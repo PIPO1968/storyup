@@ -7,6 +7,34 @@ export async function GET(request: NextRequest) {
     const email = searchParams.get('email');
 
     try {
+        // Crear tabla si no existe
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                nick VARCHAR(255) UNIQUE NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                nombre VARCHAR(255),
+                centro VARCHAR(255),
+                curso VARCHAR(255),
+                tipo VARCHAR(255),
+                linkPerfil VARCHAR(255),
+                fechaInscripcion TIMESTAMP NOT NULL,
+                textoFechaInscripcion TEXT,
+                likes INTEGER DEFAULT 0,
+                trofeos INTEGER DEFAULT 0,
+                historias JSONB DEFAULT '[]'::jsonb,
+                amigos JSONB DEFAULT '[]'::jsonb,
+                trofeosDesbloqueados JSONB DEFAULT '[]'::jsonb,
+                trofeosBloqueados JSONB DEFAULT '[]'::jsonb,
+                preguntasFalladas INTEGER DEFAULT 0,
+                competicionesSuperadas INTEGER DEFAULT 0,
+                estaEnRanking BOOLEAN DEFAULT FALSE,
+                autoTrofeos JSONB DEFAULT '[]'::jsonb,
+                comentarios JSONB DEFAULT '[]'::jsonb
+            )
+        `);
+
         if (nick) {
             const result = await pool.query('SELECT * FROM users WHERE nick = $1', [nick]);
             if (result.rows.length === 0) {
