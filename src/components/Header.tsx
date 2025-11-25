@@ -38,6 +38,7 @@ const Header: React.FC = () => {
                     const usersArr = await response.json();
                     console.log('Users loaded:', usersArr);
                     setRegisteredUsers(usersArr.length);
+                    console.log('Set registeredUsers to:', usersArr.length);
                 } else {
                     console.log('Response not ok:', response.statusText);
                 }
@@ -63,6 +64,10 @@ const Header: React.FC = () => {
                 }
 
                 setOnlineUsers(1);
+                console.log('Set onlineUsers to 1');
+            } else {
+                setOnlineUsers(1);
+                console.log('No user in localStorage, set onlineUsers to 1');
             }
         };
         loadData();
