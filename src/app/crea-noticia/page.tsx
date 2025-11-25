@@ -1,43 +1,49 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CreaNoticia() {
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [enviando, setEnviando] = useState(false);
+    const [user, setUser] = useState<any>(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const userStr = localStorage.getItem("user");
+            if (userStr) {
+                try {
+                    const userObj = JSON.parse(userStr);
+                    setUser(userObj);
+                } catch {
+                    setUser(null);
+                }
+            }
+        }
+    }, []);
+
+    if (!user) {
+        return (
+            <div className="min-h-screen bg-blue-50 p-8">
+                <h1 className="text-2xl font-bold mb-4 text-center">Crear Noticia</h1>
+                <p className="text-center">Debes iniciar sesión para crear una noticia.</p>
+            </div>
+        );
+    }
+
+    if (user.tipo !== "docente") {
+        return (
+            <div className="min-h-screen bg-blue-50 p-8">
+                <h1 className="text-2xl font-bold mb-4 text-center">Crear Noticia</h1>
+                <p className="text-center">Solo los docentes pueden crear noticias.</p>
+            </div>
+        );
+    }
     const [titulo, setTitulo] = useState("");
     const [contenido, setContenido] = useState("");
     const [enviando, setEnviando] = useState(false);
 
     const handleEnviar = async () => {
         setEnviando(true);
-        let autor = "";
-        if (typeof window !== "undefined") {
-            // Buscar nick en user primero
-            const userStr = localStorage.getItem("user");
-            if (userStr) {
-                try {
-                    const userObj = JSON.parse(userStr);
-                    autor = userObj.nick || "";
-                } catch {
-                    autor = "";
-                }
-            }
-            if (!autor) {
-                const actual = localStorage.getItem("usuarioActual");
-                if (actual) {
-                    try {
-                        const obj = JSON.parse(actual);
-                        autor = obj.nick || "";
-                    } catch {
-                        autor = "";
-                    }
-                }
-            }
-        }
-        if (!autor) {
-            alert("No se ha detectado usuario. Inicia sesión como docente o alumno.");
-            setEnviando(false);
-            return;
-        }
-
         try {
             const response = await fetch('/api/noticias', {
                 method: 'POST',
@@ -47,7 +53,7 @@ export default function CreaNoticia() {
                 body: JSON.stringify({
                     titulo,
                     contenido,
-                    autor,
+                    autor: user.nick,
                 }),
             });
 
