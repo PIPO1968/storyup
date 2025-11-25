@@ -35,12 +35,11 @@ const Header: React.FC = () => {
                 if (response.ok) {
                     const usersArr = await response.json();
                     setRegisteredUsers(usersArr.length);
-                    setOnlineUsers(usersArr.length);
                 } else {
-                    setOnlineUsers(0);
+                    setRegisteredUsers(0);
                 }
             } catch (error) {
-                setOnlineUsers(0);
+                setRegisteredUsers(0);
             }
             const userStr = localStorage.getItem("user");
             if (userStr) {
@@ -59,6 +58,10 @@ const Header: React.FC = () => {
                         setIsPremium(false);
                     }
                 }
+
+                setOnlineUsers(1);
+            } else {
+                setOnlineUsers(0);
             }
         };
         loadData();
