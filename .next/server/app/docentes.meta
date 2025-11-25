@@ -1,0 +1,14 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/docentes/layout,_N_T_/docentes/page,_N_T_/docentes"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/docentes/__PAGE__",
+    "/docentes",
+    "/_index"
+  ]
+}

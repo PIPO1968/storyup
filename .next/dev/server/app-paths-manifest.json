@@ -1,10 +1,6 @@
 {
-  "/aprende-con-pipo/page": "app/aprende-con-pipo/page.js",
-  "/concursos/page": "app/concursos/page.js",
-  "/liga-premium/page": "app/liga-premium/page.js",
+  "/api/premium/route": "app/api/premium/route.js",
+  "/api/users/route": "app/api/users/route.js",
   "/page": "app/page.js",
-  "/perfil/[nick]/page": "app/perfil/[nick]/page.js",
-  "/perfil/page": "app/perfil/page.js",
-  "/premium-nuevo/page": "app/premium-nuevo/page.js",
-  "/torneos-premium/page": "app/torneos-premium/page.js"
+  "/perfil/page": "app/perfil/page.js"
 }

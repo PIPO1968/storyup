@@ -64,7 +64,7 @@ const RegisterLoginForm = ()=>{
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             isRegister ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                onSubmit: (e)=>{
+                onSubmit: async (e)=>{
                     e.preventDefault();
                     const formData = new FormData(e.target);
                     const userData = {
@@ -83,20 +83,23 @@ const RegisterLoginForm = ()=>{
                         historias: [],
                         comentarios: []
                     };
-                    let usersArr = [];
-                    const usersStr = localStorage.getItem("users");
-                    if (usersStr) {
-                        try {
-                            usersArr = JSON.parse(usersStr);
-                        } catch  {}
-                    }
-                    if (!usersArr.some((u)=>u.email === userData.email)) {
-                        usersArr.push(userData);
-                        localStorage.setItem("users", JSON.stringify(usersArr));
-                        localStorage.setItem("user", JSON.stringify(userData));
-                        window.location.href = '/perfil';
-                    } else {
-                        alert("Este email ya está registrado. Por favor, inicia sesión.");
+                    try {
+                        const response = await fetch('/api/users', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(userData)
+                        });
+                        if (response.ok) {
+                            localStorage.setItem("user", JSON.stringify(userData));
+                            window.location.href = '/perfil';
+                        } else {
+                            const error = await response.json();
+                            alert(error.error || 'Error en registro');
+                        }
+                    } catch (error) {
+                        alert('Error de conexión');
                     }
                 },
                 children: [
@@ -108,7 +111,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 62,
+                        lineNumber: 63,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -119,7 +122,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -130,7 +133,7 @@ const RegisterLoginForm = ()=>{
                                 children: "CEIP:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                lineNumber: 65,
+                                lineNumber: 66,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -141,13 +144,13 @@ const RegisterLoginForm = ()=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                lineNumber: 66,
+                                lineNumber: 67,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 64,
+                        lineNumber: 65,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -160,7 +163,7 @@ const RegisterLoginForm = ()=>{
                                 children: "Selecciona curso"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                lineNumber: 69,
+                                lineNumber: 70,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             cursos.map((curso)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -168,13 +171,13 @@ const RegisterLoginForm = ()=>{
                                     children: curso
                                 }, curso, false, {
                                     fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 72,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 68,
+                        lineNumber: 69,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -185,7 +188,7 @@ const RegisterLoginForm = ()=>{
                                 children: "Tipo de usuario:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                lineNumber: 75,
+                                lineNumber: 76,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -198,7 +201,7 @@ const RegisterLoginForm = ()=>{
                                         children: "Selecciona tipo"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                        lineNumber: 77,
+                                        lineNumber: 78,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -206,7 +209,7 @@ const RegisterLoginForm = ()=>{
                                         children: "Usuario"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 79,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -214,19 +217,19 @@ const RegisterLoginForm = ()=>{
                                         children: "Docente"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                        lineNumber: 79,
+                                        lineNumber: 80,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 74,
+                        lineNumber: 75,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -237,7 +240,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 82,
+                        lineNumber: 83,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -248,7 +251,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 83,
+                        lineNumber: 84,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -257,7 +260,7 @@ const RegisterLoginForm = ()=>{
                         children: "Registrarse"
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
@@ -266,32 +269,26 @@ const RegisterLoginForm = ()=>{
                 lineNumber: 27,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                onSubmit: (e)=>{
+                onSubmit: async (e)=>{
                     e.preventDefault();
                     const formData = new FormData(e.target);
                     const email = formData.get('email');
                     const password = formData.get('password');
-                    let usersArr = [];
-                    const usersStr = localStorage.getItem("users");
-                    if (usersStr) {
-                        try {
-                            usersArr = JSON.parse(usersStr);
-                        } catch  {}
-                    }
-                    const user = usersArr.find((u)=>u.email === email);
-                    if (user) {
-                        if (!user.password) {
-                            alert("Este usuario no tiene contraseña guardada. Por favor, regístrate de nuevo.");
-                            return;
-                        }
-                        if (user.password === password) {
-                            localStorage.setItem("user", JSON.stringify(user));
-                            window.location.href = '/perfil';
+                    try {
+                        const response = await fetch(`/api/users?email=${encodeURIComponent(email)}`);
+                        if (response.ok) {
+                            const user = await response.json();
+                            if (user.password === password) {
+                                localStorage.setItem("user", JSON.stringify(user));
+                                window.location.href = '/perfil';
+                            } else {
+                                alert("Contraseña incorrecta");
+                            }
                         } else {
-                            alert("Contraseña incorrecta");
+                            alert("Email no encontrado. Por favor, regístrate.");
                         }
-                    } else {
-                        alert("Email no encontrado. Por favor, regístrate.");
+                    } catch (error) {
+                        alert('Error de conexión');
                     }
                 },
                 children: [
@@ -303,7 +300,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 117,
+                        lineNumber: 110,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -314,7 +311,7 @@ const RegisterLoginForm = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 118,
+                        lineNumber: 111,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -323,13 +320,13 @@ const RegisterLoginForm = ()=>{
                         children: "Iniciar sesión"
                     }, void 0, false, {
                         fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                        lineNumber: 119,
+                        lineNumber: 112,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/RegisterLoginForm.tsx",
-                lineNumber: 87,
+                lineNumber: 88,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]

@@ -13,26 +13,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 const UserLink = ({ nick, className })=>{
     const [isPremium, setIsPremium] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const checkPremium = ()=>{
-            // Verificar si el usuario es Premium
-            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-            ;
+        const checkPremium = async ()=>{
+            // Verificar si el usuario es Premium desde API
+            if (nick) {
+                try {
+                    const response = await fetch(`/api/premium?nick=${nick}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setIsPremium(data.isActive);
+                    } else {
+                        setIsPremium(false);
+                    }
+                } catch (error) {
+                    console.error('Error checking premium:', error);
+                    setIsPremium(false);
+                }
+            }
         };
         // Verificar inicialmente
         checkPremium();
-        // Escuchar cambios en localStorage
-        const handleStorageChange = (e)=>{
-            if (e.key?.startsWith('premium_') || e.key === null) {
-                checkPremium();
-            }
-        };
         // Escuchar eventos personalizados de premium
         const handlePremiumUpdate = (e)=>{
             if (e.detail.nick === nick) {
                 checkPremium();
             }
         };
-        window.addEventListener('storage', handleStorageChange);
         window.addEventListener('premiumUpdate', handlePremiumUpdate);
         return ()=>{
             window.removeEventListener('storage', handleStorageChange);
@@ -48,7 +53,7 @@ const UserLink = ({ nick, className })=>{
             children: nick || "(sin nick)"
         }, void 0, false, {
             fileName: "[project]/src/components/UserLink.tsx",
-            lineNumber: 58,
+            lineNumber: 50,
             columnNumber: 16
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -66,18 +71,18 @@ const UserLink = ({ nick, className })=>{
                     children: "👑"
                 }, void 0, false, {
                     fileName: "[project]/src/components/UserLink.tsx",
-                    lineNumber: 70,
+                    lineNumber: 62,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/UserLink.tsx",
-                lineNumber: 69,
+                lineNumber: 61,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/UserLink.tsx",
-        lineNumber: 62,
+        lineNumber: 54,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -180,7 +185,18 @@ const PerfilUsuario = ()=>{
                 ]
             } : u);
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find((u)=>u.nick === selectedUser);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedUser)
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local por ahora
         const userTrofeos = updatedUsers.find((u)=>u.nick === selectedUser)?.trofeosDesbloqueados || [];
         const userBloqueados = updatedUsers.find((u)=>u.nick === selectedUser)?.trofeosBloqueados || [];
         localStorage.setItem(`trofeos_${selectedUser}`, JSON.stringify(userTrofeos));
@@ -457,7 +473,18 @@ const PerfilUsuario = ()=>{
                 likes: (u.likes || 0) + cantidad
             } : u);
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find((u)=>u.nick === nick);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedUser)
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local
         // Si el usuario actual es el modificado, actualiza también el estado user
         if (user && user.nick === nick) {
             setUser({
@@ -490,7 +517,18 @@ const PerfilUsuario = ()=>{
                 trofeosBloqueados: Array.isArray(u.trofeosBloqueados) ? u.trofeosBloqueados.filter((idx)=>idx !== trofeoIdx) : []
             } : u);
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        // Actualizar en DB
+        const updatedUser = updatedUsers.find((u)=>u.nick === selectedUser);
+        if (updatedUser) {
+            fetch('/api/users', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedUser)
+            }).catch(console.error);
+        }
+        localStorage.setItem("users", JSON.stringify(updatedUsers)); // Mantener local
         // Guardar los trofeos desbloqueados en localStorage para estadísticas
         const userTrofeos = updatedUsers.find((u)=>u.nick === selectedUser)?.trofeosDesbloqueados || [];
         const userBloqueados = updatedUsers.find((u)=>u.nick === selectedUser)?.trofeosBloqueados || [];
@@ -964,7 +1002,7 @@ const PerfilUsuario = ()=>{
                         children: "Perfil"
                     }, void 0, false, {
                         fileName: "[project]/src/app/perfil/page.tsx",
-                        lineNumber: 688,
+                        lineNumber: 715,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -972,18 +1010,18 @@ const PerfilUsuario = ()=>{
                         children: "No se ha iniciado sesión."
                     }, void 0, false, {
                         fileName: "[project]/src/app/perfil/page.tsx",
-                        lineNumber: 689,
+                        lineNumber: 716,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/perfil/page.tsx",
-                lineNumber: 687,
+                lineNumber: 714,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/app/perfil/page.tsx",
-            lineNumber: 686,
+            lineNumber: 713,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -1016,7 +1054,7 @@ const PerfilUsuario = ()=>{
                             children: "Mensaje recibido"
                         }, void 0, false, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 713,
+                            lineNumber: 740,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1027,7 +1065,7 @@ const PerfilUsuario = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 721,
+                            lineNumber: 748,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         isPremium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,14 +1078,14 @@ const PerfilUsuario = ()=>{
                                         children: "👑"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 727,
+                                        lineNumber: 754,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "PREMIUM ACTIVO"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 728,
+                                        lineNumber: 755,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1055,24 +1093,24 @@ const PerfilUsuario = ()=>{
                                         children: "✨"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 729,
+                                        lineNumber: 756,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                lineNumber: 726,
+                                lineNumber: 753,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 725,
+                            lineNumber: 752,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/perfil/page.tsx",
-                    lineNumber: 711,
+                    lineNumber: 738,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1088,27 +1126,27 @@ const PerfilUsuario = ()=>{
                                             className: "absolute top-2 right-2 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-75"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 743,
+                                            lineNumber: 770,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute top-4 left-4 w-1 h-1 bg-yellow-300 rounded-full animate-bounce opacity-60"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 744,
+                                            lineNumber: 771,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute bottom-4 right-6 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse opacity-80"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 745,
+                                            lineNumber: 772,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 742,
+                                    lineNumber: 769,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1122,18 +1160,18 @@ const PerfilUsuario = ()=>{
                                                 children: "👑"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 754,
+                                                lineNumber: 781,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 750,
+                                        lineNumber: 777,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 749,
+                                    lineNumber: 776,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 "                        ",
@@ -1149,7 +1187,7 @@ const PerfilUsuario = ()=>{
                                                     className: `w-20 h-20 rounded-full mb-2 transition-all duration-300 ${isPremium ? 'ring-4 ring-yellow-400 ring-opacity-70 shadow-lg shadow-yellow-400/50 hover:scale-110' : ''}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 759,
+                                                    lineNumber: 786,
                                                     columnNumber: 33
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 isPremium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1157,13 +1195,13 @@ const PerfilUsuario = ()=>{
                                                     children: "✨"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 768,
+                                                    lineNumber: 795,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 758,
+                                            lineNumber: 785,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1172,13 +1210,13 @@ const PerfilUsuario = ()=>{
                                             children: "Cambiar avatar"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 774,
+                                            lineNumber: 801,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 757,
+                                    lineNumber: 784,
                                     columnNumber: 55
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1191,7 +1229,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 781,
+                                            lineNumber: 808,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1199,7 +1237,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 781,
+                                    lineNumber: 808,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1209,7 +1247,7 @@ const PerfilUsuario = ()=>{
                                             children: "Nick:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 782,
+                                            lineNumber: 809,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1217,7 +1255,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 782,
+                                    lineNumber: 809,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1230,7 +1268,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 783,
+                                            lineNumber: 810,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1238,7 +1276,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 783,
+                                    lineNumber: 810,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1251,7 +1289,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 784,
+                                            lineNumber: 811,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1259,7 +1297,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 784,
+                                    lineNumber: 811,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1272,7 +1310,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 785,
+                                            lineNumber: 812,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1280,7 +1318,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 785,
+                                    lineNumber: 812,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1293,7 +1331,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 786,
+                                            lineNumber: 813,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1301,7 +1339,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 786,
+                                    lineNumber: 813,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1314,7 +1352,7 @@ const PerfilUsuario = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 787,
+                                            lineNumber: 814,
                                             columnNumber: 47
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " ",
@@ -1322,7 +1360,7 @@ const PerfilUsuario = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 787,
+                                    lineNumber: 814,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1341,14 +1379,14 @@ const PerfilUsuario = ()=>{
                                                                 children: "👍"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 793,
+                                                                lineNumber: 820,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                                 children: "Likes:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 794,
+                                                                lineNumber: 821,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1356,13 +1394,13 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.likes || 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 795,
+                                                                lineNumber: 822,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 792,
+                                                        lineNumber: 819,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1373,7 +1411,7 @@ const PerfilUsuario = ()=>{
                                                                 children: "👥"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 798,
+                                                                lineNumber: 825,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -1383,7 +1421,7 @@ const PerfilUsuario = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 799,
+                                                                lineNumber: 826,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1391,19 +1429,19 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.amigos ? displayedUser.amigos.length : 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 800,
+                                                                lineNumber: 827,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 797,
+                                                        lineNumber: 824,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 791,
+                                                lineNumber: 818,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1417,7 +1455,7 @@ const PerfilUsuario = ()=>{
                                                                 children: "📖"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 805,
+                                                                lineNumber: 832,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -1427,7 +1465,7 @@ const PerfilUsuario = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 806,
+                                                                lineNumber: 833,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1435,13 +1473,13 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.historias ? displayedUser.historias.length : 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 807,
+                                                                lineNumber: 834,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 804,
+                                                        lineNumber: 831,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1452,7 +1490,7 @@ const PerfilUsuario = ()=>{
                                                                 children: "💬"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 810,
+                                                                lineNumber: 837,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -1462,7 +1500,7 @@ const PerfilUsuario = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 811,
+                                                                lineNumber: 838,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1470,19 +1508,19 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.comentariosRecibidos || 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 812,
+                                                                lineNumber: 839,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 809,
+                                                        lineNumber: 836,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 803,
+                                                lineNumber: 830,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1496,7 +1534,7 @@ const PerfilUsuario = ()=>{
                                                                 children: "🏆"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 817,
+                                                                lineNumber: 844,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -1506,7 +1544,7 @@ const PerfilUsuario = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 818,
+                                                                lineNumber: 845,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             (()=>{
@@ -1529,14 +1567,14 @@ const PerfilUsuario = ()=>{
                                                                     children: total
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 831,
+                                                                    lineNumber: 858,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0));
                                                             })()
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 816,
+                                                        lineNumber: 843,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1547,14 +1585,14 @@ const PerfilUsuario = ()=>{
                                                                 children: "✅"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 836,
+                                                                lineNumber: 863,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                                 children: "Respuestas acertadas:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 837,
+                                                                lineNumber: 864,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1562,19 +1600,19 @@ const PerfilUsuario = ()=>{
                                                                 children: user.preguntasAcertadas || 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 838,
+                                                                lineNumber: 865,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 835,
+                                                        lineNumber: 862,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 815,
+                                                lineNumber: 842,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1588,14 +1626,14 @@ const PerfilUsuario = ()=>{
                                                                 children: "🥇"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 843,
+                                                                lineNumber: 870,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                                 children: "Competiciones:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 844,
+                                                                lineNumber: 871,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1603,13 +1641,13 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.competicionesSuperadas || 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 845,
+                                                                lineNumber: 872,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 842,
+                                                        lineNumber: 869,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1620,14 +1658,14 @@ const PerfilUsuario = ()=>{
                                                                 children: "🎉"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 848,
+                                                                lineNumber: 875,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                                 children: "Concursos:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 849,
+                                                                lineNumber: 876,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1635,36 +1673,36 @@ const PerfilUsuario = ()=>{
                                                                 children: displayedUser.concursosGanados || 0
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 850,
+                                                                lineNumber: 877,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 847,
+                                                        lineNumber: 874,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 841,
+                                                lineNumber: 868,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 790,
+                                        lineNumber: 817,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 788,
+                                    lineNumber: 815,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 736,
+                            lineNumber: 763,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1681,7 +1719,7 @@ const PerfilUsuario = ()=>{
                                                     children: t('trofeosDesbloqueados')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 860,
+                                                    lineNumber: 887,
                                                     columnNumber: 33
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1697,7 +1735,7 @@ const PerfilUsuario = ()=>{
                                                                     className: "w-10 h-10 object-contain"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 866,
+                                                                    lineNumber: 893,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 tieneTrofeo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1705,7 +1743,7 @@ const PerfilUsuario = ()=>{
                                                                     children: idx + 1
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 868,
+                                                                    lineNumber: 895,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "absolute inset-0 flex items-center justify-center pointer-events-none",
@@ -1730,7 +1768,7 @@ const PerfilUsuario = ()=>{
                                                                                     strokeWidth: "6"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 872,
+                                                                                    lineNumber: 899,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -1742,13 +1780,13 @@ const PerfilUsuario = ()=>{
                                                                                     strokeWidth: "6"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 873,
+                                                                                    lineNumber: 900,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 871,
+                                                                            lineNumber: 898,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1767,7 +1805,7 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "currentColor"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 876,
+                                                                                    lineNumber: 903,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1781,7 +1819,7 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "none"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 877,
+                                                                                    lineNumber: 904,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1791,37 +1829,37 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "#fff"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 878,
+                                                                                    lineNumber: 905,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 875,
+                                                                            lineNumber: 902,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 870,
+                                                                    lineNumber: 897,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, idx, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 865,
+                                                            lineNumber: 892,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0));
                                                     })
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 861,
+                                                    lineNumber: 888,
                                                     columnNumber: 33
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 859,
+                                            lineNumber: 886,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1834,20 +1872,20 @@ const PerfilUsuario = ()=>{
                                                             className: "absolute top-1 left-1 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-60"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 895,
+                                                            lineNumber: 922,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute bottom-2 right-2 w-1 h-1 bg-yellow-300 rounded-full animate-bounce opacity-70"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 896,
+                                                            lineNumber: 923,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 894,
+                                                    lineNumber: 921,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1859,13 +1897,13 @@ const PerfilUsuario = ()=>{
                                                             children: "👑"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 903,
+                                                            lineNumber: 930,
                                                             columnNumber: 51
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 900,
+                                                    lineNumber: 927,
                                                     columnNumber: 33
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1881,7 +1919,7 @@ const PerfilUsuario = ()=>{
                                                                     className: "w-16 h-16 object-contain"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 910,
+                                                                    lineNumber: 937,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 tieneTrofeo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1889,7 +1927,7 @@ const PerfilUsuario = ()=>{
                                                                     children: idx + 1
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 912,
+                                                                    lineNumber: 939,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "absolute inset-0 flex items-center justify-center pointer-events-none",
@@ -1914,7 +1952,7 @@ const PerfilUsuario = ()=>{
                                                                                     strokeWidth: "8"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 916,
+                                                                                    lineNumber: 943,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -1926,13 +1964,13 @@ const PerfilUsuario = ()=>{
                                                                                     strokeWidth: "8"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 917,
+                                                                                    lineNumber: 944,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 915,
+                                                                            lineNumber: 942,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1951,7 +1989,7 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "currentColor"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 920,
+                                                                                    lineNumber: 947,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1965,7 +2003,7 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "none"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 921,
+                                                                                    lineNumber: 948,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1975,43 +2013,43 @@ const PerfilUsuario = ()=>{
                                                                                     fill: "#fff"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 922,
+                                                                                    lineNumber: 949,
                                                                                     columnNumber: 61
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 919,
+                                                                            lineNumber: 946,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 914,
+                                                                    lineNumber: 941,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, idx, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 909,
+                                                            lineNumber: 936,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0));
                                                     })
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 905,
+                                                    lineNumber: 932,
                                                     columnNumber: 33
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 888,
+                                            lineNumber: 915,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 857,
+                                    lineNumber: 884,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2031,7 +2069,7 @@ const PerfilUsuario = ()=>{
                                                         children: "Enviar a usuario:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 937,
+                                                        lineNumber: 964,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2045,7 +2083,7 @@ const PerfilUsuario = ()=>{
                                                                 children: t('seleccionarUsuario')
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 944,
+                                                                lineNumber: 971,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             usuarios.filter((u, i, arr)=>arr.findIndex((x)=>x.nick === u.nick) === i).sort((a, b)=>a.nick.localeCompare(b.nick)).map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2053,19 +2091,19 @@ const PerfilUsuario = ()=>{
                                                                     children: u.nick
                                                                 }, u.nick, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 949,
+                                                                    lineNumber: 976,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 938,
+                                                        lineNumber: 965,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 936,
+                                                lineNumber: 963,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2078,12 +2116,12 @@ const PerfilUsuario = ()=>{
                                                             children: "Chat"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 955,
+                                                            lineNumber: 982,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 954,
+                                                        lineNumber: 981,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2094,7 +2132,7 @@ const PerfilUsuario = ()=>{
                                                                 children: "El chat estará disponible aquí."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 959,
+                                                                lineNumber: 986,
                                                                 columnNumber: 45
                                                             }, ("TURBOPACK compile-time value", void 0)) : chatMessages.map((msg, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "mb-2 text-sm flex justify-between items-center",
@@ -2110,7 +2148,7 @@ const PerfilUsuario = ()=>{
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                                    lineNumber: 964,
+                                                                                    lineNumber: 991,
                                                                                     columnNumber: 57
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 " ",
@@ -2118,7 +2156,7 @@ const PerfilUsuario = ()=>{
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 963,
+                                                                            lineNumber: 990,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         msg.fecha && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2126,13 +2164,13 @@ const PerfilUsuario = ()=>{
                                                                             children: msg.fecha
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                                            lineNumber: 967,
+                                                                            lineNumber: 994,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, idx, true, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 962,
+                                                                    lineNumber: 989,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0))),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2147,7 +2185,7 @@ const PerfilUsuario = ()=>{
                                                                         disabled: !selectedUser
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                                        lineNumber: 973,
+                                                                        lineNumber: 1000,
                                                                         columnNumber: 45
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2188,48 +2226,48 @@ const PerfilUsuario = ()=>{
                                                                         children: t('enviar')
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                                        lineNumber: 981,
+                                                                        lineNumber: 1008,
                                                                         columnNumber: 45
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 972,
+                                                                lineNumber: 999,
                                                                 columnNumber: 41
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 957,
+                                                        lineNumber: 984,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 953,
+                                                lineNumber: 980,
                                                 columnNumber: 33
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 934,
+                                        lineNumber: 961,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 933,
+                                    lineNumber: 960,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 856,
+                            lineNumber: 883,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/perfil/page.tsx",
-                    lineNumber: 734,
+                    lineNumber: 761,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 user.tipo === "docente" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2246,7 +2284,7 @@ const PerfilUsuario = ()=>{
                                             children: "Crear noticia"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1020,
+                                            lineNumber: 1047,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -2261,7 +2299,7 @@ const PerfilUsuario = ()=>{
                                                     onChange: (e)=>setNoticiaTitulo(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1022,
+                                                    lineNumber: 1049,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2274,7 +2312,7 @@ const PerfilUsuario = ()=>{
                                                             onChange: (e)=>setNoticiaTexto(e.target.value)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1030,
+                                                            lineNumber: 1057,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         noticiaImagen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -2287,13 +2325,13 @@ const PerfilUsuario = ()=>{
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1037,
+                                                            lineNumber: 1064,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1029,
+                                                    lineNumber: 1056,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2320,7 +2358,7 @@ const PerfilUsuario = ()=>{
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1041,
+                                                            lineNumber: 1068,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2330,7 +2368,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Seleccionar imagen"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1061,
+                                                            lineNumber: 1088,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2339,25 +2377,25 @@ const PerfilUsuario = ()=>{
                                                             children: "Publicar noticia"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1066,
+                                                            lineNumber: 1093,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1040,
+                                                    lineNumber: 1067,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1021,
+                                            lineNumber: 1048,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1019,
+                                    lineNumber: 1046,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2368,7 +2406,7 @@ const PerfilUsuario = ()=>{
                                             children: "Crear concurso"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1071,
+                                            lineNumber: 1098,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -2386,7 +2424,7 @@ const PerfilUsuario = ()=>{
                                                             onChange: (e)=>setConcursoTitulo(e.target.value)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1074,
+                                                            lineNumber: 1101,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2397,13 +2435,13 @@ const PerfilUsuario = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1081,
+                                                            lineNumber: 1108,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1073,
+                                                    lineNumber: 1100,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2413,7 +2451,7 @@ const PerfilUsuario = ()=>{
                                                     onChange: (e)=>setConcursoTexto(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1083,
+                                                    lineNumber: 1110,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2427,7 +2465,7 @@ const PerfilUsuario = ()=>{
                                                                     children: t('fechaInicio')
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 1091,
+                                                                    lineNumber: 1118,
                                                                     columnNumber: 45
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2437,13 +2475,13 @@ const PerfilUsuario = ()=>{
                                                                     onChange: (e)=>setFechaInicio(e.target.value)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 1092,
+                                                                    lineNumber: 1119,
                                                                     columnNumber: 45
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1090,
+                                                            lineNumber: 1117,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2454,7 +2492,7 @@ const PerfilUsuario = ()=>{
                                                                     children: t('fechaFin')
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 1095,
+                                                                    lineNumber: 1122,
                                                                     columnNumber: 45
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2464,13 +2502,13 @@ const PerfilUsuario = ()=>{
                                                                     onChange: (e)=>setFechaFin(e.target.value)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                                    lineNumber: 1096,
+                                                                    lineNumber: 1123,
                                                                     columnNumber: 45
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1094,
+                                                            lineNumber: 1121,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2479,31 +2517,31 @@ const PerfilUsuario = ()=>{
                                                             children: t('enviar')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1098,
+                                                            lineNumber: 1125,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1089,
+                                                    lineNumber: 1116,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1072,
+                                            lineNumber: 1099,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1070,
+                                    lineNumber: 1097,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 1018,
+                            lineNumber: 1045,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2514,7 +2552,7 @@ const PerfilUsuario = ()=>{
                                     children: t('gestionarConcursosFinalizados')
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1105,
+                                    lineNumber: 1132,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2530,7 +2568,7 @@ const PerfilUsuario = ()=>{
                                                     children: t('seleccionarConcurso')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1113,
+                                                    lineNumber: 1140,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 (()=>{
@@ -2554,14 +2592,14 @@ const PerfilUsuario = ()=>{
                                                             ]
                                                         }, c.numero, true, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1127,
+                                                            lineNumber: 1154,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)));
                                                 })()
                                             ]
                                         }, `concurso-select-${refreshKey}`, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1107,
+                                            lineNumber: 1134,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2574,7 +2612,7 @@ const PerfilUsuario = ()=>{
                                                     children: t('seleccionarGanador')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1138,
+                                                    lineNumber: 1165,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 usuarios.sort((a, b)=>a.nick.localeCompare(b.nick)).map((u, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2582,13 +2620,13 @@ const PerfilUsuario = ()=>{
                                                         children: u.nick
                                                     }, idx, false, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 1140,
+                                                        lineNumber: 1167,
                                                         columnNumber: 41
                                                     }, ("TURBOPACK compile-time value", void 0)))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1133,
+                                            lineNumber: 1160,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2598,19 +2636,19 @@ const PerfilUsuario = ()=>{
                                             children: t('asignarGanador')
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1143,
+                                            lineNumber: 1170,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1106,
+                                    lineNumber: 1133,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 1104,
+                            lineNumber: 1131,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2621,7 +2659,7 @@ const PerfilUsuario = ()=>{
                                     children: "Agregar Pregunta - Aprende con Pipo"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1153,
+                                    lineNumber: 1180,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2634,7 +2672,7 @@ const PerfilUsuario = ()=>{
                                                     children: "Curso:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1156,
+                                                    lineNumber: 1183,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2647,7 +2685,7 @@ const PerfilUsuario = ()=>{
                                                             children: "1º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1162,
+                                                            lineNumber: 1189,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2655,7 +2693,7 @@ const PerfilUsuario = ()=>{
                                                             children: "2º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1163,
+                                                            lineNumber: 1190,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2663,7 +2701,7 @@ const PerfilUsuario = ()=>{
                                                             children: "3º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1164,
+                                                            lineNumber: 1191,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2671,7 +2709,7 @@ const PerfilUsuario = ()=>{
                                                             children: "4º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1165,
+                                                            lineNumber: 1192,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2679,7 +2717,7 @@ const PerfilUsuario = ()=>{
                                                             children: "5º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1166,
+                                                            lineNumber: 1193,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2687,19 +2725,19 @@ const PerfilUsuario = ()=>{
                                                             children: "6º Primaria"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1167,
+                                                            lineNumber: 1194,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1157,
+                                                    lineNumber: 1184,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1155,
+                                            lineNumber: 1182,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2709,7 +2747,7 @@ const PerfilUsuario = ()=>{
                                                     children: "Asignatura:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1171,
+                                                    lineNumber: 1198,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2722,7 +2760,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Campeonato"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1177,
+                                                            lineNumber: 1204,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2730,7 +2768,7 @@ const PerfilUsuario = ()=>{
                                                             children: "General"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1178,
+                                                            lineNumber: 1205,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2738,7 +2776,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Matemáticas"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1179,
+                                                            lineNumber: 1206,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2746,7 +2784,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Lenguaje"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1180,
+                                                            lineNumber: 1207,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2754,7 +2792,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Literatura"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1181,
+                                                            lineNumber: 1208,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2762,7 +2800,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Historia"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1182,
+                                                            lineNumber: 1209,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2770,7 +2808,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Geografía"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1183,
+                                                            lineNumber: 1210,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2778,7 +2816,7 @@ const PerfilUsuario = ()=>{
                                                             children: "Inglés"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1184,
+                                                            lineNumber: 1211,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2786,25 +2824,25 @@ const PerfilUsuario = ()=>{
                                                             children: "Naturaleza"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1185,
+                                                            lineNumber: 1212,
                                                             columnNumber: 41
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1172,
+                                                    lineNumber: 1199,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1170,
+                                            lineNumber: 1197,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1154,
+                                    lineNumber: 1181,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2814,7 +2852,7 @@ const PerfilUsuario = ()=>{
                                             children: "Pregunta:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1190,
+                                            lineNumber: 1217,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2824,13 +2862,13 @@ const PerfilUsuario = ()=>{
                                             className: "w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-20 resize-none"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1191,
+                                            lineNumber: 1218,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1189,
+                                    lineNumber: 1216,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2840,7 +2878,7 @@ const PerfilUsuario = ()=>{
                                             children: "Respuesta:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1199,
+                                            lineNumber: 1226,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2851,13 +2889,13 @@ const PerfilUsuario = ()=>{
                                             className: "w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1200,
+                                            lineNumber: 1227,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1198,
+                                    lineNumber: 1225,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2868,12 +2906,12 @@ const PerfilUsuario = ()=>{
                                         children: "✅ Enviar Pregunta"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 1209,
+                                        lineNumber: 1236,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1208,
+                                    lineNumber: 1235,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2885,7 +2923,7 @@ const PerfilUsuario = ()=>{
                                                 children: "💡 Información:"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 1218,
+                                                lineNumber: 1245,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             " Las preguntas se agregan automáticamente al archivo correspondiente",
@@ -2899,30 +2937,30 @@ const PerfilUsuario = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 1219,
+                                                lineNumber: 1246,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 1217,
+                                        lineNumber: 1244,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1216,
+                                    lineNumber: 1243,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 1152,
+                            lineNumber: 1179,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/perfil/page.tsx",
-                    lineNumber: 1017,
+                    lineNumber: 1044,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0)),
                 user.tipo && user.tipo.toLowerCase() === "docente" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2935,7 +2973,7 @@ const PerfilUsuario = ()=>{
                                 children: t('panelAdministracion')
                             }, void 0, false, {
                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                lineNumber: 1230,
+                                lineNumber: 1257,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -2952,7 +2990,7 @@ const PerfilUsuario = ()=>{
                                             onChange: (e)=>setPalabraProhibida(e.target.value)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1233,
+                                            lineNumber: 1260,
                                             columnNumber: 41
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2961,18 +2999,18 @@ const PerfilUsuario = ()=>{
                                             children: "Seleccionar"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1240,
+                                            lineNumber: 1267,
                                             columnNumber: 41
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1232,
+                                    lineNumber: 1259,
                                     columnNumber: 37
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                lineNumber: 1231,
+                                lineNumber: 1258,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -2980,7 +3018,7 @@ const PerfilUsuario = ()=>{
                                 children: t('sistemaAntibullying')
                             }, void 0, false, {
                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                lineNumber: 1243,
+                                lineNumber: 1270,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2996,7 +3034,7 @@ const PerfilUsuario = ()=>{
                                                     children: t('avisoAntibullying')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1247,
+                                                    lineNumber: 1274,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
@@ -3006,47 +3044,47 @@ const PerfilUsuario = ()=>{
                                                             children: t('historiasTerror')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1249,
+                                                            lineNumber: 1276,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: t('perdidaLikes')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1250,
+                                                            lineNumber: 1277,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: t('mensajesUsuario')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1251,
+                                                            lineNumber: 1278,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: t('palabrasProhibidasChat')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1252,
+                                                            lineNumber: 1279,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: t('actividadConsecutiva')
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1253,
+                                                            lineNumber: 1280,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1248,
+                                                    lineNumber: 1275,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1246,
+                                            lineNumber: 1273,
                                             columnNumber: 41
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3076,7 +3114,7 @@ const PerfilUsuario = ()=>{
                                                                         strokeWidth: "10"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                                        lineNumber: 1266,
+                                                                        lineNumber: 1293,
                                                                         columnNumber: 57
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -3088,24 +3126,24 @@ const PerfilUsuario = ()=>{
                                                                         strokeWidth: "10"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                                        lineNumber: 1267,
+                                                                        lineNumber: 1294,
                                                                         columnNumber: 57
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                                lineNumber: 1265,
+                                                                lineNumber: 1292,
                                                                 columnNumber: 53
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                                            lineNumber: 1264,
+                                                            lineNumber: 1291,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1257,
+                                                    lineNumber: 1284,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 usuarioBullying && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3113,35 +3151,35 @@ const PerfilUsuario = ()=>{
                                                     children: usuarioBullying
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1272,
+                                                    lineNumber: 1299,
                                                     columnNumber: 49
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1256,
+                                            lineNumber: 1283,
                                             columnNumber: 41
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1245,
+                                    lineNumber: 1272,
                                     columnNumber: 37
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                lineNumber: 1244,
+                                lineNumber: 1271,
                                 columnNumber: 33
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/perfil/page.tsx",
-                        lineNumber: 1229,
+                        lineNumber: 1256,
                         columnNumber: 29
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/app/perfil/page.tsx",
-                    lineNumber: 1228,
+                    lineNumber: 1255,
                     columnNumber: 25
                 }, ("TURBOPACK compile-time value", void 0)),
                 user.nick === "PIPO68" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3152,7 +3190,7 @@ const PerfilUsuario = ()=>{
                             children: "Solo para PIPO68(Admin)"
                         }, void 0, false, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 1285,
+                            lineNumber: 1312,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3164,7 +3202,7 @@ const PerfilUsuario = ()=>{
                                     children: "Selecciona usuario:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1287,
+                                    lineNumber: 1314,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3178,7 +3216,7 @@ const PerfilUsuario = ()=>{
                                             children: "Selecciona un usuario"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1294,
+                                            lineNumber: 1321,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         usuarios.filter((u, i, arr)=>arr.findIndex((x)=>x.nick === u.nick) === i).sort((a, b)=>a.nick.localeCompare(b.nick)).map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3186,13 +3224,13 @@ const PerfilUsuario = ()=>{
                                                 children: u.nick
                                             }, u.nick, false, {
                                                 fileName: "[project]/src/app/perfil/page.tsx",
-                                                lineNumber: 1299,
+                                                lineNumber: 1326,
                                                 columnNumber: 45
                                             }, ("TURBOPACK compile-time value", void 0)))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1288,
+                                    lineNumber: 1315,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3204,12 +3242,12 @@ const PerfilUsuario = ()=>{
                                         children: "Añadir like"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                        lineNumber: 1303,
+                                        lineNumber: 1330,
                                         columnNumber: 37
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1302,
+                                    lineNumber: 1329,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3220,7 +3258,7 @@ const PerfilUsuario = ()=>{
                                             children: "Desbloquear trofeo:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1311,
+                                            lineNumber: 1338,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3233,7 +3271,7 @@ const PerfilUsuario = ()=>{
                                                     children: "Selecciona trofeo"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                                    lineNumber: 1317,
+                                                    lineNumber: 1344,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 TROFEOS.map((trofeo, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3241,7 +3279,7 @@ const PerfilUsuario = ()=>{
                                                         children: `Trofeo #${idx + 1} - ${trofeo.texto}`
                                                     }, "normal-" + (idx + 1), false, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 1319,
+                                                        lineNumber: 1346,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))),
                                                 __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$trofeosPremiumImport$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TROFEOS_PREMIUM"].map((trofeo, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3249,13 +3287,13 @@ const PerfilUsuario = ()=>{
                                                         children: `Premium #${idx + 1} - ${trofeo.texto}`
                                                     }, "premium-" + (idx + 1), false, {
                                                         fileName: "[project]/src/app/perfil/page.tsx",
-                                                        lineNumber: 1322,
+                                                        lineNumber: 1349,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0)))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1312,
+                                            lineNumber: 1339,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3271,7 +3309,7 @@ const PerfilUsuario = ()=>{
                                             children: "Desbloquear trofeo"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1325,
+                                            lineNumber: 1352,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3287,31 +3325,31 @@ const PerfilUsuario = ()=>{
                                             children: "Bloquear trofeo"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/perfil/page.tsx",
-                                            lineNumber: 1338,
+                                            lineNumber: 1365,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/perfil/page.tsx",
-                                    lineNumber: 1310,
+                                    lineNumber: 1337,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/perfil/page.tsx",
-                            lineNumber: 1286,
+                            lineNumber: 1313,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/perfil/page.tsx",
-                    lineNumber: 1284,
+                    lineNumber: 1311,
                     columnNumber: 25
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/perfil/page.tsx",
-            lineNumber: 710,
+            lineNumber: 737,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false);

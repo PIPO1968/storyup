@@ -785,36 +785,38 @@ const Header = ()=>{
     const [isPremium, setIsPremium] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Header.useEffect": ()=>{
-            if ("TURBOPACK compile-time truthy", 1) {
-                const usersStr = localStorage.getItem("users");
-                const userStr = localStorage.getItem("user");
-                let usersArr = [];
-                if (usersStr) {
+            const loadData = {
+                "Header.useEffect.loadData": async ()=>{
                     try {
-                        usersArr = JSON.parse(usersStr);
-                    } catch  {}
-                }
-                setRegisteredUsers(usersArr.length);
-                if (userStr) {
-                    const currentUser = JSON.parse(userStr);
-                    setUser(currentUser);
-                    // Verificar si el usuario actual es Premium
-                    const premiumInfo = localStorage.getItem(`premium_${currentUser.nick}`);
-                    if (premiumInfo) {
-                        try {
-                            const premium = JSON.parse(premiumInfo);
-                            if (new Date(premium.expiracion) > new Date()) {
-                                setIsPremium(true);
-                            }
-                        } catch  {
-                            setIsPremium(false);
+                        const response = await fetch('/api/users');
+                        if (response.ok) {
+                            const usersArr = await response.json();
+                            setRegisteredUsers(usersArr.length);
                         }
+                    } catch (error) {
+                        console.error('Error loading users:', error);
                     }
-                    setOnlineUsers(1);
-                } else {
-                    setOnlineUsers(0);
+                    const userStr = localStorage.getItem("user");
+                    if (userStr) {
+                        const currentUser = JSON.parse(userStr);
+                        setUser(currentUser);
+                        // Verificar si el usuario actual es Premium
+                        const premiumInfo = localStorage.getItem(`premium_${currentUser.nick}`);
+                        if (premiumInfo) {
+                            try {
+                                const premium = JSON.parse(premiumInfo);
+                                if (new Date(premium.expiracion) > new Date()) {
+                                    setIsPremium(true);
+                                }
+                            } catch  {
+                                setIsPremium(false);
+                            }
+                        }
+                        setOnlineUsers(1);
+                    }
                 }
-            }
+            }["Header.useEffect.loadData"];
+            loadData();
         }
     }["Header.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
@@ -1096,22 +1098,20 @@ const Sidebar = ()=>{
     }["Sidebar.useEffect"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Sidebar.useEffect": ()=>{
-            if ("TURBOPACK compile-time truthy", 1) {
-                // Cargar usuarios inscritos desde localStorage
-                const usersStr = localStorage.getItem("users");
-                if (usersStr) {
+            const loadUsers = {
+                "Sidebar.useEffect.loadUsers": async ()=>{
                     try {
-                        const usersArr = JSON.parse(usersStr);
-                        setUsuarios(usersArr);
-                    } catch  {}
+                        const response = await fetch('/api/users');
+                        if (response.ok) {
+                            const usersArr = await response.json();
+                            setUsuarios(usersArr);
+                        }
+                    } catch (error) {
+                        console.error('Error loading users:', error);
+                    }
                 }
-                // Mantener la lógica de mensajes no leídos si es necesario
-                const currentUser = localStorage.getItem("user");
-                if (currentUser) {
-                    const user = JSON.parse(currentUser);
-                // Aquí podrías agregar la lógica de mensajes si la necesitas
-                }
-            }
+            }["Sidebar.useEffect.loadUsers"];
+            loadUsers();
         }
     }["Sidebar.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1128,20 +1128,20 @@ const Sidebar = ()=>{
                                 children: link.label
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Sidebar.tsx",
-                                lineNumber: 54,
+                                lineNumber: 50,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             link.href === '/perfil' && unreadMessages && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Sidebar.tsx",
-                                lineNumber: 58,
+                                lineNumber: 54,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, link.href, true, {
                         fileName: "[project]/src/components/Sidebar.tsx",
-                        lineNumber: 53,
+                        lineNumber: 49,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1155,7 +1155,7 @@ const Sidebar = ()=>{
                                 children: "Buscar Usuario:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Sidebar.tsx",
-                                lineNumber: 65,
+                                lineNumber: 61,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1172,7 +1172,7 @@ const Sidebar = ()=>{
                                         children: "Selecciona un usuario"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Sidebar.tsx",
-                                        lineNumber: 74,
+                                        lineNumber: 70,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     usuarios.filter((u, i, arr)=>arr.findIndex((x)=>x.nick === u.nick) === i).sort((a, b)=>a.nick.localeCompare(b.nick)).map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1180,24 +1180,24 @@ const Sidebar = ()=>{
                                             children: u.nick
                                         }, u.nick, false, {
                                             fileName: "[project]/src/components/Sidebar.tsx",
-                                            lineNumber: 79,
+                                            lineNumber: 75,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Sidebar.tsx",
-                                lineNumber: 66,
+                                lineNumber: 62,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Sidebar.tsx",
-                        lineNumber: 64,
+                        lineNumber: 60,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/Sidebar.tsx",
-                    lineNumber: 63,
+                    lineNumber: 59,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 user?.tipo === "docente" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1213,29 +1213,29 @@ const Sidebar = ()=>{
                                 children: "ℹ️"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Sidebar.tsx",
-                                lineNumber: 91,
+                                lineNumber: 87,
                                 columnNumber: 39
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Sidebar.tsx",
-                        lineNumber: 87,
+                        lineNumber: 83,
                         columnNumber: 25
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/Sidebar.tsx",
-                    lineNumber: 86,
+                    lineNumber: 82,
                     columnNumber: 21
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/Sidebar.tsx",
-            lineNumber: 51,
+            lineNumber: 47,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/Sidebar.tsx",
-        lineNumber: 50,
+        lineNumber: 46,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
