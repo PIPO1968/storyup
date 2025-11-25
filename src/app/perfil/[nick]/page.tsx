@@ -30,34 +30,42 @@ export default function PerfilPorNick() {
     useEffect(() => {
         if (typeof window !== "undefined") {
             const userStr = localStorage.getItem("user");
-            const usersStr = localStorage.getItem("users");
-            if (!userStr || !usersStr) return;
-            const userObj = JSON.parse(userStr);
-            setUser(userObj);
-            const usersArr = JSON.parse(usersStr);
-            const perfilObj = usersArr.find((u: any) => u.nick === nick);
-            if (!perfilObj) {
-                setPerfil(null);
-                return;
+            if (userStr) {
+                const userObj = JSON.parse(userStr);
+                setUser(userObj);
             }
-            setPerfil(perfilObj);
-            // Amistad
-            const amigosStr = localStorage.getItem(`amigos_${userObj.nick}`);
-            let amigos = [];
-            if (amigosStr) {
-                try { amigos = JSON.parse(amigosStr); } catch { }
-            }
-            setEsAmigo(amigos.some((a: any) => a.nick === perfilObj.nick));
-            // Verificar si hay solicitud pendiente
-            const solicitudesGuardadas = localStorage.getItem(`solicitudes_${perfilObj.nick}`);
-            let solicitudes = [];
-            if (solicitudesGuardadas) {
-                try { solicitudes = JSON.parse(solicitudesGuardadas); } catch { }
-            }
-            setSolicitudPendiente(solicitudes.some((s: any) => s.origen === userObj.nick && s.estado === "pendiente"));
-            // Likes y comentarios (puedes mantener tu lógica aquí)
+            // Fetch perfil from API
+            const fetchPerfil = async () => {
+                try {
+                    const response = await fetch(`/api/users?nick=${encodeURIComponent(nick)}`);
+                    if (response.ok) {
+                        const perfilObj = await response.json();
+                        setPerfil(perfilObj);
+                        // Amistad
+                        const amigosStr = localStorage.getItem(`amigos_${user?.nick}`);
+                        let amigos = [];
+                        if (amigosStr) {
+                            try { amigos = JSON.parse(amigosStr); } catch { }
+                        }
+                        setEsAmigo(amigos.some((a: any) => a.nick === perfilObj.nick));
+                        // Verificar si hay solicitud pendiente
+                        const solicitudesGuardadas = localStorage.getItem(`solicitudes_${perfilObj.nick}`);
+                        let solicitudes = [];
+                        if (solicitudesGuardadas) {
+                            try { solicitudes = JSON.parse(solicitudesGuardadas); } catch { }
+                        }
+                        setSolicitudPendiente(solicitudes.some((s: any) => s.origen === user?.nick && s.estado === "pendiente"));
+                    } else {
+                        setPerfil(null);
+                    }
+                } catch (error) {
+                    console.error('Error fetching perfil:', error);
+                    setPerfil(null);
+                }
+            };
+            fetchPerfil();
         }
-    }, [nick]);
+    }, [nick, user?.nick]);
 
     if (!perfil) {
         return (
