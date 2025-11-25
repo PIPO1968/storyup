@@ -39,11 +39,15 @@ const Header: React.FC = () => {
                     console.log('Users loaded:', usersArr);
                     setRegisteredUsers(usersArr.length);
                     console.log('Set registeredUsers to:', usersArr.length);
+                    setOnlineUsers(usersArr.length);
+                    console.log('Set onlineUsers to:', usersArr.length);
                 } else {
                     console.log('Response not ok:', response.statusText);
+                    setOnlineUsers(0);
                 }
             } catch (error) {
                 console.error('Error loading users:', error);
+                setOnlineUsers(0);
             }
             const userStr = localStorage.getItem("user");
             if (userStr) {
@@ -62,12 +66,6 @@ const Header: React.FC = () => {
                         setIsPremium(false);
                     }
                 }
-
-                setOnlineUsers(1);
-                console.log('Set onlineUsers to 1');
-            } else {
-                setOnlineUsers(1);
-                console.log('No user in localStorage, set onlineUsers to 1');
             }
         };
         loadData();
@@ -77,11 +75,14 @@ const Header: React.FC = () => {
             {/* Logo y usuarios a la izquierda */}
             <div className="flex items-center gap-4">
                 <img src="/favicon.ico" alt="Trofeo principal" className="h-10 w-10" />
-                {registeredUsers !== null && onlineUsers !== null ? (
-                    <span>{t("usuarios")}: <span id="registered-users">{registeredUsers}</span> | {t("online")}: <span id="online-users">{onlineUsers}</span></span>
-                ) : (
-                    <span>{t("cargandoUsuarios")}</span>
-                )}
+                {(() => {
+                    console.log('Render: registeredUsers =', registeredUsers, 'onlineUsers =', onlineUsers);
+                    return registeredUsers !== null && onlineUsers !== null ? (
+                        <span>{t("usuarios")}: <span id="registered-users">{registeredUsers}</span> | {t("online")}: <span id="online-users">{onlineUsers}</span></span>
+                    ) : (
+                        <span>{t("cargandoUsuarios")}</span>
+                    );
+                })()}
                 {user && (
                     <span className="ml-4 font-bold flex items-center gap-2">
                         👤 {user.nick}

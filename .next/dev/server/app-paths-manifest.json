@@ -1,6 +1,1 @@
-{
-  "/api/premium/route": "app/api/premium/route.js",
-  "/api/users/route": "app/api/users/route.js",
-  "/page": "app/page.js",
-  "/perfil/page": "app/perfil/page.js"
-}
+{}
