@@ -989,20 +989,40 @@ const PerfilUsuario: React.FC = () => {
                                 {/* 2 bloques de trofeos de max-w-md (28rem) + gap-4 (1rem) */}
                                 <div className="w-64 flex flex-col items-start">
                                     <label htmlFor="destinatario" className="font-medium mb-2 text-sm">Enviar a usuario:</label>
-                                    <select
-                                        id="destinatario"
-                                        className="px-2 py-2 rounded border border-blue-300 bg-white w-full text-sm"
-                                        value={selectedUser}
-                                        onChange={e => setSelectedUser(e.target.value)}
-                                    >
-                                        <option value="">{t('seleccionarUsuario')}</option>
-                                        {usuarios
-                                            .filter((u, i, arr) => arr.findIndex(x => x.nick === u.nick) === i)
-                                            .sort((a, b) => a.nick.localeCompare(b.nick))
-                                            .map((u: any) => (
-                                                <option key={u.nick} value={u.nick}>{u.nick}</option>
-                                            ))}
-                                    </select>
+                                    <div className="flex gap-2 w-full">
+                                        <select
+                                            id="destinatario"
+                                            className="px-2 py-2 rounded border border-blue-300 bg-white flex-1 text-sm"
+                                            value={selectedUser}
+                                            onChange={e => setSelectedUser(e.target.value)}
+                                        >
+                                            <option value="">{t('seleccionarUsuario')}</option>
+                                            {usuarios
+                                                .filter((u, i, arr) => arr.findIndex(x => x.nick === u.nick) === i)
+                                                .sort((a, b) => a.nick.localeCompare(b.nick))
+                                                .map((u: any) => (
+                                                    <option key={u.nick} value={u.nick}>{u.nick}</option>
+                                                ))}
+                                        </select>
+                                        <button
+                                            onClick={async () => {
+                                                try {
+                                                    const response = await fetch('/api/users');
+                                                    if (response.ok) {
+                                                        const usersArr = await response.json();
+                                                        setUsuarios(usersArr);
+                                                        localStorage.setItem("users", JSON.stringify(usersArr));
+                                                    }
+                                                } catch (error) {
+                                                    console.error('Error refreshing users:', error);
+                                                }
+                                            }}
+                                            className="px-3 py-2 bg-blue-500 text-white rounded text-sm hover:bg-blue-600"
+                                            title="Actualizar lista de usuarios"
+                                        >
+                                            ↻
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="flex-1 flex flex-col items-center">
                                     <div className="flex items-center mb-4">
