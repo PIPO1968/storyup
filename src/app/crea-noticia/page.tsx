@@ -38,10 +38,6 @@ export default function CreaNoticia() {
             </div>
         );
     }
-    const [titulo, setTitulo] = useState("");
-    const [contenido, setContenido] = useState("");
-    const [enviando, setEnviando] = useState(false);
-
     const handleEnviar = async () => {
         setEnviando(true);
         try {
