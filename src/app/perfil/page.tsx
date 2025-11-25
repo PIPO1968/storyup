@@ -399,6 +399,7 @@ const PerfilUsuario: React.FC = () => {
                 setNoticiaTitulo("");
                 setNoticiaTexto("");
                 setNoticiaImagen("");
+                window.location.href = '/noticias';
             } else {
                 alert("Error al publicar la noticia.");
             }

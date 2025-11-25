@@ -55,6 +55,7 @@ export default function CreaNoticia() {
                 alert("Noticia publicada exitosamente!");
                 setTitulo("");
                 setContenido("");
+                window.location.href = '/noticias';
             } else {
                 alert("Error al publicar la noticia.");
             }
