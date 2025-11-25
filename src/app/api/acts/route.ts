@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { pool } from '../database.js';
+import { pool } from '../users/database.js';
 
 export async function POST(request: NextRequest) {
     try {

@@ -61967,3 +61967,75 @@ An issue occurred while parsing a tsconfig.json file.
   17 | >>>>>>> 9756e14fc56daba23b738072cf38baf60f2cd2a3
 
 tsconfig is not parseable: invalid JSON: Unexpected token
+[00:32:45.204] Browser ERROR   ./package.json:12:1
+Error parsing package.json file
+  10 |   },
+  11 |   "dependencies": {
+> 12 | <<<<<<< HEAD
+     | ^
+  13 |     "@prisma/client": "^7.0.1",
+  14 |     "drizzle-orm": "^0.30.10",
+  15 |     "next": "16.0.0",
+
+package.json is not parseable: invalid JSON: key must be a string at line 12 column 1
+[00:32:45.204] Browser ERROR   ./tsconfig.json:13:29
+An issue occurred while parsing a tsconfig.json file.
+  11 |     "strict": true,
+  12 |     "noEmit": true,
+> 13 |     "esModuleInterop": true,
+     |                             ^
+> 14 | <<<<<<< HEAD
+     | ^^
+  15 |     "allowSyntheticDefaultImports": true,
+  16 | =======
+  17 | >>>>>>> 9756e14fc56daba23b738072cf38baf60f2cd2a3
+
+tsconfig is not parseable: invalid JSON: Unexpected token
+[00:32:45.344] Browser ERROR   ./package.json:12:1
+Error parsing package.json file
+  10 |   },
+  11 |   "dependencies": {
+> 12 | <<<<<<< HEAD
+     | ^
+  13 |     "@prisma/client": "^7.0.1",
+  14 |     "drizzle-orm": "^0.30.10",
+  15 |     "next": "16.0.0",
+
+package.json is not parseable: invalid JSON: key must be a string at line 12 column 1
+[00:32:45.344] Browser ERROR   ./tsconfig.json:13:29
+An issue occurred while parsing a tsconfig.json file.
+  11 |     "strict": true,
+  12 |     "noEmit": true,
+> 13 |     "esModuleInterop": true,
+     |                             ^
+> 14 | <<<<<<< HEAD
+     | ^^
+  15 |     "allowSyntheticDefaultImports": true,
+  16 | =======
+  17 | >>>>>>> 9756e14fc56daba23b738072cf38baf60f2cd2a3
+
+tsconfig is not parseable: invalid JSON: Unexpected token
+[00:32:47.814] Browser ERROR   ./package.json:12:1
+Error parsing package.json file
+  10 |   },
+  11 |   "dependencies": {
+> 12 | <<<<<<< HEAD
+     | ^
+  13 |     "@prisma/client": "^7.0.1",
+  14 |     "drizzle-orm": "^0.30.10",
+  15 |     "next": "16.0.0",
+
+package.json is not parseable: invalid JSON: key must be a string at line 12 column 1
+[00:32:47.814] Browser ERROR   ./tsconfig.json:13:29
+An issue occurred while parsing a tsconfig.json file.
+  11 |     "strict": true,
+  12 |     "noEmit": true,
+> 13 |     "esModuleInterop": true,
+     |                             ^
+> 14 | <<<<<<< HEAD
+     | ^^
+  15 |     "allowSyntheticDefaultImports": true,
+  16 | =======
+  17 | >>>>>>> 9756e14fc56daba23b738072cf38baf60f2cd2a3
+
+tsconfig is not parseable: invalid JSON: Unexpected token
