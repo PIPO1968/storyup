@@ -1,0 +1,322 @@
+[
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual las plantas producen su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el planeta más cercano al Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos huesos tiene el cuerpo humano?",
+    "respuesta": "Doscientos seis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal terrestre más grande?",
+    "respuesta": "Elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas respiramos para vivir?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año bisiesto?",
+    "respuesta": "Trescientos sesenta y seis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual el agua se convierte en vapor?",
+    "respuesta": "Evaporación",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos planetas hay en el sistema solar?",
+    "respuesta": "Ocho",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más ligero?",
+    "respuesta": "Litio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que produce miel?",
+    "respuesta": "Abeja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más grande del mundo?",
+    "respuesta": "Asia",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene el arcoíris?",
+    "respuesta": "Siete",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un cuello largo?",
+    "respuesta": "Jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más pequeño del mundo?",
+    "respuesta": "Ártico",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos dientes tiene un adulto promedio?",
+    "respuesta": "Treinta y dos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta conocido como el planeta azul?",
+    "respuesta": "Tierra",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el animal terrestre más alto?",
+    "respuesta": "Jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un hexágono?",
+    "respuesta": "Seis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual las plantas absorben dióxido de carbono?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos huesos tiene un bebé al nacer?",
+    "respuesta": "Trescientos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene rayas negras y blancas?",
+    "respuesta": "Cebra",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más abundante en la corteza terrestre?",
+    "respuesta": "Aluminio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año?",
+    "respuesta": "Trescientos sesenta y cinco",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el agua y tiene tentáculos?",
+    "respuesta": "Pulpo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el planeta más alejado del Sol?",
+    "respuesta": "Neptuno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos litros de agua tiene un metro cúbico?",
+    "respuesta": "Mil",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el gas más abundante en la atmósfera?",
+    "respuesta": "Nitrógeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un octágono?",
+    "respuesta": "Ocho",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual las plantas liberan oxígeno?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más grande del mundo?",
+    "respuesta": "Ballena azul",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene febrero en un año bisiesto?",
+    "respuesta": "Veintinueve",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más pequeño?",
+    "respuesta": "Oceanía",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene la bandera de España?",
+    "respuesta": "Dos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene manchas y corre rápido?",
+    "respuesta": "Guepardo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un siglo?",
+    "respuesta": "Treinta y seis mil quinientos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el hielo y nada?",
+    "respuesta": "Pingüino",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más utilizado en la construcción?",
+    "respuesta": "Acero",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un milenio?",
+    "respuesta": "Trescientos sesenta y cinco mil",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua?",
+    "respuesta": "Tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más lluvioso del mundo?",
+    "respuesta": "India",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un trimestre?",
+    "respuesta": "Noventa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un pico y nada?",
+    "respuesta": "Pato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más seco del mundo?",
+    "respuesta": "Chile",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un lustro?",
+    "respuesta": "Mil ochocientos veinticinco",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua dulce?",
+    "respuesta": "Tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más joven del mundo?",
+    "respuesta": "Sudán del Sur",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un bimestre?",
+    "respuesta": "Sesenta",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua salada?",
+    "respuesta": "Cangrejo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño de América?",
+    "respuesta": "San Cristóbal y Nieves",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año bisiesto?",
+    "respuesta": "Trescientos sesenta y seis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene alas y produce seda?",
+    "respuesta": "Gusano de seda",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuál es el país más caluroso del mundo?",
+    "respuesta": "Kuwait",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un dodecágono?",
+    "respuesta": "Doce",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en la playa?",
+    "respuesta": "Cangrejo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua?",
+    "respuesta": "Tortuga",
+    "categoria": "Naturaleza"
+  }
+]

@@ -1,0 +1,712 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra el desierto del Sahara?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país se encuentra la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué montaña es la más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Brasil?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas?",
+    "respuesta": "Suecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar está entre Europa y África?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene forma de bota?",
+    "respuesta": "Italia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más frío?",
+    "respuesta": "Antártida",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor población del mundo?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera atraviesa Sudamérica de norte a sur?",
+    "respuesta": "Andes",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño del mundo?",
+    "respuesta": "Vaticano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río pasa por Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tokio como capital?",
+    "respuesta": "Japón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano está al oeste de América?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la selva amazónica?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla es conocida como la más grande del mundo?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nueva Delhi como capital?",
+    "respuesta": "India",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué desierto es el más grande del mundo?",
+    "respuesta": "Sahara",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Canberra como capital?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar está al norte de Turquía?",
+    "respuesta": "Negro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Ottawa como capital?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Berlín como capital?",
+    "respuesta": "Alemania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Moscú como capital?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Londres como capital?",
+    "respuesta": "Inglaterra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de París como capital?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Pekín como capital?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Roma como capital?",
+    "respuesta": "Italia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Madrid como capital?",
+    "respuesta": "España",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Lisboa como capital?",
+    "respuesta": "Portugal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Buenos Aires como capital?",
+    "respuesta": "Argentina",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Santiago como capital?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Lima como capital?",
+    "respuesta": "Perú",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Bogotá como capital?",
+    "respuesta": "Colombia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Caracas como capital?",
+    "respuesta": "Venezuela",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Quito como capital?",
+    "respuesta": "Ecuador",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Montevideo como capital?",
+    "respuesta": "Uruguay",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Asunción como capital?",
+    "respuesta": "Paraguay",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de La Paz como capital?",
+    "respuesta": "Bolivia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Ciudad de México como capital?",
+    "respuesta": "México",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Guatemala como capital?",
+    "respuesta": "Guatemala",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tegucigalpa como capital?",
+    "respuesta": "Honduras",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de San Salvador como capital?",
+    "respuesta": "El Salvador",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Managua como capital?",
+    "respuesta": "Nicaragua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de San José como capital?",
+    "respuesta": "Costa Rica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Panamá como capital?",
+    "respuesta": "Panamá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de La Habana como capital?",
+    "respuesta": "Cuba",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Kingston como capital?",
+    "respuesta": "Jamaica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nassau como capital?",
+    "respuesta": "Bahamas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Puerto Príncipe como capital?",
+    "respuesta": "Haití",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Santo Domingo como capital?",
+    "respuesta": "República Dominicana",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Belmopán como capital?",
+    "respuesta": "Belice",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Brasilia como capital?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Paramaribo como capital?",
+    "respuesta": "Surinam",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Georgetown como capital?",
+    "respuesta": "Guyana",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Cayena como capital?",
+    "respuesta": "Guayana Francesa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nuuk como capital?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Reikiavik como capital?",
+    "respuesta": "Islandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Dublín como capital?",
+    "respuesta": "Irlanda",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Oslo como capital?",
+    "respuesta": "Noruega",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Estocolmo como capital?",
+    "respuesta": "Suecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Copenhague como capital?",
+    "respuesta": "Dinamarca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Helsinki como capital?",
+    "respuesta": "Finlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tallin como capital?",
+    "respuesta": "Estonia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Riga como capital?",
+    "respuesta": "Letonia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Vilna como capital?",
+    "respuesta": "Lituania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Varsovia como capital?",
+    "respuesta": "Polonia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Praga como capital?",
+    "respuesta": "Chequia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Bratislava como capital?",
+    "respuesta": "Eslovaquia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Viena como capital?",
+    "respuesta": "Austria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Budapest como capital?",
+    "respuesta": "Hungría",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Bucarest como capital?",
+    "respuesta": "Rumanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Sofía como capital?",
+    "respuesta": "Bulgaria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Belgrado como capital?",
+    "respuesta": "Serbia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Sarajevo como capital?",
+    "respuesta": "Bosnia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Zagreb como capital?",
+    "respuesta": "Croacia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Liubliana como capital?",
+    "respuesta": "Eslovenia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Podgorica como capital?",
+    "respuesta": "Montenegro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tirana como capital?",
+    "respuesta": "Albania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Atenas como capital?",
+    "respuesta": "Grecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Skopie como capital?",
+    "respuesta": "Macedonia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Ankara como capital?",
+    "respuesta": "Turquía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nicosia como capital?",
+    "respuesta": "Chipre",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Moscú como capital?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Kiev como capital?",
+    "respuesta": "Ucrania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Minsk como capital?",
+    "respuesta": "Bielorrusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Chisináu como capital?",
+    "respuesta": "Moldavia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tiflis como capital?",
+    "respuesta": "Georgia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Ereván como capital?",
+    "respuesta": "Armenia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Bakú como capital?",
+    "respuesta": "Azerbaiyán",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un continente?",
+    "respuesta": "Tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuántos continentes hay en el mundo?",
+    "respuesta": "Siete",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un océano?",
+    "respuesta": "Agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuántos océanos hay en el mundo?",
+    "respuesta": "Cinco",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un río?",
+    "respuesta": "Corriente",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una montaña?",
+    "respuesta": "Elevación",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un desierto?",
+    "respuesta": "Árido",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una península?",
+    "respuesta": "Tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un archipiélago?",
+    "respuesta": "Islas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima?",
+    "respuesta": "Tiempo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mapa en geografía y para qué se utiliza?",
+    "respuesta": "Representación",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un globo terráqueo y qué representa?",
+    "respuesta": "Esfera",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un paralelo en un mapa y qué indica?",
+    "respuesta": "Línea",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un meridiano en un mapa y cuál es su función?",
+    "respuesta": "Línea",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué línea divide la Tierra en hemisferios norte y sur?",
+    "respuesta": "Ecuador",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un polo geográfico y dónde se encuentra?",
+    "respuesta": "Extremo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un hemisferio en geografía y cómo se divide?",
+    "respuesta": "Mitad",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una cordillera y cómo se forma?",
+    "respuesta": "Montañas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una llanura y dónde se encuentra?",
+    "respuesta": "Terreno",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un altiplano y en qué se diferencia de una montaña?",
+    "respuesta": "Elevado",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un golfo?",
+    "respuesta": "Agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una bahía?",
+    "respuesta": "Agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un cabo?",
+    "respuesta": "Tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una isla?",
+    "respuesta": "Tierra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un istmo?",
+    "respuesta": "Unión",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una meseta?",
+    "respuesta": "Elevación",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un glaciar?",
+    "respuesta": "Hielo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un delta y cómo se forma?",
+    "respuesta": "Sedimentos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una cuenca hidrográfica?",
+    "respuesta": "Territorio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un afluente y qué función tiene?",
+    "respuesta": "Río",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una desembocadura de un río?",
+    "respuesta": "Final",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un estuario y dónde se encuentra?",
+    "respuesta": "Río",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un lago y cómo se forma?",
+    "respuesta": "Agua",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es una laguna y en qué se diferencia de un lago?",
+    "respuesta": "Pequeña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un pantano y para qué se utiliza?",
+    "respuesta": "Reserva",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un océano y cuántos existen?",
+    "respuesta": "Cinco",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un mar y cómo se diferencia de un océano?",
+    "respuesta": "Menor",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima tropical?",
+    "respuesta": "Cálido",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima polar?",
+    "respuesta": "Frío",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima desértico?",
+    "respuesta": "Seco",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima templado?",
+    "respuesta": "Moderado",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima ecuatorial?",
+    "respuesta": "Húmedo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un clima mediterráneo?",
+    "respuesta": "Suave",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por ser frío y encontrarse en zonas montañosas?",
+    "respuesta": "Montaña",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por ser húmedo y estar cerca de océanos?",
+    "respuesta": "Oceánico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por tener temperaturas extremas y estar lejos de océanos?",
+    "respuesta": "Continental",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por lluvias estacionales causadas por monzones?",
+    "respuesta": "Monzónico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por ser seco y tener poca vegetación?",
+    "respuesta": "Árido",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué es un trozo de tierra completamente rodeado de agua?",
+    "respuesta": "Isla",
+    "categoria": "Geografía"
+  }
+]

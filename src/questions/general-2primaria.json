@@ -1,0 +1,637 @@
+[
+  {
+    "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the plural of 'child'?",
+    "respuesta": "children",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 + 8?",
+    "respuesta": "15",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal pone huevos y vuela?",
+    "respuesta": "Pájaro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'gato' in English?",
+    "respuesta": "cat",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué continente está Brasil?",
+    "respuesta": "América",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el inventor de la bombilla?",
+    "respuesta": "Edison",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué instrumento se usa para medir la temperatura?",
+    "respuesta": "Termómetro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el color que resulta de mezclar azul y amarillo?",
+    "respuesta": "Verde",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para escuchar?",
+    "respuesta": "Oído",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el que las plantas fabrican su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién descubrió América?",
+    "respuesta": "Colón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the past of 'go'?",
+    "respuesta": "went",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal es conocido como el rey de la selva?",
+    "respuesta": "León",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 6?",
+    "respuesta": "54",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más grande?",
+    "respuesta": "Asia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana es el primero?",
+    "respuesta": "Lunes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el satélite natural de la Tierra?",
+    "respuesta": "Luna",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué fruta es amarilla y se pela para comer?",
+    "respuesta": "Plátano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'libro' in English?",
+    "respuesta": "book",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué aparato sirve para ver objetos lejanos?",
+    "respuesta": "Telescopio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de cambiar de sólido a líquido?",
+    "respuesta": "Fusión",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal vive en el agua y tiene aletas?",
+    "respuesta": "Pez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el órgano principal de la respiración?",
+    "respuesta": "Pulmón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta está más cerca del Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién pintó la Mona Lisa?",
+    "respuesta": "Leonardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the opposite of 'big'?",
+    "respuesta": "small",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el inventor del teléfono?",
+    "respuesta": "Bell",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa y grandes orejas?",
+    "respuesta": "Elefante",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más usado en monedas?",
+    "respuesta": "Cobre",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 - 37?",
+    "respuesta": "63",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta absorbe agua?",
+    "respuesta": "Raíz",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de pasar de líquido a gas?",
+    "respuesta": "Evaporación",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y camina lento?",
+    "respuesta": "Tortuga",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el hueso más largo del cuerpo humano?",
+    "respuesta": "Fémur",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el dios principal de los griegos?",
+    "respuesta": "Zeus",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'escuela' in English?",
+    "respuesta": "school",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el barco de Colón?",
+    "respuesta": "Santa María",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para medir el tiempo?",
+    "respuesta": "Reloj de sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Macedonia?",
+    "respuesta": "Alejandro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 dividido entre 3?",
+    "respuesta": "4",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué ciudad vivían los romanos?",
+    "respuesta": "Roma",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas negras y blancas?",
+    "respuesta": "Cebra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el líquido vital para los seres vivos?",
+    "respuesta": "Agua",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para ver?",
+    "respuesta": "Ojo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de cambiar de gas a líquido?",
+    "respuesta": "Condensación",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el dios de la guerra romano?",
+    "respuesta": "Marte",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the past of 'eat'?",
+    "respuesta": "ate",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está Machu Picchu?",
+    "respuesta": "Perú",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama la civilización de las pirámides de México?",
+    "respuesta": "Maya",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué invento permitió volar?",
+    "respuesta": "Avión",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el rey de España cuando Colón viajó?",
+    "respuesta": "Fernando",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué ciudad está la Estatua de la Libertad?",
+    "respuesta": "Nueva York",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del trueno nórdico?",
+    "respuesta": "Thor",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 2?",
+    "respuesta": "50",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Roma?",
+    "respuesta": "Romana",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador francés famoso?",
+    "respuesta": "Napoleón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está el Taj Mahal?",
+    "respuesta": "India",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el primer libro impreso?",
+    "respuesta": "Biblia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los fenicios para navegar?",
+    "respuesta": "Barco",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el dios del mar griego?",
+    "respuesta": "Poseidón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'madre' in English?",
+    "respuesta": "mother",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Petra?",
+    "respuesta": "Jordania",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el emperador romano que construyó el muro en Inglaterra?",
+    "respuesta": "Adriano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para escribir?",
+    "respuesta": "Papiro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el dios de la sabiduría egipcio?",
+    "respuesta": "Thot",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 30 + 17?",
+    "respuesta": "47",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Atenas?",
+    "respuesta": "Grecia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el monumento más famoso de París?",
+    "respuesta": "Eiffel",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los griegos para competir?",
+    "respuesta": "Olimpiadas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el faraón niño?",
+    "respuesta": "Tutankamón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "What is the opposite of 'cold'?",
+    "respuesta": "hot",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Berlín?",
+    "respuesta": "Alemania",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la guerra griego?",
+    "respuesta": "Ares",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Egipto?",
+    "respuesta": "Egipcia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que persiguió a los cristianos?",
+    "respuesta": "Nerón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Moscú?",
+    "respuesta": "Rusia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la medicina griego?",
+    "respuesta": "Asclepio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los chinos para viajar?",
+    "respuesta": "Brújula",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Inglaterra famoso por sus esposas?",
+    "respuesta": "Enrique",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'hermano' in English?",
+    "respuesta": "brother",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Lisboa?",
+    "respuesta": "Portugal",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la muerte egipcio?",
+    "respuesta": "Osiris",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en México?",
+    "respuesta": "Azteca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que dividió el imperio?",
+    "respuesta": "Diocleciano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 - 9?",
+    "respuesta": "9",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Viena?",
+    "respuesta": "Austria",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la belleza griego?",
+    "respuesta": "Afrodita",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para construir?",
+    "respuesta": "Ladrillo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el faraón que construyó la Gran Pirámide?",
+    "respuesta": "Keops",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Praga?",
+    "respuesta": "Chequia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la música griego?",
+    "respuesta": "Apolo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Perú?",
+    "respuesta": "Inca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que construyó el Coliseo?",
+    "respuesta": "Vespasiano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Estambul?",
+    "respuesta": "Turquía",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la luna egipcio?",
+    "respuesta": "Jonsu",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los griegos para contar historias?",
+    "respuesta": "Teatro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Francia durante la Revolución?",
+    "respuesta": "Luis",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'ventana' in English?",
+    "respuesta": "window",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Bruselas?",
+    "respuesta": "Bélgica",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la agricultura griego?",
+    "respuesta": "Deméter",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en India?",
+    "respuesta": "India",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que legalizó el cristianismo?",
+    "respuesta": "Constantino",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Oslo?",
+    "respuesta": "Noruega",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del vino griego?",
+    "respuesta": "Dionisio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para navegar?",
+    "respuesta": "Barco",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el faraón que tenía una máscara dorada?",
+    "respuesta": "Tutankamón",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Varsovia?",
+    "respuesta": "Polonia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la caza griego?",
+    "respuesta": "Artemisa",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Jordania?",
+    "respuesta": "Nabatea",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que construyó el Panteón?",
+    "respuesta": "Adriano",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Budapest?",
+    "respuesta": "Hungría",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del fuego griego?",
+    "respuesta": "Hefesto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué inventaron los chinos para iluminar?",
+    "respuesta": "Faro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Macedonia que conquistó Persia?",
+    "respuesta": "Alejandro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "How do you say 'flor' in English?",
+    "respuesta": "flower",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Atenas?",
+    "respuesta": "Grecia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la tierra egipcio?",
+    "respuesta": "Geb",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Turquía?",
+    "respuesta": "Hitita",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'perro' en inglés?",
+    "respuesta": "dog",
+    "categoria": "General"
+  }
+]

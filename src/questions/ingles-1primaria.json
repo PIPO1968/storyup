@@ -1,0 +1,362 @@
+[
+  {
+    "pregunta": "¿Cómo se dice 'gato' en inglés?",
+    "respuesta": "Cat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'rojo' en inglés?",
+    "respuesta": "Red",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'escuela' en inglés?",
+    "respuesta": "School",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'comer' en inglés?",
+    "respuesta": "Eat",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'madre' en inglés?",
+    "respuesta": "Mother",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿De qué color es 'blue'?",
+    "respuesta": "Azul",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿De qué color es 'yellow'?",
+    "respuesta": "Amarillo",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿De qué color es 'green'?",
+    "respuesta": "Verde",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿De qué color es 'black'?",
+    "respuesta": "Negro",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿De qué color es 'white'?",
+    "respuesta": "Blanco",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué número es 'one'?",
+    "respuesta": "Uno",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué número es 'five'?",
+    "respuesta": "Cinco",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué número es 'ten'?",
+    "respuesta": "Diez",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué número es 'seven'?",
+    "respuesta": "Siete",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué número es 'three'?",
+    "respuesta": "Tres",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué día es 'Sunday'?",
+    "respuesta": "Domingo",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué día es 'Wednesday'?",
+    "respuesta": "Miércoles",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué día es 'Thursday'?",
+    "respuesta": "Jueves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué mes es 'January'?",
+    "respuesta": "Enero",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué mes es 'April'?",
+    "respuesta": "Abril",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué mes es 'August'?",
+    "respuesta": "Agosto",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué mes es 'December'?",
+    "respuesta": "Diciembre",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué mes es 'June'?",
+    "respuesta": "Junio",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Quién es 'father'?",
+    "respuesta": "Padre",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Quién es 'sister'?",
+    "respuesta": "Hermana",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Quién es 'brother'?",
+    "respuesta": "Hermano",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Quién es 'grandmother'?",
+    "respuesta": "Abuela",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Quién es 'uncle'?",
+    "respuesta": "Tío",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'run'?",
+    "respuesta": "Correr",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'jump'?",
+    "respuesta": "Saltar",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'sleep'?",
+    "respuesta": "Dormir",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'read'?",
+    "respuesta": "Leer",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'write'?",
+    "respuesta": "Escribir",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'book'?",
+    "respuesta": "Libro",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'table'?",
+    "respuesta": "Mesa",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'chair'?",
+    "respuesta": "Silla",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'window'?",
+    "respuesta": "Ventana",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'door'?",
+    "respuesta": "Puerta",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'hola' en inglés?",
+    "respuesta": "Hello",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'adiós' en inglés?",
+    "respuesta": "Goodbye",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'buenos días' en inglés?",
+    "respuesta": "Goodmorning",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'buenas noches' en inglés?",
+    "respuesta": "Goodnight",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se dice 'gracias' en inglés?",
+    "respuesta": "Thanks",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se pregunta la edad en inglés?",
+    "respuesta": "Howold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se pregunta el nombre en inglés?",
+    "respuesta": "Whatname",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se pregunta la hora en inglés?",
+    "respuesta": "Whattime",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se pregunta dónde vives en inglés?",
+    "respuesta": "Where",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se pregunta cómo estás en inglés?",
+    "respuesta": "Howareyou",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'sun'?",
+    "respuesta": "Sol",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'cloud'?",
+    "respuesta": "Nube",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'snow'?",
+    "respuesta": "Nieve",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'wind'?",
+    "respuesta": "Viento",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'happy'?",
+    "respuesta": "Feliz",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'sad'?",
+    "respuesta": "Triste",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'angry'?",
+    "respuesta": "Enfadado",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'scared'?",
+    "respuesta": "Asustado",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué significa 'surprised'?",
+    "respuesta": "Sorprendido",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'head'?",
+    "respuesta": "Cabeza",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'hand'?",
+    "respuesta": "Mano",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'foot'?",
+    "respuesta": "Pie",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'eye'?",
+    "respuesta": "Ojo",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'mouth'?",
+    "respuesta": "Boca",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'shirt'?",
+    "respuesta": "Camisa",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'pants'?",
+    "respuesta": "Pantalón",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'shoe'?",
+    "respuesta": "Zapato",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'skirt'?",
+    "respuesta": "Falda",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'coat'?",
+    "respuesta": "Abrigo",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'house'?",
+    "respuesta": "Casa",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'park'?",
+    "respuesta": "Parque",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'street'?",
+    "respuesta": "Calle",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'shop'?",
+    "respuesta": "Tienda",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Qué es 'school'?",
+    "respuesta": "Escuela",
+    "categoria": "Inglés"
+  }
+]

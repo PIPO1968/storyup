@@ -1,0 +1,467 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Brasil?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el océano más grande?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el desierto del Sahara?",
+    "respuesta": "Egipto",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la montaña más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene forma de bota?",
+    "respuesta": "Italia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el mar que baña las costas de Grecia?",
+    "respuesta": "Egeo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Australia?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la capital de Argentina?",
+    "respuesta": "Buenos Aires",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país limita con México al norte?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Portugal?",
+    "respuesta": "Lisboa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Tokio?",
+    "respuesta": "Japón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lago más grande de África?",
+    "respuesta": "Victoria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Moscú?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Francia?",
+    "respuesta": "París",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Egipto?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la isla más grande del mundo?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Berlín?",
+    "respuesta": "Alemania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Italia?",
+    "respuesta": "Roma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el río Amazonas?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el desierto más frío del mundo?",
+    "respuesta": "Antártida",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Londres?",
+    "respuesta": "Reino Unido",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de México?",
+    "respuesta": "Ciudad de México",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Canadá?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar entre España y Marruecos?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Pekín?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Alemania?",
+    "respuesta": "Berlín",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el monte Kilimanjaro?",
+    "respuesta": "Tanzania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el río más largo de Europa?",
+    "respuesta": "Volga",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Sídney?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Japón?",
+    "respuesta": "Tokio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Sudáfrica?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la península donde está España?",
+    "respuesta": "Ibérica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de El Cairo?",
+    "respuesta": "Egipto",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Rusia?",
+    "respuesta": "Moscú",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el lago Titicaca?",
+    "respuesta": "Perú",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente más pequeño?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nueva Delhi?",
+    "respuesta": "India",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Brasil?",
+    "respuesta": "Brasilia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Turquía?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Italia?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Estambul?",
+    "respuesta": "Turquía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Grecia?",
+    "respuesta": "Atenas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el río Danubio?",
+    "respuesta": "Alemania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la cordillera más larga del mundo?",
+    "respuesta": "Andes",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de París?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de China?",
+    "respuesta": "Pekín",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está India?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Japón?",
+    "respuesta": "Japón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Buenos Aires?",
+    "respuesta": "Argentina",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Reino Unido?",
+    "respuesta": "Londres",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el río Misisipi?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la isla donde está Irlanda?",
+    "respuesta": "Irlanda",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Lisboa?",
+    "respuesta": "Portugal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Australia?",
+    "respuesta": "Canberra",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Marruecos?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Rusia?",
+    "respuesta": "Báltico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Roma?",
+    "respuesta": "Italia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Egipto?",
+    "respuesta": "El Cairo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el lago Baikal?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente donde está Brasil?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Atenas?",
+    "respuesta": "Grecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Turquía?",
+    "respuesta": "Ankara",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está España?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de México?",
+    "respuesta": "Caribe",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Berlín?",
+    "respuesta": "Alemania",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Argentina?",
+    "respuesta": "Buenos Aires",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el río Nilo?",
+    "respuesta": "Egipto",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la isla más grande de España?",
+    "respuesta": "Mallorca",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Moscú?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Perú?",
+    "respuesta": "Lima",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Italia?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Brasil?",
+    "respuesta": "Atlántico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Tokio?",
+    "respuesta": "Japón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el lago Victoria?",
+    "respuesta": "Uganda",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente donde está China?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Nueva York?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Canadá?",
+    "respuesta": "Ottawa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Alemania?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Australia?",
+    "respuesta": "Coral",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Lima?",
+    "respuesta": "Perú",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de India?",
+    "respuesta": "Nueva Delhi",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué país está el río Volga?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la isla más grande de Italia?",
+    "respuesta": "Sicilia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Canberra?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Portugal?",
+    "respuesta": "Lisboa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Francia?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mar que baña las costas de Argentina?",
+    "respuesta": "Atlántico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la ciudad de Ankara?",
+    "respuesta": "Turquía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Japón?",
+    "respuesta": "Tokio",
+    "categoria": "Geografía"
+  }
+]

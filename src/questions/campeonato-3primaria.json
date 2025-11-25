@@ -1,0 +1,647 @@
+[
+  {
+    "pregunta": "¿Cuántos continentes hay en el mundo?",
+    "respuesta": "Siete",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año?",
+    "respuesta": "Trescientos sesenta y cinco",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un hexágono?",
+    "respuesta": "Seis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el planeta más cercano al Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos huesos tiene el cuerpo humano?",
+    "respuesta": "Doscientos seis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal terrestre más grande?",
+    "respuesta": "Elefante",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de España?",
+    "respuesta": "Madrid",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene la bandera de Francia?",
+    "respuesta": "Tres",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos planetas hay en el sistema solar?",
+    "respuesta": "Ocho",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más utilizado en la construcción?",
+    "respuesta": "Acero",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual las plantas producen su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene febrero en un año bisiesto?",
+    "respuesta": "Veintinueve",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el inventor del teléfono?",
+    "respuesta": "Bell",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el idioma más hablado en el mundo?",
+    "respuesta": "Chino",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un octágono?",
+    "respuesta": "Ocho",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más pequeño?",
+    "respuesta": "Oceanía",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una joroba?",
+    "respuesta": "Camello",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Francia?",
+    "respuesta": "París",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos dientes tiene un adulto promedio?",
+    "respuesta": "Treinta y dos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más pequeño del mundo?",
+    "respuesta": "Ártico",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos anillos tiene el logo de los Juegos Olímpicos?",
+    "respuesta": "Cinco",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que pone huevos y tiene plumas?",
+    "respuesta": "Gallina",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más habitantes del mundo?",
+    "respuesta": "China",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un pentágono?",
+    "respuesta": "Cinco",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual el agua se convierte en vapor?",
+    "respuesta": "Evaporación",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más grande del mundo?",
+    "respuesta": "Ballena azul",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene el arcoíris?",
+    "respuesta": "Siete",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente donde está Egipto?",
+    "respuesta": "África",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el deporte más popular del mundo?",
+    "respuesta": "Fútbol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene una semana?",
+    "respuesta": "Siete",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene rayas negras y blancas?",
+    "respuesta": "Cebra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño del mundo?",
+    "respuesta": "Vaticano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un cuadrado?",
+    "respuesta": "Cuatro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta donde vivimos?",
+    "respuesta": "Tierra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el río más caudaloso del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene una hora?",
+    "respuesta": "Sesenta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el agua y tiene aletas?",
+    "respuesta": "Pez",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más ligero?",
+    "respuesta": "Litio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año bisiesto?",
+    "respuesta": "Trescientos sesenta y seis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos segundos tiene un minuto?",
+    "respuesta": "Sesenta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vuela y pone huevos?",
+    "respuesta": "Pájaro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más largo del mundo?",
+    "respuesta": "Chile",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un triángulo?",
+    "respuesta": "Tres",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para medir el tiempo?",
+    "respuesta": "Reloj",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más poblado?",
+    "respuesta": "Asia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un mes?",
+    "respuesta": "Treinta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el mar y tiene tentáculos?",
+    "respuesta": "Pulpo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más islas en el mundo?",
+    "respuesta": "Suecia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un decágono?",
+    "respuesta": "Diez",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta más cercano al Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el animal que tiene colmillos y vive en la selva?",
+    "respuesta": "Tigre",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene abril?",
+    "respuesta": "Treinta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un cuello largo?",
+    "respuesta": "Jirafa",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más montañoso del mundo?",
+    "respuesta": "Nepal",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene la bandera de Italia?",
+    "respuesta": "Tres",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta que tiene anillos?",
+    "respuesta": "Saturno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el animal que vive en el hielo y nada?",
+    "respuesta": "Pingüino",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene junio?",
+    "respuesta": "Treinta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una melena y ruge?",
+    "respuesta": "León",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más lluvioso del mundo?",
+    "respuesta": "India",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un heptágono?",
+    "respuesta": "Siete",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que produce miel?",
+    "respuesta": "Abeja",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más frío del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un siglo?",
+    "respuesta": "Treinta y seis mil quinientos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene manchas y corre rápido?",
+    "respuesta": "Guepardo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más caluroso del mundo?",
+    "respuesta": "Kuwait",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un eneágono?",
+    "respuesta": "Nueve",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el agua y tiene caparazón?",
+    "respuesta": "Tortuga",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más rico del mundo?",
+    "respuesta": "Luxemburgo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un milenio?",
+    "respuesta": "Trescientos sesenta y cinco mil",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene alas y produce seda?",
+    "respuesta": "Gusano de seda",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más seco del mundo?",
+    "respuesta": "Chile",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un dodecágono?",
+    "respuesta": "Doce",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en la playa?",
+    "respuesta": "Cangrejo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más alto del mundo?",
+    "respuesta": "Bután",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un lustro?",
+    "respuesta": "Mil ochocientos veinticinco",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un pico y nada?",
+    "respuesta": "Pato",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más antiguo del mundo?",
+    "respuesta": "Irán",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un icoságono?",
+    "respuesta": "Veinte",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua dulce?",
+    "respuesta": "Tortuga",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más joven del mundo?",
+    "respuesta": "Sudán del Sur",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un bimestre?",
+    "respuesta": "Sesenta",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua salada?",
+    "respuesta": "Cangrejo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño de América?",
+    "respuesta": "San Cristóbal y Nieves",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un trimestre?",
+    "respuesta": "Noventa",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un caparazón y vive en el agua?",
+    "respuesta": "Tortuga",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "cuento",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el personaje principal de 'El Quijote'?",
+    "respuesta": "Quijote",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una metáfora?",
+    "respuesta": "comparación",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién es el autor de 'Platero y yo'?",
+    "respuesta": "Juan Ramón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una rima?",
+    "respuesta": "sonido",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde ocurre una historia?",
+    "respuesta": "escenario",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es un poema?",
+    "respuesta": "verso",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es un personaje secundario?",
+    "respuesta": "apoyo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Caperucita Roja'?",
+    "respuesta": "Perrault",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una moraleja?",
+    "respuesta": "enseñanza",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La Cenicienta'?",
+    "respuesta": "Perrault",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "relato",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Barco de Vapor'?",
+    "respuesta": "Sierra i Fabra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "historia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Mafalda'?",
+    "respuesta": "Quino",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Hobbit'?",
+    "respuesta": "Tolkien",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué es una obra de teatro?",
+    "respuesta": "drama",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El diario de Ana Frank'?",
+    "respuesta": "Ana",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Harry Potter'?",
+    "respuesta": "Rowling",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Matilda'?",
+    "respuesta": "Dahl",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El pequeño Nicolás'?",
+    "respuesta": "Goscinny",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Charlie y la fábrica de chocolate'?",
+    "respuesta": "Dahl",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El libro de la selva'?",
+    "respuesta": "Kipling",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Pinocho'?",
+    "respuesta": "Collodi",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Alicia en el país de las maravillas'?",
+    "respuesta": "Carroll",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Peter Pan'?",
+    "respuesta": "Barrie",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El patito feo'?",
+    "respuesta": "Andersen",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El gato con botas'?",
+    "respuesta": "Perrault",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Robinson Crusoe'?",
+    "respuesta": "Defoe",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La isla del tesoro'?",
+    "respuesta": "Stevenson",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El flautista de Hamelín'?",
+    "respuesta": "Anónimo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El mago de Oz'?",
+    "respuesta": "Baum",
+    "categoria": "campeonato"
+  }
+]

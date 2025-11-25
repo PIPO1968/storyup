@@ -1,0 +1,477 @@
+[
+  {
+    "pregunta": "¿Cuánto es 12+7?",
+    "respuesta": "19",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8+6?",
+    "respuesta": "14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15+5?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9+9?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13+4?",
+    "respuesta": "17",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7+8?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11+3?",
+    "respuesta": "14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 6+12?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 10+10?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5+15?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15-7?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18-9?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 20-12?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14-6?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 17-8?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13-5?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16-7?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 19-10?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12-4?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11-3?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 2x6?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3x5?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 4x4?",
+    "respuesta": "16",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5x3?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 2x8?",
+    "respuesta": "16",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3x7?",
+    "respuesta": "21",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 4x5?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 2x9?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3x6?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5x2?",
+    "respuesta": "10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 5 manzanas y te dan 3 más, ¿cuántas tienes?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 10 caramelos y comes 4, ¿cuántos quedan?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 12 lápices y pierdes 5, ¿cuántos quedan?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si compras 3 pelotas y te regalan 2, ¿cuántas tienes?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 6 globos y se rompen 2, ¿cuántos quedan?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 8 galletas y das 3, ¿cuántas tienes?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 9 euros y gastas 4, ¿cuántos quedan?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 15 caramelos y comes 5, ¿cuántos quedan?",
+    "respuesta": "10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "Si tienes 20 monedas y pierdes 8, ¿cuántas quedan?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue: 2, 4, 6, ...?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue: 5, 10, 15, ...?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número falta: 3, 6, __, 12?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número falta: 7, __, 11, 13?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue: 1, 3, 5, ...?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número falta: 4, 8, __, 16?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue: 10, 20, 30, ...?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número falta: 2, 5, __, 11?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue: 6, 12, 18, ...?",
+    "respuesta": "24",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número falta: 9, __, 15, 18?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un triángulo?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un cuadrado?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos vértices tiene un rectángulo?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un pentágono?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un hexágono?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué figura tiene todos sus lados iguales y 4 ángulos?",
+    "respuesta": "cuadrado",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué figura tiene 6 lados?",
+    "respuesta": "hexágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué figura tiene 5 lados?",
+    "respuesta": "pentágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué figura tiene 4 lados y no es cuadrado?",
+    "respuesta": "rectángulo",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos centímetros tiene un metro?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene una semana?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos meses tiene un año?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos euros son dos monedas de 2€?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene una hora?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos segundos tiene un minuto?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos billetes de 5€ hacen 20€?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene febrero?",
+    "respuesta": "28",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene abril?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos euros son tres monedas de 1€?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es mayor: 12 o 9?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es menor: 7 o 15?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es mayor: 18 o 14?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es menor: 5 o 2?",
+    "respuesta": "2",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es mayor: 20 o 19?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es menor: 11 o 8?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es mayor: 17 o 17?",
+    "respuesta": "17",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es menor: 6 o 6?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es mayor: 13 o 12?",
+    "respuesta": "13",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es menor: 10 o 9?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7x2?",
+    "respuesta": "14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8x3?",
+    "respuesta": "24",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9x2?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5x4?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 6x3?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12-5?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14-9?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16-8?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18-6?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 20-15?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos vértices tiene un triángulo?",
+    "respuesta": "3",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos vértices tiene un pentágono?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos vértices tiene un hexágono?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos vértices tiene un octágono?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene marzo?",
+    "respuesta": "31",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos euros son cinco monedas de 2€?",
+    "respuesta": "10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene media hora?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  }
+]

@@ -1,0 +1,341 @@
+[
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica el nombre de una persona, animal o cosa?",
+    "respuesta": "Sustantivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué signo se usa al final de una pregunta?",
+    "respuesta": "Interrogación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que describe una acción?",
+    "respuesta": "Verbo",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'camión'?",
+    "respuesta": "O",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la parte de la oración que indica quién realiza la acción?",
+    "respuesta": "Sujeto",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'feliz'?",
+    "respuesta": "Contento",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'grande'?",
+    "respuesta": "Pequeño",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que forman una idea completa?",
+    "respuesta": "Oración",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué signo se usa para expresar sorpresa?",
+    "respuesta": "Exclamación",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que acompaña al sustantivo para indicar cantidad o posesión?",
+    "respuesta": "Determinante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué letra se escribe siempre con mayúscula al inicio de una oración?",
+    "respuesta": "Primera",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que sustituye al nombre en una oración?",
+    "respuesta": "Pronombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'rápido'?",
+    "respuesta": "Veloz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'alegre'?",
+    "respuesta": "Triste",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de letras que forman una palabra?",
+    "respuesta": "Sílabas",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'árbol'?",
+    "respuesta": "A",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la parte de la oración que indica qué hace el sujeto?",
+    "respuesta": "Predicado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'bonito'?",
+    "respuesta": "Hermoso",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'cerca'?",
+    "respuesta": "Lejos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el signo que se usa para separar elementos en una lista?",
+    "respuesta": "Coma",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'mamá'?",
+    "respuesta": "A",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica el lugar, tiempo, modo o cantidad?",
+    "respuesta": "Adverbio",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'hablar'?",
+    "respuesta": "Conversar",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'fácil'?",
+    "respuesta": "Difícil",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'canción'?",
+    "respuesta": "O",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que une dos partes de una oración?",
+    "respuesta": "Conjunción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'caminar'?",
+    "respuesta": "Andar",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'oscuro'?",
+    "respuesta": "Claro",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el signo que se usa para indicar diálogo en un texto?",
+    "respuesta": "Guion",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'fútbol'?",
+    "respuesta": "U",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica características del sustantivo?",
+    "respuesta": "Adjetivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'pequeño'?",
+    "respuesta": "Chico",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'frío'?",
+    "respuesta": "Calor",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el signo que se usa para finalizar una oración?",
+    "respuesta": "Punto"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'sofá'?",
+    "respuesta": "A",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica cantidad exacta?",
+    "respuesta": "Número",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'gritar'?",
+    "respuesta": "Vociferar",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'rápido'?",
+    "respuesta": "Lento",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que riman entre sí?",
+    "respuesta": "Rima",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'inglés'?",
+    "respuesta": "E",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica posesión?",
+    "respuesta": "Posesivo",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'casa'?",
+    "respuesta": "Hogar",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'feliz'?",
+    "respuesta": "Triste",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama el signo que se usa para dividir palabras al final de un renglón?",
+    "respuesta": "Guion",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'país'?",
+    "respuesta": "I",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica el número de sustantivos?",
+    "respuesta": "Plural",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'amigo'?",
+    "respuesta": "Compañero",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'alto'?",
+    "respuesta": "Bajo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que tienen un significado similar?",
+    "respuesta": "Sinónimos",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'café'?",
+    "respuesta": "E",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica el género del sustantivo?",
+    "respuesta": "Artículo",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'rápido'?",
+    "respuesta": "Ligero",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'pesado'?",
+    "respuesta": "Ligero",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que tienen un significado opuesto?",
+    "respuesta": "Antónimos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'sofá'?",
+    "respuesta": "A",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica el tiempo del verbo?",
+    "respuesta": "Tiempo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'hermoso'?",
+    "respuesta": "Bello",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'cerca'?",
+    "respuesta": "Lejos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que forman un poema?",
+    "respuesta": "Verso",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica una acción?",
+    "respuesta": "Verbo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que describe un objeto?",
+    "respuesta": "Adjetivo",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué letra lleva tilde en la palabra 'camión'?",
+    "respuesta": "O",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de palabras que forman una idea completa?",
+    "respuesta": "Oración",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué palabra es un sinónimo de 'feliz'?",
+    "respuesta": "Contento",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra es un antónimo de 'grande'?",
+    "respuesta": "Pequeño",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que acompaña al sustantivo?",
+    "respuesta": "Determinante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué signo se usa para expresar sorpresa?",
+    "respuesta": "Exclamación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama la palabra que indica cantidad?",
+    "respuesta": "Numeral",
+    "categoria": "Lenguaje"
+  }
+]

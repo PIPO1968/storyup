@@ -1,0 +1,637 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra el desierto del Sahara?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué océano se encuentra el Triángulo de las Bermudas?",
+    "respuesta": "Atlántico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas?",
+    "respuesta": "Suecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está el río Nilo?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más poblado del mundo?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano es el más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra la cordillera de los Andes?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más pequeño del mundo?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra el río Yangtsé?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño del mundo?",
+    "respuesta": "Vaticano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera atraviesa siete países de América del Sur?",
+    "respuesta": "Andes",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el desierto más grande del mundo?",
+    "respuesta": "Antártico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor extensión de selva tropical?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente se encuentra el monte Kilimanjaro?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de volcanes activos?",
+    "respuesta": "Indonesia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué océano rodea la Antártida?",
+    "respuesta": "Glacial",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país es conocido como la Tierra del Sol Naciente?",
+    "respuesta": "Japón",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Londres?",
+    "respuesta": "Támesis",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de fronteras terrestres?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué isla es la más grande del mundo?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor altitud promedio?",
+    "respuesta": "Bután",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mar está ubicado al norte de Turquía?",
+    "respuesta": "Negro",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de husos horarios?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río es el más largo de Europa?",
+    "respuesta": "Volga",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor densidad de población?",
+    "respuesta": "Mónaco",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué cordillera se encuentra en América del Norte?",
+    "respuesta": "Rocosas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas?",
+    "respuesta": "Nepal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de parques nacionales?",
+    "respuesta": "Estados Unidos",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos navegables?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas habitadas?",
+    "respuesta": "Indonesia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de desiertos?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de costas?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos de agua dulce?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de reservas naturales?",
+    "respuesta": "Sudáfrica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de volcanes inactivos?",
+    "respuesta": "Filipinas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de selvas tropicales?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos subterráneos?",
+    "respuesta": "México",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en el hemisferio sur?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en Europa?",
+    "respuesta": "Suiza",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en Asia?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en África?",
+    "respuesta": "Uganda",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas en Oceanía?",
+    "respuesta": "Papúa Nueva Guinea",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral en el Caribe?",
+    "respuesta": "Belice",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en el Ártico?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en América del Sur?",
+    "respuesta": "Argentina",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en Europa?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en América del Norte?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas en Asia?",
+    "respuesta": "Indonesia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral en el Pacífico?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en América del Norte?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en Asia?",
+    "respuesta": "Nepal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en América del Sur?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en Europa?",
+    "respuesta": "Finlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas en América del Norte?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral en el Índico?",
+    "respuesta": "Maldivas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en Oceanía?",
+    "respuesta": "Nueva Zelanda",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en África?",
+    "respuesta": "Etiopía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en Oceanía?",
+    "respuesta": "Papúa Nueva Guinea",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en el hemisferio sur?",
+    "respuesta": "Argentina",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas en el hemisferio norte?",
+    "respuesta": "Suecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral en el hemisferio sur?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en el hemisferio norte?",
+    "respuesta": "Groenlandia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en el hemisferio sur?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en el hemisferio norte?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en el hemisferio norte?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas en el hemisferio sur?",
+    "respuesta": "Indonesia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de arrecifes de coral en el hemisferio norte?",
+    "respuesta": "Belice",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares en el hemisferio sur?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de montañas en el hemisferio norte?",
+    "respuesta": "Nepal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de ríos en el hemisferio sur?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos en el hemisferio sur?",
+    "respuesta": "Argentina",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama un conjunto de montañas alineadas?",
+    "respuesta": "Cordillera",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la desembocadura de un río en varios brazos?",
+    "respuesta": "Delta",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término se utiliza para una extensión de tierra rodeada de agua por tres lados?",
+    "respuesta": "Península",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama un conjunto de islas cercanas entre sí?",
+    "respuesta": "Archipiélago",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mide la distancia al ecuador en grados?",
+    "respuesta": "Latitud",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mide la distancia al meridiano de Greenwich en grados?",
+    "respuesta": "Longitud",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una línea imaginaria que une los polos de la Tierra?",
+    "respuesta": "Meridiano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe una línea imaginaria paralela al ecuador?",
+    "respuesta": "Paralelo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué tipo de mapa representa el relieve de un territorio?",
+    "respuesta": "Topográfico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el clima caracterizado por temperaturas cálidas y lluvias abundantes?",
+    "respuesta": "Tropical",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por temperaturas extremadamente bajas?",
+    "respuesta": "Polar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término se utiliza para describir un ecosistema con características similares?",
+    "respuesta": "Bioma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una región árida con muy poca vegetación?",
+    "respuesta": "Desierto",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe un bosque tropical con gran biodiversidad?",
+    "respuesta": "Selva",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una elevación de terreno plana en su cima?",
+    "respuesta": "Meseta",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término describe una depresión entre montañas?",
+    "respuesta": "Valle",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una gran masa de hielo que se desplaza lentamente?",
+    "respuesta": "Glaciar",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe una corriente natural de agua que fluye hacia el mar?",
+    "respuesta": "Río",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una acumulación de agua rodeada de tierra?",
+    "respuesta": "Lago",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término se utiliza para describir una gran extensión de agua salada?",
+    "respuesta": "Océano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una gran masa de tierra rodeada por océanos?",
+    "respuesta": "Continente",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por inviernos suaves y veranos calurosos?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por la ausencia casi total de lluvias?",
+    "respuesta": "Desértico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se encuentra en regiones cercanas al ecuador?",
+    "respuesta": "Ecuatorial",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima se caracteriza por lluvias frecuentes y temperaturas moderadas?",
+    "respuesta": "Oceánico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué clima tiene inviernos muy fríos y veranos cálidos?",
+    "respuesta": "Continental",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama un material que se encuentra en la naturaleza y es útil para los humanos?",
+    "respuesta": "Recurso natural",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre reciben los recursos que se regeneran de forma natural?",
+    "respuesta": "Renovables",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre reciben los recursos que no se regeneran o lo hacen muy lentamente?",
+    "respuesta": "No renovables",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué mide la cantidad de habitantes por kilómetro cuadrado?",
+    "respuesta": "Densidad de población",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama un área con características geográficas o culturales similares?",
+    "respuesta": "Región",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término se utiliza para describir el límite entre dos territorios?",
+    "respuesta": "Frontera",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la ciudad principal de un país o región?",
+    "respuesta": "Capital",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe un lugar donde los barcos pueden atracar?",
+    "respuesta": "Puerto",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una entrada de mar en la costa, generalmente amplia y profunda?",
+    "respuesta": "Bahía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término describe una entrada de mar más grande que una bahía?",
+    "respuesta": "Golfo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una extensión de tierra que sobresale en el mar?",
+    "respuesta": "Cabo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe una gran extensión de terreno plano?",
+    "respuesta": "Llanura",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama una región elevada y plana?",
+    "respuesta": "Altiplano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe un río que desemboca en otro río más grande?",
+    "respuesta": "Afluente",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el área que drena un río y sus afluentes?",
+    "respuesta": "Cuenca hidrográfica",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término describe una formación subterránea que almacena agua?",
+    "respuesta": "Acuífero",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de seres vivos y su entorno?",
+    "respuesta": "Ecosistema",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe un área protegida para conservar la naturaleza?",
+    "respuesta": "Parque nacional",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama un área destinada a la conservación de especies?",
+    "respuesta": "Reserva natural",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término describe el lugar donde vive una especie?",
+    "respuesta": "Hábitat",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cómo se llama la variedad de especies en un ecosistema?",
+    "respuesta": "Biodiversidad",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el efecto de las actividades humanas en el medio ambiente?",
+    "respuesta": "Impacto ambiental",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Qué término describe el uso equilibrado de los recursos naturales?",
+    "respuesta": "Desarrollo sostenible",
+    "categoria": "Geografía"
+  }
+]

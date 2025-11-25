@@ -1,0 +1,372 @@
+[
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 x 12?",
+    "respuesta": "144",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿En qué año comenzó la Primera Guerra Mundial?",
+    "respuesta": "1914",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un sustantivo?",
+    "respuesta": "Nombre",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La casa de Bernarda Alba'?",
+    "respuesta": "Lorca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo?",
+    "respuesta": "Acción",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué océano es el más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un adjetivo?",
+    "respuesta": "Calificativo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+    "respuesta": "Versalles",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un bioma?",
+    "respuesta": "Ecosistema",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre?",
+    "respuesta": "Sustituto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué figura literaria consiste en la repetición de sonidos?",
+    "respuesta": "Aliteración",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un ecosistema?",
+    "respuesta": "Naturaleza",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Cien años de soledad'?",
+    "respuesta": "García Márquez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un complemento directo?",
+    "respuesta": "Objeto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas?",
+    "respuesta": "Suecia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un delta?",
+    "respuesta": "Desembocadura",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Odisea'?",
+    "respuesta": "Homero",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo irregular?",
+    "respuesta": "Cambio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un recurso renovable?",
+    "respuesta": "Inagotable",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa topográfico?",
+    "respuesta": "Relieve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Platero y yo'?",
+    "respuesta": "Jiménez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un sustantivo propio?",
+    "respuesta": "Nombre",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un clima polar?",
+    "respuesta": "Frío",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Divina Comedia'?",
+    "respuesta": "Dante",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo transitivo?",
+    "respuesta": "Objeto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un recurso no renovable?",
+    "respuesta": "Limitado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Crimen y castigo'?",
+    "respuesta": "Dostoyevski",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo reflexivo?",
+    "respuesta": "Acción propia",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un impacto ambiental?",
+    "respuesta": "Efecto",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió '1984'?",
+    "respuesta": "Orwell",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo auxiliar?",
+    "respuesta": "Apoyo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un desarrollo sostenible?",
+    "respuesta": "Equilibrio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Matar a un ruiseñor'?",
+    "respuesta": "Lee",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo copulativo?",
+    "respuesta": "Enlace",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un hábitat?",
+    "respuesta": "Entorno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El viejo y el mar'?",
+    "respuesta": "Hemingway",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo modal?",
+    "respuesta": "Posibilidad",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es una biodiversidad?",
+    "respuesta": "Variedad",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La metamorfosis'?",
+    "respuesta": "Kafka",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo compuesto?",
+    "respuesta": "Dos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un parque nacional?",
+    "respuesta": "Protección",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El nombre de la rosa'?",
+    "respuesta": "Eco",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en infinitivo?",
+    "respuesta": "Base",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es una reserva natural?",
+    "respuesta": "Conservación",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El retrato de Dorian Gray'?",
+    "respuesta": "Wilde",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en gerundio?",
+    "respuesta": "Acción",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa climático?",
+    "respuesta": "Clima",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en participio?",
+    "respuesta": "Resultado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa hidrográfico?",
+    "respuesta": "Ríos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Celestina'?",
+    "respuesta": "Rojas",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en presente?",
+    "respuesta": "Ahora",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa económico?",
+    "respuesta": "Recursos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en pasado?",
+    "respuesta": "Antes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa de población?",
+    "respuesta": "Habitantes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La casa de Bernarda Alba'?",
+    "respuesta": "Lorca",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en futuro?",
+    "respuesta": "Después",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué es un mapa de carreteras?",
+    "respuesta": "Vías",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 4?",
+    "respuesta": "100",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'desafío' al inglés?",
+    "respuesta": "Challenge",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 144 ÷ 12?",
+    "respuesta": "12",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'ambición' al inglés?",
+    "respuesta": "Ambition",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 8?",
+    "respuesta": "56",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'responsabilidad' al inglés?",
+    "respuesta": "Responsibility",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 81 ÷ 9?",
+    "respuesta": "9",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'logro' al inglés?",
+    "respuesta": "Achievement",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 6?",
+    "respuesta": "90",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'perseverancia' al inglés?",
+    "respuesta": "Perseverance",
+    "categoria": "General"
+  }
+]

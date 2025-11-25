@@ -1,0 +1,437 @@
+[
+  {
+    "pregunta": "¿Cuánto es 12 x 4?",
+    "respuesta": "48",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 45 dividido entre 5?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 menos 27?",
+    "respuesta": "73",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el doble de 18?",
+    "respuesta": "36",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 9?",
+    "respuesta": "81",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 50?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 + 27?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el triple de 7?",
+    "respuesta": "21",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 7?",
+    "respuesta": "56",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 36 dividido entre 6?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14 + 29?",
+    "respuesta": "43",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 5?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 x 3?",
+    "respuesta": "33",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 23 y 19?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 60 dividido entre 4?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 7 x 8?",
+    "respuesta": "56",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 dividido entre 2?",
+    "respuesta": "50",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 80 menos 35?",
+    "respuesta": "45",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 6?",
+    "respuesta": "54",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 + 17?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 64?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 x 5?",
+    "respuesta": "90",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 72 dividido entre 8?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 + 27?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 6?",
+    "respuesta": "36",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 4?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 45 y 55?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 81 dividido entre 9?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 90 menos 47?",
+    "respuesta": "43",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 7?",
+    "respuesta": "49",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 22 + 18?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 36?",
+    "respuesta": "18",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16 x 3?",
+    "respuesta": "48",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 56 dividido entre 7?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 19 + 21?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 4?",
+    "respuesta": "16",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 x 5?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 33 y 27?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 dividido entre 4?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 70 menos 28?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 8?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 24 + 16?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 48?",
+    "respuesta": "24",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14 x 6?",
+    "respuesta": "84",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 63 dividido entre 9?",
+    "respuesta": "7",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 17 + 23?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 7?",
+    "respuesta": "49",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 x 5?",
+    "respuesta": "65",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 28 y 32?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 96 dividido entre 8?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 60 menos 19?",
+    "respuesta": "41",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 6 x 9?",
+    "respuesta": "54",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 21 + 19?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 54?",
+    "respuesta": "27",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 x 4?",
+    "respuesta": "72",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 84 dividido entre 7?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 + 25?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 8?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 x 6?",
+    "respuesta": "66",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 37 y 23?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 dividido entre 5?",
+    "respuesta": "20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 80 menos 39?",
+    "respuesta": "41",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 5 x 9?",
+    "respuesta": "45",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 26 + 14?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 42?",
+    "respuesta": "21",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 17 x 3?",
+    "respuesta": "51",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 72 dividido entre 6?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 + 22?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 3?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 x 6?",
+    "respuesta": "72",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 29 y 31?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 dividido entre 9?",
+    "respuesta": "10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 50 menos 9?",
+    "respuesta": "41",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 6?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 20 + 20?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 38?",
+    "respuesta": "19",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16 x 4?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 60 dividido entre 5?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 22 + 18?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el cuadrado de 2?",
+    "respuesta": "4",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 x 6?",
+    "respuesta": "78",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la suma de 35 y 25?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 96 dividido entre 12?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la resta de 70 menos 29?",
+    "respuesta": "41",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 5?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 24 + 16?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es la mitad de 60?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  }
+]

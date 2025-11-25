@@ -1,0 +1,412 @@
+[
+  {
+    "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "Cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra hechos reales o ficticios?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria compara dos cosas usando 'como'?",
+    "respuesta": "Símil",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un poema?",
+    "respuesta": "Versos",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra hechos reales de una persona?",
+    "respuesta": "biografía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye dragones y magia?",
+    "respuesta": "Fantástico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una metáfora?",
+    "respuesta": "Comparación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto enseña una lección moral?",
+    "respuesta": "Fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Romeo y Julieta'?",
+    "respuesta": "Shakespeare",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una leyenda?",
+    "respuesta": "Historia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Cien años de soledad'?",
+    "respuesta": "García",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto describe lugares o personas?",
+    "respuesta": "Descripción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria da cualidades humanas a objetos?",
+    "respuesta": "Personificación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "Relato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una hipérbole?",
+    "respuesta": "Exageración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra hechos históricos?",
+    "respuesta": "Crónica",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Divina Comedia'?",
+    "respuesta": "Dante",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "Historia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Moby Dick'?",
+    "respuesta": "Melville",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto expresa sentimientos?",
+    "respuesta": "Lírico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria repite sonidos?",
+    "respuesta": "Aliteración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un ensayo?",
+    "respuesta": "Opinión",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El viejo y el mar'?",
+    "respuesta": "Hemingway",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye dioses y héroes?",
+    "respuesta": "Mitológico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un epíteto?",
+    "respuesta": "Adjetivo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se representa en un escenario?",
+    "respuesta": "Teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Metamorfosis'?",
+    "respuesta": "Kafka",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un verso?",
+    "respuesta": "Línea",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Crimen y castigo'?",
+    "respuesta": "Dostoievski",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa exageraciones?",
+    "respuesta": "Hipérbole",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una obra de teatro?",
+    "respuesta": "Drama",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El retrato de Dorian Gray'?",
+    "respuesta": "Wilde",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un oxímoron?",
+    "respuesta": "Contradicción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra aventuras?",
+    "respuesta": "Novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió '1984'?",
+    "respuesta": "Orwell",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una estrofa?",
+    "respuesta": "Conjunto",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Aleph'?",
+    "respuesta": "Borges",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa preguntas retóricas?",
+    "respuesta": "Interrogación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un prólogo?",
+    "respuesta": "Introducción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Ulises'?",
+    "respuesta": "Joyce",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye amor y tragedia?",
+    "respuesta": "Romántico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una paradoja?",
+    "respuesta": "Contradicción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra viajes?",
+    "respuesta": "Relato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Iliada'?",
+    "respuesta": "Homero",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un personaje?",
+    "respuesta": "Protagonista",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Hobbit'?",
+    "respuesta": "Tolkien",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa comparaciones?",
+    "respuesta": "Símil",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un narrador?",
+    "respuesta": "Relator",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Las mil y una noches'?",
+    "respuesta": "Anónimo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye cuentos de terror?",
+    "respuesta": "Horror",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un arquetipo?",
+    "respuesta": "Modelo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra historias cortas?",
+    "respuesta": "Cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Perfume'?",
+    "respuesta": "Süskind",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un clímax?",
+    "respuesta": "Punto",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Fahrenheit 451'?",
+    "respuesta": "Bradbury",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa sonidos similares?",
+    "respuesta": "Aliteración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un epílogo?",
+    "respuesta": "Conclusión",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Gran Gatsby'?",
+    "respuesta": "Fitzgerald",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye aventuras espaciales?",
+    "respuesta": "Ciencia ficción",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra mitos?",
+    "respuesta": "Mitológico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Drácula'?",
+    "respuesta": "Stoker",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un conflicto?",
+    "respuesta": "Problema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Frankenstein'?",
+    "respuesta": "Shelley",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa opuestos?",
+    "respuesta": "Antítesis",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un desenlace?",
+    "respuesta": "Final",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La sombra del viento'?",
+    "respuesta": "Zafón",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye cuentos infantiles?",
+    "respuesta": "Infantil",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un tema?",
+    "respuesta": "Idea",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El nombre de la rosa'?",
+    "respuesta": "Eco",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa exageraciones?",
+    "respuesta": "Hipérbole",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un diálogo?",
+    "respuesta": "Conversación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La casa de los espíritus'?",
+    "respuesta": "Allende",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye sátiras?",
+    "respuesta": "Satírico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un argumento?",
+    "respuesta": "Trama",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El amor en los tiempos del cólera'?",
+    "respuesta": "García",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué figura literaria usa repeticiones?",
+    "respuesta": "Anáfora",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un acto?",
+    "respuesta": "Parte",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La tregua'?",
+    "respuesta": "Benedetti",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario incluye comedias?",
+    "respuesta": "Cómico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un personaje secundario?",
+    "respuesta": "Apoyo",
+    "categoria": "Literatura"
+  }
+]

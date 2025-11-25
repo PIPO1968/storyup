@@ -1,0 +1,687 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Nilo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico descubrió la gravedad?",
+    "respuesta": "Newton",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is 15 multiplied by 3?",
+    "respuesta": "45",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua construyó Machu Picchu?",
+    "respuesta": "Incas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más grande?",
+    "respuesta": "Asia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿En qué año terminó la Segunda Guerra Mundial?",
+    "respuesta": "1945",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the capital of Australia?",
+    "respuesta": "Canberra",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es esencial para la respiración humana?",
+    "respuesta": "Oxígeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué batalla marcó el inicio de la Revolución Francesa?",
+    "respuesta": "Bastilla",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the synonym of 'beautiful'?",
+    "respuesta": "Pretty",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Guerra de Independencia de Estados Unidos?",
+    "respuesta": "París",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta es el más cercano al sol?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un hexágono?",
+    "respuesta": "Seis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué instrumento musical tiene teclas blancas y negras?",
+    "respuesta": "Piano",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the cube root of 27?",
+    "respuesta": "3",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español es conocido por sus playas?",
+    "respuesta": "Canarias",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué archipiélago español es famoso por su fiesta?",
+    "respuesta": "Baleares",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué civilización antigua inventó el papel?",
+    "respuesta": "China",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué líder sudafricano fue presidente tras el apartheid?",
+    "respuesta": "Mandela",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the past tense of 'read'?",
+    "respuesta": "Read",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué rey español fue conocido como 'el Católico'?",
+    "respuesta": "Fernando",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa la ciudad de Roma?",
+    "respuesta": "Tíber",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué navegante portugués llegó a Brasil?",
+    "respuesta": "Cabral",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the plural of 'foot'?",
+    "respuesta": "Feet",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué cordillera atraviesa Sudamérica?",
+    "respuesta": "Andes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Bolívar en su independencia?",
+    "respuesta": "Colombia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla balear es conocida por su tranquilidad?",
+    "respuesta": "Menorca",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the opposite of 'dark'?",
+    "respuesta": "Light",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+    "respuesta": "Versalles",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria tiene el Teide?",
+    "respuesta": "Tenerife",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué río atraviesa Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Gandhi en su independencia?",
+    "respuesta": "India",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the synonym of 'quick'?",
+    "respuesta": "Fast",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida como 'la isla bonita'?",
+    "respuesta": "La Palma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mandela en su presidencia?",
+    "respuesta": "Sudáfrica",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó Chichén Itzá?",
+    "respuesta": "Mayas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the present continuous of 'run'?",
+    "respuesta": "Running",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Hidalgo en su independencia?",
+    "respuesta": "México",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "El Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de idiomas oficiales?",
+    "respuesta": "India",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué escritor escribió 'Don Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the antonym of 'strong'?",
+    "respuesta": "Weak",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de premios Nobel?",
+    "respuesta": "Estados Unidos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por sus vinos?",
+    "respuesta": "Lanzarote",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Franco en su dictadura?",
+    "respuesta": "España",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria tiene dunas famosas?",
+    "respuesta": "Fuerteventura",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Bolívar en su independencia?",
+    "respuesta": "Venezuela",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla balear es conocida por su catedral?",
+    "respuesta": "Mallorca",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por San Martín en su independencia?",
+    "respuesta": "Argentina",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su tranquilidad?",
+    "respuesta": "La Gomera",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Castro en su revolución?",
+    "respuesta": "Cuba",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "Gran Canaria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Lenin en su revolución?",
+    "respuesta": "Rusia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "Tenerife",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Mao en su revolución?",
+    "respuesta": "China",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Pinochet en su dictadura?",
+    "respuesta": "Chile",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "El Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Chávez en su presidencia?",
+    "respuesta": "Venezuela",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "Gran Canaria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Correa en su presidencia?",
+    "respuesta": "Ecuador",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "Tenerife",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Allende en su presidencia?",
+    "respuesta": "Chile",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Perón en su presidencia?",
+    "respuesta": "Argentina",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "El Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Vargas en su presidencia?",
+    "respuesta": "Brasil",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "Gran Canaria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Cárdenas en su presidencia?",
+    "respuesta": "México",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "Tenerife",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Roosevelt en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Kennedy en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "El Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Obama en su presidencia?",
+    "respuesta": "Estados Unidos",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "Gran Canaria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Merkel en su cancillería?",
+    "respuesta": "Alemania",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "Tenerife",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Thatcher en su primer ministerio?",
+    "respuesta": "Reino Unido",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "La Palma",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Trudeau en su primer ministerio?",
+    "respuesta": "Canadá",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es conocida por su biodiversidad?",
+    "respuesta": "El Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Macron en su presidencia?",
+    "respuesta": "Francia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué isla canaria es famosa por su biodiversidad?",
+    "respuesta": "Gran Canaria",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país fue liderado por Sánchez en su presidencia?",
+    "respuesta": "España",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 4?",
+    "respuesta": "100",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el número primo más pequeño?",
+    "respuesta": "2",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the result of 81 divided by 9?",
+    "respuesta": "9",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un octágono?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué unidad se utiliza para medir la masa?",
+    "respuesta": "Kilogramo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 al cuadrado?",
+    "respuesta": "144",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the square root of 64?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos segundos tiene un minuto?",
+    "respuesta": "60",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene todos sus lados iguales?",
+    "respuesta": "Cuadrado",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 8?",
+    "respuesta": "56",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is 100 minus 37?",
+    "respuesta": "63",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos grados tiene un triángulo equilátero?",
+    "respuesta": "180",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 50?",
+    "respuesta": "L",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 + 27?",
+    "respuesta": "42",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the result of 45 divided by 5?",
+    "respuesta": "9",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número sigue después del 99?",
+    "respuesta": "100",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un pentágono?",
+    "respuesta": "5",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el doble de 25?",
+    "respuesta": "50",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the sum of 12 and 23?",
+    "respuesta": "35",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 9?",
+    "respuesta": "81",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es la mitad de 50?",
+    "respuesta": "25",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene una hora?",
+    "respuesta": "60",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the product of 6 and 7?",
+    "respuesta": "42",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 dividido entre 4?",
+    "respuesta": "25",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el triple de 15?",
+    "respuesta": "45",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the result of 8 times 12?",
+    "respuesta": "96",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 al cuadrado?",
+    "respuesta": "121",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 100?",
+    "respuesta": "C",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 14 + 28?",
+    "respuesta": "42",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the square root of 49?",
+    "respuesta": "7",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un triángulo?",
+    "respuesta": "3",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el sucesor de 199?",
+    "respuesta": "200",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 dividido entre 3?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the sum of 45 and 55?",
+    "respuesta": "100",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 20 x 5?",
+    "respuesta": "100",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el cuadrado de 10?",
+    "respuesta": "100",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the result of 72 divided by 8?",
+    "respuesta": "9",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 x 7?",
+    "respuesta": "91",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el doble de 12?",
+    "respuesta": "24",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the product of 9 and 11?",
+    "respuesta": "99",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 8?",
+    "respuesta": "64",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es la mitad de 64?",
+    "respuesta": "32",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the sum of 33 and 44?",
+    "respuesta": "77",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 6?",
+    "respuesta": "42",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número es el triple de 10?",
+    "respuesta": "30",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the result of 15 times 4?",
+    "respuesta": "60",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 x 12?",
+    "respuesta": "144",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 500?",
+    "respuesta": "D",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 16 + 24?",
+    "respuesta": "40",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "What is the square root of 36?",
+    "respuesta": "6",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 125 dividido entre 5?",
+    "respuesta": "25",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 256 dividido entre 8?",
+    "respuesta": "32",
+    "categoria": "campeonato"
+  }
+]

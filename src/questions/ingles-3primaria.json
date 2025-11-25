@@ -1,0 +1,442 @@
+[
+  {
+    "pregunta": "¿De qué color es el cielo en un día soleado?",
+    "respuesta": "Blue",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'grande'?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el primer día de la semana?",
+    "respuesta": "Monday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la estación en la que caen las hojas?",
+    "respuesta": "Autumn",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el pasado del verbo 'correr'?",
+    "respuesta": "Ran",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'feliz'?",
+    "respuesta": "Sad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que ladra?",
+    "respuesta": "Dog",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el plural de 'niño'?",
+    "respuesta": "Children",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la figura con tres lados?",
+    "respuesta": "Triangle",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'frío'?",
+    "respuesta": "Hot",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la fruta amarilla y alargada?",
+    "respuesta": "Banana",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para escribir?",
+    "respuesta": "Pencil",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'arriba'?",
+    "respuesta": "Down",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la comida que se toma por la mañana?",
+    "respuesta": "Breakfast",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde se pueden tomar libros prestados?",
+    "respuesta": "Library",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'rápido'?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para saber la hora?",
+    "respuesta": "Clock",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día después del viernes?",
+    "respuesta": "Saturday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene después de junio?",
+    "respuesta": "July",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'cerca'?",
+    "respuesta": "Far",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para borrar marcas de lápiz?",
+    "respuesta": "Eraser",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene rayas y ruge?",
+    "respuesta": "Tiger",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'viejo'?",
+    "respuesta": "Young",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la figura con cuatro lados iguales?",
+    "respuesta": "Square",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la estación en la que nieva?",
+    "respuesta": "Winter",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'ligero'?",
+    "respuesta": "Heavy",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para cortar papel?",
+    "respuesta": "Scissors",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día antes del domingo?",
+    "respuesta": "Saturday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene antes de diciembre?",
+    "respuesta": "November",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'día'?",
+    "respuesta": "Night",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la fruta roja y redonda?",
+    "respuesta": "Apple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para dibujar líneas rectas?",
+    "respuesta": "Ruler",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'izquierda'?",
+    "respuesta": "Right",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la comida que se toma al mediodía?",
+    "respuesta": "Lunch",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde aprendemos?",
+    "respuesta": "School",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'caliente'?",
+    "respuesta": "Cold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para llevar libros?",
+    "respuesta": "Bag",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día después del lunes?",
+    "respuesta": "Tuesday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene después de abril?",
+    "respuesta": "May",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'feliz'?",
+    "respuesta": "Sad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene el cuello largo?",
+    "respuesta": "Giraffe",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para escribir en una pizarra?",
+    "respuesta": "Chalk",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'grande'?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la comida que se toma por la noche?",
+    "respuesta": "Dinner",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde compramos comida?",
+    "respuesta": "Market",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'rápido'?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para abrir puertas?",
+    "respuesta": "Key",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día antes del viernes?",
+    "respuesta": "Thursday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene antes de agosto?",
+    "respuesta": "July",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'cerca'?",
+    "respuesta": "Far",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la fruta que es naranja y redonda?",
+    "respuesta": "Orange",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para beber agua?",
+    "respuesta": "Glass",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'arriba'?",
+    "respuesta": "Down",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde dormimos?",
+    "respuesta": "Bed",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día después del miércoles?",
+    "respuesta": "Thursday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene después de febrero?",
+    "respuesta": "March",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'oscuro'?",
+    "respuesta": "Light",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene alas y vuela?",
+    "respuesta": "Bird",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para limpiar el suelo?",
+    "respuesta": "Broom",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'joven'?",
+    "respuesta": "Old",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la figura con cinco lados?",
+    "respuesta": "Pentagon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la estación en la que florecen las flores?",
+    "respuesta": "Spring",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'duro'?",
+    "respuesta": "Soft",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para cocinar comida?",
+    "respuesta": "Pan",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día antes del martes?",
+    "respuesta": "Monday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene antes de octubre?",
+    "respuesta": "September",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'limpio'?",
+    "respuesta": "Dirty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la fruta que es verde y ácida?",
+    "respuesta": "Lime",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para mantener la comida fría?",
+    "respuesta": "Fridge",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'suave'?",
+    "respuesta": "Hard",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde vemos películas?",
+    "respuesta": "Cinema",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día después del domingo?",
+    "respuesta": "Monday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene después de enero?",
+    "respuesta": "February",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'mojado'?",
+    "respuesta": "Dry",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene concha?",
+    "respuesta": "Turtle",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para iluminar una habitación?",
+    "respuesta": "Lamp",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'lejos'?",
+    "respuesta": "Near",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la figura con seis lados?",
+    "respuesta": "Hexagon",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la estación en la que hace calor?",
+    "respuesta": "Summer",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'seco'?",
+    "respuesta": "Wet",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para llevar agua?",
+    "respuesta": "Bucket",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el día antes del jueves?",
+    "respuesta": "Wednesday",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el mes que viene antes de mayo?",
+    "respuesta": "April",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'suave'?",
+    "respuesta": "Hard",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama la fruta que es púrpura y pequeña?",
+    "respuesta": "Grape",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para hervir agua?",
+    "respuesta": "Kettle",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cuál es el opuesto de 'duro'?",
+    "respuesta": "Soft",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde comemos?",
+    "respuesta": "Kitchen",
+    "categoria": "Inglés"
+  }
+]

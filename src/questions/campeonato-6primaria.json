@@ -1,0 +1,512 @@
+[
+  {
+    "pregunta": "¿Cuál es el valor de π (pi) con dos decimales?",
+    "respuesta": "3.14",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso por el cual las plantas producen su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Ilíada'?",
+    "respuesta": "Homero",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 2³?",
+    "respuesta": "8",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de husos horarios?",
+    "respuesta": "Francia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene todos sus lados diferentes?",
+    "respuesta": "Escaleno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano filtra la sangre?",
+    "respuesta": "Riñón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico propuso la teoría de la relatividad?",
+    "respuesta": "Einstein",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de división celular en organismos eucariotas?",
+    "respuesta": "Mitosis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma tiene más hablantes nativos en el mundo?",
+    "respuesta": "Chino",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el metal más abundante en la corteza terrestre?",
+    "respuesta": "Aluminio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Conde de Montecristo'?",
+    "respuesta": "Dumas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el día más largo?",
+    "respuesta": "Venus",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene dos lados iguales?",
+    "respuesta": "Isósceles",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la respiración celular?",
+    "respuesta": "Oxígeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La República'?",
+    "respuesta": "Platón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 5²?",
+    "respuesta": "25",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de volcanes activos?",
+    "respuesta": "Indonesia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de ocho lados?",
+    "respuesta": "Octágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce insulina?",
+    "respuesta": "Páncreas",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico descubrió la penicilina?",
+    "respuesta": "Fleming",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de formación de montañas?",
+    "respuesta": "Orogénesis",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Brasil?",
+    "respuesta": "Portugués",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'Au'?",
+    "respuesta": "Oro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el año más largo?",
+    "respuesta": "Neptuno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene todos sus ángulos agudos?",
+    "respuesta": "Acutángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es el más abundante en la atmósfera terrestre?",
+    "respuesta": "Nitrógeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Capital'?",
+    "respuesta": "Marx",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 10³?",
+    "respuesta": "1000",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de Patrimonios de la Humanidad?",
+    "respuesta": "Italia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de diez lados?",
+    "respuesta": "Decágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano bombea sangre?",
+    "respuesta": "Corazón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico desarrolló las leyes del movimiento?",
+    "respuesta": "Newton",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de erosión por agua?",
+    "respuesta": "Hidráulica",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Egipto?",
+    "respuesta": "Árabe",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'Fe'?",
+    "respuesta": "Hierro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La Divina Comedia'?",
+    "respuesta": "Dante",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el mayor número de lunas?",
+    "respuesta": "Saturno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene un ángulo recto?",
+    "respuesta": "Rectángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es el más ligero?",
+    "respuesta": "Hidrógeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 3³?",
+    "respuesta": "27",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de islas?",
+    "respuesta": "Suecia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de doce lados?",
+    "respuesta": "Dodecágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano almacena bilis?",
+    "respuesta": "Vesícula",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico desarrolló la tabla periódica?",
+    "respuesta": "Mendeleev",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de erosión por viento?",
+    "respuesta": "Eólica",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Japón?",
+    "respuesta": "Japonés",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'Hg'?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'Crimen y castigo'?",
+    "respuesta": "Dostoyevski",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el menor tamaño?",
+    "respuesta": "Mercurio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene un ángulo obtuso?",
+    "respuesta": "Obtusángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es necesario para la combustión?",
+    "respuesta": "Oxígeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió '1984'?",
+    "respuesta": "Orwell",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 4³?",
+    "respuesta": "64",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de lagos?",
+    "respuesta": "Canadá",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de veinte lados?",
+    "respuesta": "Icoságono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano produce bilis?",
+    "respuesta": "Hígado",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico desarrolló la teoría de la evolución?",
+    "respuesta": "Darwin",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de erosión por hielo?",
+    "respuesta": "Glacial",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Rusia?",
+    "respuesta": "Ruso",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'Na'?",
+    "respuesta": "Sodio",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La casa de Bernarda Alba'?",
+    "respuesta": "Lorca",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el mayor tamaño?",
+    "respuesta": "Júpiter",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene todos sus lados iguales?",
+    "respuesta": "Equilátero",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es el más pesado?",
+    "respuesta": "Radón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'La metamorfosis'?",
+    "respuesta": "Kafka",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 6³?",
+    "respuesta": "216",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de desiertos?",
+    "respuesta": "Australia",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de quince lados?",
+    "respuesta": "Pentadecágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano regula el metabolismo?",
+    "respuesta": "Tiroides",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico desarrolló la ley de la gravitación universal?",
+    "respuesta": "Newton",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de erosión por gravedad?",
+    "respuesta": "Gravitacional",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en México?",
+    "respuesta": "Español",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'C'?",
+    "respuesta": "Carbono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El retrato de Dorian Gray'?",
+    "respuesta": "Wilde",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planeta del sistema solar tiene el mayor campo magnético?",
+    "respuesta": "Júpiter",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el triángulo que tiene un ángulo de 90 grados?",
+    "respuesta": "Rectángulo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué gas es el más abundante en el universo?",
+    "respuesta": "Hidrógeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué autor escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 7³?",
+    "respuesta": "343",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué país tiene la mayor cantidad de glaciares?",
+    "respuesta": "Chile",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el polígono de cien lados?",
+    "respuesta": "Hectágono",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué órgano del cuerpo humano controla el sistema nervioso?",
+    "respuesta": "Cerebro",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué científico desarrolló la teoría del Big Bang?",
+    "respuesta": "Lemaître",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se llama el proceso de erosión por agua subterránea?",
+    "respuesta": "Kárstica",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Alemania?",
+    "respuesta": "Alemán",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con símbolo 'O'?",
+    "respuesta": "Oxígeno",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué tipo de roca se forma a partir de lava enfriada?",
+    "respuesta": "Ígnea",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 256 ÷ 16?",
+    "respuesta": "16",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'montaña' al inglés?",
+    "respuesta": "Mountain",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal tiene la mordida más fuerte del reino animal?",
+    "respuesta": "Cocodrilo",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 15?",
+    "respuesta": "225",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'río' al inglés?",
+    "respuesta": "River",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué planta es conocida por producir oxígeno durante el día?",
+    "respuesta": "Árbol",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 144 ÷ 12?",
+    "respuesta": "12",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cómo se traduce 'bosque' al inglés?",
+    "respuesta": "Forest",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué animal puede cambiar de color para camuflarse?",
+    "respuesta": "Camaleón",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 12²?",
+    "respuesta": "144",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Cuál es el elemento químico con mayor electronegatividad?",
+    "respuesta": "Flúor",
+    "categoria": "campeonato"
+  },
+  {
+    "pregunta": "¿Qué idioma es oficial en Suiza además del alemán y el francés?",
+    "respuesta": "Italiano",
+    "categoria": "campeonato"
+  }
+]

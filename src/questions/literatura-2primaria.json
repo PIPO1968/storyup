@@ -1,0 +1,487 @@
+[
+  {
+    "pregunta": "¿Qué género literario narra historias inventadas y suele tener personajes fantásticos?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el autor de 'Platero y yo'?",
+    "respuesta": "Juan Ramón Jiménez",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el conjunto de versos agrupados en una poesía?",
+    "respuesta": "estrofa",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro contiene el título y el nombre del autor?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje suele ser el protagonista en los cuentos clásicos?",
+    "respuesta": "niño",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se representa en un escenario?",
+    "respuesta": "teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario enseña una lección y tiene animales como personajes?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro contiene el resumen de la obra?",
+    "respuesta": "contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto tiene rima y ritmo?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el autor de 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje suele ser el antagonista en una historia?",
+    "respuesta": "villano",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el índice?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra hechos reales de una persona?",
+    "respuesta": "biografía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Caperucita Roja'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra leyendas y tradiciones?",
+    "respuesta": "leyenda",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro protege las páginas?",
+    "respuesta": "cubierta",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje ayuda al protagonista en los cuentos?",
+    "respuesta": "amigo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La sirenita'?",
+    "respuesta": "Andersen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se lee en voz alta y se aprende de memoria?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene ilustraciones?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias largas y tiene capítulos?",
+    "respuesta": "novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es mágico en los cuentos?",
+    "respuesta": "hada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la editorial?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto tiene moraleja y animales?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Peter Pan'?",
+    "respuesta": "Barrie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es sabio y ayuda al protagonista?",
+    "respuesta": "anciano",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la dedicatoria?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias cortas y divertidas?",
+    "respuesta": "chiste",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El libro de la selva'?",
+    "respuesta": "Kipling",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se representa con disfraces y diálogos?",
+    "respuesta": "teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el prólogo?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es fuerte en los cuentos?",
+    "respuesta": "gigante",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Hansel y Gretel'?",
+    "respuesta": "Grimm",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra aventuras y viajes?",
+    "respuesta": "novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el número de páginas?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias de miedo?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El patito feo'?",
+    "respuesta": "Andersen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es gracioso en las historias?",
+    "respuesta": "bufón",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el año de publicación?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se lee en clase y tiene versos?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Moby Dick'?",
+    "respuesta": "Melville",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es travieso en los cuentos?",
+    "respuesta": "duende",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el resumen?",
+    "respuesta": "contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias reales de animales?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La isla del tesoro'?",
+    "respuesta": "Stevenson",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto tiene personajes y diálogos?",
+    "respuesta": "teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la biografía del autor?",
+    "respuesta": "contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es valiente y lucha en las historias?",
+    "respuesta": "héroe",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Viaje al centro de la Tierra'?",
+    "respuesta": "Verne",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se basa en hechos reales?",
+    "respuesta": "biografía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el título grande?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias con moraleja?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El mago de Oz'?",
+    "respuesta": "Baum",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es pequeño y curioso en los cuentos?",
+    "respuesta": "niño",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el índice?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto narra leyendas y mitos?",
+    "respuesta": "leyenda",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El soldadito de plomo'?",
+    "respuesta": "Andersen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias de amor?",
+    "respuesta": "novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene ilustraciones?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se lee antes de dormir?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Alicia en el país de las maravillas'?",
+    "respuesta": "Carroll",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es bueno en las historias?",
+    "respuesta": "protagonista",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la fecha de edición?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias con personajes mágicos?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Cenicienta'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto tiene versos y estrofas?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la dedicatoria?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es sabio y ayuda en los cuentos?",
+    "respuesta": "anciano",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El flautista de Hamelín'?",
+    "respuesta": "Grimm",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias cortas y divertidas?",
+    "respuesta": "chiste",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el prólogo?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se aprende de memoria y se recita?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Robinson Crusoe'?",
+    "respuesta": "Defoe",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es mágico en los cuentos?",
+    "respuesta": "hada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el número de páginas?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias de miedo?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Leyendas de Bécquer'?",
+    "respuesta": "Bécquer",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se lee en clase y tiene versos?",
+    "respuesta": "poesía",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la editorial?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es gracioso en las historias?",
+    "respuesta": "bufón",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Cuentos de la selva'?",
+    "respuesta": "Quiroga",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias reales de animales?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el resumen?",
+    "respuesta": "contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto tiene personajes y diálogos?",
+    "respuesta": "teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El gato con botas'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es valiente y lucha en las historias?",
+    "respuesta": "héroe",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene la biografía del autor?",
+    "respuesta": "contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias con moraleja?",
+    "respuesta": "fábula",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Pinocho'?",
+    "respuesta": "Collodi",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué tipo de texto se representa con disfraces y diálogos?",
+    "respuesta": "teatro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene el título grande?",
+    "respuesta": "portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué personaje es pequeño y curioso en los cuentos?",
+    "respuesta": "niño",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Don Quijote de la Mancha'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género literario narra historias de amor?",
+    "respuesta": "novela",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué parte del libro tiene ilustraciones?",
+    "respuesta": "interior",
+    "categoria": "Literatura"
+  }
+]

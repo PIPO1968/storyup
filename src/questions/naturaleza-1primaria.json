@@ -1,0 +1,317 @@
+[
+  {
+    "pregunta": "¿Qué animal dice 'miau'?",
+    "respuesta": "gato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal dice 'guau'?",
+    "respuesta": "perro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta absorbe agua del suelo?",
+    "respuesta": "raíz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano usamos para respirar?",
+    "respuesta": "pulmones",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué astro nos da luz y calor?",
+    "respuesta": "sol",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal pone huevos y vuela?",
+    "respuesta": "pájaro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para caminar?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué líquido es esencial para la vida?",
+    "respuesta": "agua",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué estación sigue al invierno?",
+    "respuesta": "primavera",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal vive en el mar y tiene aletas?",
+    "respuesta": "pez",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es verde y capta la luz?",
+    "respuesta": "hoja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno ocurre cuando llueve y sale el sol?",
+    "respuesta": "arcoíris",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y camina lento?",
+    "respuesta": "tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para oír?",
+    "respuesta": "oídos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es colorida y atrae insectos?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa y es muy grande?",
+    "respuesta": "elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano late y bombea sangre?",
+    "respuesta": "corazón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene plumas y nada en el estanque?",
+    "respuesta": "pato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para escribir?",
+    "respuesta": "mano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural moja la tierra?",
+    "respuesta": "lluvia",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene melena y ruge?",
+    "respuesta": "león",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta sostiene las hojas y flores?",
+    "respuesta": "tallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene orejas largas y come zanahorias?",
+    "respuesta": "conejo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para ver?",
+    "respuesta": "ojos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal vive en la granja y da leche?",
+    "respuesta": "vaca",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta está bajo tierra?",
+    "respuesta": "raíz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene pico y nada en el hielo?",
+    "respuesta": "pingüino",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para saborear?",
+    "respuesta": "lengua",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene manchas y es muy alto?",
+    "respuesta": "jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para escuchar música?",
+    "respuesta": "oídos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas y es salvaje?",
+    "respuesta": "tigre",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es colorida?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y vive en el mar?",
+    "respuesta": "tortuga",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para tocar?",
+    "respuesta": "manos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene alas y es de colores?",
+    "respuesta": "mariposa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para correr?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene pico y nada en el estanque?",
+    "respuesta": "pato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta crece hacia arriba?",
+    "respuesta": "tallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene bigotes y caza ratones?",
+    "respuesta": "gato",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para pensar?",
+    "respuesta": "cerebro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene cola y vive en los árboles?",
+    "respuesta": "mono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para saltar?",
+    "respuesta": "piernas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene hocico y vive en la granja?",
+    "respuesta": "cerdo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es verde?",
+    "respuesta": "hoja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene trompa y colmillos largos?",
+    "respuesta": "elefante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para mirar?",
+    "respuesta": "ojos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene patas y vive en el agua y en la tierra?",
+    "respuesta": "rana",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para abrazar?",
+    "respuesta": "brazos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene plumas y canta por la mañana?",
+    "respuesta": "gallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es pequeña y da origen a una nueva planta?",
+    "respuesta": "semilla",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene orejas largas y salta?",
+    "respuesta": "conejo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para caminar?",
+    "respuesta": "pies",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal vive en el mar y tiene tentáculos?",
+    "respuesta": "pulpo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para reír?",
+    "respuesta": "boca",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene melena y es el rey de la selva?",
+    "respuesta": "león",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta sostiene la flor?",
+    "respuesta": "tallo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene pico y nada en el hielo?",
+    "respuesta": "pingüino",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué usamos para escribir?",
+    "respuesta": "mano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene manchas y es muy alto?",
+    "respuesta": "jirafa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte del cuerpo usamos para escuchar?",
+    "respuesta": "oídos",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene rayas y es salvaje?",
+    "respuesta": "tigre",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta es colorida?",
+    "respuesta": "flor",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué animal tiene caparazón y vive en el mar?",
+    "respuesta": "tortuga",
+    "categoria": "Naturaleza"
+  }
+]

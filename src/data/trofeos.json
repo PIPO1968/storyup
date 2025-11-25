@@ -1,0 +1,205 @@
+[
+    {
+        "id": 1,
+        "imagen": "/trofeo25.jpg",
+        "titulo": "Trofeo 1",
+        "descripcion": "Bienvenid@ a StoryUp",
+        "criterio": "true"
+    },
+    {
+        "id": 2,
+        "imagen": "/trofeo7.jpg",
+        "titulo": "Trofeo 2",
+        "descripcion": "1 año en StoryUp",
+        "criterio": "user.anosEnStoryUp >= 1"
+    },
+    {
+        "id": 3,
+        "imagen": "/trofeo12.jpg",
+        "titulo": "Trofeo 3",
+        "descripcion": "Tu primer amigo",
+        "criterio": "Array.isArray(user.amigos) && user.amigos.length >= 1"
+    },
+    {
+        "id": 4,
+        "imagen": "/trofeo5.jpg",
+        "titulo": "Trofeo 4",
+        "descripcion": "5 respuestas acertadas",
+        "criterio": "user.respuestasAcertadas >= 5"
+    },
+    {
+        "id": 5,
+        "imagen": "/trofeo13.png",
+        "titulo": "Trofeo 5",
+        "descripcion": "20 respuestas acertadas",
+        "criterio": "user.respuestasAcertadas >= 20"
+    },
+    {
+        "id": 6,
+        "imagen": "/trofeo17.jpg",
+        "titulo": "Trofeo 6",
+        "descripcion": "Tu primera competición superada",
+        "criterio": "user.competicionesSuperadas >= 1"
+    },
+    {
+        "id": 7,
+        "imagen": "/trofeo27.jpg",
+        "titulo": "Trofeo 7",
+        "descripcion": "Aparecer en rankings",
+        "criterio": "user.respuestasAcertadas >= 1 || user.likes >= 1 || user.historiasCreadas >= 1"
+    },
+    {
+        "id": 8,
+        "imagen": "/trofeo10.jpg",
+        "titulo": "Trofeo 8",
+        "descripcion": "Tu primer concurso ganado",
+        "criterio": "user.concursosGanados >= 1"
+    },
+    {
+        "id": 9,
+        "imagen": "/trofeo23.jpg",
+        "titulo": "Trofeo 9",
+        "descripcion": "10 likes conseguidos",
+        "criterio": "user.likes >= 10"
+    },
+    {
+        "id": 10,
+        "imagen": "/trofeo15.jpg",
+        "titulo": "Trofeo 10",
+        "descripcion": "10 amigos en tu lista",
+        "criterio": "Array.isArray(user.amigos) && user.amigos.length >= 10"
+    },
+    {
+        "id": 11,
+        "imagen": "/trofeo26.jpg",
+        "titulo": "Trofeo 11",
+        "descripcion": "Tu primera historia creada",
+        "criterio": "user.historiasCreadas >= 1"
+    },
+    {
+        "id": 12,
+        "imagen": "/trofeo1.jpg",
+        "titulo": "Trofeo 12",
+        "descripcion": "Comentarios recibidos",
+        "criterio": "user.comentariosRecibidos >= 1"
+    },
+    {
+        "id": 13,
+        "imagen": "/trofeo22.jpg",
+        "titulo": "Trofeo 13",
+        "descripcion": "Participar en competiciones",
+        "criterio": "user.competicionesSuperadas >= 1"
+    },
+    {
+        "id": 14,
+        "imagen": "/trofeo14.jpg",
+        "titulo": "Trofeo 14",
+        "descripcion": "100 likes conseguidos",
+        "criterio": "user.likes >= 100"
+    },
+    {
+        "id": 15,
+        "imagen": "/trofeo20.jpg",
+        "titulo": "Trofeo 15",
+        "descripcion": "30 amigos en tu lista",
+        "criterio": "Array.isArray(user.amigos) && user.amigos.length >= 30"
+    },
+    {
+        "id": 16,
+        "imagen": "/trofeo11.jpg",
+        "titulo": "Trofeo 16",
+        "descripcion": "10 comentarios recibidos",
+        "criterio": "user.comentariosRecibidos >= 10"
+    },
+    {
+        "id": 17,
+        "imagen": "/trofeo24.jpg",
+        "titulo": "Trofeo 17",
+        "descripcion": "3 historias creadas",
+        "criterio": "user.historiasCreadas >= 3"
+    },
+    {
+        "id": 18,
+        "imagen": "/trofeo18.jpg",
+        "titulo": "Trofeo 18",
+        "descripcion": "3 concursos ganados",
+        "criterio": "user.concursosGanados >= 3"
+    },
+    {
+        "id": 19,
+        "imagen": "/trofeo19.jpg",
+        "titulo": "Trofeo 19",
+        "descripcion": "100 respuestas acertadas",
+        "criterio": "user.respuestasAcertadas >= 100"
+    },
+    {
+        "id": 20,
+        "imagen": "/trofeo15.jpg",
+        "titulo": "Trofeo 20",
+        "descripcion": "Veterano (2 años)",
+        "criterio": "user.anosEnStoryUp >= 2"
+    },
+    {
+        "id": 21,
+        "imagen": "/trofeo9.jpg",
+        "titulo": "Trofeo 21",
+        "descripcion": "15 historias creadas",
+        "criterio": "user.historiasCreadas >= 15"
+    },
+    {
+        "id": 22,
+        "imagen": "/trofeo8.jpg",
+        "titulo": "Trofeo 22",
+        "descripcion": "500 likes conseguidos",
+        "criterio": "user.likes >= 500"
+    },
+    {
+        "id": 23,
+        "imagen": "/trofeo21.jpg",
+        "titulo": "Trofeo 23",
+        "descripcion": "50 amigos en tu lista",
+        "criterio": "Array.isArray(user.amigos) && user.amigos.length >= 50"
+    },
+    {
+        "id": 24,
+        "imagen": "/trofeo16.jpg",
+        "titulo": "Trofeo 24",
+        "descripcion": "Máster (500 respuestas)",
+        "criterio": "user.respuestasAcertadas >= 500"
+    },
+    {
+        "id": 25,
+        "imagen": "/trofeo1.jpg",
+        "titulo": "🏆 Campeón Mensual",
+        "descripcion": "Tu centro quedó 1ro en la Liga de Centros este mes",
+        "criterio": "user.trofeos && user.trofeos.includes(25)"
+    },
+    {
+        "id": 26,
+        "imagen": "/trofeo2.jpg",
+        "titulo": "🥈 Subcampeón Mensual",
+        "descripcion": "Tu centro quedó 2do en la Liga de Centros este mes",
+        "criterio": "user.trofeos && user.trofeos.includes(26)"
+    },
+    {
+        "id": 27,
+        "imagen": "/trofeo3.jpg",
+        "titulo": "🥉 Tercer Lugar Mensual",
+        "descripcion": "Tu centro quedó 3ro en la Liga de Centros este mes",
+        "criterio": "user.trofeos && user.trofeos.includes(27)"
+    },
+    {
+        "id": 28,
+        "imagen": "/trofeo4.jpg",
+        "titulo": "🏅 Top 10 Mensual",
+        "descripcion": "Tu centro entró al Top 10 de la Liga de Centros este mes",
+        "criterio": "user.trofeos && user.trofeos.includes(28)"
+    },
+    {
+        "id": 29,
+        "imagen": "/trofeo5.jpg",
+        "titulo": "📚 Participante Activo",
+        "descripcion": "Tu centro participó activamente en la Liga de Centros este mes",
+        "criterio": "user.trofeos && user.trofeos.includes(29)"
+    }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "pregunta": "¿Qué palabra designa personas, animales, cosas o ideas?",
+    "respuesta": "Sustantivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de palabra describe a un sustantivo?",
+    "respuesta": "Adjetivo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra indica una acción, estado o proceso?",
+    "respuesta": "Verbo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término se usa para palabras con significado similar?",
+    "respuesta": "Sinónimo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término se usa para palabras con significado opuesto?",
+    "respuesta": "Antónimo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se llama una frase que expresa una idea completa?",
+    "respuesta": "Oración",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra sustituye a un sustantivo en una oración?",
+    "respuesta": "Pronombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué palabra modifica a un verbo, adjetivo u otro adverbio?",
+    "respuesta": "Adverbio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué parte de la oración indica quién realiza la acción?",
+    "respuesta": "Sujeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué parte de la oración indica la acción realizada por el sujeto?",
+    "respuesta": "Predicado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un complemento directo?",
+    "respuesta": "Objeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un complemento circunstancial?",
+    "respuesta": "Información",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una conjunción?",
+    "respuesta": "Enlace",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un artículo?",
+    "respuesta": "Determinante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una preposición?",
+    "respuesta": "Relación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un sujeto tácito?",
+    "respuesta": "Implícito",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una oración compuesta?",
+    "respuesta": "Múltiple",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una oración subordinada?",
+    "respuesta": "Dependiente",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una oración coordinada?",
+    "respuesta": "Independiente",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un diptongo?",
+    "respuesta": "Unión",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un hiato?",
+    "respuesta": "Separación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un triptongo?",
+    "respuesta": "Tres vocales juntas",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo irregular?",
+    "respuesta": "Cambio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo regular?",
+    "respuesta": "Constante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una oración exclamativa?",
+    "respuesta": "Énfasis",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es una oración afirmativa?",
+    "respuesta": "Aseveración",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un sustantivo propio?",
+    "respuesta": "Nombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un sustantivo común?",
+    "respuesta": "General",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adjetivo calificativo?",
+    "respuesta": "Descripción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adjetivo demostrativo?",
+    "respuesta": "Señal",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adjetivo posesivo?",
+    "respuesta": "Pertenencia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de lugar?",
+    "respuesta": "Ubicación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de tiempo?",
+    "respuesta": "Momento",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de modo?",
+    "respuesta": "Forma",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de cantidad?",
+    "respuesta": "Medida",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de afirmación?",
+    "respuesta": "Certeza",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de negación?",
+    "respuesta": "Rechazo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un adverbio de duda?",
+    "respuesta": "Incertidumbre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre personal?",
+    "respuesta": "Sujeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre demostrativo?",
+    "respuesta": "Señal",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre posesivo?",
+    "respuesta": "Pertenencia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre relativo?",
+    "respuesta": "Referencia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre interrogativo?",
+    "respuesta": "Pregunta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un pronombre exclamativo?",
+    "respuesta": "Énfasis",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo transitivo?",
+    "respuesta": "Objeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo intransitivo?",
+    "respuesta": "Sin objeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo reflexivo?",
+    "respuesta": "Acción propia",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo recíproco?",
+    "respuesta": "Mutuo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo auxiliar?",
+    "respuesta": "Apoyo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo copulativo?",
+    "respuesta": "Enlace",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo impersonal?",
+    "respuesta": "Sin sujeto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo defectivo?",
+    "respuesta": "Incompleto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo pronominal?",
+    "respuesta": "Pronombre",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo modal?",
+    "respuesta": "Posibilidad",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo regular?",
+    "respuesta": "Constante",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo irregular?",
+    "respuesta": "Cambio",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo compuesto?",
+    "respuesta": "Dos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo simple?",
+    "respuesta": "Uno",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en infinitivo?",
+    "respuesta": "Base",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en gerundio?",
+    "respuesta": "Acción",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en participio?",
+    "respuesta": "Resultado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en presente?",
+    "respuesta": "Ahora",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en pasado?",
+    "respuesta": "Antes",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué es un verbo en futuro?",
+    "respuesta": "Después",
+    "categoria": "Lenguaje"
+  }
+]

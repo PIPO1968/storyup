@@ -1,0 +1,227 @@
+[
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'feliz'?",
+    "respuesta": "Contento",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'grande'?",
+    "respuesta": "Pequeño",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'triste'?",
+    "respuesta": "Melancólico",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'alegre'?",
+    "respuesta": "Triste",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'rápido'?",
+    "respuesta": "Veloz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'lento'?",
+    "respuesta": "Rápido",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'pequeño'?",
+    "respuesta": "Chico",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'grande'?",
+    "respuesta": "Pequeño",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'fácil'?",
+    "respuesta": "Sencillo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'difícil'?",
+    "respuesta": "Fácil",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'hermoso'?",
+    "respuesta": "Bello",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'feo'?",
+    "respuesta": "Hermoso",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'inteligente'?",
+    "respuesta": "Listo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'tonto'?",
+    "respuesta": "Inteligente",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el sinónimo de 'valiente'?",
+    "respuesta": "Audaz",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cuál es el antónimo de 'cobarde'?",
+    "respuesta": "Valiente",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'rápido' según su acentuación?",
+    "respuesta": "Esdrújula",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'camión' según su acentuación?",
+    "respuesta": "Aguda",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'mesa' según su acentuación?",
+    "respuesta": "Grave",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'árbol' según su acentuación?",
+    "respuesta": "Grave",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'corazón' según su acentuación?",
+    "respuesta": "Aguda",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Cómo se clasifica la palabra 'pájaro' según su acentuación?",
+    "respuesta": "Esdrújula",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe la unión de dos vocales en una misma sílaba?",
+    "respuesta": "Diptongo",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué término describe la separación de dos vocales en sílabas distintas?",
+    "respuesta": "Hiato",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe la unión de tres vocales en una misma sílaba?",
+    "respuesta": "Triptongo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el elemento que se añade al inicio de una palabra para modificar su significado?",
+    "respuesta": "Prefijo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el elemento que se añade al final de una palabra para modificar su significado?",
+    "respuesta": "Sufijo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué figura literaria compara dos elementos usando 'como'?",
+    "respuesta": "Símil",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué figura literaria atribuye características humanas a objetos o animales?",
+    "respuesta": "Personificación",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué figura literaria exagera una característica o situación?",
+    "respuesta": "Hipérbole",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración tiene un solo verbo?",
+    "respuesta": "Simple",
+    "categoria": "Lengua"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración tiene más de un verbo?",
+    "respuesta": "Compuesta",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué función sintáctica describe la acción realizada en una oración?",
+    "respuesta": "Predicado",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué complemento indica sobre quién recae directamente la acción del verbo?",
+    "respuesta": "Directo",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué complemento indica para quién o a quién se realiza la acción del verbo?",
+    "respuesta": "Indirecto",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué complemento aporta información sobre las circunstancias de la acción?",
+    "respuesta": "Circunstancial",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración se utiliza para hacer preguntas?",
+    "respuesta": "Interrogativa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración expresa emociones o sentimientos?",
+    "respuesta": "Exclamativa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración afirma algo?",
+    "respuesta": "Afirmativa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué tipo de oración niega algo?",
+    "respuesta": "Negativa",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe palabras con significados opuestos?",
+    "respuesta": "Antónimos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe palabras con significados similares?",
+    "respuesta": "Sinónimos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe palabras que suenan igual pero tienen significados diferentes?",
+    "respuesta": "Homófonos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe palabras que se escriben igual pero tienen significados diferentes?",
+    "respuesta": "Homónimos",
+    "categoria": "Lenguaje"
+  },
+  {
+    "pregunta": "¿Qué término describe palabras que tienen significados parecidos pero no iguales?",
+    "respuesta": "Parónimos",
+    "categoria": "Lenguaje"
+  }
+]

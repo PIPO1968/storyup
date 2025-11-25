@@ -1,0 +1,347 @@
+[
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está el desierto del Sahara?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande del mundo?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la montaña más alta del mundo?",
+    "respuesta": "Everest",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Brasil?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más habitantes del mundo?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está España?",
+    "respuesta": "Europa",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el mar que separa África de Europa?",
+    "respuesta": "Mediterráneo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más frío del mundo?",
+    "respuesta": "Antártida",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño del mundo?",
+    "respuesta": "Vaticano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Australia?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de Europa?",
+    "respuesta": "Volga",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el lago más grande del mundo?",
+    "respuesta": "Caspio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Japón?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más islas en el mundo?",
+    "respuesta": "Suecia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el desierto más grande del mundo?",
+    "respuesta": "Sahara",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más caudaloso del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más montañoso del mundo?",
+    "respuesta": "Nepal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más países?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Francia?",
+    "respuesta": "París",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿En qué continente está Egipto?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande de América del Sur?",
+    "respuesta": "Brasil",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el océano que está al oeste de América?",
+    "respuesta": "Pacífico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño de América del Sur?",
+    "respuesta": "Surinam",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente más poblado del mundo?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de África?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más volcanes activos?",
+    "respuesta": "Indonesia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más selvas tropicales?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande de Europa?",
+    "respuesta": "Rusia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el lago más profundo del mundo?",
+    "respuesta": "Baikal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más largo del mundo?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Japón?",
+    "respuesta": "Tokio",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más alto del mundo?",
+    "respuesta": "Nepal",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el desierto más frío del mundo?",
+    "respuesta": "Antártida",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más lagos en el mundo?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Italia?",
+    "respuesta": "Roma",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más visitado del mundo?",
+    "respuesta": "Francia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más desiertos?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más rico en petróleo?",
+    "respuesta": "Venezuela",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Alemania?",
+    "respuesta": "Berlín",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más lluvioso del mundo?",
+    "respuesta": "India",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más montañas?",
+    "respuesta": "Asia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande de Oceanía?",
+    "respuesta": "Australia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo de Asia?",
+    "respuesta": "Yangtsé",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño de Europa?",
+    "respuesta": "Vaticano",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más islas?",
+    "respuesta": "Oceanía",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más seco del mundo?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más ríos?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande de África?",
+    "respuesta": "Argelia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más frío del mundo?",
+    "respuesta": "Ártico",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de México?",
+    "respuesta": "Ciudad de México",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país con más glaciares?",
+    "respuesta": "Canadá",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más biodiversidad?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más largo de América del Sur?",
+    "respuesta": "Chile",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más ancho del mundo?",
+    "respuesta": "Amazonas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Argentina?",
+    "respuesta": "Buenos Aires",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más poblado de África?",
+    "respuesta": "Nigeria",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más volcanes?",
+    "respuesta": "América",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más grande de Asia?",
+    "respuesta": "China",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el lago más grande de América?",
+    "respuesta": "Superior",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Brasil?",
+    "respuesta": "Brasilia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más lluvioso de América?",
+    "respuesta": "Colombia",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más glaciares?",
+    "respuesta": "Antártida",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más pequeño de Asia?",
+    "respuesta": "Maldivas",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el río más importante de Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Perú?",
+    "respuesta": "Lima",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el país más rico de Europa?",
+    "respuesta": "Luxemburgo",
+    "categoria": "Geografía"
+  },
+  {
+    "pregunta": "¿Cuál es el continente con más capitales?",
+    "respuesta": "África",
+    "categoria": "Geografía"
+  }
+]

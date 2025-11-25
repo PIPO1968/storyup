@@ -1,0 +1,111 @@
+[
+    {
+        "id": 101,
+        "titulo": "Historiador Premium",
+        "descripcion": "Tus primeras 35 historias.",
+        "imagen": "/premium1.jpg",
+        "criterio": "historiasCreadas >= 5",
+        "exclusivoPremium": true,
+        "beneficio": "Badge especial de historiador"
+    },
+    {
+        "id": 102,
+        "titulo": "Sabio Premium",
+        "descripcion": "100 preguntas acertadas en Aprende con Pipo siendo Premium",
+        "imagen": "/premium2.jpg",
+        "criterio": "preguntasAcertadas >= 100",
+        "exclusivoPremium": true,
+        "beneficio": "Título de Sabio en perfil"
+    },
+    {
+        "id": 103,
+        "titulo": "Amigo Premium",
+        "descripcion": "Conseguir 10 amigos siendo usuario Premium",
+        "imagen": "/premium3.jpg",
+        "criterio": "amigosPremium >= 10",
+        "exclusivoPremium": true,
+        "beneficio": "Badge de amistad especial"
+    },
+    {
+        "id": 104,
+        "titulo": "Espíritu Navideño Premium",
+        "descripcion": "Crear historias durante eventos especiales siendo Premium",
+        "imagen": "/premium4.jpg",
+        "criterio": "historiasEventos >= 3",
+        "exclusivoPremium": true,
+        "beneficio": "Badge de celebración especial"
+    },
+    {
+        "id": 105,
+        "titulo": "Verano Dorado Premium",
+        "descripcion": "Mantener racha de actividad durante vacaciones siendo Premium",
+        "imagen": "/premium5.jpg",
+        "criterio": "rachaVerano >= 15",
+        "exclusivoPremium": true,
+        "beneficio": "Efecto de verano en perfil"
+    },
+    {
+        "id": 106,
+        "titulo": "Veterano Dorado",
+        "descripcion": "6 meses consecutivos como usuario Premium",
+        "imagen": "/premium6.jpg",
+        "criterio": "mesesPremium >= 6",
+        "exclusivoPremium": true,
+        "beneficio": "Crown dorada permanente"
+    },
+    {
+        "id": 107,
+        "titulo": "Diseñador del Futuro",
+        "descripcion": "Crear el futuro logo de StoryUp con herramientas como Paint",
+        "imagen": "/premium7.png",
+        "criterio": "logoStoryUpCreado == true",
+        "exclusivoPremium": true,
+        "beneficio": "Reconocimiento como diseñador oficial",
+        "otorgadoPorAdmin": true
+    },
+    {
+        "id": 108,
+        "titulo": "Escritor Premium",
+        "descripcion": "Crear 15+ historias siendo usuario Premium",
+        "imagen": "/premium8.png",
+        "criterio": "historiasCreadas >= 15",
+        "exclusivoPremium": true,
+        "beneficio": "Badge de escritor prolífico"
+    },
+    {
+        "id": 109,
+        "titulo": "Competidor Premium",
+        "descripcion": "Aparecer en Top 5 de cualquier ranking siendo Premium",
+        "imagen": "/premium9.jpg",
+        "criterio": "enTop5Rankings == true",
+        "exclusivoPremium": true,
+        "beneficio": "Destacado en rankings"
+    },
+    {
+        "id": 110,
+        "titulo": "Cerebro de Oro",
+        "descripcion": "1000+ preguntas acertadas siendo usuario Premium",
+        "imagen": "/premium10.jpg",
+        "criterio": "preguntasAcertadas >= 1000",
+        "exclusivoPremium": true,
+        "beneficio": "Título de genio académico"
+    },
+    {
+        "id": 111,
+        "titulo": "Perfeccionista Premium",
+        "descripcion": "Conseguir precisión de 80%+ en Aprende con Pipo siendo Premium",
+        "imagen": "/premium11.jpg",
+        "criterio": "precision >= 80",
+        "exclusivoPremium": true,
+        "beneficio": "Badge de perfección académica"
+    },
+    {
+        "id": 112,
+        "titulo": "Red Social Premium",
+        "descripcion": "Conseguir 50+ amigos siendo usuario Premium",
+        "imagen": "/premium12.jpg",
+        "criterio": "amigosPremium >= 50",
+        "exclusivoPremium": true,
+        "beneficio": "Título de influencer social Premium"
+    }
+]

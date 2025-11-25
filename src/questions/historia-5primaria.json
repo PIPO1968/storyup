@@ -1,0 +1,92 @@
+[
+  {
+    "pregunta": "¿Qué pueblos habitaban la península ibérica antes de la llegada de los romanos?",
+    "respuesta": "Íberos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó calzadas y acueductos en Hispania?",
+    "respuesta": "Romanos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué pueblo germánico se asentó en la península ibérica tras la caída del Imperio Romano?",
+    "respuesta": "Visigodos",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué año llegaron los musulmanes a la península ibérica?",
+    "respuesta": "711",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué nombre recibió el territorio musulmán en la península ibérica?",
+    "respuesta": "Al-Ándalus",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué batalla marcó el inicio de la Reconquista en el año 722?",
+    "respuesta": "Covadonga",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué reino cristiano lideró la Reconquista en el siglo XI?",
+    "respuesta": "Castilla",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué tratado firmado en 1494 dividió el mundo entre España y Portugal?",
+    "respuesta": "Tordesillas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué navegante completó la primera vuelta al mundo en 1522?",
+    "respuesta": "Elcano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué rey español fue conocido como el Prudente?",
+    "respuesta": "Felipe",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué conflicto enfrentó a España contra Inglaterra en 1588?",
+    "respuesta": "Armada",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra marcó el inicio de la decadencia del Imperio Español?",
+    "respuesta": "Sucesión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué constitución fue promulgada en Cádiz en 1812?",
+    "respuesta": "Pepa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué conflicto enfrentó a liberales y absolutistas en el siglo XIX?",
+    "respuesta": "Carlistas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué guerra civil tuvo lugar en España entre 1936 y 1939?",
+    "respuesta": "Civil",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué dictador gobernó España tras la Guerra Civil?",
+    "respuesta": "Franco",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué proceso político permitió la transición de España a la democracia?",
+    "respuesta": "Transición",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué documento establece los derechos y deberes de los ciudadanos en España desde 1978?",
+    "respuesta": "Constitución",
+    "categoria": "Historia"
+  }
+]

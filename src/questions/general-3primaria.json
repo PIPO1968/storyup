@@ -1,0 +1,362 @@
+[
+  {
+    "pregunta": "¿Cuántos días tiene una semana?",
+    "respuesta": "Siete",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos meses tiene un año?",
+    "respuesta": "Doce",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene el arcoíris?",
+    "respuesta": "Siete",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal más rápido del mundo?",
+    "respuesta": "Guepardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuál es el océano más grande del mundo?",
+    "respuesta": "Pacífico",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un triángulo?",
+    "respuesta": "Tres",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el inventor de la bombilla?",
+    "respuesta": "Edison",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué gas respiramos para vivir?",
+    "respuesta": "Oxígeno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el continente donde vivimos?",
+    "respuesta": "Europa",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos minutos tiene una hora?",
+    "respuesta": "Sesenta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que pone huevos y tiene plumas?",
+    "respuesta": "Gallina",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 9?",
+    "respuesta": "Diez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el líquido que bebemos para vivir?",
+    "respuesta": "Agua",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'L'?",
+    "respuesta": "Lunes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el astro que nos da luz y calor?",
+    "respuesta": "Sol",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántas patas tiene una araña?",
+    "respuesta": "Ocho",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el agua y tiene aletas?",
+    "respuesta": "Pez",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 100?",
+    "respuesta": "Noventa y nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para escribir?",
+    "respuesta": "Lápiz",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un año bisiesto?",
+    "respuesta": "Trescientos sesenta y seis",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una trompa larga?",
+    "respuesta": "Elefante",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 99?",
+    "respuesta": "Cien",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta más grande del sistema solar?",
+    "respuesta": "Júpiter",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos segundos tiene un minuto?",
+    "respuesta": "Sesenta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vuela y pone huevos?",
+    "respuesta": "Pájaro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'M'?",
+    "respuesta": "Martes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para medir el tiempo?",
+    "respuesta": "Reloj",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 1.000?",
+    "respuesta": "Novecientos noventa y nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el líquido que usamos para limpiar?",
+    "respuesta": "Agua",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos lados tiene un cuadrado?",
+    "respuesta": "Cuatro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene rayas negras y blancas?",
+    "respuesta": "Cebra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 1.000?",
+    "respuesta": "Mil uno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta donde vivimos?",
+    "respuesta": "Tierra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene un mes?",
+    "respuesta": "Treinta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el mar y tiene tentáculos?",
+    "respuesta": "Pulpo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 10?",
+    "respuesta": "Nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para cortar papel?",
+    "respuesta": "Tijeras",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'D'?",
+    "respuesta": "Domingo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el astro que vemos por la noche?",
+    "respuesta": "Luna",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos colores tiene la bandera de España?",
+    "respuesta": "Dos",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una joroba?",
+    "respuesta": "Camello",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 50?",
+    "respuesta": "Cincuenta y uno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para leer?",
+    "respuesta": "Libro",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'S'?",
+    "respuesta": "Sábado",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el agua y tiene caparazón?",
+    "respuesta": "Tortuga",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 20?",
+    "respuesta": "Diecinueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para escribir en la pizarra?",
+    "respuesta": "Tiza",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'J'?",
+    "respuesta": "Jueves",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene manchas y corre rápido?",
+    "respuesta": "Guepardo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 30?",
+    "respuesta": "Treinta y uno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta más cercano al Sol?",
+    "respuesta": "Mercurio",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene febrero en un año normal?",
+    "respuesta": "Veintiocho",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene colmillos y vive en la selva?",
+    "respuesta": "Tigre",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 40?",
+    "respuesta": "Treinta y nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para medir centímetros?",
+    "respuesta": "Regla",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'M'?",
+    "respuesta": "Miércoles",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene alas y produce miel?",
+    "respuesta": "Abeja",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 70?",
+    "respuesta": "Setenta y uno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta que tiene anillos?",
+    "respuesta": "Saturno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene abril?",
+    "respuesta": "Treinta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene un cuello largo?",
+    "respuesta": "Jirafa",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 60?",
+    "respuesta": "Cincuenta y nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el objeto que usamos para iluminar?",
+    "respuesta": "Linterna",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué día de la semana empieza con 'V'?",
+    "respuesta": "Viernes",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que vive en el hielo y nada?",
+    "respuesta": "Pingüino",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene después del 80?",
+    "respuesta": "Ochenta y uno",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el planeta azul?",
+    "respuesta": "Tierra",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cuántos días tiene junio?",
+    "respuesta": "Treinta",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Cómo se llama el animal que tiene una melena y ruge?",
+    "respuesta": "León",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Qué número viene antes del 90?",
+    "respuesta": "Ochenta y nueve",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "¿Quien descubrio America?",
+    "respuesta": "Colon",
+    "categoria": "General"
+  }
+]

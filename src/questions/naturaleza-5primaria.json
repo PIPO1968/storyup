@@ -1,0 +1,307 @@
+[
+  {
+    "pregunta": "¿Qué tipo de animal es un tiburón?",
+    "respuesta": "Pez",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué proceso permite a las plantas fabricar su alimento?",
+    "respuesta": "Fotosíntesis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas necesitan las plantas para la fotosíntesis?",
+    "respuesta": "Dióxido",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano usan los peces para respirar?",
+    "respuesta": "Branquias",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué nombre recibe el cambio de oruga a mariposa?",
+    "respuesta": "Metamorfosis",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué parte de la planta realiza la fotosíntesis?",
+    "respuesta": "Hoja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de raíz almacena nutrientes, como la zanahoria?",
+    "respuesta": "Tubérculo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué órgano de las plantas transporta agua y nutrientes?",
+    "respuesta": "Xilema",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de planta no tiene flores?",
+    "respuesta": "Helecho",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural produce rayos y truenos?",
+    "respuesta": "Tormenta",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué capa de la atmósfera protege la Tierra de los rayos UV?",
+    "respuesta": "Ozono",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar papel?",
+    "respuesta": "Madera",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es esencial para la respiración humana?",
+    "respuesta": "Oxígeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+    "respuesta": "Marte",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué mineral es el más duro conocido?",
+    "respuesta": "Diamante",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural causa el movimiento de las placas tectónicas?",
+    "respuesta": "Terremoto",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se extrae de los volcanes?",
+    "respuesta": "Lava",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de roca se forma a partir de lava enfriada?",
+    "respuesta": "Ígnea",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué ciclo natural incluye evaporación, condensación y precipitación?",
+    "respuesta": "Agua",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía proviene del sol?",
+    "respuesta": "Solar",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía se genera con el viento?",
+    "respuesta": "Eólica",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de energía se obtiene de los ríos y presas?",
+    "respuesta": "Hidráulica",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de recurso es el petróleo?",
+    "respuesta": "Fósil",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural produce un arcoíris?",
+    "respuesta": "Luz",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué planeta tiene anillos visibles?",
+    "respuesta": "Saturno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué estrella es el centro del sistema solar?",
+    "respuesta": "Sol",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué satélite natural orbita la Tierra?",
+    "respuesta": "Luna",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fuerza mantiene a los planetas en órbita?",
+    "respuesta": "Gravedad",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué instrumento mide la intensidad de los terremotos?",
+    "respuesta": "Sismógrafo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué instrumento mide la presión atmosférica?",
+    "respuesta": "Barómetro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué instrumento mide la temperatura?",
+    "respuesta": "Termómetro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué instrumento mide la velocidad del viento?",
+    "respuesta": "Anemómetro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué capa de la Tierra está formada por roca fundida?",
+    "respuesta": "Manto",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué capa de la Tierra es sólida y metálica?",
+    "respuesta": "Núcleo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué capa de la Tierra es donde vivimos?",
+    "respuesta": "Corteza",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué tipo de nube produce lluvia?",
+    "respuesta": "Cúmulo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué gas es el más abundante en la atmósfera?",
+    "respuesta": "Nitrógeno",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué fenómeno natural ocurre cuando el agua sube y baja en el mar?",
+    "respuesta": "Marea",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar vidrio?",
+    "respuesta": "Arena",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar aluminio?",
+    "respuesta": "Bauxita",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar acero?",
+    "respuesta": "Hierro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar cemento?",
+    "respuesta": "Caliza",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar plástico?",
+    "respuesta": "Petróleo",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar energía nuclear?",
+    "respuesta": "Uranio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar joyas?",
+    "respuesta": "Oro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar baterías?",
+    "respuesta": "Litio",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar vidrio?",
+    "respuesta": "Sílice",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar papel?",
+    "respuesta": "Celulosa",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar telas?",
+    "respuesta": "Algodón",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar cuero?",
+    "respuesta": "Piel",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar lana?",
+    "respuesta": "Oveja",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar seda?",
+    "respuesta": "Gusano",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar caucho?",
+    "respuesta": "Látex",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar perfumes?",
+    "respuesta": "Flores",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar medicinas?",
+    "respuesta": "Plantas",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar cosméticos?",
+    "respuesta": "Minerales",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar jabones?",
+    "respuesta": "Aceite",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar velas?",
+    "respuesta": "Cera",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar cerámica?",
+    "respuesta": "Arcilla",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar ladrillos?",
+    "respuesta": "Barro",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Qué recurso natural se utiliza para fabricar vidrio?",
+    "respuesta": "Sílice",
+    "categoria": "Naturaleza"
+  }
+]

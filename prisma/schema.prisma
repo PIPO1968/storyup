@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                     Int      @id @default(autoincrement())
+  nombre                 String
+  nick                   String   @unique
+  centro                 String
+  curso                  String
+  tipo                   String   // "usuario" o "docente"
+  email                  String   @unique
+  password               String
+  linkPerfil             String
+  fechaInscripcion       DateTime @default(now())
+  textoFechaInscripcion  String
+  likes                  Int      @default(0)
+  amigos                 String[] // Array de nicks de amigos
+  historias              String[] // Array de IDs de historias
+  comentarios            String[] // Array de IDs de comentarios
+  premium                Boolean  @default(false) // Simplificado, o usar modelo separado
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model Act {
+  id          Int      @id @default(autoincrement())
+  email       String
+  tipo        String
+  descripcion String
+  fecha       DateTime @default(now())
+}
+
+// Si premium es más complejo, agregar modelo Premium
+// model Premium {
+//   id     Int  @id @default(autoincrement())
+//   nick   String @unique
+//   info   Json? // O campos específicos
+// }

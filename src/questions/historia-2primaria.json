@@ -1,0 +1,462 @@
+[
+  {
+    "pregunta": "¿Quién descubrió América?",
+    "respuesta": "Colón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué continente está Egipto?",
+    "respuesta": "África",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama la ciudad donde vivían los faraones?",
+    "respuesta": "Menfis",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los chinos para escribir?",
+    "respuesta": "Papel",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de Estados Unidos?",
+    "respuesta": "Washington",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país nació Leonardo da Vinci?",
+    "respuesta": "Italia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el barco de Colón?",
+    "respuesta": "Santa María",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización construyó las pirámides?",
+    "respuesta": "Egipcia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el dios principal de los griegos?",
+    "respuesta": "Zeus",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué ciudad vivían los romanos?",
+    "respuesta": "Roma",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué animal usaban los vikingos en sus barcos?",
+    "respuesta": "Dragón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama la reina famosa de Egipto?",
+    "respuesta": "Cleopatra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién pintó la Mona Lisa?",
+    "respuesta": "Leonardo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la Torre Eiffel?",
+    "respuesta": "Francia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el primer hombre que pisó la Luna?",
+    "respuesta": "Armstrong",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización inventó la escritura cuneiforme?",
+    "respuesta": "Sumeria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Macedonia?",
+    "respuesta": "Alejandro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué mar navegó Colón?",
+    "respuesta": "Atlántico",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el monumento más famoso de Roma?",
+    "respuesta": "Coliseo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para medir el tiempo?",
+    "respuesta": "Reloj de sol",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer emperador romano?",
+    "respuesta": "Augusto",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la Gran Muralla?",
+    "respuesta": "China",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del sol egipcio?",
+    "respuesta": "Ra",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Grecia?",
+    "respuesta": "Griega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el padre de Tutankamón?",
+    "respuesta": "Akenatón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué ciudad está el Big Ben?",
+    "respuesta": "Londres",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el río más largo de Egipto?",
+    "respuesta": "Nilo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los romanos para llevar agua?",
+    "respuesta": "Acueducto",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el dios de la guerra romano?",
+    "respuesta": "Marte",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está Machu Picchu?",
+    "respuesta": "Perú",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama la civilización de las pirámides de México?",
+    "respuesta": "Maya",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué invento permitió volar?",
+    "respuesta": "Avión",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el rey de España cuando Colón viajó?",
+    "respuesta": "Fernando",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué ciudad está la Estatua de la Libertad?",
+    "respuesta": "Nueva York",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del trueno nórdico?",
+    "respuesta": "Thor",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Roma?",
+    "respuesta": "Romana",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador francés famoso?",
+    "respuesta": "Napoleón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está el Taj Mahal?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el primer libro impreso?",
+    "respuesta": "Biblia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los fenicios para navegar?",
+    "respuesta": "Barco",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el dios del mar griego?",
+    "respuesta": "Poseidón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Petra?",
+    "respuesta": "Jordania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el emperador romano que construyó el muro en Inglaterra?",
+    "respuesta": "Adriano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para escribir?",
+    "respuesta": "Papiro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el dios de la sabiduría egipcio?",
+    "respuesta": "Thot",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Atenas?",
+    "respuesta": "Grecia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el monumento más famoso de París?",
+    "respuesta": "Eiffel",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los griegos para competir?",
+    "respuesta": "Olimpiadas",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el faraón niño?",
+    "respuesta": "Tutankamón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Berlín?",
+    "respuesta": "Alemania",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la guerra griego?",
+    "respuesta": "Ares",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Egipto?",
+    "respuesta": "Egipcia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que persiguió a los cristianos?",
+    "respuesta": "Nerón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Moscú?",
+    "respuesta": "Rusia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la medicina griego?",
+    "respuesta": "Asclepio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los chinos para viajar?",
+    "respuesta": "Brújula",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Inglaterra famoso por sus esposas?",
+    "respuesta": "Enrique",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Lisboa?",
+    "respuesta": "Portugal",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la muerte egipcio?",
+    "respuesta": "Osiris",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en México?",
+    "respuesta": "Azteca",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que dividió el imperio?",
+    "respuesta": "Diocleciano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Viena?",
+    "respuesta": "Austria",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la belleza griego?",
+    "respuesta": "Afrodita",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para construir?",
+    "respuesta": "Ladrillo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el faraón que construyó la Gran Pirámide?",
+    "respuesta": "Keops",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Praga?",
+    "respuesta": "Chequia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la música griego?",
+    "respuesta": "Apolo",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Perú?",
+    "respuesta": "Inca",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que construyó el Coliseo?",
+    "respuesta": "Vespasiano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Estambul?",
+    "respuesta": "Turquía",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la luna egipcio?",
+    "respuesta": "Jonsu",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los griegos para contar historias?",
+    "respuesta": "Teatro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Francia durante la Revolución?",
+    "respuesta": "Luis",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Bruselas?",
+    "respuesta": "Bélgica",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la agricultura griego?",
+    "respuesta": "Deméter",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en India?",
+    "respuesta": "India",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que legalizó el cristianismo?",
+    "respuesta": "Constantino",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Oslo?",
+    "respuesta": "Noruega",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del vino griego?",
+    "respuesta": "Dionisio",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los egipcios para navegar?",
+    "respuesta": "Barco",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el faraón que tenía una máscara dorada?",
+    "respuesta": "Tutankamón",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Varsovia?",
+    "respuesta": "Polonia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la caza griego?",
+    "respuesta": "Artemisa",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Jordania?",
+    "respuesta": "Nabatea",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el emperador romano que construyó el Panteón?",
+    "respuesta": "Adriano",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Budapest?",
+    "respuesta": "Hungría",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios del fuego griego?",
+    "respuesta": "Hefesto",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué inventaron los chinos para iluminar?",
+    "respuesta": "Faro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Quién era el rey de Macedonia que conquistó Persia?",
+    "respuesta": "Alejandro",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿En qué país está la ciudad de Atenas?",
+    "respuesta": "Grecia",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Cómo se llama el dios de la tierra egipcio?",
+    "respuesta": "Geb",
+    "categoria": "Historia"
+  },
+  {
+    "pregunta": "¿Qué civilización vivía en Turquía?",
+    "respuesta": "Hitita",
+    "categoria": "Historia"
+  }
+]

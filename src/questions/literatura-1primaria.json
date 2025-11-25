@@ -1,0 +1,327 @@
+[
+  {
+    "pregunta": "¿Quién lleva una capa roja y visita a su abuelita?",
+    "respuesta": "Caperucita",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el villano en el cuento de Caperucita Roja?",
+    "respuesta": "Lobo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién pierde un zapato en el baile?",
+    "respuesta": "Cenicienta",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién vive con siete enanitos?",
+    "respuesta": "Blanca",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el amigo de Pinocho?",
+    "respuesta": "Grillo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el villano de Peter Pan?",
+    "respuesta": "Garfio",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién duerme cien años?",
+    "respuesta": "Aurora",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién vive en una casa de chocolate?",
+    "respuesta": "Hansel",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el compañero de Don Quijote?",
+    "respuesta": "Sancho",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el padre de Simba?",
+    "respuesta": "Mufasa",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el amigo de Elsa?",
+    "respuesta": "Olaf",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es la madre de Bambi?",
+    "respuesta": "Bambi",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el amigo de Harry Potter?",
+    "respuesta": "Ron",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el villano de Blancanieves?",
+    "respuesta": "Bruja",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'El patito feo'?",
+    "respuesta": "Patito",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'Los tres cerditos'?",
+    "respuesta": "Cerditos",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'La liebre y la tortuga'?",
+    "respuesta": "Tortuga",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'El gato con botas'?",
+    "respuesta": "Gato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el protagonista de 'La Bella Durmiente'?",
+    "respuesta": "Aurora",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está el título del libro?",
+    "respuesta": "Portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde están los dibujos del libro?",
+    "respuesta": "Ilustración",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde están los capítulos del libro?",
+    "respuesta": "Índice",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está el resumen del libro?",
+    "respuesta": "Contraportada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está el nombre del autor?",
+    "respuesta": "Portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está el número de página?",
+    "respuesta": "Pie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está la dedicatoria?",
+    "respuesta": "Inicio",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está el prólogo?",
+    "respuesta": "Inicio",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Dónde está la fecha de edición?",
+    "respuesta": "Portada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que empieza un cuento?",
+    "respuesta": "Érase",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que termina un cuento?",
+    "respuesta": "Colorín",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que los personajes son felices?",
+    "respuesta": "Felices",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que algo es mágico?",
+    "respuesta": "Hada",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay un villano?",
+    "respuesta": "Bruja",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay un héroe?",
+    "respuesta": "Valiente",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay una aventura?",
+    "respuesta": "Viaje",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay un castillo?",
+    "respuesta": "Castillo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay animales que hablan?",
+    "respuesta": "Animales",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué frase indica que hay magia?",
+    "respuesta": "Magia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Blanca por dentro, verde por fuera. ¿Qué es?",
+    "respuesta": "Pera",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Oro parece, plata no es. ¿Qué es?",
+    "respuesta": "Plátano",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Vuelo de noche, duermo en el día. ¿Qué soy?",
+    "respuesta": "Murciélago",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Tiene dientes y no muerde. ¿Qué es?",
+    "respuesta": "Peine",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Agua pasa por mi casa, cate de mi corazón. ¿Qué es?",
+    "respuesta": "Aguacate",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Tiene orejas largas y salta mucho. ¿Qué es?",
+    "respuesta": "Conejo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Tiene rayas y es blanco y negro. ¿Qué es?",
+    "respuesta": "Cebra",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Tiene trompa y es muy grande. ¿Qué es?",
+    "respuesta": "Elefante",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "Tiene alas y canta por la mañana. ¿Qué es?",
+    "respuesta": "Pájaro",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "Historia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un personaje?",
+    "respuesta": "Protagonista",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un autor?",
+    "respuesta": "Escritor",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una portada?",
+    "respuesta": "Inicio",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "Enseñanza",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una moraleja?",
+    "respuesta": "Lección",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una poesía?",
+    "respuesta": "Poema",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un libro?",
+    "respuesta": "Lectura",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'cuento'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'poesía'?",
+    "respuesta": "Lírico",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'teatro'?",
+    "respuesta": "Dramático",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'fábula'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'adivinanza'?",
+    "respuesta": "Popular",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'leyenda'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'biografía'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'mito'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'ensayo'?",
+    "respuesta": "Expositivo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué género es 'novela'?",
+    "respuesta": "Narrativo",
+    "categoria": "Literatura"
+  }
+]

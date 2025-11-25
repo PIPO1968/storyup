@@ -1,0 +1,486 @@
+[
+  {
+    "pregunta": "¿Quién escribió 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el personaje principal de 'El Quijote'?",
+    "respuesta": "Quijote",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una metáfora?",
+    "respuesta": "comparación",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién es el autor de 'Platero y yo'?",
+    "respuesta": "Juan Ramón",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una rima?",
+    "respuesta": "sonido",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el lugar donde ocurre una historia?",
+    "respuesta": "escenario",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un poema?",
+    "respuesta": "verso",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un personaje secundario?",
+    "respuesta": "apoyo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Caperucita Roja'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una moraleja?",
+    "respuesta": "enseñanza",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La Cenicienta'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "relato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Barco de Vapor'?",
+    "respuesta": "Sierra i Fabra",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un cuento?",
+    "respuesta": "historia",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El Lazarillo de Tormes'?",
+    "respuesta": "Anónimo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una leyenda?",
+    "respuesta": "tradición",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Mafalda'?",
+    "respuesta": "Quino",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una biografía?",
+    "respuesta": "vida",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Hobbit'?",
+    "respuesta": "Tolkien",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una obra de teatro?",
+    "respuesta": "drama",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El diario de Ana Frank'?",
+    "respuesta": "Ana",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un refrán?",
+    "respuesta": "dicho",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Harry Potter'?",
+    "respuesta": "Rowling",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una saga?",
+    "respuesta": "serie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Matilda'?",
+    "respuesta": "Dahl",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una estrofa?",
+    "respuesta": "grupo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El pequeño Nicolás'?",
+    "respuesta": "Goscinny",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una sinopsis?",
+    "respuesta": "resumen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Charlie y la fábrica de chocolate'?",
+    "respuesta": "Dahl",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un capítulo?",
+    "respuesta": "parte",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El libro de la selva'?",
+    "respuesta": "Kipling",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una editorial?",
+    "respuesta": "empresa",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Pinocho'?",
+    "respuesta": "Collodi",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una portada?",
+    "respuesta": "cubierta",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El mago de Oz'?",
+    "respuesta": "Baum",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una dedicatoria?",
+    "respuesta": "mensaje",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Alicia en el país de las maravillas'?",
+    "respuesta": "Carroll",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una ilustración?",
+    "respuesta": "dibujo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Peter Pan'?",
+    "respuesta": "Barrie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una biblioteca?",
+    "respuesta": "lugar",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El patito feo'?",
+    "respuesta": "Andersen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una colección?",
+    "respuesta": "conjunto",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El gato con botas'?",
+    "respuesta": "Perrault",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Robinson Crusoe'?",
+    "respuesta": "Defoe",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una fábula?",
+    "respuesta": "cuento",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una moraleja?",
+    "respuesta": "enseñanza",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La isla del tesoro'?",
+    "respuesta": "Stevenson",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "relato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El libro de la selva'?",
+    "respuesta": "Kipling",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una leyenda?",
+    "respuesta": "tradición",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El flautista de Hamelín'?",
+    "respuesta": "Anónimo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una adivinanza?",
+    "respuesta": "acertijo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El mago de Oz'?",
+    "respuesta": "Baum",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una sinopsis?",
+    "respuesta": "resumen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El pequeño Nicolás'?",
+    "respuesta": "Goscinny",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una estrofa?",
+    "respuesta": "grupo"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Peter Pan'?",
+    "respuesta": "Barrie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una portada?",
+    "respuesta": "cubierta",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El diario de Ana Frank'?",
+    "respuesta": "Ana",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una dedicatoria?",
+    "respuesta": "mensaje",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Robinson Crusoe'?",
+    "respuesta": "Defoe",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una ilustración?",
+    "respuesta": "dibujo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El patito feo'?",
+    "respuesta": "Andersen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una colección?",
+    "respuesta": "conjunto",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Pinocho'?",
+    "respuesta": "Collodi",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un capítulo?",
+    "respuesta": "parte",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Charlie y la fábrica de chocolate'?",
+    "respuesta": "Dahl",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una biblioteca?",
+    "respuesta": "lugar",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Harry Potter'?",
+    "respuesta": "Rowling",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una saga?",
+    "respuesta": "serie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Matilda'?",
+    "respuesta": "Dahl",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es un refrán?",
+    "respuesta": "dicho",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Hobbit'?",
+    "respuesta": "Tolkien",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una biografía?",
+    "respuesta": "vida",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Mafalda'?",
+    "respuesta": "Quino",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una obra de teatro?",
+    "respuesta": "drama",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'Don Juan Tenorio'?",
+    "respuesta": "Zorrilla",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una novela?",
+    "respuesta": "relato",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El flautista de Hamelín'?",
+    "respuesta": "Anónimo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Quijote'?",
+    "respuesta": "Cervantes",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una moraleja?",
+    "respuesta": "enseñanza",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'La isla del tesoro'?",
+    "respuesta": "Stevenson",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una leyenda?",
+    "respuesta": "tradición",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El Principito'?",
+    "respuesta": "Saint-Exupéry",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una adivinanza?",
+    "respuesta": "acertijo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'El mago de Oz'?",
+    "respuesta": "Baum",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una sinopsis?",
+    "respuesta": "resumen",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El pequeño Nicolás'?",
+    "respuesta": "Goscinny",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una estrofa?",
+    "respuesta": "grupo",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Quién escribió 'Peter Pan'?",
+    "respuesta": "Barrie",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una portada?",
+    "respuesta": "cubierta",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Cómo se llama el autor de 'El diario de Ana Frank'?",
+    "respuesta": "Ana",
+    "categoria": "Literatura"
+  },
+  {
+    "pregunta": "¿Qué es una dedicatoria?",
+    "respuesta": "mensaje",
+    "categoria": "Literatura"
+  }
+]

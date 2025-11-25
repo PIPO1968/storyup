@@ -1,0 +1,407 @@
+[
+  {
+    "pregunta": "What is the past tense of 'run'?",
+    "respuesta": "Ran",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'child'?",
+    "respuesta": "Children",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'big'?",
+    "respuesta": "Small",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Glad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'eat'?",
+    "respuesta": "Eating",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'go'?",
+    "respuesta": "Went",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'mouse'?",
+    "respuesta": "Mice",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'hot'?",
+    "respuesta": "Cold",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'fast'?",
+    "respuesta": "Quick",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'write'?",
+    "respuesta": "Writing",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'swim'?",
+    "respuesta": "Swam",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'foot'?",
+    "respuesta": "Feet",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'light'?",
+    "respuesta": "Dark",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'angry'?",
+    "respuesta": "Mad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'read'?",
+    "respuesta": "Reading",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'sing'?",
+    "respuesta": "Sang",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'tooth'?",
+    "respuesta": "Teeth",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'early'?",
+    "respuesta": "Late",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'smart'?",
+    "respuesta": "Clever",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'drink'?",
+    "respuesta": "Drank",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'man'?",
+    "respuesta": "Men",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'soft'?",
+    "respuesta": "Hard",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'tired'?",
+    "respuesta": "Exhausted",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'begin'?",
+    "respuesta": "Began",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'woman'?",
+    "respuesta": "Women",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'happy'?",
+    "respuesta": "Sad",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'beautiful'?",
+    "respuesta": "Pretty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'write'?",
+    "respuesta": "Wrote",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'fish'?",
+    "respuesta": "Fish",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'near'?",
+    "respuesta": "Far",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'quick'?",
+    "respuesta": "Fast",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'see'?",
+    "respuesta": "Saw",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'sheep'?",
+    "respuesta": "Sheep",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'clean'?",
+    "respuesta": "Dirty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'angry'?",
+    "respuesta": "Furious",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'eat'?",
+    "respuesta": "Ate",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'deer'?",
+    "respuesta": "Deer",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'strong'?",
+    "respuesta": "Weak",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Joyful",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'give'?",
+    "respuesta": "Gave",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'goose'?",
+    "respuesta": "Geese",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'high'?",
+    "respuesta": "Low",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'cold'?",
+    "respuesta": "Chilly",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'take'?",
+    "respuesta": "Took",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'ox'?",
+    "respuesta": "Oxen",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'full'?",
+    "respuesta": "Empty",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'bright'?",
+    "respuesta": "Shiny",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'make'?",
+    "respuesta": "Made",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'leaf'?",
+    "respuesta": "Leaves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'wide'?",
+    "respuesta": "Narrow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'tall'?",
+    "respuesta": "High",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'read'?",
+    "respuesta": "Reading",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'find'?",
+    "respuesta": "Found",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'knife'?",
+    "respuesta": "Knives",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'old'?",
+    "respuesta": "Young",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'strong'?",
+    "respuesta": "Powerful",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the present continuous form of 'write'?",
+    "respuesta": "Writing",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'speak'?",
+    "respuesta": "Spoke",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'half'?",
+    "respuesta": "Halves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'fast'?",
+    "respuesta": "Slow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'dark'?",
+    "respuesta": "Dim",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'know'?",
+    "respuesta": "Knew",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'loaf'?",
+    "respuesta": "Loaves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'hard'?",
+    "respuesta": "Soft",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'easy'?",
+    "respuesta": "Simple",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'think'?",
+    "respuesta": "Thought",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'life'?",
+    "respuesta": "Lives",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'bright'?",
+    "respuesta": "Dull",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'angry'?",
+    "respuesta": "Upset",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'buy'?",
+    "respuesta": "Bought",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'wolf'?",
+    "respuesta": "Wolves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'thin'?",
+    "respuesta": "Thick",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'happy'?",
+    "respuesta": "Cheerful",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'catch'?",
+    "respuesta": "Caught",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'calf'?",
+    "respuesta": "Calves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'deep'?",
+    "respuesta": "Shallow",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'quick'?",
+    "respuesta": "Rapid",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the past tense of 'teach'?",
+    "respuesta": "Taught",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the plural of 'thief'?",
+    "respuesta": "Thieves",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the opposite of 'wet'?",
+    "respuesta": "Dry",
+    "categoria": "Inglés"
+  },
+  {
+    "pregunta": "What is the synonym of 'bright'?",
+    "respuesta": "Brilliant",
+    "categoria": "Inglés"
+  }
+]

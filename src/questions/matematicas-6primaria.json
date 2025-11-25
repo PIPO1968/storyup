@@ -1,0 +1,412 @@
+[
+  {
+    "pregunta": "¿Cuánto es 12 x 12?",
+    "respuesta": "144",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el área de un rectángulo de 5 cm de ancho y 8 cm de largo?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3 elevado a la potencia de 4?",
+    "respuesta": "81",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el perímetro de un triángulo equilátero con lados de 7 cm?",
+    "respuesta": "21",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cuadrada de 169?",
+    "respuesta": "13",
+    "categoria": "Naturaleza"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 dividido entre 4?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el valor de π (pi) redondeado a dos decimales?",
+    "respuesta": "3.14",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15% de 200?",
+    "respuesta": "30",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos grados tiene un ángulo recto?",
+    "respuesta": "90",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 8?",
+    "respuesta": "56",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 4?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el cuadrado de 12?",
+    "respuesta": "144",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué figura geométrica tiene 6 lados iguales?",
+    "respuesta": "Hexágono",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 3 elevado a la potencia de 5?",
+    "respuesta": "243",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número sigue después del 199?",
+    "respuesta": "200",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cuadrada de 225?",
+    "respuesta": "15",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuántos grados tiene un triángulo equilátero?",
+    "respuesta": "180",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 50?",
+    "respuesta": "L",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 14 x 7?",
+    "respuesta": "98",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el triple de 25?",
+    "respuesta": "75",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 9?",
+    "respuesta": "72",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es la mitad de 128?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 11 al cuadrado?",
+    "respuesta": "121",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 100?",
+    "respuesta": "C",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 dividido entre 3?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el sucesor de 299?",
+    "respuesta": "300",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 20 x 5?",
+    "respuesta": "100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el cuadrado de 15?",
+    "respuesta": "225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 72 dividido entre 8?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 13 x 7?",
+    "respuesta": "91",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el doble de 16?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 x 11?",
+    "respuesta": "99",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 8 x 8?",
+    "respuesta": "64",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es la mitad de 256?",
+    "respuesta": "128",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 33 + 44?",
+    "respuesta": "77",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7 x 6?",
+    "respuesta": "42",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número es el triple de 12?",
+    "respuesta": "36",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 4?",
+    "respuesta": "60",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 12 x 12?",
+    "respuesta": "144",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Qué número romano representa el 500?",
+    "respuesta": "D",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 16 + 24?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cuadrada de 36?",
+    "respuesta": "6",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 125 dividido entre 5?",
+    "respuesta": "25",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 256 dividido entre 8?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 144 dividido entre 12?",
+    "respuesta": "12",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 15 x 15?",
+    "respuesta": "225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 18 x 18?",
+    "respuesta": "324",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 20 x 20?",
+    "respuesta": "400",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 25 x 25?",
+    "respuesta": "625",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 30 x 30?",
+    "respuesta": "900",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 35 x 35?",
+    "respuesta": "1225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 40 x 40?",
+    "respuesta": "1600",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 45 x 45?",
+    "respuesta": "2025",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 50 x 50?",
+    "respuesta": "2500",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 55 x 55?",
+    "respuesta": "3025",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 60 x 60?",
+    "respuesta": "3600",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 65 x 65?",
+    "respuesta": "4225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 70 x 70?",
+    "respuesta": "4900",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 75 x 75?",
+    "respuesta": "5625",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 80 x 80?",
+    "respuesta": "6400",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 85 x 85?",
+    "respuesta": "7225",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 90 x 90?",
+    "respuesta": "8100",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 95 x 95?",
+    "respuesta": "9025",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 100 x 100?",
+    "respuesta": "10000",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 3/4 + 2/5?",
+    "respuesta": "23/20",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el área de un círculo con radio de 7 cm? (Usa π = 3.14)",
+    "respuesta": "153.86",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cúbica de 729?",
+    "respuesta": "9",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el valor de x si 5x + 15 = 40?",
+    "respuesta": "5",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 9 factorial (9!)?",
+    "respuesta": "362880",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el perímetro de un rectángulo con lados de 12 cm y 8 cm?",
+    "respuesta": "40",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 0.25 multiplicado por 0.4?",
+    "respuesta": "0.1",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 2/3 - 1/6?",
+    "respuesta": "1/2",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 6 elevado a la potencia de 3?",
+    "respuesta": "216",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el área de un triángulo con base de 10 cm y altura de 15 cm?",
+    "respuesta": "75",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cuadrada de 1024?",
+    "respuesta": "32",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 4/5 + 3/10?",
+    "respuesta": "11/10",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 2 elevado a la potencia de 10?",
+    "respuesta": "1024",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el volumen de un cubo con lados de 12 cm?",
+    "respuesta": "1728",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es 7.5 multiplicado por 3.2?",
+    "respuesta": "24",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el resultado de 5/8 - 1/4?",
+    "respuesta": "3/8",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuál es el área de un círculo con diámetro de 14 cm? (Usa π = 3.14)",
+    "respuesta": "153.86",
+    "categoria": "Matemáticas"
+  },
+  {
+    "pregunta": "¿Cuánto es la raíz cúbica de 512?",
+    "respuesta": "8",
+    "categoria": "Matemáticas"
+  }
+]
