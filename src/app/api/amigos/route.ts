@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
             'SELECT nick2 AS amigo FROM amigos WHERE nick1 = $1 UNION SELECT nick1 AS amigo FROM amigos WHERE nick2 = $1',
             [nick]
         );
-        return NextResponse.json(result.rows.map(row => row.amigo));
+        return NextResponse.json(result.rows.map((row: any) => row.amigo));
     } catch (error) {
         console.error('Error fetching amigos:', error);
         return NextResponse.json({ error: 'Error fetching amigos' }, { status: 500 });

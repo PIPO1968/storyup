@@ -151,6 +151,8 @@ export default function AprendeConPipo() {
     const [timeLeft, setTimeLeft] = React.useState<number>(300); // 5 minutos por pregunta
     const [bloqueado, setBloqueado] = React.useState<boolean>(false);
 
+    // Función para manejar la finalización del torneo premium
+
     // ✅ SISTEMA ANTI-TRAMPA: Cargar usuario automáticamente al iniciar
     React.useEffect(() => {
         if (typeof window === "undefined") return;
@@ -212,6 +214,8 @@ export default function AprendeConPipo() {
         }
     }, []);
 
+    // Función para manejar la finalización del torneo premium
+
     // Temporizador para modo clásico
     React.useEffect(() => {
         if (!preguntaActual || bloqueado) return;
@@ -264,6 +268,8 @@ export default function AprendeConPipo() {
 
     // Estado para preguntas ya usadas en la sesión
     const [preguntasUsadas, setPreguntasUsadas] = React.useState<string[]>([]);
+
+    // Función para manejar la finalización del torneo premium
 
     function generarPregunta() {
         if (preguntasFiltradas.length === 0) {
@@ -422,7 +428,8 @@ export default function AprendeConPipo() {
     }
 
     if (modoTorneoManual) {
-        return <TournamentQuiz userGrade={cursoUsuario} onTournamentComplete={handleTournamentComplete} />;
+        const cursoNum = cursoUsuario ? Number(cursoUsuario.match(/(\d+)/)?.[1] || 1) : 1;
+        return <TournamentQuiz userGrade={cursoNum} onTournamentComplete={handleTournamentComplete} />;
     }
 
     return (
@@ -555,7 +562,7 @@ export default function AprendeConPipo() {
     );
 
     // Función para manejar la finalización del torneo premium
-    const handleTournamentComplete = (aciertos: number, puntuacionTotal: number) => {
+    function handleTournamentComplete(aciertos: number, puntuacionTotal: number) {
         if (torneoActivo && usuarioActual) {
 
             // Actualizar estadísticas del usuario en torneos premium

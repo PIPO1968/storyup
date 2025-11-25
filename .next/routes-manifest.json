@@ -29,6 +29,14 @@
       "namedRegex": "^/api/historias/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/api/users/[nick]",
+      "regex": "^/api/users/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnick": "nxtPnick"
+      },
+      "namedRegex": "^/api/users/(?<nxtPnick>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/concurso/[numero]",
       "regex": "^/concurso/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -77,6 +85,12 @@
       "regex": "^/admin\\-premium(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin\\-premium(?:/)?$"
+    },
+    {
+      "page": "/api/acts",
+      "regex": "^/api/acts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/acts(?:/)?$"
     },
     {
       "page": "/api/add-question",
@@ -137,6 +151,24 @@
       "regex": "^/api/users(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/users(?:/)?$"
+    },
+    {
+      "page": "/api/users/count",
+      "regex": "^/api/users/count(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/users/count(?:/)?$"
+    },
+    {
+      "page": "/api/users/login",
+      "regex": "^/api/users/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/users/login(?:/)?$"
+    },
+    {
+      "page": "/api/users/register",
+      "regex": "^/api/users/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/users/register(?:/)?$"
     },
     {
       "page": "/aprende-con-pipo",

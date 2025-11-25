@@ -196,12 +196,12 @@ export default function AdminPremium() {
                 }
             };
 
-            localStorage.setItem(`premium_${usuarioSeleccionado}`, JSON.stringify(premiumData));
-            setMensaje(`🎉 ¡Premium activado para ${usuarioSeleccionado} hasta ${fechaExpiracion.toLocaleDateString()}!`);
+            localStorage.setItem(`premium_${nick}`, JSON.stringify(premiumData));
+            setMensaje(`🎉 ¡Premium activado para ${nick} hasta ${fechaExpiracion.toLocaleDateString()}!`);
 
             // Disparar eventos para actualizar componentes
             window.dispatchEvent(new Event('storage'));
-            window.dispatchEvent(new CustomEvent('premiumUpdate', { detail: { nick: usuarioSeleccionado, action: 'add' } }));
+            window.dispatchEvent(new CustomEvent('premiumUpdate', { detail: { nick: nick, action: 'add' } }));
 
         } catch (error) {
             console.error('Error al activar premium:', error);

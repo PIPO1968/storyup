@@ -99,7 +99,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\user\\Desktop\\StoryUp.es - copia - copia",
+    "outputFileTracingRoot": "C:\\Users\\user\\Desktop\\StoryUp",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -290,11 +290,11 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "C:\\Users\\user\\Desktop\\StoryUp.es - copia - copia"
+      "root": "C:\\Users\\user\\Desktop\\StoryUp"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\user\\Desktop\\StoryUp.es - copia - copia",
+  "appDir": "C:\\Users\\user\\Desktop\\StoryUp",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
