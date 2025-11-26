@@ -254,7 +254,7 @@ function PerfilUsuario() {
             }
         };
         loadUsersAndRankings();
-    }, []);
+    }, [mounted]);
 
     // Cargar mensajes del chat y aviso solo cuando cambia el usuario
     useEffect(() => {
