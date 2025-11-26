@@ -282,12 +282,35 @@ export async function PUT(request: NextRequest) {
 
         console.log('🔍 PUT /api/users - Updates:', updates);
 
-        // Limpiar y validar el objeto updates
+        // Limpiar y validar el objeto updates - solo incluir campos válidos con valores válidos
+        const validFields = [
+            'nombre', 'centro', 'curso', 'tipo', 'email', 'password', 'linkperfil',
+            'fechainscripcion', 'textofechainscripcion', 'likes', 'trofeos',
+            'historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados',
+            'preguntasfalladas', 'competicionessuperadas', 'estaenranking',
+            'autotrofeos', 'comentarios', 'premium', 'premiumexpiracion'
+        ];
+
         const cleanUpdates: any = {};
         for (const [key, value] of Object.entries(updates)) {
-            // Solo incluir propiedades que no sean undefined y que no sean duplicadas
-            if (value !== undefined && !cleanUpdates.hasOwnProperty(key)) {
-                cleanUpdates[key] = value;
+            // Solo incluir campos válidos que no sean undefined
+            if (validFields.includes(key) && value !== undefined) {
+                // Para arrays, asegurar que sean arrays
+                if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'].includes(key)) {
+                    if (Array.isArray(value)) {
+                        cleanUpdates[key] = value;
+                    } else if (typeof value === 'string') {
+                        try {
+                            cleanUpdates[key] = JSON.parse(value);
+                        } catch (e) {
+                            cleanUpdates[key] = [];
+                        }
+                    } else {
+                        cleanUpdates[key] = [];
+                    }
+                } else {
+                    cleanUpdates[key] = value;
+                }
             }
         }
 
