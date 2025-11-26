@@ -282,11 +282,22 @@ export async function PUT(request: NextRequest) {
 
         console.log('🔍 PUT /api/users - Updates:', updates);
 
+        // Limpiar y validar el objeto updates
+        const cleanUpdates: any = {};
+        for (const [key, value] of Object.entries(updates)) {
+            // Solo incluir propiedades que no sean undefined y que no sean duplicadas
+            if (value !== undefined && !cleanUpdates.hasOwnProperty(key)) {
+                cleanUpdates[key] = value;
+            }
+        }
+
+        console.log('🧹 PUT /api/users - Updates limpiados:', cleanUpdates);
+
         const fields = [];
         const values = [];
         let index = 1;
 
-        for (const [key, value] of Object.entries(updates)) {
+        for (const [key, value] of Object.entries(cleanUpdates)) {
             // Skip null/undefined values except for specific fields that can be null
             if (value === null && !['premiumexpiracion'].includes(key)) {
                 console.log(`⚠️ PUT /api/users - Skipping null value for field: ${key}`);
