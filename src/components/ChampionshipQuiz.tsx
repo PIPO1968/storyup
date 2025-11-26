@@ -51,26 +51,34 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
     const [timeLeft, setTimeLeft] = React.useState<number>(300); // 5 minutos
     const [bloqueado, setBloqueado] = React.useState<boolean>(false);
 
+    // Optimizar el temporizador para evitar re-renders excesivos
     React.useEffect(() => {
-        if (!preguntaActual || bloqueado) return;
-        if (timeLeft === 0) {
-            setBloqueado(true);
-            setFeedback("⏰ Tiempo agotado. No puedes responder esta pregunta. -3 likes");
-            // Aquí podrías actualizar los likes en la base de datos si lo deseas
-            return;
-        }
-        const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-        return () => clearTimeout(timer);
-    }, [timeLeft, preguntaActual, bloqueado]);
-    // Cargar preguntas de campeonato según el curso
-    let preguntas: Pregunta[] = [];
-    try {
-        preguntas = require(`../questions/campeonato-${userGrade}primaria.json`);
-    } catch {
-        preguntas = [];
-    }
+        if (!preguntaActual || bloqueado || timeLeft <= 0) return;
 
-    async function generarPregunta() {
+        const timer = setTimeout(() => {
+            setTimeLeft(prev => {
+                const newTime = prev - 1;
+                if (newTime <= 0) {
+                    setBloqueado(true);
+                    setFeedback("⏰ Tiempo agotado. No puedes responder esta pregunta. -3 likes");
+                    return 0;
+                }
+                return newTime;
+            });
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [preguntaActual, bloqueado, timeLeft]);
+    // Cargar preguntas de campeonato según el curso - optimizado con useMemo
+    const preguntas = React.useMemo(() => {
+        try {
+            return require(`../questions/campeonato-${userGrade}primaria.json`);
+        } catch {
+            return [];
+        }
+    }, [userGrade]);
+
+    const generarPregunta = React.useCallback(async () => {
         if (preguntasUsadas.length >= 25) {
             setPreguntaActual("");
             setRespuestaCorrecta("");
@@ -206,9 +214,9 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
         setRespuestaUsuario("");
         setFeedback("");
         setPreguntasUsadas([...preguntasUsadas, restantes[random].pregunta]);
-    }
+    }, [preguntas, preguntasUsadas]);
 
-    async function comprobarRespuesta() {
+    const comprobarRespuesta = React.useCallback(async () => {
         // Normalizar para comparar respuestas
         function normalizar(str: string) {
             return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/\s+/g, "").trim();
@@ -246,7 +254,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
                 await ChampionshipAPI.setChampionshipData(nick, 'respuestas_campeonato', respuestasArr);
             }
         }
-    }
+    }, [bloqueado, respuestaUsuario, respuestaCorrecta, timeLeft, preguntaActual, preguntasUsadas]);
 
     return (
         <div className="p-4 bg-yellow-100 rounded-lg">
