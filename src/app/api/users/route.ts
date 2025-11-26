@@ -342,21 +342,36 @@ export async function PUT(request: NextRequest) {
                 fieldName = fieldMapping[key];
             }
 
-            if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'].includes(fieldName)) {
-                // For JSONB fields, send as JSON string
+            // Handle different field types
+            if (['autotrofeos', 'trofeosdesbloqueados', 'trofeosbloqueados'].includes(fieldName)) {
+                // JSONB fields - convert to JSON string
                 let jsonValue = value;
                 if (typeof value === 'string') {
-                    // If it's already a string, assume it's JSON
                     jsonValue = value;
                 } else if (Array.isArray(value)) {
-                    // If it's an array, stringify it
                     jsonValue = JSON.stringify(value);
                 } else {
-                    // Default to empty array
                     jsonValue = '[]';
                 }
                 fields.push(`${fieldName} = $${index}`);
                 values.push(jsonValue);
+            } else if (['historias', 'amigos', 'comentarios'].includes(fieldName)) {
+                // ARRAY fields - use PostgreSQL array syntax
+                let arrayValue = value;
+                if (Array.isArray(value)) {
+                    // Convert array to PostgreSQL ARRAY format
+                    arrayValue = '{' + value.map(item =>
+                        typeof item === 'string' ? `"${item.replace(/"/g, '\\"')}"` : String(item)
+                    ).join(',') + '}';
+                } else if (typeof value === 'string') {
+                    // If it's already a string, assume it's PostgreSQL array format
+                    arrayValue = value;
+                } else {
+                    // Default to empty array
+                    arrayValue = '{}';
+                }
+                fields.push(`${fieldName} = $${index}`);
+                values.push(arrayValue);
             } else {
                 fields.push(`${fieldName} = $${index}`);
                 values.push(value);
@@ -383,18 +398,31 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
-        // Parse JSONB fields in the returned user
+        // Parse fields in the returned user
         const user = result.rows[0];
-        const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+
+        // JSONB fields need JSON parsing
+        const jsonbFields = ['autotrofeos', 'trofeosdesbloqueados', 'trofeosbloqueados'];
         jsonbFields.forEach(field => {
             if (user[field]) {
                 try {
                     user[field] = JSON.parse(user[field]);
                 } catch (e) {
-                    // If parsing fails, ensure it's an array
                     user[field] = Array.isArray(user[field]) ? user[field] : [];
                 }
             } else {
+                user[field] = [];
+            }
+        });
+
+        // ARRAY fields are already in correct format from PostgreSQL
+        const arrayFields = ['historias', 'amigos', 'comentarios'];
+        arrayFields.forEach(field => {
+            if (!user[field]) {
+                user[field] = [];
+            }
+            // Ensure it's always an array
+            if (!Array.isArray(user[field])) {
                 user[field] = [];
             }
         });
