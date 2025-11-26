@@ -31,7 +31,9 @@ export async function GET(request: NextRequest) {
                 competicionesSuperadas INTEGER DEFAULT 0,
                 estaEnRanking BOOLEAN DEFAULT FALSE,
                 autoTrofeos JSONB DEFAULT '[]'::jsonb,
-                comentarios JSONB DEFAULT '[]'::jsonb
+                comentarios JSONB DEFAULT '[]'::jsonb,
+                premium BOOLEAN DEFAULT FALSE,
+                premiumExpiracion TIMESTAMP
             )
         `);
 
@@ -109,6 +111,28 @@ export async function PUT(request: NextRequest) {
         }
 
         return NextResponse.json(result.rows[0]);
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: 'Database error' }, { status: 500 });
+    }
+}
+
+export async function DELETE(request: NextRequest) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const nick = searchParams.get('nick');
+
+        if (!nick) {
+            return NextResponse.json({ error: 'Nick is required' }, { status: 400 });
+        }
+
+        const result = await pool.query('DELETE FROM "User" WHERE nick = $1 RETURNING *', [nick]);
+
+        if (result.rows.length === 0) {
+            return NextResponse.json({ error: 'User not found' }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: 'User deleted successfully' });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });

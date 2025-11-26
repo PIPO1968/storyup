@@ -13,8 +13,8 @@ interface SolicitudPago {
     tipo: string;
     precio: number;
     metodoPago: string;
-    fechaAprobacion?: string;
-    fechaRechazo?: string;
+    fecha_aprobacion?: string;
+    fecha_rechazo?: string;
     motivo?: string;
 }
 
@@ -103,7 +103,8 @@ export default function AdminPremium() {
     const cargarSolicitudes = async (): Promise<void> => {
         try {
             const todasSolicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
-            setSolicitudesPendientes(todasSolicitudes);
+            const pendientes = todasSolicitudes.filter(s => s.estado === 'pendiente');
+            setSolicitudesPendientes(pendientes);
             setMostrarSolicitudes(true);
         } catch (error) {
             console.error('Error al cargar solicitudes:', error);
@@ -130,8 +131,13 @@ export default function AdminPremium() {
                 await UsersAPI.updateUser(updatedUser);
             }
 
-            // Marcar solicitud como aprobada (aquí necesitaríamos una API para actualizar solicitudes)
-            // Por ahora, recargamos las solicitudes
+            // Marcar solicitud como aprobada
+            await SolicitudesPremiumAPI.updateSolicitud(solicitud.id, {
+                estado: 'aprobado',
+                fecha_aprobacion: new Date().toISOString()
+            });
+
+            // Recargar solicitudes
             const solicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
             setSolicitudesPendientes(solicitudes);
 
@@ -151,7 +157,14 @@ export default function AdminPremium() {
     // Rechazar solicitud
     const rechazarSolicitud = async (solicitud: SolicitudPremium, motivo: string = 'Pago no verificado'): Promise<void> => {
         try {
-            // Por ahora, solo recargamos las solicitudes (necesitaríamos API para actualizar)
+            // Marcar solicitud como rechazada
+            await SolicitudesPremiumAPI.updateSolicitud(solicitud.id, {
+                estado: 'rechazado',
+                fecha_rechazo: new Date().toISOString(),
+                motivo
+            });
+
+            // Recargar solicitudes
             const todasSolicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
             setSolicitudesPendientes(todasSolicitudes);
 
@@ -336,6 +349,32 @@ export default function AdminPremium() {
         }
     };
 
+    // Eliminar Usuario
+    const eliminarUsuario = async (): Promise<void> => {
+        if (!nick.trim()) {
+            setMensaje("❌ Ingresa un nick válido");
+            return;
+        }
+
+        const confirmacion = window.confirm(`¿Estás seguro de que quieres eliminar permanentemente al usuario "${nick.trim()}"? Esta acción no se puede deshacer.`);
+        if (!confirmacion) return;
+
+        try {
+            const success = await UsersAPI.deleteUser(nick.trim());
+            if (success) {
+                setMensaje(`🗑️ Usuario "${nick.trim()}" eliminado permanentemente`);
+                // Disparar eventos para actualizar componentes
+                window.dispatchEvent(new Event('storage'));
+                window.dispatchEvent(new CustomEvent('userDeleted', { detail: { nick: nick.trim() } }));
+            } else {
+                setMensaje("❌ Error al eliminar usuario");
+            }
+        } catch (error) {
+            console.error('Error al eliminar usuario:', error);
+            setMensaje("❌ Error al eliminar usuario");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8">
             <div className="max-w-2xl mx-auto">
@@ -357,7 +396,7 @@ export default function AdminPremium() {
                         />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
                         <button
                             onClick={activarPremium}
                             className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all"
@@ -384,6 +423,13 @@ export default function AdminPremium() {
                             className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all"
                         >
                             📋 Ver Solicitudes
+                        </button>
+
+                        <button
+                            onClick={eliminarUsuario}
+                            className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all"
+                        >
+                            🚫 Eliminar Usuario
                         </button>
                     </div>
 
@@ -459,6 +505,7 @@ export default function AdminPremium() {
                             <li><strong>Anular Premium:</strong> Remueve el estado Premium de un usuario</li>
                             <li><strong>Verificar Estado:</strong> Comprueba si un usuario ya tiene Premium activo</li>
                             <li><strong>Ver Solicitudes:</strong> Muestra pagos pendientes de verificación</li>
+                            <li><strong>Eliminar Usuario:</strong> Elimina permanentemente un usuario de la base de datos</li>
                             <li><strong>Aprobar/Rechazar:</strong> Gestiona las solicitudes tras verificar Bizum</li>
                         </ul>
 

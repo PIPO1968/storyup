@@ -11,16 +11,34 @@ export async function GET() {
     }
 }
 
-export async function POST(request: NextRequest) {
+export async function PUT(request: NextRequest) {
     try {
-        const solicitud = await request.json();
-        const result = await pool.query(
-            'INSERT INTO solicitudes_premium (nick, email, metodo_pago, fecha, id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-            [solicitud.nick, solicitud.email, solicitud.metodoPago, solicitud.fecha, solicitud.id]
-        );
+        const { id, estado, fechaAprobacion, fechaRechazo, motivo } = await request.json();
+        let query = 'UPDATE solicitudes_premium SET estado = $1';
+        const values = [estado];
+        let index = 2;
+
+        if (estado === 'aprobado' && fechaAprobacion) {
+            query += `, fecha_aprobacion = $${index}`;
+            values.push(fechaAprobacion);
+            index++;
+        }
+        if (estado === 'rechazado' && fechaRechazo) {
+            query += `, fecha_rechazo = $${index}, motivo = $${index + 1}`;
+            values.push(fechaRechazo, motivo);
+            index += 2;
+        }
+
+        query += ` WHERE id = $${index} RETURNING *`;
+        values.push(id);
+
+        const result = await pool.query(query, values);
+        if (result.rows.length === 0) {
+            return NextResponse.json({ error: 'Solicitud no encontrada' }, { status: 404 });
+        }
         return NextResponse.json(result.rows[0]);
     } catch (error) {
-        console.error('Error al crear solicitud premium:', error);
-        return NextResponse.json({ error: 'Error al crear solicitud' }, { status: 500 });
+        console.error('Error al actualizar solicitud premium:', error);
+        return NextResponse.json({ error: 'Error al actualizar solicitud' }, { status: 500 });
     }
 }

@@ -4,6 +4,10 @@ export interface SolicitudPremium {
     email: string;
     metodoPago: string;
     fecha: string;
+    estado?: string;
+    fecha_aprobacion?: string;
+    fecha_rechazo?: string;
+    motivo?: string;
 }
 
 export class SolicitudesPremiumAPI {
@@ -27,5 +31,20 @@ export class SolicitudesPremiumAPI {
             throw new Error('Error al crear solicitud premium');
         }
         return response.json();
+    }
+
+    static async updateSolicitud(id: string, updates: Partial<SolicitudPremium>): Promise<SolicitudPremium | null> {
+        try {
+            const response = await fetch('/api/solicitudes-premium', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, ...updates })
+            });
+            if (!response.ok) throw new Error('Error al actualizar solicitud premium');
+            return await response.json();
+        } catch (error) {
+            console.error('Error al actualizar solicitud premium:', error);
+            return null;
+        }
     }
 }

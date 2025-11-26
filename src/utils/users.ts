@@ -73,4 +73,18 @@ export class UsersAPI {
             return null;
         }
     }
+
+    // Eliminar un usuario
+    static async deleteUser(nick: string): Promise<boolean> {
+        try {
+            const response = await fetch(`/api/users?nick=${encodeURIComponent(nick)}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) throw new Error('Error deleting user');
+            return true;
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            return false;
+        }
+    }
 }
