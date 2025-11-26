@@ -22,7 +22,15 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [showSidebar, setShowSidebar] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+
   React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!mounted) return;
+
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
       const user = sessionStorage.getItem("user");
@@ -37,7 +45,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         setShowSidebar(false);
       }
     }
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) {
+    return (
+      <html lang="es">
+        <head>
+          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+          <title>StoryUp</title>
+        </head>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-green-100`}>
+          <I18nProvider>
+            <Header />
+            {children}
+          </I18nProvider>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="es">
       <head>
