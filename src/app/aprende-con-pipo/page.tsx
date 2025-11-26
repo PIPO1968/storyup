@@ -3,6 +3,7 @@
 import React from "react";
 import ChampionshipQuiz from "../../components/ChampionshipQuiz";
 import TournamentQuiz from "../../components/TournamentQuiz";
+import { ChampionshipAPI } from "../../utils/championship";
 
 async function getTablaDocentes(temporada: number) {
     if (typeof window === "undefined") return {};
@@ -167,12 +168,8 @@ export default function AprendeConPipo() {
                 setUsuarioActual(userObj);
 
                 // Verificar si es premium
-                const premiumInfo = localStorage.getItem(`premium_${userObj.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
-                        setIsPremium(true);
-                    }
+                if (userObj.premium && userObj.premiumExpiracion && new Date(userObj.premiumExpiracion) > new Date()) {
+                    setIsPremium(true);
                 }
 
                 // ✅ SISTEMA DOCENTES: Detectar curso del usuario automáticamente
@@ -333,23 +330,24 @@ export default function AprendeConPipo() {
                 setFeedback(`¡Correcto! 🎉 +${puntosBase} likes${esDocente ? ' (Docente: 50% puntos)' : ''}`);
                 likesDelta = puntosBase;
             }
-            // Guardar respuestas acertadas en localStorage para el perfil y en users
-            if (typeof window !== "undefined") {
-                const userStr = sessionStorage.getItem("user");
-                const usersStr = sessionStorage.getItem("users");
-                if (userStr && usersStr) {
-                    const userObj = JSON.parse(userStr);
+            // Guardar respuestas acertadas en la base de datos
+            if (typeof window !== "undefined" && usuarioActual) {
+                try {
+                    // Actualizar preguntasAcertadas del usuario
+                    const updatedUser = {
+                        ...usuarioActual,
+                        preguntasAcertadas: (usuarioActual.preguntasAcertadas || 0) + 1
+                    };
+                    await UsersAPI.updateUser(updatedUser);
 
-                    // Guardar total general de respuestas acertadas
-                    const keyAcertadas = `acertadas_${userObj.nick}`;
-                    const totalAcertadas = parseInt(sessionStorage.getItem(keyAcertadas) || '0', 10);
-                    sessionStorage.setItem(keyAcertadas, String(totalAcertadas + 1));
+                    // Actualizar sessionStorage
+                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
 
                     // ✅ NUEVO: Guardar respuestas acertadas por asignatura específica
                     if (objetoPreguntaActual && objetoPreguntaActual.categoria) {
                         const asignaturaNormalizada = objetoPreguntaActual.categoria.toLowerCase();
 
-                        // Mapear categorías a nombres de asignatura consistentes para localStorage
+                        // Mapear categorías a nombres de asignatura consistentes
                         const mapaAsignaturas: { [key: string]: string } = {
                             'matemáticas': 'matematicas',
                             'historia': 'historia',
@@ -361,17 +359,18 @@ export default function AprendeConPipo() {
                             'general': 'general'
                         };
                         const asignaturaFinal = mapaAsignaturas[asignaturaNormalizada] || asignaturaNormalizada;
-                        const keyAsignatura = `${asignaturaFinal}_${userObj.nick}`;
-                        const totalAsignatura = parseInt(sessionStorage.getItem(keyAsignatura) || '0', 10);
-                        sessionStorage.setItem(keyAsignatura, String(totalAsignatura + 1));
-                    }
 
-                    // Actualizar campo preguntasAcertadas en users
-                    const usersArr = JSON.parse(usersStr);
-                    const idx = usersArr.findIndex((u: any) => u.nick === userObj.nick);
-                    if (idx !== -1) {
-                        usersArr[idx].preguntasAcertadas = (usersArr[idx].preguntasAcertadas || 0) + 1;
-                        sessionStorage.setItem("users", JSON.stringify(usersArr));
+                        // Cargar datos actuales de asignaturas
+                        const asignaturasData = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'asignaturas') as Record<string, number>;
+                        const currentCount = asignaturasData[asignaturaFinal] || 0;
+                        asignaturasData[asignaturaFinal] = currentCount + 1;
+
+                        // Guardar datos actualizados
+                        await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'asignaturas', asignaturasData);
+                    }
+                } catch (error) {
+                    console.error('Error saving user stats:', error);
+                }
                     }
                 }
             }
@@ -414,9 +413,13 @@ export default function AprendeConPipo() {
         if (torneoActivo && usuarioActual) {
 
             // Actualizar estadísticas del usuario en torneos premium
-            const userStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0, "participaciones": 0, "puntuacionTotal": 0}');
-            userStats.participaciones += 1;
-            userStats.puntuacionTotal += puntuacionTotal;
+            const userStats = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'competiciones_premium') as { victorias: number; participaciones: number; puntuacionTotal: number };
+            const currentStats = userStats || { victorias: 0, participaciones: 0, puntuacionTotal: 0 };
+            currentStats.participaciones += 1;
+            currentStats.puntuacionTotal += puntuacionTotal;
+
+            // Guardar estadísticas actualizadas
+            await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'competiciones_premium', currentStats);
 
             // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
             if (modoTorneo && torneoActivo) {
