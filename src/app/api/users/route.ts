@@ -94,16 +94,63 @@ export async function GET(request: NextRequest) {
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
-            return NextResponse.json(result.rows[0]);
+            // Parse JSONB fields
+            const user = result.rows[0];
+            const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+            jsonbFields.forEach(field => {
+                if (user[field]) {
+                    try {
+                        user[field] = JSON.parse(user[field]);
+                    } catch (e) {
+                        // If parsing fails, ensure it's an array
+                        user[field] = Array.isArray(user[field]) ? user[field] : [];
+                    }
+                } else {
+                    user[field] = [];
+                }
+            });
+            return NextResponse.json(user);
         } else if (email) {
             const result = await pool.query('SELECT * FROM "User" WHERE email = $1', [email]);
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
-            return NextResponse.json(result.rows[0]);
+            // Parse JSONB fields
+            const user = result.rows[0];
+            const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+            jsonbFields.forEach(field => {
+                if (user[field]) {
+                    try {
+                        user[field] = JSON.parse(user[field]);
+                    } catch (e) {
+                        // If parsing fails, ensure it's an array
+                        user[field] = Array.isArray(user[field]) ? user[field] : [];
+                    }
+                } else {
+                    user[field] = [];
+                }
+            });
+            return NextResponse.json(user);
         } else {
             const result = await pool.query('SELECT * FROM "User"');
-            return NextResponse.json(result.rows);
+            // Parse JSONB fields for all users
+            const users = result.rows.map(user => {
+                const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+                jsonbFields.forEach(field => {
+                    if (user[field]) {
+                        try {
+                            user[field] = JSON.parse(user[field]);
+                        } catch (e) {
+                            // If parsing fails, ensure it's an array
+                            user[field] = Array.isArray(user[field]) ? user[field] : [];
+                        }
+                    } else {
+                        user[field] = [];
+                    }
+                });
+                return user;
+            });
+            return NextResponse.json(users);
         }
     } catch (error) {
         console.error(error);
@@ -118,10 +165,26 @@ export async function POST(request: NextRequest) {
 
         const result = await pool.query(
             'INSERT INTO "User" (nick, email, password, nombre, centro, curso, tipo, linkperfil, fechainscripcion, textofechainscripcion, likes, trofeos, historias, amigos, trofeosdesbloqueados, trofeosbloqueados, preguntasfalladas, competicionessuperadas, estaenranking, autotrofeos, comentarios) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *',
-            [nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, JSON.stringify(historias), JSON.stringify(amigos), JSON.stringify(trofeosDesbloqueados), JSON.stringify(trofeosBloqueados), preguntasFalladas, competicionesSuperadas, estaEnRanking, JSON.stringify(autoTrofeos), JSON.stringify(comentarios)]
+            [nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, JSON.stringify(Array.isArray(historias) ? historias : []), JSON.stringify(Array.isArray(amigos) ? amigos : []), JSON.stringify(Array.isArray(trofeosDesbloqueados) ? trofeosDesbloqueados : []), JSON.stringify(Array.isArray(trofeosBloqueados) ? trofeosBloqueados : []), preguntasFalladas, competicionesSuperadas, estaEnRanking, JSON.stringify(Array.isArray(autoTrofeos) ? autoTrofeos : []), JSON.stringify(Array.isArray(comentarios) ? comentarios : [])]
         );
 
-        return NextResponse.json(result.rows[0], { status: 201 });
+        // Parse JSONB fields in the returned user
+        const user = result.rows[0];
+        const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+        jsonbFields.forEach(field => {
+            if (user[field]) {
+                try {
+                    user[field] = JSON.parse(user[field]);
+                } catch (e) {
+                    // If parsing fails, ensure it's an array
+                    user[field] = Array.isArray(user[field]) ? user[field] : [];
+                }
+            } else {
+                user[field] = [];
+            }
+        });
+
+        return NextResponse.json(user, { status: 201 });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -171,9 +234,23 @@ export async function PUT(request: NextRequest) {
                 fieldName = fieldMapping[key];
             }
 
-            if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos'].includes(fieldName)) {
+            if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'].includes(fieldName)) {
+                // Ensure value is an array before stringifying
+                let arrayValue = value;
+                if (typeof value === 'string') {
+                    try {
+                        arrayValue = JSON.parse(value);
+                    } catch (e) {
+                        // If it's not valid JSON, treat as empty array
+                        arrayValue = [];
+                    }
+                }
+                // Ensure it's an array
+                if (!Array.isArray(arrayValue)) {
+                    arrayValue = [];
+                }
                 fields.push(`${fieldName} = $${index}`);
-                values.push(JSON.stringify(value));
+                values.push(JSON.stringify(arrayValue));
             } else {
                 fields.push(`${fieldName} = $${index}`);
                 values.push(value);
@@ -200,7 +277,23 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
-        return NextResponse.json(result.rows[0]);
+        // Parse JSONB fields in the returned user
+        const user = result.rows[0];
+        const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
+        jsonbFields.forEach(field => {
+            if (user[field]) {
+                try {
+                    user[field] = JSON.parse(user[field]);
+                } catch (e) {
+                    // If parsing fails, ensure it's an array
+                    user[field] = Array.isArray(user[field]) ? user[field] : [];
+                }
+            } else {
+                user[field] = [];
+            }
+        });
+
+        return NextResponse.json(user);
     } catch (error) {
         console.error('❌ PUT /api/users - Error:', error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });
