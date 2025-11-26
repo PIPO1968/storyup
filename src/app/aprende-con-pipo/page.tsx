@@ -4,6 +4,7 @@ import React from "react";
 import ChampionshipQuiz from "../../components/ChampionshipQuiz";
 import TournamentQuiz from "../../components/TournamentQuiz";
 import { ChampionshipAPI } from "../../utils/championship";
+import { UsersAPI } from "../../utils/users";
 
 async function getTablaDocentes(temporada: number) {
     if (typeof window === "undefined") return {};
