@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { UsersAPI } from "../../utils/users";
 
 interface UsuarioPremium {
     nick: string;
@@ -18,26 +19,27 @@ const LigaPremiumPage: React.FC = () => {
     const [isPremium, setIsPremium] = useState(false);
     const [loading, setLoading] = useState(true);
     const [usuariosPremium, setUsuariosPremium] = useState<UsuarioPremium[]>([]);
+    const [mensaje, setMensaje] = useState('');
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const userData = localStorage.getItem('currentUser') || localStorage.getItem('user');
-            if (userData) {
-                const user = JSON.parse(userData);
-                setUsuarioActual(user);
+        const loadData = async () => {
+            if (typeof window !== "undefined") {
+                const userData = sessionStorage.getItem('user');
+                if (userData) {
+                    const user = JSON.parse(userData);
+                    setUsuarioActual(user);
 
-                // Verificar si es premium
-                const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
+                    // Verificar si es premium
+                    if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion) > new Date()) {
                         setIsPremium(true);
-                        cargarLigaPremium();
+                        await cargarLigaPremium();
                     } else {
+                        setMensaje("Debes tener una suscripción Premium activa para acceder a la Liga Premium.");
                         alert('Tu suscripción Premium ha expirado. Renueva para acceder a la Liga Premium.');
                         router.push('/premium-nuevo');
                     }
                 } else {
+                    setMensaje("Debes iniciar sesión para acceder a la Liga Premium.");
                     alert('Esta función es exclusiva para usuarios Premium.');
                     router.push('/premium-nuevo');
                 }
@@ -45,23 +47,17 @@ const LigaPremiumPage: React.FC = () => {
                 router.push('/');
             }
             setLoading(false);
-        }
+        };
+        loadData();
     }, []);
 
-    const cargarLigaPremium = () => {
-        if (typeof window === "undefined") return;
+    const cargarLigaPremium = async () => {
+        try {
+            const users = await UsersAPI.getAllUsers();
+            const premiumUsers: UsuarioPremium[] = [];
 
-        const usersStr = localStorage.getItem("users");
-        if (!usersStr) return;
-
-        const users = JSON.parse(usersStr);
-        const premiumUsers: UsuarioPremium[] = [];
-
-        users.forEach((user: any) => {
-            const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-            if (premiumInfo) {
-                const premium = JSON.parse(premiumInfo);
-                if (new Date(premium.expiracion) > new Date()) {
+            users.forEach((user: any) => {
+                if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion) > new Date()) {
                     // Calcular puntos basados en actividades premium
                     const puntos = calcularPuntosUsuario(user);
                     premiumUsers.push({
@@ -74,12 +70,14 @@ const LigaPremiumPage: React.FC = () => {
                         medallas: user.medallas?.length || 0
                     });
                 }
-            }
-        });
+            });
 
-        // Ordenar por puntos descendente
-        premiumUsers.sort((a, b) => b.puntos - a.puntos);
-        setUsuariosPremium(premiumUsers);
+            // Ordenar por puntos descendente
+            premiumUsers.sort((a, b) => b.puntos - a.puntos);
+            setUsuariosPremium(premiumUsers);
+        } catch (error) {
+            console.error('Error al cargar liga premium:', error);
+        }
     };
 
     const calcularPuntosUsuario = (user: any): number => {
@@ -98,13 +96,7 @@ const LigaPremiumPage: React.FC = () => {
         puntos += (user.medallas?.length || 0) * 50;
 
         // Puntos por participación en competiciones premium
-        const competicionesPremium = localStorage.getItem(`competiciones_premium_${user.nick}`);
-        if (competicionesPremium) {
-            const comps = JSON.parse(competicionesPremium);
-            puntos += comps.puntuacionTotal || 0; // Puntuación total de torneos
-        }
-
-        return puntos;
+        puntos += user.competicionesPremium?.puntuacionTotal || 0; return puntos;
     };
 
     if (loading) {

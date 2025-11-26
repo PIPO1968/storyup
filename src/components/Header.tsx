@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from '@/utils/i18n';
+import { User } from '../utils/users';
 
 const Header: React.FC = () => {
     const [dateTime, setDateTime] = useState("");
@@ -24,21 +25,31 @@ const Header: React.FC = () => {
     const { lang, setLang, t } = useTranslation();
 
     // Obtener usuario actual
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<User | null>(() => {
+        if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            return userStr ? JSON.parse(userStr) : null;
+        }
+        return null;
+    });
     const [registeredUsers, setRegisteredUsers] = useState<number | null>(null);
-    const [onlineUsers, setOnlineUsers] = useState<number | null>(null);
-    const [isPremium, setIsPremium] = useState(false);
+    const [onlineUsers, setOnlineUsers] = useState<number | null>(() => {
+        if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            return userStr ? 1 : 0;
+        }
+        return 0;
+    });
+    const [isPremium, setIsPremium] = useState(() => {
+        if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            const currentUser: User | null = userStr ? JSON.parse(userStr) : null;
+            return currentUser?.premium || false;
+        }
+        return false;
+    });
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const userStr = localStorage.getItem("user");
-            if (userStr) {
-                const currentUser = JSON.parse(userStr);
-                setUser(currentUser);
-                setIsPremium(currentUser.premium || false);
-                setOnlineUsers(1);
-            } else {
-                setOnlineUsers(0);
-            }
             // Obtener número de usuarios registrados
             fetch('/api/users/count')
                 .then(res => res.json())
@@ -121,8 +132,8 @@ const Header: React.FC = () => {
                     className="bg-red-500 text-white px-3 py-1 rounded"
                     onClick={() => {
                         if (typeof window !== 'undefined') {
-                            localStorage.removeItem('user');
-                            localStorage.removeItem('token');
+                            sessionStorage.removeItem('user');
+                            sessionStorage.removeItem('token');
                         }
                         window.location.href = '/';
                     }}

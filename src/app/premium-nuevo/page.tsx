@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { UsersAPI } from "../../utils/users";
 
 interface Usuario {
     nick: string;
@@ -19,18 +20,14 @@ const PremiumPage: React.FC = () => {
     // Cargar información del usuario
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const userData = localStorage.getItem('currentUser') || localStorage.getItem('user');
+            const userData = sessionStorage.getItem('user');
             if (userData) {
                 const user = JSON.parse(userData);
                 setUsuario(user);
 
                 // Verificar si tiene premium activo
-                const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
-                        setIsPremium(true);
-                    }
+                if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion) > new Date()) {
+                    setIsPremium(true);
                 }
             }
             setLoading(false);
@@ -119,16 +116,17 @@ const PremiumPage: React.FC = () => {
             const fechaExpiracion = new Date();
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
 
-            const premiumData = {
-                activo: true,
-                fechaInicio: new Date().toISOString(),
-                expiracion: fechaExpiracion.toISOString(),
-                tipo: "anual",
-                precio: 12,
-                beneficios: beneficiosPremium
+            const updatedUser = {
+                ...usuario,
+                premium: true,
+                premiumExpiracion: fechaExpiracion.toISOString()
             };
 
-            localStorage.setItem(`premium_${usuario.nick}`, JSON.stringify(premiumData));
+            await UsersAPI.updateUser(updatedUser);
+
+            // Actualizar sessionStorage
+            sessionStorage.setItem("user", JSON.stringify(updatedUser));
+            setUsuario(updatedUser);
             setIsPremium(true);
 
             alert(`🎉 ¡Bienvenido a StoryUp Premium, ${usuario.nick}!\n\nTu experiencia de aprendizaje acaba de mejorar significativamente. ¡Disfruta de todos los beneficios Premium por un año completo!`);

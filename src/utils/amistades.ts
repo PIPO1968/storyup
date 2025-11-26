@@ -1,4 +1,12 @@
 // Utilidad para manejar operaciones de amistades con PostgreSQL
+
+export interface SolicitudAmistad {
+    origen: string;
+    destino: string;
+    fecha?: string;
+    [key: string]: unknown;
+}
+
 export class AmistadesAPI {
     // Obtener lista de amigos de un usuario
     static async getAmigos(nick: string): Promise<string[]> {
@@ -43,7 +51,7 @@ export class AmistadesAPI {
     }
 
     // Obtener solicitudes pendientes para un usuario
-    static async getSolicitudesPendientes(nick: string): Promise<any[]> {
+    static async getSolicitudesPendientes(nick: string): Promise<SolicitudAmistad[]> {
         try {
             const response = await fetch(`/api/solicitudes?nick=${encodeURIComponent(nick)}`);
             if (!response.ok) throw new Error('Error fetching solicitudes');

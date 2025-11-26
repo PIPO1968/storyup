@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { UserDataAPI } from "../../utils/user-data";
+import { User } from "../../utils/users";
 
 interface Torneo {
     id: string;
@@ -19,21 +21,23 @@ interface Torneo {
 
 const TorneosPremiumPage: React.FC = () => {
     const router = useRouter();
-    const [usuarioActual, setUsuarioActual] = useState<any>(null);
+    const [usuarioActual, setUsuarioActual] = useState<User | null>(() => {
+        if (typeof window !== "undefined") {
+            const userData = sessionStorage.getItem('user');
+            return userData ? JSON.parse(userData) : null;
+        }
+        return null;
+    });
     const [isPremium, setIsPremium] = useState(false);
     const [loading, setLoading] = useState(true);
     const [torneos, setTorneos] = useState<Torneo[]>([]);
     const [torneoActivo, setTorneoActivo] = useState<Torneo | null>(null);
-    const [cursoUsuario, setCursoUsuario] = useState<number>(1);
-
-    useEffect(() => {
+    const [stats, setStats] = useState({ victorias: 0, participaciones: 0, puntuacionTotal: 0 });
+    const [cursoUsuario, setCursoUsuario] = useState<number>(() => {
         if (typeof window !== "undefined") {
-            const userData = localStorage.getItem('currentUser') || localStorage.getItem('user');
+            const userData = sessionStorage.getItem('user');
             if (userData) {
                 const user = JSON.parse(userData);
-                setUsuarioActual(user);
-
-                // Determinar curso del usuario
                 let cursoDetectado = 1; // Por defecto 1º Primaria
 
                 // Si es docente, usar 6º curso por defecto
@@ -58,29 +62,149 @@ const TorneosPremiumPage: React.FC = () => {
                 if (cursoDetectado < 1) cursoDetectado = 1;
                 if (cursoDetectado > 6) cursoDetectado = 6;
 
-                setCursoUsuario(cursoDetectado);
+                return cursoDetectado;
+            }
+        }
+        return 1;
+    });
 
-                // Verificar si es premium
-                const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
-                        setIsPremium(true);
-                        cargarTorneos();
-                    } else {
-                        alert('Tu suscripción Premium ha expirado. Renueva para acceder a los Torneos Premium.');
-                        router.push('/premium-nuevo');
-                    }
-                } else {
-                    alert('Los Torneos Premium son exclusivos para usuarios Premium.');
-                    router.push('/premium-nuevo');
+    const cargarTorneos = async () => {
+        if (!usuarioActual) return;
+
+        // Verificar si necesitamos resetear torneos
+        const lastReset = await UserDataAPI.getUserData(usuarioActual.nick, 'torneos_premium_last_reset');
+        const now = new Date();
+        const lastResetDate = lastReset ? new Date(lastReset) : null;
+
+        // Resetear si es un nuevo mes o no hay datos
+        const shouldReset = !lastResetDate || lastResetDate.getMonth() !== now.getMonth() || lastResetDate.getFullYear() !== now.getFullYear();
+
+        if (shouldReset) {
+            // Crear torneos mensuales por defecto
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const torneosDefault: Torneo[] = [
+                {
+                    id: 'torneo-mensual-1primaria',
+                    nombre: 'Torneo Mensual 1º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 1º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
+                },
+                {
+                    id: 'torneo-mensual-2primaria',
+                    nombre: 'Torneo Mensual 2º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 2º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
+                },
+                {
+                    id: 'torneo-mensual-3primaria',
+                    nombre: 'Torneo Mensual 3º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 3º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
+                },
+                {
+                    id: 'torneo-mensual-4primaria',
+                    nombre: 'Torneo Mensual 4º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 4º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
+                },
+                {
+                    id: 'torneo-mensual-5primaria',
+                    nombre: 'Torneo Mensual 5º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 5º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
+                },
+                {
+                    id: 'torneo-mensual-6primaria',
+                    nombre: 'Torneo Mensual 6º Primaria',
+                    descripcion: 'Compite en el torneo mensual de 6º Primaria. 25 preguntas de asignaturas generales.',
+                    fechaInicio: new Date().toISOString(),
+                    fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
+                    categoria: 'general',
+                    premio: 'Medalla Especial + 200 puntos Liga Premium',
+                    maxParticipantes: 16,
+                    participantes: [],
+                    estado: 'registro'
                 }
+            ];
+            setTorneos(torneosDefault);
+            await UserDataAPI.setUserData(usuarioActual.nick, 'torneos_premium', torneosDefault);
+            await UserDataAPI.setUserData(usuarioActual.nick, 'torneos_premium_last_reset', now.toISOString());
+        } else {
+            // Cargar torneos existentes
+            const torneosData = await UserDataAPI.getUserData(usuarioActual.nick, 'torneos_premium');
+            setTorneos(torneosData || []);
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const userData = sessionStorage.getItem('user');
+            if (userData) {
+                const user = JSON.parse(userData);
+
+                // Verificar si es premium usando la API
+                fetch(`/api/premium?nick=${encodeURIComponent(user.nick)}`)
+                    .then(res => res.json())
+                    .then(premium => {
+                        if (premium.isActive) {
+                            setIsPremium(true);
+                            cargarTorneos();
+                        } else {
+                            alert('Los Torneos Premium son exclusivos para usuarios Premium.');
+                            router.push('/premium-nuevo');
+                        }
+                    })
+                    .catch(() => {
+                        alert('Error al verificar estado premium.');
+                        router.push('/premium-nuevo');
+                    });
             } else {
                 router.push('/');
             }
             setLoading(false);
         }
-    }, []);
+    }, [cargarTorneos, router]);
+
+    useEffect(() => {
+        if (usuarioActual) {
+            // Cargar estadísticas desde la API
+            UserDataAPI.getUserData(usuarioActual.nick, 'competiciones_premium')
+                .then(statsData => {
+                    setStats(statsData || { victorias: 0, participaciones: 0, puntuacionTotal: 0 });
+                });
+        }
+    }, [usuarioActual]);
 
     const esTorneoDisponibleParaUsuario = (torneoId: string) => {
         // Extraer el número de curso del ID del torneo (torneo-mensual-1primaria -> 1)
@@ -92,94 +216,7 @@ const TorneosPremiumPage: React.FC = () => {
         return false;
     };
 
-    const cargarTorneos = () => {
-        // FORZAR recreación de torneos nuevos - limpiar datos antiguos
-        localStorage.removeItem('torneos_premium');
-        localStorage.removeItem('torneos_premium_last_reset');
-
-        // Crear torneos mensuales por defecto
-        const currentMonth = new Date().getMonth();
-        const currentYear = new Date().getFullYear();
-        const torneosDefault: Torneo[] = [
-            {
-                id: 'torneo-mensual-1primaria',
-                nombre: 'Torneo Mensual 1º Primaria',
-                descripcion: 'Compite en el torneo mensual de 1º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            },
-            {
-                id: 'torneo-mensual-2primaria',
-                nombre: 'Torneo Mensual 2º Primaria',
-                descripcion: 'Compite en el torneo mensual de 2º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            },
-            {
-                id: 'torneo-mensual-3primaria',
-                nombre: 'Torneo Mensual 3º Primaria',
-                descripcion: 'Compite en el torneo mensual de 3º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            },
-            {
-                id: 'torneo-mensual-4primaria',
-                nombre: 'Torneo Mensual 4º Primaria',
-                descripcion: 'Compite en el torneo mensual de 4º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            },
-            {
-                id: 'torneo-mensual-5primaria',
-                nombre: 'Torneo Mensual 5º Primaria',
-                descripcion: 'Compite en el torneo mensual de 5º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            },
-            {
-                id: 'torneo-mensual-6primaria',
-                nombre: 'Torneo Mensual 6º Primaria',
-                descripcion: 'Compite en el torneo mensual de 6º Primaria. 25 preguntas de asignaturas generales.',
-                fechaInicio: new Date().toISOString(),
-                fechaFin: new Date(currentYear, currentMonth + 1, 0).toISOString(),
-                categoria: 'general',
-                premio: 'Medalla Especial + 200 puntos Liga Premium',
-                maxParticipantes: 16,
-                participantes: [],
-                estado: 'registro'
-            }
-        ];
-        setTorneos(torneosDefault);
-        localStorage.setItem('torneos_premium', JSON.stringify(torneosDefault));
-        localStorage.setItem('torneos_premium_last_reset', new Date().toISOString());
-    };
-
-    const registrarseTorneo = (torneoId: string) => {
+    const registrarseTorneo = async (torneoId: string) => {
         if (!usuarioActual) return;
 
         const torneosActualizados = torneos.map(torneo => {
@@ -201,17 +238,19 @@ const TorneosPremiumPage: React.FC = () => {
         });
 
         setTorneos(torneosActualizados);
-        localStorage.setItem('torneos_premium', JSON.stringify(torneosActualizados));
+        await UserDataAPI.setUserData(usuarioActual.nick, 'torneos_premium', torneosActualizados);
         alert('¡Te has registrado exitosamente en el torneo!');
     };
 
-    const iniciarTorneo = (torneo: Torneo) => {
-        // Guardar información del torneo activo en localStorage
-        localStorage.setItem('torneo_activo_premium', JSON.stringify({
+    const iniciarTorneo = async (torneo: Torneo) => {
+        if (!usuarioActual) return;
+
+        // Guardar información del torneo activo usando la API
+        await UserDataAPI.setUserData(usuarioActual.nick, 'torneo_activo_premium', {
             torneoId: torneo.id,
             curso: torneo.id.split('-')[2], // Extraer el curso del ID (1primaria, 2primaria, etc.)
             startTime: new Date().toISOString()
-        }));
+        });
 
         // Redirigir al modo torneo en Aprende con Pipo
         router.push('/aprende-con-pipo?modo=torneo');
@@ -302,7 +341,7 @@ const TorneosPremiumPage: React.FC = () => {
                                     )}
 
                                     <div className="flex gap-2">
-                                        {torneo.estado === 'registro' && !torneo.participantes.includes(usuarioActual.nick) && esTorneoDisponibleParaUsuario(torneo.id) && (
+                                        {torneo.estado === 'registro' && !torneo.participantes.includes(usuarioActual?.nick || '') && esTorneoDisponibleParaUsuario(torneo.id) && (
                                             <button
                                                 onClick={() => registrarseTorneo(torneo.id)}
                                                 disabled={torneo.participantes.length >= torneo.maxParticipantes}
@@ -312,19 +351,19 @@ const TorneosPremiumPage: React.FC = () => {
                                             </button>
                                         )}
 
-                                        {torneo.estado === 'registro' && !torneo.participantes.includes(usuarioActual.nick) && !esTorneoDisponibleParaUsuario(torneo.id) && (
+                                        {torneo.estado === 'registro' && !torneo.participantes.includes(usuarioActual?.nick || '') && !esTorneoDisponibleParaUsuario(torneo.id) && (
                                             <span className="flex-1 text-center bg-gray-100 text-gray-600 px-4 py-2 rounded font-semibold">
                                                 Solo para {torneo.nombre.split(' ')[2]} {torneo.nombre.split(' ')[3]}
                                             </span>
                                         )}
 
-                                        {torneo.participantes.includes(usuarioActual.nick) && torneo.estado === 'registro' && (
+                                        {torneo.participantes.includes(usuarioActual?.nick || '') && torneo.estado === 'registro' && (
                                             <span className="flex-1 text-center bg-green-100 text-green-800 px-4 py-2 rounded font-semibold">
                                                 ✓ Registrado
                                             </span>
                                         )}
 
-                                        {torneo.participantes.includes(usuarioActual.nick) && (
+                                        {torneo.participantes.includes(usuarioActual?.nick || '') && (
                                             <button
                                                 onClick={() => iniciarTorneo(torneo)}
                                                 className="flex-1 bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition-colors"
@@ -345,28 +384,25 @@ const TorneosPremiumPage: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                         <div className="bg-white/20 rounded p-4">
                             <div className="text-2xl font-bold text-white">
-                                {JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0}').victorias}
+                                {stats.victorias}
                             </div>
                             <div className="text-purple-100">Victorias</div>
                         </div>
                         <div className="bg-white/20 rounded p-4">
                             <div className="text-2xl font-bold text-white">
-                                {JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"participaciones": 0}').participaciones}
+                                {stats.participaciones}
                             </div>
                             <div className="text-purple-100">Participaciones</div>
                         </div>
                         <div className="bg-white/20 rounded p-4">
                             <div className="text-2xl font-bold text-white">
-                                {(() => {
-                                    const stats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0, "participaciones": 0}');
-                                    return stats.participaciones > 0 ? Math.round((stats.victorias / stats.participaciones) * 100) : 0;
-                                })()}%
+                                {stats.participaciones > 0 ? Math.round((stats.victorias / stats.participaciones) * 100) : 0}%
                             </div>
                             <div className="text-purple-100">Tasa de Victoria</div>
                         </div>
                         <div className="bg-white/20 rounded p-4">
                             <div className="text-2xl font-bold text-white">
-                                {JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"puntuacionTotal": 0}').puntuacionTotal}
+                                {stats.puntuacionTotal}
                             </div>
                             <div className="text-purple-100">Puntuación Total</div>
                         </div>

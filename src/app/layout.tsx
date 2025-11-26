@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
-      const user = localStorage.getItem("user");
+      const user = sessionStorage.getItem("user");
       // Si está logueado y accede a / o /registro, redirigir a perfil
       if (user && (pathname === "/" || pathname === "/registro")) {
         window.location.href = "/perfil";

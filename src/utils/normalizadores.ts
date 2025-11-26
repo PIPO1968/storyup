@@ -1,20 +1,20 @@
-// Utilidades para normalizar datos que provienen de localStorage o de la API
+// Utilidades para normalizar datos que provienen de la API
 // Objetivo: evitar renderizar objetos directamente en JSX y mantener consistencia
 
-export const normalizarValorPremio = (valor: any): string => {
+export const normalizarValorPremio = (valor: unknown): string => {
     if (valor == null) return "";
     if (typeof valor === 'string') return valor;
     if (typeof valor === 'number') return String(valor);
     if (typeof valor === 'object') {
         // Preferimos campos legibles: nombre > titulo > descripcion
         // Si no hay ninguno, guardamos JSON como fallback.
-        return valor.nombre || valor.titulo || valor.descripcion || JSON.stringify(valor);
+        return (valor as any).nombre || (valor as any).titulo || (valor as any).descripcion || JSON.stringify(valor);
     }
     // Guardar algo sensato para otros tipos
     return String(valor);
 };
 
-export const normalizarEventoEspecial = (evento: any) => {
+export const normalizarEventoEspecial = (evento: unknown) => {
     if (!evento) return null;
     if (typeof evento === 'string') {
         return { nombre: evento, descripcion: evento, emoji: '', tipo: '' };
@@ -22,11 +22,11 @@ export const normalizarEventoEspecial = (evento: any) => {
 
     if (typeof evento === 'object') {
         return {
-            nombre: evento.nombre || evento.tipo || '',
-            descripcion: evento.descripcion || evento.bonus || '',
-            emoji: evento.emoji || '',
-            tipo: evento.tipo || '',
-            multiplicador: evento.multiplicador || null
+            nombre: (evento as any).nombre || (evento as any).tipo || '',
+            descripcion: (evento as any).descripcion || (evento as any).bonus || '',
+            emoji: (evento as any).emoji || '',
+            tipo: (evento as any).tipo || '',
+            multiplicador: (evento as any).multiplicador || null
         };
     }
 

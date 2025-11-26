@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { renderNick } from "@/utils/renderNick";
 import { useTranslation } from "@/utils/i18n";
+import { HistoriasAPI } from "../../utils/historias";
 
 type Historia = {
     id: number;
@@ -19,13 +20,17 @@ export default function Historias() {
     const [topComentarios, setTopComentarios] = useState<Historia[]>([]);
     const { t } = useTranslation();
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("historias");
-            const arr = guardadas ? JSON.parse(guardadas) : [];
-            setHistorias(arr.slice(0, 25));
-            setTopLikes([...arr].sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 25));
-            setTopComentarios([...arr].sort((a, b) => (b.comentarios?.length || 0) - (a.comentarios?.length || 0)).slice(0, 25));
-        }
+        const loadHistorias = async () => {
+            try {
+                const historiasData = await HistoriasAPI.getAllHistorias();
+                setHistorias(historiasData);
+                setTopLikes([...historiasData].sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 25));
+                setTopComentarios([...historiasData].sort((a, b) => (b.comentarios?.length || 0) - (a.comentarios?.length || 0)).slice(0, 25));
+            } catch (error) {
+                console.error("Error al cargar historias:", error);
+            }
+        };
+        loadHistorias();
     }, []);
 
     return (

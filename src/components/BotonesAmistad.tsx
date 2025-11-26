@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { AmistadesAPI } from "../utils/amistades";
+import { AmistadesAPI, SolicitudAmistad } from "../utils/amistades";
+import { User } from "../utils/users";
 
 interface BotonesAmistadProps {
     perfilNick: string;
 }
 
 const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<User | null>(() => {
+        if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            return userStr ? JSON.parse(userStr) : null;
+        }
+        return null;
+    });
     const [esAmigo, setEsAmigo] = useState(false);
     const [pendiente, setPendiente] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const userStr = localStorage.getItem("user");
-            if (!userStr) return;
-            const userObj = JSON.parse(userStr);
-            setUser(userObj);
-            if (!perfilNick || perfilNick === userObj.nick) return;
+        if (!user) return;
+        if (!perfilNick || perfilNick === user.nick) return;
 
-            // Cargar amigos desde la API
-            AmistadesAPI.getAmigos(userObj.nick).then(amigos => {
-                setEsAmigo(amigos.includes(perfilNick));
-            });
+        // Cargar amigos desde la API
+        AmistadesAPI.getAmigos(user.nick).then(amigos => {
+            setEsAmigo(amigos.includes(perfilNick));
+        });
 
-            // Cargar solicitudes pendientes desde la API
-            AmistadesAPI.getSolicitudesPendientes(perfilNick).then(solicitudes => {
-                const pendienteTmp = solicitudes.some((s: any) => s.origen === userObj.nick);
-                setPendiente(pendienteTmp);
-            });
-        }
-    }, [perfilNick]);
+        // Cargar solicitudes pendientes desde la API
+        AmistadesAPI.getSolicitudesPendientes(perfilNick).then(solicitudes => {
+            const pendienteTmp = solicitudes.some((s: SolicitudAmistad) => s.origen === user.nick);
+            setPendiente(pendienteTmp);
+        });
+    }, [perfilNick, user]);
 
     const handleSolicitar = async () => {
         if (!user) return;
@@ -78,7 +80,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                         const solicitudes = await AmistadesAPI.getSolicitudesPendientes(perfilNick);
                         const solicitud = solicitudes.find((s: any) => s.origen === user.nick);
                         if (solicitud) {
-                            const aceptada = await AmistadesAPI.aceptarSolicitud(solicitud.id);
+                            const aceptada = await AmistadesAPI.aceptarSolicitud(solicitud.id as number);
                             if (aceptada) {
                                 const agregada = await AmistadesAPI.addAmigo(user.nick, perfilNick);
                                 if (agregada) {
@@ -99,7 +101,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                         const solicitudes = await AmistadesAPI.getSolicitudesPendientes(perfilNick);
                         const solicitud = solicitudes.find((s: any) => s.origen === user.nick);
                         if (solicitud) {
-                            const rechazada = await AmistadesAPI.rechazarSolicitud(solicitud.id);
+                            const rechazada = await AmistadesAPI.rechazarSolicitud(solicitud.id as number);
                             if (rechazada) {
                                 setPendiente(false);
                                 alert("Solicitud de amistad rechazada");

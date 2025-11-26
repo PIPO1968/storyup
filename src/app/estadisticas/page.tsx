@@ -2,6 +2,11 @@
 import React from "react";
 import { renderNick } from "@/utils/renderNick";
 import { useTranslation } from '@/utils/i18n';
+import { UserDataAPI } from "../../utils/user-data";
+import { CampeonatosAPI } from "../../utils/campeonatos";
+import { UsersAPI } from "../../utils/users";
+import { HistoriasAPI } from "../../utils/historias";
+import { ConcursosAPI } from "../../utils/concursos";
 
 export default function Estadisticas() {
     const { t } = useTranslation();
@@ -15,12 +20,12 @@ export default function Estadisticas() {
 
         let puntosTotales = 0;
 
-        // Puntos por asignaturas
+        // Puntos por asignaturas (asumiendo que están en el user object)
         const asignaturas = ['matematicas', 'lenguaje', 'geografia', 'historia', 'literatura', 'ingles', 'naturaleza'];
-        asignaturas.forEach(asignatura => {
-            const puntosAsignatura = parseInt(localStorage.getItem(`${asignatura}_${user.nick}`) || '0', 10);
-            puntosTotales += puntosAsignatura;
-        });
+        for (const asignatura of asignaturas) {
+            const puntosAsignatura = user[asignatura] || 0;
+            puntosTotales += parseInt(puntosAsignatura.toString(), 10);
+        }
 
         // Puntos por likes (cada like cuenta como punto)
         puntosTotales += user.likes || 0;
@@ -51,23 +56,29 @@ export default function Estadisticas() {
     const [isClient, setIsClient] = React.useState(false);
     const [rankingCentros, setRankingCentros] = React.useState<Array<{ centro: string; likes: number }>>([]);
     const [centrosReady, setCentrosReady] = React.useState(false);
+    const [totalCompeticiones, setTotalCompeticiones] = React.useState(0);
+    const [totalUsuarios, setTotalUsuarios] = React.useState(0);
+    const [totalHistorias, setTotalHistorias] = React.useState(0);
+    const [totalConcursos, setTotalConcursos] = React.useState(0);
+    const [totalDocentes, setTotalDocentes] = React.useState(0);
+    const [totalAmigos, setTotalAmigos] = React.useState(0);
+    const [totalHistoriasGanadoras, setTotalHistoriasGanadoras] = React.useState(0);
+    const [totalParticipantesConcursos, setTotalParticipantesConcursos] = React.useState(0);
+    const [historiasArr, setHistoriasArr] = React.useState<any[]>([]);
+    const [usersArr, setUsersArr] = React.useState<any[]>([]);
     React.useEffect(() => {
         setIsClient(true);
 
         // Detectar si el usuario actual es Premium
         if (typeof window !== "undefined") {
-            const userData = localStorage.getItem('currentUser') || localStorage.getItem('user');
+            const userData = sessionStorage.getItem('user');
             if (userData) {
                 const user = JSON.parse(userData);
                 setCurrentUser(user);
 
                 // Verificar si tiene Premium activo
-                const premiumInfo = localStorage.getItem(`premium_${user.nick}`);
-                if (premiumInfo) {
-                    const premium = JSON.parse(premiumInfo);
-                    if (new Date(premium.expiracion) > new Date()) {
-                        setIsPremium(true);
-                    }
+                if (user.premium) {
+                    setIsPremium(true);
                 }
             }
         }
@@ -90,84 +101,111 @@ export default function Estadisticas() {
         };
     }, []);
     React.useEffect(() => {
-        function getTemporadasDisponibles() {
+        const getTemporadasDisponibles = async () => {
             const temporadas: number[] = [];
-            if (typeof window !== "undefined") {
-                for (let i = 2023; i <= getCurrentSeason(); i++) {
-                    if (localStorage.getItem(`campeonato_individual_t${i}`) || localStorage.getItem(`campeonato_centro_t${i}`)) {
-                        temporadas.push(i);
-                    }
-                }
+            try {
+                const campeonatos = await CampeonatosAPI.getCampeonatos();
+                const temporadasSet = new Set(campeonatos.map(c => c.temporada));
+                temporadas.push(...Array.from(temporadasSet));
                 if (!temporadas.includes(getCurrentSeason())) {
                     temporadas.push(getCurrentSeason());
                 }
+            } catch {
+                // Fallback
+                for (let i = 2023; i <= getCurrentSeason(); i++) {
+                    temporadas.push(i);
+                }
             }
-            return temporadas.sort((a, b) => b - a);
-        }
-        setTemporadasDisponibles(getTemporadasDisponibles());
+            setTemporadasDisponibles(temporadas.sort((a, b) => b - a));
+        };
+        getTemporadasDisponibles();
     }, []);
     React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            const keyInd = `campeonato_individual_t${temporadaSeleccionada}`;
-            const keyCentro = `campeonato_centro_t${temporadaSeleccionada}`;
-            let tablaInd = {};
-            let tablaCent = {};
-            try {
-                tablaInd = JSON.parse(localStorage.getItem(keyInd) || '{}');
-            } catch { tablaInd = {}; }
-            try {
-                tablaCent = JSON.parse(localStorage.getItem(keyCentro) || '{}');
-            } catch { tablaCent = {}; }
-            setTablaIndividual(tablaInd);
-            setTablaCentro(tablaCent);
-        }
+        const loadTablas = async () => {
+            if (typeof window !== "undefined") {
+                const tablaInd = await getTablaIndividual(temporadaSeleccionada);
+                const tablaCent = await getTablaCentro(temporadaSeleccionada);
+                setTablaIndividual(tablaInd);
+                setTablaCentro(tablaCent);
+            }
+        };
+        loadTablas();
     }, [temporadaSeleccionada]);
     React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            const docentesStr = localStorage.getItem(`campeonato_docentes_t${temporadaSeleccionada}`);
-            let tablaDoc = {};
-            try {
-                tablaDoc = docentesStr ? JSON.parse(docentesStr) : {};
-            } catch { tablaDoc = {}; }
-            setTablaDocentes(tablaDoc);
-        }
+        const loadDocentes = async () => {
+            if (typeof window !== "undefined") {
+                const campeonatos = await CampeonatosAPI.getCampeonatos(temporadaSeleccionada, 'docentes');
+                const tablaDoc = campeonatos.length > 0 ? campeonatos[0].datos : {};
+                setTablaDocentes(tablaDoc);
+            }
+        };
+        loadDocentes();
     }, [temporadaSeleccionada]);
     React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            const usersStr = localStorage.getItem("users");
-            if (usersStr) {
+        const loadData = async () => {
+            if (typeof window !== "undefined") {
                 try {
-                    const usersArr = JSON.parse(usersStr);
+                    const usersArr = await UsersAPI.getAllUsers();
                     const likesPorCentro: Record<string, number> = {};
+                    let totalComp = 0;
                     usersArr.forEach((u: any) => {
                         if (u.centro) {
                             if (!(u.centro in likesPorCentro)) likesPorCentro[u.centro] = 0;
                             likesPorCentro[u.centro] += Number(u.likes) || 0;
                         }
+                        totalComp += u.competicionesSuperadas || 0;
                     });
                     const ranking = Object.entries(likesPorCentro)
                         .map(([centro, likes]) => ({ centro, likes }))
                         .sort((a, b) => b.likes - a.likes);
                     setRankingCentros(ranking);
+                    setTotalCompeticiones(totalComp);
+                    setTotalUsuarios(usersArr.length);
+
+                    const docentesArr = usersArr.filter((u: any) => (u.tipo || "").toLowerCase() === "docente");
+                    setTotalDocentes(docentesArr.length);
+
+                    let totalPart = 0;
+                    usersArr.forEach((u: any) => {
+                        if (u.historias && Array.isArray(u.historias) && u.historias.length > 0) {
+                            totalPart++;
+                        }
+                    });
+                    setTotalParticipantesConcursos(totalPart);
+
+                    const historiasArr = await HistoriasAPI.getAllHistorias();
+                    setTotalHistorias(historiasArr.length);
+
+                    const historiasGanadoras = historiasArr.filter((h: any) => h.likes > 10).length;
+                    setTotalHistoriasGanadoras(historiasGanadoras);
+
+                    const concursosArr = await ConcursosAPI.getConcursos();
+                    setTotalConcursos(concursosArr.length);
+
+                    setHistoriasArr(historiasArr);
+                    setUsersArr(usersArr);
                 } catch {
                     setRankingCentros([]);
+                    setTotalCompeticiones(0);
+                    setTotalUsuarios(0);
+                    setTotalHistorias(0);
+                    setTotalConcursos(0);
                 }
-            } else {
-                setRankingCentros([]);
+                setCentrosReady(true);
             }
-            setCentrosReady(true);
-        }
+        };
+        loadData();
     }, []);
     function handleTemporadaChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setTemporadaSeleccionada(Number(e.target.value));
     }
-    function getTablaIndividual(temporada: number) {
-        const key = `campeonato_individual_t${temporada}`;
-        return JSON.parse(localStorage.getItem(key) || '{}');
+    async function getTablaIndividual(temporada: number) {
+        const campeonatos = await CampeonatosAPI.getCampeonatos(temporada, 'individual');
+        return campeonatos.length > 0 ? campeonatos[0].datos : {};
     }
-    function getTablaCentro(temporada: number) {
-        const key = `campeonato_centro_t${temporada}`;
-        return JSON.parse(localStorage.getItem(key) || '{}');
+    async function getTablaCentro(temporada: number) {
+        const campeonatos = await CampeonatosAPI.getCampeonatos(temporada, 'centro');
+        return campeonatos.length > 0 ? campeonatos[0].datos : {};
     }
 
     // Utilidad para mostrar nick como link si es válido
@@ -208,239 +246,61 @@ export default function Estadisticas() {
                         <div className="bg-white rounded-lg shadow-md p-6">
                             <h2 className="text-lg font-bold mb-4 text-center">{t('estadisticasGlobales')}</h2>
                             <ul className="space-y-2">
-                                <li><span className="mr-2 text-xl">🏆</span><b>{t('totalCompeticionesSuperadas')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    total += u.competicionesSuperadas || 0;
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">👥</span><b>{t('totalUsuarios')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                return usersArr.length;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">📖</span><b>{t('totalHistoriasCreadas')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const historiasStr = localStorage.getItem("historias");
-                                        if (historiasStr) {
-                                            try {
-                                                const historiasArr = JSON.parse(historiasStr);
-                                                return historiasArr.length;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">🏆</span><b>{t('totalConcursosCreados')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const concursosStr = localStorage.getItem("concursos");
-                                        if (concursosStr) {
-                                            try {
-                                                const concursosArr = JSON.parse(concursosStr);
-                                                return concursosArr.length;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
-                                })()}</li>
+                                <li><span className="mr-2 text-xl">🏆</span><b>{t('totalCompeticionesSuperadas')}:</b> {totalCompeticiones}</li>
+                                <li><span className="mr-2 text-xl">👥</span><b>{t('totalUsuarios')}:</b> {totalUsuarios}</li>
+                                <li><span className="mr-2 text-xl">📖</span><b>{t('totalHistoriasCreadas')}:</b> {totalHistorias}</li>
+                                <li><span className="mr-2 text-xl">🏆</span><b>{t('totalConcursosCreados')}:</b> {totalConcursos}</li>
                                 <li><span className="mr-2 text-xl">💬</span><b>Total de comentarios realizados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const historiasStr = localStorage.getItem("historias");
-                                        if (historiasStr) {
-                                            try {
-                                                const historiasArr = JSON.parse(historiasStr);
-                                                let total = 0;
-                                                historiasArr.forEach((h: any) => {
-                                                    total += h.comentarios ? h.comentarios.length : 0;
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let total = 0;
+                                    historiasArr.forEach((h: any) => {
+                                        total += h.comentarios ? h.comentarios.length : 0;
+                                    });
+                                    return total;
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">🏫</span><b>Total de centros escolares registrados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const centros = new Set(usersArr.map((u: any) => u.centro).filter(Boolean));
-                                                return centros.size;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    const centros = new Set(usersArr.map((u: any) => u.centro).filter(Boolean));
+                                    return centros.size;
                                 })()}</li>
-                                <li><span className="mr-2 text-xl">👨‍🏫</span><b>Total de docentes registrados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const docentesArr = usersArr.filter((u: any) => (u.tipo || "").toLowerCase() === "docente");
-                                                return docentesArr.length || 0;
-                                            } catch { return 0; }
-                                        }
-                                        return 0;
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">🤝</span><b>Total de amigos creados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    const amigosStr = localStorage.getItem(`amigos_${u.nick}`);
-                                                    if (amigosStr) {
-                                                        try {
-                                                            const amigosArr = JSON.parse(amigosStr);
-                                                            total += amigosArr.length;
-                                                        } catch { }
-                                                    }
-                                                });
-                                                return total > 0 ? total : 0;
-                                            } catch { return 0; }
-                                        }
-                                        return 0;
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">🏅</span><b>Total de historias ganadoras:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const concursosStr = localStorage.getItem("concursos");
-                                        if (concursosStr) {
-                                            try {
-                                                const concursosArr = JSON.parse(concursosStr);
-                                                return concursosArr.filter((c: any) => c.historiaGanadora).length || 0;
-                                            } catch { return 0; }
-                                        }
-                                        return 0;
-                                    }
-                                    return 0;
-                                })()}</li>
-                                <li><span className="mr-2 text-xl">👨‍👩‍👧‍👦</span><b>Total de participantes en concursos:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let count = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    if (u.historias && Array.isArray(u.historias) && u.historias.length > 0) {
-                                                        count++;
-                                                    }
-                                                });
-                                                return count;
-                                            } catch { return 0; }
-                                        }
-                                        return 0;
-                                    }
-                                    return 0;
-                                })()}</li>
+                                <li><span className="mr-2 text-xl">👨‍🏫</span><b>Total de docentes registrados:</b> {totalDocentes}</li>
+                                <li><span className="mr-2 text-xl">🤝</span><b>Total de amigos creados:</b> {totalAmigos}</li>
+                                <li><span className="mr-2 text-xl">🏅</span><b>Total de historias ganadoras:</b> {totalHistoriasGanadoras}</li>
+                                <li><span className="mr-2 text-xl">👨‍👩‍👧‍👦</span><b>Total de participantes en concursos:</b> {totalParticipantesConcursos}</li>
                                 <li><span className="mr-2 text-xl">❤️</span><b>Total de likes:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    total += (u.likes || 0);
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let total = 0;
+                                    usersArr.forEach((u: any) => {
+                                        total += (u.likes || 0);
+                                    });
+                                    return total;
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">❓</span><b>Total de preguntas respondidas:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let totalAcertadas = 0;
-                                                let totalFalladas = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    totalAcertadas += u.preguntasAcertadas || 0;
-                                                    totalFalladas += u.preguntasFalladas || 0;
-                                                    totalFalladas += parseInt(localStorage.getItem('falladas_' + u.nick) || '0', 10);
-                                                });
-                                                return totalAcertadas + totalFalladas;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let totalAcertadas = 0;
+                                    let totalFalladas = 0;
+                                    usersArr.forEach((u: any) => {
+                                        totalAcertadas += u.preguntasAcertadas || 0;
+                                        totalFalladas += u.preguntasFalladas || 0;
+                                    });
+                                    return totalAcertadas + totalFalladas;
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">❓</span><b>{t('totalPreguntasAcertadas')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    total += u.preguntasAcertadas || 0;
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let total = 0;
+                                    usersArr.forEach((u: any) => {
+                                        total += u.preguntasAcertadas || 0;
+                                    });
+                                    return total;
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">❓</span><b>Total de preguntas falladas:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    total += u.preguntasFalladas || 0;
-                                                    total += parseInt(localStorage.getItem('falladas_' + u.nick) || '0', 10);
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let total = 0;
+                                    usersArr.forEach((u: any) => {
+                                        total += u.preguntasFalladas || 0;
+                                    });
+                                    return total;
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">🏆</span><b>Total de concursos ganados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                let total = 0;
-                                                usersArr.forEach((u: any) => {
-                                                    total += u.concursosGanados || 0;
-                                                });
-                                                return total;
-                                            } catch { return 0; }
-                                        }
-                                    }
-                                    return 0;
+                                    let total = 0;
+                                    usersArr.forEach((u: any) => {
+                                        total += u.concursosGanados || 0;
+                                    });
+                                    return total;
                                 })()}</li>
                             </ul>
                         </div>
@@ -449,161 +309,100 @@ export default function Estadisticas() {
                             <h2 className="text-lg font-bold mb-4 text-center">Rankings</h2>
                             <ul className="space-y-2">
                                 <li><span className="mr-2 text-xl">❤️</span><b>{t('usuariosMasLikes')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const ranking = usersArr.map((u: any) => {
-                                                    return {
-                                                        nick: u.nick,
-                                                        nombre: u.nombre,
-                                                        totalLikes: (u.likes || 0)
-                                                    };
-                                                })
-                                                    .filter((u: { nick: string; nombre: string; totalLikes: number }) => u.nick && u.totalLikes > 0) // Solo usuarios con al menos 1 like
-                                                    .sort((a: { totalLikes: number }, b: { totalLikes: number }) => b.totalLikes - a.totalLikes)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con likes.</span>;
-                                                return ranking.map((u: { nick: string; totalLikes: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalLikes} likes)</span>
-                                                ));
-                                            } catch { return <span className="block">No hay usuarios con likes.</span>; }
-                                        }
-                                    }
-                                    return <span className="block">No hay usuarios con likes.</span>;
+                                    const ranking = usersArr.map((u: any) => {
+                                        return {
+                                            nick: u.nick,
+                                            nombre: u.nombre,
+                                            totalLikes: (u.likes || 0)
+                                        };
+                                    })
+                                        .filter((u: { nick: string; nombre: string; totalLikes: number }) => u.nick && u.totalLikes > 0) // Solo usuarios con al menos 1 like
+                                        .sort((a: { totalLikes: number }, b: { totalLikes: number }) => b.totalLikes - a.totalLikes)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con likes.</span>;
+                                    return ranking.map((u: { nick: string; totalLikes: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalLikes} likes)</span>
+                                    ));
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">💬</span><b>{t('usuariosMasComentarios')}:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const historiasStr = localStorage.getItem("historias");
-                                        if (historiasStr) {
-                                            try {
-                                                const historiasArr = JSON.parse(historiasStr);
-                                                const comentariosPorAutor: Record<string, number> = {};
-                                                historiasArr.forEach((h: any) => {
-                                                    if (h.autor) {
-                                                        comentariosPorAutor[h.autor] = (comentariosPorAutor[h.autor] || 0) + (h.comentarios ? h.comentarios.length : 0);
-                                                    }
-                                                });
-                                                const ranking = Object.entries(comentariosPorAutor)
-                                                    .map(([nick, totalComentarios]: [string, number]) => ({ nick, totalComentarios }))
-                                                    .filter((u: { nick: string; totalComentarios: number }) => u.nick && u.totalComentarios > 0)
-                                                    .sort((a: { totalComentarios: number }, b: { totalComentarios: number }) => b.totalComentarios - a.totalComentarios)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con comentarios aún.</span>;
-                                                return ranking.map((u: { nick: string; totalComentarios: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalComentarios} comentarios)</span>
-                                                ));
-                                            } catch { return <span className="block">No hay usuarios con comentarios aún.</span>; }
+                                    const comentariosPorAutor: Record<string, number> = {};
+                                    historiasArr.forEach((h: any) => {
+                                        if (h.autor) {
+                                            comentariosPorAutor[h.autor] = (comentariosPorAutor[h.autor] || 0) + (h.comentarios ? h.comentarios.length : 0);
                                         }
-                                    }
-                                    return <span className="block">No hay usuarios con comentarios aún.</span>;
+                                    });
+                                    const ranking = Object.entries(comentariosPorAutor)
+                                        .map(([nick, totalComentarios]: [string, number]) => ({ nick, totalComentarios }))
+                                        .filter((u: { nick: string; totalComentarios: number }) => u.nick && u.totalComentarios > 0)
+                                        .sort((a: { totalComentarios: number }, b: { totalComentarios: number }) => b.totalComentarios - a.totalComentarios)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con comentarios aún.</span>;
+                                    return ranking.map((u: { nick: string; totalComentarios: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalComentarios} comentarios)</span>
+                                    ));
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">🤝</span><b>Usuarios con más amigos:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const ranking = usersArr
-                                                    .map((u: any) => {
-                                                        const amigosStr = localStorage.getItem(`amigos_${u.nick}`);
-                                                        let numAmigos = 0;
-                                                        if (amigosStr) {
-                                                            try {
-                                                                const amigosArr = JSON.parse(amigosStr);
-                                                                numAmigos = Array.isArray(amigosArr) ? amigosArr.length : 0;
-                                                            } catch { numAmigos = 0; }
-                                                        }
-                                                        return {
-                                                            nick: u.nick,
-                                                            numAmigos
-                                                        };
-                                                    })
-                                                    .filter((u: { nick: string; numAmigos: number }) => u.nick && u.numAmigos > 0)
-                                                    .sort((a: { numAmigos: number }, b: { numAmigos: number }) => b.numAmigos - a.numAmigos)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con amigos aún.</span>;
-                                                return ranking.map((u: { nick: string; numAmigos: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.numAmigos} amigos)</span>
-                                                ));
-                                            } catch { return <span className="block">No hay usuarios con amigos aún.</span>; }
-                                        }
-                                    }
-                                    return <span className="block">No hay usuarios con amigos aún.</span>;
+                                    const ranking = usersArr
+                                        .map((u: any) => {
+                                            const numAmigos = u.amigos ? u.amigos.length : 0;
+                                            return {
+                                                nick: u.nick,
+                                                numAmigos
+                                            };
+                                        })
+                                        .filter((u: { nick: string; numAmigos: number }) => u.nick && u.numAmigos > 0)
+                                        .sort((a: { numAmigos: number }, b: { numAmigos: number }) => b.numAmigos - a.numAmigos)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con amigos aún.</span>;
+                                    return ranking.map((u: { nick: string; numAmigos: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.numAmigos} amigos)</span>
+                                    ));
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">📖</span><b>Usuarios con más historias:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const historiasStr = localStorage.getItem("historias");
-                                        if (historiasStr) {
-                                            try {
-                                                const historiasArr = JSON.parse(historiasStr);
-                                                const historiasPorAutor: Record<string, number> = {};
-                                                historiasArr.forEach((h: any) => {
-                                                    if (h.autor) {
-                                                        historiasPorAutor[h.autor] = (historiasPorAutor[h.autor] || 0) + 1;
-                                                    }
-                                                });
-                                                const ranking = Object.entries(historiasPorAutor)
-                                                    .map(([nick, totalHistorias]: [string, number]) => ({ nick, totalHistorias }))
-                                                    .filter((u: { nick: string; totalHistorias: number }) => u.nick && u.totalHistorias > 0)
-                                                    .sort((a: { totalHistorias: number }, b: { totalHistorias: number }) => b.totalHistorias - a.totalHistorias)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con historias aún.</span>;
-                                                return ranking.map((u: { nick: string; totalHistorias: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalHistorias} historias)</span>
-                                                ));
-                                            } catch { return <span className="block">No hay usuarios con historias aún.</span>; }
+                                    const historiasPorAutor: Record<string, number> = {};
+                                    historiasArr.forEach((h: any) => {
+                                        if (h.autor) {
+                                            historiasPorAutor[h.autor] = (historiasPorAutor[h.autor] || 0) + 1;
                                         }
-                                    }
-                                    return <span className="block">No hay usuarios con historias aún.</span>;
+                                    });
+                                    const ranking = Object.entries(historiasPorAutor)
+                                        .map(([nick, totalHistorias]: [string, number]) => ({ nick, totalHistorias }))
+                                        .filter((u: { nick: string; totalHistorias: number }) => u.nick && u.totalHistorias > 0)
+                                        .sort((a: { totalHistorias: number }, b: { totalHistorias: number }) => b.totalHistorias - a.totalHistorias)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con historias aún.</span>;
+                                    return ranking.map((u: { nick: string; totalHistorias: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalHistorias} historias)</span>
+                                    ));
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">🏆</span><b>Usuarios con más concursos ganados:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const ranking = usersArr.map((u: any) => ({
-                                                    nick: u.nick,
-                                                    nombre: u.nombre,
-                                                    totalConcursos: u.concursosGanados || 0
-                                                }))
-                                                    .filter((u: { nick: string; nombre: string; totalConcursos: number }) => u.totalConcursos > 0)
-                                                    .sort((a: { totalConcursos: number }, b: { totalConcursos: number }) => b.totalConcursos - a.totalConcursos)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con concursos ganados aún.</span>;
-                                                return ranking.map((u: { nick: string; totalConcursos: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalConcursos} concursos)</span>
-                                                ));
-                                            } catch { return "-"; }
-                                        }
-                                    }
-                                    return "-";
+                                    const ranking = usersArr.map((u: any) => ({
+                                        nick: u.nick,
+                                        nombre: u.nombre,
+                                        totalConcursos: u.concursosGanados || 0
+                                    }))
+                                        .filter((u: { nick: string; nombre: string; totalConcursos: number }) => u.totalConcursos > 0)
+                                        .sort((a: { totalConcursos: number }, b: { totalConcursos: number }) => b.totalConcursos - a.totalConcursos)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con concursos ganados aún.</span>;
+                                    return ranking.map((u: { nick: string; totalConcursos: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalConcursos} concursos)</span>
+                                    ));
                                 })()}</li>
                                 <li><span className="mr-2 text-xl">🏆</span><b>Usuarios con más competiciones superadas:</b> {(() => {
-                                    if (typeof window !== "undefined") {
-                                        const usersStr = localStorage.getItem("users");
-                                        if (usersStr) {
-                                            try {
-                                                const usersArr = JSON.parse(usersStr);
-                                                const ranking = usersArr
-                                                    .map((u: any) => ({
-                                                        nick: u.nick,
-                                                        nombre: u.nombre,
-                                                        totalCompeticiones: u.competicionesSuperadas || 0
-                                                    }))
-                                                    .filter((u: { totalCompeticiones: number }) => u.totalCompeticiones > 0)
-                                                    .sort((a: { totalCompeticiones: number }, b: { totalCompeticiones: number }) => b.totalCompeticiones - a.totalCompeticiones)
-                                                    .slice(0, 5);
-                                                if (ranking.length === 0) return <span className="block">No hay usuarios con competiciones superadas aún.</span>;
-                                                return ranking.map((u: { nick: string; totalCompeticiones: number }, i: number) => (
-                                                    <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalCompeticiones} competiciones)</span>
-                                                ));
-                                            } catch { return "-"; }
-                                        }
-                                    }
-                                    return "-";
+                                    const ranking = usersArr
+                                        .map((u: any) => ({
+                                            nick: u.nick,
+                                            nombre: u.nombre,
+                                            totalCompeticiones: u.competicionesSuperadas || 0
+                                        }))
+                                        .filter((u: { totalCompeticiones: number }) => u.totalCompeticiones > 0)
+                                        .sort((a: { totalCompeticiones: number }, b: { totalCompeticiones: number }) => b.totalCompeticiones - a.totalCompeticiones)
+                                        .slice(0, 5);
+                                    if (ranking.length === 0) return <span className="block">No hay usuarios con competiciones superadas aún.</span>;
+                                    return ranking.map((u: { nick: string; totalCompeticiones: number }, i: number) => (
+                                        <span key={u.nick} className="block">{i + 1}. <b><NickLink nick={u.nick} /></b> ({u.totalCompeticiones} competiciones)</span>
+                                    ));
                                 })()}</li>
 
                             </ul>
@@ -628,8 +427,8 @@ export default function Estadisticas() {
                                                     <span>🎯 Precisión promedio:</span>
                                                     <span className="font-bold text-blue-600">{(() => {
                                                         if (currentUser) {
-                                                            const acertadas = (currentUser.preguntasAcertadas || 0) + parseInt(localStorage.getItem('acertadas_' + currentUser.nick) || '0', 10);
-                                                            const falladas = (currentUser.preguntasFalladas || 0) + parseInt(localStorage.getItem('falladas_' + currentUser.nick) || '0', 10);
+                                                            const acertadas = currentUser.preguntasAcertadas || 0;
+                                                            const falladas = currentUser.preguntasFalladas || 0;
                                                             const total = acertadas + falladas;
                                                             return total > 0 ? ((acertadas / total) * 100).toFixed(1) + '%' : '0%';
                                                         }
@@ -656,9 +455,7 @@ export default function Estadisticas() {
                                                 <li className="flex justify-between">
                                                     <span>🏆 Tu ranking:</span>
                                                     <span className="font-bold text-blue-600">{(() => {
-                                                        const usersStr = localStorage.getItem("users");
-                                                        if (usersStr && currentUser) {
-                                                            const usersArr = JSON.parse(usersStr);
+                                                        if (currentUser && usersArr.length > 0) {
                                                             const usersWithPoints = usersArr.map((u: any) => ({
                                                                 ...u,
                                                                 puntosTotales: calcularPuntosTotales(u)
@@ -681,7 +478,7 @@ export default function Estadisticas() {
                                                     <span>🔬 Matemáticas:</span>
                                                     <span className="font-bold text-green-600">{(() => {
                                                         if (currentUser) {
-                                                            const puntos = parseInt(localStorage.getItem(`matematicas_${currentUser.nick}`) || '0', 10);
+                                                            const puntos = currentUser.estadisticas ? currentUser.estadisticas.matematicas || 0 : 0;
                                                             const nivel = Math.floor(puntos / 5) + 1;
                                                             return `Nivel ${nivel}`;
                                                         }
@@ -692,7 +489,7 @@ export default function Estadisticas() {
                                                     <span>📖 Lenguaje:</span>
                                                     <span className="font-bold text-green-600">{(() => {
                                                         if (currentUser) {
-                                                            const puntos = parseInt(localStorage.getItem(`lenguaje_${currentUser.nick}`) || '0', 10);
+                                                            const puntos = currentUser.estadisticas ? currentUser.estadisticas.lenguaje || 0 : 0;
                                                             const nivel = Math.floor(puntos / 5) + 1;
                                                             return `Nivel ${nivel}`;
                                                         }
@@ -703,7 +500,7 @@ export default function Estadisticas() {
                                                     <span>🌍 Geografía:</span>
                                                     <span className="font-bold text-green-600">{(() => {
                                                         if (currentUser) {
-                                                            const puntos = parseInt(localStorage.getItem(`geografia_${currentUser.nick}`) || '0', 10);
+                                                            const puntos = currentUser.estadisticas ? currentUser.estadisticas.geografia || 0 : 0;
                                                             const nivel = Math.floor(puntos / 5) + 1;
                                                             return `Nivel ${nivel}`;
                                                         }
@@ -714,7 +511,7 @@ export default function Estadisticas() {
                                                     <span>📚 Historia:</span>
                                                     <span className="font-bold text-green-600">{(() => {
                                                         if (currentUser) {
-                                                            const puntos = parseInt(localStorage.getItem(`historia_${currentUser.nick}`) || '0', 10);
+                                                            const puntos = currentUser.estadisticas ? currentUser.estadisticas.historia || 0 : 0;
                                                             const nivel = Math.floor(puntos / 5) + 1;
                                                             return `Nivel ${nivel}`;
                                                         }
@@ -726,13 +523,13 @@ export default function Estadisticas() {
                                                     <span className="font-bold text-green-600">{(() => {
                                                         if (currentUser) {
                                                             const asignaturas = [
-                                                                { nombre: 'Matemáticas', puntos: parseInt(localStorage.getItem(`matematicas_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Lenguaje', puntos: parseInt(localStorage.getItem(`lenguaje_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Geografía', puntos: parseInt(localStorage.getItem(`geografia_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Historia', puntos: parseInt(localStorage.getItem(`historia_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Literatura', puntos: parseInt(localStorage.getItem(`literatura_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Inglés', puntos: parseInt(localStorage.getItem(`ingles_${currentUser.nick}`) || '0', 10) },
-                                                                { nombre: 'Naturaleza', puntos: parseInt(localStorage.getItem(`naturaleza_${currentUser.nick}`) || '0', 10) }
+                                                                { nombre: 'Matemáticas', puntos: currentUser.estadisticas ? currentUser.estadisticas.matematicas || 0 : 0 },
+                                                                { nombre: 'Lenguaje', puntos: currentUser.estadisticas ? currentUser.estadisticas.lenguaje || 0 : 0 },
+                                                                { nombre: 'Geografía', puntos: currentUser.estadisticas ? currentUser.estadisticas.geografia || 0 : 0 },
+                                                                { nombre: 'Historia', puntos: currentUser.estadisticas ? currentUser.estadisticas.historia || 0 : 0 },
+                                                                { nombre: 'Literatura', puntos: currentUser.estadisticas ? currentUser.estadisticas.literatura || 0 : 0 },
+                                                                { nombre: 'Inglés', puntos: currentUser.estadisticas ? currentUser.estadisticas.ingles || 0 : 0 },
+                                                                { nombre: 'Naturaleza', puntos: currentUser.estadisticas ? currentUser.estadisticas.naturaleza || 0 : 0 }
                                                             ];
                                                             const mejor = asignaturas.reduce((max, actual) => actual.puntos > max.puntos ? actual : max);
                                                             return mejor.puntos > 0 ? mejor.nombre : 'Ninguna aún';
@@ -752,7 +549,7 @@ export default function Estadisticas() {
                                                     <span className="font-bold text-purple-600">{(() => {
                                                         if (currentUser) {
                                                             const acertadas = currentUser.preguntasAcertadas || 0;
-                                                            const falladas = (currentUser.preguntasFalladas || 0) + parseInt(localStorage.getItem('falladas_' + currentUser.nick) || '0', 10);
+                                                            const falladas = currentUser.preguntasFalladas || 0;
                                                             const total = acertadas + falladas;
                                                             if (total > 0) {
                                                                 const precision = (acertadas / total) * 100;
@@ -767,8 +564,8 @@ export default function Estadisticas() {
                                                     <span>🎯 Meta semanal:</span>
                                                     <span className="font-bold text-purple-600">{(() => {
                                                         if (currentUser) {
-                                                            const acertadas = (currentUser.preguntasAcertadas || 0) + parseInt(localStorage.getItem('acertadas_' + currentUser.nick) || '0', 10);
-                                                            const falladas = (currentUser.preguntasFalladas || 0) + parseInt(localStorage.getItem('falladas_' + currentUser.nick) || '0', 10);
+                                                            const acertadas = currentUser.preguntasAcertadas || 0;
+                                                            const falladas = currentUser.preguntasFalladas || 0;
                                                             const total = acertadas + falladas;
                                                             if (total > 0) {
                                                                 const precision = (acertadas / total) * 100;
@@ -801,8 +598,8 @@ export default function Estadisticas() {
                                             {[...Array(7)].map((_, i) => {
                                                 const dayActivities = (() => {
                                                     if (currentUser) {
-                                                        const acertadas = parseInt(localStorage.getItem('acertadas_' + currentUser.nick) || '0', 10);
-                                                        const falladas = parseInt(localStorage.getItem('falladas_' + currentUser.nick) || '0', 10);
+                                                        const acertadas = currentUser.preguntasAcertadas || 0;
+                                                        const falladas = currentUser.preguntasFalladas || 0;
                                                         const total = acertadas + falladas;
 
                                                         // Simular actividad distribuida a lo largo de la semana
@@ -837,8 +634,8 @@ export default function Estadisticas() {
                                         <div className="text-center mt-3 text-sm text-indigo-600">
                                             📈 <strong>Tendencia:</strong> {(() => {
                                                 if (currentUser) {
-                                                    const acertadas = (currentUser.preguntasAcertadas || 0) + parseInt(localStorage.getItem('acertadas_' + currentUser.nick) || '0', 10);
-                                                    const falladas = (currentUser.preguntasFalladas || 0) + parseInt(localStorage.getItem('falladas_' + currentUser.nick) || '0', 10);
+                                                    const acertadas = currentUser.preguntasAcertadas || 0;
+                                                    const falladas = currentUser.preguntasFalladas || 0;
                                                     const precision = falladas + acertadas > 0 ? (acertadas / (falladas + acertadas)) * 100 : 0;
 
                                                     if (precision >= 80) return '¡Excelente! Mantén este nivel de precisión.';
@@ -859,30 +656,24 @@ export default function Estadisticas() {
                                                 <div className="text-2xl">🥇</div>
                                                 <div className="text-xs text-gray-600">1º Lugar</div>
                                                 <div className="font-bold text-yellow-600">{(() => {
-                                                    if (typeof window !== "undefined") {
-                                                        const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                        if (users.length > 0) {
-                                                            const usersWithPoints = users.map((u: any) => ({
-                                                                ...u,
-                                                                puntosTotales: calcularPuntosTotales(u)
-                                                            }));
-                                                            const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
-                                                            return sorted[0]?.puntosTotales || 0;
-                                                        }
+                                                    if (usersArr.length > 0) {
+                                                        const usersWithPoints = usersArr.map((u: any) => ({
+                                                            ...u,
+                                                            puntosTotales: calcularPuntosTotales(u)
+                                                        }));
+                                                        const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
+                                                        return sorted[0]?.puntosTotales || 0;
                                                     }
                                                     return 0;
                                                 })()}</div>
                                                 <div className="text-xs text-gray-500">{(() => {
-                                                    if (typeof window !== "undefined") {
-                                                        const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                        if (users.length > 0) {
-                                                            const usersWithPoints = users.map((u: any) => ({
-                                                                ...u,
-                                                                puntosTotales: calcularPuntosTotales(u)
-                                                            }));
-                                                            const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
-                                                            return sorted[0]?.nick || 'Nadie';
-                                                        }
+                                                    if (usersArr.length > 0) {
+                                                        const usersWithPoints = usersArr.map((u: any) => ({
+                                                            ...u,
+                                                            puntosTotales: calcularPuntosTotales(u)
+                                                        }));
+                                                        const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
+                                                        return sorted[0]?.nick || 'Nadie';
                                                     }
                                                     return 'Nadie';
                                                 })()}</div>
@@ -892,17 +683,14 @@ export default function Estadisticas() {
                                                 <div className="text-xs text-blue-600 font-bold">TÚ</div>
                                                 <div className="font-bold text-blue-600">{currentUser ? calcularPuntosTotales(currentUser) : 0}</div>
                                                 <div className="text-xs text-blue-500">{(() => {
-                                                    if (typeof window !== "undefined" && currentUser) {
-                                                        const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                        if (users.length > 0) {
-                                                            const usersWithPoints = users.map((u: any) => ({
-                                                                ...u,
-                                                                puntosTotales: calcularPuntosTotales(u)
-                                                            }));
-                                                            const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
-                                                            const position = sorted.findIndex((u: any) => u.nick === currentUser.nick) + 1;
-                                                            return position > 0 ? `Posición #${position}` : 'Sin clasificar';
-                                                        }
+                                                    if (currentUser && usersArr.length > 0) {
+                                                        const usersWithPoints = usersArr.map((u: any) => ({
+                                                            ...u,
+                                                            puntosTotales: calcularPuntosTotales(u)
+                                                        }));
+                                                        const sorted = usersWithPoints.sort((a: any, b: any) => b.puntosTotales - a.puntosTotales);
+                                                        const position = sorted.findIndex((u: any) => u.nick === currentUser.nick) + 1;
+                                                        return position > 0 ? `Posición #${position}` : 'Sin clasificar';
                                                     }
                                                     return 'Sin clasificar';
                                                 })()}</div>
@@ -911,42 +699,32 @@ export default function Estadisticas() {
                                                 <div className="text-2xl">🎯</div>
                                                 <div className="text-xs text-gray-600">Promedio</div>
                                                 <div className="font-bold text-gray-600">{(() => {
-                                                    if (typeof window !== "undefined") {
-                                                        const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                        if (users.length > 0) {
-                                                            const total = users.reduce((sum: number, u: any) => sum + calcularPuntosTotales(u), 0);
-                                                            return Math.floor(total / users.length);
-                                                        }
+                                                    if (usersArr.length > 0) {
+                                                        const total = usersArr.reduce((sum: number, u: any) => sum + calcularPuntosTotales(u), 0);
+                                                        return Math.floor(total / usersArr.length);
                                                     }
                                                     return 0;
                                                 })()}</div>
                                                 <div className="text-xs text-gray-500">{(() => {
-                                                    if (typeof window !== "undefined") {
-                                                        const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                        return `${users.length} usuarios`;
-                                                    }
-                                                    return '0 usuarios';
+                                                    return `${usersArr.length} usuarios`;
                                                 })()}</div>
                                             </div>
                                         </div>
                                         {/* Indicador de diferencia con el promedio */}
                                         <div className="mt-3 text-center text-sm">
                                             {(() => {
-                                                if (typeof window !== "undefined" && currentUser) {
-                                                    const users = JSON.parse(localStorage.getItem("users") || "[]");
-                                                    if (users.length > 0) {
-                                                        const total = users.reduce((sum: number, u: any) => sum + calcularPuntosTotales(u), 0);
-                                                        const promedio = Math.floor(total / users.length);
-                                                        const tusPuntos = calcularPuntosTotales(currentUser);
-                                                        const diferencia = tusPuntos - promedio;
+                                                if (currentUser && usersArr.length > 0) {
+                                                    const total = usersArr.reduce((sum: number, u: any) => sum + calcularPuntosTotales(u), 0);
+                                                    const promedio = Math.floor(total / usersArr.length);
+                                                    const tusPuntos = calcularPuntosTotales(currentUser);
+                                                    const diferencia = tusPuntos - promedio;
 
-                                                        if (diferencia > 0) {
-                                                            return <span className="text-green-600">📈 +{diferencia} puntos sobre el promedio</span>;
-                                                        } else if (diferencia < 0) {
-                                                            return <span className="text-red-600">📉 {Math.abs(diferencia)} puntos bajo el promedio</span>;
-                                                        } else {
-                                                            return <span className="text-blue-600">🎯 Exactamente en el promedio</span>;
-                                                        }
+                                                    if (diferencia > 0) {
+                                                        return <span className="text-green-600">📈 +{diferencia} puntos sobre el promedio</span>;
+                                                    } else if (diferencia < 0) {
+                                                        return <span className="text-red-600">📉 {Math.abs(diferencia)} puntos bajo el promedio</span>;
+                                                    } else {
+                                                        return <span className="text-blue-600">🎯 Exactamente en el promedio</span>;
                                                     }
                                                 }
                                                 return <span className="text-gray-500">Sin datos para comparar</span>;
@@ -963,112 +741,75 @@ export default function Estadisticas() {
                         <h2 className="text-lg font-bold mb-4 text-center">Mejores estadísticas</h2>
                         <ul className="space-y-2 text-center">
                             <li><span className="mr-2 text-xl">📖</span><b>Historia con más likes:</b> {(() => {
-                                if (typeof window !== "undefined") {
-                                    const historiasStr = localStorage.getItem("historias");
-                                    if (historiasStr) {
-                                        try {
-                                            const historiasArr = JSON.parse(historiasStr);
-                                            if (historiasArr.length === 0) return "-";
-                                            const top = historiasArr.reduce((max: any, h: any) => {
-                                                if ((h.likes || 0) > (max.likes || 0)) return h;
-                                                return max;
-                                            }, historiasArr[0]);
-                                            return (
-                                                <span>
-                                                    <b>{top.titulo}</b> por <b><NickLink nick={top.autor} /></b> <span className="text-pink-600">❤️ {top.likes || 0}</span>
-                                                </span>
-                                            );
-                                        } catch { return "-"; }
-                                    }
-                                }
-                                return "-";
+                                if (historiasArr.length === 0) return "-";
+                                const top = historiasArr.reduce((max: any, h: any) => {
+                                    if ((h.likes || 0) > (max.likes || 0)) return h;
+                                    return max;
+                                }, historiasArr[0]);
+                                return (
+                                    <span>
+                                        <b>{top.titulo}</b> por <b><NickLink nick={top.autor} /></b> <span className="text-pink-600">❤️ {top.likes || 0}</span>
+                                    </span>
+                                );
                             })()}</li>
                             <li><span className="mr-2 text-xl">💬</span><b>Historia más comentada:</b> {(() => {
-                                if (typeof window !== "undefined") {
-                                    const historiasStr = localStorage.getItem("historias");
-                                    if (historiasStr) {
-                                        try {
-                                            const historiasArr = JSON.parse(historiasStr);
-                                            if (historiasArr.length === 0) return "-";
-                                            const top = historiasArr.reduce((max: any, h: any) => {
-                                                const comentarios = h.comentarios ? h.comentarios.length : 0;
-                                                const maxComentarios = max.comentarios ? max.comentarios.length : 0;
-                                                if (comentarios > maxComentarios) return h;
-                                                return max;
-                                            }, historiasArr[0]);
-                                            return (
-                                                <span>
-                                                    <b>{top.titulo}</b> por <b><NickLink nick={top.autor} /></b> <span className="text-blue-600">💬 {top.comentarios ? top.comentarios.length : 0}</span>
-                                                </span>
-                                            );
-                                        } catch { return "-"; }
-                                    }
-                                }
-                                return "-";
+                                if (historiasArr.length === 0) return "-";
+                                const top = historiasArr.reduce((max: any, h: any) => {
+                                    const comentarios = h.comentarios ? h.comentarios.length : 0;
+                                    const maxComentarios = max.comentarios ? max.comentarios.length : 0;
+                                    if (comentarios > maxComentarios) return h;
+                                    return max;
+                                }, historiasArr[0]);
+                                return (
+                                    <span>
+                                        <b>{top.titulo}</b> por <b><NickLink nick={top.autor} /></b> <span className="text-blue-600">💬 {top.comentarios ? top.comentarios.length : 0}</span>
+                                    </span>
+                                );
                             })()}</li>
                             <li><span className="mr-2 text-xl">🏫</span><b>Centro con más historias creadas:</b> {(() => {
-                                if (typeof window !== "undefined") {
-                                    const historiasStr = localStorage.getItem("historias");
-                                    const usersStr = localStorage.getItem("users");
-                                    if (historiasStr && usersStr) {
-                                        try {
-                                            const historiasArr = JSON.parse(historiasStr);
-                                            const usersArr = JSON.parse(usersStr);
-                                            if (historiasArr.length === 0 || usersArr.length === 0) return "-";
-                                            const nickToCentro: Record<string, string> = {};
-                                            usersArr.forEach((u: any) => {
-                                                if (u.nick && u.centro) {
-                                                    nickToCentro[u.nick] = u.centro;
-                                                }
-                                            });
-                                            const historiasPorCentro: Record<string, number> = {};
-                                            historiasArr.forEach((h: any) => {
-                                                const centro = h.centro || nickToCentro[h.autor] || null;
-                                                if (centro) {
-                                                    historiasPorCentro[centro] = (historiasPorCentro[centro] || 0) + 1;
-                                                }
-                                            });
-                                            const top = Object.entries(historiasPorCentro).sort((a, b) => b[1] - a[1])[0];
-                                            if (!top) return "-";
-                                            return (
-                                                <span>
-                                                    <b>{top[0]}</b> <span className="text-purple-600">🏫 {top[1]}</span>
-                                                </span>
-                                            );
-                                        } catch { return <span>-</span>; }
+                                if (historiasArr.length === 0 || usersArr.length === 0) return "-";
+                                const nickToCentro: Record<string, string> = {};
+                                usersArr.forEach((u: any) => {
+                                    if (u.nick && u.centro) {
+                                        nickToCentro[u.nick] = u.centro;
                                     }
-                                }
-                                return "-";
+                                });
+                                const historiasPorCentro: Record<string, number> = {};
+                                historiasArr.forEach((h: any) => {
+                                    const centro = h.centro || nickToCentro[h.autor] || null;
+                                    if (centro) {
+                                        historiasPorCentro[centro] = (historiasPorCentro[centro] || 0) + 1;
+                                    }
+                                });
+                                const top = Object.entries(historiasPorCentro).sort((a, b) => b[1] - a[1])[0];
+                                if (!top) return "-";
+                                return (
+                                    <span>
+                                        <b>{top[0]}</b> <span className="text-purple-600">🏫 {top[1]}</span>
+                                    </span>
+                                );
                             })()}</li>
                             <li><span className="mr-2 text-xl">🏫</span><b>Centro Escolar con más usuarios activos:</b> {(() => {
-                                if (typeof window !== "undefined") {
-                                    const usersStr = localStorage.getItem("users");
-                                    if (usersStr) {
-                                        try {
-                                            const usersArr = JSON.parse(usersStr);
-                                            if (usersArr.length === 0) return "-";
-                                            const usuariosPorCentro: Record<string, number> = {};
-                                            usersArr.forEach((u: any) => {
-                                                if (u.centro) {
-                                                    usuariosPorCentro[u.centro] = (usuariosPorCentro[u.centro] || 0) + 1;
-                                                }
-                                            });
-                                            const top = Object.entries(usuariosPorCentro).sort((a, b) => b[1] - a[1])[0];
-                                            if (!top) return "-";
-                                            return (
-                                                <span>
-                                                    <b>{top[0]}</b> <span className="text-blue-600">🏫 {top[1]}</span>
-                                                </span>
-                                            );
-                                        } catch { return "-"; }
+                                if (usersArr.length === 0) return "-";
+                                const usuariosPorCentro: Record<string, number> = {};
+                                usersArr.forEach((u: any) => {
+                                    if (u.centro) {
+                                        usuariosPorCentro[u.centro] = (usuariosPorCentro[u.centro] || 0) + 1;
                                     }
-                                }
-                                return "-";
+                                });
+                                const top = Object.entries(usuariosPorCentro).sort((a, b) => b[1] - a[1])[0];
+                                if (!top) return "-";
+                                return (
+                                    <span>
+                                        <b>{top[0]}</b> <span className="text-blue-600">🏫 {top[1]}</span>
+                                    </span>
+                                );
                             })()}</li>
                         </ul>
                     </div >
                 </>
-            )}
+            )
+            }
         </div >
     );
 }

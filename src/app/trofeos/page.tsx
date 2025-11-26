@@ -222,7 +222,7 @@ export default function Trofeos() {
                             </div>
                         </div>
                         <span className="font-bold text-sm text-amber-900">Espíritu Navideño Premium</span>
-                        <span className="text-xs text-amber-800 text-center font-medium">Escribe una historia sobre la navidad en el modo "My Live", durante los días 20 de diciembre y 6 de enero.</span>
+                        <span className="text-xs text-amber-800 text-center font-medium">Escribe una historia sobre la navidad en el modo &quot;My Live&quot;, durante los días 20 de diciembre y 6 de enero.</span>
                     </div>
 
                     {/* Trofeo Premium 5 */}
@@ -234,7 +234,7 @@ export default function Trofeos() {
                             </div>
                         </div>
                         <span className="font-bold text-sm text-amber-900">Verano Dorado Premium</span>
-                        <span className="text-xs text-amber-800 text-center font-medium">Crea una historia en modo "My Live", durante los días de verano (15 junio a 15 septiembre)</span>
+                        <span className="text-xs text-amber-800 text-center font-medium">Crea una historia en modo &quot;My Live&quot;, durante los días de verano (15 junio a 15 septiembre)</span>
                     </div>
 
                     {/* Trofeo Premium 6 */}
@@ -258,7 +258,7 @@ export default function Trofeos() {
                             </div>
                         </div>
                         <span className="font-bold text-sm text-amber-900">Diseñador del Futuro</span>
-                        <span className="text-xs text-amber-800 text-center font-medium">Crear el futuro logo de StoryUp con herramientas como Paint, en una historia con el título "Logo StoryUp"</span>
+                        <span className="text-xs text-amber-800 text-center font-medium">Crear el futuro logo de StoryUp con herramientas como Paint, en una historia con el título &quot;Logo StoryUp&quot;</span>
                     </div>
 
                     {/* Trofeo Premium 8 */}
@@ -306,7 +306,7 @@ export default function Trofeos() {
                             </div>
                         </div>
                         <span className="font-bold text-sm text-amber-900">Analista Premium</span>
-                        <span className="text-xs text-amber-800 text-center font-medium">Consigue un nivel 3 en todas las materias en "Analisis por materias" de Estadísticas premium Avanzadas.</span>
+                        <span className="text-xs text-amber-800 text-center font-medium">Consigue un nivel 3 en todas las materias en &quot;Analisis por materias&quot; de Estadísticas premium Avanzadas.</span>
                     </div>
 
                     {/* Trofeo Premium 12 */}

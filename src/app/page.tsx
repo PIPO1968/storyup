@@ -16,7 +16,7 @@ export default function Home() {
   const marginX = 8; // %
   const marginY = 8; // %
   // Distribuir los logos únicamente en los bordes verde alrededor
-  let logoPositions: { left: string; top: string }[] = [];
+  const logoPositions: { left: string; top: string }[] = [];
   const logos = [
     "Aguere.jpg", "Angeles Bermejo.jpg", "Aregume.jpg", "Buen Consejo.png", "Camino La Villa.jpg", "Camino Largo.jpg", "Casa Azul.png", "Chamberi.png", "Chayofa.png", "Cisneros Alter.jpg", "Colegio Cervantes.jpg", "Costa Adeje I..jpg", "Cuesta 25 de Julio.jpg", "Dominguez Alfonso.jpg", "Echeyde Arona.png", "Echeyde La Laguna.png", "El Monte.png", "Escuela Rural.png", "Escuelas Pias.jpg", "Gobierno de Canarias (Educacion).jpg", "Hispano La Salud.png", "La Cuesta B.N.jpg", "La Higuerita.jpg", "La Rosa.png", "La Salle.png", "La Vega.jpg", "La Verdellada.jpg", "logo-pipo.jpg", "Los Alisios.jpg", "Los Menceyes.jpg", "Luis Alvarez Cruz.jpg", "Luther King.jpg", "Mayex.jpg", "Montessori.png", "Nuryana.jpg", "Punta Larga.jpg", "Pureza de Maria.png", "Ravelo.jpg", "Rodriguez Alberto.jpg", "Rodriguez Campos.png", "Saint Andrew,s.jpg", "Salesianas.jpg", "San Agustin.jpg", "San Fernando.jpg", "San Isidro.jpg", "San Pablo.png", "Santa Catalina de Siena.jpg", "Santa Cruz de California.jpg", "Santa Maria del Mar.jpg", "Santa Rosa de Lima.jpg", "Tacoronte.jpg", "Tagoror.jpg", "Teofilo Perez.png", "Tincer.jpg", "Virgen de Fatima.jpg", "Virgen del Mar.png"
   ];
@@ -71,7 +71,7 @@ export default function Home() {
   const [showSidebar, setShowSidebar] = React.useState(false);
   React.useEffect(() => {
     // Si el usuario está conectado, mostrar el sidebar
-    const user = typeof window !== "undefined" ? localStorage.getItem("user") : null;
+    const user = typeof window !== "undefined" ? sessionStorage.getItem("user") : null;
     setShowSidebar(!!user);
   }, []);
 

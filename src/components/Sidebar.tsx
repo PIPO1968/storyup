@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { renderNick } from "@/utils/renderNick";
+import { User } from '../utils/users';
 
 const links = [
     { href: '/perfil', label: 'Perfil' },
@@ -16,29 +17,25 @@ const links = [
 ];
 
 const Sidebar: React.FC = () => {
-    const [usuarios, setUsuarios] = useState<any[]>([]);
+    const [usuarios, setUsuarios] = useState<User[]>([]);
     const [unreadMessages, setUnreadMessages] = useState(false);
-    const [user, setUser] = useState<any>(null);
-
-    useEffect(() => {
+    const [user, setUser] = useState<User | null>(() => {
         if (typeof window !== "undefined") {
-            const userStr = localStorage.getItem("user");
-            if (userStr) setUser(JSON.parse(userStr));
+            const userStr = sessionStorage.getItem("user");
+            return userStr ? JSON.parse(userStr) : null;
         }
-    }, []);
+        return null;
+    });
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            // Cargar usuarios inscritos desde localStorage
-            const usersStr = localStorage.getItem("users");
-            if (usersStr) {
-                try {
-                    const usersArr = JSON.parse(usersStr);
-                    setUsuarios(usersArr);
-                } catch { }
-            }
+            // Cargar usuarios inscritos desde la API
+            fetch('/api/users')
+                .then(res => res.json())
+                .then(data => setUsuarios(data.users || []))
+                .catch(() => setUsuarios([]));
             // Mantener la lógica de mensajes no leídos si es necesario
-            const currentUser = localStorage.getItem("user");
+            const currentUser = sessionStorage.getItem("user");
             if (currentUser) {
                 const user = JSON.parse(currentUser);
                 // Aquí podrías agregar la lógica de mensajes si la necesitas

@@ -617,21 +617,25 @@ const I18nContext = createContext<I18nContextValue>({
 });
 
 export const I18nProvider = ({ children, defaultLang = "es" as Lang }: { children: React.ReactNode, defaultLang?: Lang }) => {
-    const [lang, setLang] = useState<Lang>(defaultLang);
-
-    useEffect(() => {
-        // Prefer saved localStorage language if available
+    const [lang, setLang] = useState<Lang>(() => {
         if (typeof window !== "undefined") {
-            const saved = localStorage.getItem('locale');
+            const saved = sessionStorage.getItem('locale');
             if (saved && ['es', 'en', 'fr', 'de'].includes(saved)) {
-                setLang(saved as Lang);
-                return;
+                return saved as Lang;
             }
             // Otherwise try browser language
             const browser = navigator.language?.slice(0, 2);
             if (browser && (browser === "es" || browser === "en" || browser === "fr" || browser === "de")) {
-                setLang(browser as Lang);
+                return browser as Lang;
             }
+        }
+        return defaultLang;
+    });
+
+    useEffect(() => {
+        // Save to sessionStorage when lang changes
+        if (typeof window !== "undefined") {
+            sessionStorage.setItem('locale', lang);
         }
     }, []);
 
@@ -641,7 +645,7 @@ export const I18nProvider = ({ children, defaultLang = "es" as Lang }: { childre
 
     const changeLang = (l: Lang) => {
         setLang(l);
-        if (typeof window !== 'undefined') localStorage.setItem('locale', l);
+        if (typeof window !== 'undefined') sessionStorage.setItem('locale', l);
     };
 
     return (

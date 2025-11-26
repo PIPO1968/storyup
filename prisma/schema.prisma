@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -28,9 +29,20 @@ model User {
   amigos                 String[] // Array de nicks de amigos
   historias              String[] // Array de IDs de historias
   comentarios            String[] // Array de IDs de comentarios
-  premium                Boolean  @default(false) // Simplificado, o usar modelo separado
+  premium                Boolean  @default(false)
+  estadisticas           Json?    // Puntos por asignatura, etc.
+  campeonatos            Json?    // Datos de campeonatos
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
+}
+
+model Campeonato {
+  id          Int      @id @default(autoincrement())
+  temporada   Int
+  tipo        String   // 'individual', 'centro', 'docentes'
+  datos       Json     // Tabla de posiciones
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Act {
@@ -40,10 +52,3 @@ model Act {
   descripcion String
   fecha       DateTime @default(now())
 }
-
-// Si premium es más complejo, agregar modelo Premium
-// model Premium {
-//   id     Int  @id @default(autoincrement())
-//   nick   String @unique
-//   info   Json? // O campos específicos
-// }

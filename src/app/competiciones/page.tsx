@@ -96,7 +96,7 @@ export default function Competiciones() {
         };
 
         // Detectar todas las temporadas disponibles en localStorage
-        let temporadas: string[] = Object.keys(window.localStorage)
+        const temporadas: string[] = Object.keys(window.localStorage)
             .filter(k => k.startsWith("campeonato_individual_t") || k.startsWith("campeonato_centros_t") || k.startsWith("campeonato_docentes_t"))
             .map(k => {
                 const match = k.match(/t(\d+)/);

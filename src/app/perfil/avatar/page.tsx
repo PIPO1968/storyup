@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { UsersAPI } from "../../../utils/users";
 
 const AvatarSelector: React.FC = () => {
     const router = useRouter();
@@ -9,7 +10,7 @@ const AvatarSelector: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const userStr = localStorage.getItem("user");
+            const userStr = sessionStorage.getItem("user");
             if (userStr) {
                 setUser(JSON.parse(userStr));
             }
@@ -18,18 +19,7 @@ const AvatarSelector: React.FC = () => {
 
     if (!user) return <div>Cargando...</div>;
 
-    const isPremium = user ? (() => {
-        const premiumData = localStorage.getItem(`premium_${user.nick}`);
-        if (premiumData) {
-            try {
-                const data = JSON.parse(premiumData);
-                return data.activo === true;
-            } catch {
-                return false;
-            }
-        }
-        return false;
-    })() : false; // Asumir que hay un campo premium
+    const isPremium = user ? user.premium === true : false; // Asumir que hay un campo premium
 
     const simpleAvatars = [
         '/avatars/simple1.png',
@@ -45,7 +35,7 @@ const AvatarSelector: React.FC = () => {
         setSelectedAvatar(avatar);
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (!selectedAvatar) return;
 
         // Verificar si el avatar seleccionado es premium y el usuario no es premium
@@ -55,21 +45,21 @@ const AvatarSelector: React.FC = () => {
             return;
         }
 
-        // Actualizar user
-        const updatedUser = { ...user, avatar: selectedAvatar };
-        localStorage.setItem("user", JSON.stringify(updatedUser));
-        // Actualizar en users array
-        const usersStr = localStorage.getItem("users");
-        if (usersStr) {
-            const users = JSON.parse(usersStr);
-            const index = users.findIndex((u: any) => u.nick === user.nick);
-            if (index !== -1) {
-                users[index] = updatedUser;
-                localStorage.setItem("users", JSON.stringify(users));
-            }
+        try {
+            // Actualizar user en la base de datos
+            const updatedUser = { ...user, avatar: selectedAvatar };
+            await UsersAPI.updateUser(updatedUser);
+
+            // Actualizar sessionStorage
+            sessionStorage.setItem("user", JSON.stringify(updatedUser));
+            setUser(updatedUser);
+
+            alert("Avatar actualizado");
+            router.push("/perfil");
+        } catch (error) {
+            console.error('Error al actualizar avatar:', error);
+            alert('Error al actualizar el avatar. Inténtalo de nuevo.');
         }
-        alert("Avatar actualizado");
-        router.push("/perfil");
     };
 
     return (
@@ -99,10 +89,10 @@ const AvatarSelector: React.FC = () => {
                                 src={avatar}
                                 alt={`Avatar ${idx + 1}${isPremiumAvatar ? ' (Premium)' : ''}`}
                                 className={`w-16 h-16 rounded-full border-2 transition-all duration-200 ${!canSelect
-                                        ? 'cursor-not-allowed opacity-60 grayscale'
-                                        : selectedAvatar === avatar
-                                            ? 'border-blue-500 cursor-pointer'
-                                            : 'border-gray-300 cursor-pointer hover:border-blue-400'
+                                    ? 'cursor-not-allowed opacity-60 grayscale'
+                                    : selectedAvatar === avatar
+                                        ? 'border-blue-500 cursor-pointer'
+                                        : 'border-gray-300 cursor-pointer hover:border-blue-400'
                                     } ${isPremiumAvatar ? 'ring-2 ring-yellow-400 ring-opacity-50' : ''}`}
                                 onClick={() => canSelect && handleSelectAvatar(avatar)}
                                 title={isPremiumAvatar && !isPremium ? 'Avatar Premium - Hazte Premium para usarlo' : `Avatar ${idx + 1}`}

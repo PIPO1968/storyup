@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
         // Leer el archivo
         const fileContent = fs.readFileSync(filePath, 'utf-8');
-        let questions = JSON.parse(fileContent);        // Agregar la nueva pregunta
+        const questions = JSON.parse(fileContent);        // Agregar la nueva pregunta
         const nuevaPregunta = {
             pregunta: pregunta.trim(),
             respuesta: respuesta.trim(),

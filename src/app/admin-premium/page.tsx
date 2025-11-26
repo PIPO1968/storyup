@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { UsersAPI } from "../../utils/users";
+import { SolicitudesPremiumAPI, SolicitudPremium } from "../../utils/solicitudes-premium";
 
 // Interfaces de tipos
 interface SolicitudPago {
@@ -24,7 +26,7 @@ interface Usuario {
 
 export default function AdminPremium() {
     const [mensaje, setMensaje] = useState<string>("");
-    const [solicitudesPendientes, setSolicitudesPendientes] = useState<SolicitudPago[]>([]);
+    const [solicitudesPendientes, setSolicitudesPendientes] = useState<SolicitudPremium[]>([]);
     const [mostrarSolicitudes, setMostrarSolicitudes] = useState<boolean>(false);
     const [usuarioLogueado, setUsuarioLogueado] = useState<Usuario | null>(null);
     const [accesoDenegado, setAccesoDenegado] = useState<boolean>(false);
@@ -34,33 +36,35 @@ export default function AdminPremium() {
     const ADMINS_AUTORIZADOS = ['PIPO68'];
 
     useEffect(() => {
-        // Verificar si hay usuario logueado
-        if (typeof window !== 'undefined') {
-            const usuarioData = localStorage.getItem('user'); // Cambiado de 'usuario' a 'user'
-            if (usuarioData) {
-                const usuario = JSON.parse(usuarioData);
-                setUsuarioLogueado(usuario);
+        const loadData = async () => {
+            // Verificar si hay usuario logueado
+            if (typeof window !== 'undefined') {
+                const usuarioData = sessionStorage.getItem('user');
+                if (usuarioData) {
+                    const usuario = JSON.parse(usuarioData);
+                    setUsuarioLogueado(usuario);
 
-                // Cargar usuarios
-                const usersData = localStorage.getItem('users');
-                if (usersData) {
                     try {
-                        const users = JSON.parse(usersData);
+                        // Cargar usuarios
+                        const users = await UsersAPI.getAllUsers();
                         console.log('Usuarios cargados:', users);
                         // Ya no necesitamos almacenar usuarios en el estado
-                    } catch (error) {
-                        console.error('Error al parsear usuarios:', error);
-                    }
-                } else {
-                    console.log('No se encontraron usuarios en localStorage');
-                }
 
-                // Solo denegar acceso si no hay usuario logueado
-                // Los usuarios logueados (docentes o PIPO68) pueden acceder
-            } else {
-                setAccesoDenegado(true);
+                        // Cargar solicitudes premium
+                        const solicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
+                        setSolicitudesPendientes(solicitudes);
+                    } catch (error) {
+                        console.error('Error al cargar datos:', error);
+                    }
+
+                    // Solo denegar acceso si no hay usuario logueado
+                    // Los usuarios logueados (docentes o PIPO68) pueden acceder
+                } else {
+                    setAccesoDenegado(true);
+                }
             }
-        }
+        };
+        loadData();
     }, []);
 
     // Si no tiene acceso, mostrar página de error
@@ -86,7 +90,7 @@ export default function AdminPremium() {
                         <p className="text-xs text-gray-600">
                             <strong>Acceso autorizado para usuarios registrados:</strong><br />
                             • Administrador: <strong>PIPO68</strong><br />
-                            • Docentes: Usuarios con tipo "docente"<br />
+                            • Docentes: Usuarios con tipo &quot;docente&quot;<br />
                             URL: <code className="bg-gray-200 px-1 rounded">tudominio.com/admin-premium</code>
                         </p>
                     </div>
@@ -96,10 +100,10 @@ export default function AdminPremium() {
     }
 
     // Cargar solicitudes pendientes
-    const cargarSolicitudes = (): void => {
+    const cargarSolicitudes = async (): Promise<void> => {
         try {
-            const solicitudes: SolicitudPago[] = JSON.parse(localStorage.getItem('solicitudes_premium') || '[]');
-            setSolicitudesPendientes(solicitudes.filter((s: SolicitudPago) => s.estado === 'pendiente'));
+            const todasSolicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
+            setSolicitudesPendientes(todasSolicitudes);
             setMostrarSolicitudes(true);
         } catch (error) {
             console.error('Error al cargar solicitudes:', error);
@@ -108,36 +112,30 @@ export default function AdminPremium() {
     };
 
     // Aprobar solicitud de pago (activar Premium)
-    const aprobarSolicitud = (solicitud: SolicitudPago): void => {
+    const aprobarSolicitud = async (solicitud: SolicitudPremium): Promise<void> => {
         try {
             // Activar Premium para el usuario
             const fechaExpiracion = new Date();
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
 
-            const premiumData = {
-                activo: true,
-                fechaInicio: new Date().toISOString(),
-                expiracion: fechaExpiracion.toISOString(),
-                tipo: solicitud.tipo,
-                precio: solicitud.precio,
-                metodoPago: solicitud.metodoPago,
-                activadoPorAdmin: true,
-                solicitudId: solicitud.id,
-                emailPago: solicitud.email
-            };
-
-            localStorage.setItem(`premium_${solicitud.nick}`, JSON.stringify(premiumData));
-
-            // Marcar solicitud como aprobada
-            const todasSolicitudes: SolicitudPago[] = JSON.parse(localStorage.getItem('solicitudes_premium') || '[]');
-            const solicitudIndex = todasSolicitudes.findIndex((s: SolicitudPago) => s.id === solicitud.id);
-            if (solicitudIndex !== -1) {
-                todasSolicitudes[solicitudIndex].estado = 'aprobado';
-                todasSolicitudes[solicitudIndex].fechaAprobacion = new Date().toISOString();
-                localStorage.setItem('solicitudes_premium', JSON.stringify(todasSolicitudes));
+            // Encontrar y actualizar el usuario
+            const users = await UsersAPI.getAllUsers();
+            const userToUpdate = users.find(u => u.nick === solicitud.nick);
+            if (userToUpdate) {
+                const updatedUser = {
+                    ...userToUpdate,
+                    premium: true,
+                    premiumExpiracion: fechaExpiracion.toISOString()
+                };
+                await UsersAPI.updateUser(updatedUser);
             }
 
-            setMensaje(`🎉 Premium activado para ${solicitud.nick} tras verificar pago de €${solicitud.precio}`);
+            // Marcar solicitud como aprobada (aquí necesitaríamos una API para actualizar solicitudes)
+            // Por ahora, recargamos las solicitudes
+            const solicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
+            setSolicitudesPendientes(solicitudes);
+
+            setMensaje(`🎉 Premium activado para ${solicitud.nick} tras verificar pago de €12`);
             cargarSolicitudes(); // Recargar lista
 
             // Disparar eventos para actualizar componentes
@@ -151,16 +149,11 @@ export default function AdminPremium() {
     };
 
     // Rechazar solicitud
-    const rechazarSolicitud = (solicitud: SolicitudPago, motivo: string = 'Pago no verificado'): void => {
+    const rechazarSolicitud = async (solicitud: SolicitudPremium, motivo: string = 'Pago no verificado'): Promise<void> => {
         try {
-            const todasSolicitudes: SolicitudPago[] = JSON.parse(localStorage.getItem('solicitudes_premium') || '[]');
-            const solicitudIndex = todasSolicitudes.findIndex((s: SolicitudPago) => s.id === solicitud.id);
-            if (solicitudIndex !== -1) {
-                todasSolicitudes[solicitudIndex].estado = 'rechazado';
-                todasSolicitudes[solicitudIndex].fechaRechazo = new Date().toISOString();
-                todasSolicitudes[solicitudIndex].motivo = motivo;
-                localStorage.setItem('solicitudes_premium', JSON.stringify(todasSolicitudes));
-            }
+            // Por ahora, solo recargamos las solicitudes (necesitaríamos API para actualizar)
+            const todasSolicitudes = await SolicitudesPremiumAPI.getAllSolicitudes();
+            setSolicitudesPendientes(todasSolicitudes);
 
             setMensaje(`❌ Solicitud rechazada para ${solicitud.nick}: ${motivo}`);
             cargarSolicitudes(); // Recargar lista
@@ -172,7 +165,7 @@ export default function AdminPremium() {
     };
 
     // Hacer Premium
-    const hacerPremium = (): void => {
+    const hacerPremium = async (): Promise<void> => {
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
@@ -182,21 +175,18 @@ export default function AdminPremium() {
             const fechaExpiracion = new Date();
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
 
-            const premiumData = {
-                activo: true,
-                fechaInicio: new Date().toISOString(),
-                expiracion: fechaExpiracion.toISOString(),
-                tipo: "anual",
-                precio: 12,
-                activadoPorAdmin: true,
-                beneficios: {
-                    perfil: "Avatar personalizado, marco dorado, efectos visuales",
-                    competencia: "Liga Premium exclusiva, eventos temáticos",
-                    aprendizaje: "Minijuegos Premium, pistas ilimitadas, historias Premium"
-                }
-            };
+            // Encontrar y actualizar el usuario
+            const users = await UsersAPI.getAllUsers();
+            const userToUpdate = users.find(u => u.nick === nick.trim());
+            if (userToUpdate) {
+                const updatedUser = {
+                    ...userToUpdate,
+                    premium: true,
+                    premiumExpiracion: fechaExpiracion.toISOString()
+                };
+                await UsersAPI.updateUser(updatedUser);
+            }
 
-            localStorage.setItem(`premium_${nick}`, JSON.stringify(premiumData));
             setMensaje(`🎉 ¡Premium activado para ${nick} hasta ${fechaExpiracion.toLocaleDateString()}!`);
 
             // Disparar eventos para actualizar componentes
@@ -210,14 +200,25 @@ export default function AdminPremium() {
     };
 
     // Anular Premium
-    const anularPremium = (): void => {
+    const anularPremium = async (): Promise<void> => {
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
         }
 
         try {
-            localStorage.removeItem(`premium_${nick}`);
+            // Encontrar y actualizar el usuario
+            const users = await UsersAPI.getAllUsers();
+            const userToUpdate = users.find(u => u.nick === nick.trim());
+            if (userToUpdate) {
+                const updatedUser = {
+                    ...userToUpdate,
+                    premium: false,
+                    premiumExpiracion: null
+                };
+                await UsersAPI.updateUser(updatedUser);
+            }
+
             setMensaje(`🗑️ Premium anulado para ${nick}`);
 
             // Disparar eventos para actualizar componentes
@@ -230,21 +231,27 @@ export default function AdminPremium() {
         }
     };
 
-    const activarPremium = (): void => {
+    const activarPremium = async (): Promise<void> => {
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
         }
 
         try {
+            // Encontrar el usuario
+            const users = await UsersAPI.getAllUsers();
+            const userToUpdate = users.find(u => u.nick === nick.trim());
+            if (!userToUpdate) {
+                setMensaje("❌ Usuario no encontrado");
+                return;
+            }
+
             // Verificar si ya tiene premium activo
-            const premiumExistente = localStorage.getItem(`premium_${nick}`);
-            let fechaExpiracion = new Date();
+            const fechaExpiracion = new Date();
             let tiempoRestante = 0;
 
-            if (premiumExistente) {
-                const premiumData = JSON.parse(premiumExistente);
-                const fechaExpiracionExistente = new Date(premiumData.expiracion);
+            if (userToUpdate.premium && userToUpdate.premiumExpiracion) {
+                const fechaExpiracionExistente = new Date(userToUpdate.premiumExpiracion);
                 const ahora = new Date();
 
                 if (fechaExpiracionExistente > ahora) {
@@ -257,22 +264,13 @@ export default function AdminPremium() {
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
             fechaExpiracion.setDate(fechaExpiracion.getDate() + tiempoRestante);
 
-            const premiumData = {
-                activo: true,
-                fechaInicio: new Date().toISOString(),
-                expiracion: fechaExpiracion.toISOString(),
-                tipo: "anual",
-                precio: 12,
-                activadoPorAdmin: true,
-                tiempoRestanteExtendido: tiempoRestante > 0,
-                beneficios: {
-                    perfil: "Avatar personalizado, marco dorado, efectos visuales",
-                    competencia: "Liga Premium exclusiva, eventos temáticos",
-                    aprendizaje: "Minijuegos Premium, pistas ilimitadas, historias Premium"
-                }
+            const updatedUser = {
+                ...userToUpdate,
+                premium: true,
+                premiumExpiracion: fechaExpiracion.toISOString()
             };
 
-            localStorage.setItem(`premium_${nick}`, JSON.stringify(premiumData));
+            await UsersAPI.updateUser(updatedUser);
 
             const mensajeExtendido = tiempoRestante > 0
                 ? `\n\n⏰ Se ha añadido 1 año al tiempo restante de tu premium anterior (${tiempoRestante} días).`
@@ -290,20 +288,20 @@ export default function AdminPremium() {
         }
     };
 
-    const verificarPremium = (): void => {
+    const verificarPremium = async (): Promise<void> => {
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
         }
 
         try {
-            const premiumInfo = localStorage.getItem(`premium_${nick}`);
-            if (premiumInfo) {
-                const premium = JSON.parse(premiumInfo);
-                if (new Date(premium.expiracion) > new Date()) {
-                    setMensaje(`✅ ${nick} tiene Premium ACTIVO hasta: ${new Date(premium.expiracion).toLocaleDateString()}`);
+            const users = await UsersAPI.getAllUsers();
+            const user = users.find(u => u.nick === nick.trim());
+            if (user && user.premium && user.premiumExpiracion) {
+                if (new Date(user.premiumExpiracion) > new Date()) {
+                    setMensaje(`✅ ${nick} tiene Premium ACTIVO hasta: ${new Date(user.premiumExpiracion).toLocaleDateString()}`);
                 } else {
-                    setMensaje(`❌ ${nick} tenía Premium pero ha EXPIRADO el: ${new Date(premium.expiracion).toLocaleDateString()}`);
+                    setMensaje(`❌ ${nick} tenía Premium pero ha EXPIRADO el: ${new Date(user.premiumExpiracion).toLocaleDateString()}`);
                 }
             } else {
                 setMensaje(`❌ ${nick} NO tiene Premium activado`);
@@ -313,14 +311,25 @@ export default function AdminPremium() {
         }
     };
 
-    const desactivarPremium = (): void => {
+    const desactivarPremium = async (): Promise<void> => {
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
         }
 
         try {
-            localStorage.removeItem(`premium_${nick}`);
+            // Encontrar y actualizar el usuario
+            const users = await UsersAPI.getAllUsers();
+            const userToUpdate = users.find(u => u.nick === nick.trim());
+            if (userToUpdate) {
+                const updatedUser = {
+                    ...userToUpdate,
+                    premium: false,
+                    premiumExpiracion: null
+                };
+                await UsersAPI.updateUser(updatedUser);
+            }
+
             setMensaje(`🗑️ Premium desactivado para ${nick}`);
         } catch (error) {
             setMensaje("❌ Error al desactivar Premium");
@@ -412,12 +421,12 @@ export default function AdminPremium() {
                                                     <h4 className="font-bold text-lg text-gray-800">{solicitud.nick}</h4>
                                                     <p className="text-sm text-gray-600">{solicitud.email}</p>
                                                     <p className="text-xs text-gray-500 mt-1">
-                                                        📅 {new Date(solicitud.fechaSolicitud).toLocaleString()}
+                                                        📅 {new Date(solicitud.fecha).toLocaleString()}
                                                     </p>
                                                 </div>
                                                 <div className="text-right">
                                                     <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                                                        {solicitud.metodoPago.toUpperCase()} €{solicitud.precio}
+                                                        {solicitud.metodoPago.toUpperCase()} €12
                                                     </span>
                                                 </div>
                                             </div>

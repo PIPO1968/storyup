@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     `);
 
         let query = 'SELECT * FROM estadisticas WHERE nick = $1';
-        let params: any[] = [nick];
+        const params: any[] = [nick];
 
         if (tipo) {
             query += ' AND tipo = $2';

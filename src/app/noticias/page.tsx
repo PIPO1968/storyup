@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { renderNick } from "@/utils/renderNick";
+import { NoticiasAPI } from "../../utils/noticias";
 
 export default function Noticias() {
     type Noticia = {
@@ -12,21 +13,16 @@ export default function Noticias() {
 
     const [noticias, setNoticias] = React.useState<Noticia[]>([]);
     React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("noticias");
-            if (guardadas) {
-                try {
-                    const arr = JSON.parse(guardadas);
-                    console.log("Noticias cargadas desde localStorage:", arr);
-                    // Mostrar las 25 más recientes arriba
-                    setNoticias(arr.slice(0, 25));
-                } catch (error) {
-                    console.error("Error al cargar noticias desde localStorage:", error);
-                }
-            } else {
-                console.log("No se encontraron noticias en localStorage.");
+        const loadNoticias = async () => {
+            try {
+                const noticiasData = await NoticiasAPI.getAllNoticias();
+                console.log("Noticias cargadas desde API:", noticiasData);
+                setNoticias(noticiasData);
+            } catch (error) {
+                console.error("Error al cargar noticias desde API:", error);
             }
-        }
+        };
+        loadNoticias();
     }, []);
     const mostrarNoticias = noticias.length > 0
         ? noticias.map((noticia, idx) => {

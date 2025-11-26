@@ -10,7 +10,7 @@ const RegisterLoginForm: React.FC = () => {
 
     React.useEffect(() => {
         if (typeof window !== "undefined") {
-            const user = localStorage.getItem("user");
+            const user = sessionStorage.getItem("user");
             if (user) {
                 window.location.href = "/perfil";
             }
@@ -44,7 +44,7 @@ const RegisterLoginForm: React.FC = () => {
                         });
                         const result = await response.json();
                         if (response.ok) {
-                            localStorage.setItem('user', JSON.stringify(result.user));
+                            sessionStorage.setItem('user', JSON.stringify(result.user));
                             window.location.href = '/perfil';
                         } else {
                             alert(result.error);
@@ -91,7 +91,7 @@ const RegisterLoginForm: React.FC = () => {
                         });
                         const result = await response.json();
                         if (response.ok) {
-                            localStorage.setItem('user', JSON.stringify(result.user));
+                            sessionStorage.setItem('user', JSON.stringify(result.user));
                             window.location.href = '/perfil';
                         } else {
                             alert(result.error);

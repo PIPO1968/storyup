@@ -4,6 +4,10 @@ import { renderNick } from "@/utils/renderNick";
 import { TROFEOS_PREMIUM } from "@/data/trofeosPremiumImport";
 import { useTranslation } from "@/utils/i18n";
 import { useRouter } from "next/navigation";
+import { PremiosMensualesAPI } from "@/utils/premios-mensuales";
+import { ConcursosAPI } from "@/utils/concursos";
+import { ChatAPI } from "@/utils/chat";
+import { UsersAPI } from "../../utils/users";
 
 interface Usuario {
     nick: string;
@@ -24,11 +28,11 @@ interface Usuario {
     trofeos: any[];
 }
 
-const PerfilUsuario: React.FC = () => {
+function PerfilUsuario() {
     const router = useRouter();
     // Función para bloquear manualmente el trofeo 10 al usuario seleccionado
     // Función para bloquear manualmente cualquier trofeo al usuario seleccionado
-    const handleLockTrofeo = (trofeoIdx: number) => {
+    const handleLockTrofeo = async (trofeoIdx: number) => {
         if (!selectedUser) return;
         const updatedUsers = usuarios.map((u: any) =>
             u.nick === selectedUser
@@ -44,15 +48,25 @@ const PerfilUsuario: React.FC = () => {
                 : u
         );
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-        const userTrofeos = updatedUsers.find((u: any) => u.nick === selectedUser)?.trofeosDesbloqueados || [];
-        const userBloqueados = updatedUsers.find((u: any) => u.nick === selectedUser)?.trofeosBloqueados || [];
-        localStorage.setItem(`trofeos_${selectedUser}`, JSON.stringify(userTrofeos));
-        localStorage.setItem(`bloqueados_${selectedUser}`, JSON.stringify(userBloqueados));
-        // Si el usuario administrado es el actual, actualiza también el estado y localStorage
+
+        // Actualizar usuario en la base de datos
+        const updatedUser = updatedUsers.find((u: any) => u.nick === selectedUser);
+        if (updatedUser) {
+            await fetch('/api/users', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nick: selectedUser,
+                    trofeosDesbloqueados: updatedUser.trofeosDesbloqueados,
+                    trofeosBloqueados: updatedUser.trofeosBloqueados
+                })
+            });
+        }
+
+        // Si el usuario administrado es el actual, actualiza también el estado y sessionStorage
         if (user && user.nick === selectedUser) {
-            setUser({ ...user, trofeosDesbloqueados: userTrofeos, trofeosBloqueados: userBloqueados });
-            localStorage.setItem("user", JSON.stringify({ ...user, trofeosDesbloqueados: userTrofeos, trofeosBloqueados: userBloqueados }));
+            setUser({ ...user, trofeosDesbloqueados: updatedUser.trofeosDesbloqueados, trofeosBloqueados: updatedUser.trofeosBloqueados });
+            sessionStorage.setItem("user", JSON.stringify({ ...user, trofeosDesbloqueados: updatedUser.trofeosDesbloqueados, trofeosBloqueados: updatedUser.trofeosBloqueados }));
         }
         // Disparar evento para refrescar la UI
         window.dispatchEvent(new Event('storage'));
@@ -60,52 +74,45 @@ const PerfilUsuario: React.FC = () => {
     };
 
     // Función para asignar trofeos al usuario si su centro ganó premios este mes
-    const asignarTrofeosUsuario = (usuario: Usuario) => {
+    const asignarTrofeosUsuario = async (usuario: Usuario) => {
         if (typeof window === "undefined") return;
 
         const fechaActual = new Date();
-        const clavePremios = `premios_mensuales_${fechaActual.getFullYear()}_${(fechaActual.getMonth() + 1).toString().padStart(2, '0')}`;
+        const year = fechaActual.getFullYear();
+        const month = fechaActual.getMonth() + 1;
 
-        const premiosGuardados = localStorage.getItem(clavePremios);
-        if (!premiosGuardados) return;
+        const premios = await PremiosMensualesAPI.getPremiosMensuales(year, month);
+        const premioCentro = premios.find((p: any) => p.centro === usuario.centro);
 
-        try {
-            const premios = JSON.parse(premiosGuardados);
-            const premioCentro = premios.find((p: any) => p.centro === usuario.centro);
-
-            if (premioCentro) {
-                let idTrofeo = 0;
-                switch (premioCentro.posicion) {
-                    case 1: idTrofeo = 25; break; // Campeón Mensual
-                    case 2: idTrofeo = 26; break; // Subcampeón Mensual
-                    case 3: idTrofeo = 27; break; // Tercer Lugar Mensual
-                    default:
-                        if (premioCentro.posicion <= 10) {
-                            idTrofeo = 28; // Top 10 Mensual
-                        } else {
-                            idTrofeo = 29; // Participante Activo
-                        }
-                        break;
-                }
-
-                if (idTrofeo > 0 && !usuario.trofeos.includes(idTrofeo)) {
-                    usuario.trofeos.push(idTrofeo);
-                    // Actualizar localStorage
-                    const usersStr = localStorage.getItem("users");
-                    if (usersStr) {
-                        const users = JSON.parse(usersStr);
-                        const index = users.findIndex((u: Usuario) => u.nick === usuario.nick);
-                        if (index !== -1) {
-                            users[index] = usuario;
-                            localStorage.setItem("users", JSON.stringify(users));
-                        }
+        if (premioCentro) {
+            let idTrofeo = 0;
+            switch (premioCentro.posicion) {
+                case 1: idTrofeo = 25; break; // Campeón Mensual
+                case 2: idTrofeo = 26; break; // Subcampeón Mensual
+                case 3: idTrofeo = 27; break; // Tercer Lugar Mensual
+                default:
+                    if (premioCentro.posicion <= 10) {
+                        idTrofeo = 28; // Top 10 Mensual
+                    } else {
+                        idTrofeo = 29; // Participante Activo
                     }
-                    // Mostrar notificación de nuevo trofeo
-                    alert(`¡Felicitaciones! Has desbloqueado un nuevo trofeo: ${premioCentro.titulo}`);
-                }
+                    break;
             }
-        } catch (e) {
-            // Silent fail
+
+            if (idTrofeo > 0 && !usuario.trofeos.includes(idTrofeo)) {
+                usuario.trofeos.push(idTrofeo);
+                // Actualizar usuario en la base de datos
+                await fetch('/api/users', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nick: usuario.nick,
+                        trofeos: usuario.trofeos
+                    })
+                });
+                // Mostrar notificación de nuevo trofeo
+                alert(`¡Felicitaciones! Has desbloqueado un nuevo trofeo: ${premioCentro.titulo}`);
+            }
         }
     };
 
@@ -134,6 +141,7 @@ const PerfilUsuario: React.FC = () => {
     const [concursoSeleccionado, setConcursoSeleccionado] = useState("");
     const [ganadorSeleccionado, setGanadorSeleccionado] = useState("");
     const [refreshKey, setRefreshKey] = useState(0);
+    const [concursos, setConcursos] = useState<any[]>([]);
     // Estados para preguntas
     const [cursoSeleccionado, setCursoSeleccionado] = useState<string>("1primaria");
     const [asignaturaSeleccionada, setAsignaturaSeleccionada] = useState<string>("matematicas");
@@ -144,110 +152,131 @@ const PerfilUsuario: React.FC = () => {
 
     // Inicialización y sincronización de usuario y rankings SOLO una vez
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const usersStr = localStorage.getItem("users");
-            if (usersStr) {
-                let usersArr = JSON.parse(usersStr);
-                usersArr = usersArr.map((u: any) => ({
-                    ...u,
-                    trofeosDesbloqueados: Array.isArray(u.trofeosDesbloqueados)
-                        ? u.trofeosDesbloqueados.filter((idx: number) => idx !== 9)
-                        : []
-                }));
-                localStorage.setItem("users", JSON.stringify(usersArr));
-            }
-        }
-        if (typeof window !== "undefined") {
-            const usersStr = localStorage.getItem("users");
-            const userStr = localStorage.getItem("user");
-            if (usersStr && userStr) {
-                let usersArr = JSON.parse(usersStr);
-                const userObj = JSON.parse(userStr);
-                usersArr = usersArr.map((u: any) => {
-                    const amigosCount = Array.isArray(u.amigos) ? u.amigos.length : 0;
-                    return {
+        const loadUsersAndRankings = async () => {
+            if (typeof window !== "undefined") {
+                // Cargar usuarios desde la API
+                try {
+                    const response = await fetch('/api/users');
+                    const usersArr = await response.json();
+
+                    // Procesar usuarios
+                    let processedUsers = usersArr.map((u: any) => ({
                         ...u,
                         trofeosDesbloqueados: Array.isArray(u.trofeosDesbloqueados)
-                            ? u.trofeosDesbloqueados.filter((idx: number) => idx !== 9 || true)
+                            ? u.trofeosDesbloqueados.filter((idx: number) => idx !== 9)
                             : []
-                    };
-                });
-                // Rankings
-                const rankingLikes = [...usersArr].sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 3).filter(u => (u.likes || 0) > 0);
-                const rankingComentarios = [...usersArr].sort((a, b) => (b.comentariosRecibidos || 0) - (a.comentariosRecibidos || 0)).slice(0, 3).filter(u => (u.comentariosRecibidos || 0) > 0);
-                const rankingAmigos = [...usersArr].sort((a, b) => (b.amigos?.length || 0) - (a.amigos?.length || 0)).slice(0, 3).filter(u => (u.amigos?.length || 0) > 0);
-                const rankingHistorias = [...usersArr].sort((a, b) => (b.historias?.length || 0) - (a.historias?.length || 0)).slice(0, 3).filter(u => (u.historias?.length || 0) > 0);
-                const rankingConcursos = [...usersArr].sort((a, b) => (b.concursosGanados || 0) - (a.concursosGanados || 0)).slice(0, 3).filter(u => (u.concursosGanados || 0) > 0);
-                const rankingCompeticiones = [...usersArr].sort((a, b) => (b.competicionesSuperadas || 0) - (a.competicionesSuperadas || 0)).slice(0, 3).filter(u => (u.competicionesSuperadas || 0) > 0);
-                usersArr = usersArr.map((u: any) => ({
-                    ...u,
-                    estaEnRanking:
-                        rankingLikes.some(r => r.nick === u.nick) ||
-                        rankingComentarios.some(r => r.nick === u.nick) ||
-                        rankingAmigos.some(r => r.nick === u.nick) ||
-                        rankingHistorias.some(r => r.nick === u.nick) ||
-                        rankingConcursos.some(r => r.nick === u.nick) ||
-                        rankingCompeticiones.some(r => r.nick === u.nick),
-                    estaEnRankingCompeticiones:
-                        rankingCompeticiones.some(r => r.nick === u.nick)
-                }));
-                let userFromArr = usersArr.find((u: any) => u.nick === userObj.nick);
-                if (!userFromArr) userFromArr = userObj;
-                if (userFromArr) {
-                    const amigosStr = localStorage.getItem(`amigos_${userObj.nick}`);
-                    let amigosArr = [];
-                    if (amigosStr) {
-                        try { amigosArr = JSON.parse(amigosStr); } catch { amigosArr = []; }
+                    }));
+
+                    const userStr = sessionStorage.getItem("user");
+                    if (userStr) {
+                        const userObj = JSON.parse(userStr);
+                        processedUsers = processedUsers.map((u: any) => {
+                            const amigosCount = Array.isArray(u.amigos) ? u.amigos.length : 0;
+                            return {
+                                ...u,
+                                trofeosDesbloqueados: Array.isArray(u.trofeosDesbloqueados)
+                                    ? u.trofeosDesbloqueados.filter((idx: number) => idx !== 9 || true)
+                                    : []
+                            };
+                        });
+
+                        // Rankings
+                        const rankingLikes = [...processedUsers].sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 3).filter(u => (u.likes || 0) > 0);
+                        const rankingComentarios = [...processedUsers].sort((a, b) => (b.comentariosRecibidos || 0) - (a.comentariosRecibidos || 0)).slice(0, 3).filter(u => (u.comentariosRecibidos || 0) > 0);
+                        const rankingAmigos = [...processedUsers].sort((a, b) => (b.amigos?.length || 0) - (a.amigos?.length || 0)).slice(0, 3).filter(u => (u.amigos?.length || 0) > 0);
+                        const rankingHistorias = [...processedUsers].sort((a, b) => (b.historias?.length || 0) - (a.historias?.length || 0)).slice(0, 3).filter(u => (u.historias?.length || 0) > 0);
+                        const rankingConcursos = [...processedUsers].sort((a, b) => (b.concursosGanados || 0) - (a.concursosGanados || 0)).slice(0, 3).filter(u => (u.concursosGanados || 0) > 0);
+                        const rankingCompeticiones = [...processedUsers].sort((a, b) => (b.competicionesSuperadas || 0) - (a.competicionesSuperadas || 0)).slice(0, 3).filter(u => (u.competicionesSuperadas || 0) > 0);
+
+                        processedUsers = processedUsers.map((u: any) => ({
+                            ...u,
+                            estaEnRanking:
+                                rankingLikes.some(r => r.nick === u.nick) ||
+                                rankingComentarios.some(r => r.nick === u.nick) ||
+                                rankingAmigos.some(r => r.nick === u.nick) ||
+                                rankingHistorias.some(r => r.nick === u.nick) ||
+                                rankingConcursos.some(r => r.nick === u.nick) ||
+                                rankingCompeticiones.some(r => r.nick === u.nick),
+                            estaEnRankingCompeticiones:
+                                rankingCompeticiones.some(r => r.nick === u.nick)
+                        }));
+
+                        let userFromArr = processedUsers.find((u: any) => u.nick === userObj.nick);
+                        if (!userFromArr) userFromArr = userObj;
+                        if (userFromArr) {
+                            // Cargar amigos desde la API de amistades
+                            const amigosResponse = await fetch(`/api/friends?nick=${encodeURIComponent(userObj.nick)}`);
+                            let amigosArr = [];
+                            if (amigosResponse.ok) {
+                                const amigosData = await amigosResponse.json();
+                                amigosArr = amigosData.friends || [];
+                            }
+                            let competicionesSuperadas = userFromArr.competicionesSuperadas;
+                            if (typeof competicionesSuperadas !== 'number') {
+                                competicionesSuperadas = userObj.competicionesSuperadas || 0;
+                            }
+                            let trofeosDesbloqueados = userFromArr.trofeosDesbloqueados;
+                            const trofeosBloqueados = userFromArr.trofeosBloqueados || [];
+                            const amigosCount = Array.isArray(amigosArr) ? amigosArr.length : 0;
+                            if (Array.isArray(trofeosDesbloqueados)) {
+                                trofeosDesbloqueados = trofeosDesbloqueados.filter(idx => idx !== 9 || true);
+                            }
+                            const autoTrofeos = TROFEOS_AUTO
+                                .map((t, idx) => (typeof t.condicion === 'function' && t.condicion({ ...userFromArr, amigos: amigosArr })) ? idx : null)
+                                .filter((idx: number | null) => idx !== null);
+                            const usuarioActualizado = { ...userFromArr, amigos: amigosArr, competicionesSuperadas, estaEnRanking: userFromArr.estaEnRanking, trofeosDesbloqueados, trofeosBloqueados, autoTrofeos };
+                            setUser(usuarioActualizado);
+                            // Asignar trofeos si el centro ganó premios este mes
+                            asignarTrofeosUsuario(usuarioActualizado as Usuario);
+                        }
+                        setUsuarios(processedUsers);
+                        // No necesitamos guardar en localStorage ya que los datos están en la BD
                     }
-                    if (!Array.isArray(amigosArr)) amigosArr = [];
-                    let competicionesSuperadas = userFromArr.competicionesSuperadas;
-                    if (typeof competicionesSuperadas !== 'number') {
-                        competicionesSuperadas = userObj.competicionesSuperadas || 0;
+                    // Cargar último ID de concurso desde la API
+                    const concursos = await ConcursosAPI.getConcursos();
+                    if (concursos.length > 0) {
+                        const concursosConId = concursos.filter(c => c.id !== undefined);
+                        if (concursosConId.length > 0) {
+                            const maxId = Math.max(...concursosConId.map(c => c.id!));
+                            setConcursoId(maxId + 1);
+                        }
                     }
-                    let trofeosDesbloqueados = userFromArr.trofeosDesbloqueados;
-                    let trofeosBloqueados = userFromArr.trofeosBloqueados || [];
-                    const amigosCount = Array.isArray(amigosArr) ? amigosArr.length : 0;
-                    if (Array.isArray(trofeosDesbloqueados)) {
-                        trofeosDesbloqueados = trofeosDesbloqueados.filter(idx => idx !== 9 || true);
-                    }
-                    const autoTrofeos = TROFEOS_AUTO
-                        .map((t, idx) => (typeof t.condicion === 'function' && t.condicion({ ...userFromArr, amigos: amigosArr })) ? idx : null)
-                        .filter((idx: number | null) => idx !== null);
-                    const usuarioActualizado = { ...userFromArr, amigos: amigosArr, competicionesSuperadas, estaEnRanking: userFromArr.estaEnRanking, trofeosDesbloqueados, trofeosBloqueados, autoTrofeos };
-                    setUser(usuarioActualizado);
-                    // Asignar trofeos si el centro ganó premios este mes
-                    asignarTrofeosUsuario(usuarioActualizado as Usuario);
+                } catch (error) {
+                    console.error('Error loading users and rankings:', error);
                 }
-                setUsuarios(usersArr);
-                localStorage.setItem("users", JSON.stringify(usersArr));
             }
-            const lastId = localStorage.getItem("lastConcursoId");
-            if (lastId) setConcursoId(parseInt(lastId) + 1);
-        }
+        };
+        loadUsersAndRankings();
     }, []);
 
     // Cargar mensajes del chat y aviso solo cuando cambia el usuario
     useEffect(() => {
         if (user && user.nick) {
-            const mensajesGuardados = localStorage.getItem(`chat_${user.nick}`);
-            if (mensajesGuardados) {
-                setChatMessages(JSON.parse(mensajesGuardados));
-            }
-            const aviso = localStorage.getItem(`chat_aviso_${user.nick}`);
-            setMensajeRecibido(aviso === "1");
+            ChatAPI.getChat(user.nick).then(chatData => {
+                setChatMessages(chatData.messages);
+                setMensajeRecibido(chatData.aviso);
+            });
         }
     }, [user]);
 
     // Escuchar cambios en el perfil
     useEffect(() => {
-        const handleProfileUpdate = () => {
-            const usersStr = localStorage.getItem("users");
-            if (usersStr) {
-                setUsuarios(JSON.parse(usersStr));
-            }
-            const userStr = localStorage.getItem("user");
-            if (userStr) {
-                setUser(JSON.parse(userStr));
+        const handleProfileUpdate = async () => {
+            try {
+                const users = await UsersAPI.getAllUsers();
+                setUsuarios(users);
+                const userStr = sessionStorage.getItem("user");
+                if (userStr) {
+                    const currentUser = JSON.parse(userStr);
+                    // Actualizar el usuario actual desde la BD si es necesario
+                    const updatedUser = users.find(u => u.nick === currentUser.nick);
+                    if (updatedUser) {
+                        setUser(updatedUser);
+                        sessionStorage.setItem("user", JSON.stringify(updatedUser));
+                    }
+                }
+            } catch (error) {
+                console.error('Error al actualizar perfil:', error);
             }
         };
         window.addEventListener('profileUpdate', handleProfileUpdate);
@@ -256,6 +285,19 @@ const PerfilUsuario: React.FC = () => {
             window.removeEventListener('profileUpdate', handleProfileUpdate);
             window.removeEventListener('storage', handleProfileUpdate);
         };
+    }, []);
+
+    // Cargar concursos desde la API
+    useEffect(() => {
+        const loadConcursos = async () => {
+            try {
+                const concursosData = await ConcursosAPI.getConcursos();
+                setConcursos(concursosData);
+            } catch (error) {
+                console.error('Error al cargar concursos:', error);
+            }
+        };
+        loadConcursos();
     }, []);
 
     const handlePalabraProhibidaSubmit = (e: React.FormEvent) => {
@@ -267,89 +309,104 @@ const PerfilUsuario: React.FC = () => {
         setBullyingActivo(false);
         setUsuarioBullying("");
     };
-    const handleConcursoSubmit = (e: React.FormEvent) => {
+    const handleConcursoSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Guardar el concurso en localStorage, incluyendo el ganador si existe
-        const concursosStr = localStorage.getItem("concursos");
-        let concursosArr = concursosStr ? JSON.parse(concursosStr) : [];
-        concursosArr.unshift({
-            numero: concursoId,
-            titulo: concursoTitulo,
-            texto: concursoTexto,
-            inicio: fechaInicio,
-            fin: fechaFin,
-            autor: user ? user.nick : "",
-            ganador: usuarioGanador,
-            fechaFinal: fechaFin
-        });
-        localStorage.setItem("concursos", JSON.stringify(concursosArr));
-        localStorage.setItem("lastConcursoId", concursoId.toString());
-        setConcursoId(concursoId + 1);
-        setConcursoTitulo("");
-        setConcursoTexto("");
-        setFechaInicio("");
-        setFechaFin("");
-        setUsuarioGanador("");
-        // Refrescar concursos en otras páginas
-        window.dispatchEvent(new Event('storage'));
-        alert("Concurso creado y ganador registrado");
-    };
-    const handleSeleccionarGanador = () => {
-        if (usuarioGanador) {
-            // Guardar el ganador en el concurso más reciente
-            const concursosStr = localStorage.getItem("concursos");
-            let concursosArr = concursosStr ? JSON.parse(concursosStr) : [];
-            if (concursosArr.length > 0) {
-                concursosArr[0].ganador = usuarioGanador;
-                localStorage.setItem("concursos", JSON.stringify(concursosArr));
-            }
-            // Sumar concursosGanados al usuario seleccionado
-            const updatedUsers = usuarios.map(u =>
-                u.nick === usuarioGanador
-                    ? { ...u, concursosGanados: (u.concursosGanados || 0) + 1 }
-                    : u
-            );
-            setUsuarios(updatedUsers);
-            localStorage.setItem("users", JSON.stringify(updatedUsers));
-            // Si el usuario actual es el ganador, actualizar también el estado user
-            if (user && user.nick === usuarioGanador) {
-                setUser({ ...user, concursosGanados: (user.concursosGanados || 0) + 1 });
-                localStorage.setItem("user", JSON.stringify({ ...user, concursosGanados: (user.concursosGanados || 0) + 1 }));
-            }
-            // Refrescar perfil y concursos
-            window.dispatchEvent(new Event('profileUpdate'));
+        try {
+            const nuevoConcurso = {
+                numero: concursoId,
+                titulo: concursoTitulo,
+                descripcion: concursoTexto,
+                fechaInicio: fechaInicio,
+                fechaFin: fechaFin,
+                ganador: usuarioGanador,
+                estado: 'activo' as const
+            };
+
+            await ConcursosAPI.createConcurso(nuevoConcurso);
+
+            setConcursoId(concursoId + 1);
+            setConcursoTitulo("");
+            setConcursoTexto("");
+            setFechaInicio("");
+            setFechaFin("");
+            setUsuarioGanador("");
+            // Refrescar concursos en otras páginas
             window.dispatchEvent(new Event('storage'));
-            alert(`Ganador seleccionado: ${usuarioGanador}`);
+            alert("Concurso creado y ganador registrado");
+        } catch (error) {
+            console.error('Error al crear concurso:', error);
+            alert('Error al crear el concurso. Inténtalo de nuevo.');
+        }
+    };
+    const handleSeleccionarGanador = async () => {
+        if (usuarioGanador) {
+            try {
+                // Actualizar el concurso más reciente con el ganador
+                const concursos = await ConcursosAPI.getConcursos();
+                if (concursos.length > 0) {
+                    const ultimoConcurso = concursos[0];
+                    await ConcursosAPI.updateConcurso(ultimoConcurso.id!, { ...ultimoConcurso, ganador: usuarioGanador });
+                }
+
+                // Sumar concursosGanados al usuario seleccionado
+                const winnerUser = usuarios.find(u => u.nick === usuarioGanador);
+                if (winnerUser) {
+                    const updatedWinner = { ...winnerUser, concursosGanados: (winnerUser.concursosGanados || 0) + 1 };
+                    await UsersAPI.updateUser(updatedWinner);
+
+                    const updatedUsers = usuarios.map(u =>
+                        u.nick === usuarioGanador ? updatedWinner : u
+                    );
+                    setUsuarios(updatedUsers);
+
+                    // Si el usuario actual es el ganador, actualizar también el estado user
+                    if (user && user.nick === usuarioGanador) {
+                        setUser(updatedWinner);
+                        sessionStorage.setItem("user", JSON.stringify(updatedWinner));
+                    }
+                }
+
+                // Refrescar perfil y concursos
+                window.dispatchEvent(new Event('profileUpdate'));
+                window.dispatchEvent(new Event('storage'));
+                alert(`Ganador seleccionado: ${usuarioGanador}`);
+            } catch (error) {
+                console.error('Error al seleccionar ganador:', error);
+                alert('Error al seleccionar el ganador. Inténtalo de nuevo.');
+            }
         } else {
             alert("Selecciona un usuario ganador");
         }
     };
-    const handleAsignarGanador = () => {
+    const handleAsignarGanador = async () => {
         if (!concursoSeleccionado || !ganadorSeleccionado) {
             alert("Selecciona un concurso y un ganador");
             return;
         }
-        const concursosStr = localStorage.getItem("concursos");
-        let concursosArr = concursosStr ? JSON.parse(concursosStr) : [];
-        const concursoIndex = concursosArr.findIndex((c: any) => String(c.numero) === String(concursoSeleccionado));
-        if (concursoIndex !== -1) {
-            concursosArr[concursoIndex].ganador = ganadorSeleccionado;
-            localStorage.setItem("concursos", JSON.stringify(concursosArr));
+        try {
+            // Actualizar el concurso seleccionado con el ganador
+            await ConcursosAPI.updateConcurso(parseInt(concursoSeleccionado), { ganador: ganadorSeleccionado });
+
             // Sumar concursosGanados al usuario seleccionado
-            const updatedUsers = usuarios.map(u =>
-                u.nick === ganadorSeleccionado
-                    ? { ...u, concursosGanados: (u.concursosGanados || 0) + 1 }
-                    : u
-            );
-            setUsuarios(updatedUsers);
-            localStorage.setItem("users", JSON.stringify(updatedUsers));
-            // Si el usuario actual es el ganador, actualizar también el estado user
-            if (user && user.nick === ganadorSeleccionado) {
-                setUser({ ...user, concursosGanados: (user.concursosGanados || 0) + 1 });
-                localStorage.setItem("user", JSON.stringify({ ...user, concursosGanados: (user.concursosGanados || 0) + 1 }));
+            const winnerUser = usuarios.find(u => u.nick === ganadorSeleccionado);
+            if (winnerUser) {
+                const updatedWinner = { ...winnerUser, concursosGanados: (winnerUser.concursosGanados || 0) + 1 };
+                await UsersAPI.updateUser(updatedWinner);
+
+                const updatedUsers = usuarios.map(u =>
+                    u.nick === ganadorSeleccionado ? updatedWinner : u
+                );
+                setUsuarios(updatedUsers);
+
+                // Si el usuario actual es el ganador, actualizar también el estado user
+                if (user && user.nick === ganadorSeleccionado) {
+                    setUser(updatedWinner);
+                    sessionStorage.setItem("user", JSON.stringify(updatedWinner));
+                }
             }
+
             // Sumar 10 likes al ganador
-            updateLikes(ganadorSeleccionado, 10);
+            await updateLikes(ganadorSeleccionado, 10);
             // Limpiar selecciones
             setConcursoSeleccionado('');
             setGanadorSeleccionado('');
@@ -361,8 +418,9 @@ const PerfilUsuario: React.FC = () => {
             setGanadorSeleccionado("");
             // Forzar re-render para actualizar la lista de concursos
             setRefreshKey(prev => prev + 1);
-        } else {
-            alert("Concurso no encontrado");
+        } catch (error) {
+            console.error('Error al asignar ganador:', error);
+            alert('Error al asignar el ganador. Inténtalo de nuevo.');
         }
     };
     const handleNoticiaSubmit = (e: React.FormEvent) => {
@@ -411,19 +469,34 @@ const PerfilUsuario: React.FC = () => {
     };
 
     // Función para añadir trofeo al usuario seleccionado
-    const handleAddTrofeo = () => {
+    const handleAddTrofeo = async () => {
         if (!selectedUser) return;
-        const updatedUsers = usuarios.map(u =>
-            u.nick === selectedUser
-                ? { ...u, trofeos: (u.trofeos || 0) + 1 }
-                : u
-        );
-        setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-        alert(`Trofeo añadido a ${selectedUser}`);
+        try {
+            const userToUpdate = usuarios.find(u => u.nick === selectedUser);
+            if (userToUpdate) {
+                const updatedUser = { ...userToUpdate, trofeos: (userToUpdate.trofeos || 0) + 1 };
+                await UsersAPI.updateUser(updatedUser);
+
+                const updatedUsers = usuarios.map(u =>
+                    u.nick === selectedUser ? updatedUser : u
+                );
+                setUsuarios(updatedUsers);
+
+                // Si el usuario actual es el seleccionado, actualizar también el estado user
+                if (user && user.nick === selectedUser) {
+                    setUser(updatedUser);
+                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
+                }
+
+                alert(`Trofeo añadido a ${selectedUser}`);
+            }
+        } catch (error) {
+            console.error('Error al añadir trofeo:', error);
+            alert('Error al añadir el trofeo. Inténtalo de nuevo.');
+        }
     };
     // Función general para sumar o restar likes a cualquier usuario
-    const updateLikes = (nick: string, cantidad: number) => {
+    const updateLikes = async (nick: string, cantidad: number) => {
         if (!nick) return;
         const updatedUsers = usuarios.map(u =>
             u.nick === nick
@@ -431,48 +504,69 @@ const PerfilUsuario: React.FC = () => {
                 : u
         );
         setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+        // Actualizar usuario en la base de datos
+        await fetch('/api/users', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nick: nick,
+                likes: (updatedUsers.find(u => u.nick === nick)?.likes || 0)
+            })
+        });
+
         // Si el usuario actual es el modificado, actualiza también el estado user
         if (user && user.nick === nick) {
-            setUser({ ...user, likes: (user.likes || 0) + cantidad });
-            localStorage.setItem("user", JSON.stringify({ ...user, likes: (user.likes || 0) + cantidad }));
+            const newLikes = (user.likes || 0) + cantidad;
+            setUser({ ...user, likes: newLikes });
+            sessionStorage.setItem("user", JSON.stringify({ ...user, likes: newLikes }));
         }
-        // Eliminar cualquier uso de likes_${nick} en localStorage
-        localStorage.removeItem(`likes_${nick}`);
         // Emitir evento 'storage' manualmente para refrescar otras páginas
         window.dispatchEvent(new Event('storage'));
     };
     // Función para desbloquear trofeo específico
-    const handleUnlockTrofeo = (trofeoIdx: number) => {
+    const handleUnlockTrofeo = async (trofeoIdx: number) => {
         if (!selectedUser) return;
-        const updatedUsers = usuarios.map(u =>
-            u.nick === selectedUser
-                ? {
-                    ...u,
-                    trofeosDesbloqueados: Array.isArray(u.trofeosDesbloqueados)
-                        ? [...new Set([...(u.trofeosDesbloqueados || []), trofeoIdx])]
-                        : [trofeoIdx],
-                    trofeosBloqueados: Array.isArray(u.trofeosBloqueados)
-                        ? u.trofeosBloqueados.filter((idx: number) => idx !== trofeoIdx)
-                        : []
-                }
-                : u
-        );
-        setUsuarios(updatedUsers);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-        // Guardar los trofeos desbloqueados en localStorage para estadísticas
-        const userTrofeos = updatedUsers.find(u => u.nick === selectedUser)?.trofeosDesbloqueados || [];
-        const userBloqueados = updatedUsers.find(u => u.nick === selectedUser)?.trofeosBloqueados || [];
-        localStorage.setItem(`trofeos_${selectedUser}`, JSON.stringify(userTrofeos));
-        localStorage.setItem(`bloqueados_${selectedUser}`, JSON.stringify(userBloqueados));
-        // Si el usuario administrado es el actual, actualiza también el estado y localStorage
-        if (user && user.nick === selectedUser) {
-            setUser({ ...user, trofeosDesbloqueados: userTrofeos, trofeosBloqueados: userBloqueados });
-            localStorage.setItem("user", JSON.stringify({ ...user, trofeosDesbloqueados: userTrofeos, trofeosBloqueados: userBloqueados }));
+        try {
+            // Obtener el usuario seleccionado actualizado
+            const currentUser = usuarios.find(u => u.nick === selectedUser);
+            if (!currentUser) return;
+
+            const updatedTrofeosDesbloqueados = Array.isArray(currentUser.trofeosDesbloqueados)
+                ? [...new Set([...(currentUser.trofeosDesbloqueados || []), trofeoIdx])]
+                : [trofeoIdx];
+            const updatedTrofeosBloqueados = Array.isArray(currentUser.trofeosBloqueados)
+                ? currentUser.trofeosBloqueados.filter((idx: number) => idx !== trofeoIdx)
+                : [];
+
+            // Actualizar el usuario en la base de datos
+            const updatedUser = {
+                ...currentUser,
+                trofeosDesbloqueados: updatedTrofeosDesbloqueados,
+                trofeosBloqueados: updatedTrofeosBloqueados
+            };
+
+            await UsersAPI.updateUser(updatedUser);
+
+            // Actualizar el estado local
+            const updatedUsers = usuarios.map(u =>
+                u.nick === selectedUser ? updatedUser : u
+            );
+            setUsuarios(updatedUsers);
+
+            // Si el usuario administrado es el actual, actualiza también el estado y sessionStorage
+            if (user && user.nick === selectedUser) {
+                setUser(updatedUser);
+                sessionStorage.setItem("user", JSON.stringify(updatedUser));
+            }
+
+            // Disparar evento para refrescar la UI
+            window.dispatchEvent(new Event('storage'));
+            alert(`Trofeo #${trofeoIdx + 1} desbloqueado para ${selectedUser}`);
+        } catch (error) {
+            console.error('Error al desbloquear trofeo:', error);
+            alert('Error al desbloquear el trofeo. Inténtalo de nuevo.');
         }
-        // Disparar evento para refrescar la UI
-        window.dispatchEvent(new Event('storage'));
-        alert(`Trofeo #${trofeoIdx + 1} desbloqueado para ${selectedUser}`);
     };
 
     // Lista de trofeos normales (24)
@@ -554,7 +648,7 @@ const PerfilUsuario: React.FC = () => {
             ...user,
             amigos: Array.isArray(user.amigos) ? user.amigos : []
         };
-        let autoTrofeos = TROFEOS_AUTO
+        const autoTrofeos = TROFEOS_AUTO
             .map((t, idx) => (typeof t.condicion === 'function' && t.condicion(userSync)) ? idx : null)
             .filter(idx => idx !== null);
 
@@ -693,18 +787,7 @@ const PerfilUsuario: React.FC = () => {
     }
     const displayedUser = selectedUser ? usuarios.find(u => u.nick === selectedUser) || user : user;
 
-    const isPremium = displayedUser ? (() => {
-        const premiumData = localStorage.getItem(`premium_${displayedUser.nick}`);
-        if (premiumData) {
-            try {
-                const data = JSON.parse(premiumData);
-                return data.activo === true;
-            } catch {
-                return false;
-            }
-        }
-        return false;
-    })() : false;
+    const isPremium = displayedUser ? displayedUser.premium === true : false;
     return (
         <>
             <div className="min-h-screen bg-green-100 flex flex-col pt-4">
@@ -714,7 +797,7 @@ const PerfilUsuario: React.FC = () => {
                             className="bg-yellow-400 text-white px-2 py-1 rounded font-bold mr-4 animate-bounce"
                             onClick={() => {
                                 setMensajeRecibido(false);
-                                localStorage.removeItem(`chat_aviso_${user.nick}`);
+                                // No necesitamos remover de localStorage ya que se maneja en la BD
                             }}
                         >Mensaje recibido</button>
                     )}
@@ -734,8 +817,8 @@ const PerfilUsuario: React.FC = () => {
                 <div className="flex flex-row w-full">
                     {/* Datos personales */}
                     <div className={`max-w-md w-full bg-white shadow rounded p-6 ml-8 transition-all duration-500 ${isPremium
-                            ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
-                            : ''
+                        ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
+                        : ''
                         }`}>
                         {/* Efecto de partículas para premium */}
                         {isPremium && (
@@ -886,8 +969,8 @@ const PerfilUsuario: React.FC = () => {
                             </div>
                             {/* Trofeos Premium */}
                             <div className={`max-w-md w-full bg-white shadow rounded p-6 transition-all duration-500 ${isPremium
-                                    ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
-                                    : ''
+                                ? 'border-4 border-yellow-400 shadow-2xl shadow-yellow-400/50 animate-pulse relative overflow-hidden'
+                                : ''
                                 }`}>
                                 {/* Efectos premium para trofeos */}
                                 {isPremium && (
@@ -981,27 +1064,40 @@ const PerfilUsuario: React.FC = () => {
                                             <button
                                                 className="bg-green-500 text-white px-4 py-2 rounded-r font-semibold"
                                                 disabled={!selectedUser || !chatInput.trim()}
-                                                onClick={() => {
+                                                onClick={async () => {
                                                     if (selectedUser && chatInput.trim() && user && user.nick) {
-                                                        // Mensaje para emisor
-                                                        const mensaje = { from: user.nick, to: selectedUser, text: chatInput, fecha: new Date().toLocaleString('es-ES') };
-                                                        const mensajesEmisorStr = localStorage.getItem(`chat_${user.nick}`);
-                                                        let mensajesEmisor: { from: string, to: string, text: string, fecha?: string }[] = mensajesEmisorStr ? JSON.parse(mensajesEmisorStr) : [];
-                                                        mensajesEmisor = [...mensajesEmisor, mensaje].slice(-5);
-                                                        localStorage.setItem(`chat_${user.nick}`, JSON.stringify(mensajesEmisor));
-                                                        setChatMessages(mensajesEmisor);
+                                                        try {
+                                                            const mensaje = {
+                                                                from: user.nick,
+                                                                to: selectedUser,
+                                                                text: chatInput,
+                                                                fecha: new Date().toLocaleString('es-ES')
+                                                            };
 
-                                                        // Mensaje para receptor
-                                                        const mensajesReceptorStr = localStorage.getItem(`chat_${selectedUser}`);
-                                                        let mensajesReceptor: { from: string, to: string, text: string, fecha?: string }[] = mensajesReceptorStr ? JSON.parse(mensajesReceptorStr) : [];
-                                                        mensajesReceptor = [...mensajesReceptor, mensaje].slice(-5);
-                                                        localStorage.setItem(`chat_${selectedUser}`, JSON.stringify(mensajesReceptor));
-                                                        // Activar aviso para receptor
-                                                        localStorage.setItem(`chat_aviso_${selectedUser}`, "1");
-                                                        // Forzar actualización en la app del receptor
-                                                        window.dispatchEvent(new Event('storage'));
+                                                            // Obtener mensajes actuales del emisor
+                                                            const chatEmisor = await ChatAPI.getChat(user.nick);
+                                                            const mensajesEmisorActuales = chatEmisor.messages || [];
+                                                            const nuevosMensajesEmisor = [...mensajesEmisorActuales, mensaje];
+                                                            await ChatAPI.setChat(user.nick, nuevosMensajesEmisor, false);
 
-                                                        setChatInput("");
+                                                            // Obtener mensajes actuales del receptor
+                                                            const chatReceptor = await ChatAPI.getChat(selectedUser);
+                                                            const mensajesReceptorActuales = chatReceptor.messages || [];
+                                                            const nuevosMensajesReceptor = [...mensajesReceptorActuales, mensaje];
+                                                            await ChatAPI.setChat(selectedUser, nuevosMensajesReceptor, true);
+
+                                                            // Actualizar mensajes locales
+                                                            setChatMessages(nuevosMensajesEmisor.slice(-5));
+
+                                                            // Activar aviso para receptor (esto podría manejarse en la API)
+                                                            // Forzar actualización en la app del receptor
+                                                            window.dispatchEvent(new Event('storage'));
+
+                                                            setChatInput("");
+                                                        } catch (error) {
+                                                            console.error('Error al enviar mensaje:', error);
+                                                            alert('Error al enviar el mensaje. Inténtalo de nuevo.');
+                                                        }
                                                     }
                                                 }}
                                             >{t('enviar')}</button>
@@ -1112,10 +1208,8 @@ const PerfilUsuario: React.FC = () => {
                                 >
                                     <option value="">{t('seleccionarConcurso')}</option>
                                     {(() => {
-                                        const concursosStr = localStorage.getItem("concursos");
-                                        const concursosArr = concursosStr ? JSON.parse(concursosStr) : [];
                                         const hoy = new Date();
-                                        return concursosArr
+                                        return concursos
                                             .filter((c: any) => {
                                                 if (!c.fin) return false;
                                                 const fechaFin = new Date(c.fin);

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { SolicitudesPremiumAPI } from "../../utils/solicitudes-premium";
 
 export default function PagoRealPage() {
     const [email, setEmail] = useState("");
@@ -21,20 +22,15 @@ export default function PagoRealPage() {
         // NUEVA LÓGICA: No activar Premium automáticamente
         // En su lugar, crear una solicitud pendiente de verificación
         const solicitudPago = {
+            id: Date.now() + Math.random().toString(36).substr(2, 9),
             nick: nick.trim(),
             email: email.trim(),
-            fechaSolicitud: new Date().toISOString(),
-            estado: "pendiente", // pendiente, aprobado, rechazado
-            tipo: "anual",
-            precio: 12,
             metodoPago: "bizum",
-            id: Date.now() + Math.random().toString(36).substr(2, 9) // ID único
+            fecha: new Date().toISOString()
         };
 
         // Guardar en lista de solicitudes pendientes
-        const solicitudesPendientes = JSON.parse(localStorage.getItem('solicitudes_premium') || '[]');
-        solicitudesPendientes.push(solicitudPago);
-        localStorage.setItem('solicitudes_premium', JSON.stringify(solicitudesPendientes));
+        await SolicitudesPremiumAPI.createSolicitud(solicitudPago);
 
         // Simular envío de email al administrador (en producción usarías una API real)
         console.log("📧 Email enviado al administrador:", {
