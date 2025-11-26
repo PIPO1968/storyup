@@ -8,6 +8,17 @@ export async function GET(request: NextRequest) {
         if (!nick) {
             return NextResponse.json({ error: 'Nick parameter required' }, { status: 400 });
         }
+
+        // Crear tabla si no existe
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS amigos (
+                nick1 VARCHAR(255) NOT NULL,
+                nick2 VARCHAR(255) NOT NULL,
+                PRIMARY KEY (nick1, nick2),
+                CHECK (nick1 < nick2)
+            )
+        `);
+
         const result = await pool.query(
             'SELECT nick2 AS amigo FROM amigos WHERE nick1 = $1 UNION SELECT nick1 AS amigo FROM amigos WHERE nick2 = $1',
             [nick]
