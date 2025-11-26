@@ -205,11 +205,11 @@ function PerfilUsuario() {
                         if (!userFromArr) userFromArr = userObj;
                         if (userFromArr) {
                             // Cargar amigos desde la API de amistades
-                            const amigosResponse = await fetch(`/api/friends?nick=${encodeURIComponent(userObj.nick)}`);
+                            const amigosResponse = await fetch(`/api/amigos?nick=${encodeURIComponent(userObj.nick)}`);
                             let amigosArr = [];
                             if (amigosResponse.ok) {
                                 const amigosData = await amigosResponse.json();
-                                amigosArr = amigosData.friends || [];
+                                amigosArr = amigosData || [];
                             }
                             let competicionesSuperadas = userFromArr.competicionesSuperadas;
                             if (typeof competicionesSuperadas !== 'number') {
@@ -843,7 +843,7 @@ function PerfilUsuario() {
                         </div>                        <div className="flex flex-col items-center mb-4">
                             <div className={`relative ${isPremium ? '' : ''}`}>
                                 <img
-                                    src={displayedUser.avatar || "/avatars/default.png"}
+                                    src={displayedUser.avatar || "/avatars/simple1.png"}
                                     alt="Avatar"
                                     className={`w-20 h-20 rounded-full mb-2 transition-all duration-300 ${isPremium
                                         ? 'ring-4 ring-yellow-400 ring-opacity-70 shadow-lg shadow-yellow-400/50 hover:scale-110'

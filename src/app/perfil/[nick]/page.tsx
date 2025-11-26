@@ -101,7 +101,7 @@ export default function PerfilPorNick() {
 
                 <div className="flex flex-col items-center mb-4 relative">
                     <div className={`relative ${isPerfilPremium ? '' : ''}`}>
-                        <img src={perfil.avatar || "/avatars/default.png"} alt="Avatar" className={`w-20 h-20 rounded-full mb-2 transition-all duration-300 ${isPerfilPremium
+                        <img src={perfil.avatar || "/avatars/simple1.png"} alt="Avatar" className={`w-20 h-20 rounded-full mb-2 transition-all duration-300 ${isPerfilPremium
                             ? 'ring-4 ring-yellow-400 ring-opacity-70 shadow-lg shadow-yellow-400/50 hover:scale-110'
                             : ''
                             }`} />
