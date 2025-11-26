@@ -91,7 +91,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
             let respuestasArr: Respuesta[] = [];
             if (nick) {
                 const respuestasData = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown;
-                respuestasArr = respuestasData as Respuesta[] || [];
+                respuestasArr = Array.isArray(respuestasData) ? respuestasData as Respuesta[] : [];
             }
             // Contar acertadas y falladas de la sesión
             const acertadasSesion = respuestasArr.filter((r: Respuesta) => r.correcta).length;
@@ -232,8 +232,9 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
                 await UserPreferencesAPI.setPreference(nick, "profile", userObj);
 
                 // Guardar respuesta en el historial de campeonato usando la API
-                const respuestasData = (await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown) as Respuesta[] || [];
-                const respuestasArr = respuestasData || [];
+                const respuestasDataRaw = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato');
+                const respuestasData = Array.isArray(respuestasDataRaw) ? respuestasDataRaw as Respuesta[] : [];
+                const respuestasArr = respuestasData;
                 respuestasArr.push({
                     pregunta: preguntaActual,
                     respuestaUsuario,
