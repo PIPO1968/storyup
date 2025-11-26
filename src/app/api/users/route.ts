@@ -264,6 +264,22 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({ error: 'Nick is required' }, { status: 400 });
         }
 
+        // Debug: Verificar qué columnas existen realmente
+        if (nick === 'PIPO68') {
+            console.log('🔍 PUT /api/users - Verificando columnas para PIPO68...');
+            try {
+                const columnsResult = await pool.query(`
+                    SELECT column_name
+                    FROM information_schema.columns
+                    WHERE table_name = 'User'
+                    ORDER BY column_name
+                `);
+                console.log('📋 Columnas existentes en tabla User:', columnsResult.rows.map(r => r.column_name));
+            } catch (colError) {
+                console.log('❌ Error verificando columnas:', colError instanceof Error ? colError.message : String(colError));
+            }
+        }
+
         console.log('🔍 PUT /api/users - Updates:', updates);
 
         const fields = [];
