@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     try {
         // Crear tabla si no existe
         await pool.query(`
-            CREATE TABLE IF NOT EXISTS users (
+            CREATE TABLE IF NOT EXISTS "User" (
                 id SERIAL PRIMARY KEY,
                 nick VARCHAR(255) UNIQUE NOT NULL,
                 email VARCHAR(255) NOT NULL,
@@ -36,19 +36,19 @@ export async function GET(request: NextRequest) {
         `);
 
         if (nick) {
-            const result = await pool.query('SELECT * FROM users WHERE nick = $1', [nick]);
+            const result = await pool.query('SELECT * FROM "User" WHERE nick = $1', [nick]);
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
             return NextResponse.json(result.rows[0]);
         } else if (email) {
-            const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+            const result = await pool.query('SELECT * FROM "User" WHERE email = $1', [email]);
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
             return NextResponse.json(result.rows[0]);
         } else {
-            const result = await pool.query('SELECT * FROM users');
+            const result = await pool.query('SELECT * FROM "User"');
             return NextResponse.json(result.rows);
         }
     } catch (error) {
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         const { nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes = 0, trofeos = 0, historias = [], amigos = [], trofeosDesbloqueados = [], trofeosBloqueados = [], preguntasFalladas = 0, competicionesSuperadas = 0, estaEnRanking = false, autoTrofeos = [], comentarios = [] } = body;
 
         const result = await pool.query(
-            'INSERT INTO users (nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, historias, amigos, trofeosDesbloqueados, trofeosBloqueados, preguntasFalladas, competicionesSuperadas, estaEnRanking, autoTrofeos, comentarios) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *',
+            'INSERT INTO "User" (nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, historias, amigos, trofeosDesbloqueados, trofeosBloqueados, preguntasFalladas, competicionesSuperadas, estaEnRanking, autoTrofeos, comentarios) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *',
             [nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, JSON.stringify(historias), JSON.stringify(amigos), JSON.stringify(trofeosDesbloqueados), JSON.stringify(trofeosBloqueados), preguntasFalladas, competicionesSuperadas, estaEnRanking, JSON.stringify(autoTrofeos), JSON.stringify(comentarios)]
         );
 
@@ -100,7 +100,7 @@ export async function PUT(request: NextRequest) {
 
         values.push(nick);
 
-        const query = `UPDATE users SET ${fields.join(', ')} WHERE nick = $${index} RETURNING *`;
+        const query = `UPDATE "User" SET ${fields.join(', ')} WHERE nick = $${index} RETURNING *`;
 
         const result = await pool.query(query, values);
 
