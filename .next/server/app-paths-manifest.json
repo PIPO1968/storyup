@@ -21,6 +21,7 @@
   "/api/sesiones-usuario/route": "app/api/sesiones-usuario/route.js",
   "/api/solicitudes-premium/route": "app/api/solicitudes-premium/route.js",
   "/api/solicitudes/route": "app/api/solicitudes/route.js",
+  "/api/test-db/route": "app/api/test-db/route.js",
   "/api/torneos/route": "app/api/torneos/route.js",
   "/api/user-data/route": "app/api/user-data/route.js",
   "/api/users/[nick]/route": "app/api/users/[nick]/route.js",

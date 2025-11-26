@@ -195,6 +195,12 @@
       "namedRegex": "^/api/solicitudes\\-premium(?:/)?$"
     },
     {
+      "page": "/api/test-db",
+      "regex": "^/api/test\\-db(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/test\\-db(?:/)?$"
+    },
+    {
       "page": "/api/torneos",
       "regex": "^/api/torneos(?:/)?$",
       "routeKeys": {},

@@ -1,1 +1,169 @@
 [00:00:00.960] Server  LOG      ✓ Ready in 620ms
+[00:14:27.974] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.975] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.979] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.980] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.982] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.983] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.985] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.986] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.988] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:27.988] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:14:28.005] Server  LOG      ✓ Compiled in 162ms
+[00:14:28.109] Browser ERROR   ./src/app/layout.tsx:4:1
+Module not found: Can't resolve './client-layout'
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import ClientLayout from "./client-layout";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const geistSans = Geist({
+  7 |   variable: "--font-geist-sans",
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:32.964] Server  ERROR    ⨯ Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+[00:14:33.143] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RootLayout`.
+[00:14:33.367] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:14:39.018] Server  LOG      ✓ Compiled in 82ms

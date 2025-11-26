@@ -21,6 +21,7 @@
   "/api/sesiones-usuario/route": "/api/sesiones-usuario",
   "/api/solicitudes-premium/route": "/api/solicitudes-premium",
   "/api/solicitudes/route": "/api/solicitudes",
+  "/api/test-db/route": "/api/test-db",
   "/api/torneos/route": "/api/torneos",
   "/api/user-data/route": "/api/user-data",
   "/api/users/[nick]/route": "/api/users/[nick]",
