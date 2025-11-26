@@ -266,86 +266,86 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
         }
     }, [preguntas, preguntasUsadas, loading]);
 
-const comprobarRespuesta = React.useCallback(async () => {
-    try {
-        // Normalizar para comparar respuestas
-        function normalizar(str: string) {
-            return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/\s+/g, "").trim();
-        }
-        if (bloqueado) return;
-        const esCorrecta = normalizar(respuestaUsuario) === normalizar(respuestaCorrecta);
-        setBloqueado(true);
-        let likesDelta = 0;
-        if (esCorrecta) {
-            setFeedback("¡Correcto! 🎉");
-            likesDelta = timeLeft > 120 ? 2 : 1;
-        } else {
-            setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta}`);
-            likesDelta = timeLeft > 120 ? -1 : -2;
-        }
-        if (typeof window !== "undefined") {
-            const nick = sessionStorage.getItem("currentUserNick");
-            if (nick) {
-                try {
-                    const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
-                    userObj.likes = ((userObj.likes as number) || 0) + likesDelta;
-                    await UserPreferencesAPI.setPreference(nick, "profile", userObj);
+    const comprobarRespuesta = React.useCallback(async () => {
+        try {
+            // Normalizar para comparar respuestas
+            function normalizar(str: string) {
+                return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/\s+/g, "").trim();
+            }
+            if (bloqueado) return;
+            const esCorrecta = normalizar(respuestaUsuario) === normalizar(respuestaCorrecta);
+            setBloqueado(true);
+            let likesDelta = 0;
+            if (esCorrecta) {
+                setFeedback("¡Correcto! 🎉");
+                likesDelta = timeLeft > 120 ? 2 : 1;
+            } else {
+                setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta}`);
+                likesDelta = timeLeft > 120 ? -1 : -2;
+            }
+            if (typeof window !== "undefined") {
+                const nick = sessionStorage.getItem("currentUserNick");
+                if (nick) {
+                    try {
+                        const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+                        userObj.likes = ((userObj.likes as number) || 0) + likesDelta;
+                        await UserPreferencesAPI.setPreference(nick, "profile", userObj);
 
-                    // Guardar respuesta en el historial de campeonato usando la API
-                    const respuestasDataRaw = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato');
-                    const respuestasData = Array.isArray(respuestasDataRaw) ? respuestasDataRaw as Respuesta[] : [];
-                    const respuestasArr = respuestasData;
-                    respuestasArr.push({
-                        pregunta: preguntaActual,
-                        respuestaUsuario,
-                        respuestaCorrecta,
-                        correcta: esCorrecta,
-                        tiempo: timeLeft,
-                        likes: likesDelta
-                    });
-                    await ChampionshipAPI.setChampionshipData(nick, 'respuestas_campeonato', respuestasArr);
-                } catch (error) {
-                    console.error("Error guardando respuesta:", error);
-                    setFeedback("Respuesta procesada, pero error al guardar estadísticas");
+                        // Guardar respuesta en el historial de campeonato usando la API
+                        const respuestasDataRaw = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato');
+                        const respuestasData = Array.isArray(respuestasDataRaw) ? respuestasDataRaw as Respuesta[] : [];
+                        const respuestasArr = respuestasData;
+                        respuestasArr.push({
+                            pregunta: preguntaActual,
+                            respuestaUsuario,
+                            respuestaCorrecta,
+                            correcta: esCorrecta,
+                            tiempo: timeLeft,
+                            likes: likesDelta
+                        });
+                        await ChampionshipAPI.setChampionshipData(nick, 'respuestas_campeonato', respuestasArr);
+                    } catch (error) {
+                        console.error("Error guardando respuesta:", error);
+                        setFeedback("Respuesta procesada, pero error al guardar estadísticas");
+                    }
                 }
             }
+        } catch (error) {
+            console.error("Error comprobando respuesta:", error);
+            setFeedback("Error al procesar la respuesta");
+            setBloqueado(true);
         }
-    } catch (error) {
-        console.error("Error comprobando respuesta:", error);
-        setFeedback("Error al procesar la respuesta");
-        setBloqueado(true);
-    }
-}, [bloqueado, respuestaUsuario, respuestaCorrecta, timeLeft, preguntaActual, preguntasUsadas]);
+    }, [bloqueado, respuestaUsuario, respuestaCorrecta, timeLeft, preguntaActual, preguntasUsadas]);
 
-return (
-    <div className="p-4 bg-yellow-100 rounded-lg">
-        <h2 className="text-xl font-bold mb-2">Modo Campeonato</h2>
-        <p>Curso seleccionado: {userGrade}º Primaria</p>
-        <p>Centro escolar: {userSchool || "No especificado"}</p>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 disabled:bg-gray-400" onClick={generarPregunta} disabled={loading}>
-            {loading ? "Generando pregunta..." : "Generar pregunta de campeonato"}
-        </button>
-        {preguntaActual && (
-            <div className="mt-4">
-                <div className="font-semibold mb-2">{preguntaActual}</div>
-                <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
-                <input
-                    type="text"
-                    className="border rounded px-2 py-1 w-full mb-2"
-                    value={respuestaUsuario}
-                    onChange={e => setRespuestaUsuario(e.target.value)}
-                    placeholder="Escribe tu respuesta aquí"
-                    disabled={bloqueado}
-                />
-                <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
-                    Enviar respuesta
-                </button>
-                {feedback && <div className="mt-2 font-bold">{feedback}</div>}
-            </div>
-        )}
-        {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
-    </div>
-);
+    return (
+        <div className="p-4 bg-yellow-100 rounded-lg">
+            <h2 className="text-xl font-bold mb-2">Modo Campeonato</h2>
+            <p>Curso seleccionado: {userGrade}º Primaria</p>
+            <p>Centro escolar: {userSchool || "No especificado"}</p>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 disabled:bg-gray-400" onClick={generarPregunta} disabled={loading}>
+                {loading ? "Generando pregunta..." : "Generar pregunta de campeonato"}
+            </button>
+            {preguntaActual && (
+                <div className="mt-4">
+                    <div className="font-semibold mb-2">{preguntaActual}</div>
+                    <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
+                    <input
+                        type="text"
+                        className="border rounded px-2 py-1 w-full mb-2"
+                        value={respuestaUsuario}
+                        onChange={e => setRespuestaUsuario(e.target.value)}
+                        placeholder="Escribe tu respuesta aquí"
+                        disabled={bloqueado}
+                    />
+                    <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
+                        Enviar respuesta
+                    </button>
+                    {feedback && <div className="mt-2 font-bold">{feedback}</div>}
+                </div>
+            )}
+            {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
+        </div>
+    );
 };
 
 export default ChampionshipQuiz;

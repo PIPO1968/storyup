@@ -17,7 +17,7 @@ const RegisterLoginForm: React.FC = () => {
                 router.push("/perfil");
             }
         }
-    }, [router]);
+    }, []);
 
     return (
         <div className="max-w-md mx-auto bg-white shadow rounded p-6 mt-8">
