@@ -18,22 +18,22 @@ export async function GET(request: NextRequest) {
                 centro VARCHAR(255),
                 curso VARCHAR(255),
                 tipo VARCHAR(255),
-                linkPerfil VARCHAR(255),
-                fechaInscripcion TIMESTAMP NOT NULL,
-                textoFechaInscripcion TEXT,
+                "linkPerfil" VARCHAR(255),
+                "fechaInscripcion" TIMESTAMP NOT NULL,
+                "textoFechaInscripcion" TEXT,
                 likes INTEGER DEFAULT 0,
                 trofeos INTEGER DEFAULT 0,
                 historias JSONB DEFAULT '[]'::jsonb,
                 amigos JSONB DEFAULT '[]'::jsonb,
-                trofeosDesbloqueados JSONB DEFAULT '[]'::jsonb,
-                trofeosBloqueados JSONB DEFAULT '[]'::jsonb,
-                preguntasFalladas INTEGER DEFAULT 0,
-                competicionesSuperadas INTEGER DEFAULT 0,
-                estaEnRanking BOOLEAN DEFAULT FALSE,
-                autoTrofeos JSONB DEFAULT '[]'::jsonb,
+                "trofeosDesbloqueados" JSONB DEFAULT '[]'::jsonb,
+                "trofeosBloqueados" JSONB DEFAULT '[]'::jsonb,
+                "preguntasFalladas" INTEGER DEFAULT 0,
+                "competicionesSuperadas" INTEGER DEFAULT 0,
+                "estaEnRanking" BOOLEAN DEFAULT FALSE,
+                "autoTrofeos" JSONB DEFAULT '[]'::jsonb,
                 comentarios JSONB DEFAULT '[]'::jsonb,
                 premium BOOLEAN DEFAULT FALSE,
-                premiumExpiracion TIMESTAMP
+                "premiumExpiracion" TIMESTAMP
             )
         `);
 
@@ -100,11 +100,17 @@ export async function PUT(request: NextRequest) {
                 continue;
             }
 
+            let fieldName = key;
+            // Use quoted field names for camelCase fields
+            if (['linkPerfil', 'fechaInscripcion', 'textoFechaInscripcion', 'trofeosDesbloqueados', 'trofeosBloqueados', 'preguntasFalladas', 'competicionesSuperadas', 'estaEnRanking', 'autoTrofeos', 'premiumExpiracion'].includes(key)) {
+                fieldName = `"${key}"`;
+            }
+
             if (['historias', 'amigos', 'trofeosDesbloqueados', 'trofeosBloqueados', 'autoTrofeos'].includes(key)) {
-                fields.push(`${key} = $${index}`);
+                fields.push(`${fieldName} = $${index}`);
                 values.push(JSON.stringify(value));
             } else {
-                fields.push(`${key} = $${index}`);
+                fields.push(`${fieldName} = $${index}`);
                 values.push(value);
             }
             index++;
