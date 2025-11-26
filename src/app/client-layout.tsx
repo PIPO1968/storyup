@@ -45,8 +45,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     return (
         <>
             <Header />
-            {/* Sidebar temporalmente deshabilitado para debugging */}
-            {/* {showSidebar && <Sidebar />} */}
+            {showSidebar && <Sidebar />}
             <main>{children}</main>
         </>
     );
