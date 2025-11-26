@@ -273,6 +273,9 @@ function PerfilUsuario() {
                     if (updatedUser) {
                         setUser(updatedUser);
                         sessionStorage.setItem("user", JSON.stringify(updatedUser));
+                    } else {
+                        // Si no se encuentra en BD, mantener el user de sessionStorage
+                        setUser(currentUser);
                     }
                 }
             } catch (error) {
