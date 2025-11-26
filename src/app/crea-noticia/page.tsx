@@ -1,10 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CreaNoticia() {
     const [titulo, setTitulo] = useState("");
     const [contenido, setContenido] = useState("");
     const [enviando, setEnviando] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleEnviar = () => {
         setEnviando(true);
@@ -55,6 +60,10 @@ export default function CreaNoticia() {
         setContenido("");
         setEnviando(false);
     };
+
+    if (!mounted) {
+        return <div className="min-h-screen bg-blue-50 p-8 text-center text-lg">Cargando...</div>;
+    }
 
     return (
         <div className="min-h-screen bg-blue-50 p-8">

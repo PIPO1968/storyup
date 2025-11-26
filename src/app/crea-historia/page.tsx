@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { HistoriasAPI } from "../../utils/historias";
 import { UsersAPI } from "../../utils/users";
 export default function CreaHistoria() {
@@ -12,7 +12,12 @@ export default function CreaHistoria() {
     const [numConcurso, setNumConcurso] = useState("");
     const [showProhibitedPopup, setShowProhibitedPopup] = useState(false);
     const [palabrasDetectadas, setPalabrasDetectadas] = useState<string[]>([]);
+    const [mounted, setMounted] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Funciones para formato
     const aplicarFormato = (formato: "bold" | "underline") => {
@@ -114,6 +119,10 @@ export default function CreaHistoria() {
             alert("Error al enviar la historia.");
         }
     };
+
+    if (!mounted) {
+        return <div className="min-h-screen bg-green-100 p-8 text-center text-lg">Cargando...</div>;
+    }
 
     return (
         <div className="min-h-screen bg-green-100 p-8">

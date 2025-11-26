@@ -63,9 +63,14 @@ export default function Competiciones() {
     const [mostrarAlumnos, setMostrarAlumnos] = React.useState<any[]>([]);
     const [mostrarDocentes, setMostrarDocentes] = React.useState<any[]>([]);
     const [usuario, setUsuario] = React.useState<any>(null);
+    const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
-        if (typeof window === "undefined") return;
+        setMounted(true);
+    }, []);
+
+    React.useEffect(() => {
+        if (typeof window === "undefined" || !mounted) return;
 
         // Cargar usuario del localStorage
         const userData = localStorage.getItem('currentUser');
@@ -289,6 +294,9 @@ export default function Competiciones() {
     };
 
     const infoTemporada = getInfoTemporada();
+    if (!mounted) {
+        return <div className="min-h-screen bg-green-100 p-8 text-center text-lg">Cargando competiciones...</div>;
+    }
     if (loading || !temporadaSeleccionada) {
         return <div className="min-h-screen bg-green-100 p-8 text-center text-lg">Cargando competiciones...</div>;
     }
