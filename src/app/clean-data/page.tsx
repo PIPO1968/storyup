@@ -38,11 +38,10 @@ export default function CleanDataPage() {
             const users = await response.json();
 
             if (Array.isArray(users)) {
-                setResult(`📊 Estado Actual:\n\n👥 Total usuarios: ${users.length}\n\n${
-                    users.length > 0
+                setResult(`📊 Estado Actual:\n\n👥 Total usuarios: ${users.length}\n\n${users.length > 0
                         ? 'Usuarios existentes:\n' + users.slice(0, 5).map((u: any) => `- ${u.nick || u.email}`).join('\n')
                         : '✅ Base de datos vacía y lista para nuevos registros'
-                }`);
+                    }`);
             } else {
                 setResult('❌ Error al obtener datos');
             }
@@ -125,11 +124,11 @@ export default function CleanDataPage() {
                         whiteSpace: 'pre-wrap',
                         fontFamily: 'monospace',
                         backgroundColor: result.includes('✅') ? '#d4edda' :
-                                       result.includes('❌') ? '#f8d7da' : '#e2e3e5',
+                            result.includes('❌') ? '#f8d7da' : '#e2e3e5',
                         border: `1px solid ${result.includes('✅') ? '#c3e6cb' :
-                                             result.includes('❌') ? '#f5c6cb' : '#d6d8db'}`,
+                            result.includes('❌') ? '#f5c6cb' : '#d6d8db'}`,
                         color: result.includes('✅') ? '#155724' :
-                              result.includes('❌') ? '#721c24' : '#383d41'
+                            result.includes('❌') ? '#721c24' : '#383d41'
                     }}>
                         {result}
                     </div>
