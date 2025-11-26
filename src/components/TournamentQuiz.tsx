@@ -5,9 +5,16 @@ interface TournamentQuizProps {
     onTournamentComplete: (aciertos: number, puntuacionTotal: number) => void;
 }
 
+interface Pregunta {
+    pregunta: string;
+    opciones: string[];
+    respuesta: string;
+    imagen?: string;
+}
+
 const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournamentComplete }) => {
     const [preguntaActual, setPreguntaActual] = React.useState<string>("");
-    const [objetoPreguntaActual, setObjetoPreguntaActual] = React.useState<any>(null);
+    const [objetoPreguntaActual, setObjetoPreguntaActual] = React.useState<Pregunta | null>(null);
     const [respuestaCorrecta, setRespuestaCorrecta] = React.useState<string>("");
     const [respuestaUsuario, setRespuestaUsuario] = React.useState<string>("");
     const [feedback, setFeedback] = React.useState<string>("");
@@ -25,10 +32,6 @@ const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournament
             setBloqueado(true);
             setPuntuacionTotal(puntuacionTotal - 15);
             setFeedback("⏰ Tiempo agotado. -15 puntos");
-            // No pasar automáticamente - esperar que el usuario presione "Siguiente Pregunta"
-            // setTimeout(() => {
-            //     generarPregunta();
-            // }, 3000);
             return;
         }
         const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -36,7 +39,7 @@ const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournament
     }, [timeLeft, preguntaActual, bloqueado, puntuacionTotal]);
 
     // Cargar preguntas de general según el curso
-    let preguntas: any[] = [];
+    let preguntas: Pregunta[] = [];
     try {
         preguntas = require(`../questions/general-${userGrade}primaria.json`);
     } catch {
@@ -55,7 +58,7 @@ const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournament
         }
 
         // Filtrar preguntas no usadas
-        const restantes = preguntas.filter((p: any) => !preguntasUsadas.includes(p.pregunta));
+        const restantes = preguntas.filter((p: Pregunta) => !preguntasUsadas.includes(p.pregunta));
 
         if (restantes.length === 0) {
             // Si no hay más preguntas únicas, permitir repetición pero con baja probabilidad
@@ -63,7 +66,7 @@ const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournament
             const preguntaSeleccionada = preguntas[randomIndex];
             setPreguntaActual(preguntaSeleccionada.pregunta);
             setObjetoPreguntaActual(preguntaSeleccionada);
-            setRespuestaCorrecta(preguntaSeleccionada.respuesta_correcta);
+            setRespuestaCorrecta(preguntaSeleccionada.respuesta);
             setRespuestaUsuario("");
             setFeedback("");
             setTimeLeft(300);
@@ -77,7 +80,7 @@ const TournamentQuiz: React.FC<TournamentQuizProps> = ({ userGrade, onTournament
 
         setPreguntaActual(preguntaSeleccionada.pregunta);
         setObjetoPreguntaActual(preguntaSeleccionada);
-        setRespuestaCorrecta(preguntaSeleccionada.respuesta_correcta);
+        setRespuestaCorrecta(preguntaSeleccionada.respuesta);
         setRespuestaUsuario("");
         setFeedback("");
         setTimeLeft(300);

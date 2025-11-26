@@ -11,7 +11,7 @@ export interface User {
     email?: string;
     fechaRegistro?: string;
     ultimoAcceso?: string;
-    [key: string]: any; // Para propiedades adicionales que puedan existir
+    [key: string]: unknown; // Para propiedades adicionales que puedan existir
 }
 
 export class UsersAPI {

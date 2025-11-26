@@ -62039,3 +62039,5 @@ An issue occurred while parsing a tsconfig.json file.
   17 | >>>>>>> 9756e14fc56daba23b738072cf38baf60f2cd2a3
 
 tsconfig is not parseable: invalid JSON: Unexpected token
+[01:14:55.067] Server  LOG      ✓ Compiled in 56ms
+[01:15:02.197] Server  LOG      ✓ Compiled in 55ms

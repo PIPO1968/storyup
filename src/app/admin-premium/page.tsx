@@ -251,7 +251,7 @@ export default function AdminPremium() {
             let tiempoRestante = 0;
 
             if (userToUpdate.premium && userToUpdate.premiumExpiracion) {
-                const fechaExpiracionExistente = new Date(userToUpdate.premiumExpiracion);
+                const fechaExpiracionExistente = new Date(userToUpdate.premiumExpiracion as string);
                 const ahora = new Date();
 
                 if (fechaExpiracionExistente > ahora) {
@@ -298,10 +298,10 @@ export default function AdminPremium() {
             const users = await UsersAPI.getAllUsers();
             const user = users.find(u => u.nick === nick.trim());
             if (user && user.premium && user.premiumExpiracion) {
-                if (new Date(user.premiumExpiracion) > new Date()) {
-                    setMensaje(`✅ ${nick} tiene Premium ACTIVO hasta: ${new Date(user.premiumExpiracion).toLocaleDateString()}`);
+                if (new Date(user.premiumExpiracion as string) > new Date()) {
+                    setMensaje(`✅ ${nick} tiene Premium ACTIVO hasta: ${new Date(user.premiumExpiracion as string).toLocaleDateString()}`);
                 } else {
-                    setMensaje(`❌ ${nick} tenía Premium pero ha EXPIRADO el: ${new Date(user.premiumExpiracion).toLocaleDateString()}`);
+                    setMensaje(`❌ ${nick} tenía Premium pero ha EXPIRADO el: ${new Date(user.premiumExpiracion as string).toLocaleDateString()}`);
                 }
             } else {
                 setMensaje(`❌ ${nick} NO tiene Premium activado`);

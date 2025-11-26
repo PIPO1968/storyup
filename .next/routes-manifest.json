@@ -105,10 +105,28 @@
       "namedRegex": "^/api/amigos(?:/)?$"
     },
     {
+      "page": "/api/campeonatos",
+      "regex": "^/api/campeonatos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/campeonatos(?:/)?$"
+    },
+    {
+      "page": "/api/championship",
+      "regex": "^/api/championship(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/championship(?:/)?$"
+    },
+    {
       "page": "/api/chat",
       "regex": "^/api/chat(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/chat(?:/)?$"
+    },
+    {
+      "page": "/api/concursos",
+      "regex": "^/api/concursos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/concursos(?:/)?$"
     },
     {
       "page": "/api/estadisticas",
@@ -129,6 +147,18 @@
       "namedRegex": "^/api/noticias(?:/)?$"
     },
     {
+      "page": "/api/preferences",
+      "regex": "^/api/preferences(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/preferences(?:/)?$"
+    },
+    {
+      "page": "/api/premios-mensuales",
+      "regex": "^/api/premios\\-mensuales(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/premios\\-mensuales(?:/)?$"
+    },
+    {
       "page": "/api/premium",
       "regex": "^/api/premium(?:/)?$",
       "routeKeys": {},
@@ -141,10 +171,22 @@
       "namedRegex": "^/api/solicitudes(?:/)?$"
     },
     {
+      "page": "/api/solicitudes-premium",
+      "regex": "^/api/solicitudes\\-premium(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/solicitudes\\-premium(?:/)?$"
+    },
+    {
       "page": "/api/torneos",
       "regex": "^/api/torneos(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/torneos(?:/)?$"
+    },
+    {
+      "page": "/api/user-data",
+      "regex": "^/api/user\\-data(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/user\\-data(?:/)?$"
     },
     {
       "page": "/api/users",

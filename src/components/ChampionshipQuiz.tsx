@@ -7,6 +7,41 @@ interface ChampionshipQuizProps {
     userSchool: string;
 }
 
+interface Pregunta {
+    pregunta: string;
+    opciones: string[];
+    respuesta: string;
+    imagen?: string;
+}
+
+interface Respuesta {
+    pregunta: string;
+    respuestaUsuario: string;
+    respuestaCorrecta: string;
+    correcta: boolean;
+    tiempo: number;
+    likes: number;
+}
+
+interface TablaIndividualValue {
+    centro: string;
+    curso: string;
+    acertadas: number;
+    falladas: number;
+    likes: number;
+    ganado: number;
+    perdido: number;
+    fecha?: string;
+}
+
+interface TablaCentrosValue {
+    ganados: number;
+    perdidos: number;
+    preguntasAcertadas: number;
+    preguntasFalladas: number;
+    likes: number;
+}
+
 const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userSchool }) => {
     const [preguntaActual, setPreguntaActual] = React.useState<string>("");
     const [respuestaCorrecta, setRespuestaCorrecta] = React.useState<string>("");
@@ -28,7 +63,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
         return () => clearTimeout(timer);
     }, [timeLeft, preguntaActual, bloqueado]);
     // Cargar preguntas de campeonato según el curso
-    let preguntas: any[] = [];
+    let preguntas: Pregunta[] = [];
     try {
         preguntas = require(`../questions/campeonato-${userGrade}primaria.json`);
     } catch {
@@ -47,21 +82,21 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
             let centro = "";
             let curso = "";
             if (nick) {
-                const userObj = await UserPreferencesAPI.getPreference(nick, "profile") as any;
-                centro = userObj?.centro || "";
-                curso = userObj?.curso || "";
+                const userObj = await UserPreferencesAPI.getPreference(nick, "profile") as unknown;
+                centro = (userObj as { centro?: string })?.centro || "";
+                curso = String((userObj as { curso?: string | number })?.curso) || "";
             }
 
             // Recuperar respuestas desde la API
-            let respuestasArr: any[] = [];
+            let respuestasArr: Respuesta[] = [];
             if (nick) {
-                const respuestasData = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as any;
-                respuestasArr = respuestasData || [];
+                const respuestasData = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown;
+                respuestasArr = respuestasData as Respuesta[] || [];
             }
             // Contar acertadas y falladas de la sesión
-            const acertadasSesion = respuestasArr.filter((r: any) => r.correcta).length;
-            const falladasSesion = respuestasArr.filter((r: any) => !r.correcta).length;
-            const likesSesion = respuestasArr.reduce((sum: number, r: any) => sum + (r.likes || 0), 0);
+            const acertadasSesion = respuestasArr.filter((r: Respuesta) => r.correcta).length;
+            const falladasSesion = respuestasArr.filter((r: Respuesta) => !r.correcta).length;
+            const likesSesion = respuestasArr.reduce((sum: number, r: Respuesta) => sum + (r.likes || 0), 0);
             // Temporada actual: formato tYYYY (declarar antes de cualquier uso)
             const now = new Date();
             let temporada = now.getFullYear();
@@ -75,8 +110,8 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
             if (nick) {
                 // Sumar acumulado de la temporada
                 const keyIndividual = `campeonato_individual_${temporadaKey}`;
-                let tablaIndividual: Record<string, any> = {};
-                try { tablaIndividual = (await ChampionshipAPI.getChampionshipData(nick, keyIndividual) as any) || {}; } catch { tablaIndividual = {}; }
+                let tablaIndividual: Record<string, TablaIndividualValue> = {};
+                try { tablaIndividual = (await ChampionshipAPI.getChampionshipData(nick, keyIndividual) as unknown) as Record<string, TablaIndividualValue> || {}; } catch { tablaIndividual = {}; }
                 let acertadas = acertadasSesion;
                 let falladas = falladasSesion;
                 let likes = likesSesion;
@@ -90,7 +125,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
                     perdido += tablaIndividual[nick].perdido || 0;
                 }
 
-                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as any) || {};
+                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
                 // Guardar tablaIndividual para todos los tipos
                 tablaIndividual[nick] = {
                     centro,
@@ -105,7 +140,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
                 await ChampionshipAPI.setChampionshipData(nick, keyIndividual, tablaIndividual);
                 // Si ha superado la competición, sumar competicionesSuperadas para cualquier tipo de usuario
                 if (ganadoSesion === 1) {
-                    userObj.competicionesSuperadas = (userObj.competicionesSuperadas || 0) + 1;
+                    (userObj as { competicionesSuperadas?: number }).competicionesSuperadas = ((userObj as { competicionesSuperadas?: number }).competicionesSuperadas || 0) + 1;
                     await UserPreferencesAPI.setPreference(nick, "profile", userObj);
                     // Aquí no hay array 'users' en la base de datos, así que omito esa parte por ahora
                     // Emitir evento para refrescar perfil y estadísticas
@@ -115,8 +150,8 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
 
                 // Guardar datos CENTROS
                 const keyCentros = `campeonato_centros_${temporadaKey}`;
-                let tablaCentros: Record<string, any> = {};
-                try { tablaCentros = (await ChampionshipAPI.getChampionshipData(nick, keyCentros) as any) || {}; } catch { tablaCentros = {}; }
+                let tablaCentros: Record<string, TablaCentrosValue> = {};
+                try { tablaCentros = (await ChampionshipAPI.getChampionshipData(nick, keyCentros) as unknown) as Record<string, TablaCentrosValue> || {}; } catch { tablaCentros = {}; }
                 if (centro) {
                     if (!tablaCentros[centro]) tablaCentros[centro] = { ganados: 0, perdidos: 0, preguntasAcertadas: 0, preguntasFalladas: 0, likes: 0 };
                     tablaCentros[centro].ganados += ganado;
@@ -129,8 +164,8 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
 
                 // Guardar datos DOCENTES
                 const keyDocentes = `campeonato_docentes_${temporadaKey}`;
-                let tablaDocentes: Record<string, any> = {};
-                try { tablaDocentes = (await ChampionshipAPI.getChampionshipData(nick, keyDocentes) as any) || {}; } catch { tablaDocentes = {}; }
+                let tablaDocentes: Record<string, TablaCentrosValue> = {};
+                try { tablaDocentes = (await ChampionshipAPI.getChampionshipData(nick, keyDocentes) as unknown) as Record<string, TablaCentrosValue> || {}; } catch { tablaDocentes = {}; }
                 if (userObj && userObj.tipo === "Docente") {
                     // Normalizar nick para evitar problemas de coincidencia
                     const nickDocente = (nick || "").toLowerCase().replace(/\s+/g, "");
@@ -143,13 +178,13 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
                 }
                 await ChampionshipAPI.setChampionshipData(nick, keyDocentes, tablaDocentes);
                 // Guardar también en el perfil del usuario
-                const userObjFinal = (await UserPreferencesAPI.getPreference(nick, "profile") as any) || {};
-                userObjFinal.ganados = (userObjFinal.ganados || 0) + ganado;
-                userObjFinal.perdidos = (userObjFinal.perdidos || 0) + perdido;
-                userObjFinal.respuestasAcertadas = (userObjFinal.respuestasAcertadas || 0) + acertadas;
-                userObjFinal.preguntasFalladas = (userObjFinal.preguntasFalladas || 0) + falladas;
+                const userObjFinal = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+                userObjFinal.ganados = ((userObjFinal.ganados as number) || 0) + ganado;
+                userObjFinal.perdidos = ((userObjFinal.perdidos as number) || 0) + perdido;
+                userObjFinal.respuestasAcertadas = ((userObjFinal.respuestasAcertadas as number) || 0) + acertadas;
+                userObjFinal.preguntasFalladas = ((userObjFinal.preguntasFalladas as number) || 0) + falladas;
                 // Sumar likes positivos y negativos
-                userObjFinal.likes = (userObjFinal.likes || 0) + likes;
+                userObjFinal.likes = ((userObjFinal.likes as number) || 0) + likes;
                 await UserPreferencesAPI.setPreference(nick, "profile", userObjFinal);
                 // Actualizar también el array 'users' - omitido por ahora ya que no hay API para eso
             }
@@ -157,7 +192,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
         }
         setTimeLeft(300);
         setBloqueado(false);
-        const restantes = preguntas.filter((p: any) => !preguntasUsadas.includes(p.pregunta));
+        const restantes = preguntas.filter((p: Pregunta) => !preguntasUsadas.includes(p.pregunta));
         if (restantes.length === 0) {
             setPreguntaActual("");
             setRespuestaCorrecta("");
@@ -192,12 +227,12 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
         if (typeof window !== "undefined") {
             const nick = sessionStorage.getItem("currentUserNick");
             if (nick) {
-                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as any) || {};
-                userObj.likes = (userObj.likes || 0) + likesDelta;
+                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+                userObj.likes = ((userObj.likes as number) || 0) + likesDelta;
                 await UserPreferencesAPI.setPreference(nick, "profile", userObj);
 
                 // Guardar respuesta en el historial de campeonato usando la API
-                const respuestasData = (await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as any) || [];
+                const respuestasData = (await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown) as Respuesta[] || [];
                 const respuestasArr = respuestasData || [];
                 respuestasArr.push({
                     pregunta: preguntaActual,

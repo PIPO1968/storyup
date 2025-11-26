@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { UsersAPI } from "../../utils/users";
+import { UsersAPI, User } from "../../utils/users";
 
 interface UsuarioPremium {
     nick: string;
@@ -15,7 +15,7 @@ interface UsuarioPremium {
 
 const LigaPremiumPage: React.FC = () => {
     const router = useRouter();
-    const [usuarioActual, setUsuarioActual] = useState<any>(null);
+    const [usuarioActual, setUsuarioActual] = useState<User | null>(null);
     const [isPremium, setIsPremium] = useState(false);
     const [loading, setLoading] = useState(true);
     const [usuariosPremium, setUsuariosPremium] = useState<UsuarioPremium[]>([]);
@@ -30,7 +30,7 @@ const LigaPremiumPage: React.FC = () => {
                     setUsuarioActual(user);
 
                     // Verificar si es premium
-                    if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion) > new Date()) {
+                    if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion as string) > new Date()) {
                         setIsPremium(true);
                         await cargarLigaPremium();
                     } else {
@@ -56,18 +56,18 @@ const LigaPremiumPage: React.FC = () => {
             const users = await UsersAPI.getAllUsers();
             const premiumUsers: UsuarioPremium[] = [];
 
-            users.forEach((user: any) => {
-                if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion) > new Date()) {
+            users.forEach((user: User) => {
+                if (user.premium && user.premiumExpiracion && new Date(user.premiumExpiracion as string) > new Date()) {
                     // Calcular puntos basados en actividades premium
                     const puntos = calcularPuntosUsuario(user);
                     premiumUsers.push({
                         nick: user.nick,
                         avatar: user.avatar,
                         puntos: puntos,
-                        historiasCreadas: user.historiasCreadas || 0,
-                        preguntasAcertadas: user.preguntasAcertadas || 0,
-                        amigos: user.amigos?.length || 0,
-                        medallas: user.medallas?.length || 0
+                        historiasCreadas: (user.historiasCreadas as number) || 0,
+                        preguntasAcertadas: (user.preguntasAcertadas as number) || 0,
+                        amigos: (user.amigos as unknown[])?.length || 0,
+                        medallas: (user.medallas as unknown[])?.length || 0
                     });
                 }
             });
@@ -80,23 +80,23 @@ const LigaPremiumPage: React.FC = () => {
         }
     };
 
-    const calcularPuntosUsuario = (user: any): number => {
+    const calcularPuntosUsuario = (user: User): number => {
         let puntos = 0;
 
         // Puntos por historias creadas (10 puntos cada una)
-        puntos += (user.historiasCreadas || 0) * 10;
+        puntos += ((user.historiasCreadas as number) || 0) * 10;
 
         // Puntos por preguntas acertadas (5 puntos cada una)
-        puntos += (user.preguntasAcertadas || 0) * 5;
+        puntos += ((user.preguntasAcertadas as number) || 0) * 5;
 
         // Puntos por amigos (20 puntos cada amigo)
-        puntos += (user.amigos?.length || 0) * 20;
+        puntos += (((user.amigos as unknown[])?.length || 0) * 20);
 
         // Puntos por medallas (50 puntos cada medalla)
-        puntos += (user.medallas?.length || 0) * 50;
+        puntos += (((user.medallas as unknown[])?.length || 0) * 50);
 
         // Puntos por participación en competiciones premium
-        puntos += user.competicionesPremium?.puntuacionTotal || 0; return puntos;
+        puntos += (user.competicionesPremium as { puntuacionTotal?: number })?.puntuacionTotal || 0; return puntos;
     };
 
     if (loading) {
@@ -111,7 +111,7 @@ const LigaPremiumPage: React.FC = () => {
         return null; // Ya redirigió
     }
 
-    const posicionUsuario = usuariosPremium.findIndex(u => u.nick === usuarioActual.nick) + 1;
+    const posicionUsuario = usuarioActual ? usuariosPremium.findIndex(u => u.nick === usuarioActual.nick) + 1 : 0;
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 p-8">
@@ -127,7 +127,7 @@ const LigaPremiumPage: React.FC = () => {
                     <h2 className="text-2xl font-bold text-white mb-2">Tu Posición</h2>
                     <div className="text-6xl font-bold text-yellow-300">#{posicionUsuario}</div>
                     <div className="text-yellow-100 mt-2">
-                        {usuariosPremium.find(u => u.nick === usuarioActual.nick)?.puntos || 0} puntos
+                        {usuariosPremium.find(u => u.nick === usuarioActual?.nick)?.puntos || 0} puntos
                     </div>
                 </div>
 
@@ -152,7 +152,7 @@ const LigaPremiumPage: React.FC = () => {
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {usuariosPremium.slice(0, 20).map((usuario, index) => (
-                                    <tr key={usuario.nick} className={usuario.nick === usuarioActual.nick ? 'bg-yellow-50' : ''}>
+                                    <tr key={usuario.nick} className={usuario.nick === usuarioActual?.nick ? 'bg-yellow-50' : ''}>
                                         <td className="px-4 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
                                                 <div className={`text-lg font-bold ${index === 0 ? 'text-yellow-500' :
@@ -181,7 +181,7 @@ const LigaPremiumPage: React.FC = () => {
                                                 <div className="ml-4">
                                                     <div className="text-sm font-medium text-gray-900">
                                                         {usuario.nick}
-                                                        {usuario.nick === usuarioActual.nick && (
+                                                        {usuario.nick === usuarioActual?.nick && (
                                                             <span className="ml-2 text-yellow-500">(Tú)</span>
                                                         )}
                                                     </div>

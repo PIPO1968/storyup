@@ -78,7 +78,7 @@ export default function CreaHistoria() {
                         const users = await UsersAPI.getAllUsers();
                         const userToUpdate = users.find(u => u.nick === usuario);
                         if (userToUpdate) {
-                            await UsersAPI.updateUser({ ...userToUpdate, likes: (userToUpdate.likes || 0) - 10 });
+                            await UsersAPI.updateUser({ ...userToUpdate, likes: ((userToUpdate.likes as number) || 0) - 10 });
                         }
                     } catch (error) {
                         console.error('Error al penalizar usuario:', error);

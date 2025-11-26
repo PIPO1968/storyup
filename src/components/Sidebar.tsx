@@ -72,7 +72,7 @@ const Sidebar: React.FC = () => {
                             {usuarios
                                 .filter((u, i, arr) => arr.findIndex(x => x.nick === u.nick) === i)
                                 .sort((a, b) => a.nick.localeCompare(b.nick))
-                                .map((u: any) => (
+                                .map((u: User) => (
                                     <option key={u.nick} value={u.nick}>{u.nick}</option>
                                 ))}
                         </select>

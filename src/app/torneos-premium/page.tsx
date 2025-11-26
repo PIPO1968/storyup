@@ -16,7 +16,13 @@ interface Torneo {
     participantes: string[];
     estado: 'registro' | 'activo' | 'finalizado';
     ganador?: string;
-    resultados?: any[];
+    resultados?: unknown[];
+}
+
+interface Resultado {
+    nick: string;
+    aciertos: number;
+    puntuacion: number;
 }
 
 const TorneosPremiumPage: React.FC = () => {
@@ -74,7 +80,7 @@ const TorneosPremiumPage: React.FC = () => {
         // Verificar si necesitamos resetear torneos
         const lastReset = await UserDataAPI.getUserData(usuarioActual.nick, 'torneos_premium_last_reset');
         const now = new Date();
-        const lastResetDate = lastReset ? new Date(lastReset) : null;
+        const lastResetDate = lastReset ? new Date(lastReset as string | number | Date) : null;
 
         // Resetear si es un nuevo mes o no hay datos
         const shouldReset = !lastResetDate || lastResetDate.getMonth() !== now.getMonth() || lastResetDate.getFullYear() !== now.getFullYear();
@@ -163,7 +169,7 @@ const TorneosPremiumPage: React.FC = () => {
         } else {
             // Cargar torneos existentes
             const torneosData = await UserDataAPI.getUserData(usuarioActual.nick, 'torneos_premium');
-            setTorneos(torneosData || []);
+            setTorneos((torneosData as Torneo[]) || []);
         }
     };
 
@@ -201,7 +207,7 @@ const TorneosPremiumPage: React.FC = () => {
             // Cargar estadísticas desde la API
             UserDataAPI.getUserData(usuarioActual.nick, 'competiciones_premium')
                 .then(statsData => {
-                    setStats(statsData || { victorias: 0, participaciones: 0, puntuacionTotal: 0 });
+                    setStats((statsData as { victorias: number; participaciones: number; puntuacionTotal: number; }) || { victorias: 0, participaciones: 0, puntuacionTotal: 0 });
                 });
         }
     }, [usuarioActual]);
@@ -330,9 +336,9 @@ const TorneosPremiumPage: React.FC = () => {
                                             {torneo.resultados && torneo.resultados.length > 0 && (
                                                 <div className="mt-2">
                                                     <p className="text-xs text-green-600">Top 3:</p>
-                                                    {torneo.resultados.slice(0, 3).map((resultado: any, idx: number) => (
+                                                    {torneo.resultados.slice(0, 3).map((resultado: unknown, idx: number) => (
                                                         <p key={idx} className="text-xs">
-                                                            {idx + 1}. {resultado.nick} - {resultado.aciertos}/25 ({resultado.puntuacion}pts)
+                                                            {idx + 1}. {(resultado as Resultado).nick} - {(resultado as Resultado).aciertos}/25 ({(resultado as Resultado).puntuacion}pts)
                                                         </p>
                                                     ))}
                                                 </div>

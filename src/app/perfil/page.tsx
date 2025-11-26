@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { PremiosMensualesAPI } from "@/utils/premios-mensuales";
 import { ConcursosAPI } from "@/utils/concursos";
 import { ChatAPI } from "@/utils/chat";
-import { UsersAPI } from "../../utils/users";
+import { UsersAPI, User } from "../../utils/users";
 
 interface Usuario {
     nick: string;
@@ -25,7 +25,7 @@ interface Usuario {
     comentariosRecibidos: number;
     historiasCreadas: number;
     anosEnStoryUp: number;
-    trofeos: any[];
+    trofeos: unknown[];
 }
 
 function PerfilUsuario() {
@@ -34,7 +34,7 @@ function PerfilUsuario() {
     // Función para bloquear manualmente cualquier trofeo al usuario seleccionado
     const handleLockTrofeo = async (trofeoIdx: number) => {
         if (!selectedUser) return;
-        const updatedUsers = usuarios.map((u: any) =>
+        const updatedUsers = usuarios.map((u: User) =>
             u.nick === selectedUser
                 ? {
                     ...u,
@@ -50,7 +50,7 @@ function PerfilUsuario() {
         setUsuarios(updatedUsers);
 
         // Actualizar usuario en la base de datos
-        const updatedUser = updatedUsers.find((u: any) => u.nick === selectedUser);
+        const updatedUser = updatedUsers.find((u: User) => u.nick === selectedUser);
         if (updatedUser) {
             await fetch('/api/users', {
                 method: 'PUT',
@@ -64,7 +64,7 @@ function PerfilUsuario() {
         }
 
         // Si el usuario administrado es el actual, actualiza también el estado y sessionStorage
-        if (user && user.nick === selectedUser) {
+        if (user && user.nick === selectedUser && updatedUser) {
             setUser({ ...user, trofeosDesbloqueados: updatedUser.trofeosDesbloqueados, trofeosBloqueados: updatedUser.trofeosBloqueados });
             sessionStorage.setItem("user", JSON.stringify({ ...user, trofeosDesbloqueados: updatedUser.trofeosDesbloqueados, trofeosBloqueados: updatedUser.trofeosBloqueados }));
         }
@@ -82,16 +82,16 @@ function PerfilUsuario() {
         const month = fechaActual.getMonth() + 1;
 
         const premios = await PremiosMensualesAPI.getPremiosMensuales(year, month);
-        const premioCentro = premios.find((p: any) => p.centro === usuario.centro);
+        const premioCentro = premios.find((p: unknown) => (p as { centro: string }).centro === usuario.centro);
 
         if (premioCentro) {
             let idTrofeo = 0;
-            switch (premioCentro.posicion) {
+            switch ((premioCentro as { posicion: number }).posicion) {
                 case 1: idTrofeo = 25; break; // Campeón Mensual
                 case 2: idTrofeo = 26; break; // Subcampeón Mensual
                 case 3: idTrofeo = 27; break; // Tercer Lugar Mensual
                 default:
-                    if (premioCentro.posicion <= 10) {
+                    if ((premioCentro as { posicion: number }).posicion <= 10) {
                         idTrofeo = 28; // Top 10 Mensual
                     } else {
                         idTrofeo = 29; // Participante Activo
@@ -111,7 +111,7 @@ function PerfilUsuario() {
                     })
                 });
                 // Mostrar notificación de nuevo trofeo
-                alert(`¡Felicitaciones! Has desbloqueado un nuevo trofeo: ${premioCentro.titulo}`);
+                alert(`¡Felicitaciones! Has desbloqueado un nuevo trofeo: ${(premioCentro as { premio?: string }).premio || 'Premio'}`);
             }
         }
     };
@@ -160,10 +160,10 @@ function PerfilUsuario() {
                     const usersArr = await response.json();
 
                     // Procesar usuarios
-                    let processedUsers = usersArr.map((u: any) => ({
+                    let processedUsers = usersArr.map((u: User) => ({
                         ...u,
                         trofeosDesbloqueados: Array.isArray(u.trofeosDesbloqueados)
-                            ? u.trofeosDesbloqueados.filter((idx: number) => idx !== 9)
+                            ? (u.trofeosDesbloqueados as number[]).filter((idx: number) => idx !== 9)
                             : []
                     }));
 

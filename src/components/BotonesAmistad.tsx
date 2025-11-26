@@ -78,7 +78,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                         e.preventDefault();
                         // Obtener solicitudes pendientes para encontrar el ID
                         const solicitudes = await AmistadesAPI.getSolicitudesPendientes(perfilNick);
-                        const solicitud = solicitudes.find((s: any) => s.origen === user.nick);
+                        const solicitud = solicitudes.find((s: SolicitudAmistad) => s.origen === user.nick);
                         if (solicitud) {
                             const aceptada = await AmistadesAPI.aceptarSolicitud(solicitud.id as number);
                             if (aceptada) {
@@ -99,7 +99,7 @@ const BotonesAmistad: React.FC<BotonesAmistadProps> = ({ perfilNick }) => {
                         e.preventDefault();
                         // Obtener solicitudes pendientes para encontrar el ID
                         const solicitudes = await AmistadesAPI.getSolicitudesPendientes(perfilNick);
-                        const solicitud = solicitudes.find((s: any) => s.origen === user.nick);
+                        const solicitud = solicitudes.find((s: SolicitudAmistad) => s.origen === user.nick);
                         if (solicitud) {
                             const rechazada = await AmistadesAPI.rechazarSolicitud(solicitud.id as number);
                             if (rechazada) {

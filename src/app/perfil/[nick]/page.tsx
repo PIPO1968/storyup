@@ -2,7 +2,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { UsersAPI } from "../../../utils/users";
+import { UsersAPI, User } from "../../../utils/users";
 
 import { renderNick } from "@/utils/renderNick";
 import BotonesAmistad from "@/components/BotonesAmistad";
@@ -27,7 +27,7 @@ export default function PerfilPorNick() {
 
                 try {
                     const users = await UsersAPI.getAllUsers();
-                    const perfilObj = users.find((u: any) => u.nick === nick);
+                    const perfilObj = users.find((u: User) => u.nick === nick);
                     if (!perfilObj) {
                         setPerfil(null);
                         return;
@@ -36,11 +36,11 @@ export default function PerfilPorNick() {
 
                     // Amistad - asumiendo que amigos está en el usuario
                     const amigos = userObj.amigos || [];
-                    setEsAmigo(amigos.some((a: any) => a.nick === perfilObj.nick));
+                    setEsAmigo(amigos.some((a: unknown) => (a as { nick: string }).nick === perfilObj.nick));
 
                     // Verificar si hay solicitud pendiente - asumiendo que solicitudes está en el perfil
-                    const solicitudes = perfilObj.solicitudes || [];
-                    setSolicitudPendiente(solicitudes.some((s: any) => s.origen === userObj.nick && s.estado === "pendiente"));
+                    const solicitudes = (perfilObj.solicitudes as unknown[]) || [];
+                    setSolicitudPendiente(solicitudes.some((s: unknown) => (s as { origen: string; estado: string }).origen === userObj.nick && (s as { origen: string; estado: string }).estado === "pendiente"));
                 } catch (error) {
                     console.error('Error al cargar datos del perfil:', error);
                 }

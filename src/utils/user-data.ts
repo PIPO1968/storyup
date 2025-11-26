@@ -1,7 +1,7 @@
 // Utilidad para manejar datos específicos de usuario con PostgreSQL
 export class UserDataAPI {
     // Obtener un dato específico
-    static async getUserData(nick: string, key: string): Promise<any> {
+    static async getUserData(nick: string, key: string): Promise<unknown> {
         try {
             const response = await fetch(`/api/user-data?nick=${encodeURIComponent(nick)}&key=${encodeURIComponent(key)}`);
             if (!response.ok) throw new Error('Error fetching user data');
@@ -14,7 +14,7 @@ export class UserDataAPI {
     }
 
     // Guardar un dato
-    static async setUserData(nick: string, key: string, value: any): Promise<boolean> {
+    static async setUserData(nick: string, key: string, value: unknown): Promise<boolean> {
         try {
             const response = await fetch('/api/user-data', {
                 method: 'POST',

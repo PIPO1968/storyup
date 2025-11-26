@@ -1,6 +1,21 @@
 // Utilidades para normalizar datos que provienen de la API
 // Objetivo: evitar renderizar objetos directamente en JSX y mantener consistencia
 
+interface PremioObject {
+    nombre?: string;
+    titulo?: string;
+    descripcion?: string;
+}
+
+interface EventoEspecialObject {
+    nombre?: string;
+    descripcion?: string;
+    emoji?: string;
+    tipo?: string;
+    multiplicador?: unknown;
+    bonus?: string;
+}
+
 export const normalizarValorPremio = (valor: unknown): string => {
     if (valor == null) return "";
     if (typeof valor === 'string') return valor;
@@ -8,7 +23,8 @@ export const normalizarValorPremio = (valor: unknown): string => {
     if (typeof valor === 'object') {
         // Preferimos campos legibles: nombre > titulo > descripcion
         // Si no hay ninguno, guardamos JSON como fallback.
-        return (valor as any).nombre || (valor as any).titulo || (valor as any).descripcion || JSON.stringify(valor);
+        const obj = valor as PremioObject;
+        return obj.nombre || obj.titulo || obj.descripcion || JSON.stringify(valor);
     }
     // Guardar algo sensato para otros tipos
     return String(valor);
@@ -21,12 +37,13 @@ export const normalizarEventoEspecial = (evento: unknown) => {
     }
 
     if (typeof evento === 'object') {
+        const obj = evento as EventoEspecialObject;
         return {
-            nombre: (evento as any).nombre || (evento as any).tipo || '',
-            descripcion: (evento as any).descripcion || (evento as any).bonus || '',
-            emoji: (evento as any).emoji || '',
-            tipo: (evento as any).tipo || '',
-            multiplicador: (evento as any).multiplicador || null
+            nombre: obj.nombre || obj.tipo || '',
+            descripcion: obj.descripcion || obj.bonus || '',
+            emoji: obj.emoji || '',
+            tipo: obj.tipo || '',
+            multiplicador: obj.multiplicador || null
         };
     }
 
