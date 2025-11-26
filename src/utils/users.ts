@@ -50,11 +50,11 @@ export class UsersAPI {
 
             // Filtrar solo los campos que realmente existen en la tabla
             const allowedFields = [
-                'email', 'password', 'nombre', 'centro', 'curso', 'tipo', 'linkPerfil',
-                'fechaInscripcion', 'textoFechaInscripcion', 'likes', 'trofeos',
-                'historias', 'amigos', 'trofeosDesbloqueados', 'trofeosBloqueados',
-                'preguntasFalladas', 'competicionesSuperadas', 'estaEnRanking',
-                'autoTrofeos', 'comentarios', 'premium', 'premiumExpiracion'
+                'email', 'password', 'nombre', 'centro', 'curso', 'tipo', 'linkperfil',
+                'fechainscripcion', 'textofechainscripcion', 'likes', 'trofeos',
+                'historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados',
+                'preguntasfalladas', 'competicionessuperadas', 'estaenranking',
+                'autotrofeos', 'comentarios', 'premium', 'premiumexpiracion'
             ];
 
             const filteredUpdates: any = {};

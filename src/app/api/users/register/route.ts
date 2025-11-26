@@ -13,9 +13,9 @@ export async function POST(request: NextRequest) {
 
         // Insertar el nuevo usuario
         const insertResult = await pool.query(
-            `INSERT INTO "User" (nombre, nick, centro, curso, tipo, email, password, "linkPerfil", "textoFechaInscripcion", likes, amigos, historias, comentarios, premium, "createdAt", "updatedAt")
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW(), NOW())
-             RETURNING id, nombre, nick, centro, curso, tipo, email, "linkPerfil", "textoFechaInscripcion"`,
+            `INSERT INTO "User" (nombre, nick, centro, curso, tipo, email, password, linkperfil, textofechainscripcion, likes, amigos, historias, comentarios, premium, fechainscripcion)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW())
+             RETURNING id, nombre, nick, centro, curso, tipo, email, linkperfil, textofechainscripcion`,
             [
                 nombre,
                 nick,
@@ -30,7 +30,8 @@ export async function POST(request: NextRequest) {
                 [],
                 [],
                 [],
-                false
+                false,
+                new Date()
             ]
         );
 

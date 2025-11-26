@@ -18,24 +18,76 @@ export async function GET(request: NextRequest) {
                 centro VARCHAR(255),
                 curso VARCHAR(255),
                 tipo VARCHAR(255),
-                "linkPerfil" VARCHAR(255),
-                "fechaInscripcion" TIMESTAMP NOT NULL,
-                "textoFechaInscripcion" TEXT,
+                linkperfil VARCHAR(255),
+                fechainscripcion TIMESTAMP NOT NULL,
+                textofechainscripcion TEXT,
                 likes INTEGER DEFAULT 0,
                 trofeos INTEGER DEFAULT 0,
                 historias JSONB DEFAULT '[]'::jsonb,
                 amigos JSONB DEFAULT '[]'::jsonb,
-                "trofeosDesbloqueados" JSONB DEFAULT '[]'::jsonb,
-                "trofeosBloqueados" JSONB DEFAULT '[]'::jsonb,
-                "preguntasFalladas" INTEGER DEFAULT 0,
-                "competicionesSuperadas" INTEGER DEFAULT 0,
-                "estaEnRanking" BOOLEAN DEFAULT FALSE,
-                "autoTrofeos" JSONB DEFAULT '[]'::jsonb,
+                trofeosdesbloqueados JSONB DEFAULT '[]'::jsonb,
+                trofeosbloqueados JSONB DEFAULT '[]'::jsonb,
+                preguntasfalladas INTEGER DEFAULT 0,
+                competicionessuperadas INTEGER DEFAULT 0,
+                estaenranking BOOLEAN DEFAULT FALSE,
+                autotrofeos JSONB DEFAULT '[]'::jsonb,
                 comentarios JSONB DEFAULT '[]'::jsonb,
                 premium BOOLEAN DEFAULT FALSE,
-                "premiumExpiracion" TIMESTAMP
+                premiumexpiracion TIMESTAMP
             )
         `);
+
+        // Migrar columnas existentes si es necesario
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "linkPerfil" TO linkperfil`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "fechaInscripcion" TO fechainscripcion`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "textoFechaInscripcion" TO textofechainscripcion`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "trofeosDesbloqueados" TO trofeosdesbloqueados`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "trofeosBloqueados" TO trofeosbloqueados`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "preguntasFalladas" TO preguntasfalladas`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "competicionesSuperadas" TO competicionessuperadas`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "estaEnRanking" TO estaenranking`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "autoTrofeos" TO autotrofeos`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" RENAME COLUMN "premiumExpiracion" TO premiumexpiracion`);
+        } catch (e) {
+            // Columna ya renombrada o no existe
+        }
 
         if (nick) {
             const result = await pool.query('SELECT * FROM "User" WHERE nick = $1', [nick]);
@@ -65,7 +117,7 @@ export async function POST(request: NextRequest) {
         const { nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes = 0, trofeos = 0, historias = [], amigos = [], trofeosDesbloqueados = [], trofeosBloqueados = [], preguntasFalladas = 0, competicionesSuperadas = 0, estaEnRanking = false, autoTrofeos = [], comentarios = [] } = body;
 
         const result = await pool.query(
-            'INSERT INTO "User" (nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, historias, amigos, trofeosDesbloqueados, trofeosBloqueados, preguntasFalladas, competicionesSuperadas, estaEnRanking, autoTrofeos, comentarios) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *',
+            'INSERT INTO "User" (nick, email, password, nombre, centro, curso, tipo, linkperfil, fechainscripcion, textofechainscripcion, likes, trofeos, historias, amigos, trofeosdesbloqueados, trofeosbloqueados, preguntasfalladas, competicionessuperadas, estaenranking, autotrofeos, comentarios) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *',
             [nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, JSON.stringify(historias), JSON.stringify(amigos), JSON.stringify(trofeosDesbloqueados), JSON.stringify(trofeosBloqueados), preguntasFalladas, competicionesSuperadas, estaEnRanking, JSON.stringify(autoTrofeos), JSON.stringify(comentarios)]
         );
 
@@ -95,18 +147,31 @@ export async function PUT(request: NextRequest) {
 
         for (const [key, value] of Object.entries(updates)) {
             // Skip null/undefined values except for specific fields that can be null
-            if (value === null && !['premiumExpiracion'].includes(key)) {
+            if (value === null && !['premiumexpiracion'].includes(key)) {
                 console.log(`⚠️ PUT /api/users - Skipping null value for field: ${key}`);
                 continue;
             }
 
             let fieldName = key;
-            // Use quoted field names for camelCase fields
-            if (['linkPerfil', 'fechaInscripcion', 'textoFechaInscripcion', 'trofeosDesbloqueados', 'trofeosBloqueados', 'preguntasFalladas', 'competicionesSuperadas', 'estaEnRanking', 'autoTrofeos', 'premiumExpiracion'].includes(key)) {
-                fieldName = `"${key}"`;
+            // Convert camelCase to lowercase for database fields
+            const fieldMapping: { [key: string]: string } = {
+                'linkPerfil': 'linkperfil',
+                'fechaInscripcion': 'fechainscripcion',
+                'textoFechaInscripcion': 'textofechainscripcion',
+                'trofeosDesbloqueados': 'trofeosdesbloqueados',
+                'trofeosBloqueados': 'trofeosbloqueados',
+                'preguntasFalladas': 'preguntasfalladas',
+                'competicionesSuperadas': 'competicionessuperadas',
+                'estaEnRanking': 'estaenranking',
+                'autoTrofeos': 'autotrofeos',
+                'premiumExpiracion': 'premiumexpiracion'
+            };
+
+            if (fieldMapping[key]) {
+                fieldName = fieldMapping[key];
             }
 
-            if (['historias', 'amigos', 'trofeosDesbloqueados', 'trofeosBloqueados', 'autoTrofeos'].includes(key)) {
+            if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos'].includes(fieldName)) {
                 fields.push(`${fieldName} = $${index}`);
                 values.push(JSON.stringify(value));
             } else {
