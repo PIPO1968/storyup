@@ -801,8 +801,15 @@ function PerfilUsuario() {
 
     const isPremium = displayedUser ? displayedUser.premium === true : false;
 
-    if (!mounted) {
-        return null;
+    if (!mounted || !displayedUser) {
+        return (
+            <div className="min-h-screen bg-green-100 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
+                    <p className="text-green-600 font-semibold">Cargando perfil...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
