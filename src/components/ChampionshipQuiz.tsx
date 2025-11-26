@@ -50,6 +50,7 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
     const [preguntasUsadas, setPreguntasUsadas] = React.useState<string[]>([]);
     const [timeLeft, setTimeLeft] = React.useState<number>(300); // 5 minutos
     const [bloqueado, setBloqueado] = React.useState<boolean>(false);
+    const [loading, setLoading] = React.useState<boolean>(false);
 
     // Optimizar el temporizador para evitar re-renders excesivos
     React.useEffect(() => {
@@ -79,180 +80,253 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
     }, [userGrade]);
 
     const generarPregunta = React.useCallback(async () => {
-        if (preguntasUsadas.length >= 25) {
-            setPreguntaActual("");
-            setRespuestaCorrecta("");
-            setFeedback("¡Has completado las 25 preguntas del campeonato!");
+        if (loading) return; // Evitar múltiples llamadas simultáneas
+
+        try {
+            setLoading(true);
+            if (preguntasUsadas.length >= 25) {
+                setPreguntaActual("");
+                setRespuestaCorrecta("");
+                setFeedback("¡Has completado las 25 preguntas del campeonato!");
+                setBloqueado(true);
+
+                // Calcular estadísticas de la sesión - solo si hay usuario logueado
+                const nick = typeof window !== "undefined" ? sessionStorage.getItem("currentUserNick") : null;
+                if (!nick) {
+                    setFeedback("Error: Usuario no logueado");
+                    return;
+                }
+
+                let centro = "";
+                let curso = "";
+                try {
+                    const userObj = await UserPreferencesAPI.getPreference(nick, "profile") as unknown;
+                    centro = (userObj as { centro?: string })?.centro || "";
+                    curso = String((userObj as { curso?: string | number })?.curso) || "";
+                } catch (error) {
+                    console.error("Error obteniendo perfil de usuario:", error);
+                    setFeedback("Error al obtener datos del usuario");
+                    return;
+                }
+
+                // Recuperar respuestas desde la API
+                let respuestasArr: Respuesta[] = [];
+                try {
+                    const respuestasData = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown;
+                    respuestasArr = Array.isArray(respuestasData) ? respuestasData as Respuesta[] : [];
+                } catch (error) {
+                    console.error("Error obteniendo respuestas de campeonato:", error);
+                    // Continuar con array vacío si falla
+                }
+
+                // Contar acertadas y falladas de la sesión
+                const acertadasSesion = respuestasArr.filter((r: Respuesta) => r.correcta).length;
+                const falladasSesion = respuestasArr.filter((r: Respuesta) => !r.correcta).length;
+                const likesSesion = respuestasArr.reduce((sum: number, r: Respuesta) => sum + (r.likes || 0), 0);
+
+                // Temporada actual: formato tYYYY
+                const now = new Date();
+                let temporada = now.getFullYear();
+                if (now.getMonth() + 1 >= 10) temporada += 1;
+                const temporadaKey = `t${temporada}`;
+
+                // Solo se considera ganada si acierta más de 12
+                const ganadoSesion = acertadasSesion > 12 ? 1 : 0;
+                const perdidoSesion = acertadasSesion <= 12 ? 1 : 0;
+
+                // Guardar datos según tipo de usuario
+                try {
+                    // Sumar acumulado de la temporada
+                    const keyIndividual = `campeonato_individual_${temporadaKey}`;
+                    let tablaIndividual: Record<string, TablaIndividualValue> = {};
+                    try {
+                        tablaIndividual = (await ChampionshipAPI.getChampionshipData(nick, keyIndividual) as unknown) as Record<string, TablaIndividualValue> || {};
+                    } catch {
+                        tablaIndividual = {};
+                    }
+
+                    let acertadas = acertadasSesion;
+                    let falladas = falladasSesion;
+                    let likes = likesSesion;
+                    let ganado = ganadoSesion;
+                    let perdido = perdidoSesion;
+                    if (tablaIndividual[nick]) {
+                        acertadas += tablaIndividual[nick].acertadas || 0;
+                        falladas += tablaIndividual[nick].falladas || 0;
+                        likes += tablaIndividual[nick].likes || 0;
+                        ganado += tablaIndividual[nick].ganado || 0;
+                        perdido += tablaIndividual[nick].perdido || 0;
+                    }
+
+                    const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+
+                    // Guardar tablaIndividual para todos los tipos
+                    tablaIndividual[nick] = {
+                        centro,
+                        curso,
+                        acertadas,
+                        falladas,
+                        likes,
+                        ganado,
+                        perdido,
+                        fecha: now.toISOString()
+                    };
+                    await ChampionshipAPI.setChampionshipData(nick, keyIndividual, tablaIndividual);
+
+                    // Si ha superado la competición, sumar competicionesSuperadas para cualquier tipo de usuario
+                    if (ganadoSesion === 1) {
+                        (userObj as { competicionesSuperadas?: number }).competicionesSuperadas = ((userObj as { competicionesSuperadas?: number }).competicionesSuperadas || 0) + 1;
+                        await UserPreferencesAPI.setPreference(nick, "profile", userObj);
+                        // Emitir evento para refrescar perfil y estadísticas
+                        window.dispatchEvent(new Event('profileUpdate'));
+                        window.dispatchEvent(new Event('storage'));
+                    }
+
+                    // Guardar datos CENTROS
+                    const keyCentros = `campeonato_centros_${temporadaKey}`;
+                    let tablaCentros: Record<string, TablaCentrosValue> = {};
+                    try {
+                        tablaCentros = (await ChampionshipAPI.getChampionshipData(nick, keyCentros) as unknown) as Record<string, TablaCentrosValue> || {};
+                    } catch {
+                        tablaCentros = {};
+                    }
+
+                    if (centro) {
+                        if (!tablaCentros[centro]) tablaCentros[centro] = { ganados: 0, perdidos: 0, preguntasAcertadas: 0, preguntasFalladas: 0, likes: 0 };
+                        tablaCentros[centro].ganados += ganado;
+                        tablaCentros[centro].perdidos += perdido;
+                        tablaCentros[centro].preguntasAcertadas += acertadas;
+                        tablaCentros[centro].preguntasFalladas += falladas;
+                        tablaCentros[centro].likes += likes;
+                    }
+                    await ChampionshipAPI.setChampionshipData(nick, keyCentros, tablaCentros);
+
+                    // Guardar datos DOCENTES
+                    const keyDocentes = `campeonato_docentes_${temporadaKey}`;
+                    let tablaDocentes: Record<string, TablaCentrosValue> = {};
+                    try {
+                        tablaDocentes = (await ChampionshipAPI.getChampionshipData(nick, keyDocentes) as unknown) as Record<string, TablaCentrosValue> || {};
+                    } catch {
+                        tablaDocentes = {};
+                    }
+
+                    if (userObj && userObj.tipo === "Docente") {
+                        // Normalizar nick para evitar problemas de coincidencia
+                        const nickDocente = (nick || "").toLowerCase().replace(/\s+/g, "");
+                        if (!tablaDocentes[nickDocente]) tablaDocentes[nickDocente] = { ganados: 0, perdidos: 0, preguntasAcertadas: 0, preguntasFalladas: 0, likes: 0 };
+                        tablaDocentes[nickDocente].ganados += ganado;
+                        tablaDocentes[nickDocente].perdidos += perdido;
+                        tablaDocentes[nickDocente].preguntasAcertadas += acertadas;
+                        tablaDocentes[nickDocente].preguntasFalladas += falladas;
+                        tablaDocentes[nickDocente].likes += likes;
+                    }
+                    await ChampionshipAPI.setChampionshipData(nick, keyDocentes, tablaDocentes);
+
+                    // Guardar también en el perfil del usuario
+                    const userObjFinal = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+                    userObjFinal.ganados = ((userObjFinal.ganados as number) || 0) + ganado;
+                    userObjFinal.perdidos = ((userObjFinal.perdidos as number) || 0) + perdido;
+                    userObjFinal.respuestasAcertadas = ((userObjFinal.respuestasAcertadas as number) || 0) + acertadas;
+                    userObjFinal.preguntasFalladas = ((userObjFinal.preguntasFalladas as number) || 0) + falladas;
+                    // Sumar likes positivos y negativos
+                    userObjFinal.likes = ((userObjFinal.likes as number) || 0) + likes;
+                    await UserPreferencesAPI.setPreference(nick, "profile", userObjFinal);
+
+                } catch (error) {
+                    console.error("Error guardando estadísticas:", error);
+                    setFeedback("Error al guardar estadísticas del campeonato");
+                    return;
+                }
+
+                return;
+            }
+
+            setTimeLeft(300);
+            setBloqueado(false);
+            const restantes = preguntas.filter((p: Pregunta) => !preguntasUsadas.includes(p.pregunta));
+            if (restantes.length === 0) {
+                setPreguntaActual("");
+                setRespuestaCorrecta("");
+                setFeedback("¡No hay más preguntas disponibles en el banco!");
+                setBloqueado(true);
+                return;
+            }
+                return;
+            }
+
+            setTimeLeft(300);
+            setBloqueado(false);
+            const restantes = preguntas.filter((p: Pregunta) => !preguntasUsadas.includes(p.pregunta));
+            if (restantes.length === 0) {
+                setPreguntaActual("");
+                setRespuestaCorrecta("");
+                setFeedback("¡No hay más preguntas disponibles en el banco!");
+                setBloqueado(true);
+                return;
+            }
+            const random = Math.floor(Math.random() * restantes.length);
+            setPreguntaActual(restantes[random].pregunta);
+            setRespuestaCorrecta(restantes[random].respuesta);
+            setRespuestaUsuario("");
+            setFeedback("");
+            setPreguntasUsadas([...preguntasUsadas, restantes[random].pregunta]);
+        } catch (error) {
+            console.error("Error generando pregunta:", error);
+            setFeedback("Error al generar pregunta. Inténtalo de nuevo.");
             setBloqueado(true);
-
-            // Calcular estadísticas de la sesión
-            const nick = typeof window !== "undefined" ? sessionStorage.getItem("currentUserNick") : null;
-            let centro = "";
-            let curso = "";
-            if (nick) {
-                const userObj = await UserPreferencesAPI.getPreference(nick, "profile") as unknown;
-                centro = (userObj as { centro?: string })?.centro || "";
-                curso = String((userObj as { curso?: string | number })?.curso) || "";
-            }
-
-            // Recuperar respuestas desde la API
-            let respuestasArr: Respuesta[] = [];
-            if (nick) {
-                const respuestasData = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato') as unknown;
-                respuestasArr = Array.isArray(respuestasData) ? respuestasData as Respuesta[] : [];
-            }
-            // Contar acertadas y falladas de la sesión
-            const acertadasSesion = respuestasArr.filter((r: Respuesta) => r.correcta).length;
-            const falladasSesion = respuestasArr.filter((r: Respuesta) => !r.correcta).length;
-            const likesSesion = respuestasArr.reduce((sum: number, r: Respuesta) => sum + (r.likes || 0), 0);
-            // Temporada actual: formato tYYYY (declarar antes de cualquier uso)
-            const now = new Date();
-            let temporada = now.getFullYear();
-            if (now.getMonth() + 1 >= 10) temporada += 1;
-            const temporadaKey = `t${temporada}`;
-            // Solo se considera ganada si acierta más de 12
-            const ganadoSesion = acertadasSesion > 12 ? 1 : 0;
-            const perdidoSesion = acertadasSesion <= 12 ? 1 : 0;
-
-            // Guardar datos según tipo de usuario
-            if (nick) {
-                // Sumar acumulado de la temporada
-                const keyIndividual = `campeonato_individual_${temporadaKey}`;
-                let tablaIndividual: Record<string, TablaIndividualValue> = {};
-                try { tablaIndividual = (await ChampionshipAPI.getChampionshipData(nick, keyIndividual) as unknown) as Record<string, TablaIndividualValue> || {}; } catch { tablaIndividual = {}; }
-                let acertadas = acertadasSesion;
-                let falladas = falladasSesion;
-                let likes = likesSesion;
-                let ganado = ganadoSesion;
-                let perdido = perdidoSesion;
-                if (tablaIndividual[nick]) {
-                    acertadas += tablaIndividual[nick].acertadas || 0;
-                    falladas += tablaIndividual[nick].falladas || 0;
-                    likes += tablaIndividual[nick].likes || 0;
-                    ganado += tablaIndividual[nick].ganado || 0;
-                    perdido += tablaIndividual[nick].perdido || 0;
-                }
-
-                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
-                // Guardar tablaIndividual para todos los tipos
-                tablaIndividual[nick] = {
-                    centro,
-                    curso,
-                    acertadas,
-                    falladas,
-                    likes,
-                    ganado,
-                    perdido,
-                    fecha: now.toISOString()
-                };
-                await ChampionshipAPI.setChampionshipData(nick, keyIndividual, tablaIndividual);
-                // Si ha superado la competición, sumar competicionesSuperadas para cualquier tipo de usuario
-                if (ganadoSesion === 1) {
-                    (userObj as { competicionesSuperadas?: number }).competicionesSuperadas = ((userObj as { competicionesSuperadas?: number }).competicionesSuperadas || 0) + 1;
-                    await UserPreferencesAPI.setPreference(nick, "profile", userObj);
-                    // Aquí no hay array 'users' en la base de datos, así que omito esa parte por ahora
-                    // Emitir evento para refrescar perfil y estadísticas
-                    window.dispatchEvent(new Event('profileUpdate'));
-                    window.dispatchEvent(new Event('storage'));
-                }
-
-                // Guardar datos CENTROS
-                const keyCentros = `campeonato_centros_${temporadaKey}`;
-                let tablaCentros: Record<string, TablaCentrosValue> = {};
-                try { tablaCentros = (await ChampionshipAPI.getChampionshipData(nick, keyCentros) as unknown) as Record<string, TablaCentrosValue> || {}; } catch { tablaCentros = {}; }
-                if (centro) {
-                    if (!tablaCentros[centro]) tablaCentros[centro] = { ganados: 0, perdidos: 0, preguntasAcertadas: 0, preguntasFalladas: 0, likes: 0 };
-                    tablaCentros[centro].ganados += ganado;
-                    tablaCentros[centro].perdidos += perdido;
-                    tablaCentros[centro].preguntasAcertadas += acertadas;
-                    tablaCentros[centro].preguntasFalladas += falladas;
-                    tablaCentros[centro].likes += likes;
-                }
-                await ChampionshipAPI.setChampionshipData(nick, keyCentros, tablaCentros);
-
-                // Guardar datos DOCENTES
-                const keyDocentes = `campeonato_docentes_${temporadaKey}`;
-                let tablaDocentes: Record<string, TablaCentrosValue> = {};
-                try { tablaDocentes = (await ChampionshipAPI.getChampionshipData(nick, keyDocentes) as unknown) as Record<string, TablaCentrosValue> || {}; } catch { tablaDocentes = {}; }
-                if (userObj && userObj.tipo === "Docente") {
-                    // Normalizar nick para evitar problemas de coincidencia
-                    const nickDocente = (nick || "").toLowerCase().replace(/\s+/g, "");
-                    if (!tablaDocentes[nickDocente]) tablaDocentes[nickDocente] = { ganados: 0, perdidos: 0, preguntasAcertadas: 0, preguntasFalladas: 0, likes: 0 };
-                    tablaDocentes[nickDocente].ganados += ganado;
-                    tablaDocentes[nickDocente].perdidos += perdido;
-                    tablaDocentes[nickDocente].preguntasAcertadas += acertadas;
-                    tablaDocentes[nickDocente].preguntasFalladas += falladas;
-                    tablaDocentes[nickDocente].likes += likes;
-                }
-                await ChampionshipAPI.setChampionshipData(nick, keyDocentes, tablaDocentes);
-                // Guardar también en el perfil del usuario
-                const userObjFinal = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
-                userObjFinal.ganados = ((userObjFinal.ganados as number) || 0) + ganado;
-                userObjFinal.perdidos = ((userObjFinal.perdidos as number) || 0) + perdido;
-                userObjFinal.respuestasAcertadas = ((userObjFinal.respuestasAcertadas as number) || 0) + acertadas;
-                userObjFinal.preguntasFalladas = ((userObjFinal.preguntasFalladas as number) || 0) + falladas;
-                // Sumar likes positivos y negativos
-                userObjFinal.likes = ((userObjFinal.likes as number) || 0) + likes;
-                await UserPreferencesAPI.setPreference(nick, "profile", userObjFinal);
-                // Actualizar también el array 'users' - omitido por ahora ya que no hay API para eso
-            }
-            return;
+        } finally {
+            setLoading(false);
         }
-        setTimeLeft(300);
-        setBloqueado(false);
-        const restantes = preguntas.filter((p: Pregunta) => !preguntasUsadas.includes(p.pregunta));
-        if (restantes.length === 0) {
-            setPreguntaActual("");
-            setRespuestaCorrecta("");
-            setFeedback("¡No hay más preguntas disponibles en el banco!");
-            setBloqueado(true);
-            return;
-        }
-        const random = Math.floor(Math.random() * restantes.length);
-        setPreguntaActual(restantes[random].pregunta);
-        setRespuestaCorrecta(restantes[random].respuesta);
-        setRespuestaUsuario("");
-        setFeedback("");
-        setPreguntasUsadas([...preguntasUsadas, restantes[random].pregunta]);
-    }, [preguntas, preguntasUsadas]);
+    }, [preguntas, preguntasUsadas, loading]);
 
     const comprobarRespuesta = React.useCallback(async () => {
-        // Normalizar para comparar respuestas
-        function normalizar(str: string) {
-            return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/\s+/g, "").trim();
-        }
-        if (bloqueado) return;
-        const esCorrecta = normalizar(respuestaUsuario) === normalizar(respuestaCorrecta);
-        setBloqueado(true);
-        let likesDelta = 0;
-        if (esCorrecta) {
-            setFeedback("¡Correcto! 🎉");
-            likesDelta = timeLeft > 120 ? 2 : 1;
-        } else {
-            setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta}`);
-            likesDelta = timeLeft > 120 ? -1 : -2;
-        }
-        if (typeof window !== "undefined") {
-            const nick = sessionStorage.getItem("currentUserNick");
-            if (nick) {
-                const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
-                userObj.likes = ((userObj.likes as number) || 0) + likesDelta;
-                await UserPreferencesAPI.setPreference(nick, "profile", userObj);
-
-                // Guardar respuesta en el historial de campeonato usando la API
-                const respuestasDataRaw = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato');
-                const respuestasData = Array.isArray(respuestasDataRaw) ? respuestasDataRaw as Respuesta[] : [];
-                const respuestasArr = respuestasData;
-                respuestasArr.push({
-                    pregunta: preguntaActual,
-                    respuestaUsuario,
-                    respuestaCorrecta,
-                    correcta: esCorrecta,
-                    tiempo: timeLeft,
-                    likes: likesDelta
-                });
-                await ChampionshipAPI.setChampionshipData(nick, 'respuestas_campeonato', respuestasArr);
+        try {
+            // Normalizar para comparar respuestas
+            function normalizar(str: string) {
+                return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/\s+/g, "").trim();
             }
+            if (bloqueado) return;
+            const esCorrecta = normalizar(respuestaUsuario) === normalizar(respuestaCorrecta);
+            setBloqueado(true);
+            let likesDelta = 0;
+            if (esCorrecta) {
+                setFeedback("¡Correcto! 🎉");
+                likesDelta = timeLeft > 120 ? 2 : 1;
+            } else {
+                setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta}`);
+                likesDelta = timeLeft > 120 ? -1 : -2;
+            }
+            if (typeof window !== "undefined") {
+                const nick = sessionStorage.getItem("currentUserNick");
+                if (nick) {
+                    try {
+                        const userObj = (await UserPreferencesAPI.getPreference(nick, "profile") as unknown) as Record<string, unknown> || {};
+                        userObj.likes = ((userObj.likes as number) || 0) + likesDelta;
+                        await UserPreferencesAPI.setPreference(nick, "profile", userObj);
+
+                        // Guardar respuesta en el historial de campeonato usando la API
+                        const respuestasDataRaw = await ChampionshipAPI.getChampionshipData(nick, 'respuestas_campeonato');
+                        const respuestasData = Array.isArray(respuestasDataRaw) ? respuestasDataRaw as Respuesta[] : [];
+                        const respuestasArr = respuestasData;
+                        respuestasArr.push({
+                            pregunta: preguntaActual,
+                            respuestaUsuario,
+                            respuestaCorrecta,
+                            correcta: esCorrecta,
+                            tiempo: timeLeft,
+                            likes: likesDelta
+                        });
+                        await ChampionshipAPI.setChampionshipData(nick, 'respuestas_campeonato', respuestasArr);
+                    } catch (error) {
+                        console.error("Error guardando respuesta:", error);
+                        setFeedback("Respuesta procesada, pero error al guardar estadísticas");
+                    }
+                }
+            }
+        } catch (error) {
+            console.error("Error comprobando respuesta:", error);
+            setFeedback("Error al procesar la respuesta");
+            setBloqueado(true);
         }
     }, [bloqueado, respuestaUsuario, respuestaCorrecta, timeLeft, preguntaActual, preguntasUsadas]);
 
@@ -261,8 +335,8 @@ const ChampionshipQuiz: React.FC<ChampionshipQuizProps> = ({ userGrade, userScho
             <h2 className="text-xl font-bold mb-2">Modo Campeonato</h2>
             <p>Curso seleccionado: {userGrade}º Primaria</p>
             <p>Centro escolar: {userSchool || "No especificado"}</p>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2" onClick={generarPregunta}>
-                Generar pregunta de campeonato
+            <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 disabled:bg-gray-400" onClick={generarPregunta} disabled={loading}>
+                {loading ? "Generando pregunta..." : "Generar pregunta de campeonato"}
             </button>
             {preguntaActual && (
                 <div className="mt-4">

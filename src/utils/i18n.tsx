@@ -637,7 +637,7 @@ export const I18nProvider = ({ children, defaultLang = "es" as Lang }: { childre
         if (typeof window !== "undefined") {
             sessionStorage.setItem('locale', lang);
         }
-    }, []);
+    }, [lang]);
 
     const t = (key: string) => {
         return translations[lang][key] || translations['es'][key] || key;

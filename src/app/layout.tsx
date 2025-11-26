@@ -23,6 +23,8 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [showSidebar, setShowSidebar] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     setMounted(true);
@@ -31,12 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   React.useEffect(() => {
     if (!mounted || typeof window === "undefined") return;
 
-    const pathname = window.location.pathname;
     const user = sessionStorage.getItem("user");
 
     // Si está logueado y accede a / o /registro, redirigir a perfil
     if (user && (pathname === "/" || pathname === "/registro")) {
-      window.location.href = "/perfil";
+      router.push("/perfil");
       return;
     }
 
@@ -46,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     } else {
       setShowSidebar(false);
     }
-  }, [mounted]);
+  }, [mounted, pathname, router]);
 
   if (!mounted) {
     return (

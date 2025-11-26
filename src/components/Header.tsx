@@ -22,7 +22,8 @@ const Header: React.FC = () => {
                 day: '2-digit', month: '2-digit', year: 'numeric',
                 timeZone: 'Europe/London'
             };
-            setDateTime(now.toLocaleString('es-ES', options));
+            const newDateTime = now.toLocaleString('es-ES', options);
+            setDateTime(prev => prev !== newDateTime ? newDateTime : prev);
         };
         updateDateTime();
         const interval = setInterval(updateDateTime, 1000);

@@ -8,40 +8,39 @@ import { useTranslation } from '@/utils/i18n';
 
 export default function Home() {
   const { t } = useTranslation();
-  // Distribuir los logos en una cuadrícula por la zona verde, evitando el área central
-  const totalLogos = 56;
-  const gridRows = 7;
-  const gridCols = 8;
-  // Margen para no tapar el contenido central
-  const marginX = 8; // %
-  const marginY = 8; // %
-  // Distribuir los logos únicamente en los bordes verde alrededor
-  const logoPositions: { left: string; top: string }[] = [];
-  const logos = [
+
+  const logos = React.useMemo(() => [
     "Aguere.jpg", "Angeles Bermejo.jpg", "Aregume.jpg", "Buen Consejo.png", "Camino La Villa.jpg", "Camino Largo.jpg", "Casa Azul.png", "Chamberi.png", "Chayofa.png", "Cisneros Alter.jpg", "Colegio Cervantes.jpg", "Costa Adeje I..jpg", "Cuesta 25 de Julio.jpg", "Dominguez Alfonso.jpg", "Echeyde Arona.png", "Echeyde La Laguna.png", "El Monte.png", "Escuela Rural.png", "Escuelas Pias.jpg", "Gobierno de Canarias (Educacion).jpg", "Hispano La Salud.png", "La Cuesta B.N.jpg", "La Higuerita.jpg", "La Rosa.png", "La Salle.png", "La Vega.jpg", "La Verdellada.jpg", "logo-pipo.jpg", "Los Alisios.jpg", "Los Menceyes.jpg", "Luis Alvarez Cruz.jpg", "Luther King.jpg", "Mayex.jpg", "Montessori.png", "Nuryana.jpg", "Punta Larga.jpg", "Pureza de Maria.png", "Ravelo.jpg", "Rodriguez Alberto.jpg", "Rodriguez Campos.png", "Saint Andrews.jpg", "Salesianas.jpg", "San Agustin.jpg", "San Fernando.jpg", "San Isidro.jpg", "San Pablo.png", "Santa Catalina de Siena.jpg", "Santa Cruz de California.jpg", "Santa Maria del Mar.jpg", "Santa Rosa de Lima.jpg", "Tacoronte.jpg", "Tagoror.jpg", "Teofilo Perez.png", "Tincer.jpg", "Virgen de Fatima.jpg", "Virgen del Mar.png"
-  ];
-  const logosPorBorde = Math.ceil(logos.length / 4);
-  // Superior: solo los extremos, no el centro para no tapar el título
-  for (let i = 0; i < logosPorBorde && logoPositions.length < logos.length; i++) {
-    const left = 5 + (i * 90 / (logosPorBorde - 1));
-    if (left < 30 || left > 70) {
-      logoPositions.push({ left: `${left}%`, top: '2%' });
+  ], []);
+
+  // Distribuir los logos en una cuadrícula por la zona verde, evitando el área central
+  const logoPositions: { left: string; top: string }[] = React.useMemo(() => {
+    const positions: { left: string; top: string }[] = [];
+    const logosPorBorde = Math.ceil(logos.length / 4);
+    // Superior: solo los extremos, no el centro para no tapar el título
+    for (let i = 0; i < logosPorBorde && positions.length < logos.length; i++) {
+      const left = 5 + (i * 90 / (logosPorBorde - 1));
+      if (left < 30 || left > 70) {
+        positions.push({ left: `${left}%`, top: '2%' });
+      }
     }
-  }
-  // Inferior: debajo de los bloques de Crea tu Historia y Aprende con Pipo, bajando más para no tocar el botón
-  for (let i = 0; i < logosPorBorde && logoPositions.length < logos.length; i++) {
-    const left = 20 + (i * 60 / (logosPorBorde - 1));
-    logoPositions.push({ left: `${left}%`, top: '93%' });
-  }
-  // Izquierda
-  for (let i = 0; i < logosPorBorde && logoPositions.length < logos.length; i++) {
-    logoPositions.push({ left: '2%', top: `${10 + (i * 80 / (logosPorBorde - 1))}%` });
-  }
-  // Derecha
-  for (let i = 0; i < logosPorBorde && logoPositions.length < logos.length; i++) {
-    logoPositions.push({ left: '96%', top: `${10 + (i * 80 / (logosPorBorde - 1))}%` });
-  }
-  const features = [
+    // Inferior: debajo de los bloques de Crea tu Historia y Aprende con Pipo, bajando más para no tocar el botón
+    for (let i = 0; i < logosPorBorde && positions.length < logos.length; i++) {
+      const left = 20 + (i * 60 / (logosPorBorde - 1));
+      positions.push({ left: `${left}%`, top: '93%' });
+    }
+    // Izquierda
+    for (let i = 0; i < logosPorBorde && positions.length < logos.length; i++) {
+      positions.push({ left: '2%', top: `${10 + (i * 80 / (logosPorBorde - 1))}%` });
+    }
+    // Derecha
+    for (let i = 0; i < logosPorBorde && positions.length < logos.length; i++) {
+      positions.push({ left: '96%', top: `${10 + (i * 80 / (logosPorBorde - 1))}%` });
+    }
+    return positions;
+  }, [logos]);
+
+  const features = React.useMemo(() => [
     { title: t('perfil'), description: t('perfilDesc') },
     { title: t('historias'), description: t('historiasDesc') },
     { title: t('creaTuHistoria'), description: t('creaTuHistoriaDesc') },
@@ -50,7 +49,7 @@ export default function Home() {
     { title: t('competiciones'), description: t('competicionesDesc') },
     { title: t('estadisticas'), description: t('estadisticasDesc') },
     { title: t('aprendeConPipo'), description: t('aprendeConPipoDesc') },
-  ];
+  ], [t]);
 
   const handleQuizResults = (results: {
     score: number;
