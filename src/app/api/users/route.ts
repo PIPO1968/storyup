@@ -79,17 +79,27 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
     try {
         const body = await request.json();
+        console.log('🔄 PUT /api/users - Body recibido:', body);
         const { nick, ...updates } = body;
 
         if (!nick) {
+            console.log('❌ PUT /api/users - Nick requerido faltante');
             return NextResponse.json({ error: 'Nick is required' }, { status: 400 });
         }
+
+        console.log('🔍 PUT /api/users - Updates:', updates);
 
         const fields = [];
         const values = [];
         let index = 1;
 
         for (const [key, value] of Object.entries(updates)) {
+            // Skip null/undefined values except for specific fields that can be null
+            if (value === null && !['premiumExpiracion'].includes(key)) {
+                console.log(`⚠️ PUT /api/users - Skipping null value for field: ${key}`);
+                continue;
+            }
+
             if (['historias', 'amigos', 'trofeosDesbloqueados', 'trofeosBloqueados', 'autoTrofeos'].includes(key)) {
                 fields.push(`${key} = $${index}`);
                 values.push(JSON.stringify(value));
@@ -100,19 +110,28 @@ export async function PUT(request: NextRequest) {
             index++;
         }
 
+        if (fields.length === 0) {
+            console.log('❌ PUT /api/users - No fields to update');
+            return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
+        }
+
         values.push(nick);
 
         const query = `UPDATE "User" SET ${fields.join(', ')} WHERE nick = $${index} RETURNING *`;
+        console.log('🔧 PUT /api/users - Query:', query);
+        console.log('🔧 PUT /api/users - Values:', values);
 
         const result = await pool.query(query, values);
+        console.log('✅ PUT /api/users - Result:', result.rows[0]);
 
         if (result.rows.length === 0) {
+            console.log('❌ PUT /api/users - User not found');
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
         return NextResponse.json(result.rows[0]);
     } catch (error) {
-        console.error(error);
+        console.error('❌ PUT /api/users - Error:', error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });
     }
 }
