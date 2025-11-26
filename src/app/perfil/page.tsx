@@ -147,11 +147,18 @@ function PerfilUsuario() {
     const [asignaturaSeleccionada, setAsignaturaSeleccionada] = useState<string>("matematicas");
     const [pregunta, setPregunta] = useState<string>("");
     const [respuesta, setRespuesta] = useState<string>("");
+    const [mounted, setMounted] = useState(false);
 
     const { t } = useTranslation();
 
     // Inicialización y sincronización de usuario y rankings SOLO una vez
     useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
         const loadUsersAndRankings = async () => {
             if (typeof window !== "undefined") {
                 // Cargar usuarios desde la API
@@ -791,6 +798,11 @@ function PerfilUsuario() {
     const displayedUser = selectedUser ? usuarios.find(u => u.nick === selectedUser) || user : user;
 
     const isPremium = displayedUser ? displayedUser.premium === true : false;
+
+    if (!mounted) {
+        return null;
+    }
+
     return (
         <>
             <div className="min-h-screen bg-green-100 flex flex-col pt-4">
