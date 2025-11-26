@@ -16,50 +16,102 @@ async function runMigrations() {
         console.log('Starting database migrations...');
 
         // Migration 1: Rename columns in User table to lowercase
-        await pool.query(`
-            ALTER TABLE "User" RENAME COLUMN "fechaInscripcion" TO "fechainscripcion";
-            ALTER TABLE "User" RENAME COLUMN "textoFechaInscripcion" TO "textofechainscripcion";
-            ALTER TABLE "User" RENAME COLUMN "linkPerfil" TO "linkperfil";
-            ALTER TABLE "User" RENAME COLUMN "createdAt" TO "createdat";
-            ALTER TABLE "User" RENAME COLUMN "updatedAt" TO "updatedat";
-        `);
-        console.log('✓ User table columns renamed successfully');
+        console.log('Renaming User table columns...');
+        const userColumns = [
+            { old: 'fechaInscripcion', new: 'fechainscripcion' },
+            { old: 'textoFechaInscripcion', new: 'textofechainscripcion' },
+            { old: 'linkPerfil', new: 'linkperfil' },
+            { old: 'createdAt', new: 'createdat' },
+            { old: 'updatedAt', new: 'updatedat' },
+            { old: 'trofeosDesbloqueados', new: 'trofeosdesbloqueados' },
+            { old: 'trofeosBloqueados', new: 'trofeosbloqueados' },
+            { old: 'preguntasFalladas', new: 'preguntasfalladas' },
+            { old: 'competicionesSuperadas', new: 'competicionessuperadas' },
+            { old: 'estaEnRanking', new: 'estaenranking' },
+            { old: 'autoTrofeos', new: 'autotrofeos' },
+            { old: 'premiumExpiracion', new: 'premiumexpiracion' }
+        ];
+
+        for (const col of userColumns) {
+            try {
+                await pool.query(`ALTER TABLE "User" RENAME COLUMN "${col.old}" TO "${col.new}"`);
+                console.log(`✓ Renamed ${col.old} to ${col.new}`);
+            } catch (e) {
+                console.log(`⚠️ Column ${col.old} already renamed or doesn't exist`);
+            }
+        }
 
         // Migration 2: Rename columns in PremiumUser table to lowercase
-        await pool.query(`
-            ALTER TABLE "PremiumUser" RENAME COLUMN "fechaInicio" TO "fechainicio";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "metodoPago" TO "metodopago";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "activadoPorAdmin" TO "activadoporadmin";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "solicitudId" TO "solicitudid";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "emailPago" TO "emailpago";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "createdAt" TO "createdat";
-            ALTER TABLE "PremiumUser" RENAME COLUMN "updatedAt" TO "updatedat";
-        `);
-        console.log('✓ PremiumUser table columns renamed successfully');
+        console.log('Renaming PremiumUser table columns...');
+        const premiumUserColumns = [
+            { old: 'fechaInicio', new: 'fechainicio' },
+            { old: 'metodoPago', new: 'metodopago' },
+            { old: 'activadoPorAdmin', new: 'activadoporadmin' },
+            { old: 'solicitudId', new: 'solicitudid' },
+            { old: 'emailPago', new: 'emailpago' },
+            { old: 'createdAt', new: 'createdat' },
+            { old: 'updatedAt', new: 'updatedat' }
+        ];
+
+        for (const col of premiumUserColumns) {
+            try {
+                await pool.query(`ALTER TABLE "PremiumUser" RENAME COLUMN "${col.old}" TO "${col.new}"`);
+                console.log(`✓ Renamed ${col.old} to ${col.new}`);
+            } catch (e) {
+                console.log(`⚠️ Column ${col.old} already renamed or doesn't exist`);
+            }
+        }
 
         // Migration 3: Rename columns in PremiumRequest table to lowercase
-        await pool.query(`
-            ALTER TABLE "PremiumRequest" RENAME COLUMN "fechaSolicitud" TO "fechasolicitud";
-            ALTER TABLE "PremiumRequest" RENAME COLUMN "fechaAprobacion" TO "fechaaprobacion";
-            ALTER TABLE "PremiumRequest" RENAME COLUMN "fechaRechazo" TO "fecharechazo";
-            ALTER TABLE "PremiumRequest" RENAME COLUMN "metodoPago" TO "metodopago";
-        `);
-        console.log('✓ PremiumRequest table columns renamed successfully');
+        console.log('Renaming PremiumRequest table columns...');
+        const premiumRequestColumns = [
+            { old: 'fechaSolicitud', new: 'fechasolicitud' },
+            { old: 'fechaAprobacion', new: 'fechaaprobacion' },
+            { old: 'fechaRechazo', new: 'fecharechazo' },
+            { old: 'metodoPago', new: 'metodopago' }
+        ];
+
+        for (const col of premiumRequestColumns) {
+            try {
+                await pool.query(`ALTER TABLE "PremiumRequest" RENAME COLUMN "${col.old}" TO "${col.new}"`);
+                console.log(`✓ Renamed ${col.old} to ${col.new}`);
+            } catch (e) {
+                console.log(`⚠️ Column ${col.old} already renamed or doesn't exist`);
+            }
+        }
 
         // Migration 4: Rename columns in Tournament table to lowercase
-        await pool.query(`
-            ALTER TABLE "Tournament" RENAME COLUMN "fechaInicio" TO "fechainicio";
-            ALTER TABLE "Tournament" RENAME COLUMN "fechaFin" TO "fechafin";
-            ALTER TABLE "Tournament" RENAME COLUMN "createdAt" TO "createdat";
-        `);
-        console.log('✓ Tournament table columns renamed successfully');
+        console.log('Renaming Tournament table columns...');
+        const tournamentColumns = [
+            { old: 'fechaInicio', new: 'fechainicio' },
+            { old: 'fechaFin', new: 'fechafin' },
+            { old: 'createdAt', new: 'createdat' }
+        ];
+
+        for (const col of tournamentColumns) {
+            try {
+                await pool.query(`ALTER TABLE "Tournament" RENAME COLUMN "${col.old}" TO "${col.new}"`);
+                console.log(`✓ Renamed ${col.old} to ${col.new}`);
+            } catch (e) {
+                console.log(`⚠️ Column ${col.old} already renamed or doesn't exist`);
+            }
+        }
 
         // Migration 5: Rename columns in CompetitionStat table to lowercase
-        await pool.query(`
-            ALTER TABLE "CompetitionStat" RENAME COLUMN "puntuacionTotal" TO "puntuaciontotal";
-            ALTER TABLE "CompetitionStat" RENAME COLUMN "updatedAt" TO "updatedat";
-        `);
-        console.log('✓ CompetitionStat table columns renamed successfully');
+        console.log('Renaming CompetitionStat table columns...');
+        const competitionStatColumns = [
+            { old: 'puntuacionTotal', new: 'puntuaciontotal' },
+            { old: 'updatedAt', new: 'updatedat' }
+        ];
+
+        for (const col of competitionStatColumns) {
+            try {
+                await pool.query(`ALTER TABLE "CompetitionStat" RENAME COLUMN "${col.old}" TO "${col.new}"`);
+                console.log(`✓ Renamed ${col.old} to ${col.new}`);
+            } catch (e) {
+                console.log(`⚠️ Column ${col.old} already renamed or doesn't exist`);
+            }
+        }
 
         console.log('All migrations completed successfully!');
 
