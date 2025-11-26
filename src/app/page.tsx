@@ -7,7 +7,30 @@ import Sidebar from "../components/Sidebar";
 import { useTranslation } from '@/utils/i18n';
 
 export default function Home() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+  // Función temporal para traducciones mientras I18nProvider está deshabilitado
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      'tuRedSocialEscolar': 'Tu red social escolar de Canarias',
+      'perfil': 'Perfil',
+      'perfilDesc': 'Crea y personaliza tu perfil escolar.',
+      'historias': 'Historias',
+      'historiasDesc': 'Comparte y lee historias escolares.',
+      'creaTuHistoria': 'Crea tu Historia',
+      'creaTuHistoriaDesc': 'Publica tus propias experiencias.',
+      'noticias': 'Noticias',
+      'noticiasDesc': 'Infórmate de las novedades escolares.',
+      'concursosHome': 'Concursos',
+      'concursosHomeDesc': 'Participa en concursos educativos.',
+      'competiciones': 'Competiciones',
+      'competicionesDesc': 'Únete a competiciones escolares.',
+      'estadisticas': 'Estadísticas',
+      'estadisticasDesc': 'Consulta tus logros y datos.',
+      'aprendeConPipo': 'Aprende con Pipo',
+      'aprendeConPipoDesc': 'Descubre y aprende con Pipo.'
+    };
+    return translations[key] || key;
+  };
 
   const logos = React.useMemo(() => [
     "Aguere.jpg", "Angeles Bermejo.jpg", "Aregume.jpg", "Buen Consejo.png", "Camino La Villa.jpg", "Camino Largo.jpg", "Casa Azul.png", "Chamberi.png", "Chayofa.png", "Cisneros Alter.jpg", "Colegio Cervantes.jpg", "Costa Adeje I..jpg", "Cuesta 25 de Julio.jpg", "Dominguez Alfonso.jpg", "Echeyde Arona.png", "Echeyde La Laguna.png", "El Monte.png", "Escuela Rural.png", "Escuelas Pias.jpg", "Gobierno de Canarias (Educacion).jpg", "Hispano La Salud.png", "La Cuesta B.N.jpg", "La Higuerita.jpg", "La Rosa.png", "La Salle.png", "La Vega.jpg", "La Verdellada.jpg", "logo-pipo.jpg", "Los Alisios.jpg", "Los Menceyes.jpg", "Luis Alvarez Cruz.jpg", "Luther King.jpg", "Mayex.jpg", "Montessori.png", "Nuryana.jpg", "Punta Larga.jpg", "Pureza de Maria.png", "Ravelo.jpg", "Rodriguez Alberto.jpg", "Rodriguez Campos.png", "Saint Andrews.jpg", "Salesianas.jpg", "San Agustin.jpg", "San Fernando.jpg", "San Isidro.jpg", "San Pablo.png", "Santa Catalina de Siena.jpg", "Santa Cruz de California.jpg", "Santa Maria del Mar.jpg", "Santa Rosa de Lima.jpg", "Tacoronte.jpg", "Tagoror.jpg", "Teofilo Perez.png", "Tincer.jpg", "Virgen de Fatima.jpg", "Virgen del Mar.png"

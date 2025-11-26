@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from '@/utils/i18n';
 import { User } from '../utils/users';
 
 const Header: React.FC = () => {
@@ -30,7 +29,33 @@ const Header: React.FC = () => {
         return () => clearInterval(interval);
     }, [mounted]);
 
-    const { lang, setLang, t } = useTranslation();
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'usuarios': 'Usuarios',
+            'online': 'Online',
+            'cargandoUsuarios': 'Cargando usuarios...',
+            'usuarioPremium': 'Usuario Premium',
+            'miPremium': '👑 MI PREMIUM',
+            'premiumTitle': '¡Eres Premium! Ve tus estadísticas avanzadas',
+            'haztePremium': '⭐ HAZTE PREMIUM POR SOLO €1 MES',
+            'haztePremiumTitle': '¡Hazte Premium por solo €12 al año!',
+            'admin': '🔧 ADMIN',
+            'adminTitle': 'Panel de Administración Premium',
+            'seleccionaIdioma': 'Selecciona idioma',
+            'espanol': 'Español',
+            'ingles': 'English',
+            'frances': 'Francés',
+            'aleman': 'Alemán',
+            'cerrarSesion': 'Cerrar sesión'
+        };
+        return translations[key] || key;
+    };
+
+    // Estado temporal para idioma mientras I18nProvider está deshabilitado
+    const [lang, setLang] = useState('es');
+
+    // const { lang, setLang, t } = useTranslation();
 
     // Obtener usuario actual
     const [user, setUser] = useState<User | null>(null);

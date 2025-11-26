@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { renderNick } from "@/utils/renderNick";
-import { useTranslation } from '@/utils/i18n';
 import { UserDataAPI } from "../../utils/user-data";
 import { CampeonatosAPI } from "../../utils/campeonatos";
 import { UsersAPI } from "../../utils/users";
@@ -9,7 +8,24 @@ import { HistoriasAPI } from "../../utils/historias";
 import { ConcursosAPI } from "../../utils/concursos";
 
 export default function Estadisticas() {
-    const { t } = useTranslation();
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'estadisticasPremium': 'Estadísticas Premium',
+            'haztePremiumParaVer': 'Hazte Premium para ver',
+            'estadisticasGlobales': 'Estadísticas Globales',
+            'totalCompeticionesSuperadas': 'Total Competiciones Superadas',
+            'totalUsuarios': 'Total Usuarios',
+            'totalHistoriasCreadas': 'Total Historias Creadas',
+            'totalConcursosCreados': 'Total Concursos Creados',
+            'totalPreguntasAcertadas': 'Total Preguntas Acertadas',
+            'usuariosMasLikes': 'Usuarios con Más Likes',
+            'usuariosMasComentarios': 'Usuarios con Más Comentarios'
+        };
+        return translations[key] || key;
+    };
+
+    // const { t } = useTranslation();
     // Estado para detectar si el usuario es Premium
     const [isPremium, setIsPremium] = React.useState(false);
     const [currentUser, setCurrentUser] = React.useState<any>(null);

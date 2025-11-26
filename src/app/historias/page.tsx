@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { renderNick } from "@/utils/renderNick";
-import { useTranslation } from "@/utils/i18n";
 import { HistoriasAPI } from "../../utils/historias";
 
 type Historia = {
@@ -18,7 +17,20 @@ export default function Historias() {
     const [historias, setHistorias] = useState<Historia[]>([]);
     const [topLikes, setTopLikes] = useState<Historia[]>([]);
     const [topComentarios, setTopComentarios] = useState<Historia[]>([]);
-    const { t } = useTranslation();
+
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'historiasTitle': 'Historias',
+            'ultimas25Historias': 'Últimas 25 Historias',
+            'aunNoHayHistoria': 'Aún no hay historia',
+            'topHistoriasLikes': 'Top Historias por Likes',
+            'topHistoriasComentarios': 'Top Historias por Comentarios'
+        };
+        return translations[key] || key;
+    };
+
+    // const { t } = useTranslation();
     useEffect(() => {
         const loadHistorias = async () => {
             try {

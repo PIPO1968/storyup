@@ -57,10 +57,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <title>StoryUp</title>
         </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-green-100`}>
-          <I18nProvider>
-            <Header />
-            {children}
-          </I18nProvider>
+          {/* I18nProvider temporalmente deshabilitado para debugging */}
+          {/* <I18nProvider> */}
+          <Header />
+          {children}
+          {/* </I18nProvider> */}
         </body>
       </html>
     );
@@ -74,12 +75,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-green-100`}>
         {/* Deshabilitar React.StrictMode temporalmente para debugging */}
-        <I18nProvider>
-          <Header />
-          {/* Sidebar temporalmente deshabilitado para debugging */}
-          {/* {showSidebar && <Sidebar />} */}
-          <main>{children}</main>
-        </I18nProvider>
+        {/* I18nProvider temporalmente deshabilitado para debugging */}
+        {/* <I18nProvider> */}
+        <Header />
+        {/* Sidebar temporalmente deshabilitado para debugging */}
+        {/* {showSidebar && <Sidebar />} */}
+        <main>{children}</main>
+        {/* </I18nProvider> */}
       </body>
     </html>
   );

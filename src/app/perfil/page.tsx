@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { renderNick } from "@/utils/renderNick";
 import { TROFEOS_PREMIUM } from "@/data/trofeosPremiumImport";
-import { useTranslation } from "@/utils/i18n";
 import { useRouter } from "next/navigation";
 import { PremiosMensualesAPI } from "@/utils/premios-mensuales";
 import { ConcursosAPI } from "@/utils/concursos";
@@ -176,7 +175,45 @@ function PerfilUsuario() {
     const [respuesta, setRespuesta] = useState<string>("");
     const [mounted, setMounted] = useState(false);
 
-    const { t } = useTranslation();
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'informacionPersonal': 'Información Personal',
+            'nombre': 'Nombre',
+            'email': 'Email',
+            'centroEducativo': 'Centro Educativo',
+            'curso': 'Curso',
+            'tipoUsuario': 'Tipo de Usuario',
+            'fechaInscripcion': 'Fecha de Inscripción',
+            'totalAmigos': 'Total Amigos',
+            'totalHistorias': 'Total Historias',
+            'totalComentarios': 'Total Comentarios',
+            'trofeosDesbloqueados': 'Trofeos Desbloqueados',
+            'seleccionarUsuario': 'Seleccionar Usuario',
+            'enviar': 'Enviar',
+            'titulo': 'Título',
+            'descripcion': 'Descripción',
+            'fechaInicio': 'Fecha Inicio',
+            'fechaFin': 'Fecha Fin',
+            'gestionarConcursosFinalizados': 'Gestionar Concursos Finalizados',
+            'seleccionarConcurso': 'Seleccionar Concurso',
+            'seleccionarGanador': 'Seleccionar Ganador',
+            'asignarGanador': 'Asignar Ganador',
+            'panelAdministracion': 'Panel de Administración',
+            'palabraProhibida': 'Palabra Prohibida',
+            'sistemaAntibullying': 'Sistema Antibullying',
+            'avisoAntibullying': 'Aviso Antibullying',
+            'historiasTerror': 'Historias de Terror',
+            'perdidaLikes': 'Pérdida de Likes',
+            'mensajesUsuario': 'Mensajes del Usuario',
+            'palabrasProhibidasChat': 'Palabras Prohibidas en Chat',
+            'actividadConsecutiva': 'Actividad Consecutiva',
+            'sinPeligro': 'Sin Peligro'
+        };
+        return translations[key] || key;
+    };
+
+    // const { t } = useTranslation();
 
     // Inicialización y sincronización de usuario y rankings SOLO una vez
     useEffect(() => {

@@ -1,13 +1,25 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { renderNick } from "@/utils/renderNick";
-import { useTranslation } from "@/utils/i18n";
 import { ConcursosAPI } from "../../utils/concursos";
 
 export default function Concursos() {
     const [concursos, setConcursos] = useState<any[]>([]);
 
-    const { t } = useTranslation();
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'aunNoHayConcursoActivo': 'Aún no hay concurso activo',
+            'aunNoHayConcursoFinalizado': 'Aún no hay concurso finalizado',
+            'concursosTitle': 'Concursos',
+            'concursosActivos': 'Concursos Activos',
+            'ultimosGanadores': 'Últimos Ganadores',
+            'aunNoHayGanadores': 'Aún no hay ganadores'
+        };
+        return translations[key] || key;
+    };
+
+    // const { t } = useTranslation();
 
     useEffect(() => {
         const loadConcursos = async () => {

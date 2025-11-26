@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from '@/utils/i18n';
 import { normalizarValorPremio, normalizarEventoEspecial } from '@/utils/normalizadores';
 import { renderNick } from "@/utils/renderNick";
 import trofeos from "../../data/trofeos.json";
@@ -49,7 +48,17 @@ export default function CentrosCompetencia() {
     const [modoVisualizacion, setModoVisualizacion] = useState<"actual" | "historico" | "anual">("actual");
     const [mesSeleccionado, setMesSeleccionado] = useState<string>("");
     const fechaActual = new Date();
-    const { t } = useTranslation();
+
+    // Función temporal para traducciones mientras I18nProvider está deshabilitado
+    const t = (key: string) => {
+        const translations: Record<string, string> = {
+            'leagueTitle': 'Liga de Centros',
+            'leagueSubtitle': 'Compite con otros centros educativos'
+        };
+        return translations[key] || key;
+    };
+
+    // const { t } = useTranslation();
     const [mesesDisponibles, setMesesDisponibles] = useState<string[]>([]);
     const [historialGanadores, setHistorialGanadores] = useState<any[]>([]);
     const [premiosDelMes, setPremiosDelMes] = useState<any[]>([]);
@@ -96,8 +105,8 @@ export default function CentrosCompetencia() {
             } else {
                 // Meses diferentes
                 enPeriodo = (mes === vacacion.inicio.mes && dia >= vacacion.inicio.dia) ||
-                           (mes > vacacion.inicio.mes && mes < vacacion.fin.mes) ||
-                           (mes === vacacion.fin.mes && dia <= vacacion.fin.dia);
+                    (mes > vacacion.inicio.mes && mes < vacacion.fin.mes) ||
+                    (mes === vacacion.fin.mes && dia <= vacacion.fin.dia);
             }
 
             if (enPeriodo) {
