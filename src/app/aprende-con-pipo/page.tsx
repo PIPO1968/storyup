@@ -271,7 +271,7 @@ export default function AprendeConPipo() {
 
     // Función para manejar la finalización del torneo premium
 
-    function generarPregunta() {
+    async function generarPregunta() {
         if (preguntasFiltradas.length === 0) {
             setPreguntaActual("");
             setObjetoPreguntaActual(null);
@@ -371,239 +371,239 @@ export default function AprendeConPipo() {
                 } catch (error) {
                     console.error('Error saving user stats:', error);
                 }
-                    }
-                }
-            }
-        } else {
-            if (timeLeft > 120) {
-                const penalizacionBase = -0.5 * multiplicadorDocente;
-                setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta} ${penalizacionBase} likes${esDocente ? ' (Docente: 50% puntos)' : ''}`);
-                likesDelta = penalizacionBase;
-            } else {
-                const penalizacionBase = -1 * multiplicadorDocente;
-                setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta} ${penalizacionBase} like${Math.abs(penalizacionBase) !== 1 ? 's' : ''}${esDocente ? ' (Docente: 50% puntos)' : ''}`);
-                likesDelta = penalizacionBase;
-            }
-            // Guardar preguntas falladas en users
-            if (typeof window !== "undefined") {
-                const userStr = sessionStorage.getItem("user");
-                const usersStr = sessionStorage.getItem("users");
-                if (userStr && usersStr) {
-                    const userObj = JSON.parse(userStr);
-                    const usersArr = JSON.parse(usersStr);
-                    const idx = usersArr.findIndex((u: any) => u.nick === userObj.nick);
-                    if (idx !== -1) {
-                        usersArr[idx].preguntasFalladas = (usersArr[idx].preguntasFalladas || 0) + 1;
-                        sessionStorage.setItem("users", JSON.stringify(usersArr));
-                    }
-                }
-            }
-        }
-        if (typeof window !== "undefined") {
-            const userStr = sessionStorage.getItem("user");
-            if (userStr) {
-                const userObj = JSON.parse(userStr);
-                sumarLikesPerfil(userObj.nick, likesDelta);
             }
         }
     }
-
-    // Función para manejar la finalización del torneo premium
-    function handleTournamentComplete(aciertos: number, puntuacionTotal: number) {
-        if (torneoActivo && usuarioActual) {
-
-            // Actualizar estadísticas del usuario en torneos premium
-            const userStats = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'competiciones_premium') as { victorias: number; participaciones: number; puntuacionTotal: number };
-            const currentStats = userStats || { victorias: 0, participaciones: 0, puntuacionTotal: 0 };
-            currentStats.participaciones += 1;
-            currentStats.puntuacionTotal += puntuacionTotal;
-
-            // Guardar estadísticas actualizadas
-            await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'competiciones_premium', currentStats);
-
-            // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
-            if (modoTorneo && torneoActivo) {
-                if (!torneoIniciado) {
-                    return (
-                        <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
-                            <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
-                                <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
-                                <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
-                                <button
-                                    onClick={() => setTorneoIniciado(true)}
-                                    className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
-                                >
-                                    Comenzar Torneo
-                                </button>
-                            </div>
-                        </div>
-                    );
-                } else {
-                    const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
-                    return (
-                        <TournamentQuiz
-                            userGrade={cursoNum}
-                            onTournamentComplete={handleTournamentComplete}
-                        />
-                    );
-                }
+} else {
+    if (timeLeft > 120) {
+        const penalizacionBase = -0.5 * multiplicadorDocente;
+        setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta} ${penalizacionBase} likes${esDocente ? ' (Docente: 50% puntos)' : ''}`);
+        likesDelta = penalizacionBase;
+    } else {
+        const penalizacionBase = -1 * multiplicadorDocente;
+        setFeedback(`Incorrecto. La respuesta era: ${respuestaCorrecta} ${penalizacionBase} like${Math.abs(penalizacionBase) !== 1 ? 's' : ''}${esDocente ? ' (Docente: 50% puntos)' : ''}`);
+        likesDelta = penalizacionBase;
+    }
+    // Guardar preguntas falladas en users
+    if (typeof window !== "undefined") {
+        const userStr = sessionStorage.getItem("user");
+        const usersStr = sessionStorage.getItem("users");
+        if (userStr && usersStr) {
+            const userObj = JSON.parse(userStr);
+            const usersArr = JSON.parse(usersStr);
+            const idx = usersArr.findIndex((u: any) => u.nick === userObj.nick);
+            if (idx !== -1) {
+                usersArr[idx].preguntasFalladas = (usersArr[idx].preguntasFalladas || 0) + 1;
+                sessionStorage.setItem("users", JSON.stringify(usersArr));
             }
+        }
+    }
+}
+if (typeof window !== "undefined") {
+    const userStr = sessionStorage.getItem("user");
+    if (userStr) {
+        const userObj = JSON.parse(userStr);
+        sumarLikesPerfil(userObj.nick, likesDelta);
+    }
+}
+    }
 
-            if (modoTorneoManual) {
-                const cursoNum = cursoUsuario ? Number(cursoUsuario.match(/(\d+)/)?.[1] || 1) : 1;
-                return <TournamentQuiz userGrade={cursoNum} onTournamentComplete={handleTournamentComplete} />;
+// Función para manejar la finalización del torneo premium
+function handleTournamentComplete(aciertos: number, puntuacionTotal: number) {
+    if (torneoActivo && usuarioActual) {
+
+        // Actualizar estadísticas del usuario en torneos premium
+        const userStats = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'competiciones_premium') as { victorias: number; participaciones: number; puntuacionTotal: number };
+        const currentStats = userStats || { victorias: 0, participaciones: 0, puntuacionTotal: 0 };
+        currentStats.participaciones += 1;
+        currentStats.puntuacionTotal += puntuacionTotal;
+
+        // Guardar estadísticas actualizadas
+        await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'competiciones_premium', currentStats);
+
+        // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
+        if (modoTorneo && torneoActivo) {
+            if (!torneoIniciado) {
+                return (
+                    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
+                        <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
+                            <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
+                            <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
+                            <button
+                                onClick={() => setTorneoIniciado(true)}
+                                className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
+                            >
+                                Comenzar Torneo
+                            </button>
+                        </div>
+                    </div>
+                );
+            } else {
+                const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
+                return (
+                    <TournamentQuiz
+                        userGrade={cursoNum}
+                        onTournamentComplete={handleTournamentComplete}
+                    />
+                );
             }
         }
 
-        return (
-            <div className="min-h-screen bg-green-100 p-8 flex flex-col items-center">
-                <h1 className="text-2xl font-bold mb-4 text-center">Aprende con Pipo</h1>
-                <div className="flex items-stretch mx-auto" style={{ transform: 'translateX(-80px)' }}>
-                    <img src="/trofeo16.jpg" alt="Trofeo 16" className="h-40 object-contain mr-4" />
-                    <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-8 flex flex-col gap-6 mx-auto">
-                        {!modoCompeticion ? (
-                            <>
-                                {/* ✅ SISTEMA ANTI-TRAMPA: Información del usuario detectada automáticamente */}
-                                <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
-                                    <h3 className="text-lg font-bold text-blue-800 mb-2">🛡️ Sistema Anti-Trampa Activo</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                        <div>
-                                            <span className="font-semibold text-blue-700">👤 Usuario:</span>
-                                            <span className="ml-2 text-gray-800">{usuarioActual?.nick || "No detectado"}</span>
-                                        </div>
-                                        <div>
-                                            <span className="font-semibold text-blue-700">🎓 Curso detectado:</span>
-                                            <span className="ml-2 text-gray-800 font-semibold">{cursoUsuario}</span>
-                                        </div>
-                                        <div>
-                                            <span className="font-semibold text-blue-700">🏫 Centro:</span>
-                                            <span className="ml-2 text-gray-800">{usuarioActual?.centro || "No asignado"}</span>
-                                        </div>
-                                        <div>
-                                            <span className="font-semibold text-blue-700">👥 Tipo:</span>
-                                            <span className="ml-2 text-gray-800">
-                                                {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") ? "Docente" : "Estudiante"}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded">
-                                        <p className="text-xs text-yellow-800">
-                                            🔒 <strong>Solo podrás responder preguntas de tu nivel</strong> para garantizar puntuaciones justas.
-                                        </p>
-                                        {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") && (
-                                            <p className="text-xs text-orange-800 mt-2">
-                                                👩‍🏫 <strong>Modo Docente:</strong> Preguntas de 6º curso y puntuación reducida al 50% para equilibrar la dificultad.
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
+        if (modoTorneoManual) {
+            const cursoNum = cursoUsuario ? Number(cursoUsuario.match(/(\d+)/)?.[1] || 1) : 1;
+            return <TournamentQuiz userGrade={cursoNum} onTournamentComplete={handleTournamentComplete} />;
+        }
+    }
 
-                                <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-                                    <label className="font-semibold">Asignatura:</label>
-                                    <select className="border rounded px-2 py-1" value={asignaturaSeleccionada} onChange={e => setAsignaturaSeleccionada(e.target.value)}>
-                                        {asignaturas.map(a => <option key={a} value={a}>{a}</option>)}
-                                    </select>
-                                    <div className="text-sm text-gray-600">
-                                        (Curso fijo: <strong>{cursoUsuario}</strong>)
+    return (
+        <div className="min-h-screen bg-green-100 p-8 flex flex-col items-center">
+            <h1 className="text-2xl font-bold mb-4 text-center">Aprende con Pipo</h1>
+            <div className="flex items-stretch mx-auto" style={{ transform: 'translateX(-80px)' }}>
+                <img src="/trofeo16.jpg" alt="Trofeo 16" className="h-40 object-contain mr-4" />
+                <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-8 flex flex-col gap-6 mx-auto">
+                    {!modoCompeticion ? (
+                        <>
+                            {/* ✅ SISTEMA ANTI-TRAMPA: Información del usuario detectada automáticamente */}
+                            <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+                                <h3 className="text-lg font-bold text-blue-800 mb-2">🛡️ Sistema Anti-Trampa Activo</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <span className="font-semibold text-blue-700">👤 Usuario:</span>
+                                        <span className="ml-2 text-gray-800">{usuarioActual?.nick || "No detectado"}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-semibold text-blue-700">🎓 Curso detectado:</span>
+                                        <span className="ml-2 text-gray-800 font-semibold">{cursoUsuario}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-semibold text-blue-700">🏫 Centro:</span>
+                                        <span className="ml-2 text-gray-800">{usuarioActual?.centro || "No asignado"}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-semibold text-blue-700">👥 Tipo:</span>
+                                        <span className="ml-2 text-gray-800">
+                                            {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") ? "Docente" : "Estudiante"}
+                                        </span>
                                     </div>
                                 </div>
-                                <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4" onClick={generarPregunta}>
-                                    Generar pregunta
-                                </button>
-                                <button className="bg-orange-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
-                                    // Obtener curso y centro escolar del usuario desde localStorage
-                                    let cursoUsuario = 1;
-                                    let centroUsuario = "";
-                                    if (typeof window !== "undefined") {
-                                        const userStr = sessionStorage.getItem("user");
-                                        if (userStr) {
-                                            const userObj = JSON.parse(userStr);
-                                            // El curso puede estar como número (1-6) o como texto ("6º", "5º", ...)
-                                            let cursoNum = 1;
-                                            if (userObj.curso) {
-                                                if (typeof userObj.curso === "string") {
-                                                    const match = userObj.curso.match(/(\d)/);
-                                                    if (match) cursoNum = Number(match[1]);
-                                                } else if (typeof userObj.curso === "number") {
-                                                    cursoNum = userObj.curso;
-                                                }
-                                            }
-                                            if (!isNaN(cursoNum) && cursoNum >= 1 && cursoNum <= 6) {
-                                                cursoUsuario = cursoNum;
-                                            }
-                                            // Centro escolar
-                                            if (userObj.centro) {
-                                                centroUsuario = userObj.centro;
+                                <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                                    <p className="text-xs text-yellow-800">
+                                        🔒 <strong>Solo podrás responder preguntas de tu nivel</strong> para garantizar puntuaciones justas.
+                                    </p>
+                                    {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") && (
+                                        <p className="text-xs text-orange-800 mt-2">
+                                            👩‍🏫 <strong>Modo Docente:</strong> Preguntas de 6º curso y puntuación reducida al 50% para equilibrar la dificultad.
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+                                <label className="font-semibold">Asignatura:</label>
+                                <select className="border rounded px-2 py-1" value={asignaturaSeleccionada} onChange={e => setAsignaturaSeleccionada(e.target.value)}>
+                                    {asignaturas.map(a => <option key={a} value={a}>{a}</option>)}
+                                </select>
+                                <div className="text-sm text-gray-600">
+                                    (Curso fijo: <strong>{cursoUsuario}</strong>)
+                                </div>
+                            </div>
+                            <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4" onClick={generarPregunta}>
+                                Generar pregunta
+                            </button>
+                            <button className="bg-orange-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
+                                // Obtener curso y centro escolar del usuario desde localStorage
+                                let cursoUsuario = 1;
+                                let centroUsuario = "";
+                                if (typeof window !== "undefined") {
+                                    const userStr = sessionStorage.getItem("user");
+                                    if (userStr) {
+                                        const userObj = JSON.parse(userStr);
+                                        // El curso puede estar como número (1-6) o como texto ("6º", "5º", ...)
+                                        let cursoNum = 1;
+                                        if (userObj.curso) {
+                                            if (typeof userObj.curso === "string") {
+                                                const match = userObj.curso.match(/(\d)/);
+                                                if (match) cursoNum = Number(match[1]);
+                                            } else if (typeof userObj.curso === "number") {
+                                                cursoNum = userObj.curso;
                                             }
                                         }
+                                        if (!isNaN(cursoNum) && cursoNum >= 1 && cursoNum <= 6) {
+                                            cursoUsuario = cursoNum;
+                                        }
+                                        // Centro escolar
+                                        if (userObj.centro) {
+                                            centroUsuario = userObj.centro;
+                                        }
                                     }
-                                    setModoCompeticion(true);
-                                    setCursoCompeticion(cursoUsuario);
-                                    setCentroCompeticion(centroUsuario);
+                                }
+                                setModoCompeticion(true);
+                                setCursoCompeticion(cursoUsuario);
+                                setCentroCompeticion(centroUsuario);
+                            }}>
+                                Modo competición
+                            </button>
+                            {isPremium && (
+                                <button className="bg-purple-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
+                                    setModoTorneoManual(true);
                                 }}>
-                                    Modo competición
+                                    Modo torneo
                                 </button>
-                                {isPremium && (
-                                    <button className="bg-purple-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
-                                        setModoTorneoManual(true);
-                                    }}>
-                                        Modo torneo
+                            )}
+                            {preguntaActual && (
+                                <div className="mt-4">
+                                    <div className="font-semibold mb-2">{preguntaActual}</div>
+                                    <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
+                                    <input
+                                        type="text"
+                                        className="border rounded px-2 py-1 w-full mb-2"
+                                        value={respuestaUsuario}
+                                        onChange={e => setRespuestaUsuario(e.target.value)}
+                                        placeholder="Escribe tu respuesta aquí"
+                                        disabled={bloqueado}
+                                    />
+                                    <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
+                                        Comprobar respuesta
                                     </button>
-                                )}
-                                {preguntaActual && (
-                                    <div className="mt-4">
-                                        <div className="font-semibold mb-2">{preguntaActual}</div>
-                                        <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
-                                        <input
-                                            type="text"
-                                            className="border rounded px-2 py-1 w-full mb-2"
-                                            value={respuestaUsuario}
-                                            onChange={e => setRespuestaUsuario(e.target.value)}
-                                            placeholder="Escribe tu respuesta aquí"
-                                            disabled={bloqueado}
-                                        />
-                                        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
-                                            Comprobar respuesta
-                                        </button>
-                                        {feedback && <div className="mt-2 font-bold">{feedback}</div>}
-                                    </div>
-                                )}
-                                {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
-                            </>
-                        ) : (
-                            <div className="mt-4">
-                                <ChampionshipQuiz userGrade={cursoCompeticion} userSchool={centroCompeticion} />
-                                <button className="bg-gray-500 text-white px-4 py-2 rounded mt-4" onClick={() => setModoCompeticion(false)}>
-                                    Salir de competición
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                    <img src="/logo-pipo.jpg" alt="Logo Pipo" className="h-40 object-contain ml-4" />
+                                    {feedback && <div className="mt-2 font-bold">{feedback}</div>}
+                                </div>
+                            )}
+                            {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
+                        </>
+                    ) : (
+                        <div className="mt-4">
+                            <ChampionshipQuiz userGrade={cursoCompeticion} userSchool={centroCompeticion} />
+                            <button className="bg-gray-500 text-white px-4 py-2 rounded mt-4" onClick={() => setModoCompeticion(false)}>
+                                Salir de competición
+                            </button>
+                        </div>
+                    )}
                 </div>
-
-                {/* Tabla Docentes */}
-                <div className="mt-8">
-                    <h2 className="text-xl font-bold mb-2">Ranking Docentes</h2>
-                    <table className="w-full border mb-4" style={{ backgroundColor: '#fffbe6' }}>
-                        <thead>
-                            <tr style={{ backgroundColor: '#fff9c4' }}>
-                                <th className="p-2">Docente</th>
-                                <th className="p-2">Likes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.entries(getTablaDocentes(temporadaSeleccionada)).map(([nick, likes]) => (
-                                <tr key={nick}>
-                                    <td className="border p-2">{nick}</td>
-                                    <td className="border p-2">{likes}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                <img src="/logo-pipo.jpg" alt="Logo Pipo" className="h-40 object-contain ml-4" />
             </div>
-        );
-    }
+
+            {/* Tabla Docentes */}
+            <div className="mt-8">
+                <h2 className="text-xl font-bold mb-2">Ranking Docentes</h2>
+                <table className="w-full border mb-4" style={{ backgroundColor: '#fffbe6' }}>
+                    <thead>
+                        <tr style={{ backgroundColor: '#fff9c4' }}>
+                            <th className="p-2">Docente</th>
+                            <th className="p-2">Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.entries(getTablaDocentes(temporadaSeleccionada)).map(([nick, likes]) => (
+                            <tr key={nick}>
+                                <td className="border p-2">{nick}</td>
+                                <td className="border p-2">{likes}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
 }
 

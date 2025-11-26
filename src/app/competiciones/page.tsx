@@ -140,11 +140,10 @@ export default function Competiciones() {
                             <button
                                 key={temporada}
                                 onClick={() => handleTemporadaChange(temporada)}
-                                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-                                    temporadaSeleccionada === temporada
+                                className={`px-4 py-2 rounded-lg font-semibold transition-all ${temporadaSeleccionada === temporada
                                         ? 'bg-blue-600 text-white shadow-lg'
                                         : 'bg-white text-blue-600 border border-blue-300 hover:bg-blue-50'
-                                }`}
+                                    }`}
                             >
                                 Temporada {temporada.replace('t', '')}
                             </button>
