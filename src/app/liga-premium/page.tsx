@@ -20,8 +20,15 @@ const LigaPremiumPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [usuariosPremium, setUsuariosPremium] = useState<UsuarioPremium[]>([]);
     const [mensaje, setMensaje] = useState('');
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
         const loadData = async () => {
             if (typeof window !== "undefined") {
                 const userData = sessionStorage.getItem('user');
@@ -49,7 +56,7 @@ const LigaPremiumPage: React.FC = () => {
             setLoading(false);
         };
         loadData();
-    }, []);
+    }, [mounted]);
 
     const cargarLigaPremium = async () => {
         try {
@@ -66,8 +73,8 @@ const LigaPremiumPage: React.FC = () => {
                         puntos: puntos,
                         historiasCreadas: (user.historiasCreadas as number) || 0,
                         preguntasAcertadas: (user.preguntasAcertadas as number) || 0,
-                        amigos: (user.amigos as unknown[])?.length || 0,
-                        medallas: (user.medallas as unknown[])?.length || 0
+                        amigos: Array.isArray(user.amigos) ? user.amigos.length : 0,
+                        medallas: Array.isArray(user.medallas) ? user.medallas.length : 0
                     });
                 }
             });
@@ -90,14 +97,21 @@ const LigaPremiumPage: React.FC = () => {
         puntos += ((user.preguntasAcertadas as number) || 0) * 5;
 
         // Puntos por amigos (20 puntos cada amigo)
-        puntos += (((user.amigos as unknown[])?.length || 0) * 20);
+        const amigosCount = Array.isArray(user.amigos) ? user.amigos.length : 0;
+        puntos += amigosCount * 20;
 
         // Puntos por medallas (50 puntos cada medalla)
-        puntos += (((user.medallas as unknown[])?.length || 0) * 50);
+        const medallasCount = Array.isArray(user.medallas) ? user.medallas.length : 0;
+        puntos += medallasCount * 50;
 
         // Puntos por participación en competiciones premium
-        puntos += (user.competicionesPremium as { puntuacionTotal?: number })?.puntuacionTotal || 0; return puntos;
+        puntos += (user.competicionesPremium as { puntuacionTotal?: number })?.puntuacionTotal || 0;
+        return puntos;
     };
+
+    if (!mounted) {
+        return null;
+    }
 
     if (loading) {
         return (
