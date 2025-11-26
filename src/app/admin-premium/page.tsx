@@ -245,20 +245,26 @@ export default function AdminPremium() {
     };
 
     const activarPremium = async (): Promise<void> => {
+        console.log('🔄 Iniciando activación de premium para:', nick);
         if (!nick.trim()) {
             setMensaje("❌ Ingresa un nick válido");
             return;
         }
 
         try {
+            console.log('🔍 Buscando usuario...');
             // Encontrar el usuario
             const users = await UsersAPI.getAllUsers();
+            console.log('👥 Usuarios encontrados:', users.length);
             const userToUpdate = users.find(u => u.nick === nick.trim());
+            console.log('👤 Usuario encontrado:', userToUpdate);
+
             if (!userToUpdate) {
                 setMensaje("❌ Usuario no encontrado");
                 return;
             }
 
+            console.log('⏰ Calculando fecha de expiración...');
             // Verificar si ya tiene premium activo
             const fechaExpiracion = new Date();
             let tiempoRestante = 0;
@@ -270,6 +276,7 @@ export default function AdminPremium() {
                 if (fechaExpiracionExistente > ahora) {
                     // Calcular días restantes de premium existente
                     tiempoRestante = Math.ceil((fechaExpiracionExistente.getTime() - ahora.getTime()) / (1000 * 60 * 60 * 24));
+                    console.log('⏰ Tiempo restante encontrado:', tiempoRestante, 'días');
                 }
             }
 
@@ -283,7 +290,9 @@ export default function AdminPremium() {
                 premiumExpiracion: fechaExpiracion.toISOString()
             };
 
-            await UsersAPI.updateUser(updatedUser);
+            console.log('💾 Actualizando usuario en BD...');
+            const result = await UsersAPI.updateUser(updatedUser);
+            console.log('✅ Usuario actualizado:', result);
 
             const mensajeExtendido = tiempoRestante > 0
                 ? `\n\n⏰ Se ha añadido 1 año al tiempo restante de tu premium anterior (${tiempoRestante} días).`
@@ -296,8 +305,8 @@ export default function AdminPremium() {
             window.dispatchEvent(new CustomEvent('premiumUpdate', { detail: { nick, action: 'add' } }));
 
         } catch (error) {
-            console.error('Error al activar Premium:', error);
-            setMensaje("❌ Error al activar Premium. Inténtalo de nuevo.");
+            console.error('❌ Error al activar Premium:', error);
+            setMensaje(`❌ Error al activar Premium: ${error instanceof Error ? error.message : 'Error desconocido'}`);
         }
     };
 
