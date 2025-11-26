@@ -243,6 +243,12 @@
       "namedRegex": "^/centros\\-competencia(?:/)?$"
     },
     {
+      "page": "/clean-data",
+      "regex": "^/clean\\-data(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/clean\\-data(?:/)?$"
+    },
+    {
       "page": "/competiciones",
       "regex": "^/competiciones(?:/)?$",
       "routeKeys": {},

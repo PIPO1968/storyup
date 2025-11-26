@@ -30,6 +30,7 @@
   "/api/users/route": "app/api/users/route.js",
   "/aprende-con-pipo/page": "app/aprende-con-pipo/page.js",
   "/centros-competencia/page": "app/centros-competencia/page.js",
+  "/clean-data/page": "app/clean-data/page.js",
   "/competiciones/page": "app/competiciones/page.js",
   "/concurso/[numero]/page": "app/concurso/[numero]/page.js",
   "/concursos/page": "app/concursos/page.js",

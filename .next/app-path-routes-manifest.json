@@ -30,6 +30,7 @@
   "/api/users/route": "/api/users",
   "/aprende-con-pipo/page": "/aprende-con-pipo",
   "/centros-competencia/page": "/centros-competencia",
+  "/clean-data/page": "/clean-data",
   "/competiciones/page": "/competiciones",
   "/concurso/[numero]/page": "/concurso/[numero]",
   "/concursos/page": "/concursos",
