@@ -410,6 +410,19 @@ export async function DELETE(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
         const nick = searchParams.get('nick');
+        const action = searchParams.get('action');
+
+        // Endpoint temporal para limpiar datos corruptos
+        if (action === 'clean-corrupt-data') {
+            console.log('🧹 DELETE /api/users - Limpiando datos corruptos...');
+            const result = await pool.query('DELETE FROM "User"');
+            console.log(`✅ Eliminados ${result.rowCount} usuarios corruptos`);
+            return NextResponse.json({
+                success: true,
+                message: `Eliminados ${result.rowCount} usuarios corruptos. La aplicación está lista para nuevos registros.`,
+                deletedCount: result.rowCount
+            });
+        }
 
         if (!nick) {
             return NextResponse.json({ error: 'Nick is required' }, { status: 400 });
