@@ -30,6 +30,33 @@ interface Usuario {
 
 function PerfilUsuario() {
     const router = useRouter();
+    // Verificación inicial de sesión
+    const [initialCheckDone, setInitialCheckDone] = useState(false);
+
+    // Verificar sesión inmediatamente
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            if (!userStr) {
+                // No hay sesión, redirigir al inicio
+                router.push('/');
+                return;
+            }
+            setInitialCheckDone(true);
+        }
+    }, [router]);
+
+    // No renderizar hasta verificar sesión inicial
+    if (!initialCheckDone) {
+        return (
+            <div className="min-h-screen bg-green-100 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
+                    <p className="text-green-600 font-semibold">Verificando sesión...</p>
+                </div>
+            </div>
+        );
+    }
     // Función para bloquear manualmente el trofeo 10 al usuario seleccionado
     // Función para bloquear manualmente cualquier trofeo al usuario seleccionado
     const handleLockTrofeo = async (trofeoIdx: number) => {
