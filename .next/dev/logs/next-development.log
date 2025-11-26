@@ -1,6 +1,1 @@
-[00:00:00.945] Server  LOG      ✓ Ready in 619ms
-[00:00:02.322] Server  ERROR   Error en registro: error: relation "User" does not exist
-[00:04:20.866] Server  LOG        Reload env: .env.local
-[00:04:54.164] Server  ERROR   Error en registro: Error: self-signed certificate in certificate chain
-[00:07:05.734] Server  LOG        Reload env: .env.local
-[00:07:56.724] Server  ERROR   Error en registro: error: malformed array literal: "[]"
+[00:00:01.301] Server  LOG      ✓ Ready in 874ms
