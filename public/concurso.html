@@ -14,15 +14,15 @@
         let storyup_last_activity = Date.now();
         function updateActivity() {
             storyup_last_activity = Date.now();
-            localStorage.setItem('storyup_last_activity', storyup_last_activity);
+            sessionStorage.setItem('storyup_last_activity', storyup_last_activity);
         }
         document.addEventListener('mousemove', updateActivity);
         document.addEventListener('keydown', updateActivity);
         document.addEventListener('click', updateActivity);
         setInterval(function () {
-            const last = parseInt(localStorage.getItem('storyup_last_activity') || '0', 10);
+            const last = parseInt(sessionStorage.getItem('storyup_last_activity') || '0', 10);
             if (last && Date.now() - last > 60 * 60 * 1000) {
-                localStorage.removeItem('storyup_logged');
+                sessionStorage.removeItem('user');
                 window.location.href = 'login.html';
             }
         }, 60000);

@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 const user = await res.json();
                 console.log('[LOGIN] Usuario autenticado:', user);
-                localStorage.setItem('storyup_logged', JSON.stringify(user));
-                console.log('[LOGIN] Guardado en localStorage:', localStorage.getItem('storyup_logged'));
+                sessionStorage.setItem('user', JSON.stringify(user));
+                console.log('[LOGIN] Guardado en sessionStorage:', sessionStorage.getItem('user'));
                 window.location.href = 'index.html';
             } catch (err) {
                 if (errorDiv) {

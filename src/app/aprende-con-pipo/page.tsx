@@ -1,14 +1,16 @@
 "use client";
 // Tabla individual de docentes por temporada
-function getTablaDocentes(temporada: number) {
+import React from "react";
+import ChampionshipQuiz from "../../components/ChampionshipQuiz";
+import TournamentQuiz from "../../components/TournamentQuiz";
+
+async function getTablaDocentes(temporada: number) {
     if (typeof window === "undefined") return {};
-    const key = `campeonato_individual_t${temporada}`;
-    const tabla = JSON.parse(localStorage.getItem(key) || '{}');
-    // Filtrar solo docentes
-    const usersStr = localStorage.getItem("users");
-    if (!usersStr) return {};
-    const usersArr = JSON.parse(usersStr);
-    const docentes = usersArr.filter((u: any) => u.tipo === "Docente");
+    const responseCampeonato = await fetch(`/api/campeonatos?temporada=t${temporada}&tipo=individual`);
+    const tabla = await responseCampeonato.json();
+    const responseUsers = await fetch('/api/users');
+    const usersArr = await responseUsers.json();
+    const docentes = usersArr.filter((u: any) => u.tipo === "docente");
     const resultado: Record<string, number> = {};
     docentes.forEach((doc: any) => {
         if (tabla[doc.nick]) {
@@ -21,9 +23,6 @@ function getTablaDocentes(temporada: number) {
         .slice(0, 25);
     return Object.fromEntries(ordenados);
 }
-import React from "react";
-import ChampionshipQuiz from "../../components/ChampionshipQuiz";
-import TournamentQuiz from "../../components/TournamentQuiz";
 
 export default function AprendeConPipo() {
     // Estado para mostrar modo competición
@@ -54,17 +53,16 @@ export default function AprendeConPipo() {
         return year;
     }
     // Obtener todas las temporadas guardadas
-    function getTemporadasDisponibles() {
-        const temporadas: number[] = [];
-        for (let i = 2023; i <= getCurrentSeason(); i++) {
-            // Si existe alguna tabla individual o centro para esa temporada, la mostramos
-            if (localStorage.getItem(`campeonato_individual_t${i}`) || localStorage.getItem(`campeonato_centro_t${i}`)) {
-                temporadas.push(i);
-            }
-        }
+    async function getTemporadasDisponibles() {
+        const response = await fetch('/api/campeonatos');
+        const campeonatos = await response.json();
+        const temporadasNumeros = campeonatos.map((c: any) => parseInt(c.temporada.replace('t', ''))).filter((n: any): n is number => !isNaN(n));
+        const temporadasSet = new Set<number>(temporadasNumeros);
+        const temporadas: number[] = Array.from(temporadasSet);
         // Siempre mostrar la actual aunque no tenga datos
-        if (!temporadas.includes(getCurrentSeason())) {
-            temporadas.push(getCurrentSeason());
+        const currentSeason = getCurrentSeason();
+        if (!temporadas.includes(currentSeason)) {
+            temporadas.push(currentSeason);
         }
         return temporadas.sort((a, b) => b - a); // Descendente
     }
@@ -78,51 +76,56 @@ export default function AprendeConPipo() {
     }
 
     // Likes individuales por temporada
-    function getLikesIndividual(nick: string, temporada: number): number {
+    async function getLikesIndividual(nick: string, temporada: number): Promise<number> {
         if (typeof window === "undefined") return 0;
-        const key = `campeonato_individual_t${temporada}`;
-        const tabla = JSON.parse(localStorage.getItem(key) || '{}');
-        return tabla[nick] || 0;
+        const response = await fetch(`/api/campeonatos?temporada=t${temporada}&tipo=individual&nick=${nick}`);
+        const data = await response.json();
+        return data.length > 0 ? data[0].likes || 0 : 0;
     }
 
-    function getLikesCentro(centro: string, temporada: number): number {
+    async function getLikesCentro(centro: string, temporada: number): Promise<number> {
         if (typeof window === "undefined") return 0;
-        const key = `campeonato_centro_t${temporada}`;
-        const tabla = JSON.parse(localStorage.getItem(key) || '{}');
-        return tabla[centro] || 0;
+        const response = await fetch(`/api/campeonatos?temporada=t${temporada}&tipo=centros`);
+        const data = await response.json();
+        const centroData = data.find((c: any) => c.nick === centro);
+        return centroData ? centroData.likes || 0 : 0;
     }
 
-    function sumarLikes(nick: string, centro: string, cantidad: number): void {
+    async function sumarLikes(nick: string, centro: string, cantidad: number): Promise<void> {
         if (typeof window === "undefined") return;
-        const keyInd = `campeonato_individual_t${getCurrentSeason()}`;
-        const tablaInd = JSON.parse(localStorage.getItem(keyInd) || '{}');
-        tablaInd[nick] = (tablaInd[nick] || 0) + cantidad;
-        localStorage.setItem(keyInd, JSON.stringify(tablaInd));
-        const keyCentro = `campeonato_centro_t${getCurrentSeason()}`;
-        const tablaCentro = JSON.parse(localStorage.getItem(keyCentro) || '{}');
-        tablaCentro[centro] = (tablaCentro[centro] || 0) + cantidad;
-        localStorage.setItem(keyCentro, JSON.stringify(tablaCentro));
+        const temporada = `t${getCurrentSeason()}`;
+        // Actualizar likes individuales
+        await fetch('/api/campeonatos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ temporada, tipo: 'individual', nick, likes: cantidad })
+        });
+        // Actualizar likes de centro
+        await fetch('/api/campeonatos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ temporada, tipo: 'centros', nick: centro, likes: cantidad })
+        });
     }
 
-    function sumarLikesPerfil(nick: string, cantidad: number): void {
+    async function sumarLikesPerfil(nick: string, cantidad: number): Promise<void> {
         if (typeof window === "undefined") return;
-        // Actualizar solo el campo likes en el objeto del usuario en localStorage
-        const usersStr = localStorage.getItem("users");
-        if (usersStr) {
-            const usersArr = JSON.parse(usersStr);
-            const idx = usersArr.findIndex((u: any) => u.nick === nick);
-            if (idx !== -1) {
-                usersArr[idx].likes = (parseFloat(usersArr[idx].likes) || 0) + cantidad;
-                localStorage.setItem("users", JSON.stringify(usersArr));
-            }
-        }
-        // Actualizar también el objeto user
-        const userStr = localStorage.getItem("user");
+        // Actualizar likes del usuario
+        const response = await fetch(`/api/users/${nick}`);
+        const user = await response.json();
+        const newLikes = (parseFloat(user.likes) || 0) + cantidad;
+        await fetch(`/api/users/${nick}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ likes: newLikes })
+        });
+        // Actualizar también el objeto user en sessionStorage
+        const userStr = sessionStorage.getItem("user");
         if (userStr) {
             const userObj = JSON.parse(userStr);
             if (userObj.nick === nick) {
-                userObj.likes = (parseFloat(userObj.likes) || 0) + cantidad;
-                localStorage.setItem("user", JSON.stringify(userObj));
+                userObj.likes = newLikes;
+                sessionStorage.setItem("user", JSON.stringify(userObj));
             }
         }
     }
@@ -157,7 +160,7 @@ export default function AprendeConPipo() {
     React.useEffect(() => {
         if (typeof window === "undefined") return;
 
-        const userStr = localStorage.getItem("currentUser") || localStorage.getItem("user");
+        const userStr = sessionStorage.getItem("user") || sessionStorage.getItem("user");
         if (userStr) {
             try {
                 const userObj = JSON.parse(userStr);
@@ -195,7 +198,7 @@ export default function AprendeConPipo() {
                 setCursoUsuario(cursoDetectado);
 
                 // Verificar si hay un torneo premium activo
-                const torneoActivoStr = localStorage.getItem('torneo_activo_premium');
+                const torneoActivoStr = sessionStorage.getItem('torneo_activo_premium');
                 if (torneoActivoStr) {
                     const torneoData = JSON.parse(torneoActivoStr);
                     setTorneoActivo(torneoData);
@@ -223,7 +226,7 @@ export default function AprendeConPipo() {
             setBloqueado(true);
             setFeedback("⏰ Tiempo agotado. No puedes responder esta pregunta. -2 likes");
             if (typeof window !== "undefined") {
-                const userStr = localStorage.getItem("user");
+                const userStr = sessionStorage.getItem("user");
                 if (userStr) {
                     const userObj = JSON.parse(userStr);
                     sumarLikesPerfil(userObj.nick, -2);
@@ -306,28 +309,7 @@ export default function AprendeConPipo() {
         setPreguntasUsadas([...preguntasUsadas, preguntaSeleccionada.pregunta]);
     }
 
-    {/* Tabla Docentes */ }
-    <div className="mt-8">
-        <h2 className="text-xl font-bold mb-2">Ranking Docentes</h2>
-        <table className="w-full border mb-4" style={{ backgroundColor: '#fffbe6' }}>
-            <thead>
-                <tr style={{ backgroundColor: '#fff9c4' }}>
-                    <th className="p-2">Docente</th>
-                    <th className="p-2">Likes</th>
-                </tr>
-            </thead>
-            <tbody>
-                {Object.entries(getTablaDocentes(temporadaSeleccionada)).map(([nick, likes]) => (
-                    <tr key={nick}>
-                        <td className="border p-2">{nick}</td>
-                        <td className="border p-2">{likes}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
-
-    // Mover la función comprobarRespuesta fuera del return y asegurar que el return solo contiene JSX
+    // Función para comprobar respuesta
     function comprobarRespuesta() {
         if (bloqueado) return;
         let likesDelta = 0;
@@ -353,15 +335,15 @@ export default function AprendeConPipo() {
             }
             // Guardar respuestas acertadas en localStorage para el perfil y en users
             if (typeof window !== "undefined") {
-                const userStr = localStorage.getItem("user");
-                const usersStr = localStorage.getItem("users");
+                const userStr = sessionStorage.getItem("user");
+                const usersStr = sessionStorage.getItem("users");
                 if (userStr && usersStr) {
                     const userObj = JSON.parse(userStr);
 
                     // Guardar total general de respuestas acertadas
                     const keyAcertadas = `acertadas_${userObj.nick}`;
-                    const totalAcertadas = parseInt(localStorage.getItem(keyAcertadas) || '0', 10);
-                    localStorage.setItem(keyAcertadas, String(totalAcertadas + 1));
+                    const totalAcertadas = parseInt(sessionStorage.getItem(keyAcertadas) || '0', 10);
+                    sessionStorage.setItem(keyAcertadas, String(totalAcertadas + 1));
 
                     // ✅ NUEVO: Guardar respuestas acertadas por asignatura específica
                     if (objetoPreguntaActual && objetoPreguntaActual.categoria) {
@@ -380,8 +362,8 @@ export default function AprendeConPipo() {
                         };
                         const asignaturaFinal = mapaAsignaturas[asignaturaNormalizada] || asignaturaNormalizada;
                         const keyAsignatura = `${asignaturaFinal}_${userObj.nick}`;
-                        const totalAsignatura = parseInt(localStorage.getItem(keyAsignatura) || '0', 10);
-                        localStorage.setItem(keyAsignatura, String(totalAsignatura + 1));
+                        const totalAsignatura = parseInt(sessionStorage.getItem(keyAsignatura) || '0', 10);
+                        sessionStorage.setItem(keyAsignatura, String(totalAsignatura + 1));
                     }
 
                     // Actualizar campo preguntasAcertadas en users
@@ -389,7 +371,7 @@ export default function AprendeConPipo() {
                     const idx = usersArr.findIndex((u: any) => u.nick === userObj.nick);
                     if (idx !== -1) {
                         usersArr[idx].preguntasAcertadas = (usersArr[idx].preguntasAcertadas || 0) + 1;
-                        localStorage.setItem("users", JSON.stringify(usersArr));
+                        sessionStorage.setItem("users", JSON.stringify(usersArr));
                     }
                 }
             }
@@ -405,161 +387,27 @@ export default function AprendeConPipo() {
             }
             // Guardar preguntas falladas en users
             if (typeof window !== "undefined") {
-                const userStr = localStorage.getItem("user");
-                const usersStr = localStorage.getItem("users");
+                const userStr = sessionStorage.getItem("user");
+                const usersStr = sessionStorage.getItem("users");
                 if (userStr && usersStr) {
                     const userObj = JSON.parse(userStr);
                     const usersArr = JSON.parse(usersStr);
                     const idx = usersArr.findIndex((u: any) => u.nick === userObj.nick);
                     if (idx !== -1) {
                         usersArr[idx].preguntasFalladas = (usersArr[idx].preguntasFalladas || 0) + 1;
-                        localStorage.setItem("users", JSON.stringify(usersArr));
+                        sessionStorage.setItem("users", JSON.stringify(usersArr));
                     }
                 }
             }
         }
         if (typeof window !== "undefined") {
-            const userStr = localStorage.getItem("user");
+            const userStr = sessionStorage.getItem("user");
             if (userStr) {
                 const userObj = JSON.parse(userStr);
                 sumarLikesPerfil(userObj.nick, likesDelta);
             }
         }
     }
-
-    if (modoTorneoManual) {
-        const cursoNum = cursoUsuario ? Number(cursoUsuario.match(/(\d+)/)?.[1] || 1) : 1;
-        return <TournamentQuiz userGrade={cursoNum} onTournamentComplete={handleTournamentComplete} />;
-    }
-
-    return (
-        <div className="min-h-screen bg-green-100 p-8 flex flex-col items-center">
-            <h1 className="text-2xl font-bold mb-4 text-center">Aprende con Pipo</h1>
-            <div className="flex items-stretch mx-auto" style={{ transform: 'translateX(-80px)' }}>
-                <img src="/trofeo16.jpg" alt="Trofeo 16" className="h-40 object-contain mr-4" />
-                <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-8 flex flex-col gap-6 mx-auto">
-                    {!modoCompeticion ? (
-                        <>
-                            {/* ✅ SISTEMA ANTI-TRAMPA: Información del usuario detectada automáticamente */}
-                            <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
-                                <h3 className="text-lg font-bold text-blue-800 mb-2">🛡️ Sistema Anti-Trampa Activo</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                    <div>
-                                        <span className="font-semibold text-blue-700">👤 Usuario:</span>
-                                        <span className="ml-2 text-gray-800">{usuarioActual?.nick || "No detectado"}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-semibold text-blue-700">🎓 Curso detectado:</span>
-                                        <span className="ml-2 text-gray-800 font-semibold">{cursoUsuario}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-semibold text-blue-700">🏫 Centro:</span>
-                                        <span className="ml-2 text-gray-800">{usuarioActual?.centro || "No asignado"}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-semibold text-blue-700">👥 Tipo:</span>
-                                        <span className="ml-2 text-gray-800">
-                                            {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") ? "Docente" : "Estudiante"}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded">
-                                    <p className="text-xs text-yellow-800">
-                                        🔒 <strong>Solo podrás responder preguntas de tu nivel</strong> para garantizar puntuaciones justas.
-                                    </p>
-                                    {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") && (
-                                        <p className="text-xs text-orange-800 mt-2">
-                                            👩‍🏫 <strong>Modo Docente:</strong> Preguntas de 6º curso y puntuación reducida al 50% para equilibrar la dificultad.
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-                                <label className="font-semibold">Asignatura:</label>
-                                <select className="border rounded px-2 py-1" value={asignaturaSeleccionada} onChange={e => setAsignaturaSeleccionada(e.target.value)}>
-                                    {asignaturas.map(a => <option key={a} value={a}>{a}</option>)}
-                                </select>
-                                <div className="text-sm text-gray-600">
-                                    (Curso fijo: <strong>{cursoUsuario}</strong>)
-                                </div>
-                            </div>
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4" onClick={generarPregunta}>
-                                Generar pregunta
-                            </button>
-                            <button className="bg-orange-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
-                                // Obtener curso y centro escolar del usuario desde localStorage
-                                let cursoUsuario = 1;
-                                let centroUsuario = "";
-                                if (typeof window !== "undefined") {
-                                    const userStr = localStorage.getItem("user");
-                                    if (userStr) {
-                                        const userObj = JSON.parse(userStr);
-                                        // El curso puede estar como número (1-6) o como texto ("6º", "5º", ...)
-                                        let cursoNum = 1;
-                                        if (userObj.curso) {
-                                            if (typeof userObj.curso === "string") {
-                                                const match = userObj.curso.match(/(\d)/);
-                                                if (match) cursoNum = Number(match[1]);
-                                            } else if (typeof userObj.curso === "number") {
-                                                cursoNum = userObj.curso;
-                                            }
-                                        }
-                                        if (!isNaN(cursoNum) && cursoNum >= 1 && cursoNum <= 6) {
-                                            cursoUsuario = cursoNum;
-                                        }
-                                        // Centro escolar
-                                        if (userObj.centro) {
-                                            centroUsuario = userObj.centro;
-                                        }
-                                    }
-                                }
-                                setModoCompeticion(true);
-                                setCursoCompeticion(cursoUsuario);
-                                setCentroCompeticion(centroUsuario);
-                            }}>
-                                Modo competición
-                            </button>
-                            {isPremium && (
-                                <button className="bg-purple-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
-                                    setModoTorneoManual(true);
-                                }}>
-                                    Modo torneo
-                                </button>
-                            )}
-                            {preguntaActual && (
-                                <div className="mt-4">
-                                    <div className="font-semibold mb-2">{preguntaActual}</div>
-                                    <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
-                                    <input
-                                        type="text"
-                                        className="border rounded px-2 py-1 w-full mb-2"
-                                        value={respuestaUsuario}
-                                        onChange={e => setRespuestaUsuario(e.target.value)}
-                                        placeholder="Escribe tu respuesta aquí"
-                                        disabled={bloqueado}
-                                    />
-                                    <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
-                                        Comprobar respuesta
-                                    </button>
-                                    {feedback && <div className="mt-2 font-bold">{feedback}</div>}
-                                </div>
-                            )}
-                            {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
-                        </>
-                    ) : (
-                        <div className="mt-4">
-                            <ChampionshipQuiz userGrade={cursoCompeticion} userSchool={centroCompeticion} />
-                            <button className="bg-gray-500 text-white px-4 py-2 rounded mt-4" onClick={() => setModoCompeticion(false)}>
-                                Salir de competición
-                            </button>
-                        </div>
-                    )}
-                </div>
-                <img src="/logo-pipo.jpg" alt="Logo Pipo" className="h-40 object-contain ml-4" />
-            </div>
-        </div>
-    );
 
     // Función para manejar la finalización del torneo premium
     function handleTournamentComplete(aciertos: number, puntuacionTotal: number) {
@@ -570,82 +418,189 @@ export default function AprendeConPipo() {
             userStats.participaciones += 1;
             userStats.puntuacionTotal += puntuacionTotal;
 
-            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(userStats));
-
-            // Actualizar resultado del torneo
-            const torneosStr = localStorage.getItem('torneos_premium');
-            if (torneosStr) {
-                const torneos = JSON.parse(torneosStr);
-                const torneoActualizado = torneos.map((t: any) => {
-                    if (t.id === torneoActivo.torneoId) {
-                        // Agregar resultado del usuario
-                        const resultados = t.resultados || [];
-                        resultados.push({
-                            nick: usuarioActual.nick,
-                            aciertos: aciertos,
-                            puntuacion: puntuacionTotal
-                        });
-
-                        // Ordenar por puntuación descendente
-                        resultados.sort((a: any, b: any) => b.puntuacion - a.puntuacion);
-
-                        // Si es torneo mensual y el usuario queda primero, contar como victoria
-                        if (t.id.includes('torneo-mensual') && resultados[0].nick === usuarioActual.nick) {
-                            const updatedStats = JSON.parse(localStorage.getItem(`competiciones_premium_${usuarioActual.nick}`) || '{"victorias": 0}');
-                            updatedStats.victorias += 1;
-                            localStorage.setItem(`competiciones_premium_${usuarioActual.nick}`, JSON.stringify(updatedStats));
-                        }
-
-                        return {
-                            ...t,
-                            resultados: resultados,
-                            // Si es el último día del mes, finalizar torneo
-                            estado: new Date() >= new Date(t.fechaFin) ? 'finalizado' : t.estado,
-                            ganador: resultados.length > 0 ? resultados[0].nick : undefined
-                        };
-                    }
-                    return t;
-                });
-
-                localStorage.setItem('torneos_premium', JSON.stringify(torneoActualizado));
+            // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
+            if (modoTorneo && torneoActivo) {
+                if (!torneoIniciado) {
+                    return (
+                        <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
+                            <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
+                                <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
+                                <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
+                                <button
+                                    onClick={() => setTorneoIniciado(true)}
+                                    className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
+                                >
+                                    Comenzar Torneo
+                                </button>
+                            </div>
+                        </div>
+                    );
+                } else {
+                    const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
+                    return (
+                        <TournamentQuiz
+                            userGrade={cursoNum}
+                            onTournamentComplete={handleTournamentComplete}
+                        />
+                    );
+                }
             }
 
-            // Limpiar torneo activo
-            localStorage.removeItem('torneo_activo_premium');
-
-            // Mostrar resultado y redirigir
-            alert(`¡Torneo completado!\n\nAciertos: ${aciertos}/25\nPuntuación total: ${puntuacionTotal} puntos\n\nLos resultados se han guardado. ¡Buen trabajo!`);
-
-            // Redirigir de vuelta a torneos premium
-            window.location.href = '/torneos-premium';
-        };
-
-        // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
-        if (modoTorneo && torneoActivo) {
-            if (!torneoIniciado) {
-                return (
-                    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 flex items-center justify-center p-8">
-                        <div className="bg-white rounded-lg shadow-xl p-8 text-center max-w-md">
-                            <h2 className="text-2xl font-bold mb-4">🎯 Modo Torneo</h2>
-                            <p className="text-gray-600 mb-6">Estás a punto de comenzar un torneo premium de 25 preguntas. ¿Listo para competir?</p>
-                            <button
-                                onClick={() => setTorneoIniciado(true)}
-                                className="bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
-                            >
-                                Comenzar Torneo
-                            </button>
-                        </div>
-                    </div>
-                );
-            } else {
-                const cursoNum = torneoActivo.curso ? parseInt(torneoActivo.curso.replace('primaria', '')) : 1;
-                return (
-                    <TournamentQuiz
-                        userGrade={cursoNum}
-                        onTournamentComplete={handleTournamentComplete}
-                    />
-                );
+            if (modoTorneoManual) {
+                const cursoNum = cursoUsuario ? Number(cursoUsuario.match(/(\d+)/)?.[1] || 1) : 1;
+                return <TournamentQuiz userGrade={cursoNum} onTournamentComplete={handleTournamentComplete} />;
             }
         }
+
+        return (
+            <div className="min-h-screen bg-green-100 p-8 flex flex-col items-center">
+                <h1 className="text-2xl font-bold mb-4 text-center">Aprende con Pipo</h1>
+                <div className="flex items-stretch mx-auto" style={{ transform: 'translateX(-80px)' }}>
+                    <img src="/trofeo16.jpg" alt="Trofeo 16" className="h-40 object-contain mr-4" />
+                    <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-8 flex flex-col gap-6 mx-auto">
+                        {!modoCompeticion ? (
+                            <>
+                                {/* ✅ SISTEMA ANTI-TRAMPA: Información del usuario detectada automáticamente */}
+                                <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+                                    <h3 className="text-lg font-bold text-blue-800 mb-2">🛡️ Sistema Anti-Trampa Activo</h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <span className="font-semibold text-blue-700">👤 Usuario:</span>
+                                            <span className="ml-2 text-gray-800">{usuarioActual?.nick || "No detectado"}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-semibold text-blue-700">🎓 Curso detectado:</span>
+                                            <span className="ml-2 text-gray-800 font-semibold">{cursoUsuario}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-semibold text-blue-700">🏫 Centro:</span>
+                                            <span className="ml-2 text-gray-800">{usuarioActual?.centro || "No asignado"}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-semibold text-blue-700">👥 Tipo:</span>
+                                            <span className="ml-2 text-gray-800">
+                                                {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") ? "Docente" : "Estudiante"}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                                        <p className="text-xs text-yellow-800">
+                                            🔒 <strong>Solo podrás responder preguntas de tu nivel</strong> para garantizar puntuaciones justas.
+                                        </p>
+                                        {(usuarioActual?.esProfesor || usuarioActual?.tipo === "docente" || usuarioActual?.tipo === "Docente") && (
+                                            <p className="text-xs text-orange-800 mt-2">
+                                                👩‍🏫 <strong>Modo Docente:</strong> Preguntas de 6º curso y puntuación reducida al 50% para equilibrar la dificultad.
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+                                    <label className="font-semibold">Asignatura:</label>
+                                    <select className="border rounded px-2 py-1" value={asignaturaSeleccionada} onChange={e => setAsignaturaSeleccionada(e.target.value)}>
+                                        {asignaturas.map(a => <option key={a} value={a}>{a}</option>)}
+                                    </select>
+                                    <div className="text-sm text-gray-600">
+                                        (Curso fijo: <strong>{cursoUsuario}</strong>)
+                                    </div>
+                                </div>
+                                <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4" onClick={generarPregunta}>
+                                    Generar pregunta
+                                </button>
+                                <button className="bg-orange-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
+                                    // Obtener curso y centro escolar del usuario desde localStorage
+                                    let cursoUsuario = 1;
+                                    let centroUsuario = "";
+                                    if (typeof window !== "undefined") {
+                                        const userStr = sessionStorage.getItem("user");
+                                        if (userStr) {
+                                            const userObj = JSON.parse(userStr);
+                                            // El curso puede estar como número (1-6) o como texto ("6º", "5º", ...)
+                                            let cursoNum = 1;
+                                            if (userObj.curso) {
+                                                if (typeof userObj.curso === "string") {
+                                                    const match = userObj.curso.match(/(\d)/);
+                                                    if (match) cursoNum = Number(match[1]);
+                                                } else if (typeof userObj.curso === "number") {
+                                                    cursoNum = userObj.curso;
+                                                }
+                                            }
+                                            if (!isNaN(cursoNum) && cursoNum >= 1 && cursoNum <= 6) {
+                                                cursoUsuario = cursoNum;
+                                            }
+                                            // Centro escolar
+                                            if (userObj.centro) {
+                                                centroUsuario = userObj.centro;
+                                            }
+                                        }
+                                    }
+                                    setModoCompeticion(true);
+                                    setCursoCompeticion(cursoUsuario);
+                                    setCentroCompeticion(centroUsuario);
+                                }}>
+                                    Modo competición
+                                </button>
+                                {isPremium && (
+                                    <button className="bg-purple-500 text-white px-4 py-2 rounded mt-4 self-center" onClick={() => {
+                                        setModoTorneoManual(true);
+                                    }}>
+                                        Modo torneo
+                                    </button>
+                                )}
+                                {preguntaActual && (
+                                    <div className="mt-4">
+                                        <div className="font-semibold mb-2">{preguntaActual}</div>
+                                        <div className="font-bold text-lg mb-2">⏰ Tiempo: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} min</div>
+                                        <input
+                                            type="text"
+                                            className="border rounded px-2 py-1 w-full mb-2"
+                                            value={respuestaUsuario}
+                                            onChange={e => setRespuestaUsuario(e.target.value)}
+                                            placeholder="Escribe tu respuesta aquí"
+                                            disabled={bloqueado}
+                                        />
+                                        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={comprobarRespuesta} disabled={bloqueado}>
+                                            Comprobar respuesta
+                                        </button>
+                                        {feedback && <div className="mt-2 font-bold">{feedback}</div>}
+                                    </div>
+                                )}
+                                {feedback && !preguntaActual && <div className="mt-2 font-bold text-red-600">{feedback}</div>}
+                            </>
+                        ) : (
+                            <div className="mt-4">
+                                <ChampionshipQuiz userGrade={cursoCompeticion} userSchool={centroCompeticion} />
+                                <button className="bg-gray-500 text-white px-4 py-2 rounded mt-4" onClick={() => setModoCompeticion(false)}>
+                                    Salir de competición
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                    <img src="/logo-pipo.jpg" alt="Logo Pipo" className="h-40 object-contain ml-4" />
+                </div>
+
+                {/* Tabla Docentes */}
+                <div className="mt-8">
+                    <h2 className="text-xl font-bold mb-2">Ranking Docentes</h2>
+                    <table className="w-full border mb-4" style={{ backgroundColor: '#fffbe6' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#fff9c4' }}>
+                                <th className="p-2">Docente</th>
+                                <th className="p-2">Likes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Object.entries(getTablaDocentes(temporadaSeleccionada)).map(([nick, likes]) => (
+                                <tr key={nick}>
+                                    <td className="border p-2">{nick}</td>
+                                    <td className="border p-2">{likes}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
     }
-};
+}
+

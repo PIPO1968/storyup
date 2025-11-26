@@ -51,14 +51,14 @@
         setInterval(function () {
             const last = parseInt(sessionStorage.getItem('storyup_last_activity') || '0', 10);
             if (last && Date.now() - last > 60 * 60 * 1000) {
-                sessionStorage.removeItem('storyup_logged');
+                sessionStorage.removeItem('user');
                 window.location.href = 'login.html';
             }
         }, 60000);
         updateActivity();
         // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
         try {
-            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            const user = JSON.parse(sessionStorage.getItem('user'));
             if (user && user.role === 'moderador') {
                 document.getElementById('moderation-link').style.display = 'block';
             }
@@ -186,10 +186,10 @@
                 .then(data => setI18n(lang, data));
         }
         const langSel = document.getElementById('lang-i18n');
-        langSel.value = localStorage.getItem('storyup_lang') || 'es';
+        langSel.value = sessionStorage.getItem('storyup_lang') || 'es';
         loadI18n(langSel.value);
         langSel.addEventListener('change', function () {
-            localStorage.setItem('storyup_lang', this.value);
+            sessionStorage.setItem('storyup_lang', this.value);
             loadI18n(this.value);
         });
     </script>
@@ -201,21 +201,21 @@
         const seguidoresDot = document.getElementById('seguidores-dot');
         const seguidoresBtn = document.getElementById('nav-seguidores');
         // Usuario logueado (puede ser null)
-        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
+        const logged = JSON.parse(sessionStorage.getItem('user'));
         // Lista de usuarios inscritos
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const users = JSON.parse(sessionStorage.getItem('users') || '[]');
         if (!seguidoresDot || !seguidoresBtn) return;
         // Clave personalizada por usuario logueado
         let key = 'seguidores_last_seen_count';
         if (logged && logged.email) key += '_' + logged.email;
-        const lastSeen = parseInt(localStorage.getItem(key) || '0', 10);
+        const lastSeen = parseInt(sessionStorage.getItem(key) || '0', 10);
         if (users.length > lastSeen) {
             seguidoresDot.style.display = 'block';
         } else {
             seguidoresDot.style.display = 'none';
         }
         seguidoresBtn.addEventListener('click', function () {
-            localStorage.setItem(key, users.length.toString());
+            sessionStorage.setItem(key, users.length.toString());
             seguidoresDot.style.display = 'none';
         });
     });
@@ -226,19 +226,19 @@
     document.addEventListener('DOMContentLoaded', function () {
         const perfilDot = document.getElementById('perfil-dot');
         const perfilBtn = document.getElementById('nav-perfil');
-        const logged = JSON.parse(localStorage.getItem('storyup_logged'));
+        const logged = JSON.parse(sessionStorage.getItem('user'));
         if (!perfilDot || !perfilBtn || !logged) return;
         // Buscar chats donde logged es receptor y hay mensajes no leídos
         let unread = false;
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const users = JSON.parse(sessionStorage.getItem('users') || '[]');
         users.forEach(u => {
             if (u.email === logged.email) return;
             const emails = [logged.email, u.email].sort();
             const chatKey = 'chat_' + emails.join('_');
-            const msgs = JSON.parse(localStorage.getItem(chatKey) || '[]');
+            const msgs = JSON.parse(sessionStorage.getItem(chatKey) || '[]');
             // Última vez que el usuario vio su perfil
             const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
-            const lastRead = parseInt(localStorage.getItem(lastReadKey) || '0', 10);
+            const lastRead = parseInt(sessionStorage.getItem(lastReadKey) || '0', 10);
             // Buscar si hay mensajes de u.email posteriores a lastRead
             if (msgs.some(m => m.own === u.email && m.date > lastRead)) {
                 unread = true;
@@ -250,7 +250,7 @@
             users.forEach(u => {
                 if (u.email === logged.email) return;
                 const lastReadKey = 'perfil_last_read_' + logged.email + '_' + u.email;
-                localStorage.setItem(lastReadKey, Date.now().toString());
+                sessionStorage.setItem(lastReadKey, Date.now().toString());
             });
             perfilDot.style.display = 'none';
         });

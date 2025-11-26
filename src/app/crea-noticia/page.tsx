@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { SesionesUsuarioAPI } from "../../utils/sesiones-usuario";
+import { NoticiasAPI } from "../../utils/noticias";
 
 export default function CreaNoticia() {
     const [titulo, setTitulo] = useState("");
@@ -11,54 +13,44 @@ export default function CreaNoticia() {
         setMounted(true);
     }, []);
 
-    const handleEnviar = () => {
+    const handleEnviar = async () => {
         setEnviando(true);
         let autor = "";
-        if (typeof window !== "undefined") {
-            // Buscar nick en usuarioActual y si no, en user
-            const actual = localStorage.getItem("usuarioActual");
-            if (actual) {
-                try {
-                    const obj = JSON.parse(actual);
-                    autor = obj.nick || "";
-                } catch {
-                    autor = "";
-                }
+
+        try {
+            // Obtener sesión del usuario actual desde PostgreSQL
+            const sessionData = await SesionesUsuarioAPI.getSesionUsuario("current");
+            if (sessionData && sessionData.nick) {
+                autor = sessionData.nick;
             }
-            if (!autor) {
-                const userStr = localStorage.getItem("user");
-                if (userStr) {
-                    try {
-                        const userObj = JSON.parse(userStr);
-                        autor = userObj.nick || "";
-                    } catch {
-                        autor = "";
-                    }
-                }
-            }
+        } catch (error) {
+            console.error('Error obteniendo sesión de usuario:', error);
         }
+
         if (!autor) {
             alert("No se ha detectado usuario. Inicia sesión como docente o alumno.");
             setEnviando(false);
             return;
         }
+
+        // Crear la noticia
         const nuevaNoticia = {
             titulo,
             contenido,
             autor,
-            fecha: new Date().toLocaleString(),
         };
-        let noticias = [];
-        if (typeof window !== "undefined") {
-            const guardadas = localStorage.getItem("noticias");
-            noticias = guardadas ? JSON.parse(guardadas) : [];
-            noticias.unshift(nuevaNoticia);
-            localStorage.setItem("noticias", JSON.stringify(noticias));
+
+        try {
+            await NoticiasAPI.crearNoticia(nuevaNoticia);
+            alert("Noticia enviada!");
+            setTitulo("");
+            setContenido("");
+        } catch (error) {
+            console.error('Error creando noticia:', error);
+            alert("Error al enviar la noticia. Inténtalo de nuevo.");
+        } finally {
+            setEnviando(false);
         }
-        alert("Noticia enviada!");
-        setTitulo("");
-        setContenido("");
-        setEnviando(false);
     };
 
     if (!mounted) {

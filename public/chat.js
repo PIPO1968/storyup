@@ -7,7 +7,7 @@ const favError = document.getElementById('fav-error');
 
 async function renderFavs() {
     if (!favsListDiv) return;
-    const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+    const favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
     const users = await getUsers();
     favsListDiv.innerHTML = '';
     if (favs.length === 0) {
@@ -39,8 +39,8 @@ async function renderFavs() {
         del.style.cursor = 'pointer';
         del.style.fontSize = '1em';
         del.onclick = function () {
-            const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
-            localStorage.setItem(favsKey(), JSON.stringify(favs.filter(f => f !== email)));
+            const favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
+            sessionStorage.setItem(favsKey(, JSON.stringify(favs.filter(f => f !== email)));
             renderFavs();
         };
         div.appendChild(span);
@@ -70,10 +70,10 @@ if (favAddBtn && favInput) {
             }
             return;
         }
-        let favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+        let favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
         if (!favs.includes(user.email)) {
             favs.push(user.email);
-            localStorage.setItem(favsKey(), JSON.stringify(favs));
+            sessionStorage.setItem(favsKey(, JSON.stringify(favs));
         }
         favInput.value = '';
         renderFavs();
@@ -89,7 +89,7 @@ if (favAddBtn && favInput) {
 
 renderFavs();
 // Chat tipo WhatsApp - SOLO versión moderna y funcional
-// Requiere que el usuario esté autenticado y que existan storyup_users y storyup_logged en localStorage
+// Requiere que el usuario esté autenticado y que existan users y user en sessionStorage
 
 const chatSidebar = document.getElementById('chat-sidebar');
 const chatList = document.getElementById('chat-list');
@@ -103,7 +103,7 @@ let currentChat = null;
 
 function getLoggedUser() {
     // Usar sessionStorage como en el resto del frontend
-    return JSON.parse(sessionStorage.getItem('storyup_logged'));
+    return JSON.parse(sessionStorage.getItem('user'));
 }
 
 let usersCache = [];
@@ -213,8 +213,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function renderFavs() {
     if (!favsListDiv) return;
-    const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+    const favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
+    const users = JSON.parse(sessionStorage.getItem('users') || '[]');
     favsListDiv.innerHTML = '';
     if (favs.length === 0) {
         favsListDiv.innerHTML = '<span style="color:#888;font-size:0.97em;">Sin favoritos</span>';
@@ -248,8 +248,8 @@ function renderFavs() {
         del.style.cursor = 'pointer';
         del.style.fontSize = '1em';
         del.onclick = function () {
-            const favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
-            localStorage.setItem(favsKey(), JSON.stringify(favs.filter(f => f !== email)));
+            const favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
+            sessionStorage.setItem(favsKey(, JSON.stringify(favs.filter(f => f !== email)));
             renderFavs();
         };
         div.appendChild(span);
@@ -263,7 +263,7 @@ if (favAddBtn && favInput) {
         if (favError) favError.style.display = 'none';
         const nick = favInput.value.trim();
         if (!nick) return;
-        const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+        const users = JSON.parse(sessionStorage.getItem('users') || '[]');
         const user = users.find(u => (u.name || u.email) === nick);
         if (!user) {
             if (favError) {
@@ -279,10 +279,10 @@ if (favAddBtn && favInput) {
             }
             return;
         }
-        let favs = JSON.parse(localStorage.getItem(favsKey()) || '[]');
+        let favs = JSON.parse(sessionStorage.getItem(favsKey()) || '[]');
         if (!favs.includes(user.email)) {
             favs.push(user.email);
-            localStorage.setItem(favsKey(), JSON.stringify(favs));
+            sessionStorage.setItem(favsKey(, JSON.stringify(favs));
         }
         favInput.value = '';
         renderFavs();
@@ -310,9 +310,9 @@ window.insertTag = function (tag) {
 
 async function renderChatList() {
     if (!chatListUl) return;
-    const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
+    const users = JSON.parse(sessionStorage.getItem('users') || '[]');
     // Leer lista de ocultos
-    const ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
+    const ocultos = JSON.parse(sessionStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
     // (eliminado: declaración duplicada de chats)
     // Recoger todos los chats posibles (incluyendo anónimos)
     const allChats = {};
@@ -328,7 +328,7 @@ async function renderChatList() {
             if (resp.ok) msgs = await resp.json();
         } catch (e) { msgs = []; }
         let lastMsg = msgs.length > 0 ? msgs[msgs.length - 1] : null;
-        let unread = msgs.some(m => m.sender !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || new Date(m.created_at).getTime() > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
+        let unread = msgs.some(m => m.sender !== logged.email && (!sessionStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email) || new Date(m.created_at).getTime() > Number(sessionStorage.getItem('perfil_last_read_' + logged.email + '_' + u.email))));
         if (ocultos.includes(u.email) && !unread) continue;
         allChats[u.email] = {
             email: u.email,
@@ -340,8 +340,8 @@ async function renderChatList() {
         };
     }
     // Buscar chats con emails desconocidos (anónimos)
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
         if (key && key.startsWith('chat_')) {
             const parts = key.split('_');
             if (parts.length === 3) {
@@ -351,10 +351,10 @@ async function renderChatList() {
                 if (emailA === logged.email) other = emailB;
                 else if (emailB === logged.email) other = emailA;
                 if (other && !allChats[other]) {
-                    const msgs = JSON.parse(localStorage.getItem(key) || '[]');
+                    const msgs = JSON.parse(sessionStorage.getItem(key) || '[]');
                     if (msgs.length > 0) {
                         const lastMsg = msgs[msgs.length - 1];
-                        const unread = msgs.some(m => m.own !== logged.email && (!localStorage.getItem('perfil_last_read_' + logged.email + '_' + other) || m.date > Number(localStorage.getItem('perfil_last_read_' + logged.email + '_' + other))));
+                        const unread = msgs.some(m => m.own !== logged.email && (!sessionStorage.getItem('perfil_last_read_' + logged.email + '_' + other) || m.date > Number(sessionStorage.getItem('perfil_last_read_' + logged.email + '_' + other))));
                         if (ocultos.includes(other) && !unread) continue;
                         allChats[other] = {
                             email: other,
@@ -392,9 +392,9 @@ async function renderChatList() {
         delBtn.onclick = function (e) {
             e.stopPropagation();
             // Guardar en ocultos
-            let ocultos = JSON.parse(localStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
+            let ocultos = JSON.parse(sessionStorage.getItem('storyup_chats_ocultos_' + logged.email) || '[]');
             if (!ocultos.includes(c.email)) ocultos.push(c.email);
-            localStorage.setItem('storyup_chats_ocultos_' + logged.email, JSON.stringify(ocultos));
+            sessionStorage.setItem('storyup_chats_ocultos_' + logged.email, JSON.stringify(ocultos));
             // Si el chat activo es este, limpiar
             if (userDest === c.email) {
                 userDest = '';
@@ -450,7 +450,7 @@ async function renderChat() {
         const lastMsg = msgs[msgs.length - 1];
         if (lastMsg.sender !== logged.email) {
             const lastReadKey = 'perfil_last_read_' + logged.email + '_' + userDest;
-            localStorage.setItem(lastReadKey, String(new Date(lastMsg.created_at).getTime()));
+            sessionStorage.setItem(lastReadKey, String(new Date(lastMsg.created_at).getTime()));
         }
     }
 }

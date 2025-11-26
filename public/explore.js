@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const feed = document.getElementById('public-feed');
-    const user = JSON.parse(localStorage.getItem('storyup_logged'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
     async function renderFeed() {
         feed.innerHTML = '<p>Cargando historias...</p>';

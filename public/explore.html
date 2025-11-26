@@ -23,7 +23,7 @@
     <script>
         // Mostrar enlace de moderación solo si el usuario logueado es moderador (usando sessionStorage)
         try {
-            const user = JSON.parse(sessionStorage.getItem('storyup_logged'));
+            const user = JSON.parse(sessionStorage.getItem('user'));
             if (user && user.role === 'moderador') {
                 document.getElementById('moderation-link').style.display = 'block';
             }

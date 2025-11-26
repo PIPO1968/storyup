@@ -129,6 +129,12 @@
       "namedRegex": "^/api/concursos(?:/)?$"
     },
     {
+      "page": "/api/configuracion",
+      "regex": "^/api/configuracion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/configuracion(?:/)?$"
+    },
+    {
       "page": "/api/estadisticas",
       "regex": "^/api/estadisticas(?:/)?$",
       "routeKeys": {},
@@ -147,6 +153,12 @@
       "namedRegex": "^/api/noticias(?:/)?$"
     },
     {
+      "page": "/api/palabras-prohibidas",
+      "regex": "^/api/palabras\\-prohibidas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/palabras\\-prohibidas(?:/)?$"
+    },
+    {
       "page": "/api/preferences",
       "regex": "^/api/preferences(?:/)?$",
       "routeKeys": {},
@@ -163,6 +175,12 @@
       "regex": "^/api/premium(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/premium(?:/)?$"
+    },
+    {
+      "page": "/api/sesiones-usuario",
+      "regex": "^/api/sesiones\\-usuario(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/sesiones\\-usuario(?:/)?$"
     },
     {
       "page": "/api/solicitudes",

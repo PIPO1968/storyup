@@ -2,7 +2,7 @@
 // Moderación de historias: mostrar todas las historias de usuarios, permitir editar y borrar
 
 document.addEventListener('DOMContentLoaded', function () {
-    const user = JSON.parse(localStorage.getItem('storyup_logged'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
     const adminEmails = ["pipocanarias@hotmail.com", "piporgz68@gmail.com"];
     const isMod = user && (user.role === 'moderador' || adminEmails.includes(user.email));
     const storiesDiv = document.getElementById('pending-stories');
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getAllStories() {
-        return JSON.parse(localStorage.getItem('storyup_stories') || '[]');
+        return JSON.parse(sessionStorage.getItem('storyup_stories') || '[]');
     }
     function saveAllStories(stories) {
-        localStorage.setItem('storyup_stories', JSON.stringify(stories));
+        sessionStorage.setItem('storyup_stories', JSON.stringify(stories));
     }
 
     function getFriends(email) {
-        return JSON.parse(localStorage.getItem('storyup_friends_' + email) || '[]');
+        return JSON.parse(sessionStorage.getItem('storyup_friends_' + email) || '[]');
     }
 
     function renderStories() {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (logoutBtn) {
         logoutBtn.onclick = function () {
-            localStorage.removeItem('storyup_logged');
+            sessionStorage.removeItem('user');
             window.location.href = 'login.html';
         };
     }

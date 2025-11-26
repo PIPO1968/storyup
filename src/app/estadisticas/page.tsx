@@ -105,7 +105,7 @@ export default function Estadisticas() {
             const temporadas: number[] = [];
             try {
                 const campeonatos = await CampeonatosAPI.getCampeonatos();
-                const temporadasSet = new Set(campeonatos.map(c => c.temporada));
+                const temporadasSet = new Set(campeonatos.map(c => parseInt(c.temporada.replace('t', ''))));
                 temporadas.push(...Array.from(temporadasSet));
                 if (!temporadas.includes(getCurrentSeason())) {
                     temporadas.push(getCurrentSeason());
@@ -134,8 +134,7 @@ export default function Estadisticas() {
     React.useEffect(() => {
         const loadDocentes = async () => {
             if (typeof window !== "undefined") {
-                const campeonatos = await CampeonatosAPI.getCampeonatos(temporadaSeleccionada, 'docentes');
-                const tablaDoc = campeonatos.length > 0 ? campeonatos[0].datos : {};
+                const tablaDoc = await getTablaDocentes(temporadaSeleccionada);
                 setTablaDocentes(tablaDoc);
             }
         };
@@ -200,12 +199,126 @@ export default function Estadisticas() {
         setTemporadaSeleccionada(Number(e.target.value));
     }
     async function getTablaIndividual(temporada: number) {
-        const campeonatos = await CampeonatosAPI.getCampeonatos(temporada, 'individual');
-        return campeonatos.length > 0 ? campeonatos[0].datos : {};
+        try {
+            // Obtener datos de campeonatos desde PostgreSQL
+            const campeonatos = await CampeonatosAPI.getCampeonatos(`t${temporada}`, 'individual');
+
+            // Obtener lista de usuarios para filtrar alumnos (no docentes)
+            const users = await UsersAPI.getAllUsers();
+            const alumnos = users.filter((u: any) => (u.tipo || "").toLowerCase() !== "docente");
+
+            const resultado: any = {};
+
+            alumnos.forEach((alumno: any) => {
+                // Buscar datos del alumno en los campeonatos
+                const datosCampeonato = campeonatos.find(c => c.nick.toLowerCase() === (alumno.nick || "").toLowerCase().replace(/\s+/g, ""));
+
+                if (datosCampeonato && (datosCampeonato.preguntas_acertadas || 0) >= 1) {
+                    resultado[alumno.nick] = {
+                        escudo: alumno.escudo || '👤',
+                        nombre: alumno.nick,
+                        ganados: datosCampeonato.ganados || 0,
+                        perdidos: datosCampeonato.perdidos || 0,
+                        preguntasAcertadas: datosCampeonato.preguntas_acertadas || 0,
+                        preguntasFalladas: datosCampeonato.preguntas_falladas || 0,
+                        likes: datosCampeonato.likes || 0,
+                    };
+                }
+            });
+
+            return resultado;
+        } catch (error) {
+            console.error('Error obteniendo tabla de alumnos:', error);
+            return {};
+        }
     }
+
     async function getTablaCentro(temporada: number) {
-        const campeonatos = await CampeonatosAPI.getCampeonatos(temporada, 'centro');
-        return campeonatos.length > 0 ? campeonatos[0].datos : {};
+        try {
+            const campeonatos = await CampeonatosAPI.getCampeonatos(`t${temporada}`, 'centros');
+            const resultado: any = {};
+
+            // Agrupar por centro y calcular estadísticas
+            const centrosMap = new Map<string, any>();
+
+            campeonatos.forEach(campeonato => {
+                const centro = campeonato.nick; // En este caso nick representa el nombre del centro
+                if (!centrosMap.has(centro)) {
+                    centrosMap.set(centro, {
+                        escudo: '🏫',
+                        nombre: centro,
+                        ganados: 0,
+                        perdidos: 0,
+                        preguntasAcertadas: 0,
+                        preguntasFalladas: 0,
+                        likes: 0,
+                        count: 0
+                    });
+                }
+
+                const centroData = centrosMap.get(centro);
+                centroData.ganados += campeonato.ganados || 0;
+                centroData.perdidos += campeonato.perdidos || 0;
+                centroData.preguntasAcertadas += campeonato.preguntas_acertadas || 0;
+                centroData.preguntasFalladas += campeonato.preguntas_falladas || 0;
+                centroData.likes += campeonato.likes || 0;
+                centroData.count += 1;
+            });
+
+            // Solo centros que hayan realizado al menos una competición
+            centrosMap.forEach(centroData => {
+                if (centroData.preguntasAcertadas >= 1) {
+                    resultado[centroData.nombre] = {
+                        escudo: centroData.escudo,
+                        nombre: centroData.nombre,
+                        ganados: centroData.ganados,
+                        perdidos: centroData.perdidos,
+                        preguntasAcertadas: centroData.preguntasAcertadas,
+                        preguntasFalladas: centroData.preguntasFalladas,
+                        likes: centroData.likes,
+                    };
+                }
+            });
+
+            return resultado;
+        } catch (error) {
+            console.error('Error obteniendo tabla de centros:', error);
+            return {};
+        }
+    }
+
+    async function getTablaDocentes(temporada: number) {
+        try {
+            const campeonatos = await CampeonatosAPI.getCampeonatos(`t${temporada}`, 'docentes');
+
+            // Obtener lista de usuarios para filtrar docentes
+            const users = await UsersAPI.getAllUsers();
+            const docentes = users.filter((u: any) => (u.tipo || "").toLowerCase() === "docente");
+
+            const resultado: any = {};
+
+            docentes.forEach((doc: any) => {
+                // Buscar datos del docente en los campeonatos
+                const datosCampeonato = campeonatos.find(c => c.nick.toLowerCase() === (doc.nick || "").toLowerCase().replace(/\s+/g, ""));
+
+                if (datosCampeonato && (datosCampeonato.preguntas_acertadas || 0) >= 1) {
+                    resultado[doc.nick] = {
+                        escudo: doc.escudo || '👨‍🏫',
+                        nombre: doc.nick,
+                        ganados: datosCampeonato.ganados || 0,
+                        perdidos: datosCampeonato.perdidos || 0,
+                        preguntasAcertadas: datosCampeonato.preguntas_acertadas || 0,
+                        preguntasFalladas: datosCampeonato.preguntas_falladas || 0,
+                        likes: datosCampeonato.likes || 0,
+                    };
+                }
+            });
+
+            return resultado;
+        } catch (error) {
+            console.error('Error obteniendo tabla de docentes:', error);
+            return {};
+        }
     }
 
     // Utilidad para mostrar nick como link si es válido

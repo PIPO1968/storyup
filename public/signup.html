@@ -100,7 +100,7 @@
         </ul>
     </nav>
     <script>
-        const userRole = localStorage.getItem('role');
+        const userRole = sessionStorage.getItem('role');
         if (userRole === 'moderador') {
             document.getElementById('moderation-link').style.display = 'block';
         }
@@ -175,7 +175,7 @@
                     });
                     if (res.ok) {
                         const user = await res.json();
-                        localStorage.setItem('storyup_logged', JSON.stringify(user));
+                        sessionStorage.setItem('user', JSON.stringify(user));
                         message.style.color = '#388e3c';
                         message.textContent = '¡Bienvenido! Redirigiendo a tu perfil...';
                         setTimeout(() => { window.location.href = 'profile.html'; }, 1200);

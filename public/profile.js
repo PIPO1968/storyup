@@ -3,11 +3,11 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     // --- GESTIÓN DE PERFIL Y DATOS PERSONALES ---
-    const rawUser = localStorage.getItem('storyup_logged');
-    console.log('[PROFILE] Valor en localStorage:', rawUser);
+    const rawUser = sessionStorage.getItem('user');
+    console.log('[PROFILE] Valor en sessionStorage:', rawUser);
     const user = JSON.parse(rawUser || 'null');
     if (!user) {
-        console.warn('[PROFILE] No hay usuario en localStorage, redirigiendo a login');
+        console.warn('[PROFILE] No hay usuario en sessionStorage, redirigiendo a login');
         window.location.href = 'login.html';
         return;
     }
@@ -161,8 +161,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.onclick = function () {
-            localStorage.removeItem('storyup_logged');
-            localStorage.removeItem('storyup_last_activity');
+            sessionStorage.removeItem('user');
             window.location.href = 'login.html';
         };
     }
@@ -188,41 +187,80 @@ document.addEventListener('DOMContentLoaded', async function () {
         const bannedWordsInput = document.getElementById('mod-banned-words');
         const saveBannedBtn = document.getElementById('save-banned-words');
         const bannedMsg = document.getElementById('banned-words-msg');
-        // Cargar si existen
-        const bannedKey = 'mod_banned_words_' + user.email;
-        bannedWordsInput.value = (localStorage.getItem(bannedKey) || '').replace(/,/g, '\n');
-        saveBannedBtn.onclick = function () {
+
+        // Cargar palabras prohibidas desde API
+        async function loadBannedWords() {
+            try {
+                const response = await fetch('/api/palabras-prohibidas');
+                const words = await response.json();
+                bannedWordsInput.value = words.join('\n');
+            } catch (error) {
+                console.error('Error cargando palabras prohibidas:', error);
+                bannedWordsInput.value = '';
+            }
+        }
+
+        await loadBannedWords();
+
+        saveBannedBtn.onclick = async function () {
             const words = bannedWordsInput.value.split(/,|\n/).map(w => w.trim().toLowerCase()).filter(Boolean);
-            localStorage.setItem(bannedKey, words.join(','));
-            bannedMsg.textContent = 'Palabras prohibidas guardadas';
-            setTimeout(() => bannedMsg.textContent = '', 2000);
+            try {
+                // Primero eliminar todas las palabras existentes
+                await fetch('/api/palabras-prohibidas', { method: 'DELETE' });
+
+                // Luego añadir las nuevas
+                for (const word of words) {
+                    await fetch('/api/palabras-prohibidas', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ palabra: word })
+                    });
+                }
+
+                bannedMsg.textContent = 'Palabras prohibidas guardadas';
+                setTimeout(() => bannedMsg.textContent = '', 2000);
+            } catch (error) {
+                console.error('Error guardando palabras prohibidas:', error);
+                bannedMsg.textContent = 'Error al guardar';
+            }
         };
         // ...gestión de moderadores (igual que antes)...
         const searchInput = document.getElementById('search-user');
         const userResults = document.getElementById('user-results');
-        function renderUserResults(query) {
-            const users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-            const results = users.filter(u => u.email.includes(query) || (u.name && u.name.toLowerCase().includes(query.toLowerCase())));
-            userResults.innerHTML = results.length === 0 ? '<p>No hay resultados.</p>' : results.map(u => {
-                const isMod = u.role === 'moderador';
-                return `<div style="margin-bottom:6px;">${u.name} (${u.email})
-                    <button class="mod-btn" data-email="${u.email}" data-action="${isMod ? 'remove' : 'add'}" style="margin-left:12px;">${isMod ? 'Quitar moderador' : 'Hacer moderador'}</button>
-                </div>`;
-            }).join('');
-            document.querySelectorAll('.mod-btn').forEach(btn => {
-                btn.onclick = function () {
-                    const email = this.getAttribute('data-email');
-                    const action = this.getAttribute('data-action');
-                    let users = JSON.parse(localStorage.getItem('storyup_users') || '[]');
-                    const idx = users.findIndex(u => u.email === email);
-                    if (idx !== -1) {
-                        if (action === 'add') users[idx].role = 'moderador';
-                        else delete users[idx].role;
-                        localStorage.setItem('storyup_users', JSON.stringify(users));
-                        renderUserResults(searchInput.value);
-                    }
-                };
-            });
+        async function renderUserResults(query) {
+            try {
+                const response = await fetch('/api/users');
+                const users = await response.json();
+                const results = users.filter(u => u.nick.includes(query) || (u.email && u.email.toLowerCase().includes(query.toLowerCase())));
+                userResults.innerHTML = results.length === 0 ? '<p>No hay resultados.</p>' : results.map(u => {
+                    const isMod = u.tipo === 'docente'; // Asumiendo que docentes son moderadores
+                    return `<div style="margin-bottom:6px;">${u.nick} (${u.email || 'sin email'})
+                        <button class="mod-btn" data-nick="${u.nick}" data-action="${isMod ? 'remove' : 'add'}" style="margin-left:12px;">${isMod ? 'Quitar moderador' : 'Hacer moderador'}</button>
+                    </div>`;
+                }).join('');
+                document.querySelectorAll('.mod-btn').forEach(btn => {
+                    btn.onclick = async function () {
+                        const nick = this.getAttribute('data-nick');
+                        const action = this.getAttribute('data-action');
+                        try {
+                            // Actualizar el tipo de usuario
+                            const newTipo = action === 'add' ? 'docente' : 'alumno';
+                            await fetch(`/api/users/${nick}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ tipo: newTipo })
+                            });
+                            renderUserResults(searchInput.value);
+                        } catch (error) {
+                            console.error('Error actualizando usuario:', error);
+                            alert('Error al actualizar usuario');
+                        }
+                    };
+                });
+            } catch (error) {
+                console.error('Error cargando usuarios:', error);
+                userResults.innerHTML = '<p>Error al cargar usuarios.</p>';
+            }
         }
         searchInput.addEventListener('input', function () {
             renderUserResults(this.value.trim());

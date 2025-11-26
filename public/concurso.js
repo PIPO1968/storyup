@@ -2,7 +2,7 @@
 // Lógica para concursos: creación (moderador), participación (usuario), selección de ganador y estadísticas
 
 document.addEventListener('DOMContentLoaded', function () {
-    const user = JSON.parse(localStorage.getItem('storyup_logged'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
     const concursoMod = document.getElementById('concurso-moderador');
     const concursoUser = document.getElementById('concurso-usuario');
     const concursoStats = document.getElementById('concurso-estadisticas');
@@ -11,16 +11,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Utilidades para concursos
     function getAllConcursos() {
-        return JSON.parse(localStorage.getItem('storyup_concursos') || '[]');
+        return JSON.parse(sessionStorage.getItem('storyup_concursos') || '[]');
     }
     function saveAllConcursos(arr) {
-        localStorage.setItem('storyup_concursos', JSON.stringify(arr));
+        sessionStorage.setItem('storyup_concursos', JSON.stringify(arr));
     }
     function getAllConcursoStories(cid) {
-        return JSON.parse(localStorage.getItem('storyup_concurso_stories_' + cid) || '[]');
+        return JSON.parse(sessionStorage.getItem('storyup_concurso_stories_' + cid) || '[]');
     }
     function saveAllConcursoStories(cid, arr) {
-        localStorage.setItem('storyup_concurso_stories_' + cid, JSON.stringify(arr));
+        sessionStorage.setItem('storyup_concurso_stories_' + cid, JSON.stringify(arr));
     }
     function nowISO() {
         return new Date().toISOString().slice(0, 16);

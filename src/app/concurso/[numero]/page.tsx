@@ -10,10 +10,13 @@ export default function DetalleConcurso() {
 
     useEffect(() => {
         if (typeof window !== "undefined" && numero) {
-            const concursosStr = localStorage.getItem("concursos");
-            const concursosArr = concursosStr ? JSON.parse(concursosStr) : [];
-            const encontrado = concursosArr.find((c: any) => String(c.numero) === String(numero));
-            setConcurso(encontrado || null);
+            fetch('/api/concursos')
+                .then(res => res.json())
+                .then(concursosArr => {
+                    const encontrado = concursosArr.find((c: any) => String(c.numero) === String(numero));
+                    setConcurso(encontrado || null);
+                })
+                .catch(err => console.error('Error loading concursos:', err));
         }
     }, [numero]);
 

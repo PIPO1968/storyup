@@ -2,6 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { HistoriasAPI } from "../../utils/historias";
 import { UsersAPI } from "../../utils/users";
+import { PalabrasProhibidasAPI } from "../../utils/palabras-prohibidas";
+
 export default function CreaHistoria() {
     const [titulo, setTitulo] = useState("");
     const [contenido, setContenido] = useState("");
@@ -47,7 +49,7 @@ export default function CreaHistoria() {
         }
     };
 
-    // Guardar historia (solo ejemplo, falta mostrar y persistir)
+    // Guardar historia
     const handleEnviar = async () => {
         // Obtener usuario actual
         let usuario = "";
@@ -63,34 +65,36 @@ export default function CreaHistoria() {
             alert("No se puede enviar la historia: no se ha detectado usuario. Inicia sesión como docente o alumno.");
             return;
         }
-        // Comprobar palabras prohibidas
+
+        // Comprobar palabras prohibidas desde PostgreSQL
         let contieneProhibida = false;
         let palabrasDetectadas: string[] = [];
-        if (typeof window !== "undefined") {
-            const stored = localStorage.getItem("prohibitedWords");
-            if (stored) {
-                const palabras = JSON.parse(stored);
-                const contenidoLower = contenido.toLowerCase();
-                palabrasDetectadas = palabras.filter((p: string) =>
-                    contenidoLower.includes(p) || contenidoLower.includes(p + "a") || contenidoLower.includes(p + "o")
-                );
-                contieneProhibida = palabrasDetectadas.length > 0;
-                if (contieneProhibida && usuario) {
-                    setShowProhibitedPopup(true);
-                    setTimeout(() => setShowProhibitedPopup(false), 30000);
-                    // Penalizar solo una vez
-                    try {
-                        const users = await UsersAPI.getAllUsers();
-                        const userToUpdate = users.find(u => u.nick === usuario);
-                        if (userToUpdate) {
-                            await UsersAPI.updateUser({ ...userToUpdate, likes: ((userToUpdate.likes as number) || 0) - 10 });
-                        }
-                    } catch (error) {
-                        console.error('Error al penalizar usuario:', error);
+
+        try {
+            const palabras = await PalabrasProhibidasAPI.getPalabras();
+            const contenidoLower = contenido.toLowerCase();
+            palabrasDetectadas = palabras.filter((p: string) =>
+                contenidoLower.includes(p) || contenidoLower.includes(p + "a") || contenidoLower.includes(p + "o")
+            );
+            contieneProhibida = palabrasDetectadas.length > 0;
+            if (contieneProhibida && usuario) {
+                setShowProhibitedPopup(true);
+                setTimeout(() => setShowProhibitedPopup(false), 30000);
+                // Penalizar solo una vez
+                try {
+                    const users = await UsersAPI.getAllUsers();
+                    const userToUpdate = users.find(u => u.nick === usuario);
+                    if (userToUpdate) {
+                        await UsersAPI.updateUser({ ...userToUpdate, likes: ((userToUpdate.likes as number) || 0) - 10 });
                     }
+                } catch (error) {
+                    console.error('Error al penalizar usuario:', error);
                 }
             }
+        } catch (error) {
+            console.error('Error al verificar palabras prohibidas:', error);
         }
+
         // Crear historia
         const nuevaHistoriaData = {
             titulo,
@@ -99,6 +103,7 @@ export default function CreaHistoria() {
             imagen: imagen ?? undefined,
             concurso: esConcurso ? numConcurso : ""
         };
+
         try {
             const nuevaHistoria = await HistoriasAPI.createHistoria(nuevaHistoriaData);
             // Añadir la historia al array user.historias
@@ -221,7 +226,6 @@ export default function CreaHistoria() {
                             />
                         </div>
                     </div>
-                    {/* Eliminado: previsualización duplicada y textarea extra */}
                     {/* Botón de enviar */}
                     <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded self-end" onClick={handleEnviar}>Enviar</button>
                 </div>
