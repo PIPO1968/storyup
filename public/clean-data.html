@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Datos Corruptos - StoryUp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #c82333;
+        }
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Limpiar Datos Corruptos - StoryUp</h1>
+
+        <div class="warning">
+            <strong>⚠️ ATENCIÓN:</strong> Esta acción eliminará TODOS los usuarios existentes.
+            Se perderán todos los datos de usuarios, pero la aplicación funcionará correctamente para nuevos registros.
+        </div>
+
+        <p>Esta herramienta soluciona el problema de migración donde los datos se copiaron incorrectamente a Railway.</p>
+
+        <button onclick="cleanData()" id="cleanButton">🗑️ Limpiar Datos Corruptos</button>
+        <button onclick="checkStatus()" id="checkButton">📊 Verificar Estado</button>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        async function cleanData() {
+            const button = document.getElementById('cleanButton');
+            const result = document.getElementById('result');
+
+            button.disabled = true;
+            button.textContent = '🕐 Limpiando...';
+            result.style.display = 'block';
+            result.className = 'result';
+            result.textContent = 'Iniciando limpieza de datos...';
+
+            try {
+                const response = await fetch('/api/users?action=clean-corrupt-data', {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    result.className = 'result success';
+                    result.innerHTML = `✅ ¡ÉXITO!\n\n${data.message}\n\n🎉 La aplicación está lista para nuevos registros.\n\n📝 Próximos pasos:\n1. Registra usuarios nuevos\n2. El botón ADMIN funcionará correctamente\n3. Todas las fechas y campos se mostrarán bien`;
+                } else {
+                    result.className = 'result error';
+                    result.textContent = '❌ Error: ' + (data.error || 'Respuesta inesperada');
+                }
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = '❌ Error de conexión: ' + error.message;
+            }
+
+            button.disabled = false;
+            button.textContent = '🗑️ Limpiar Datos Corruptos';
+        }
+
+        async function checkStatus() {
+            const button = document.getElementById('checkButton');
+            const result = document.getElementById('result');
+
+            button.disabled = true;
+            button.textContent = '📊 Verificando...';
+            result.style.display = 'block';
+            result.className = 'result';
+            result.textContent = 'Verificando estado de la base de datos...';
+
+            try {
+                const response = await fetch('/api/users');
+                const users = await response.json();
+
+                if (Array.isArray(users)) {
+                    result.className = 'result success';
+                    result.innerHTML = `📊 Estado Actual:\n\n👥 Total usuarios: ${users.length}\n\n${
+                        users.length > 0
+                            ? 'Usuarios existentes:\n' + users.slice(0, 5).map(u => `- ${u.nick || u.email}`).join('\n')
+                            : '✅ Base de datos vacía y lista para nuevos registros'
+                    }`;
+                } else {
+                    result.className = 'result error';
+                    result.textContent = '❌ Error al obtener datos';
+                }
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = '❌ Error de conexión: ' + error.message;
+            }
+
+            button.disabled = false;
+            button.textContent = '📊 Verificar Estado';
+        }
+    </script>
+</body>
+</html>
