@@ -261,8 +261,8 @@ function PerfilUsuario() {
     useEffect(() => {
         if (user && user.nick) {
             ChatAPI.getChat(user.nick).then(chatData => {
-                setChatMessages(chatData.messages);
-                setMensajeRecibido(chatData.aviso);
+                setChatMessages(chatData.messages || []);
+                setMensajeRecibido(chatData.aviso || false);
             });
         }
     }, [user]);
