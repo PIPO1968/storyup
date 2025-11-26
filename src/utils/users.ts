@@ -45,10 +45,31 @@ export class UsersAPI {
     // Actualizar un usuario
     static async updateUser(user: User): Promise<User | null> {
         try {
+            // Solo enviar campos que existen en la tabla PostgreSQL
+            const { nick, ...updates } = user;
+
+            // Filtrar solo los campos que realmente existen en la tabla
+            const allowedFields = [
+                'email', 'password', 'nombre', 'centro', 'curso', 'tipo', 'linkPerfil',
+                'fechaInscripcion', 'textoFechaInscripcion', 'likes', 'trofeos',
+                'historias', 'amigos', 'trofeosDesbloqueados', 'trofeosBloqueados',
+                'preguntasFalladas', 'competicionesSuperadas', 'estaEnRanking',
+                'autoTrofeos', 'comentarios', 'premium', 'premiumExpiracion'
+            ];
+
+            const filteredUpdates: any = {};
+            for (const [key, value] of Object.entries(updates)) {
+                if (allowedFields.includes(key)) {
+                    filteredUpdates[key] = value;
+                }
+            }
+
+            const updateData = { nick, ...filteredUpdates };
+
             const response = await fetch('/api/users', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(user)
+                body: JSON.stringify(updateData)
             });
             if (!response.ok) throw new Error('Error updating user');
             return await response.json();
