@@ -19,29 +19,32 @@ const links = [
 const Sidebar: React.FC = () => {
     const [usuarios, setUsuarios] = useState<User[]>([]);
     const [unreadMessages, setUnreadMessages] = useState(false);
-    const [user, setUser] = useState<User | null>(() => {
-        if (typeof window !== "undefined") {
-            const userStr = sessionStorage.getItem("user");
-            return userStr ? JSON.parse(userStr) : null;
-        }
-        return null;
-    });
+    const [user, setUser] = useState<User | null>(null);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
         if (typeof window !== "undefined") {
+            const userStr = sessionStorage.getItem("user");
+            setUser(userStr ? JSON.parse(userStr) : null);
+
             // Cargar usuarios inscritos desde la API
             fetch('/api/users')
                 .then(res => res.json())
                 .then(data => setUsuarios(data.users || []))
                 .catch(() => setUsuarios([]));
             // Mantener la lógica de mensajes no leídos si es necesario
-            const currentUser = sessionStorage.getItem("user");
-            if (currentUser) {
-                const user = JSON.parse(currentUser);
+            if (userStr) {
+                const user = JSON.parse(userStr);
                 // Aquí podrías agregar la lógica de mensajes si la necesitas
             }
         }
-    }, []);
+    }, [mounted]);
 
     return (
         <nav className="w-full bg-blue-100 shadow flex justify-center py-2 sticky top-0 z-40">

@@ -5,8 +5,15 @@ import { User } from '../utils/users';
 
 const Header: React.FC = () => {
     const [dateTime, setDateTime] = useState("");
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
         const updateDateTime = () => {
             const now = new Date();
             // Hora de UK (Europe/London)
@@ -20,34 +27,28 @@ const Header: React.FC = () => {
         updateDateTime();
         const interval = setInterval(updateDateTime, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [mounted]);
 
     const { lang, setLang, t } = useTranslation();
 
     // Obtener usuario actual
-    const [user, setUser] = useState<User | null>(() => {
-        if (typeof window !== "undefined") {
-            const userStr = sessionStorage.getItem("user");
-            return userStr ? JSON.parse(userStr) : null;
-        }
-        return null;
-    });
+    const [user, setUser] = useState<User | null>(null);
     const [registeredUsers, setRegisteredUsers] = useState<number | null>(null);
-    const [onlineUsers, setOnlineUsers] = useState<number | null>(() => {
+    const [onlineUsers, setOnlineUsers] = useState<number | null>(0);
+    const [isPremium, setIsPremium] = useState(false);
+
+    useEffect(() => {
+        if (!mounted) return;
+
         if (typeof window !== "undefined") {
             const userStr = sessionStorage.getItem("user");
-            return userStr ? 1 : 0;
+            const currentUser = userStr ? JSON.parse(userStr) : null;
+            setUser(currentUser);
+            setOnlineUsers(currentUser ? 1 : 0);
+            setIsPremium(currentUser?.premium || false);
         }
-        return 0;
-    });
-    const [isPremium, setIsPremium] = useState(() => {
-        if (typeof window !== "undefined") {
-            const userStr = sessionStorage.getItem("user");
-            const currentUser: User | null = userStr ? JSON.parse(userStr) : null;
-            return currentUser?.premium || false;
-        }
-        return false;
-    });
+    }, [mounted]);
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             // Obtener número de usuarios registrados
