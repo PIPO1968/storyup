@@ -89,6 +89,68 @@ export async function GET(request: NextRequest) {
             // Columna ya renombrada o no existe
         }
 
+        // Agregar columnas faltantes si no existen
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS trofeos INTEGER DEFAULT 0`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS historias JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS amigos JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS trofeosdesbloqueados JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS trofeosbloqueados JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS preguntasfalladas INTEGER DEFAULT 0`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS competicionessuperadas INTEGER DEFAULT 0`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS estaenranking BOOLEAN DEFAULT FALSE`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS autotrofeos JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS comentarios JSONB DEFAULT '[]'::jsonb`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS premium BOOLEAN DEFAULT FALSE`);
+        } catch (e) {
+            // Columna ya existe
+        }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS premiumexpiracion TIMESTAMP`);
+        } catch (e) {
+            // Columna ya existe
+        }
+
         if (nick) {
             const result = await pool.query('SELECT * FROM "User" WHERE nick = $1', [nick]);
             if (result.rows.length === 0) {
