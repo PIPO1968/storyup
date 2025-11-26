@@ -183,8 +183,8 @@ function PerfilUsuario() {
                         // Rankings
                         const rankingLikes = [...processedUsers].sort((a, b) => (b.likes || 0) - (a.likes || 0)).slice(0, 3).filter(u => (u.likes || 0) > 0);
                         const rankingComentarios = [...processedUsers].sort((a, b) => (b.comentariosRecibidos || 0) - (a.comentariosRecibidos || 0)).slice(0, 3).filter(u => (u.comentariosRecibidos || 0) > 0);
-                        const rankingAmigos = [...processedUsers].sort((a, b) => (b.amigos?.length || 0) - (a.amigos?.length || 0)).slice(0, 3).filter(u => (u.amigos?.length || 0) > 0);
-                        const rankingHistorias = [...processedUsers].sort((a, b) => (b.historias?.length || 0) - (a.historias?.length || 0)).slice(0, 3).filter(u => (u.historias?.length || 0) > 0);
+                        const rankingAmigos = [...processedUsers].sort((a, b) => (b.amigos || 0) - (a.amigos || 0)).slice(0, 3).filter(u => (u.amigos || 0) > 0);
+                        const rankingHistorias = [...processedUsers].sort((a, b) => (b.historias || 0) - (a.historias || 0)).slice(0, 3).filter(u => (u.historias || 0) > 0);
                         const rankingConcursos = [...processedUsers].sort((a, b) => (b.concursosGanados || 0) - (a.concursosGanados || 0)).slice(0, 3).filter(u => (u.concursosGanados || 0) > 0);
                         const rankingCompeticiones = [...processedUsers].sort((a, b) => (b.competicionesSuperadas || 0) - (a.competicionesSuperadas || 0)).slice(0, 3).filter(u => (u.competicionesSuperadas || 0) > 0);
 
