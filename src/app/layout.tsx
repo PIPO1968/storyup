@@ -76,7 +76,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Deshabilitar React.StrictMode temporalmente para debugging */}
         <I18nProvider>
           <Header />
-          {showSidebar && <Sidebar />}
+          {/* Sidebar temporalmente deshabilitado para debugging */}
+          {/* {showSidebar && <Sidebar />} */}
           <main>{children}</main>
         </I18nProvider>
       </body>
