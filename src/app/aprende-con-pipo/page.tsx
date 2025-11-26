@@ -272,7 +272,7 @@ export default function AprendeConPipo() {
 
     // Función para manejar la finalización del torneo premium
 
-    async function generarPregunta() {
+    function generarPregunta() {
         if (preguntasFiltradas.length === 0) {
             setPreguntaActual("");
             setObjetoPreguntaActual(null);
@@ -333,45 +333,47 @@ export default function AprendeConPipo() {
             }
             // Guardar respuestas acertadas en la base de datos
             if (typeof window !== "undefined" && usuarioActual) {
-                try {
-                    // Actualizar preguntasAcertadas del usuario
-                    const updatedUser = {
-                        ...usuarioActual,
-                        preguntasAcertadas: (usuarioActual.preguntasAcertadas || 0) + 1
-                    };
-                    await UsersAPI.updateUser(updatedUser);
-
-                    // Actualizar sessionStorage
-                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
-
-                    // ✅ NUEVO: Guardar respuestas acertadas por asignatura específica
-                    if (objetoPreguntaActual && objetoPreguntaActual.categoria) {
-                        const asignaturaNormalizada = objetoPreguntaActual.categoria.toLowerCase();
-
-                        // Mapear categorías a nombres de asignatura consistentes
-                        const mapaAsignaturas: { [key: string]: string } = {
-                            'matemáticas': 'matematicas',
-                            'historia': 'historia',
-                            'geografía': 'geografia',
-                            'literatura': 'literatura',
-                            'inglés': 'ingles',
-                            'naturaleza': 'naturaleza',
-                            'lenguaje': 'lenguaje',
-                            'general': 'general'
+                (async () => {
+                    try {
+                        // Actualizar preguntasAcertadas del usuario
+                        const updatedUser = {
+                            ...usuarioActual,
+                            preguntasAcertadas: (usuarioActual.preguntasAcertadas || 0) + 1
                         };
-                        const asignaturaFinal = mapaAsignaturas[asignaturaNormalizada] || asignaturaNormalizada;
+                        await UsersAPI.updateUser(updatedUser);
 
-                        // Cargar datos actuales de asignaturas
-                        const asignaturasData = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'asignaturas') as Record<string, number>;
-                        const currentCount = asignaturasData[asignaturaFinal] || 0;
-                        asignaturasData[asignaturaFinal] = currentCount + 1;
+                        // Actualizar sessionStorage
+                        sessionStorage.setItem("user", JSON.stringify(updatedUser));
 
-                        // Guardar datos actualizados
-                        await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'asignaturas', asignaturasData);
+                        // ✅ NUEVO: Guardar respuestas acertadas por asignatura específica
+                        if (objetoPreguntaActual && objetoPreguntaActual.categoria) {
+                            const asignaturaNormalizada = objetoPreguntaActual.categoria.toLowerCase();
+
+                            // Mapear categorías a nombres de asignatura consistentes
+                            const mapaAsignaturas: { [key: string]: string } = {
+                                'matemáticas': 'matematicas',
+                                'historia': 'historia',
+                                'geografía': 'geografia',
+                                'literatura': 'literatura',
+                                'inglés': 'ingles',
+                                'naturaleza': 'naturaleza',
+                                'lenguaje': 'lenguaje',
+                                'general': 'general'
+                            };
+                            const asignaturaFinal = mapaAsignaturas[asignaturaNormalizada] || asignaturaNormalizada;
+
+                            // Cargar datos actuales de asignaturas
+                            const asignaturasData = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'asignaturas') as Record<string, number>;
+                            const currentCount = asignaturasData[asignaturaFinal] || 0;
+                            asignaturasData[asignaturaFinal] = currentCount + 1;
+
+                            // Guardar datos actualizados
+                            await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'asignaturas', asignaturasData);
+                        }
+                    } catch (error) {
+                        console.error('Error saving user stats:', error);
                     }
-                } catch (error) {
-                    console.error('Error saving user stats:', error);
-                }
+                })();
             }
         }
     }
@@ -412,17 +414,23 @@ if (typeof window !== "undefined") {
 // Función para manejar la finalización del torneo premium
 function handleTournamentComplete(aciertos: number, puntuacionTotal: number) {
     if (torneoActivo && usuarioActual) {
-
         // Actualizar estadísticas del usuario en torneos premium
-        const userStats = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'competiciones_premium') as { victorias: number; participaciones: number; puntuacionTotal: number };
-        const currentStats = userStats || { victorias: 0, participaciones: 0, puntuacionTotal: 0 };
-        currentStats.participaciones += 1;
-        currentStats.puntuacionTotal += puntuacionTotal;
+        (async () => {
+            try {
+                const userStats = await ChampionshipAPI.getChampionshipData(usuarioActual.nick, 'competiciones_premium') as { victorias: number; participaciones: number; puntuacionTotal: number };
+                const currentStats = userStats || { victorias: 0, participaciones: 0, puntuacionTotal: 0 };
+                currentStats.participaciones += 1;
+                currentStats.puntuacionTotal += puntuacionTotal;
 
-        // Guardar estadísticas actualizadas
-        await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'competiciones_premium', currentStats);
+                // Guardar estadísticas actualizadas
+                await ChampionshipAPI.setChampionshipData(usuarioActual.nick, 'competiciones_premium', currentStats);
+            } catch (error) {
+                console.error('Error saving tournament stats:', error);
+            }
+        })();
 
         // Si está en modo torneo, mostrar pantalla de inicio o TournamentQuiz
+        if (modoTorneo && torneoActivo) {
         if (modoTorneo && torneoActivo) {
             if (!torneoIniciado) {
                 return (
