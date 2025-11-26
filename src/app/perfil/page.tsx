@@ -164,7 +164,8 @@ function PerfilUsuario() {
                 // Cargar usuarios desde la API
                 try {
                     const response = await fetch('/api/users');
-                    const usersArr = await response.json();
+                    let usersArr = await response.json();
+                    if (!Array.isArray(usersArr)) usersArr = [];
 
                     // Procesar usuarios
                     let processedUsers = usersArr.map((u: User) => ({

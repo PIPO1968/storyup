@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
             // Cargar usuarios inscritos desde la API
             fetch('/api/users')
                 .then(res => res.json())
-                .then(data => setUsuarios(data.users || []))
+                .then(data => setUsuarios(Array.isArray(data) ? data : []))
                 .catch(() => setUsuarios([]));
             // Mantener la lógica de mensajes no leídos si es necesario
             if (userStr) {
