@@ -272,6 +272,7 @@ function PerfilUsuario() {
         const handleProfileUpdate = async () => {
             try {
                 const users = await UsersAPI.getAllUsers();
+                if (!Array.isArray(users)) return; // Skip if not array
                 setUsuarios(users);
                 const userStr = sessionStorage.getItem("user");
                 if (userStr) {
