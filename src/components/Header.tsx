@@ -26,8 +26,9 @@ const Header: React.FC = () => {
             setDateTime(prev => prev !== newDateTime ? newDateTime : prev);
         };
         updateDateTime();
-        const interval = setInterval(updateDateTime, 1000);
-        return () => clearInterval(interval);
+        // Temporalmente deshabilitado para debugging
+        // const interval = setInterval(updateDateTime, 1000);
+        // return () => clearInterval(interval);
     }, [mounted]);
 
     const { lang, setLang, t } = useTranslation();
