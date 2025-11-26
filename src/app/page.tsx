@@ -132,10 +132,12 @@ export default function Home() {
         {showSidebar && (
           <div className="flex flex-col items-center mt-4">
             <h2>Aprende con Pipo</h2>
-            <ChampionshipQuiz
+            {/* ChampionshipQuiz temporalmente deshabilitado para debugging */}
+            {/* <ChampionshipQuiz
               userGrade={userGrade}
               userSchool={userSchool}
-            />
+            /> */}
+            <p>ChampionshipQuiz deshabilitado temporalmente</p>
           </div>
         )}
       </main>
