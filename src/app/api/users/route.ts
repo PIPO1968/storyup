@@ -161,6 +161,11 @@ export async function GET(request: NextRequest) {
         } catch (e) {
             // Columna ya existe
         }
+        try {
+            await pool.query(`ALTER TABLE "User" ADD COLUMN IF NOT EXISTS avatar VARCHAR(255)`);
+        } catch (e) {
+            // Columna ya existe
+        }
 
         if (nick) {
             const result = await pool.query('SELECT * FROM "User" WHERE nick = $1', [nick]);
@@ -295,7 +300,7 @@ export async function PUT(request: NextRequest) {
 
         // Limpiar y validar el objeto updates - solo incluir campos válidos con valores válidos
         const validFields = [
-            'nombre', 'centro', 'curso', 'tipo', 'email', 'password', 'linkperfil',
+            'nombre', 'centro', 'curso', 'tipo', 'email', 'password', 'linkperfil', 'avatar',
             'fechainscripcion', 'textofechainscripcion', 'likes', 'trofeos',
             'historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados',
             'preguntasfalladas', 'competicionessuperadas', 'estaenranking',
