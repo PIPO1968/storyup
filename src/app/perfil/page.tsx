@@ -16,7 +16,7 @@ interface Usuario {
     centro: string;
     curso: string;
     tipo: string;
-    fechaInscripcion: string;
+    fechainscripcion: string;
     likes: number;
     amigos: string[];
     respuestasAcertadas: number;
@@ -638,8 +638,8 @@ function PerfilUsuario() {
         { src: "/trofeo19.jpg", texto: "Trofeo 19", tipo: "auto", condicion: (user: any) => (user.preguntasAcertadas || 0) >= 1000 },
         {
             src: "/trofeo20.jpg", texto: "Trofeo 20", tipo: "auto", condicion: (user: any) => {
-                if (!user.fechaInscripcion) return false;
-                const fecha = new Date(user.fechaInscripcion);
+                if (!user.fechainscripcion) return false;
+                const fecha = new Date(user.fechainscripcion);
                 const ahora = new Date();
                 const diff = ahora.getTime() - fecha.getTime();
                 return diff >= 365 * 24 * 60 * 60 * 1000; // 1 año en ms
@@ -884,7 +884,7 @@ function PerfilUsuario() {
                         <div className="mb-2"><strong>{t('centroEducativo')}:</strong> {displayedUser.centro}</div>
                         <div className="mb-2"><strong>{t('curso')}:</strong> {displayedUser.curso}</div>
                         <div className="mb-2"><strong>{t('tipoUsuario')}:</strong> {user.tipo}</div>
-                        <div className="mb-2"><strong>{t('fechaInscripcion')}:</strong> {user.fechaInscripcion ? new Date(user.fechaInscripcion).toLocaleDateString('es-ES') : ''}</div>
+                        <div className="mb-2"><strong>{t('fechaInscripcion')}:</strong> {displayedUser.fechainscripcion ? new Date(displayedUser.fechainscripcion).toLocaleDateString('es-ES') : ''}</div>
                         <div className="mb-2 flex items-center">
                             {/* Datos personales en filas de dos en dos, con bloques redondos */}
                             <div className="flex flex-col mt-2 gap-y-4">
