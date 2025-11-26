@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const cursos = [
     '1º primaria', '2º primaria', '3º primaria', '4º primaria', '5º primaria', '6º primaria'
@@ -7,15 +8,16 @@ const cursos = [
 
 const RegisterLoginForm: React.FC = () => {
     const [isRegister, setIsRegister] = useState(true);
+    const router = useRouter();
 
     React.useEffect(() => {
         if (typeof window !== "undefined") {
             const user = sessionStorage.getItem("user");
             if (user) {
-                window.location.href = "/perfil";
+                router.push("/perfil");
             }
         }
-    }, []);
+    }, [router]);
 
     return (
         <div className="max-w-md mx-auto bg-white shadow rounded p-6 mt-8">
@@ -45,7 +47,7 @@ const RegisterLoginForm: React.FC = () => {
                         const result = await response.json();
                         if (response.ok) {
                             sessionStorage.setItem('user', JSON.stringify(result.user));
-                            window.location.href = '/perfil';
+                            router.push('/perfil');
                         } else {
                             alert(result.error);
                         }
@@ -92,7 +94,7 @@ const RegisterLoginForm: React.FC = () => {
                         const result = await response.json();
                         if (response.ok) {
                             sessionStorage.setItem('user', JSON.stringify(result.user));
-                            window.location.href = '/perfil';
+                            router.push('/perfil');
                         } else {
                             alert(result.error);
                         }

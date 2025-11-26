@@ -29,21 +29,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   }, []);
 
   React.useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || typeof window === "undefined") return;
 
-    if (typeof window !== "undefined") {
-      const pathname = window.location.pathname;
-      const user = sessionStorage.getItem("user");
-      // Si está logueado y accede a / o /registro, redirigir a perfil
-      if (user && (pathname === "/" || pathname === "/registro")) {
-        window.location.href = "/perfil";
-      }
-      // Sidebar visible en todas las páginas excepto registro/login
-      if (user && !["/registro", "/login", "/"].includes(pathname)) {
-        setShowSidebar(true);
-      } else {
-        setShowSidebar(false);
-      }
+    const pathname = window.location.pathname;
+    const user = sessionStorage.getItem("user");
+
+    // Si está logueado y accede a / o /registro, redirigir a perfil
+    if (user && (pathname === "/" || pathname === "/registro")) {
+      window.location.href = "/perfil";
+      return;
+    }
+
+    // Sidebar visible en todas las páginas excepto registro/login
+    if (user && !["/registro", "/login", "/"].includes(pathname)) {
+      setShowSidebar(true);
+    } else {
+      setShowSidebar(false);
     }
   }, [mounted]);
 
