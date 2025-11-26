@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { pool } from './database.js';
 
+// Función para convertir nombres de campos de DB a camelCase
+function convertToCamelCase(obj: any): any {
+    const converted: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+        // Convertir nombres de campos
+        const camelCaseKey = key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+        converted[camelCaseKey] = value;
+    }
+    return converted;
+}
+
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const nick = searchParams.get('nick');
@@ -156,7 +167,7 @@ export async function GET(request: NextRequest) {
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
-            // Parse JSONB fields
+            // Parse JSONB fields and convert to camelCase
             const user = result.rows[0];
             const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
             jsonbFields.forEach(field => {
@@ -171,13 +182,13 @@ export async function GET(request: NextRequest) {
                     user[field] = [];
                 }
             });
-            return NextResponse.json(user);
+            return NextResponse.json(convertToCamelCase(user));
         } else if (email) {
             const result = await pool.query('SELECT * FROM "User" WHERE email = $1', [email]);
             if (result.rows.length === 0) {
                 return NextResponse.json({ error: 'User not found' }, { status: 404 });
             }
-            // Parse JSONB fields
+            // Parse JSONB fields and convert to camelCase
             const user = result.rows[0];
             const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
             jsonbFields.forEach(field => {
@@ -192,10 +203,10 @@ export async function GET(request: NextRequest) {
                     user[field] = [];
                 }
             });
-            return NextResponse.json(user);
+            return NextResponse.json(convertToCamelCase(user));
         } else {
             const result = await pool.query('SELECT * FROM "User"');
-            // Parse JSONB fields for all users
+            // Parse JSONB fields for all users and convert to camelCase
             const users = result.rows.map(user => {
                 const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
                 jsonbFields.forEach(field => {
@@ -210,7 +221,7 @@ export async function GET(request: NextRequest) {
                         user[field] = [];
                     }
                 });
-                return user;
+                return convertToCamelCase(user);
             });
             return NextResponse.json(users);
         }
@@ -230,7 +241,7 @@ export async function POST(request: NextRequest) {
             [nick, email, password, nombre, centro, curso, tipo, linkPerfil, fechaInscripcion, textoFechaInscripcion, likes, trofeos, JSON.stringify(Array.isArray(historias) ? historias : []), JSON.stringify(Array.isArray(amigos) ? amigos : []), JSON.stringify(Array.isArray(trofeosDesbloqueados) ? trofeosDesbloqueados : []), JSON.stringify(Array.isArray(trofeosBloqueados) ? trofeosBloqueados : []), preguntasFalladas, competicionesSuperadas, estaEnRanking, JSON.stringify(Array.isArray(autoTrofeos) ? autoTrofeos : []), JSON.stringify(Array.isArray(comentarios) ? comentarios : [])]
         );
 
-        // Parse JSONB fields in the returned user
+        // Parse JSONB fields in the returned user and convert to camelCase
         const user = result.rows[0];
         const jsonbFields = ['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'];
         jsonbFields.forEach(field => {
@@ -246,7 +257,7 @@ export async function POST(request: NextRequest) {
             }
         });
 
-        return NextResponse.json(user, { status: 201 });
+        return NextResponse.json(convertToCamelCase(user), { status: 201 });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -295,22 +306,7 @@ export async function PUT(request: NextRequest) {
         for (const [key, value] of Object.entries(updates)) {
             // Solo incluir campos válidos que no sean undefined
             if (validFields.includes(key) && value !== undefined) {
-                // Para arrays, asegurar que sean arrays
-                if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'].includes(key)) {
-                    if (Array.isArray(value)) {
-                        cleanUpdates[key] = value;
-                    } else if (typeof value === 'string') {
-                        try {
-                            cleanUpdates[key] = JSON.parse(value);
-                        } catch (e) {
-                            cleanUpdates[key] = [];
-                        }
-                    } else {
-                        cleanUpdates[key] = [];
-                    }
-                } else {
-                    cleanUpdates[key] = value;
-                }
+                cleanUpdates[key] = value;
             }
         }
 
@@ -347,22 +343,20 @@ export async function PUT(request: NextRequest) {
             }
 
             if (['historias', 'amigos', 'trofeosdesbloqueados', 'trofeosbloqueados', 'autotrofeos', 'comentarios'].includes(fieldName)) {
-                // Ensure value is an array before stringifying
-                let arrayValue = value;
+                // For JSONB fields, send as JSON string
+                let jsonValue = value;
                 if (typeof value === 'string') {
-                    try {
-                        arrayValue = JSON.parse(value);
-                    } catch (e) {
-                        // If it's not valid JSON, treat as empty array
-                        arrayValue = [];
-                    }
-                }
-                // Ensure it's an array
-                if (!Array.isArray(arrayValue)) {
-                    arrayValue = [];
+                    // If it's already a string, assume it's JSON
+                    jsonValue = value;
+                } else if (Array.isArray(value)) {
+                    // If it's an array, stringify it
+                    jsonValue = JSON.stringify(value);
+                } else {
+                    // Default to empty array
+                    jsonValue = '[]';
                 }
                 fields.push(`${fieldName} = $${index}`);
-                values.push(JSON.stringify(arrayValue));
+                values.push(jsonValue);
             } else {
                 fields.push(`${fieldName} = $${index}`);
                 values.push(value);
@@ -405,7 +399,7 @@ export async function PUT(request: NextRequest) {
             }
         });
 
-        return NextResponse.json(user);
+        return NextResponse.json(convertToCamelCase(user));
     } catch (error) {
         console.error('❌ PUT /api/users - Error:', error);
         return NextResponse.json({ error: 'Database error' }, { status: 500 });
