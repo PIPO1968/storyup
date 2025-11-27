@@ -1,174 +1,2766 @@
-[00:00:00.960] Server  LOG      ✓ Ready in 620ms
-[00:14:27.974] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+[00:00:00.971] Server  LOG      ✓ Ready in 644ms
+[00:00:12.143] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:23.990] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
 
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useEffect                  useEffect
+4. undefined                  useState
 
+[00:00:23.990] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:01:11.860] Server  LOG      ✓ Compiled in 114ms
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:163:12
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |            ^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
 
-https://nextjs.org/docs/messages/module-not-found
+the name `bullyingActivo` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-[00:14:27.975] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:175:12
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |            ^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
 
+the name `chatInput` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-https://nextjs.org/docs/messages/module-not-found
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:176:12
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |            ^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
 
+the name `chatMessages` is defined multiple times
 
-[00:14:27.979] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:171:12
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |            ^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
 
+the name `concursoId` is defined multiple times
 
-https://nextjs.org/docs/messages/module-not-found
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:167:12
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |            ^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
 
-[00:14:27.980] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+the name `concursoTexto` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:166:12
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |            ^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
 
-https://nextjs.org/docs/messages/module-not-found
+the name `concursoTitulo` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-[00:14:27.982] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:169:12
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |            ^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
 
+the name `fechaFin` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-https://nextjs.org/docs/messages/module-not-found
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:168:12
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |            ^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
 
+the name `fechaInicio` is defined multiple times
 
-[00:14:27.983] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:177:12
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |            ^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
 
+the name `mensajeRecibido` is defined multiple times
 
-https://nextjs.org/docs/messages/module-not-found
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:172:12
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |            ^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
 
-[00:14:27.985] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+the name `nombreArchivo` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:165:12
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |            ^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
 
-https://nextjs.org/docs/messages/module-not-found
+the name `palabraProhibida` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-[00:14:27.986] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:174:12
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |            ^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
 
+the name `selectedUser` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-https://nextjs.org/docs/messages/module-not-found
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:163:28
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |                            ^^^^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
 
+the name `setBullyingActivo` is defined multiple times
 
-[00:14:27.988] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:175:23
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |                       ^^^^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
 
+the name `setChatInput` is defined multiple times
 
-https://nextjs.org/docs/messages/module-not-found
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:176:26
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |                          ^^^^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
 
-[00:14:27.988] Server  ERROR    ⨯ ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+the name `setChatMessages` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:171:24
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |                        ^^^^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
 
-https://nextjs.org/docs/messages/module-not-found
+the name `setConcursoId` is defined multiple times
 
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-[00:14:28.005] Server  LOG      ✓ Compiled in 162ms
-[00:14:28.109] Browser ERROR   ./src/app/layout.tsx:4:1
-Module not found: Can't resolve './client-layout'
-  2 | import { Geist, Geist_Mono } from "next/font/google";
-  3 | import "./globals.css";
-> 4 | import ClientLayout from "./client-layout";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  5 |
-  6 | const geistSans = Geist({
-  7 |   variable: "--font-geist-sans",
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:167:27
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
 
-https://nextjs.org/docs/messages/module-not-found
-[00:14:32.964] Server  ERROR    ⨯ Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
-[00:14:33.143] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+the name `setConcursoTexto` is defined multiple times
 
-Check the render method of `RootLayout`.
-[00:14:33.367] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:14:39.018] Server  LOG      ✓ Compiled in 82ms
-[00:36:59.822] Server  LOG      ✓ Compiled in 62ms
-[00:36:59.902] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
 
-Previous: %s
-Incoming: %s useEffect [true, /, [object Object]] [true, /]
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:166:28
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `setConcursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:169:22
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |                      ^^^^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `setFechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:168:25
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |                         ^^^^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `setFechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:177:29
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |                             ^^^^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `setMensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:172:27
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `setNombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:165:30
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |                              ^^^^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `setPalabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:174:26
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |                          ^^^^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `setSelectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:162:18
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |                  ^^^^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `setUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:164:29
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |                             ^^^^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `setUsuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:170:28
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `setUsuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:173:22
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |                      ^^^^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `setUsuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:162:12
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |            ^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `user` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:164:12
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |            ^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `usuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:170:12
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |            ^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `usuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.969] Browser ERROR   ./src/app/perfil/page.tsx:173:12
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |            ^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `usuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:163:12
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |            ^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `bullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:175:12
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |            ^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `chatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:176:12
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |            ^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `chatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:171:12
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |            ^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `concursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:167:12
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |            ^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `concursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:166:12
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |            ^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `concursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:169:12
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |            ^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `fechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:168:12
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |            ^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `fechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:177:12
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |            ^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `mensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:172:12
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |            ^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `nombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:165:12
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |            ^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `palabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:174:12
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |            ^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `selectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:163:28
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |                            ^^^^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `setBullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:175:23
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |                       ^^^^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `setChatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:176:26
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |                          ^^^^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `setChatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:171:24
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |                        ^^^^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `setConcursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:167:27
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `setConcursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:166:28
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `setConcursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:169:22
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |                      ^^^^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `setFechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:168:25
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |                         ^^^^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `setFechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:177:29
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |                             ^^^^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `setMensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:172:27
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `setNombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:165:30
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |                              ^^^^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `setPalabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:174:26
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |                          ^^^^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `setSelectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:162:18
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |                  ^^^^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `setUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:164:29
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |                             ^^^^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `setUsuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:170:28
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `setUsuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:173:22
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |                      ^^^^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `setUsuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:162:12
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |            ^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `user` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:164:12
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |            ^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `usuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:170:12
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |            ^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `usuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:11.976] Browser ERROR   ./src/app/perfil/page.tsx:173:12
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |            ^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `usuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:163:12
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |            ^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `bullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:175:12
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |            ^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `chatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:176:12
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |            ^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `chatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:171:12
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |            ^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `concursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:167:12
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |            ^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `concursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:166:12
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |            ^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `concursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:169:12
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |            ^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `fechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:168:12
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |            ^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `fechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:177:12
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |            ^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `mensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:172:12
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |            ^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `nombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:165:12
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |            ^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `palabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:174:12
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |            ^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `selectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:163:28
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |                            ^^^^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `setBullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:175:23
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |                       ^^^^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `setChatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:176:26
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |                          ^^^^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `setChatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.317] Browser ERROR   ./src/app/perfil/page.tsx:171:24
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |                        ^^^^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `setConcursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:167:27
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `setConcursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:166:28
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `setConcursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:169:22
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |                      ^^^^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `setFechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:168:25
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |                         ^^^^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `setFechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:177:29
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |                             ^^^^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `setMensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:172:27
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `setNombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:165:30
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |                              ^^^^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `setPalabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:174:26
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |                          ^^^^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `setSelectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:162:18
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |                  ^^^^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `setUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:164:29
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |                             ^^^^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `setUsuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:170:28
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `setUsuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:173:22
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |                      ^^^^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `setUsuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:162:12
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |            ^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `user` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:164:12
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |            ^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `usuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:170:12
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |            ^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `usuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:173:12
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |            ^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `usuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:163:12
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |            ^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `bullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:175:12
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |            ^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `chatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:176:12
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |            ^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `chatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:171:12
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |            ^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `concursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:167:12
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |            ^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `concursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:166:12
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |            ^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `concursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:169:12
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |            ^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `fechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:168:12
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |            ^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `fechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:177:12
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |            ^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `mensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:172:12
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |            ^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `nombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:165:12
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |            ^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `palabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:174:12
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |            ^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `selectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:163:28
+Ecmascript file had an error
+  161 |
+  162 |     const [user, setUser] = useState<any>(null);
+> 163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+      |                            ^^^^^^^^^^^^^^^^^
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+
+the name `setBullyingActivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:175:23
+Ecmascript file had an error
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+> 175 |     const [chatInput, setChatInput] = useState("");
+      |                       ^^^^^^^^^^^^
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+
+the name `setChatInput` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:176:26
+Ecmascript file had an error
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+> 176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+      |                          ^^^^^^^^^^^^^^^
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+
+the name `setChatMessages` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:171:24
+Ecmascript file had an error
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+> 171 |     const [concursoId, setConcursoId] = useState(1);
+      |                        ^^^^^^^^^^^^^
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+
+the name `setConcursoId` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:167:27
+Ecmascript file had an error
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+> 167 |     const [concursoTexto, setConcursoTexto] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+
+the name `setConcursoTexto` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:166:28
+Ecmascript file had an error
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+> 166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+
+the name `setConcursoTitulo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:169:22
+Ecmascript file had an error
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+> 169 |     const [fechaFin, setFechaFin] = useState("");
+      |                      ^^^^^^^^^^^
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+
+the name `setFechaFin` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:168:25
+Ecmascript file had an error
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+> 168 |     const [fechaInicio, setFechaInicio] = useState("");
+      |                         ^^^^^^^^^^^^^^
+  169 |     const [fechaFin, setFechaFin] = useState("");
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+
+the name `setFechaInicio` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:177:29
+Ecmascript file had an error
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+> 177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+      |                             ^^^^^^^^^^^^^^^^^^
+  178 |     const [noticiaTitulo, setNoticiaTitulo] = useState("");
+  179 |     const [noticiaTexto, setNoticiaTexto] = useState("");
+  180 |     const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+
+the name `setMensajeRecibido` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:172:27
+Ecmascript file had an error
+  170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+  171 |     const [concursoId, setConcursoId] = useState(1);
+> 172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+      |                           ^^^^^^^^^^^^^^^^
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+
+the name `setNombreArchivo` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:165:30
+Ecmascript file had an error
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+> 165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+      |                              ^^^^^^^^^^^^^^^^^^^
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+
+the name `setPalabraProhibida` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:174:26
+Ecmascript file had an error
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+> 174 |     const [selectedUser, setSelectedUser] = useState("");
+      |                          ^^^^^^^^^^^^^^^
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+  177 |     const [mensajeRecibido, setMensajeRecibido] = useState(false);
+
+the name `setSelectedUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:162:18
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |                  ^^^^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `setUser` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:164:29
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |                             ^^^^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `setUsuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:170:28
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |                            ^^^^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `setUsuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:173:22
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |                      ^^^^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `setUsuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:162:12
+Ecmascript file had an error
+  160 |     };
+  161 |
+> 162 |     const [user, setUser] = useState<any>(null);
+      |            ^^^^
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+  164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+
+the name `user` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:164:12
+Ecmascript file had an error
+  162 |     const [user, setUser] = useState<any>(null);
+  163 |     const [bullyingActivo, setBullyingActivo] = useState(false);
+> 164 |     const [usuarioBullying, setUsuarioBullying] = useState("");
+      |            ^^^^^^^^^^^^^^^
+  165 |     const [palabraProhibida, setPalabraProhibida] = useState("");
+  166 |     const [concursoTitulo, setConcursoTitulo] = useState("");
+  167 |     const [concursoTexto, setConcursoTexto] = useState("");
+
+the name `usuarioBullying` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:170:12
+Ecmascript file had an error
+  168 |     const [fechaInicio, setFechaInicio] = useState("");
+  169 |     const [fechaFin, setFechaFin] = useState("");
+> 170 |     const [usuarioGanador, setUsuarioGanador] = useState("");
+      |            ^^^^^^^^^^^^^^
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+  173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+
+the name `usuarioGanador` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:21.318] Browser ERROR   ./src/app/perfil/page.tsx:173:12
+Ecmascript file had an error
+  171 |     const [concursoId, setConcursoId] = useState(1);
+  172 |     const [nombreArchivo, setNombreArchivo] = useState("");
+> 173 |     const [usuarios, setUsuarios] = useState<any[]>([]);
+      |            ^^^^^^^^
+  174 |     const [selectedUser, setSelectedUser] = useState("");
+  175 |     const [chatInput, setChatInput] = useState("");
+  176 |     const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+
+the name `usuarios` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/perfil/page.tsx [Client Component Browser]
+    ./src/app/perfil/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/perfil/page.tsx [Client Component SSR]
+    ./src/app/perfil/page.tsx [Server Component]
+[00:01:32.651] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:33.065] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:33.215] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useEffect                 useEffect
+20. undefined                 useEffect
+
+[00:01:33.215] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:01:50.121] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:50.314] Server  LOG      ✓ Compiled in 81ms
+[00:01:50.444] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:50.590] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useEffect                 useEffect
+21. undefined                 useEffect
+
+[00:01:50.590] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:01:57.509] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:57.675] Server  LOG      ✓ Compiled in 73ms
+[00:01:57.811] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:57.942] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useEffect                 useEffect
+30. undefined                 useEffect
+
+[00:01:57.942] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:02:01.206] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:02:01.382] Server  LOG      ✓ Compiled in 75ms
+[00:02:01.519] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:01.657] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useState                  useState
+33. useEffect                 useEffect
+34. undefined                 useEffect
+
+[00:02:01.657] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:02:07.478] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:02:07.654] Server  LOG      ✓ Compiled in 71ms
+[00:02:07.790] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:07.928] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ PerfilUsuario 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useState                  useState
+33. useEffect                 useEffect
+34. undefined                 useEffect
+
+[00:02:07.928] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:02:11.284] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:02:11.286] Server  LOG      ✓ Compiled in 91ms
+[00:02:11.600] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:22.998] Server  LOG      ✓ Compiled in 92ms

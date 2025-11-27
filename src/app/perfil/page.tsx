@@ -32,6 +32,37 @@ function PerfilUsuario() {
     // Verificación inicial de sesión
     const [initialCheckDone, setInitialCheckDone] = useState(false);
 
+    const [user, setUser] = useState<any>(null);
+    const [bullyingActivo, setBullyingActivo] = useState(false);
+    const [usuarioBullying, setUsuarioBullying] = useState("");
+    const [palabraProhibida, setPalabraProhibida] = useState("");
+    const [concursoTitulo, setConcursoTitulo] = useState("");
+    const [concursoTexto, setConcursoTexto] = useState("");
+    const [fechaInicio, setFechaInicio] = useState("");
+    const [fechaFin, setFechaFin] = useState("");
+    const [usuarioGanador, setUsuarioGanador] = useState("");
+    const [concursoId, setConcursoId] = useState(1);
+    const [nombreArchivo, setNombreArchivo] = useState("");
+    const [usuarios, setUsuarios] = useState<any[]>([]);
+    const [selectedUser, setSelectedUser] = useState("");
+    const [chatInput, setChatInput] = useState("");
+    const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
+    const [mensajeRecibido, setMensajeRecibido] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
+    const [noticiaTitulo, setNoticiaTitulo] = useState("");
+    const [noticiaTexto, setNoticiaTexto] = useState("");
+    const [noticiaImagen, setNoticiaImagen] = useState<string>("");
+    const [trofeoSeleccionado, setTrofeoSeleccionado] = useState("");
+    const [concursoSeleccionado, setConcursoSeleccionado] = useState("");
+    const [ganadorSeleccionado, setGanadorSeleccionado] = useState("");
+    const [refreshKey, setRefreshKey] = useState(0);
+    const [concursos, setConcursos] = useState<any[]>([]);
+    const [cursoSeleccionado, setCursoSeleccionado] = useState<string>("1primaria");
+    const [asignaturaSeleccionada, setAsignaturaSeleccionada] = useState<string>("matematicas");
+    const [pregunta, setPregunta] = useState<string>("");
+    const [respuesta, setRespuesta] = useState<string>("");
+
     // Verificar sesión inmediatamente
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -42,20 +73,10 @@ function PerfilUsuario() {
                 return;
             }
             setInitialCheckDone(true);
+            setLoading(false);
         }
     }, []);
 
-    // No renderizar hasta verificar sesión inicial
-    if (!initialCheckDone) {
-        return (
-            <div className="min-h-screen bg-green-100 flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
-                    <p className="text-green-600 font-semibold">Verificando sesión...</p>
-                </div>
-            </div>
-        );
-    }
     // Función para bloquear manualmente el trofeo 10 al usuario seleccionado
     // Función para bloquear manualmente cualquier trofeo al usuario seleccionado
     const handleLockTrofeo = async (trofeoIdx: number) => {
@@ -141,39 +162,6 @@ function PerfilUsuario() {
             }
         }
     };
-
-    const [user, setUser] = useState<any>(null);
-    const [bullyingActivo, setBullyingActivo] = useState(false);
-    const [usuarioBullying, setUsuarioBullying] = useState("");
-    const [palabraProhibida, setPalabraProhibida] = useState("");
-    const [concursoTitulo, setConcursoTitulo] = useState("");
-    const [concursoTexto, setConcursoTexto] = useState("");
-    const [fechaInicio, setFechaInicio] = useState("");
-    const [fechaFin, setFechaFin] = useState("");
-    const [usuarioGanador, setUsuarioGanador] = useState("");
-    const [concursoId, setConcursoId] = useState(1);
-    const [nombreArchivo, setNombreArchivo] = useState("");
-    const [usuarios, setUsuarios] = useState<any[]>([]);
-    const [selectedUser, setSelectedUser] = useState("");
-    const [chatInput, setChatInput] = useState("");
-    const [chatMessages, setChatMessages] = useState<{ from: string, to: string, text: string, fecha?: string }[]>([]);
-    const [mensajeRecibido, setMensajeRecibido] = useState(false);
-    const [noticiaTitulo, setNoticiaTitulo] = useState("");
-    const [noticiaTexto, setNoticiaTexto] = useState("");
-    const [noticiaImagen, setNoticiaImagen] = useState<string>("");
-    // Estado para el trofeo seleccionado por el admin
-    const [trofeoSeleccionado, setTrofeoSeleccionado] = useState("");
-    // Estados para gestionar concursos finalizados
-    const [concursoSeleccionado, setConcursoSeleccionado] = useState("");
-    const [ganadorSeleccionado, setGanadorSeleccionado] = useState("");
-    const [refreshKey, setRefreshKey] = useState(0);
-    const [concursos, setConcursos] = useState<any[]>([]);
-    // Estados para preguntas
-    const [cursoSeleccionado, setCursoSeleccionado] = useState<string>("1primaria");
-    const [asignaturaSeleccionada, setAsignaturaSeleccionada] = useState<string>("matematicas");
-    const [pregunta, setPregunta] = useState<string>("");
-    const [respuesta, setRespuesta] = useState<string>("");
-    const [mounted, setMounted] = useState(false);
 
     // Función temporal para traducciones mientras I18nProvider está deshabilitado
     const t = (key: string) => {
@@ -871,6 +859,17 @@ function PerfilUsuario() {
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
                     <p className="text-green-600 font-semibold">Cargando perfil...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-green-100 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto mb-4"></div>
+                    <p className="text-green-600 font-semibold">Verificando sesión...</p>
                 </div>
             </div>
         );

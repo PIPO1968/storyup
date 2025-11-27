@@ -1,4 +1,12 @@
 {
+  "/api/amigos/route": "app/api/amigos/route.js",
+  "/api/chat/route": "app/api/chat/route.js",
+  "/api/concursos/route": "app/api/concursos/route.js",
+  "/api/premios-mensuales/route": "app/api/premios-mensuales/route.js",
+  "/api/users/[nick]/route": "app/api/users/[nick]/route.js",
   "/api/users/count/route": "app/api/users/count/route.js",
-  "/page": "app/page.js"
+  "/api/users/login/route": "app/api/users/login/route.js",
+  "/api/users/route": "app/api/users/route.js",
+  "/page": "app/page.js",
+  "/perfil/page": "app/perfil/page.js"
 }
