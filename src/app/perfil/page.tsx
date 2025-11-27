@@ -329,7 +329,7 @@ function PerfilUsuario() {
                 setMensajeRecibido(chatData.aviso || false);
             });
         }
-    }, [user]);
+    }, [user?.nick]);
 
     // Escuchar cambios en el perfil
     useEffect(() => {
