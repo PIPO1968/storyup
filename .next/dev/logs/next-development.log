@@ -167,3 +167,8 @@ https://nextjs.org/docs/messages/module-not-found
 Check the render method of `RootLayout`.
 [00:14:33.367] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
 [00:14:39.018] Server  LOG      ✓ Compiled in 82ms
+[00:36:59.822] Server  LOG      ✓ Compiled in 62ms
+[00:36:59.902] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [true, /, [object Object]] [true, /]

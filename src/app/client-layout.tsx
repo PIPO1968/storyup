@@ -31,7 +31,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         } else {
             setShowSidebar(false);
         }
-    }, [mounted, pathname, router]);
+    }, [mounted, pathname]);
 
     if (!mounted) {
         return (
