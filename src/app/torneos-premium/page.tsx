@@ -200,7 +200,7 @@ const TorneosPremiumPage: React.FC = () => {
             }
             setLoading(false);
         }
-    }, [cargarTorneos, router]);
+    }, [cargarTorneos]);
 
     useEffect(() => {
         if (usuarioActual) {

@@ -43,7 +43,7 @@ function PerfilUsuario() {
             }
             setInitialCheckDone(true);
         }
-    }, [router]);
+    }, []);
 
     // No renderizar hasta verificar sesión inicial
     if (!initialCheckDone) {
