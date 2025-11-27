@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { renderNick } from "@/utils/renderNick";
 import { TROFEOS_PREMIUM } from "@/data/trofeosPremiumImport";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { PremiosMensualesAPI } from "@/utils/premios-mensuales";
 import { ConcursosAPI } from "@/utils/concursos";
 import { ChatAPI } from "@/utils/chat";
@@ -29,6 +29,7 @@ interface Usuario {
 
 function PerfilUsuario() {
     const router = useRouter();
+    const pathname = usePathname();
     // Verificación inicial de sesión
     const [initialCheckDone, setInitialCheckDone] = useState(false);
 
@@ -63,7 +64,15 @@ function PerfilUsuario() {
     const [pregunta, setPregunta] = useState<string>("");
     const [respuesta, setRespuesta] = useState<string>("");
 
-    // Verificar sesión inmediatamente
+    // Set selectedUser from URL pathname
+    useEffect(() => {
+        const pathParts = pathname.split('/');
+        if (pathParts.length === 3 && pathParts[1] === 'perfil' && pathParts[2]) {
+            setSelectedUser(decodeURIComponent(pathParts[2]));
+        } else {
+            setSelectedUser("");
+        }
+    }, [pathname]);
     useEffect(() => {
         if (typeof window !== "undefined") {
             const userStr = sessionStorage.getItem("user");

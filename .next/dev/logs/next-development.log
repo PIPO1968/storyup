@@ -1,13 +1,3 @@
-[00:00:00.889] Server  LOG      ✓ Ready in 595ms
-[00:00:06.392] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:41.334] Server  LOG     🔄 PUT /api/users - Body recibido: {}
-[00:00:41.334] Server  LOG     🔍 PUT /api/users - Verificando columnas para PIPO68...
-[00:00:42.040] Server  LOG     📋 Columnas existentes en tabla User: ["amigos","autotrofeos","avatar","centro","comentarios","competicionessuperadas","createdAt","curso","email","estaenranking","fechainscripcion","historias","id","likes","linkperfil","nick","nombre","password","preguntasfalladas","premium","premiumexpiracion","textofechainscripcion","tipo","trofeos","trofeosbloqueados","trofeosdesbloqueados","updatedAt"]
-[00:00:42.040] Server  LOG     🔍 PUT /api/users - Updates: {}
-[00:00:42.041] Server  LOG     🧹 PUT /api/users - Updates limpiados: {}
-[00:00:42.041] Server  LOG     🔧 PUT /api/users - Query: "UPDATE \"User\" SET nombre = $1, centro = $2, curso = $3, tipo = $4, email = $5, password = $6, linkperfil = $7, fechainscripcion = $8, textofechainscripcion = $9, likes = $10, amigos = $11, historias = $12, comentarios = $13, premium = $14, trofeos = $15, trofeosdesbloqueados = $16, trofeosbloqueados = $17, preguntasfalladas = $18, competicionessuperadas = $19, estaenranking = $20, autotrofeos = $21, premiumexpiracion = $22 WHERE nick = $23 RETURNING *"
-[00:00:42.043] Server  LOG     🔧 PUT /api/users - Values: ["Pipo","Camino La Villa","6º primaria","docente","pipocanarias@hotmail.com","PaLMeRiTa1968","/perfil/PIPO68","2025-11-26T21:11:34.318Z","En StoryUp desde: 26/11/2025",0,"{}","{}","{}",true,0,"[]","[]",0,0,false,"[]","2026-11-26T21:22:28.293Z","PIPO68"]
-[00:00:42.198] Server  LOG     ✅ PUT /api/users - Result: {}
-[00:01:03.819] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:32.386] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:25.402] Server  LOG      ✓ Compiled in 114ms
+[00:00:00.985] Server  LOG      ✓ Ready in 651ms
+[00:00:06.310] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:33.314] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
