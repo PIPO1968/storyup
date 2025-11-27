@@ -3,6 +3,21 @@ import { pool } from '../users/database.js';
 
 export async function GET() {
     try {
+        // Crear tabla si no existe
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS historias (
+                id SERIAL PRIMARY KEY,
+                titulo VARCHAR(255) NOT NULL,
+                contenido TEXT NOT NULL,
+                autor VARCHAR(255) NOT NULL,
+                fecha TIMESTAMP NOT NULL,
+                imagen TEXT,
+                likes INTEGER DEFAULT 0,
+                comentarios JSONB DEFAULT '[]'::jsonb,
+                concurso VARCHAR(255)
+            )
+        `);
+
         const result = await pool.query('SELECT * FROM historias ORDER BY fecha DESC');
         return NextResponse.json(result.rows);
     } catch (error) {

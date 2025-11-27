@@ -8,6 +8,21 @@ export async function GET(request: NextRequest) {
     const nick = searchParams.get('nick');
 
     try {
+        // Crear tabla si no existe
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS campeonatos (
+                id SERIAL PRIMARY KEY,
+                temporada VARCHAR(50) NOT NULL,
+                tipo VARCHAR(50) NOT NULL,
+                nick VARCHAR(255) NOT NULL,
+                preguntas_acertadas INTEGER DEFAULT 0,
+                preguntas_falladas INTEGER DEFAULT 0,
+                ganados INTEGER DEFAULT 0,
+                perdidos INTEGER DEFAULT 0,
+                likes INTEGER DEFAULT 0
+            )
+        `);
+
         let query = 'SELECT * FROM campeonatos WHERE 1=1';
         const params: any[] = [];
         let paramIndex = 1;

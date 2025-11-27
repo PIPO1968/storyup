@@ -1,3 +1,6 @@
-[00:00:00.985] Server  LOG      ✓ Ready in 651ms
-[00:00:06.310] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:33.314] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.887] Server  LOG      ✓ Ready in 593ms
+[00:00:06.184] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:41.916] Server  ERROR   Error fetching historias: error: relation "historias" does not exist
+[00:00:50.394] Server  ERROR   Error fetching historias: error: relation "historias" does not exist
+[00:01:14.042] Server  ERROR   Error fetching historias: error: relation "historias" does not exist
+[00:01:23.719] Server  ERROR   Error fetching historias: error: relation "historias" does not exist
